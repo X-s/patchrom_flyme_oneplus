@@ -790,8 +790,8 @@
     <string name="phoneTypeCustom">自定义</string>
     <string name="phoneTypeHome">住宅</string>
     <string name="phoneTypeMobile">手机</string>
-    <string name="phoneTypeWork">单位</string>
-    <string name="phoneTypeFaxWork">单位传真</string>
+    <string name="phoneTypeWork">公司</string>
+    <string name="phoneTypeFaxWork">传真</string>
     <string name="phoneTypeFaxHome">住宅传真</string>
     <string name="phoneTypePager">寻呼机</string>
     <string name="phoneTypeOther">其他</string>
@@ -810,16 +810,16 @@
     <string name="phoneTypeMms">彩信</string>
     <string name="eventTypeCustom">自定义</string>
     <string name="eventTypeBirthday">生日</string>
-    <string name="eventTypeAnniversary">周年纪念日</string>
+    <string name="eventTypeAnniversary">纪念日</string>
     <string name="eventTypeOther">其他</string>
     <string name="emailTypeCustom">自定义</string>
     <string name="emailTypeHome">个人</string>
-    <string name="emailTypeWork">工作</string>
+    <string name="emailTypeWork">公司</string>
     <string name="emailTypeOther">其他</string>
     <string name="emailTypeMobile">手机</string>
     <string name="postalTypeCustom">自定义</string>
     <string name="postalTypeHome">住宅</string>
-    <string name="postalTypeWork">单位</string>
+    <string name="postalTypeWork">公司</string>
     <string name="postalTypeOther">其他</string>
     <string name="imTypeCustom">自定义</string>
     <string name="imTypeHome">住宅</string>
@@ -1181,7 +1181,7 @@
     <string name="sms_control_message">&lt;b>%1$s&lt;/b>在发送大量短信。是否允许该应用继续发送短信？</string>
     <string name="sms_control_yes">允许</string>
     <string name="sms_control_no">拒绝</string>
-    <string name="sms_short_code_confirm_message">&lt;b>%1$s&lt;/b>想要向 &lt;b>%2$s&lt;/b> 发送一条短信。</string>
+    <string name="sms_short_code_confirm_message">确定发送信息?</string>
     <string name="sms_short_code_details"><b>这可能会导致您的手机号产生费用。</b></string>
     <string name="sms_premium_short_code_details"><b>这会导致您的手机号产生费用。</b></string>
     <string name="sms_short_code_confirm_allow">发送</string>
@@ -1233,8 +1233,8 @@
     <string name="extmedia_format_button_format">格式化</string>
     <string name="adb_active_notification_title">已连接到USB调试</string>
     <string name="adb_active_notification_message">触摸可停用USB调试。</string>
-    <string name="select_input_method">更改键盘</string>
-    <string name="configure_input_methods">选择键盘</string>
+    <string name="select_input_method">选择输入法</string>
+    <string name="configure_input_methods">设置输入法</string>
     <string name="show_ime">显示输入法</string>
     <string name="hardware">硬件</string>
     <string name="select_keyboard_layout_notification_title">选择键盘布局</string>
@@ -1406,9 +1406,9 @@
     <string name="data_usage_warning_body">触摸可查看使用情况和设置。</string>
     <string name="data_usage_3g_limit_title">已达到2G-3G流量上限</string>
     <string name="data_usage_4g_limit_title">已达到4G流量上限</string>
-    <string name="data_usage_mobile_limit_title">已达到移动数据流量上限</string>
+    <string name="data_usage_mobile_limit_title">移动数据已停用</string>
     <string name="data_usage_wifi_limit_title">已达到WLAN流量上限</string>
-    <string name="data_usage_limit_body">已暂停本周期剩余时间的流量使用</string>
+    <string name="data_usage_limit_body">触摸可启用。</string>
     <string name="data_usage_3g_limit_snoozed_title">已超出 2G-3G 数据流量限制</string>
     <string name="data_usage_4g_limit_snoozed_title">已超出 4G 数据使用上限</string>
     <string name="data_usage_mobile_limit_snoozed_title">已超出移动数据流量上限</string>
@@ -1664,6 +1664,8 @@
     <string name="China_Telecom">中国电信</string>
     <string name="permission_remember_choice">记住</string>
     <string name="permission">权限</string>
+    <string name="ellipsis">...</string>
+    <string name="ellipsis_two_dots">‥</string>
     <string name="oneplus_test_string">万普拉斯测试字符</string>
     <string name="demo_numbers">电话号码</string>
     <string name="demo_numbers2">公开号</string>
@@ -1712,6 +1714,4 @@
     <string name="oem_deleteMail">备份或删除邮件</string>
     <string name="oem_criticallowtitle">存储已满</string>
     <string name="kg_fingerprint_verification_failed">请再试一次</string>
-    <string name="ellipsis">...</string>
-    <string name="ellipsis_two_dots">‥</string>
 </resources>

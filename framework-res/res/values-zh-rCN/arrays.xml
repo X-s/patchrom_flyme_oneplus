@@ -112,4 +112,14 @@
         <item>其他</item>
         <item>自定义</item>
     </string-array>
+    <string-array name="mz_preferred_network_mode_summary_phone0">
+        <item>仅2G</item>
+        <item>优先3G</item>
+        <item>优先4G</item>
+    </string-array>
+    <string-array name="mz_preferred_network_mode_summary_phone1">
+        <item>仅2G</item>
+        <item>优先3G</item>
+        <item>优先4G</item>
+    </string-array>
 </resources>

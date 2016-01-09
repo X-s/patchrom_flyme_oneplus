@@ -214,6 +214,8 @@
 
 .field public static final LONG_PRESS_TIMEOUT:Ljava/lang/String; = "long_press_timeout"
 
+.field public static final MEIZU_KEYGUARD_LOCK:Ljava/lang/String; = "meizu_keyguard_lock"
+
 .field public static final MOUNT_PLAY_NOTIFICATION_SND:Ljava/lang/String; = "mount_play_not_snd"
 
 .field public static final MOUNT_UMS_AUTOSTART:Ljava/lang/String; = "mount_ums_autostart"
@@ -1424,6 +1426,8 @@
     .line 5146
     const/16 v0, 0x29
 
+    add-int/lit8 v0, v0, 0x1
+
     new-array v0, v0, [Ljava/lang/String;
 
     const-string v1, "bugreport_in_power_menu"
@@ -1659,6 +1663,12 @@
     const/16 v1, 0x28
 
     const-string v2, "sleep_timeout"
+
+    aput-object v2, v0, v1
+
+    add-int/lit8 v1, v1, 0x1
+
+    const-string v2, "meizu_keyguard_lock"
 
     aput-object v2, v0, v1
 

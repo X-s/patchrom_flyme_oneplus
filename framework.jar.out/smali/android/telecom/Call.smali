@@ -1767,14 +1767,12 @@
     .param p2, "setDefault"    # Z
 
     .prologue
-    .line 716
     iget-object v0, p0, Landroid/telecom/Call;->mInCallAdapter:Landroid/telecom/InCallAdapter;
 
     iget-object v1, p0, Landroid/telecom/Call;->mTelecomCallId:Ljava/lang/String;
 
-    invoke-virtual {v0, v1, p1}, Landroid/telecom/InCallAdapter;->phoneAccountSelected(Ljava/lang/String;Landroid/telecom/PhoneAccountHandle;)V
+    invoke-virtual {v0, v1, p1, p2}, Landroid/telecom/InCallAdapter;->phoneAccountSelected(Ljava/lang/String;Landroid/telecom/PhoneAccountHandle;Z)V
 
-    .line 718
     return-void
 .end method
 
@@ -1902,5 +1900,17 @@
     invoke-virtual {v0, v1}, Landroid/telecom/InCallAdapter;->unholdCall(Ljava/lang/String;)V
 
     .line 664
+    return-void
+.end method
+
+.method public phoneAccountSelected(Landroid/telecom/PhoneAccountHandle;)V
+    .locals 1
+    .param p1, "accountHandle"    # Landroid/telecom/PhoneAccountHandle;
+
+    .prologue
+    const/4 v0, 0x0
+
+    invoke-virtual {p0, p1, v0}, Landroid/telecom/Call;->phoneAccountSelected(Landroid/telecom/PhoneAccountHandle;Z)V
+
     return-void
 .end method

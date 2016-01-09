@@ -50,7 +50,7 @@
     :try_start_0
     instance-of v7, p1, Landroid/view/MotionEvent;
 
-    if-eqz v7, :cond_1
+    if-eqz v7, :cond_2
 
     invoke-virtual {p1}, Landroid/view/InputEvent;->getSource()I
 
@@ -58,38 +58,44 @@
 
     and-int/lit8 v7, v7, 0x2
 
-    if-eqz v7, :cond_1
+    if-eqz v7, :cond_2
 
     iget-object v7, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->this$0:Lcom/android/server/wm/WindowManagerService;
 
     iget-object v7, v7, Lcom/android/server/wm/WindowManagerService;->mDragState:Lcom/android/server/wm/DragState;
 
-    if-eqz v7, :cond_1
+    if-eqz v7, :cond_2
 
-    .line 714
+    invoke-static/range {p1 .. p1}, Lcom/android/server/wm/InjectorWMS;->hookOnInputEvent(Landroid/view/InputEvent;)Z
+
+    move-result v7
+
+    if-eqz v7, :cond_0
+
+    invoke-virtual {p0, p1, v3}, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->finishInputEvent(Landroid/view/InputEvent;Z)V
+
+    return-void
+
+    :cond_0
     move-object v0, p1
 
     check-cast v0, Landroid/view/MotionEvent;
 
     move-object v4, v0
 
-    .line 715
     .local v4, "motionEvent":Landroid/view/MotionEvent;
     const/4 v2, 0x0
 
-    .line 716
     .local v2, "endDrag":Z
     invoke-virtual {v4}, Landroid/view/MotionEvent;->getRawX()F
 
     move-result v5
 
-    .line 717
     .local v5, "newX":F
     invoke-virtual {v4}, Landroid/view/MotionEvent;->getRawY()F
 
     move-result v6
 
-    .line 719
     .local v6, "newY":F
     invoke-virtual {v4}, Landroid/view/MotionEvent;->getAction()I
 
@@ -97,12 +103,10 @@
 
     packed-switch v7, :pswitch_data_0
 
-    .line 747
     :goto_0
     :pswitch_0
-    if-eqz v2, :cond_0
+    if-eqz v2, :cond_1
 
-    .line 750
     iget-object v7, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->this$0:Lcom/android/server/wm/WindowManagerService;
 
     iget-object v8, v7, Lcom/android/server/wm/WindowManagerService;->mWindowMap:Ljava/util/HashMap;
@@ -120,21 +124,18 @@
 
     invoke-virtual {v7}, Lcom/android/server/wm/DragState;->endDragLw()V
 
-    .line 752
     monitor-exit v8
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_3
 
-    .line 755
-    :cond_0
+    :cond_1
     const/4 v3, 0x1
 
-    .line 760
     .end local v2    # "endDrag":Z
     .end local v4    # "motionEvent":Landroid/view/MotionEvent;
     .end local v5    # "newX":F
     .end local v6    # "newY":F
-    :cond_1
+    :cond_2
     invoke-virtual {p0, p1, v3}, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->finishInputEvent(Landroid/view/InputEvent;Z)V
 
     .line 762

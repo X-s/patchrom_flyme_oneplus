@@ -13,7 +13,7 @@
     <string name="ok">確定</string>
     <string name="paste">貼上</string>
     <string name="search_go">搜尋</string>
-    <string name="selectAll">全部選取</string>
+    <string name="selectAll">全選</string>
     <string name="unknownName">不明</string>
     <string name="untitled">&lt;未命名></string>
     <string name="VideoView_error_button">確定</string>
@@ -791,7 +791,7 @@
     <string name="phoneTypeHome">住家</string>
     <string name="phoneTypeMobile">手機</string>
     <string name="phoneTypeWork">公司</string>
-    <string name="phoneTypeFaxWork">公司傳真</string>
+    <string name="phoneTypeFaxWork">傳真</string>
     <string name="phoneTypeFaxHome">住家傳真</string>
     <string name="phoneTypePager">呼叫器</string>
     <string name="phoneTypeOther">其他</string>
@@ -810,7 +810,7 @@
     <string name="phoneTypeMms">多媒體簡訊</string>
     <string name="eventTypeCustom">自訂</string>
     <string name="eventTypeBirthday">生日</string>
-    <string name="eventTypeAnniversary">週年紀念日</string>
+    <string name="eventTypeAnniversary">紀念日</string>
     <string name="eventTypeOther">其他</string>
     <string name="emailTypeCustom">自訂</string>
     <string name="emailTypeHome">住家</string>
@@ -1181,7 +1181,7 @@
     <string name="sms_control_message">&lt;b>&lt;/b>「%1$s」正在傳送大量簡訊。您要允許這個應用程式繼續傳送簡訊嗎？</string>
     <string name="sms_control_yes">允許</string>
     <string name="sms_control_no">拒絕</string>
-    <string name="sms_short_code_confirm_message">&lt;b>%1$s&lt;/b> 要求將訊息傳送至 &lt;b>%2$s&lt;/b>。</string>
+    <string name="sms_short_code_confirm_message">確定發送此訊息?</string>
     <string name="sms_short_code_details">這<b>可能會透過您的行動帳戶計費</b>。</string>
     <string name="sms_premium_short_code_details"><b>這會透過您的行動帳戶計費。</b></string>
     <string name="sms_short_code_confirm_allow">傳送</string>
@@ -1233,8 +1233,8 @@
     <string name="extmedia_format_button_format">格式化</string>
     <string name="adb_active_notification_title">已連接 USB 偵錯工具</string>
     <string name="adb_active_notification_message">輕觸即可停用 USB 偵錯。</string>
-    <string name="select_input_method">變更鍵盤</string>
-    <string name="configure_input_methods">選擇鍵盤</string>
+    <string name="select_input_method">選擇輸入法</string>
+    <string name="configure_input_methods">設定輸入法</string>
     <string name="show_ime">顯示輸入法</string>
     <string name="hardware">硬體</string>
     <string name="select_keyboard_layout_notification_title">選取鍵盤配置</string>
@@ -1406,9 +1406,9 @@
     <string name="data_usage_warning_body">輕觸即可查看使用量和設定。</string>
     <string name="data_usage_3g_limit_title">已達到 2G-3G 數據流量上限</string>
     <string name="data_usage_4g_limit_title">已達到 4G 數據流量上限</string>
-    <string name="data_usage_mobile_limit_title">已達到行動數據流量上限</string>
+    <string name="data_usage_mobile_limit_title">行動數據已停用</string>
     <string name="data_usage_wifi_limit_title">已達到 Wi-Fi 數據流量上限</string>
-    <string name="data_usage_limit_body">已暫停使用數據連線，直到工作階段結束為止</string>
+    <string name="data_usage_limit_body">輕觸即可啟用。</string>
     <string name="data_usage_3g_limit_snoozed_title">已超過 2G-3G 數據上限</string>
     <string name="data_usage_4g_limit_snoozed_title">已超過 4G 數據上限</string>
     <string name="data_usage_mobile_limit_snoozed_title">已超過行動數據流量上限</string>
@@ -1662,6 +1662,8 @@
     <string name="China_Mobile">中國移動</string>
     <string name="China_Unicom">中國聯通</string>
     <string name="China_Telecom">中國電信</string>
+    <string name="ellipsis">…</string>
+    <string name="ellipsis_two_dots">‥</string>
     <string name="oneplus_test_string">萬普拉斯測試字符</string>
     <string name="demo_numbers">電話號碼</string>
     <string name="demo_numbers2">公開號</string>
@@ -1711,6 +1713,4 @@
     <string name="oem_deleteMail">備份或刪除郵件</string>
     <string name="oem_criticallowtitle">儲存已滿</string>
     <string name="kg_fingerprint_verification_failed">請再試一次</string>
-    <string name="ellipsis">…</string>
-    <string name="ellipsis_two_dots">‥</string>
 </resources>

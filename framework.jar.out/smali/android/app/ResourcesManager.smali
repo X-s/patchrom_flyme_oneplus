@@ -230,38 +230,31 @@
 
     if-nez v10, :cond_3
 
-    .line 268
     :cond_2
     iput-object p2, p0, Landroid/app/ResourcesManager;->mResCompatibilityInfo:Landroid/content/res/CompatibilityInfo;
 
-    .line 269
     or-int/lit16 v0, v0, 0xd00
 
-    .line 276
     :cond_3
     invoke-static {v0}, Landroid/app/OpThemeHelper;->handleExtraConfigurationChanges(I)V
 
-    .line 280
     iget-object v10, p1, Landroid/content/res/Configuration;->locale:Ljava/util/Locale;
 
     if-eqz v10, :cond_4
 
-    .line 281
     iget-object v10, p1, Landroid/content/res/Configuration;->locale:Ljava/util/Locale;
 
     invoke-static {v10}, Ljava/util/Locale;->setDefault(Ljava/util/Locale;)V
 
-    .line 284
     :cond_4
     invoke-static {p1, v1, p2}, Landroid/content/res/Resources;->updateSystemConfiguration(Landroid/content/res/Configuration;Landroid/util/DisplayMetrics;Landroid/content/res/CompatibilityInfo;)V
 
-    .line 286
+    invoke-direct {p0, v0}, Landroid/app/ResourcesManager;->mzFreeCaches(I)V
+
     invoke-static {}, Landroid/app/ApplicationPackageManager;->configurationChanged()V
 
-    .line 289
     const/4 v9, 0x0
 
-    .line 291
     .local v9, "tmpConfig":Landroid/content/res/Configuration;
     iget-object v10, p0, Landroid/app/ResourcesManager;->mActiveResources:Landroid/util/ArrayMap;
 
@@ -1233,4 +1226,21 @@
     move-object v14, v7
 
     goto/16 :goto_1
+.end method
+
+.method private mzFreeCaches(I)V
+    .locals 1
+    .param p1, "changes"    # I
+
+    .prologue
+    and-int/lit16 v0, p1, 0x4000
+
+    if-eqz v0, :cond_0
+
+    invoke-static {}, Landroid/graphics/Canvas;->freeCaches()V
+
+    invoke-static {}, Landroid/graphics/Canvas;->freeTextLayoutCaches()V
+
+    :cond_0
+    return-void
 .end method

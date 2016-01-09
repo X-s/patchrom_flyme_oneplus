@@ -32,6 +32,14 @@
 
 .field public static final EXTRA_USER_PRIVATE_KEY_NAME:Ljava/lang/String; = "user_private_key_name"
 
+.field public static final EXTRA_WAPI_AS_CERTIFICATES_DATA:Ljava/lang/String; = "wapi_ca_certificates_data"
+
+.field public static final EXTRA_WAPI_AS_CERTIFICATES_NAME:Ljava/lang/String; = "wapi_ca_certificates_name"
+
+.field public static final EXTRA_WAPI_USER_CERTIFICATES_DATA:Ljava/lang/String; = "wapi_user_certificate_data"
+
+.field public static final EXTRA_WAPI_USER_CERTIFICATES_NAME:Ljava/lang/String; = "wapi_user_certificate_name"
+
 .field public static final INSTALL_ACTION:Ljava/lang/String; = "android.credentials.INSTALL"
 
 .field public static final INSTALL_AS_USER_ACTION:Ljava/lang/String; = "android.credentials.INSTALL_AS_USER"
@@ -47,6 +55,14 @@
 .field public static final USER_PRIVATE_KEY:Ljava/lang/String; = "USRPKEY_"
 
 .field public static final VPN:Ljava/lang/String; = "VPN_"
+
+.field public static final WAPI_AS_CERTIFICATE:Ljava/lang/String; = "WAPIAS_"
+
+.field public static final WAPI_AS_CERT_NAME_MEIZU:Ljava/lang/String; = "normal_as"
+
+.field public static final WAPI_USER_CERTIFICATE:Ljava/lang/String; = "WAPIUSR_"
+
+.field public static final WAPI_USER_CERT_NAME_MEIZU:Ljava/lang/String; = "normal_user"
 
 .field public static final WIFI:Ljava/lang/String; = "WIFI_"
 

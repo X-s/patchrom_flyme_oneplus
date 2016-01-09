@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="phoneTypeWork">Darbas</string>
+    <string name="phoneTypeFaxWork">Faksas</string>
+    <string name="eventTypeAnniversary">Sukaktis</string>
+    <string name="emailTypeWork">Darbas</string>
+    <string name="postalTypeWork">Darbas</string>
+    <string name="sms_short_code_confirm_message">Ar tikrai norite išsiųsti šį pranešimą?</string>
+    <string name="select_input_method">Pasirinkti įvesties būdą</string>
+    <string name="configure_input_methods">Nustato įvesties būdą</string>
+    <string name="data_usage_mobile_limit_title">Mobilieji duomenys išjungti</string>
+    <string name="data_usage_limit_body">Palieskite, kad įjungtumėte</string>
+</resources>

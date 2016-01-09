@@ -32,6 +32,8 @@
 
 .field stats:Lcom/android/server/notification/NotificationUsageStats$SingleNotificationStats;
 
+.field statusBarKey:Landroid/os/IBinder;
+
 
 # direct methods
 .method public constructor <init>(Landroid/service/notification/StatusBarNotification;I)V

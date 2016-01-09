@@ -31,8 +31,9 @@
     .locals 3
 
     .prologue
-    .line 124
-    const/4 v0, 0x3
+    const/4 v0, 0x2
+
+    add-int/lit8 v0, v0, 0x1
 
     new-array v0, v0, [Ljava/lang/String;
 
@@ -48,7 +49,7 @@
 
     aput-object v2, v0, v1
 
-    const/4 v1, 0x2
+    add-int/lit8 v1, v1, 0x1
 
     const-string v2, "WAPI"
 

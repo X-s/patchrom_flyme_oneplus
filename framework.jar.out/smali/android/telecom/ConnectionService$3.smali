@@ -31,8 +31,6 @@
     return-void
 .end method
 
-
-# virtual methods
 .method public onConferenceableConnectionsChanged(Landroid/telecom/Conference;Ljava/util/List;)V
     .locals 3
     .param p1, "conference"    # Landroid/telecom/Conference;
@@ -369,5 +367,18 @@
     invoke-virtual {v1, v0, p2}, Landroid/telecom/ConnectionServiceAdapter;->setVideoState(Ljava/lang/String;I)V
 
     .line 497
+    return-void
+.end method
+
+
+# virtual methods
+.method public onCapabilitiesChanged(Landroid/telecom/Conference;I)V
+    .locals 0
+    .param p1, "conference"    # Landroid/telecom/Conference;
+    .param p2, "capabilities"    # I
+
+    .prologue
+    invoke-virtual {p0, p1, p2}, Landroid/telecom/ConnectionService$3;->onConnectionCapabilitiesChanged(Landroid/telecom/Conference;I)V
+
     return-void
 .end method

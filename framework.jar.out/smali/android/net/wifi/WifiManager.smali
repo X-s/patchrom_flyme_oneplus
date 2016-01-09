@@ -22,6 +22,20 @@
 
 .field public static final ACTION_REQUEST_SCAN_ALWAYS_AVAILABLE:Ljava/lang/String; = "android.net.wifi.action.REQUEST_SCAN_ALWAYS_AVAILABLE"
 
+.field public static final ACTION_WIFI_AP_DEVICE_STATE_CHANGE:Ljava/lang/String; = "com.meizu.action.wifi_ap_device_state_change"
+
+.field public static final ACTION_WIFI_AP_WPS_EVENT:Ljava/lang/String; = "com.meizu.action.wifi_ap_wps_event"
+
+.field public static final AP_WPS_EVENT_FAILED:I = 0x2
+
+.field public static final AP_WPS_EVENT_PBC_ACTIVE:I = 0x0
+
+.field public static final AP_WPS_EVENT_SUCCESS:I = 0x1
+
+.field public static final AP_WPS_EVENT_TIMEOUT:I = 0x3
+
+.field public static final AP_WPS_EVENT_UNKNOWN:I = -0x1
+
 .field private static final BASE:I = 0x25000
 
 .field public static final BATCHED_SCAN_RESULTS_AVAILABLE_ACTION:Ljava/lang/String; = "android.net.wifi.BATCHED_RESULTS"
@@ -70,6 +84,8 @@
 
 .field public static final ERROR_AUTHENTICATING:I = 0x1
 
+.field public static final EXTRA_AP_WPS_EVENT:Ljava/lang/String; = "event_extra"
+
 .field public static final EXTRA_BSSID:Ljava/lang/String; = "bssid"
 
 .field public static final EXTRA_CHANGE_REASON:Ljava/lang/String; = "changeReason"
@@ -91,6 +107,10 @@
 .field public static final EXTRA_PREVIOUS_WIFI_STATE:Ljava/lang/String; = "previous_wifi_state"
 
 .field public static final EXTRA_SCAN_AVAILABLE:Ljava/lang/String; = "scan_enabled"
+
+.field public static final EXTRA_STA_ADDRESS:Ljava/lang/String; = "sta_address"
+
+.field public static final EXTRA_STA_STATE:Ljava/lang/String; = "sta_state"
 
 .field public static final EXTRA_SUPPLICANT_CONNECTED:Ljava/lang/String; = "connected"
 
@@ -3195,6 +3215,8 @@
     .line 1337
     :cond_0
     :try_start_0
+    invoke-direct/range {p0 .. p0}, Landroid/net/wifi/WifiManager;->mzEnforceWifiPermission()V
+
     iget-object v2, p0, Landroid/net/wifi/WifiManager;->mService:Landroid/net/wifi/IWifiManager;
 
     invoke-interface {v2, p1}, Landroid/net/wifi/IWifiManager;->setWifiEnabled(Z)Z
@@ -3554,4 +3576,31 @@
     move-result v0
 
     goto :goto_0
+.end method
+
+.method private mzEnforceWifiPermission()V
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    const/16 v0, 0x44
+
+    invoke-static {v0}, Lmeizu/security/FlymePermissionManager;->isFlymePermissionGranted(I)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    new-instance v0, Landroid/os/RemoteException;
+
+    invoke-direct {v0}, Landroid/os/RemoteException;-><init>()V
+
+    throw v0
+
+    :cond_0
+    return-void
 .end method

@@ -68,6 +68,8 @@
 
 .field private final mInterpolator:Landroid/view/animation/Interpolator;
 
+.field private mMzAbleDraw:Z
+
 .field private final mPaint:Landroid/graphics/Paint;
 
 .field private mPullDistance:F
@@ -415,6 +417,15 @@
     .param p1, "canvas"    # Landroid/graphics/Canvas;
 
     .prologue
+    iget-boolean v0, p0, Landroid/widget/EdgeEffect;->mMzAbleDraw:Z
+
+    if-nez v0, :cond_0
+
+    const/4 v6, 0x0
+
+    return v6
+
+    :cond_0
     const/4 v6, 0x0
 
     const/high16 v9, 0x3f800000    # 1.0f
@@ -539,32 +550,29 @@
 
     const/4 v8, 0x3
 
-    if-ne v7, v8, :cond_0
+    if-ne v7, v8, :cond_1
 
     iget v7, p0, Landroid/widget/EdgeEffect;->mGlowScaleY:F
 
     cmpl-float v7, v7, v10
 
-    if-nez v7, :cond_0
-
-    .line 339
-    iput v6, p0, Landroid/widget/EdgeEffect;->mState:I
-
-    .line 340
-    const/4 v4, 0x1
-
-    .line 343
-    :cond_0
-    iget v7, p0, Landroid/widget/EdgeEffect;->mState:I
-
     if-nez v7, :cond_1
 
-    if-eqz v4, :cond_2
+    iput v6, p0, Landroid/widget/EdgeEffect;->mState:I
+
+    const/4 v4, 0x1
 
     :cond_1
-    const/4 v6, 0x1
+    iget v7, p0, Landroid/widget/EdgeEffect;->mState:I
+
+    if-nez v7, :cond_2
+
+    if-eqz v4, :cond_3
 
     :cond_2
+    const/4 v6, 0x1
+
+    :cond_3
     return v6
 .end method
 

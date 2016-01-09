@@ -38,6 +38,8 @@
 
 .field public static final ACTION_SERVICE_STATE_CHANGED:Ljava/lang/String; = "android.intent.action.SERVICE_STATE"
 
+.field public static final ACTION_SET_PHONE_RAT_FAMILY_DONE:Ljava/lang/String; = "android.intent.action.ACTION_SET_PHONE_RAT_FAMILY_DONE"
+
 .field public static final ACTION_SHOW_NOTICE_ECM_BLOCK_OTHERS:Ljava/lang/String; = "android.intent.action.ACTION_SHOW_NOTICE_ECM_BLOCK_OTHERS"
 
 .field public static final ACTION_SIGNAL_STRENGTH_CHANGED:Ljava/lang/String; = "android.intent.action.SIG_STR"

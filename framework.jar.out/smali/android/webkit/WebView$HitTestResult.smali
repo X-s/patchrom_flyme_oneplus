@@ -20,6 +20,8 @@
     .end annotation
 .end field
 
+.field public static final DATE_TYPE:I = 0xa
+
 .field public static final EDIT_TEXT_TYPE:I = 0x9
 
 .field public static final EMAIL_TYPE:I = 0x4

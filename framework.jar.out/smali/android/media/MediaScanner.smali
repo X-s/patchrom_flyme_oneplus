@@ -1212,14 +1212,14 @@
 
     iput-object v0, p0, Landroid/media/MediaScanner;->mExternalStoragePath:Ljava/lang/String;
 
-    .line 416
     invoke-static {}, Landroid/os/Environment;->isExternalStorageEmulated()Z
 
     move-result v0
 
     iput-boolean v0, p0, Landroid/media/MediaScanner;->mExternalIsEmulated:Z
 
-    .line 418
+    invoke-direct/range {p0 .. p0}, Landroid/media/MediaScanner;->mzSetLocaleIfNeeded()V
+
     return-void
 .end method
 
@@ -2408,7 +2408,7 @@
 
     move-result-object v0
 
-    const v1, 0x11200b2
+    const v1, #android:bool@def_custom_sys_sound#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -4959,11 +4959,11 @@
     .locals 4
 
     .prologue
-    const v3, 0x1040087
+    const v3, #android:string@def_custom_sys_alarm#t
 
-    const v2, 0x1040085
+    const v2, #android:string@def_custom_sys_notification#t
 
-    const v1, 0x1040082
+    const v1, #android:string@def_custom_sys_ringtone#t
 
     .line 445
     iget-object v0, p0, Landroid/media/MediaScanner;->mContext:Landroid/content/Context;
@@ -5003,7 +5003,7 @@
 
     move-result-object v0
 
-    const v1, 0x1040083
+    const v1, #android:string@def_custom_sys_ringtone2#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -5038,7 +5038,7 @@
 
     move-result-object v0
 
-    const v1, 0x1040084
+    const v1, #android:string@def_custom_sys_ringtone3#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -5104,7 +5104,7 @@
 
     move-result-object v0
 
-    const v1, 0x1040086
+    const v1, #android:string@def_custom_sys_mms#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -6189,4 +6189,75 @@
 .end method
 
 .method public native setLocale(Ljava/lang/String;)V
+.end method
+
+.method private mzSetLocaleIfNeeded()V
+    .locals 5
+
+    .prologue
+    iget-object v3, p0, Landroid/media/MediaScanner;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+
+    move-result-object v3
+
+    iget-object v2, v3, Landroid/content/res/Configuration;->locale:Ljava/util/Locale;
+
+    .local v2, "locale":Ljava/util/Locale;
+    if-eqz v2, :cond_0
+
+    invoke-virtual {v2}, Ljava/util/Locale;->getLanguage()Ljava/lang/String;
+
+    move-result-object v1
+
+    .local v1, "language":Ljava/lang/String;
+    invoke-virtual {v2}, Ljava/util/Locale;->getCountry()Ljava/lang/String;
+
+    move-result-object v0
+
+    .local v0, "country":Ljava/lang/String;
+    if-eqz v1, :cond_0
+
+    if-eqz v0, :cond_1
+
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-string v4, "_"
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {p0, v3}, Landroid/media/MediaScanner;->setLocale(Ljava/lang/String;)V
+
+    .end local v0    # "country":Ljava/lang/String;
+    .end local v1    # "language":Ljava/lang/String;
+    :cond_0
+    :goto_0
+    return-void
+
+    .restart local v0    # "country":Ljava/lang/String;
+    .restart local v1    # "language":Ljava/lang/String;
+    :cond_1
+    invoke-virtual {p0, v1}, Landroid/media/MediaScanner;->setLocale(Ljava/lang/String;)V
+
+    goto :goto_0
 .end method

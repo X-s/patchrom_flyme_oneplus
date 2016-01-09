@@ -50,7 +50,7 @@
 
     move-result-object v0
 
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_2
 
     iget-object v0, p0, Landroid/widget/PopupWindow$1;->this$0:Landroid/widget/PopupWindow;
 
@@ -70,8 +70,20 @@
     .line 148
     .local v1, "anchor":Landroid/view/View;
     :goto_0
-    if-eqz v1, :cond_0
+    iget-object v0, p0, Landroid/widget/PopupWindow$1;->this$0:Landroid/widget/PopupWindow;
 
+    invoke-static {v0}, Landroid/widget/PopupWindow$FlymeInjector;->isAnchorHasParent(Landroid/widget/PopupWindow;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    return-void
+
+    :cond_0
+    if-eqz v1, :cond_1
+
+    .line 149
     iget-object v0, p0, Landroid/widget/PopupWindow$1;->this$0:Landroid/widget/PopupWindow;
 
     # getter for: Landroid/widget/PopupWindow;->mPopupView:Landroid/view/View;
@@ -79,9 +91,8 @@
 
     move-result-object v0
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_1
 
-    .line 149
     iget-object v0, p0, Landroid/widget/PopupWindow$1;->this$0:Landroid/widget/PopupWindow;
 
     # getter for: Landroid/widget/PopupWindow;->mPopupView:Landroid/view/View;
@@ -143,14 +154,12 @@
 
     invoke-virtual/range {v3 .. v8}, Landroid/widget/PopupWindow;->update(IIIIZ)V
 
-    .line 156
     .end local v2    # "p":Landroid/view/WindowManager$LayoutParams;
-    :cond_0
+    :cond_1
     return-void
 
-    .line 147
     .end local v1    # "anchor":Landroid/view/View;
-    :cond_1
+    :cond_2
     const/4 v1, 0x0
 
     goto :goto_0

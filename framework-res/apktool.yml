@@ -7,8 +7,7 @@ sdkInfo:
 packageInfo:
   forced-package-id: '1'
 versionInfo:
-  versionCode: '22'
-  versionName: 5.1.1-58
+  versionName: builder.20151220001156_R
 sharedLibrary: false
 doNotCompress:
 - arsc

@@ -428,15 +428,7 @@
 
     invoke-static/range {v0 .. v8}, Landroid/content/res/AssetManager;->applyStyle(JIIJ[I[I[I)Z
 
-    .line 1513
-    iget-object v0, p0, Landroid/content/res/Resources$Theme;->this$0:Landroid/content/res/Resources;
-
-    # invokes: Landroid/content/res/Resources;->replaceTypedArray(Landroid/content/res/TypedArray;)Landroid/content/res/TypedArray;
-    invoke-static {v0, v9}, Landroid/content/res/Resources;->access$000(Landroid/content/res/Resources;Landroid/content/res/TypedArray;)Landroid/content/res/TypedArray;
-
-    move-result-object v0
-
-    return-object v0
+    return-object v9
 .end method
 
 .method public obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
@@ -485,21 +477,11 @@
 
     invoke-static/range {v0 .. v8}, Landroid/content/res/AssetManager;->applyStyle(JIIJ[I[I[I)Z
 
-    .line 1580
     iput-object p0, v9, Landroid/content/res/TypedArray;->mTheme:Landroid/content/res/Resources$Theme;
 
-    .line 1581
     iput-object v11, v9, Landroid/content/res/TypedArray;->mXml:Landroid/content/res/XmlBlock$Parser;
 
-    .line 1614
-    iget-object v0, p0, Landroid/content/res/Resources$Theme;->this$0:Landroid/content/res/Resources;
-
-    # invokes: Landroid/content/res/Resources;->replaceTypedArray(Landroid/content/res/TypedArray;)Landroid/content/res/TypedArray;
-    invoke-static {v0, v9}, Landroid/content/res/Resources;->access$000(Landroid/content/res/Resources;Landroid/content/res/TypedArray;)Landroid/content/res/TypedArray;
-
-    move-result-object v0
-
-    return-object v0
+    return-object v9
 
     .line 1577
     :cond_0
@@ -545,15 +527,7 @@
 
     invoke-static/range {v0 .. v8}, Landroid/content/res/AssetManager;->applyStyle(JIIJ[I[I[I)Z
 
-    .line 1454
-    iget-object v0, p0, Landroid/content/res/Resources$Theme;->this$0:Landroid/content/res/Resources;
-
-    # invokes: Landroid/content/res/Resources;->replaceTypedArray(Landroid/content/res/TypedArray;)Landroid/content/res/TypedArray;
-    invoke-static {v0, v9}, Landroid/content/res/Resources;->access$000(Landroid/content/res/Resources;Landroid/content/res/TypedArray;)Landroid/content/res/TypedArray;
-
-    move-result-object v0
-
-    return-object v0
+    return-object v9
 .end method
 
 .method public resolveAttribute(ILandroid/util/TypedValue;Z)Z

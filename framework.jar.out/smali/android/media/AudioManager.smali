@@ -81,7 +81,7 @@
 
 .field public static final AUDIO_SESSION_ID_GENERATE:I = 0x0
 
-.field public static final DEFAULT_STREAM_VOLUME:[I
+.field public static DEFAULT_STREAM_VOLUME:[I = null
 
 .field public static final DEVICE_IN_ANLG_DOCK_HEADSET:I = -0x7ffffe00
 
@@ -582,6 +582,12 @@
 
     sput-object v0, Landroid/media/AudioManager;->sAudioPatchesCached:Ljava/util/ArrayList;
 
+    invoke-static {}, Landroid/media/AudioService;->getDefaultStreamVolume()[I
+
+    move-result-object v0
+
+    sput-object v0, Landroid/media/AudioManager;->DEFAULT_STREAM_VOLUME:[I
+
     return-void
 
     .line 442
@@ -661,7 +667,7 @@
 
     move-result-object v0
 
-    const v1, 0x1120013
+    const v1, #android:bool@config_useMasterVolume#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -676,7 +682,7 @@
 
     move-result-object v0
 
-    const v1, 0x1120014
+    const v1, #android:bool@config_useVolumeKeySounds#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -691,7 +697,7 @@
 
     move-result-object v0
 
-    const v1, 0x112007a
+    const v1, #android:bool@config_useFixedVolume#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -3300,7 +3306,7 @@
 
     move-result-object v0
 
-    const v1, 0x112004e
+    const v1, #android:bool@config_bluetooth_sco_off_call#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 

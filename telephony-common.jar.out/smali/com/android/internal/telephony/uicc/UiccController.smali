@@ -112,7 +112,7 @@
 
     move-result-object v2
 
-    const v3, 0x1120097
+    const v3, #android:bool@config_sim_refresh_for_dual_mode_card#t
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -1212,11 +1212,24 @@
 .end method
 
 .method public getUiccCard()Lcom/android/internal/telephony/uicc/UiccCard;
-    .locals 1
+    .locals 2
 
     .prologue
-    .line 150
-    const/4 v0, 0x0
+    invoke-static {}, Lcom/android/internal/telephony/SubscriptionController;->getInstance()Lcom/android/internal/telephony/SubscriptionController;
+
+    move-result-object v0
+
+    invoke-static {}, Lcom/android/internal/telephony/SubscriptionController;->getInstance()Lcom/android/internal/telephony/SubscriptionController;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lcom/android/internal/telephony/SubscriptionController;->getDefaultSubId()I
+
+    move-result v1
+
+    invoke-virtual {v0, v1}, Lcom/android/internal/telephony/SubscriptionController;->getPhoneId(I)I
+
+    move-result v0
 
     invoke-virtual {p0, v0}, Lcom/android/internal/telephony/uicc/UiccController;->getUiccCard(I)Lcom/android/internal/telephony/uicc/UiccCard;
 

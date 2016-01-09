@@ -66,10 +66,18 @@
     .param p2, "scrollState"    # I
 
     .prologue
-    .line 1807
+    iget-object v0, p0, Landroid/widget/ListPopupWindow$PopupScrollListener;->this$0:Landroid/widget/ListPopupWindow;
+
+    iget-boolean v0, v0, Landroid/widget/ListPopupWindow;->mMzKeepInputMethodNeeded:Z
+
+    if-eqz v0, :cond_0
+
+    return-void
+
+    :cond_0
     const/4 v0, 0x1
 
-    if-ne p2, v0, :cond_0
+    if-ne p2, v0, :cond_1
 
     iget-object v0, p0, Landroid/widget/ListPopupWindow$PopupScrollListener;->this$0:Landroid/widget/ListPopupWindow;
 
@@ -77,8 +85,9 @@
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-nez v0, :cond_1
 
+    .line 1809
     iget-object v0, p0, Landroid/widget/ListPopupWindow$PopupScrollListener;->this$0:Landroid/widget/ListPopupWindow;
 
     # getter for: Landroid/widget/ListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
@@ -90,9 +99,8 @@
 
     move-result-object v0
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_1
 
-    .line 1809
     iget-object v0, p0, Landroid/widget/ListPopupWindow$PopupScrollListener;->this$0:Landroid/widget/ListPopupWindow;
 
     # getter for: Landroid/widget/ListPopupWindow;->mHandler:Landroid/os/Handler;
@@ -119,7 +127,6 @@
 
     invoke-virtual {v0}, Landroid/widget/ListPopupWindow$ResizePopupRunnable;->run()V
 
-    .line 1812
-    :cond_0
+    :cond_1
     return-void
 .end method

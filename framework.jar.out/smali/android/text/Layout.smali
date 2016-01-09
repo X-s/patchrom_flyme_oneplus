@@ -725,12 +725,27 @@
     .param p1, "method"    # Landroid/text/TextUtils$TruncateAt;
 
     .prologue
+    invoke-static {}, Landroid/os/BuildExt;->isProductInternational()Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    sget-object v0, Landroid/text/TextUtils;->ELLIPSIS_TWO_DOTS:[C
+
+    const/4 v1, 0x0
+
+    aget-char v0, v0, v1
+
+    return v0
+
+    :cond_0
     const/4 v1, 0x0
 
     .line 1756
     sget-object v0, Landroid/text/TextUtils$TruncateAt;->END_SMALL:Landroid/text/TextUtils$TruncateAt;
 
-    if-ne p1, v0, :cond_0
+    if-ne p1, v0, :cond_1
 
     sget-object v0, Landroid/text/TextUtils;->ELLIPSIS_TWO_DOTS:[C
 
@@ -739,7 +754,7 @@
     :goto_0
     return v0
 
-    :cond_0
+    :cond_1
     sget-object v0, Landroid/text/TextUtils;->ELLIPSIS_NORMAL:[C
 
     aget-char v0, v0, v1

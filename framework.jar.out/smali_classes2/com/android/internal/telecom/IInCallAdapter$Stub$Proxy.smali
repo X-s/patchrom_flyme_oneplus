@@ -453,10 +453,10 @@
     throw v1
 .end method
 
-.method public phoneAccountSelected(Ljava/lang/String;Landroid/telecom/PhoneAccountHandle;)V
+.method public playDtmfTone(Ljava/lang/String;C)V
     .locals 5
     .param p1, "callId"    # Ljava/lang/String;
-    .param p2, "accountHandle"    # Landroid/telecom/PhoneAccountHandle;
+    .param p2, "digit"    # C
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -464,39 +464,77 @@
     .end annotation
 
     .prologue
-    .line 383
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 385
     .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
     const-string v1, "com.android.internal.telecom.IInCallAdapter"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 386
     invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 387
-    if-eqz p2, :cond_0
+    invoke-virtual {v0, p2}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 388
-    const/4 v1, 0x1
-
-    invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 389
-    const/4 v1, 0x0
-
-    invoke-virtual {p2, v0, v1}, Landroid/telecom/PhoneAccountHandle;->writeToParcel(Landroid/os/Parcel;I)V
-
-    .line 394
-    :goto_0
     iget-object v1, p0, Lcom/android/internal/telecom/IInCallAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    const/16 v2, 0xc
+    const/16 v2, 0x9
+
+    const/4 v3, 0x0
+
+    const/4 v4, 0x1
+
+    invoke-interface {v1, v2, v0, v3, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    return-void
+
+    :catchall_0
+    move-exception v1
+
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    throw v1
+.end method
+
+.method public postDialContinue(Ljava/lang/String;Z)V
+    .locals 5
+    .param p1, "callId"    # Ljava/lang/String;
+    .param p2, "proceed"    # Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    const/4 v1, 0x1
+
+    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+
+    move-result-object v0
+
+    .local v0, "_data":Landroid/os/Parcel;
+    :try_start_0
+    const-string v2, "com.android.internal.telecom.IInCallAdapter"
+
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
+
+    invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    if-eqz p2, :cond_0
+
+    :goto_0
+    invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInt(I)V
+
+    iget-object v1, p0, Lcom/android/internal/telecom/IInCallAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+
+    const/16 v2, 0xb
 
     const/4 v3, 0x0
 
@@ -516,11 +554,6 @@
     :cond_0
     const/4 v1, 0x0
 
-    :try_start_1
-    invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInt(I)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
     goto :goto_0
 
     .line 397
@@ -532,10 +565,11 @@
     throw v1
 .end method
 
-.method public playDtmfTone(Ljava/lang/String;C)V
+.method public rejectCall(Ljava/lang/String;ZLjava/lang/String;)V
     .locals 5
     .param p1, "callId"    # Ljava/lang/String;
-    .param p2, "digit"    # C
+    .param p2, "rejectWithMessage"    # Z
+    .param p3, "textMessage"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -543,28 +577,81 @@
     .end annotation
 
     .prologue
-    .line 345
+    const/4 v1, 0x1
+
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 347
+    .local v0, "_data":Landroid/os/Parcel;
+    :try_start_0
+    const-string v2, "com.android.internal.telecom.IInCallAdapter"
+
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
+
+    invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    if-eqz p2, :cond_0
+
+    :goto_0
+    invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInt(I)V
+
+    invoke-virtual {v0, p3}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    iget-object v1, p0, Lcom/android/internal/telecom/IInCallAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+
+    const/4 v2, 0x3
+
+    const/4 v3, 0x0
+
+    const/4 v4, 0x1
+
+    invoke-interface {v1, v2, v0, v3, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    return-void
+
+    :cond_0
+    const/4 v1, 0x0
+
+    goto :goto_0
+
+    :catchall_0
+    move-exception v1
+
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    throw v1
+.end method
+
+.method public setAudioRoute(I)V
+    .locals 5
+    .param p1, "route"    # I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+
+    move-result-object v0
+
     .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
     const-string v1, "com.android.internal.telecom.IInCallAdapter"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 348
-    invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+    invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 349
-    invoke-virtual {v0, p2}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 350
     iget-object v1, p0, Lcom/android/internal/telecom/IInCallAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    const/16 v2, 0x9
+    const/16 v2, 0x8
 
     const/4 v3, 0x0
 
@@ -589,10 +676,148 @@
     throw v1
 .end method
 
-.method public postDialContinue(Ljava/lang/String;Z)V
+.method public splitFromConference(Ljava/lang/String;)V
     .locals 5
     .param p1, "callId"    # Ljava/lang/String;
-    .param p2, "proceed"    # Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+
+    move-result-object v0
+
+    .local v0, "_data":Landroid/os/Parcel;
+    :try_start_0
+    const-string v1, "com.android.internal.telecom.IInCallAdapter"
+
+    invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
+
+    invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    iget-object v1, p0, Lcom/android/internal/telecom/IInCallAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+
+    const/16 v2, 0xe
+
+    const/4 v3, 0x0
+
+    const/4 v4, 0x1
+
+    invoke-interface {v1, v2, v0, v3, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    return-void
+
+    :catchall_0
+    move-exception v1
+
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    throw v1
+.end method
+
+.method public stopDtmfTone(Ljava/lang/String;)V
+    .locals 5
+    .param p1, "callId"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+
+    move-result-object v0
+
+    .local v0, "_data":Landroid/os/Parcel;
+    :try_start_0
+    const-string v1, "com.android.internal.telecom.IInCallAdapter"
+
+    invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
+
+    invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    iget-object v1, p0, Lcom/android/internal/telecom/IInCallAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+
+    const/16 v2, 0xa
+
+    const/4 v3, 0x0
+
+    const/4 v4, 0x1
+
+    invoke-interface {v1, v2, v0, v3, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    return-void
+
+    :catchall_0
+    move-exception v1
+
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    throw v1
+.end method
+
+.method public swapConference(Ljava/lang/String;)V
+    .locals 5
+    .param p1, "callId"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+
+    move-result-object v0
+
+    .local v0, "_data":Landroid/os/Parcel;
+    :try_start_0
+    const-string v1, "com.android.internal.telecom.IInCallAdapter"
+
+    invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
+
+    invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    iget-object v1, p0, Lcom/android/internal/telecom/IInCallAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+
+    const/16 v2, 0x10
+
+    const/4 v3, 0x0
+
+    const/4 v4, 0x1
+
+    invoke-interface {v1, v2, v0, v3, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    return-void
+
+    :catchall_0
+    move-exception v1
+
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    throw v1
+.end method
+
+.method public switchToOtherActiveSub(Ljava/lang/String;Z)V
+    .locals 5
+    .param p1, "sub"    # Ljava/lang/String;
+    .param p2, "retainLch"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -626,7 +851,7 @@
     .line 375
     iget-object v1, p0, Lcom/android/internal/telecom/IInCallAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    const/16 v2, 0xb
+    const/16 v2, 0x13
 
     const/4 v3, 0x0
 
@@ -657,11 +882,9 @@
     throw v1
 .end method
 
-.method public rejectCall(Ljava/lang/String;ZLjava/lang/String;)V
+.method public turnOffProximitySensor(Z)V
     .locals 5
-    .param p1, "callId"    # Ljava/lang/String;
-    .param p2, "rejectWithMessage"    # Z
-    .param p3, "textMessage"    # Ljava/lang/String;
+    .param p1, "screenOnImmediately"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -671,34 +894,24 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 271
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 273
     .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
     const-string v2, "com.android.internal.telecom.IInCallAdapter"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 274
-    invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
-
-    .line 275
-    if-eqz p2, :cond_0
+    if-eqz p1, :cond_0
 
     :goto_0
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 276
-    invoke-virtual {v0, p3}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
-
-    .line 277
     iget-object v1, p0, Lcom/android/internal/telecom/IInCallAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    const/4 v2, 0x3
+    const/16 v2, 0x12
 
     const/4 v3, 0x0
 
@@ -729,9 +942,8 @@
     throw v1
 .end method
 
-.method public setAudioRoute(I)V
+.method public turnOnProximitySensor()V
     .locals 5
-    .param p1, "route"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -739,25 +951,19 @@
     .end annotation
 
     .prologue
-    .line 333
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 335
     .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
     const-string v1, "com.android.internal.telecom.IInCallAdapter"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 336
-    invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 337
     iget-object v1, p0, Lcom/android/internal/telecom/IInCallAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    const/16 v2, 0x8
+    const/16 v2, 0x11
 
     const/4 v3, 0x0
 
@@ -782,7 +988,7 @@
     throw v1
 .end method
 
-.method public splitFromConference(Ljava/lang/String;)V
+.method public unholdCall(Ljava/lang/String;)V
     .locals 5
     .param p1, "callId"    # Ljava/lang/String;
     .annotation system Ldalvik/annotation/Throws;
@@ -810,7 +1016,7 @@
     .line 419
     iget-object v1, p0, Lcom/android/internal/telecom/IInCallAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    const/16 v2, 0xe
+    const/4 v2, 0x6
 
     const/4 v3, 0x0
 
@@ -835,116 +1041,11 @@
     throw v1
 .end method
 
-.method public stopDtmfTone(Ljava/lang/String;)V
+.method public phoneAccountSelected(Ljava/lang/String;Landroid/telecom/PhoneAccountHandle;Z)V
     .locals 5
     .param p1, "callId"    # Ljava/lang/String;
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-
-    .prologue
-    .line 358
-    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
-
-    move-result-object v0
-
-    .line 360
-    .local v0, "_data":Landroid/os/Parcel;
-    :try_start_0
-    const-string v1, "com.android.internal.telecom.IInCallAdapter"
-
-    invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
-
-    .line 361
-    invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
-
-    .line 362
-    iget-object v1, p0, Lcom/android/internal/telecom/IInCallAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
-
-    const/16 v2, 0xa
-
-    const/4 v3, 0x0
-
-    const/4 v4, 0x1
-
-    invoke-interface {v1, v2, v0, v3, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 365
-    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
-
-    .line 367
-    return-void
-
-    .line 365
-    :catchall_0
-    move-exception v1
-
-    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
-
-    throw v1
-.end method
-
-.method public swapConference(Ljava/lang/String;)V
-    .locals 5
-    .param p1, "callId"    # Ljava/lang/String;
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-
-    .prologue
-    .line 439
-    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
-
-    move-result-object v0
-
-    .line 441
-    .local v0, "_data":Landroid/os/Parcel;
-    :try_start_0
-    const-string v1, "com.android.internal.telecom.IInCallAdapter"
-
-    invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
-
-    .line 442
-    invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
-
-    .line 443
-    iget-object v1, p0, Lcom/android/internal/telecom/IInCallAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
-
-    const/16 v2, 0x10
-
-    const/4 v3, 0x0
-
-    const/4 v4, 0x1
-
-    invoke-interface {v1, v2, v0, v3, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 446
-    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
-
-    .line 448
-    return-void
-
-    .line 446
-    :catchall_0
-    move-exception v1
-
-    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
-
-    throw v1
-.end method
-
-.method public switchToOtherActiveSub(Ljava/lang/String;Z)V
-    .locals 5
-    .param p1, "sub"    # Ljava/lang/String;
-    .param p2, "retainLch"    # Z
+    .param p2, "accountHandle"    # Landroid/telecom/PhoneAccountHandle;
+    .param p3, "setDefault"    # Z
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -954,31 +1055,39 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 474
+    const/4 v2, 0x0
+
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 476
     .local v0, "_data":Landroid/os/Parcel;
     :try_start_0
-    const-string v2, "com.android.internal.telecom.IInCallAdapter"
+    const-string v3, "com.android.internal.telecom.IInCallAdapter"
 
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 477
     invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 478
     if-eqz p2, :cond_0
 
+    const/4 v3, 0x1
+
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V
+
+    const/4 v3, 0x0
+
+    invoke-virtual {p2, v0, v3}, Landroid/telecom/PhoneAccountHandle;->writeToParcel(Landroid/os/Parcel;I)V
+
     :goto_0
+    if-eqz p3, :cond_1
+
+    :goto_1
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 479
     iget-object v1, p0, Lcom/android/internal/telecom/IInCallAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    const/16 v2, 0x13
+    const/16 v2, 0xc
 
     const/4 v3, 0x0
 
@@ -988,189 +1097,29 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 482
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 484
     return-void
 
-    .line 478
     :cond_0
-    const/4 v1, 0x0
+    const/4 v3, 0x0
+
+    :try_start_1
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInt(I)V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_0
 
-    .line 482
     :catchall_0
     move-exception v1
 
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
     throw v1
-.end method
 
-.method public turnOffProximitySensor(Z)V
-    .locals 5
-    .param p1, "screenOnImmediately"    # Z
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
+    :cond_1
+    move v1, v2
 
-    .prologue
-    const/4 v1, 0x1
-
-    .line 462
-    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
-
-    move-result-object v0
-
-    .line 464
-    .local v0, "_data":Landroid/os/Parcel;
-    :try_start_0
-    const-string v2, "com.android.internal.telecom.IInCallAdapter"
-
-    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
-
-    .line 465
-    if-eqz p1, :cond_0
-
-    :goto_0
-    invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 466
-    iget-object v1, p0, Lcom/android/internal/telecom/IInCallAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
-
-    const/16 v2, 0x12
-
-    const/4 v3, 0x0
-
-    const/4 v4, 0x1
-
-    invoke-interface {v1, v2, v0, v3, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 469
-    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
-
-    .line 471
-    return-void
-
-    .line 465
-    :cond_0
-    const/4 v1, 0x0
-
-    goto :goto_0
-
-    .line 469
-    :catchall_0
-    move-exception v1
-
-    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
-
-    throw v1
-.end method
-
-.method public turnOnProximitySensor()V
-    .locals 5
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-
-    .prologue
-    .line 451
-    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
-
-    move-result-object v0
-
-    .line 453
-    .local v0, "_data":Landroid/os/Parcel;
-    :try_start_0
-    const-string v1, "com.android.internal.telecom.IInCallAdapter"
-
-    invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
-
-    .line 454
-    iget-object v1, p0, Lcom/android/internal/telecom/IInCallAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
-
-    const/16 v2, 0x11
-
-    const/4 v3, 0x0
-
-    const/4 v4, 0x1
-
-    invoke-interface {v1, v2, v0, v3, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 457
-    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
-
-    .line 459
-    return-void
-
-    .line 457
-    :catchall_0
-    move-exception v1
-
-    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
-
-    throw v1
-.end method
-
-.method public unholdCall(Ljava/lang/String;)V
-    .locals 5
-    .param p1, "callId"    # Ljava/lang/String;
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-
-    .prologue
-    .line 309
-    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
-
-    move-result-object v0
-
-    .line 311
-    .local v0, "_data":Landroid/os/Parcel;
-    :try_start_0
-    const-string v1, "com.android.internal.telecom.IInCallAdapter"
-
-    invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
-
-    .line 312
-    invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
-
-    .line 313
-    iget-object v1, p0, Lcom/android/internal/telecom/IInCallAdapter$Stub$Proxy;->mRemote:Landroid/os/IBinder;
-
-    const/4 v2, 0x6
-
-    const/4 v3, 0x0
-
-    const/4 v4, 0x1
-
-    invoke-interface {v1, v2, v0, v3, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 316
-    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
-
-    .line 318
-    return-void
-
-    .line 316
-    :catchall_0
-    move-exception v1
-
-    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
-
-    throw v1
+    goto :goto_1
 .end method

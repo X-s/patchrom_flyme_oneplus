@@ -7,6 +7,7 @@
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
         Landroid/app/LoadedApk$1;,
+        Landroid/app/LoadedApk$FlymeInjector;,
         Landroid/app/LoadedApk$ServiceDispatcher;,
         Landroid/app/LoadedApk$ReceiverDispatcher;,
         Landroid/app/LoadedApk$WarningContextClassLoader;
@@ -2504,39 +2505,33 @@
 .end method
 
 .method public getResources(Landroid/app/ActivityThread;)Landroid/content/res/Resources;
-    .locals 9
+    .locals 8
     .param p1, "mainThread"    # Landroid/app/ActivityThread;
 
     .prologue
-    .line 535
     iget-object v0, p0, Landroid/app/LoadedApk;->mResources:Landroid/content/res/Resources;
 
     if-nez v0, :cond_0
 
-    .line 538
-    iget-object v1, p0, Landroid/app/LoadedApk;->mPackageName:Ljava/lang/String;
+    iget-object v1, p0, Landroid/app/LoadedApk;->mResDir:Ljava/lang/String;
 
-    iget-object v2, p0, Landroid/app/LoadedApk;->mResDir:Ljava/lang/String;
+    iget-object v2, p0, Landroid/app/LoadedApk;->mSplitResDirs:[Ljava/lang/String;
 
-    iget-object v3, p0, Landroid/app/LoadedApk;->mSplitResDirs:[Ljava/lang/String;
-
-    iget-object v4, p0, Landroid/app/LoadedApk;->mOverlayDirs:[Ljava/lang/String;
+    iget-object v3, p0, Landroid/app/LoadedApk;->mOverlayDirs:[Ljava/lang/String;
 
     iget-object v0, p0, Landroid/app/LoadedApk;->mApplicationInfo:Landroid/content/pm/ApplicationInfo;
 
-    iget-object v5, v0, Landroid/content/pm/ApplicationInfo;->sharedLibraryFiles:[Ljava/lang/String;
+    iget-object v4, v0, Landroid/content/pm/ApplicationInfo;->sharedLibraryFiles:[Ljava/lang/String;
+
+    const/4 v5, 0x0
 
     const/4 v6, 0x0
 
-    const/4 v7, 0x0
-
-    invoke-virtual {p0}, Landroid/app/LoadedApk;->getCompatibilityInfo()Landroid/content/res/CompatibilityInfo;
-
-    move-result-object v8
-
     move-object v0, p1
 
-    invoke-virtual/range {v0 .. v8}, Landroid/app/ActivityThread;->getTopLevelResources(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;ILandroid/content/res/Configuration;Landroid/content/res/CompatibilityInfo;)Landroid/content/res/Resources;
+    move-object v7, p0
+
+    invoke-virtual/range {v0 .. v7}, Landroid/app/ActivityThread;->getTopLevelResources(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;ILandroid/content/res/Configuration;Landroid/app/LoadedApk;)Landroid/content/res/Resources;
 
     move-result-object v0
 
@@ -2760,7 +2755,7 @@
 .end method
 
 .method public makeApplication(ZLandroid/app/Instrumentation;)Landroid/app/Application;
-    .locals 13
+    .locals 12
     .param p1, "forceDefaultAppClass"    # Z
     .param p2, "instrumentation"    # Landroid/app/Instrumentation;
 
@@ -2852,19 +2847,7 @@
 
     invoke-virtual {v9, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 578
     iput-object v1, p0, Landroid/app/LoadedApk;->mApplication:Landroid/app/Application;
-
-    .line 581
-    iget-object v9, p0, Landroid/app/LoadedApk;->mApplication:Landroid/app/Application;
-
-    const-string v10, "com.lbe.security.oneplus"
-
-    const/16 v11, 0x1dd
-
-    const/4 v12, 0x0
-
-    invoke-static {v9, v10, v11, v12}, Lcom/lbe/security/service/core/client/ClientLoader;->loadLBECLient(Landroid/app/Application;Ljava/lang/String;IZ)V
 
     .line 587
     if-eqz p2, :cond_6
@@ -3059,7 +3042,7 @@
 
     check-cast v9, Ljava/lang/String;
 
-    invoke-direct {p0, v10, v9, v7}, Landroid/app/LoadedApk;->rewriteRValues(Ljava/lang/ClassLoader;Ljava/lang/String;I)V
+    invoke-static {p0, v10, v9, v7}, Landroid/app/LoadedApk$FlymeInjector;->rewriteRValues(Landroid/app/LoadedApk;Ljava/lang/ClassLoader;Ljava/lang/String;I)V
 
     goto :goto_1
 .end method
@@ -3456,5 +3439,17 @@
     invoke-virtual {v0, p1}, Landroid/view/DisplayAdjustments;->setCompatibilityInfo(Landroid/content/res/CompatibilityInfo;)V
 
     .line 230
+    return-void
+.end method
+
+.method mzInvokeMethodRewriteRValues(Ljava/lang/ClassLoader;Ljava/lang/String;I)V
+    .locals 0
+    .param p1, "cl"    # Ljava/lang/ClassLoader;
+    .param p2, "packageName"    # Ljava/lang/String;
+    .param p3, "id"    # I
+
+    .prologue
+    invoke-direct {p0, p1, p2, p3}, Landroid/app/LoadedApk;->rewriteRValues(Ljava/lang/ClassLoader;Ljava/lang/String;I)V
+
     return-void
 .end method

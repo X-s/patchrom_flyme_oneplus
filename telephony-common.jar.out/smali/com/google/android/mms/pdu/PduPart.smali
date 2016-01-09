@@ -2,6 +2,9 @@
 .super Ljava/lang/Object;
 .source "PduPart.java"
 
+# interfaces
+.implements Ljava/io/Serializable;
+
 
 # static fields
 .field public static final CONTENT_TRANSFER_ENCODING:Ljava/lang/String; = "Content-Transfer-Encoding"

@@ -517,13 +517,14 @@
         <item>@color/Red_700</item>
     </array>
     <string-array name="config_statusBarIcons">
+        <item>bluetooth</item>
+        <item>vpn</item>
+        <item>speakerrecord</item>
         <item>ime</item>
         <item>sync_failing</item>
         <item>sync_active</item>
         <item>cast</item>
-        <item>hotspot</item>
         <item>location</item>
-        <item>bluetooth</item>
         <item>nfc</item>
         <item>tty</item>
         <item>speakerphone</item>
@@ -662,6 +663,8 @@
     <array name="config_autoBrightnessKeyboardBacklightValues" />
     <string-array name="config_locationProviderPackageNames">
         <item>com.android.location.fused</item>
+        <item>com.google.android.gms</item>
+        <item>com.baidu.map.location</item>
     </string-array>
     <array name="config_testLocationProviders" />
     <array name="config_twoDigitNumberPattern" />
@@ -917,5 +920,35 @@
         <item>.*youloft.*</item>
         <item>.*com.airfrance.*</item>
         <item>.*im.yixin.*</item>
+    </string-array>
+    <string-array name="mz_preferred_network_mode_summary_phone0">
+        <item>2G only</item>
+        <item>3G first</item>
+        <item>4G first</item>
+    </string-array>
+    <string-array name="mz_preferred_network_mode_summary_phone1">
+        <item>2G only</item>
+        <item>3G first</item>
+        <item>4G first</item>
+    </string-array>
+    <string-array name="mz_gsm_network_mode_values_phone0">
+        <item>1</item>
+        <item>18</item>
+        <item>20</item>
+    </string-array>
+    <string-array name="mz_gsm_network_mode_values_phone1">
+        <item>1</item>
+        <item>18</item>
+        <item>20</item>
+    </string-array>
+    <string-array name="mz_cdma_network_mode_values_phone0">
+        <item>5</item>
+        <item>21</item>
+        <item>22</item>
+    </string-array>
+    <string-array name="mz_cdma_network_mode_values_phone1">
+        <item>5</item>
+        <item>21</item>
+        <item>22</item>
     </string-array>
 </resources>

@@ -2,6 +2,9 @@
 .super Ljava/lang/Object;
 .source "PduHeaders.java"
 
+# interfaces
+.implements Ljava/io/Serializable;
+
 
 # static fields
 .field public static final ADAPTATION_ALLOWED:I = 0xbc
@@ -241,6 +244,8 @@
 .field public static final RESPONSE_STATUS:I = 0x92
 
 .field public static final RESPONSE_STATUS_ERROR_CONTENT_NOT_ACCEPTED:I = 0x87
+
+.field public static final RESPONSE_STATUS_ERROR_MEIZU_DEVICEERROR:I = 0x2537
 
 .field public static final RESPONSE_STATUS_ERROR_MESSAGE_FORMAT_CORRUPT:I = 0x83
 

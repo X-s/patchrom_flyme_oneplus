@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="phoneTypeWork">Práca</string>
+    <string name="phoneTypeFaxWork">Fax</string>
+    <string name="eventTypeAnniversary">Výročie</string>
+    <string name="emailTypeWork">Práca</string>
+    <string name="postalTypeWork">Práca</string>
+    <string name="sms_short_code_confirm_message">Naozaj chcete odoslať túto správu?</string>
+    <string name="select_input_method">Vyberte metódu vstupu</string>
+    <string name="configure_input_methods">Nastaviť metódu zadávania</string>
+    <string name="data_usage_mobile_limit_title">Mobilné dáta sú deaktivované</string>
+    <string name="data_usage_limit_body">Zapnite dotykom</string>
+</resources>

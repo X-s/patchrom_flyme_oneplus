@@ -3630,7 +3630,7 @@
 
     move-result-object v13
 
-    const v14, 0x107001f
+    const v14, #android:array@config_tether_apndata#t
 
     invoke-virtual {v13, v14}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
 
@@ -3951,6 +3951,8 @@
 
     move-result-object v6
 
+    const-string v6, "mobile_data"
+
     invoke-static {v2, v6}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;)I
     :try_end_0
     .catch Landroid/provider/Settings$SettingNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
@@ -4033,6 +4035,10 @@
     move v5, v4
 
     :cond_1
+    invoke-static {v2, v6, v5}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
+
+    const-string v6, "mobile_data"
+
     invoke-static {v2, v6, v5}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
     :try_end_1
     .catch Landroid/provider/Settings$SettingNotFoundException; {:try_start_1 .. :try_end_1} :catch_1
@@ -4120,6 +4126,8 @@
 
     .line 809
     :cond_0
+    const-string v2, "data_roaming"
+
     invoke-static {v3, v2}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;)I
     :try_end_0
     .catch Landroid/provider/Settings$SettingNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
@@ -4203,6 +4211,10 @@
     if-eqz v1, :cond_3
 
     :goto_2
+    invoke-static {v3, v7, v5}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
+
+    const-string v7, "data_roaming"
+
     invoke-static {v3, v7, v5}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
     :try_end_1
     .catch Landroid/provider/Settings$SettingNotFoundException; {:try_start_1 .. :try_end_1} :catch_1
@@ -7453,6 +7465,10 @@
     :goto_0
     invoke-static {v3, v4, v0}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
 
+    const-string v4, "mobile_data"
+
+    invoke-static {v3, v4, v0}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
+
     .line 1428
     invoke-virtual {p0}, Lcom/android/internal/telephony/dataconnection/DcTrackerBase;->getDataOnRoamingEnabled()Z
 
@@ -7976,6 +7992,8 @@
     if-eqz p1, :cond_3
 
     :goto_1
+    const-string v1, "data_roaming"
+
     invoke-static {v0, v1, v2}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
 
     .line 797

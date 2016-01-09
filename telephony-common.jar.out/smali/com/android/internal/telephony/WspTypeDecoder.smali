@@ -8,6 +8,10 @@
 
 .field public static final CONTENT_TYPE_B_PUSH_CO:Ljava/lang/String; = "application/vnd.wap.coc"
 
+.field public static final CONTENT_TYPE_B_PUSH_SI:Ljava/lang/String; = "application/vnd.wap.sic"
+
+.field public static final CONTENT_TYPE_B_PUSH_SL:Ljava/lang/String; = "application/vnd.wap.slc"
+
 .field public static final CONTENT_TYPE_B_PUSH_SYNCML_NOTI:Ljava/lang/String; = "application/vnd.syncml.notification"
 
 .field public static final PARAMETER_ID_X_WAP_APPLICATION_ID:I = 0x2f

@@ -71,14 +71,6 @@
     .end annotation
 .end method
 
-.method public abstract phoneAccountSelected(Ljava/lang/String;Landroid/telecom/PhoneAccountHandle;)V
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
 .method public abstract playDtmfTone(Ljava/lang/String;C)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -160,6 +152,14 @@
 .end method
 
 .method public abstract unholdCall(Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract phoneAccountSelected(Ljava/lang/String;Landroid/telecom/PhoneAccountHandle;Z)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

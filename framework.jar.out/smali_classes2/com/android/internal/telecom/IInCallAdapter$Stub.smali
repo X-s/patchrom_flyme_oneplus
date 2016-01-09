@@ -465,14 +465,14 @@
 
     check-cast v1, Landroid/telecom/PhoneAccountHandle;
 
-    .line 164
     .local v1, "_arg1":Landroid/telecom/PhoneAccountHandle;
     :goto_2
-    invoke-virtual {p0, v0, v1}, Lcom/android/internal/telecom/IInCallAdapter$Stub;->phoneAccountSelected(Ljava/lang/String;Landroid/telecom/PhoneAccountHandle;)V
+    const/4 v2, 0x0
+
+    invoke-virtual {p0, v0, v1, v2}, Lcom/android/internal/telecom/IInCallAdapter$Stub;->phoneAccountSelected(Ljava/lang/String;Landroid/telecom/PhoneAccountHandle;Z)V
 
     goto/16 :goto_0
 
-    .line 162
     .end local v1    # "_arg1":Landroid/telecom/PhoneAccountHandle;
     :cond_3
     const/4 v1, 0x0
@@ -622,15 +622,11 @@
 
     move v1, v3
 
-    .line 222
     .local v1, "_arg1":Z
     :cond_5
     invoke-virtual {p0, v0, v1}, Lcom/android/internal/telecom/IInCallAdapter$Stub;->switchToOtherActiveSub(Ljava/lang/String;Z)V
 
     goto/16 :goto_0
-
-    .line 45
-    nop
 
     :sswitch_data_0
     .sparse-switch

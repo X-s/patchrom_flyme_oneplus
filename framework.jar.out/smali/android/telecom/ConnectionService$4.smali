@@ -1049,3 +1049,14 @@
     .line 563
     return-void
 .end method
+
+.method public onCallCapabilitiesChanged(Landroid/telecom/Connection;I)V
+    .locals 0
+    .param p1, "c"    # Landroid/telecom/Connection;
+    .param p2, "capabilities"    # I
+
+    .prologue
+    invoke-virtual {p0, p1, p2}, Landroid/telecom/ConnectionService$4;->onConnectionCapabilitiesChanged(Landroid/telecom/Connection;I)V
+
+    return-void
+.end method

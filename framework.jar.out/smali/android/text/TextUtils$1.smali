@@ -389,6 +389,13 @@
 
     goto/16 :goto_1
 
+    :pswitch_18
+    invoke-direct {p0, p1, v1}, Landroid/text/TextUtils$1;->mzReadSpan(Landroid/os/Parcel;Landroid/text/Spannable;)V
+
+    goto/16 :goto_1
+
+    nop
+
     .line 704
     :pswitch_data_0
     .packed-switch 0x1
@@ -416,6 +423,7 @@
         :pswitch_15
         :pswitch_16
         :pswitch_17
+        :pswitch_18
     .end packed-switch
 .end method
 
@@ -454,4 +462,20 @@
     move-result-object v0
 
     return-object v0
+.end method
+
+.method private mzReadSpan(Landroid/os/Parcel;Landroid/text/Spannable;)V
+    .locals 1
+    .param p1, "p"    # Landroid/os/Parcel;
+    .param p2, "sp"    # Landroid/text/Spannable;
+
+    .prologue
+    new-instance v0, Landroid/text/style/ParcelableImageSpan;
+
+    invoke-direct {v0, p1}, Landroid/text/style/ParcelableImageSpan;-><init>(Landroid/os/Parcel;)V
+
+    .local v0, "o":Landroid/text/style/ParcelableImageSpan;
+    invoke-static {p1, p2, v0}, Landroid/text/TextUtils;->mzAccessMethodReadSpan(Landroid/os/Parcel;Landroid/text/Spannable;Ljava/lang/Object;)V
+
+    return-void
 .end method

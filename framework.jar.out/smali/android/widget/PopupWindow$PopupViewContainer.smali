@@ -248,6 +248,17 @@
     .param p1, "event"    # Landroid/view/MotionEvent;
 
     .prologue
+    invoke-direct/range {p0 .. p1}, Landroid/widget/PopupWindow$PopupViewContainer;->mzOnTouchEvent(Landroid/view/MotionEvent;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_0
+
+    const/4 v2, 0x1
+
+    return v2
+
+    :cond_0
     const/4 v2, 0x1
 
     .line 1736
@@ -271,53 +282,48 @@
 
     move-result v3
 
-    if-nez v3, :cond_1
+    if-nez v3, :cond_2
 
-    if-ltz v0, :cond_0
+    if-ltz v0, :cond_1
 
     invoke-virtual {p0}, Landroid/widget/PopupWindow$PopupViewContainer;->getWidth()I
 
     move-result v3
 
-    if-ge v0, v3, :cond_0
+    if-ge v0, v3, :cond_1
 
-    if-ltz v1, :cond_0
+    if-ltz v1, :cond_1
 
     invoke-virtual {p0}, Landroid/widget/PopupWindow$PopupViewContainer;->getHeight()I
 
     move-result v3
 
-    if-lt v1, v3, :cond_1
+    if-lt v1, v3, :cond_2
 
-    .line 1741
-    :cond_0
+    :cond_1
     iget-object v3, p0, Landroid/widget/PopupWindow$PopupViewContainer;->this$0:Landroid/widget/PopupWindow;
 
     invoke-virtual {v3}, Landroid/widget/PopupWindow;->dismiss()V
 
-    .line 1747
     :goto_0
     return v2
 
-    .line 1743
-    :cond_1
+    :cond_2
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getAction()I
 
     move-result v3
 
     const/4 v4, 0x4
 
-    if-ne v3, v4, :cond_2
+    if-ne v3, v4, :cond_3
 
-    .line 1744
     iget-object v3, p0, Landroid/widget/PopupWindow$PopupViewContainer;->this$0:Landroid/widget/PopupWindow;
 
     invoke-virtual {v3}, Landroid/widget/PopupWindow;->dismiss()V
 
     goto :goto_0
 
-    .line 1747
-    :cond_2
+    :cond_3
     invoke-super {p0, p1}, Landroid/widget/FrameLayout;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
     move-result v2
@@ -357,6 +363,40 @@
     .line 1757
     :cond_0
     invoke-super {p0, p1}, Landroid/widget/FrameLayout;->sendAccessibilityEvent(I)V
+
+    goto :goto_0
+.end method
+
+.method private mzOnTouchEvent(Landroid/view/MotionEvent;)Z
+    .locals 3
+    .param p1, "event"    # Landroid/view/MotionEvent;
+
+    .prologue
+    iget-object v0, p0, Landroid/widget/PopupWindow$PopupViewContainer;->this$0:Landroid/widget/PopupWindow;
+
+    iget-object v0, v0, Landroid/widget/PopupWindow;->mMzHelper:Landroid/widget/MzPopupWindowHelper;
+
+    invoke-virtual {p0}, Landroid/widget/PopupWindow$PopupViewContainer;->getWidth()I
+
+    move-result v1
+
+    invoke-virtual {p0}, Landroid/widget/PopupWindow$PopupViewContainer;->getHeight()I
+
+    move-result v2
+
+    invoke-virtual {v0, p1, v1, v2}, Landroid/widget/MzPopupWindowHelper;->onTouchEvent(Landroid/view/MotionEvent;II)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
 
     goto :goto_0
 .end method

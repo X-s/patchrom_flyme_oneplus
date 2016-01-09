@@ -82,6 +82,8 @@
 
 .field public static final COLUMN_NO_INTEGRITY:Ljava/lang/String; = "no_integrity"
 
+.field public static final COLUMN_ORIGINAL_URI:Ljava/lang/String; = "original_uri"
+
 .field public static final COLUMN_OTHER_UID:Ljava/lang/String; = "otheruid"
 
 .field public static final COLUMN_REFERER:Ljava/lang/String; = "referer"

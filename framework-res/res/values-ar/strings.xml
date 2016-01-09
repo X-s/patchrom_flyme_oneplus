@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="phoneTypeWork">عمل</string>
+    <string name="phoneTypeFaxWork">فاكس</string>
+    <string name="eventTypeAnniversary">الذكرى السنوية</string>
+    <string name="emailTypeWork">عمل</string>
+    <string name="postalTypeWork">عمل</string>
+    <string name="sms_short_code_confirm_message">هل انت متأكد من انك تريد ارسال هذه الرسالة ؟</string>
+    <string name="select_input_method">اختيار أسلوب الإدخال</string>
+    <string name="configure_input_methods">إعداد أسلوب الإدخال</string>
+    <string name="data_usage_mobile_limit_title">"تم تعطيل بيانات الهاتف "</string>
+    <string name="data_usage_limit_body">المس للتفعيل</string>
+</resources>

@@ -12,11 +12,11 @@
     <dimen name="config_prefDialogWidth">320.0dip</dimen>
     <dimen name="config_viewConfigurationTouchSlop">8.0dip</dimen>
     <dimen name="config_viewMinFlingVelocity">50.0dip</dimen>
-    <dimen name="config_viewMaxFlingVelocity">8000.0dip</dimen>
+    <dimen name="config_viewMaxFlingVelocity">3000.0dip</dimen>
     <dimen name="config_minScalingSpan">27.0mm</dimen>
     <dimen name="config_minScalingTouchMajor">48.0dip</dimen>
     <dimen name="config_mediaMetadataBitmapMaxSize">320.0dip</dimen>
-    <dimen name="toast_y_offset">64.0dip</dimen>
+    <dimen name="toast_y_offset">30.0dip</dimen>
     <dimen name="status_bar_height">22.0dip</dimen>
     <dimen name="navigation_bar_height">48.0dip</dimen>
     <dimen name="navigation_bar_height_landscape">48.0dip</dimen>
@@ -221,7 +221,7 @@
     <dimen name="text_size_display_1_material">34.0sp</dimen>
     <dimen name="text_size_headline_material">24.0sp</dimen>
     <dimen name="text_size_title_material">20.0sp</dimen>
-    <dimen name="text_size_subhead_material">16.0sp</dimen>
+    <dimen name="text_size_subhead_material">18.0sp</dimen>
     <dimen name="text_size_title_material_toolbar">20.0dip</dimen>
     <dimen name="text_size_subtitle_material_toolbar">16.0dip</dimen>
     <dimen name="text_size_menu_material">16.0sp</dimen>
@@ -257,4 +257,6 @@
     <dimen name="uc_listview_touch_slop">32.0dip</dimen>
     <dimen name="op_button_text_width">16.0dip</dimen>
     <dimen name="uc_preference_fragment_padding_side_material">0.0dip</dimen>
+    <dimen name="alert_dialog_padding_material">24.0dip</dimen>
+    <dimen name="alert_dialog_padding_top_material">18.0dip</dimen>
 </resources>

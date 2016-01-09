@@ -2591,7 +2591,9 @@
     <style name="Widget.DeviceDefault.ActionBar.TabBar" parent="@style/Widget.Material.ActionBar.TabBar" />
     <style name="Widget.DeviceDefault.ActionBar.Solid" parent="@style/Widget.Material.ActionBar.Solid" />
     <style name="Widget.DeviceDefault.Light" parent="@style/Widget.Material.Light" />
-    <style name="Widget.DeviceDefault.Light.Button" parent="@style/Widget.Material.Light.Button" />
+    <style name="Widget.DeviceDefault.Light.Button" parent="@style/Widget.Material.Light.Button">
+        <item name="stateListAnimator">@null</item>
+    </style>
     <style name="Widget.DeviceDefault.Light.Button.Small" parent="@style/Widget.Material.Light.Button.Small" />
     <style name="Widget.DeviceDefault.Light.Button.Inset" parent="@style/Widget.Material.Light.Button.Inset" />
     <style name="Widget.DeviceDefault.Light.Button.Toggle" parent="@style/Widget.Material.Light.Button.Toggle" />
@@ -2599,7 +2601,7 @@
     <style name="Widget.DeviceDefault.Light.TextView" parent="@style/Widget.Material.Light.TextView" />
     <style name="Widget.DeviceDefault.Light.AutoCompleteTextView" parent="@style/Widget.Material.Light.AutoCompleteTextView" />
     <style name="Widget.DeviceDefault.Light.CompoundButton.CheckBox" parent="@style/Widget.Material.Light.CompoundButton.CheckBox" />
-    <style name="Widget.DeviceDefault.Light.ListView.DropDown" parent="@style/Widget.Material.Light.ListView.DropDown" />
+    <style name="Widget.DeviceDefault.Light.ListView.DropDown" parent="@style/Widget.Material.Light.ListView" />
     <style name="Widget.DeviceDefault.Light.EditText" parent="@style/Widget.Material.Light.EditText" />
     <style name="Widget.DeviceDefault.Light.ExpandableListView" parent="@style/Widget.Material.Light.ExpandableListView" />
     <style name="Widget.DeviceDefault.Light.GridView" parent="@style/Widget.Material.Light.GridView" />
@@ -2621,7 +2623,9 @@
     <style name="Widget.DeviceDefault.Light.CompoundButton.RadioButton" parent="@style/Widget.Material.Light.CompoundButton.RadioButton" />
     <style name="Widget.DeviceDefault.Light.ScrollView" parent="@style/Widget.Material.Light.ScrollView" />
     <style name="Widget.DeviceDefault.Light.HorizontalScrollView" parent="@style/Widget.Material.Light.HorizontalScrollView" />
-    <style name="Widget.DeviceDefault.Light.Spinner" parent="@style/Widget.Material.Light.Spinner" />
+    <style name="Widget.DeviceDefault.Light.Spinner" parent="@style/Widget.Material.Light.Spinner">
+        <item name="overlapAnchor">false</item>
+    </style>
     <style name="Widget.DeviceDefault.Light.CompoundButton.Star" parent="@style/Widget.Material.Light.CompoundButton.Star" />
     <style name="Widget.DeviceDefault.Light.TabWidget" parent="@style/Widget.Material.Light.TabWidget" />
     <style name="Widget.DeviceDefault.Light.WebTextView" parent="@style/Widget.Material.Light.WebTextView" />
@@ -2633,15 +2637,34 @@
     <style name="Widget.DeviceDefault.Light.PopupMenu" parent="@style/Widget.Material.Light.PopupMenu" />
     <style name="Widget.DeviceDefault.Light.Tab" parent="@style/Widget.Material.Light.Tab" />
     <style name="Widget.DeviceDefault.Light.CalendarView" parent="@style/Widget.Material.Light.CalendarView" />
-    <style name="Widget.DeviceDefault.Light.ActionButton" parent="@style/Widget.Material.Light.ActionButton" />
-    <style name="Widget.DeviceDefault.Light.ActionButton.Overflow" parent="@style/Widget.Material.Light.ActionButton.Overflow" />
-    <style name="Widget.DeviceDefault.Light.ActionMode" parent="@style/Widget.Material.Light.ActionMode" />
+    <style name="Widget.DeviceDefault.Light.ActionButton" parent="@style/Widget.Material.Light.ActionButton">
+        <item name="textSize">18.0sp</item>
+        <item name="textStyle">normal</item>
+        <item name="textAllCaps">false</item>
+        <item name="fontFamily">@null</item>
+    </style>
+    <style name="Widget.DeviceDefault.Light.ActionButton.Overflow" parent="@style/Widget.Material.Light.ActionButton.Overflow">
+        <item name="paddingStart">12.0dip</item>
+        <item name="paddingEnd">12.0dip</item>
+    </style>
+    <style name="Widget.DeviceDefault.Light.ActionMode" parent="@style/Widget.Material.Light.ActionMode">
+        <item name="background">@null</item>
+        <item name="backgroundSplit">@null</item>
+    </style>
     <style name="Widget.DeviceDefault.Light.ActionButton.CloseMode" parent="@style/Widget.Material.Light.ActionButton.CloseMode" />
-    <style name="Widget.DeviceDefault.Light.ActionBar" parent="@style/Widget.Material.Light.ActionBar" />
+    <style name="Widget.DeviceDefault.Light.ActionBar" parent="@style/Widget.Material.Light.ActionBar">
+        <item name="backgroundSplit">#ff181c1f</item>
+        <item name="elevation">0.0dip</item>
+    </style>
     <style name="Widget.DeviceDefault.Light.ActionBar.TabView" parent="@style/Widget.Material.Light.ActionBar.TabView" />
     <style name="Widget.DeviceDefault.Light.ActionBar.TabText" parent="@style/Widget.Material.Light.ActionBar.TabText" />
-    <style name="Widget.DeviceDefault.Light.ActionBar.TabBar" parent="@style/Widget.Material.Light.ActionBar.TabBar" />
-    <style name="Widget.DeviceDefault.Light.ActionBar.Solid" parent="@style/Widget.Material.Light.ActionBar.Solid" />
+    <style name="Widget.DeviceDefault.Light.ActionBar.TabBar" parent="@style/Widget.Material.Light.ActionBar.TabBar">
+        <item name="divider">@null</item>
+    </style>
+    <style name="Widget.DeviceDefault.Light.ActionBar.Solid" parent="@style/Widget.Material.Light.ActionBar.Solid">
+        <item name="backgroundSplit">#ff181c1f</item>
+        <item name="elevation">0.0dip</item>
+    </style>
     <style name="Widget.DeviceDefault.Light.ActionBar.Solid.Inverse" parent="@style/Widget.Holo.Light.ActionBar.Solid.Inverse" />
     <style name="Widget.DeviceDefault.Light.ActionBar.TabBar.Inverse" parent="@style/Widget.Holo.Light.ActionBar.TabBar.Inverse" />
     <style name="Widget.DeviceDefault.Light.ActionBar.TabView.Inverse" parent="@style/Widget.Holo.Light.ActionBar.TabView.Inverse" />
@@ -2670,7 +2693,9 @@
     <style name="TextAppearance.DeviceDefault.Widget.TextView.SpinnerItem" parent="@style/TextAppearance.Material.Widget.TextView.SpinnerItem" />
     <style name="TextAppearance.DeviceDefault.Widget.EditText" parent="@style/TextAppearance.Material.Widget.EditText" />
     <style name="TextAppearance.DeviceDefault.Widget.PopupMenu" parent="@style/TextAppearance.Material.Widget.PopupMenu" />
-    <style name="TextAppearance.DeviceDefault.Widget.PopupMenu.Large" parent="@style/TextAppearance.Material.Widget.PopupMenu.Large" />
+    <style name="TextAppearance.DeviceDefault.Widget.PopupMenu.Large" parent="@style/TextAppearance.Material.Widget.PopupMenu.Large">
+        <item name="textSize">18.0sp</item>
+    </style>
     <style name="TextAppearance.DeviceDefault.Widget.PopupMenu.Small" parent="@style/TextAppearance.Material.Widget.PopupMenu.Small" />
     <style name="TextAppearance.DeviceDefault.Widget.ActionBar.Title" parent="@style/TextAppearance.Material.Widget.ActionBar.Title" />
     <style name="TextAppearance.DeviceDefault.Widget.ActionBar.Subtitle" parent="@style/TextAppearance.Material.Widget.ActionBar.Subtitle" />
@@ -4077,7 +4102,10 @@
     <style name="Widget.Material.Light.ListView.DropDown" parent="@style/Widget.Material.ListView.DropDown" />
     <style name="Widget.Material.Light.MediaRouteButton" parent="@style/Widget.Material.MediaRouteButton" />
     <style name="Widget.Material.Light.PopupMenu" parent="@style/Widget.Material.ListPopupWindow" />
-    <style name="Widget.Material.Light.PopupMenu.Overflow" parent="@style/Widget.Material.PopupMenu.Overflow" />
+    <style name="Widget.Material.Light.PopupMenu.Overflow" parent="@style/Widget.Material.PopupMenu.Overflow">
+        <item name="popupAnimationStyle">@null</item>
+        <item name="overlapAnchor">false</item>
+    </style>
     <style name="Widget.Material.Light.PopupWindow" parent="@style/Widget.Material.PopupWindow" />
     <style name="Widget.Material.Light.ProgressBar" parent="@style/Widget.Material.ProgressBar" />
     <style name="Widget.Material.Light.ProgressBar.Horizontal" parent="@style/Widget.Material.ProgressBar.Horizontal" />

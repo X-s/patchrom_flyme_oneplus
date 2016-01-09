@@ -192,7 +192,7 @@
     <color name="legacy_light_button_pressed">@color/legacy_button_pressed</color>
     <color name="legacy_light_button_normal">@color/legacy_button_normal</color>
     <color name="background_material_dark">#ff303030</color>
-    <color name="background_material_light">#ffeeeeee</color>
+    <color name="background_material_light">#fffafafa</color>
     <color name="background_floating_material_dark">#ff424242</color>
     <color name="background_floating_material_light">#ffeeeeee</color>
     <color name="primary_material_dark">#ff212121</color>
@@ -229,8 +229,8 @@
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="primary_text_default_material_dark">#ffffffff</color>
     <color name="secondary_text_default_material_dark">#b3ffffff</color>
-    <color name="material_deep_teal_200">#ff23a3f5</color>
-    <color name="material_deep_teal_500">#ff23a3f5</color>
+    <color name="material_deep_teal_200">#ff32a5e7</color>
+    <color name="material_deep_teal_500">#ff32a5e7</color>
     <color name="material_blue_grey_800">#ff37474f</color>
     <color name="material_blue_grey_900">#ff263238</color>
     <color name="material_blue_grey_950">#ff21272b</color>

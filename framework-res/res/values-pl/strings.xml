@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="phoneTypeWork">Służbowy</string>
+    <string name="phoneTypeFaxWork">Faks</string>
+    <string name="eventTypeAnniversary">Rocznica</string>
+    <string name="emailTypeWork">Służbowy</string>
+    <string name="postalTypeWork">Służbowy</string>
+    <string name="sms_short_code_confirm_message">Czy chcesz wysłać tę wiadomość?</string>
+    <string name="select_input_method">Wybierz metodę wprowadzania</string>
+    <string name="configure_input_methods">Skonfiguruj metodę wpisywania</string>
+    <string name="data_usage_mobile_limit_title">Komórkowa transmisja danych wyłączona</string>
+    <string name="data_usage_limit_body">Dotknij, aby włączyć</string>
+</resources>

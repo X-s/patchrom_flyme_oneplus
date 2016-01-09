@@ -123,7 +123,7 @@
     <string name="config_appsAuthorizedForSharedAccounts">;com.android.settings;</string>
     <string name="config_defaultNetworkScorerPackageName" />
     <string name="config_persistentDataPackageName" />
-    <string name="config_webViewPackageName">com.google.android.webview</string>
+    <string name="config_webViewPackageName">com.android.webview</string>
     <string name="config_partial_segment_expire_age">2592000000</string>
     <string name="config_rat_2g">2G</string>
     <string name="config_rat_3g">3G</string>
@@ -887,8 +887,8 @@
     <string name="phoneTypeCustom">Custom</string>
     <string name="phoneTypeHome">Home</string>
     <string name="phoneTypeMobile">Mobile</string>
-    <string name="phoneTypeWork">Work</string>
-    <string name="phoneTypeFaxWork">Work Fax</string>
+    <string name="phoneTypeWork">Company</string>
+    <string name="phoneTypeFaxWork">Fax</string>
     <string name="phoneTypeFaxHome">Home Fax</string>
     <string name="phoneTypePager">Pager</string>
     <string name="phoneTypeOther">Other</string>
@@ -911,12 +911,12 @@
     <string name="eventTypeOther">Other</string>
     <string name="emailTypeCustom">Custom</string>
     <string name="emailTypeHome">Home</string>
-    <string name="emailTypeWork">Work</string>
+    <string name="emailTypeWork">Company</string>
     <string name="emailTypeOther">Other</string>
     <string name="emailTypeMobile">Mobile</string>
     <string name="postalTypeCustom">Custom</string>
     <string name="postalTypeHome">Home</string>
-    <string name="postalTypeWork">Work</string>
+    <string name="postalTypeWork">Company</string>
     <string name="postalTypeOther">Other</string>
     <string name="imTypeCustom">Custom</string>
     <string name="imTypeHome">Home</string>
@@ -1323,7 +1323,7 @@ Do you want to close it?"</string>
     <string name="sms_control_message">&lt;b>%1$s&lt;/b> is sending a large number of SMS messages. Do you want to allow this app to continue sending messages?</string>
     <string name="sms_control_yes">Allow</string>
     <string name="sms_control_no">Deny</string>
-    <string name="sms_short_code_confirm_message">&lt;b>%1$s&lt;/b> would like to send a message to &lt;b>%2$s&lt;/b>.</string>
+    <string name="sms_short_code_confirm_message">Are you sure want to send this message?</string>
     <string name="sms_short_code_details">This <b>may cause charges</b> on your mobile account.</string>
     <string name="sms_premium_short_code_details"><b>This will cause charges on your mobile account.</b></string>
     <string name="sms_short_code_confirm_allow">Send</string>
@@ -1376,8 +1376,8 @@ Do you want to close it?"</string>
     <string name="adb_active_notification_title">USB debugging connected</string>
     <string name="adb_active_notification_message">Touch to disable USB debugging.</string>
     <string name="locale_replacement" />
-    <string name="select_input_method">Change keyboard</string>
-    <string name="configure_input_methods">Choose keyboards</string>
+    <string name="select_input_method">Select input method</string>
+    <string name="configure_input_methods">Set up input method</string>
     <string name="show_ime">Show input method</string>
     <string name="hardware">Hardware</string>
     <string name="select_keyboard_layout_notification_title">Select keyboard layout</string>
@@ -1550,9 +1550,9 @@ for account %s."</string>
     <string name="data_usage_warning_body">Touch to view usage and settings.</string>
     <string name="data_usage_3g_limit_title">2G-3G data limit reached</string>
     <string name="data_usage_4g_limit_title">4G data limit reached</string>
-    <string name="data_usage_mobile_limit_title">Cellular data limit reached</string>
+    <string name="data_usage_mobile_limit_title">Mobile data deactivated</string>
     <string name="data_usage_wifi_limit_title">Wi-Fi data limit reached</string>
-    <string name="data_usage_limit_body">Data paused for rest of cycle</string>
+    <string name="data_usage_limit_body">Touch to enable</string>
     <string name="data_usage_3g_limit_snoozed_title">2G-3G data limit exceeded</string>
     <string name="data_usage_4g_limit_snoozed_title">4G data limit exceeded</string>
     <string name="data_usage_mobile_limit_snoozed_title">Cellular data limit exceeded</string>
@@ -1815,6 +1815,8 @@ Battery saver turns off automatically when your device is charging."</string>
     <string name="def_wifi_wifihotspot_ssid" />
     <string name="def_wifi_wifihotspot_pass" />
     <string name="def_wifi_direct_name" />
+    <string name="ellipsis">…</string>
+    <string name="ellipsis_two_dots">‥</string>
     <string name="oneplus_test_string">oneplus_test_string</string>
     <string name="demo_numbers">Phone Numbers</string>
     <string name="demo_numbers2">public Numbers</string>
@@ -1861,4 +1863,8 @@ Check the battery contacts status!"</string>
     <string name="oem_deleteMail">Backup or delete Mails</string>
     <string name="oem_criticallowtitle">Storage is full</string>
     <string name="kg_fingerprint_verification_failed">Please try again</string>
+    <string name="description_direction_right">@null</string>
+    <string name="description_direction_left">@null</string>
+    <string name="description_target_search">@null</string>
+    <string name="description_direction_up">@null</string>
 </resources>

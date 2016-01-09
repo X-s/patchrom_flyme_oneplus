@@ -529,7 +529,7 @@
     .restart local v3    # "uid":I
     if-eqz v3, :cond_1
 
-    const/16 v4, 0x3e8
+    const/16 v4, 0x0
 
     if-ne v3, v4, :cond_2
 
@@ -856,6 +856,10 @@
 
     move-result-object v1
 
+    iget-object v6, v1, Landroid/content/pm/ApplicationInfo;->primaryCpuAbi:Ljava/lang/String;
+
+    if-eqz v6, :cond_5
+
     .line 286
     .local v1, "ai":Landroid/content/pm/ApplicationInfo;
     iget-object v6, v1, Landroid/content/pm/ApplicationInfo;->primaryCpuAbi:Ljava/lang/String;
@@ -866,6 +870,7 @@
 
     .line 287
     .local v5, "primaryArchIs64bit":Z
+    :goto_0
     iget-object v6, v1, Landroid/content/pm/ApplicationInfo;->secondaryCpuAbi:Ljava/lang/String;
 
     invoke-static {v6}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
@@ -886,7 +891,7 @@
 
     .line 307
     .local v2, "path32":Ljava/lang/String;
-    :goto_0
+    :goto_1
     invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v6
@@ -951,46 +956,44 @@
 
     return-object v6
 
-    .line 295
     .end local v2    # "path32":Ljava/lang/String;
     .end local v3    # "path64":Ljava/lang/String;
     :cond_2
     iget-object v3, v1, Landroid/content/pm/ApplicationInfo;->secondaryNativeLibraryDir:Ljava/lang/String;
 
-    .line 296
     .restart local v3    # "path64":Ljava/lang/String;
     iget-object v2, v1, Landroid/content/pm/ApplicationInfo;->nativeLibraryDir:Ljava/lang/String;
 
     .restart local v2    # "path32":Ljava/lang/String;
-    goto :goto_0
+    goto :goto_1
 
-    .line 298
     .end local v2    # "path32":Ljava/lang/String;
     .end local v3    # "path64":Ljava/lang/String;
     :cond_3
     if-eqz v5, :cond_4
 
-    .line 300
     iget-object v3, v1, Landroid/content/pm/ApplicationInfo;->nativeLibraryDir:Ljava/lang/String;
 
-    .line 301
     .restart local v3    # "path64":Ljava/lang/String;
     const-string v2, ""
 
     .restart local v2    # "path32":Ljava/lang/String;
-    goto :goto_0
+    goto :goto_1
 
-    .line 304
     .end local v2    # "path32":Ljava/lang/String;
     .end local v3    # "path64":Ljava/lang/String;
     :cond_4
     iget-object v2, v1, Landroid/content/pm/ApplicationInfo;->nativeLibraryDir:Ljava/lang/String;
 
-    .line 305
     .restart local v2    # "path32":Ljava/lang/String;
     const-string v3, ""
 
     .restart local v3    # "path64":Ljava/lang/String;
+    goto :goto_1
+
+    :cond_5
+    const/4 v5, 0x0
+
     goto :goto_0
 .end method
 
@@ -1003,7 +1006,7 @@
 
     move-result-object v0
 
-    const v1, 0x104007b
+    const v1, #android:string@config_webViewPackageName#t
 
     invoke-virtual {v0, v1}, Landroid/app/Application;->getString(I)Ljava/lang/String;
 

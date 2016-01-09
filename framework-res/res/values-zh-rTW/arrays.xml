@@ -50,4 +50,14 @@
         <item>其他</item>
         <item>自訂</item>
     </string-array>
+    <string-array name="mz_preferred_network_mode_summary_phone0">
+        <item>僅2G</item>
+        <item>優先3G</item>
+        <item>優先4G</item>
+    </string-array>
+    <string-array name="mz_preferred_network_mode_summary_phone1">
+        <item>僅2G</item>
+        <item>優先3G</item>
+        <item>優先4G</item>
+    </string-array>
 </resources>
