@@ -1,0 +1,11 @@
+service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-system-server
+#ifdef VENDOR_EDIT
+#huruihuan, 2015/05/19, ahead start zygote
+    class main
+#endif
+    socket zygote stream 660 root system
+    onrestart write /sys/android_power/request_state wake
+    onrestart write /sys/power/state on
+    onrestart restart media
+    onrestart restart netd
+

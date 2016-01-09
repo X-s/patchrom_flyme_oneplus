@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/op_preference_single_item" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="15.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textAppearance="?textAppearanceLarge" android:id="@id/tv_my_item" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <Button android:id="@id/button1" android:background="@drawable/op_default_button_bg" android:focusable="false" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_margin="35.0dip" />
+</LinearLayout>
