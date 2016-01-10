@@ -1,0 +1,15 @@
+--- /Settings/smali/com/meizu/settings/security/PasscodeLockSettings.smali	2015-12-14 14:52:22.809973796 +0800
++++ /Settings/smali/com/meizu/settings/security/PasscodeLockSettings.smali	2015-12-14 14:52:02.143521640 +0800
+@@ -498,6 +498,12 @@
+     :goto_1
+     invoke-direct {p0}, Lcom/meizu/settings/security/PasscodeLockSettings;->updateNotificationListenersPref()V
+ 
++    iget-object v0, p0, Lcom/meizu/settings/security/PasscodeLockSettings;->mPasswordCategory:Landroid/preference/PreferenceCategory;
++
++    iget-object v2, p0, Lcom/meizu/settings/security/PasscodeLockSettings;->mScreenLockPreference:Landroid/preference/Preference;
++
++    invoke-virtual {v0, v2}, Landroid/preference/PreferenceCategory;->removePreference(Landroid/preference/Preference;)Z
++
+     .line 445
+     return-void
+ 

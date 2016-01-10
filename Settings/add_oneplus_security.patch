@@ -1,0 +1,63 @@
+--- /Settings/smali/com/meizu/settings/security/PasscodeLockSettings.smali	2015-12-14 22:02:56.583110770 +0800
++++ /Settings/smali/com/meizu/settings/security/PasscodeLockSettings.smali	2015-12-14 21:58:03.503700269 +0800
+@@ -39,6 +39,8 @@
+ 
+ .field private mScreenLockPreference:Landroid/preference/Preference;
+ 
++.field private mOnePlusSecurityPreference:Landroid/preference/Preference;
++
+ .field private final mSettingsObserver:Landroid/database/ContentObserver;
+ 
+ .field private mSimInfoChangeReceicer:Landroid/content/BroadcastReceiver;
+@@ -365,6 +367,14 @@
+     move-result-object v2
+ 
+     iput-object v2, p0, Lcom/meizu/settings/security/PasscodeLockSettings;->mScreenLockPreference:Landroid/preference/Preference;
++    
++    const-string v2, "oneplus_security"
++
++    invoke-virtual {v1, v2}, Landroid/preference/PreferenceScreen;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
++
++    move-result-object v2
++
++    iput-object v2, p0, Lcom/meizu/settings/security/PasscodeLockSettings;->mOnePlusSecurityPreference:Landroid/preference/Preference;
+ 
+     .line 418
+     const-string v2, "file_manager_lock"
+@@ -2006,7 +2016,7 @@
+     :cond_e
+     iget-object v3, p0, Lcom/meizu/settings/security/PasscodeLockSettings;->mScreenLockPreference:Landroid/preference/Preference;
+ 
+-    if-ne p2, v3, :cond_0
++    if-ne p2, v3, :cond_xs
+ 
+     .line 211
+     iget-object v3, p0, Lcom/meizu/settings/security/PasscodeLockSettings;->mLockPasswordUtils:Lcom/android/internal/widget/LockPatternUtils;
+@@ -2035,6 +2045,27 @@
+     invoke-virtual {p0, p0, v3, v8, v4}, Lcom/meizu/settings/security/PasscodeLockSettings;->startFragment(Landroid/app/Fragment;Ljava/lang/String;ILandroid/os/Bundle;)Z
+ 
+     goto/16 :goto_0
++    
++    :cond_xs
++    iget-object v3, p0, Lcom/meizu/settings/security/PasscodeLockSettings;->mOnePlusSecurityPreference:Landroid/preference/Preference;
++    
++    if-ne p2, v3, :cond_0
++    
++    new-instance v0, Landroid/content/Intent;
++
++    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
++
++    .local v0, "intent":Landroid/content/Intent;
++    const-string v1, "com.android.settings_ex"
++
++    const-string v2, "com.android.settings_ex.Settings$FingerprintAndPWDActivity"
++
++    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
++
++    invoke-virtual {p0, v0}, Lcom/meizu/settings/security/PasscodeLockSettings;->startActivity(Landroid/content/Intent;)V
++    .end local v0    # "intent":Landroid/content/Intent;
++    
++    goto/16 :goto_0
+ .end method
+ 
+ .method public onResume()V

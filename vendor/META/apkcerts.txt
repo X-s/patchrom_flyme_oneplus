@@ -108,6 +108,8 @@ name="SampleAuthenticatorService.apk" certificate="build/security/platform.x509.
 name="SdCardService.apk" certificate="PRESIGNED" private_key=""
 name="SecureSampleAuthService.apk" certificate="build/security/platform.x509.pem" private_key="build/security/platform.pk8"
 name="Settings.apk" certificate="build/security/platform.x509.pem" private_key="build/security/platform.pk8"
+name="Settings_ex.apk" certificate="build/security/platform.x509.pem" private_key="build/security/platform.pk8"
+name="StockSettings.apk" certificate="build/security/platform.x509.pem" private_key="build/security/platform.pk8"
 name="SharedStorageBackup.apk" certificate="build/security/platform.x509.pem" private_key="build/security/platform.pk8"
 name="Shell.apk" certificate="build/security/platform.x509.pem" private_key="build/security/platform.pk8"
 name="shutdownlistener.apk" certificate="build/security/platform.x509.pem" private_key="build/security/platform.pk8"
