@@ -230,4 +230,5 @@
     <attr name="demo_color" format="reference|color" />
     <attr name="ucSwitchStyle" format="reference" />
     <attr name="colorAccentCategory" format="color" />
+    <attr name="needAccessControl" format="boolean" />
 </resources>
