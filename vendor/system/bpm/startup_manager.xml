@@ -1,0 +1,48 @@
+<filter-conf>
+<version>20151208</version>
+<isOpen>1</isOpen>
+		<filter-name>startup_manager_blacklist</filter-name>
+    <!-- start -->
+    <sevicecpn>com.igexin.sdk.PushService</sevicecpn>
+    <sevicecpn>com.tencent.android.tpush.service.XGPushService</sevicecpn>
+    <sevicecpn>com.tencent.android.tpush.rpc.XGRemoteService</sevicecpn>
+    <sevicecpn>com.xiaomi.push.service.XMPushService</sevicecpn>
+	<sevicecpn>com.xiaomi.mipush.sdk.PushMessageHandler</sevicecpn>
+    <sevicecpn>com.baidu.android.pushservice.PushService</sevicecpn>
+    <sevicecpn>com.baidu.android.pushservice.CommandService</sevicecpn>
+    <sevicecpn>com.baidu.android.moplus.MoPlusService</sevicecpn>
+    <sevicecpn>cn.jpush.android.service.PushService</sevicecpn>
+    <sevicecpn>cn.jpush.android.service.DaemonService</sevicecpn>
+    <sevicecpn>com.huawei.android.pushagent.PushService</sevicecpn>
+    <sevicecpn>com.joboevan.push.service.PushService</sevicecpn>
+    
+    <!-- bind -->
+    <sevicecpn>com.baidu.sapi2.share.ShareService</sevicecpn>
+    
+    <!-- broadcast -->
+    <receiver>com.baidu.sapi2.share.ShareReceiver</receiver>
+    <receiver>com.igexin.sdk.PushReceiver</receiver>
+    <receiver>com.tencent.android.tpush.XGPushReceiver</receiver>
+	<receiver>com.tencent.android.tpush.action.SDK</receiver>
+    <receiver>com.xiaomi.mipush.sdk.PushServiceReceiver</receiver>
+    <receiver>com.baidu.android.pushservice.PushServiceReceiver</receiver>
+    <receiver>com.baidu.android.pushservice.RegistrationReceiver</receiver>
+    <receiver>cn.jpush.android.service.PushReceiver</receiver>
+    <receiver>com.huawei.android.pushagent.PushBootReceiver</receiver>
+    <receiver>com.huawei.android.pushagent.PushEventReceiver</receiver>
+    <receiver>com.zypush.activity.PushRecevier</receiver>
+    <receiver>com.joboevan.push.receiver.CheckConnectRecevier</receiver>
+    
+	 <!-- provider -->
+    <provider>com.igexin.download.DownloadProvider</provider>
+	
+    <!-- action -->
+    <action>com.baidu.android.pushservice.action.PUSH_SERVICE</action> 
+    <action>com.igexin.sdk.action.pushmanager</action>     
+    
+    <!-- blackguard -->
+    <!-- Pending
+    <blackguard>com.dianxinos.optimizer.action.PAYSECURITY</blackguard>   
+     -->
+
+</filter-conf>

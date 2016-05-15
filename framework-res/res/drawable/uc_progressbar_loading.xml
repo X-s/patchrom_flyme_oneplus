@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00000" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00001" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00002" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00003" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00004" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00005" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00006" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00007" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00008" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00009" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00010" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00011" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00012" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00013" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00014" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00015" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00016" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00017" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00018" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00019" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00020" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00021" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00022" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00023" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00024" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00025" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00026" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00027" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00028" android:tint="?colorControlActivated" />
+    </item>
+    <item android:duration="30">
+        <bitmap android:src="@drawable/load_00029" android:tint="?colorControlActivated" />
+    </item>
+</animation-list>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false" android:state_checked="true">
+        <bitmap android:src="@drawable/uc_btn_radio_mtrl_18" android:tint="?colorControlActivated" android:alpha="?disabledAlpha" />
+    </item>
+    <item android:state_enabled="false">
+        <bitmap android:src="@drawable/uc_btn_radio_mtrl_00" android:tint="?colorControlNormal" android:alpha="?disabledAlpha" />
+    </item>
+    <item android:state_checked="true" android:id="@id/on">
+        <bitmap android:src="@drawable/uc_btn_radio_mtrl_18" android:tint="?colorControlActivated" />
+    </item>
+    <item android:state_checked="false" android:id="@id/off">
+        <bitmap android:src="@drawable/uc_btn_radio_mtrl_00" android:tint="?colorControlNormal" />
+    </item>
+    <transition android:toId="@id/on" android:fromId="@id/off">
+        <animation-list>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_00" android:tint="?colorControlNormal" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_01" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_02" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_03" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_04" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_05" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_06" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="150">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_07" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_08" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_09" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_10" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_11" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_12" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_13" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_14" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_15" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_16" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_17" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_18" android:tint="?colorControlActivated" />
+            </item>
+        </animation-list>
+    </transition>
+    <transition android:toId="@id/off" android:fromId="@id/on">
+        <animation-list>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_18" android:tint="?colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <bitmap android:src="@drawable/uc_btn_radio_mtrl_00" android:tint="?colorControlNormal" />
+            </item>
+        </animation-list>
+    </transition>
+</animated-selector>

@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<gs>
+    <!-- for cts -->
+    <p att="com.android.cts.net"></p>
+    <p att="com.android.cts.stub"></p>
+    <p att="com.android.cts.verifier"></p>
+    <p att="com.android.cts.permissiondeclareappcompat"></p>
+
+    <!-- mobile safe -->
+    <p att="com.lbe.security"></p>
+    <p att="com.lbe.security:service"></p>
+    <p att="lbesec.monitor"></p>
+    <p att="com.lbe.security:task"></p>
+    <p att="com.lbe.security.oneplus"></p>
+    <p att="com.lbe.security.oneplus:service"></p>
+    <p att="com.lbe.security.miui"></p>
+    <p att="com.qihoo360.mobilesafe"></p>
+    <p att="com.ijinshan.duba"></p>
+    <p att="com.tencent.qqpimsecure"></p>
+    <p att="com.symantec.mobilesecurity"></p>
+    <p att="com.anguanjia.safe"></p>
+    <p att="cn.opda.a.phonoalbumshoushou"></p>
+    <p att="com.baidu.security"></p>
+    <p att="com.qihoo.antivirus"></p>
+
+    <!-- mobile assistance -->
+    <p att="com.wandoujia.phoenix2"></p>
+    <p att="com.wandoujia.phoenix2.usbproxy"></p>
+    <p att="com.nd.assistance"></p>
+    <p att="com.qq.AppService"></p>
+    <p att="com.shuame.sprite"></p>
+
+    <!-- others -->
+    <p att="com.microsoft.cortana"></p>
+    <p att="com.realtek.airplay.client"></p>
+    <p att="com.autonavi.xmgd.navigator.tob"></p>
+    <p att="com.autonavi.xmgd.navigator"></p>
+    <p att="com.jb.gokeyboard.handwrite.zh"></p>
+    <p att="com.yy.yymeet"></p>
+    <p att="com.baidu.BaiduMap"></p>
+    <p att="com.autonavi.minimap"></p>
+    <p att="com.sougou.map.android.sogoubus"></p>
+    <p att="com.sougou.map.android.maps"></p>
+    <p att="com.mapbar.android.mapbarmap"></p>
+    <p att="cn.com.tiros.android.navidog"></p>
+    <p att="com.uu.uunavi"></p>
+    <p att="com.tencent.map"></p>
+    <p att="com.baidu.navi"></p>
+    <p att="com.tigerknows"></p>
+    <p att="com.autonavi.cmccmap"></p>
+    <!-- for sony smart wireless headset -->
+    <p att="com.sonyericsson.extras.smartwirelessheadsetpro"></p>
+    <p att="com.google.android.voicesearch"></p>
+
+    <!-- go launcher widgets -->
+    <p att="com.gau.go.launcherex.gowidget.switchwidget"></p>
+    <p att="com.gau.go.launcherex.gowidget.gosearchwidget"></p>
+    <p att="com.gau.go.launcherex.gowidget.calendarwidget"></p>
+    <p att="com.gau.go.launcherex.gowidget.notewidget"></p>
+    <p att="com.gau.go.launcherex:goHandBook"></p>
+    <p att="com.gau.go.launcherex.gowidget.contactwidget"></p>
+    <p att="com.gau.go.launcherex.gowidget.emailwidget"></p>
+    <p att="com.gau.go.launcherex.gowidget.weatherwidget"></p>
+    <p att="com.gau.go.launcherex.gowidget.weatherwidget:MessageService"></p>
+
+    <!-- keke application -->
+    <p att="com.systen.tongjiqi"></p>
+    <p att="com.keke.otginstall"></p>
+    <p att="com.keke.otginstall.aid"></p>
+
+    <!--  Google -->
+    <p att="com.google.android.ears"></p>
+    <p att="com.google.android.apps.walletnfcrel"></p>
+    <p att="com.google.android.gsf.login"></p>
+    <p att="com.google.android.gms"></p>
+    <p att="com.google.android.apps.offers"></p>
+    <p att="com.google.android.googlequicksearchbox"></p>
+    <p att="com.google.android.music"></p>
+    <p att="com.google.samples.apps.iosched"></p>
+    <p att="com.google.android.apps.maps"></p>
+    <p att="com.google.android.launcher"></p>
+    <p att="com.google.android.apps.docs"></p>
+    <p att="com.google.android.apps.books"></p>
+    <p att="com.google.android.videos"></p>
+    <p att="com.google.android.apps.finance"></p>
+    <p att="com.google.android.apps.shopper"></p>
+    <p att="com.google.android.talk"></p>
+    <p att="com.quickoffice.android"></p>
+    <p att="google.android.keep"></p>
+    <p att="com.google.android.apps.translate"></p>
+    <p att="com.google.android.apps.plus"></p>
+    <p att="com.android.vending"></p>
+    <p att="com.google.android.play.games"></p>
+    <p att="com.google.android.gm"></p>
+    <p att="com.google.android.apps.magazines"></p>
+    <p att="com.google.earth"></p>
+    <p att="com.google.android.gsf"></p>
+    <p att="com.google.android.calendar"></p>
+    <p att="com.android.chrome"></p>
+    <p att="com.google.android.youtube"></p>
+
+    <!-- Instant Messaging -->
+    <p att="com.tencent.mm"></p>
+    <p att="com.xiaomi.channel"></p>
+    <p att="com.immomo.momo"></p>
+    <p att="com.tencent.mobileqq"></p>
+    <p att="com.feinno.felio"></p>
+    <p att="net.iaround"></p>
+    <p att="com.sina.weibo"></p>
+    <p att="com.tencent.qqphonebook"></p>
+    <p att="com.tencent.Wblog"></p>
+    <p att="net.iaround"></p>
+    <p att="cn.com.fetion"></p>
+    <p att="com.yx"></p>
+    <p att="com.alibaba.mobileim"></p>
+    <p att="com.snda.youni"></p>
+    <p att="com.sg.sledog"></p>
+    <p att="jp.naver.line.android"></p>
+    <p att="com.weico.sinaweibo"></p>
+    <p att="me.imid.fuubo"></p>
+
+    <!-- other -->
+    <p att="com.changba"></p>
+    <p att="com.sohu.sohuvideo"></p>
+    <p att="com.asiainfo.android"></p>
+    <p att="com.systen.tongjiqi"></p>
+    <p att="com.whatsapp"></p>
+    <p att="com.rsupport.rs.activity.oneplus"></p>
+    <p att="com.rsupport.rsperm.ao.a1th"></p>
+    <p att="com.rsupport.rs.activity.rsupport"></p>
+    <p att="com.rsupport.mvagent"></p>
+    <p att="com.rsupport.mvagent1"></p>
+    <p att="rsupport.AndroidViewer"></p>
+    <p att="com.oupeng.max.sdk"></p>
+
+</gs>

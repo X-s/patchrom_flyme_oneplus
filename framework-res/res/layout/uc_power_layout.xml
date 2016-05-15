@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.internal.policy.impl.UcPowerViewContainer android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/bg_bottom2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <com.android.internal.policy.impl.UcPowerOffView android:id="@id/top_view2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="2680.0px" />
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/img_top2" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+        <ImageView android:id="@id/img_top_img2" android:focusable="false" android:layout_width="27.0dip" android:layout_height="27.0dip" android:layout_centerHorizontal="true" />
+        <TextView android:textColor="@color/white" android:id="@id/uc_power_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/uc_power_off_text" android:layout_below="@id/img_top_img2" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</com.android.internal.policy.impl.UcPowerViewContainer>

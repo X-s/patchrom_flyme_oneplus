@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/uc_parentPanel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="312.0dip" android:minHeight="150.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/uc_topPanel" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="start|center" android:orientation="horizontal" android:id="@id/uc_title_template" android:paddingTop="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="24.0dip" android:paddingEnd="24.0dip">
+            <ImageView android:id="@id/uc_icon" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@null" android:scaleType="fitCenter" />
+            <com.android.internal.widget.DialogTitle android:textSize="20.0dip" android:textColor="#dd000000" android:ellipsize="end" android:id="@id/uc_alertTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:textAlignment="viewStart" style="?attr/windowTitleStyle" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/uc_contentPanel" android:paddingTop="16.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip" android:layout_weight="1.0" android:paddingStart="24.0dip" android:paddingEnd="24.0dip">
+        <ScrollView android:id="@id/uc_scrollView" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="16.0dip" android:textColor="#89000000" android:id="@id/uc_message" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <Space android:id="@id/uc_textSpacerNoButtons" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="16.0dip" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <FrameLayout android:id="@id/uc_customPanel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip" android:layout_weight="1.0">
+        <FrameLayout android:id="@id/uc_custom" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </FrameLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/uc_buttonPanel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layoutDirection="locale" style="?android:attr/buttonBarStyle">
+        <Space android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <Button android:textSize="16.0dip" android:textColor="#ff23a3f5" android:id="@id/uc_button3" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?android:attr/buttonBarNeutralButtonStyle" />
+        <Space android:id="@id/uc_SpacerButton3" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginRight="8.0dip" android:layout_weight="0.0" android:paddingEnd="8.0dip" />
+        <Button android:textSize="16.0dip" android:textColor="#ff23a3f5" android:id="@id/uc_button2" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?android:attr/buttonBarNegativeButtonStyle" />
+        <Space android:id="@id/uc_SpacerButton2" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginRight="8.0dip" android:layout_weight="0.0" android:paddingEnd="8.0dip" />
+        <Button android:textSize="16.0dip" android:textColor="#ff23a3f5" android:id="@id/uc_button1" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?android:attr/buttonBarPositiveButtonStyle" />
+        <Space android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginRight="12.0dip" android:layout_weight="0.0" android:paddingEnd="12.0dip" />
+    </LinearLayout>
+</LinearLayout>
