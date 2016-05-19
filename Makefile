@@ -33,21 +33,21 @@ RESOLUTION := 1080x1920
 # If the boot.img or recovery.img exists, the system of build will use a prebuilt boot.img or recovery.img.
 # If the boot.img or recovery.img doesn't exists, the system of build will do nothing.
 #-----------------------------------------------------------------------------
-vendor_modify_images := boot
+#vendor_modify_images := boot
 
 ##############################################################################
 # The value decides the directory which you want to remove in the vendor directory for the ota package.
 # The default value is app or pri-app which not need to configure.
 # You can configure the directory name which relative to the vendor/system directory.
 #-----------------------------------------------------------------------------
-#vendor_remove_dirs := vendor/operator/app
+vendor_remove_dirs := media/themes reserve
 
 ##############################################################################
 # The value decides the file which you want to remove in the vendor directory for the ota package.
 # The default value is nothing.
 # You can configure the file name which relative to the vendor/system directory.
 #-----------------------------------------------------------------------------
-#vendor_remove_files := bin/zchgd
+vendor_remove_files := recovery-from-boot.bak
 
 ##############################################################################
 # The value decides the vendor apk which you want to save in the vendor directory for the ota package.
@@ -56,7 +56,9 @@ vendor_modify_images := boot
 #-----------------------------------------------------------------------------
 vendor_saved_apps := Bluetooth KeyChain HTMLViewer UserDictionaryProvider BackupRestoreConfirmation \
                      FusedLocation PrintSpooler SharedStorageBackup  ExternalStorageProvider InputDevices \
-                     ProxyHandler Shell DefaultContainerService
+                     ProxyHandler Shell DefaultContainerService AntHalService AudioTuner BluetoothExt FingerprintService \
+                     OnePlusCamera OnePlusCameraService OPNoviceguide QComQMIPermissions SdCardService TimeService WfdService \
+                     qcrilmsgtunnel
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.
@@ -89,14 +91,15 @@ vendor_modify_jars := android.policy framework services telephony-common wifi-se
 # You can configure the board system file path which relative to the system directory in the board release.
 # You should add "lib64/libwebviewchromium.so" for 64 bit system.
 #-----------------------------------------------------------------------------
-board_saved_files := lib/libwebviewchromium.so
+board_saved_files := lib/libwebviewchromium.so \
+                     bin/bootanimation media/bootanimation.zip media/shutanimation.zip
 
 ##############################################################################
 # The value decides which board system apk you want to remove.
 # The default value is nothing.
 # You can configure the board system apk name in the value.
 #-----------------------------------------------------------------------------
-#board_remove_apps := LogReport
+board_remove_apps := NfcNci
 
 ##############################################################################
 # The value decides which apk you want to modify, when the apk is based on the board system apk.
@@ -127,6 +130,14 @@ board_modify_apps := SystemUI
 # You can add the property name in the value from the build.prop.
 #-----------------------------------------------------------------------------
 
+
+# my build.prop
+override_property += \
+    ro.product.model=A2001 \
+    ro.product.device=A2001 \
+    ro.product.brand=OnePlus \
+    ro.build.fingerprint=5.1.1/LMY47V/1436933040:user/test-keys
+    
 # The property decide whether hide the soft mainkeys.
 # If 1, hide the soft mainkeys. If 0, display the soft mainkeys.
 # You should configure the property according to your device.
