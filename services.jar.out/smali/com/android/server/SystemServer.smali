@@ -3407,11 +3407,11 @@
     
     move-object/from16 v0, p0
 
-    move-object/from16 v4, v113
+    move-object/from16 v5, v113
 
-    move-object/from16 v5, v107
+    move-object/from16 v6, v107
 
-    invoke-static {v0, v4, v5}, Lcom/android/server/SystemServer$FlymeInjector;->addFlymeServices(Lcom/android/server/SystemServer;Lcom/android/server/wm/WindowManagerService;Lcom/android/server/wallpaper/WallpaperManagerService;)V
+    invoke-static {v0, v5, v6}, Lcom/android/server/SystemServer$FlymeInjector;->addFlymeServices(Lcom/android/server/SystemServer;Lcom/android/server/wm/WindowManagerService;Lcom/android/server/wallpaper/WallpaperManagerService;)V
     
     :try_start_3f
     invoke-virtual/range {v104 .. v104}, Lcom/android/server/VibratorService;->systemReady()V
