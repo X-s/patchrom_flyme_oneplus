@@ -3171,46 +3171,34 @@
 .end method
 
 .method public setWifiEnabled(Z)Z
-    .locals 4
+    .locals 2
     .param p1, "enabled"    # Z
 
     .prologue
-    const/4 v1, 0x0
-
-    .line 1333
-    iget-object v2, p0, Landroid/net/wifi/WifiManager;->mAppOps:Landroid/app/AppOpsManager;
-
-    const/16 v3, 0x30
-
-    invoke-virtual {v2, v3}, Landroid/app/AppOpsManager;->noteOp(I)I
-
-    move-result v2
-
-    if-eqz v2, :cond_0
-
-    .line 1339
-    :goto_0
-    return v1
-
-    .line 1337
-    :cond_0
+    .line 1306
     :try_start_0
-    iget-object v2, p0, Landroid/net/wifi/WifiManager;->mService:Landroid/net/wifi/IWifiManager;
+    invoke-direct/range {p0 .. p0}, Landroid/net/wifi/WifiManager;->flymeEnforceWifiPermission()V
 
-    invoke-interface {v2, p1}, Landroid/net/wifi/IWifiManager;->setWifiEnabled(Z)Z
+    iget-object v1, p0, Landroid/net/wifi/WifiManager;->mService:Landroid/net/wifi/IWifiManager;
+
+    invoke-interface {v1, p1}, Landroid/net/wifi/IWifiManager;->setWifiEnabled(Z)Z
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
     move-result v1
 
-    goto :goto_0
+    .line 1308
+    :goto_0
+    return v1
 
-    .line 1338
+    .line 1307
     :catch_0
     move-exception v0
 
-    .line 1339
+    .line 1308
     .local v0, "e":Landroid/os/RemoteException;
+    const/4 v1, 0x0
+
     goto :goto_0
 .end method
 
@@ -3554,4 +3542,31 @@
     move-result v0
 
     goto :goto_0
+.end method
+
+.method private flymeEnforceWifiPermission()V
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    const/16 v0, 0x44
+
+    invoke-static {v0}, Lmeizu/security/FlymePermissionManager;->isFlymePermissionGranted(I)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    new-instance v0, Landroid/os/RemoteException;
+
+    invoke-direct {v0}, Landroid/os/RemoteException;-><init>()V
+
+    throw v0
+
+    :cond_0
+    return-void
 .end method
