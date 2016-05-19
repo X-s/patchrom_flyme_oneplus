@@ -7,6 +7,8 @@
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
         Lcom/android/server/am/BroadcastQueue$AppNotResponding;,
+        Lcom/android/server/am/BroadcastQueue$PowerSupperInjector;,
+        Lcom/android/server/am/BroadcastQueue$FlymeBroadcastQueueInjector;,
         Lcom/android/server/am/BroadcastQueue$BroadcastHandler;
     }
 .end annotation
@@ -6051,6 +6053,8 @@
     .line 1062
     .end local v17    # "e":Landroid/os/RemoteException;
     :cond_22
+    invoke-static/range {v33 .. v33}, Lcom/android/server/am/BroadcastQueue$FlymeBroadcastQueueInjector;->setCurrentBroadcastRecord(Lcom/android/server/am/BroadcastRecord;)V
+
     move-object/from16 v0, p0
 
     move-object/from16 v1, v21
@@ -6258,7 +6262,7 @@
 
     const/4 v13, 0x0
 
-    invoke-virtual/range {v4 .. v13}, Lcom/android/server/am/ActivityManagerService;->startProcessLocked(Ljava/lang/String;Landroid/content/pm/ApplicationInfo;ZILjava/lang/String;Landroid/content/ComponentName;ZZZ)Lcom/android/server/am/ProcessRecord;
+    invoke-virtual/range {v4 .. v13}, Lcom/android/server/am/ActivityManagerService;->hook_startProcessLocked(Ljava/lang/String;Landroid/content/pm/ApplicationInfo;ZILjava/lang/String;Landroid/content/ComponentName;ZZZ)Lcom/android/server/am/ProcessRecord;
 
     move-result-object v4
 
