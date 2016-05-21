@@ -1,0 +1,899 @@
+.method static constructor <clinit>()V
+    .locals 8
+
+    .prologue
+    const/4 v7, 0x4
+
+    const/4 v6, 0x3
+
+    const/4 v5, 0x2
+
+    const/4 v4, 0x1
+
+    const/4 v3, 0x0
+
+    .line 105
+    new-instance v0, Landroid/content/UriMatcher;
+
+    const/4 v1, -0x1
+
+    invoke-direct {v0, v1}, Landroid/content/UriMatcher;-><init>(I)V
+
+    sput-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    .line 114
+    sput-boolean v3, Lcom/android/providers/telephony/MmsSmsProvider;->RESTORE_MODE:Z
+
+    .line 204
+    const/16 v0, 0x10
+
+    new-array v0, v0, [Ljava/lang/String;
+
+    const-string v1, "_id"
+
+    aput-object v1, v0, v3
+
+    const-string v1, "date"
+
+    aput-object v1, v0, v4
+
+    const-string v1, "date_sent"
+
+    aput-object v1, v0, v5
+
+    const-string v1, "read"
+
+    aput-object v1, v0, v6
+
+    const-string v1, "thread_id"
+
+    aput-object v1, v0, v7
+
+    const/4 v1, 0x5
+
+    const-string v2, "locked"
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x6
+
+    const-string v2, "association_id"
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x7
+
+    const-string v2, "uuid"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x8
+
+    const-string v2, "sync_ver"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x9
+
+    const-string v2, "protocol"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0xa
+
+    const-string v2, "imsi"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0xb
+
+    const-string v2, "is_favorite"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0xc
+
+    const-string v2, "sim_id"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0xd
+
+    const-string v2, "sub_id"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0xe
+
+    const-string v2, "phone_id"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0xf
+
+    const-string v2, "style_code"
+
+    aput-object v2, v0, v1
+
+    sput-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->MMS_SMS_COLUMNS:[Ljava/lang/String;
+
+    .line 210
+    const/16 v0, 0x1d
+
+    new-array v0, v0, [Ljava/lang/String;
+
+    const-string v1, "ct_cls"
+
+    aput-object v1, v0, v3
+
+    const-string v1, "ct_l"
+
+    aput-object v1, v0, v4
+
+    const-string v1, "ct_t"
+
+    aput-object v1, v0, v5
+
+    const-string v1, "d_rpt"
+
+    aput-object v1, v0, v6
+
+    const-string v1, "exp"
+
+    aput-object v1, v0, v7
+
+    const/4 v1, 0x5
+
+    const-string v2, "m_cls"
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x6
+
+    const-string v2, "m_id"
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x7
+
+    const-string v2, "m_size"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x8
+
+    const-string v2, "m_type"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x9
+
+    const-string v2, "msg_box"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0xa
+
+    const-string v2, "pri"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0xb
+
+    const-string v2, "read_status"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0xc
+
+    const-string v2, "resp_st"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0xd
+
+    const-string v2, "resp_txt"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0xe
+
+    const-string v2, "retr_st"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0xf
+
+    const-string v2, "retr_txt_cs"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x10
+
+    const-string v2, "rpt_a"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x11
+
+    const-string v2, "rr"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x12
+
+    const-string v2, "st"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x13
+
+    const-string v2, "sub"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x14
+
+    const-string v2, "sub_cs"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x15
+
+    const-string v2, "tr_id"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x16
+
+    const-string v2, "v"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x17
+
+    const-string v2, "delivery_status"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x18
+
+    const-string v2, "first_media_id"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x19
+
+    const-string v2, "slideshow_description"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x1a
+
+    const-string v2, "file_link"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x1b
+
+    const-string v2, "text_only"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x1c
+
+    const-string v2, "t_rate"
+
+    aput-object v2, v0, v1
+
+    sput-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->MMS_ONLY_COLUMNS:[Ljava/lang/String;
+
+    .line 223
+    const/16 v0, 0xb
+
+    new-array v0, v0, [Ljava/lang/String;
+
+    const-string v1, "address"
+
+    aput-object v1, v0, v3
+
+    const-string v1, "body"
+
+    aput-object v1, v0, v4
+
+    const-string v1, "person"
+
+    aput-object v1, v0, v5
+
+    const-string v1, "reply_path_present"
+
+    aput-object v1, v0, v6
+
+    const-string v1, "service_center"
+
+    aput-object v1, v0, v7
+
+    const/4 v1, 0x5
+
+    const-string v2, "status"
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x6
+
+    const-string v2, "subject"
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x7
+
+    const-string v2, "type"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x8
+
+    const-string v2, "error_code"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x9
+
+    const-string v2, "port"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0xa
+
+    const-string v2, "group_msg_id"
+
+    aput-object v2, v0, v1
+
+    sput-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->SMS_ONLY_COLUMNS:[Ljava/lang/String;
+
+    .line 228
+    new-array v0, v7, [Ljava/lang/String;
+
+    const-string v1, "_id"
+
+    aput-object v1, v0, v3
+
+    const-string v1, "date"
+
+    aput-object v1, v0, v4
+
+    const-string v1, "recipient_ids"
+
+    aput-object v1, v0, v5
+
+    const-string v1, "message_count"
+
+    aput-object v1, v0, v6
+
+    sput-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->THREADS_COLUMNS:[Ljava/lang/String;
+
+    .line 235
+    new-array v0, v4, [Ljava/lang/String;
+
+    const-string v1, "address"
+
+    aput-object v1, v0, v3
+
+    sput-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->CANONICAL_ADDRESSES_COLUMNS_1:[Ljava/lang/String;
+
+    .line 238
+    new-array v0, v5, [Ljava/lang/String;
+
+    const-string v1, "_id"
+
+    aput-object v1, v0, v3
+
+    const-string v1, "address"
+
+    aput-object v1, v0, v4
+
+    sput-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->CANONICAL_ADDRESSES_COLUMNS_2:[Ljava/lang/String;
+
+    .line 244
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->MMS_SMS_COLUMNS:[Ljava/lang/String;
+
+    array-length v0, v0
+
+    sget-object v1, Lcom/android/providers/telephony/MmsSmsProvider;->MMS_ONLY_COLUMNS:[Ljava/lang/String;
+
+    array-length v1, v1
+
+    add-int/2addr v0, v1
+
+    sget-object v1, Lcom/android/providers/telephony/MmsSmsProvider;->SMS_ONLY_COLUMNS:[Ljava/lang/String;
+
+    array-length v1, v1
+
+    add-int/2addr v0, v1
+
+    new-array v0, v0, [Ljava/lang/String;
+
+    sput-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->UNION_COLUMNS:[Ljava/lang/String;
+
+    .line 250
+    new-instance v0, Ljava/util/HashSet;
+
+    invoke-direct {v0}, Ljava/util/HashSet;-><init>()V
+
+    sput-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->MMS_COLUMNS:Ljava/util/Set;
+
+    .line 253
+    new-instance v0, Ljava/util/HashSet;
+
+    invoke-direct {v0}, Ljava/util/HashSet;-><init>()V
+
+    sput-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->SMS_COLUMNS:Ljava/util/Set;
+
+    .line 256
+    new-instance v0, Ljava/util/HashSet;
+
+    invoke-direct {v0}, Ljava/util/HashSet;-><init>()V
+
+    sput-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->SMS_COMPOSE_COLUMNS:Ljava/util/Set;
+
+    .line 261
+    new-array v0, v4, [Ljava/lang/String;
+
+    const-string v1, "_id"
+
+    aput-object v1, v0, v3
+
+    sput-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->ID_PROJECTION:[Ljava/lang/String;
+
+    .line 263
+    new-array v0, v3, [Ljava/lang/String;
+
+    sput-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->EMPTY_STRING_ARRAY:[Ljava/lang/String;
+
+    .line 265
+    new-array v0, v4, [Ljava/lang/String;
+
+    sput-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->SEARCH_STRING:[Ljava/lang/String;
+
+    .line 456
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "conversations"
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 457
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "complete-conversations"
+
+    const/4 v3, 0x7
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 460
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "conversations/#"
+
+    invoke-virtual {v0, v1, v2, v4}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 462
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "conversations/#/recipients"
+
+    invoke-virtual {v0, v1, v2, v5}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 466
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "conversations/#/subject"
+
+    const/16 v3, 0x9
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 471
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "conversations/obsolete"
+
+    const/16 v3, 0xb
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 473
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "messages/byphone/*"
+
+    invoke-virtual {v0, v1, v2, v6}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 480
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "threadID"
+
+    invoke-virtual {v0, v1, v2, v7}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 483
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "canonical-address/#"
+
+    const/4 v3, 0x5
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 486
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "canonical-addresses"
+
+    const/16 v3, 0xd
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 488
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "search"
+
+    const/16 v3, 0xe
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 489
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "searchSuggest"
+
+    const/16 v3, 0xf
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 490
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "meizuSearchSuggest"
+
+    const/16 v3, 0x21
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 501
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "pending"
+
+    const/4 v3, 0x6
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 504
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "undelivered"
+
+    const/16 v3, 0x8
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 508
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "notifications"
+
+    const/16 v3, 0xa
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 510
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "draft"
+
+    const/16 v3, 0xc
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 512
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "locked"
+
+    const/16 v3, 0x10
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 514
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "locked/#"
+
+    const/16 v3, 0x11
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 517
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "message-count"
+
+    const/16 v3, 0x12
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 520
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "update-thread"
+
+    const/16 v3, 0x13
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 522
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "messageIdToThread"
+
+    const/16 v3, 0x1c
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 524
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "meizuMessageIdToThread"
+
+    const/16 v3, 0x22
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 527
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "mmssms-modify-count"
+
+    const/16 v3, 0x14
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 530
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "conversations/groupdelete"
+
+    const/16 v3, 0x15
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 533
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "messages_group_delete"
+
+    const/16 v3, 0x1a
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 536
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "update-restore-mode"
+
+    const/16 v3, 0x16
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 538
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "restore-del-allmsg"
+
+    const/16 v3, 0x17
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 540
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "update_threads_read_status"
+
+    const/16 v3, 0x18
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 542
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "update_assicID_sync"
+
+    const/16 v3, 0x19
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 544
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "SyncFingerPrint"
+
+    const/16 v3, 0x1b
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 546
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "unread-message-count"
+
+    const/16 v3, 0x1d
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 548
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "msg_and_thread_mix_operate"
+
+    const/16 v3, 0x1e
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 550
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "conversations/clear_sns"
+
+    const/16 v3, 0x1f
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 552
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "conversations/#/pic"
+
+    const/16 v3, 0x20
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 554
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "conversations/#/top"
+
+    const/16 v3, 0x23
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 559
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "favorite/"
+
+    const/16 v3, 0x24
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 561
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "unread-message-count-selection"
+
+    const/16 v3, 0x25
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 563
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "group_delete_favorite"
+
+    const/16 v3, 0x26
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 567
+    sget-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->URI_MATCHER:Landroid/content/UriMatcher;
+
+    const-string v1, "mms-sms"
+
+    const-string v2, "thread_id"
+
+    const/16 v3, 0x27
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
+
+    .line 569
+    invoke-static {}, Lcom/android/providers/telephony/MmsSmsProvider;->initializeColumnSets()V
+
+    .line 576
+    invoke-static {v4}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v0
+
+    sput-object v0, Lcom/android/providers/telephony/MmsSmsProvider;->isCreatingThread:Ljava/lang/Boolean;
+
+    return-void
+.end method

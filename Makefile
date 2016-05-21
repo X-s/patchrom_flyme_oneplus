@@ -57,8 +57,7 @@ vendor_remove_files := recovery-from-boot.bak
 vendor_saved_apps := Bluetooth KeyChain HTMLViewer UserDictionaryProvider BackupRestoreConfirmation \
                      FusedLocation PrintSpooler SharedStorageBackup  ExternalStorageProvider InputDevices \
                      ProxyHandler Shell DefaultContainerService AntHalService AudioTuner BluetoothExt FingerprintService \
-                     OnePlusCamera OnePlusCameraService OPNoviceguide QComQMIPermissions SdCardService TimeService WfdService \
-                     qcrilmsgtunnel
+                     OnePlusCamera OnePlusCameraService OPNoviceguide QComQMIPermissions SdCardService WfdService
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.
@@ -111,7 +110,7 @@ board_remove_apps := NfcNci
 # The command idtoname how to use: first use "apktool d source/system/framework/framework-res.apk other/TMP/framework-res",
 # and then use "idtoname other/TMP/framework-res/res/values/public_master.xml XXXX/smali"(XXXX is the directory where you decode board system apk).
 #-----------------------------------------------------------------------------
-board_modify_apps := SystemUI
+board_modify_apps := SystemUI TelephonyProvider
 
 ##############################################################################
 # The value decides which jar you want to modify, when the jar is based on the board framework jar.
