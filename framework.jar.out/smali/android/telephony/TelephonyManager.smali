@@ -6920,6 +6920,47 @@
     goto :goto_0
 .end method
 
+.method public isImsRegistered()Z
+    .locals 3
+
+    .prologue
+    const/4 v1, 0x0
+
+    .line 3776
+    :try_start_0
+    invoke-direct {p0}, Landroid/telephony/TelephonyManager;->getITelephony()Lcom/android/internal/telephony/ITelephony;
+
+    move-result-object v2
+
+    invoke-interface {v2}, Lcom/android/internal/telephony/ITelephony;->isImsRegistered()Z
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Ljava/lang/NullPointerException; {:try_start_0 .. :try_end_0} :catch_1
+
+    move-result v1
+
+    .line 3780
+    :goto_0
+    return v1
+
+    .line 3777
+    :catch_0
+    move-exception v0
+
+    .line 3778
+    .local v0, "ex":Landroid/os/RemoteException;
+    goto :goto_0
+
+    .line 3779
+    .end local v0    # "ex":Landroid/os/RemoteException;
+    :catch_1
+    move-exception v0
+
+    .line 3780
+    .local v0, "ex":Ljava/lang/NullPointerException;
+    goto :goto_0
+.end method
+
 .method public isMultiSimEnabled()Z
     .locals 2
 
