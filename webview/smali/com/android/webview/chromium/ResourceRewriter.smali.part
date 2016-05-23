@@ -1,0 +1,78 @@
+.method public static rewriteRValues(Landroid/content/Context;)V
+    .locals 6
+    .param p0, "ctx"    # Landroid/content/Context;
+
+    .prologue
+    .line 32
+    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Landroid/content/res/Resources;->getAssets()Landroid/content/res/AssetManager;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Landroid/content/res/AssetManager;->getAssignedPackageIdentifiers()Landroid/util/SparseArray;
+
+    move-result-object v4
+
+    .line 35
+    .local v4, "packageIdentifiers":Landroid/util/SparseArray;, "Landroid/util/SparseArray<Ljava/lang/String;>;"
+    invoke-virtual {v4}, Landroid/util/SparseArray;->size()I
+
+    move-result v0
+
+    .line 36
+    .local v0, "N":I
+    const/4 v1, 0x0
+
+    .local v1, "i":I
+    :goto_0
+    if-ge v1, v0, :cond_0
+
+    .line 37
+    invoke-virtual {v4, v1}, Landroid/util/SparseArray;->valueAt(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljava/lang/String;
+
+    .line 41
+    .local v3, "name":Ljava/lang/String;
+    const-string v5, "com.android.webview"
+
+    invoke-virtual {v5, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_1
+
+    .line 42
+    invoke-virtual {v4, v1}, Landroid/util/SparseArray;->keyAt(I)I
+
+    move-result v2
+
+    .line 47
+    .local v2, "id":I
+    invoke-static {v2}, Lcom/android/webview/chromium/R;->onResourcesLoaded(I)V
+
+    .line 48
+    invoke-static {v2}, Lcom/android/org/chromium/ui/R;->onResourcesLoaded(I)V
+
+    .line 49
+    invoke-static {v2}, Lcom/android/org/chromium/content/R;->onResourcesLoaded(I)V
+
+    .line 54
+    .end local v2    # "id":I
+    .end local v3    # "name":Ljava/lang/String;
+    :cond_0
+    return-void
+
+    .line 36
+    .restart local v3    # "name":Ljava/lang/String;
+    :cond_1
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+.end method
+ 
