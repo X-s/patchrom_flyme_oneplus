@@ -91,7 +91,7 @@ vendor_modify_jars := android.policy framework services telephony-common wifi-se
 # You should add "lib64/libwebviewchromium.so" for 64 bit system.
 #-----------------------------------------------------------------------------
 board_saved_files := lib/libwebviewchromium.so lib64/libwebviewchromium.so \
-                     bin/bootanimation media/bootanimation.zip media/shutanimation.zip
+                     bin/bootanimation bin/shutdownanimation media/bootanimation.zip media/shutanimation.zip
 
 ##############################################################################
 # The value decides which board system apk you want to remove.
