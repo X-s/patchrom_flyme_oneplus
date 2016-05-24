@@ -2761,7 +2761,7 @@
 .end method
 
 .method public makeApplication(ZLandroid/app/Instrumentation;)Landroid/app/Application;
-    .locals 13
+    .locals 12
     .param p1, "forceDefaultAppClass"    # Z
     .param p2, "instrumentation"    # Landroid/app/Instrumentation;
 
@@ -2853,30 +2853,18 @@
 
     invoke-virtual {v9, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 578
     iput-object v1, p0, Landroid/app/LoadedApk;->mApplication:Landroid/app/Application;
 
-    .line 581
-    iget-object v9, p0, Landroid/app/LoadedApk;->mApplication:Landroid/app/Application;
+    invoke-static {}, Landroid/content/res/flymetheme/FlymeFontsHelper;->cleanflymeTypeface()V
 
-    const-string v10, "com.lbe.security.oneplus"
-
-    const/16 v11, 0x1dd
-
-    const/4 v12, 0x0
-
-    invoke-static {v9, v10, v11, v12}, Lcom/lbe/security/service/core/client/ClientLoader;->loadLBECLient(Landroid/app/Application;Ljava/lang/String;IZ)V
-
-    .line 587
+    .line 571
     if-eqz p2, :cond_6
 
-    .line 589
     :try_start_1
     invoke-virtual {p2, v1}, Landroid/app/Instrumentation;->callApplicationOnCreate(Landroid/app/Application;)V
     :try_end_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
 
-    .line 600
     :cond_6
     iget-object v9, p0, Landroid/app/LoadedApk;->mActivityThread:Landroid/app/ActivityThread;
 

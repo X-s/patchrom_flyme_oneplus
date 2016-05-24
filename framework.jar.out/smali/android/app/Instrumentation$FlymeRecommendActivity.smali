@@ -195,8 +195,6 @@
     goto :goto_1
 .end method
 
-
-# virtual methods
 .method public start(I)V
     .locals 9
     .param p1, "result"    # I
@@ -223,6 +221,31 @@
 
     invoke-direct/range {v0 .. v8}, Landroid/app/Instrumentation$FlymeRecommendActivity;->start(ILandroid/content/Context;Landroid/os/IBinder;Landroid/os/IBinder;Landroid/app/Activity;Landroid/content/Intent;ILandroid/os/Bundle;)V
 
+    invoke-virtual {p0}, Landroid/app/Instrumentation$FlymeRecommendActivity;->clearData()V
+
     .line 1987
+    return-void
+.end method
+
+
+# virtual methods
+.method public clearData()V
+    .locals 1
+
+    .prologue
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Landroid/app/Instrumentation$FlymeRecommendActivity;->mWho:Landroid/content/Context;
+
+    iput-object v0, p0, Landroid/app/Instrumentation$FlymeRecommendActivity;->mContextThread:Landroid/os/IBinder;
+
+    iput-object v0, p0, Landroid/app/Instrumentation$FlymeRecommendActivity;->mToken:Landroid/os/IBinder;
+
+    iput-object v0, p0, Landroid/app/Instrumentation$FlymeRecommendActivity;->mTarget:Landroid/app/Activity;
+
+    iput-object v0, p0, Landroid/app/Instrumentation$FlymeRecommendActivity;->mIntent:Landroid/content/Intent;
+
+    iput-object v0, p0, Landroid/app/Instrumentation$FlymeRecommendActivity;->mOptions:Landroid/os/Bundle;
+
     return-void
 .end method
