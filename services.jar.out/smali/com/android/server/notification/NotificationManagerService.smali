@@ -2070,13 +2070,13 @@
 
     move-object/from16 v0, v22
 
-    iget-object v5, v0, Landroid/app/Notification;->sound:Landroid/net/Uri;
+    iget-object v0, v0, Landroid/app/Notification;->sound:Landroid/net/Uri;
 
-    const-string v6, "notification_sound"
+    #const-string v6, "notification_sound"
 
-    invoke-static {v4, v5, v6}, Landroid/media/RingtoneManager;->validForSound(Landroid/content/Context;Landroid/net/Uri;Ljava/lang/String;)Landroid/net/Uri;
+    #invoke-static {v4, v5, v6}, Landroid/media/RingtoneManager;->validForSound(Landroid/content/Context;Landroid/net/Uri;Ljava/lang/String;)Landroid/net/Uri;
 
-    move-result-object v26
+    move-object/from16 v26, v0
 
     .line 2126
     if-eqz v26, :cond_1b
