@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <PreferenceCategory android:title="@string/personal_data_section_title" android:key="personal_data_category">
+        <Preference android:title="@string/master_clear_title" android:key="factory_data_reset" android:summary="@string/master_clear_summary" android:fragment="com.android.settings_ex.MasterClearConfirm" settings:keywords="@string/keywords_factory_data_reset" />
+    </PreferenceCategory>
+</PreferenceScreen>

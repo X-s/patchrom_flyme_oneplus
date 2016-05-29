@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/mainweixin" android:background="@color/oneplus_settings_black_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/main_bottom" android:background="@color/sub_menu_background" android:layout_width="fill_parent" android:layout_height="37.0dip" android:layout_alignParentTop="true">
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="13.0sp" android:textColor="#ffffffff" android:id="@id/tabtext1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/filter_apps_all" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="13.0sp" android:textColor="#ffffffff" android:id="@id/tabtext2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/filter_apps_running" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="13.0sp" android:textColor="#ffffffff" android:id="@id/tabtext3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/filter_apps_third_party" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/pagerliner" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/main_bottom">
+        <FrameLayout android:id="@id/pinned_header" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <android.support.v4.view.ViewPager android:id="@id/pager" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    </LinearLayout>
+</RelativeLayout>

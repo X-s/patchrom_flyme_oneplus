@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/notification_settings" android:key="notification_settings" settings:keywords="@string/keywords_sounds_and_notifications"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <PreferenceCategory android:title="@string/sound_settings" android:key="sound">
+        <com.android.settings_ex.notification.VolumeSeekBarPreference android:icon="@android:drawable/ic_audio_vol" android:title="@string/media_volume_option_title" android:key="media_volume" />
+        <com.android.settings_ex.notification.VolumeSeekBarPreference android:icon="@android:drawable/ic_audio_alarm" android:title="@string/alarm_volume_option_title" android:key="alarm_volume" />
+        <com.android.settings_ex.notification.VolumeSeekBarPreference android:icon="@android:drawable/ic_audio_ring_notif" android:title="@string/ring_volume_option_title" android:key="ring_volume" />
+        <com.android.settings_ex.notification.VolumeSeekBarPreference android:icon="@android:drawable/ic_audio_ring_notif" android:title="@string/notification_volume_option_title" android:key="notification_volume" />
+        <Preference android:persistent="false" android:title="@string/other_sound_settings" android:key="other_sounds" android:fragment="com.android.settings_ex.notification.OtherSoundSettings" />
+    </PreferenceCategory>
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/oneplus_zen_mode_title" android:key="zen_mode_category">
+        <SwitchPreference android:title="@string/oneplus_zen_mode_settings_title" android:key="zen_mode_enable" />
+        <Preference android:title="@string/oneplus_spec_incall_settings_title" android:key="spec_incall_settings" />
+        <SwitchPreference android:title="@string/oneplus_repeat_incaller_unlimit_enable_title" android:key="repeat_incaller_unlimit_enable" android:summary="@string/oneplus_repeat_incaller_unlimit_enable_summary" />
+    </PreferenceCategory>
+    <PreferenceScreen android:title="@string/zen_mode_settings_title" android:key="zen_mode" android:fragment="com.android.settings_ex.notification.ZenModeSettings" settings:keywords="@string/keywords_sounds_and_notifications_interruptions" />
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/vibrate_category" android:key="vibrate_category">
+        <SwitchPreference android:persistent="false" android:title="@string/vibrate_when_ringing_title" android:key="vibrate_when_ringing" />
+        <SwitchPreference android:persistent="true" android:title="@string/vibrate_when_mute_title" android:key="vibrate_when_mute" />
+    </PreferenceCategory>
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/ringtone_category" android:key="ringtone_category">
+        <com.android.settings_ex.DefaultRingtonePreference android:persistent="false" android:title="@string/ringtone_title" android:key="ringtone" android:dialogTitle="@string/ringtone_title" android:ringtoneType="ringtone" />
+        <com.android.settings_ex.SmsRingtonePreference android:persistent="false" android:title="@string/message_title" android:key="message_ringtone" android:dialogTitle="@string/message_title" android:ringtoneType="notification" />
+        <com.android.settings_ex.DefaultRingtonePreference android:persistent="false" android:title="@string/notification_ringtone_title" android:key="notification_ringtone" android:dialogTitle="@string/notification_ringtone_title" android:ringtoneType="notification" />
+    </PreferenceCategory>
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/sound_system_category" android:key="system_category">
+        <SwitchPreference android:persistent="false" android:title="@string/touch_sounds_title" android:key="touch_sounds" android:switchTextOn="" android:switchTextOff="" />
+        <SwitchPreference android:persistent="false" android:title="@string/dial_pad_tones_title" android:key="dial_pad_tones" android:switchTextOn="" android:switchTextOff="" />
+        <SwitchPreference android:persistent="false" android:title="@string/screen_locking_sounds_title" android:key="screen_locking_sounds" android:switchTextOn="" android:switchTextOff="" />
+        <SwitchPreference android:persistent="false" android:title="@string/vibrate_on_touch_title" android:key="vibrate_on_touch" android:switchTextOn="" android:switchTextOff="" />
+    </PreferenceCategory>
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/notification_section_header" android:key="notification">
+        <SwitchPreference android:persistent="false" android:title="@string/notification_pulse_title" android:key="notification_pulse" android:switchTextOn="" android:switchTextOff="" />
+        <com.android.settings_ex.notification.DropDownPreference android:persistent="false" android:title="@string/lock_screen_notifications_title" android:key="lock_screen_notifications" />
+        <PreferenceScreen android:title="@string/app_notifications_title" android:key="app_notifications" android:fragment="com.android.settings_ex.notification.NotificationAppList" />
+        <Preference android:persistent="false" android:title="@string/manage_notification_access_title" android:key="manage_notification_access" android:fragment="com.android.settings_ex.notification.NotificationAccessSettings" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/oneplus_incall_vibrate_way_title" android:key="cate_incall_vibrate_way_key">
+        <Preference android:title="@string/oneplus_incall_vibrate_way_settings_title" android:key="incall_vibrate_way_key" />
+    </PreferenceCategory>
+</PreferenceScreen>

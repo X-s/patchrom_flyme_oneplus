@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="24.0dip" android:paddingEnd="24.0dip"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView android:textAppearance="@android:style/TextAppearance.Material.Body1" android:textColor="@color/oneplus_settings_white_54" android:gravity="center_vertical" android:id="@id/message_caption" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bluetooth_dialog_padding" />
+        <TextView android:textAppearance="@android:style/TextAppearance.Material.Subhead" android:textColor="@color/oneplus_settings_white_72" android:gravity="center_vertical" android:id="@id/message_subhead" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bluetooth_dialog_padding" />
+        <TextView android:textAppearance="@android:style/TextAppearance.Material.Body1" android:textColor="@color/oneplus_settings_white_54" android:gravity="center_vertical" android:id="@id/pairing_caption" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bluetooth_pairing_key_msg" />
+        <TextView android:textAppearance="@android:style/TextAppearance.Material.Headline" android:textColor="@color/oneplus_settings_white_72" android:gravity="center_vertical" android:id="@id/pairing_subhead" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bluetooth_dialog_padding" />
+        <TextView android:textAppearance="@android:style/TextAppearance.Material.Subhead" android:textColor="@color/oneplus_settings_white_54" android:gravity="center_vertical" android:id="@id/pairing_code_message" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bluetooth_dialog_padding" android:text="@string/bluetooth_enter_passkey_msg" />
+        <TextView android:textSize="13.0dip" android:textColor="@color/oneplus_settings_white_54" android:gravity="center_vertical" android:id="@id/phonebook_sharing_message" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bluetooth_dialog_padding" android:text="@string/bluetooth_pairing_will_share_phonebook" />
+    </LinearLayout>
+</ScrollView>

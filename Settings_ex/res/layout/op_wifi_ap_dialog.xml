@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/oneplus_settings_dialogcolor" android:layout_width="300.0sp" android:layout_height="wrap_content" android:fadeScrollbars="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="24.0dip" android:layout_marginEnd="0.0dip">
+        <LinearLayout android:orientation="vertical" android:id="@id/info" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/oneplus_wifi_item" />
+        <LinearLayout android:orientation="vertical" android:id="@id/type" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/oneplus_wifi_item">
+            <TextView android:textColor="@color/oneplus_settings_white_54" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/wifi_ssid" style="@style/oneplus_wifi_item_label" />
+            <EditText android:textColor="@color/oneplus_settings_white_72" android:textColorHighlight="@color/theme_accent" android:id="@id/ssid" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/wifi_ssid_hint" android:singleLine="true" android:maxLength="32" android:inputType="textNoSuggestions" style="@style/oneplus_wifi_item_edit_content" />
+            <TextView android:textColor="@color/oneplus_settings_white_54" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/wifi_security" style="@style/oneplus_wifi_item_label" />
+            <Spinner android:entries="@array/wifi_ap_security" android:id="@id/security" android:layout_width="fill_parent" android:layout_height="wrap_content" android:prompt="@string/wifi_security" style="@style/wifi_item_content" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/fields" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/oneplus_wifi_item">
+            <TextView android:textColor="@color/oneplus_settings_white_54" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/wifi_password" style="@style/oneplus_wifi_item_label" />
+            <EditText android:textColor="@color/oneplus_settings_white_72" android:id="@id/password" android:layout_width="fill_parent" android:layout_height="wrap_content" android:password="true" android:singleLine="true" android:maxLength="63" android:imeOptions="flagForceAscii" style="@style/oneplus_wifi_item_edit_content" />
+            <TextView android:textColor="@color/oneplus_settings_white_54" android:id="@id/hint" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="10.0sp" android:text="@string/credentials_password_too_short" style="@style/oneplus_wifi_item_label" />
+            <CheckBox android:id="@id/show_password" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/wifi_show_password" style="@style/wifi_item_content" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

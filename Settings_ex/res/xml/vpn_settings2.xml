@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/vpn_title"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference android:title="@string/vpn_menu_lockdown" android:key="open_vpn_service_always" />
+    <Preference android:title="@string/vpn_create" android:key="add_vpn_setting" />
+    <com.android.settings_ex.ui.OPPreferenceThinDivider android:key="preference_thin_finger_divider_line" />
+    <PreferenceCategory android:title="@string/oneplus_vpn_list" android:key="vpn_list" />
+</PreferenceScreen>

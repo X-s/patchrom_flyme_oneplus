@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/oneplus_quick_startup" android:key="quick_startup">
+        <CheckBoxPreference android:title="@string/oneplus_double_click_light_screen_title" android:key="double_click_light_screen_key" android:summary="@string/oneplus_double_click_light_screen_summary" />
+        <CheckBoxPreference android:title="@string/oneplus_draw_o_start_camera_title" android:key="draw_o_start_camera_key" android:summary="@string/oneplus_draw_o_start_camera_summary" />
+        <CheckBoxPreference android:title="@string/oneplus_open_light_device_title" android:key="open_light_device_key" android:summary="@string/oneplus_open_light_device_summary" />
+    </PreferenceCategory>
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/oneplus_music_control" android:key="music_control">
+        <CheckBoxPreference android:title="@string/oneplus_music_control_start_title" android:key="music_control_start_key" android:summary="@string/oneplus_music_control_start_summary" />
+        <CheckBoxPreference android:title="@string/oneplus_music_control_pause_title" android:key="music_control_pause_key" android:summary="@string/oneplus_music_control_pause_summary" />
+        <CheckBoxPreference android:title="@string/oneplus_music_control_prev_title" android:key="music_control_prev_key" android:summary="@string/oneplus_music_control_prev_summary" />
+        <CheckBoxPreference android:title="@string/oneplus_music_control_next_title" android:key="music_control_next_key" android:summary="@string/oneplus_music_control_next_summary" />
+    </PreferenceCategory>
+</PreferenceScreen>

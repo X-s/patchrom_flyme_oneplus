@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/fragment" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.settings_ex.widget.SetupWizardIllustration android:id="@id/setup_illustration" android:background="@drawable/setup_illustration_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:foreground="@drawable/setup_illustration" android:layout_weight="1.0">
+        <LinearLayout android:gravity="start|center|top" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="16.0">
+            <TextView android:id="@id/title" android:layout_width="1.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/setup_wizard_tablet_illustration_height" android:text="@string/wifi_setup_wizard_title" android:layout_weight="6.0" style="@style/SetupCardTitle" />
+            <LinearLayout android:orientation="vertical" android:background="@drawable/setup_wizard_card_bg" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_marginTop="@dimen/setup_wizard_card_land_margin_top" android:layout_weight="8.0" android:elevation="@dimen/setup_wizard_card_elevation">
+                <TextView android:textAppearance="?android:textAppearanceMedium" android:id="@id/wifi_required_info" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:text="@string/wifi_required_info_text" />
+                <ListView android:scrollbarAlwaysDrawVerticalTrack="true" android:id="@android:id/list" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="0.0dip" android:drawSelectorOnTop="false" android:cacheColorHint="@android:color/transparent" android:layout_weight="1.0" android:headerDividersEnabled="false" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.android.settings_ex.widget.SetupWizardIllustration>
+    <fragment android:name="com.android.setupwizard.navigationbar.SetupWizardNavBar" android:id="@id/navigation_bar" style="@style/setup_wizard_navbar_style" />
+</LinearLayout>

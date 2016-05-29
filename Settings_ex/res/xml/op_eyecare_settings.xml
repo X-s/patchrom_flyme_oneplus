@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference android:title="@string/oneplus_eyecare_title" android:key="eyecare_mode_enable" android:summary="@string/oneplus_eyecare_summary" />
+    <PreferenceCategory android:title="@string/oneplus_eyecare_adjuting_settings_title" android:key="eyecare_adjuting_settings">
+        <com.android.settings_ex.ui.OPEyeCareSeekBarPreference android:key="eyecare_seekbar_adjuting_settings" />
+    </PreferenceCategory>
+</PreferenceScreen>

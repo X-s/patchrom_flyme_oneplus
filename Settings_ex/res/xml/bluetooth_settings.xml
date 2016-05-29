@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/bluetooth_settings"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference android:title="@string/bluetooth_settings_title" android:key="bluetooth_enable" />
+    <SwitchPreference android:title="@string/bluetooth_discoverable" android:key="bluetooth_discoverable" />
+    <PreferenceScreen android:title="@string/bluetooth_device_name" android:key="bluetooth_device_name" android:fragment="com.oneplus.settings.OPDeviceName" />
+    <PreferenceScreen android:title="@string/status_bt_address" android:key="bluetooth_address" />
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceScreen android:title="@string/bluetooth_show_received_files" android:key="bluetooth_show_received_files" />
+</PreferenceScreen>

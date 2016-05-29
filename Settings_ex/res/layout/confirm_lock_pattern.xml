@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/oneplus_settings_black_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0sp" android:textColor="@color/oneplus_settings_white" android:gravity="center" android:id="@id/headerText" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="88.0dip" />
+    <com.android.internal.widget.LockPatternView android:layout_gravity="center" android:id="@id/lockPattern" android:background="@color/lock_pattern_background" android:layout_width="318.0dip" android:layout_height="276.0dip" android:layout_marginLeft="21.0dip" android:layout_marginTop="62.0dip" android:layout_marginRight="21.0dip" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/oneplus_settings_white" android:gravity="center" android:id="@id/footerText" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+</LinearLayout>

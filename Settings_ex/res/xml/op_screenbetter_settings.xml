@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <com.android.settings_ex.ui.OPScreenBetterPreference android:key="screenbetter_page" />
+    <PreferenceCategory android:title="@string/oneplus_screen_better_title" android:key="screenbetter_settings">
+        <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_screen_better_warm" android:key="warm_settings" />
+        <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_screen_better_nature" android:key="nomal_settings" />
+        <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_screen_better_cold" android:key="cool_settings" />
+    </PreferenceCategory>
+</PreferenceScreen>

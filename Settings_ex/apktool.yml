@@ -1,0 +1,23 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: Settings_ex.apk
+compressionType: false
+doNotCompress:
+- arsc
+isFrameworkApk: false
+packageInfo:
+  forcedPackageId: '127'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '21'
+  targetSdkVersion: '22'
+sharedLibrary: false
+unknownFiles: {}
+usesFramework:
+  ids:
+  - 1
+  - 3
+  tag: null
+version: 2.1.1-04d478-SNAPSHOT
+versionInfo:
+  versionCode: '22'
+  versionName: 1.2.1.160303185422.404d722

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="63.0dip" style="@style/wifi_item"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAlignment="viewStart" style="@style/oneplus_wifi_item_label" />
+    <TextView android:id="@id/value" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textAlignment="viewStart" style="@style/oneplus_wifi_item_label" />
+</LinearLayout>

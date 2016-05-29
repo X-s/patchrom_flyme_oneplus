@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/accessibility_settings"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <SwitchPreference android:title="@string/rotation_silent_enable_title" android:key="rotation_silent_enable" android:summary="@string/oneplus_rotation_silent_enable_summary" />
+    <SwitchPreference android:title="@string/three_screenshots_enable_title" android:key="three_screenshots_enable" android:summary="@string/oneplus_three_screenshots_enable_summary" />
+    <SwitchPreference android:title="@string/anti_misoperation_of_the_screen_touch_enable_title" android:key="anti_misoperation_of_the_screen_touch_enable" android:summary="@string/oneplus_anti_misoperation_of_the_screen_touch_enable_summary" />
+</PreferenceScreen>

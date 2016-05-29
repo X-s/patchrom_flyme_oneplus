@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/title_font_size">
+        <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_smallfont_title" android:key="oneplus_small_font" android:summary="@string/oneplus_smallfont_summary" />
+        <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_normalfont_title" android:key="oneplus_normal_font" android:summary="@string/oneplus_normalfont_summary" />
+        <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_largefont_title" android:key="oneplus_large_font" android:summary="@string/oneplus_largefont_summary" />
+        <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_superlargefont_title" android:key="oneplus_superlarge_font" android:summary="@string/oneplus_superlargefont_summary" />
+    </PreferenceCategory>
+</PreferenceScreen>

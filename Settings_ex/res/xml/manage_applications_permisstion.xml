@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <SwitchPreference android:persistent="false" android:title="@string/install_applications" android:key="toggle_install_applications" android:summaryOn="@string/install_unknown_applications" android:summaryOff="@string/install_unknown_applications" />
+    <SwitchPreference android:title="@string/application_permisstion_control_title" android:key="application_permisstion_control" />
+    <Preference android:title="@string/auto_application_title" android:key="auto_application" />
+    <Preference android:title="@string/application_notification_title" android:key="application_notification" android:fragment="com.android.settings_ex.notification.NotificationAppList" />
+    <Preference android:title="@string/application_permisstion_manage_title" android:key="application_permisstion_manage" android:fragment="com.android.settings_ex.notification.NotificationAccessSettings" />
+    <Preference android:title="@string/applications_permission_settings" android:key="application_permisstion_settings" />
+    <Preference android:title="@string/others_applications_permission_settings" android:key="others_application_permisstion_settings" android:fragment="com.android.settings_ex.applications.ManageApplications" />
+</PreferenceScreen>

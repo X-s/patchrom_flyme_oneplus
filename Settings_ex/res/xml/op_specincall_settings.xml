@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_collections_contacts" android:key="collections_contacts" />
+    <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_people_in_contacts" android:key="people_in_contacts" />
+    <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_anyone_not_disturb" android:key="anyone_not_disturb" />
+</PreferenceScreen>
