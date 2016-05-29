@@ -5220,7 +5220,7 @@
     invoke-super {p0}, Landroid/app/Activity;->onResume()V
 
     .line 919
-    invoke-direct {p0}, Lcom/android/settings_ex/SettingsActivity;->isShowingOnceMenu()V
+    #invoke-direct {p0}, Lcom/android/settings_ex/SettingsActivity;->isShowingOnceMenu()V
 
     .line 921
     invoke-direct {p0}, Lcom/android/settings_ex/SettingsActivity;->getHomeActivitiesCount()I
