@@ -1030,12 +1030,12 @@
     :cond_5
     iget-boolean v10, p0, Lcom/android/settings_ex/FingerprintAndPWD;->mIsPrimary:Z
 
-    if-eqz v10, :cond_6
+    goto :goto_xs_0
 
     if-eqz v7, :cond_c
 
     .line 640
-    :cond_6
+    :goto_xs_0
     const-string v10, "sim_lock"
 
     invoke-virtual {v8, v10}, Landroid/preference/PreferenceScreen;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
