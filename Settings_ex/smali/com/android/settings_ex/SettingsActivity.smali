@@ -160,7 +160,7 @@
 
     new-array v0, v0, [Ljava/lang/String;
 
-    const-class v1, Lcom/android/settings_ex/accessibility/BlackScreenPreferenceFragement;
+    const-class v1, Lcom/android/settings_ex/accessibility/BlackScreenPreferenceActivity;
 
     invoke-virtual {v1}, Ljava/lang/Class;->getName()Ljava/lang/String;
 
