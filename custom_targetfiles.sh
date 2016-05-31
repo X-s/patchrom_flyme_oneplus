@@ -13,3 +13,5 @@ cp -f other/sbl1.mbn $TARGET_DIR/BOOTABLE_IMAGES/
 cp -f other/sdi.mbn $TARGET_DIR/BOOTABLE_IMAGES/
 cp -f other/static_nvbk.bin $TARGET_DIR/BOOTABLE_IMAGES/
 cp -f other/tz.mbn $TARGET_DIR/BOOTABLE_IMAGES/
+
+rm -rf $TARGET_DIR/SYSTEM/framework/hydrongen-framework-res.apk
