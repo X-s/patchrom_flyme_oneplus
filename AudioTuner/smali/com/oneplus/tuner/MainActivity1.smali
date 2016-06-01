@@ -318,7 +318,7 @@
     invoke-virtual {v1, v3}, Landroid/app/Dialog;->setOnDismissListener(Landroid/content/DialogInterface$OnDismissListener;)V
 
     .line 76
-    invoke-virtual {v1}, Landroid/app/Dialog;->show()V
+    #invoke-virtual {v1}, Landroid/app/Dialog;->show()V
 
     .line 109
     .end local v1    # "dialog":Landroid/app/Dialog;
@@ -344,7 +344,7 @@
     invoke-virtual {v1, v3}, Landroid/app/Dialog;->setOnDismissListener(Landroid/content/DialogInterface$OnDismissListener;)V
 
     .line 105
-    invoke-virtual {v1}, Landroid/app/Dialog;->show()V
+    #invoke-virtual {v1}, Landroid/app/Dialog;->show()V
 
     goto :goto_0
 .end method

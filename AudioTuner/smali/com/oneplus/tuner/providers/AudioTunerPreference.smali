@@ -722,7 +722,7 @@
     .param p0, "permission"    # Ljava/lang/String;
 
     .prologue
-    const/4 v1, 0x0
+    const/4 v1, 0x1
 
     .line 221
     invoke-static {}, Lcom/oppo/tribune/CommunityApplication;->getAppContext()Landroid/content/Context;
