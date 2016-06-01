@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <ImageView android:id="@id/about_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="154.0dip" android:src="@drawable/tune" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff9a9a9a" android:id="@id/about_version" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:layout_below="@id/about_icon" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="10.0sp" android:textColor="#ff9a9a9a" android:id="@id/about_copyright" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="24.0dip" android:text="@string/copyright" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="10.0sp" android:textColor="#ff9a9a9a" android:id="@id/about_company" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:text="@string/company" android:layout_above="@id/about_copyright" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="10.0sp" android:textColor="@color/weather_sun" android:id="@id/useragreement" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:text="@string/op_agreement" android:layout_above="@id/about_company" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/oneplus_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:src="@drawable/oneplus_logo" android:layout_above="@id/useragreement" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</LinearLayout>

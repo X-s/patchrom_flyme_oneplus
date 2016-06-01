@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:icon="@drawable/ic_titlebar_add" android:id="@id/headset_menu_add" android:orderInCategory="100" android:title="@string/op_headset_add" android:showAsAction="always" />
+    <item android:icon="@drawable/ic_titlebar_search" android:id="@id/headset_menu_search" android:orderInCategory="90" android:title="@string/tuner_search" android:showAsAction="always" />
+</menu>

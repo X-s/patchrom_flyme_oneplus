@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/pull_refresh_header_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/imageview_load_animation" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/animation_load_content" android:indeterminate="true" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/imageview_arrow" android:visibility="gone" android:layout_width="55.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/pull_refresh_header_marginLeft" android:src="@drawable/arrow_down" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/pull_to_refresh_textSize" android:textColor="@color/op_listitem_title_color" android:gravity="bottom" android:id="@id/textview_instruction" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/pull_refresh_header_height_half" android:text="@string/pull_to_refresh" android:singleLine="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/pull_to_refresh_textSize" android:textColor="@color/op_listitem_title_color" android:gravity="top" android:id="@id/textview_refresh_time" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/pull_refresh_header_height_half" android:layout_below="@id/textview_instruction" android:layout_centerHorizontal="true" />
+</RelativeLayout>

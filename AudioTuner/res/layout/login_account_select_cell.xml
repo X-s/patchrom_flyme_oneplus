@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/login_textSize" android:textColor="#ff636363" android:gravity="center_vertical" android:id="@id/textview" android:layout_width="wrap_content" android:layout_height="@dimen/login_account_select_height" android:layout_marginLeft="@dimen/login_account_select_marginLeft" android:singleLine="true" />
+    <Button android:id="@id/delete_account" android:background="@drawable/upload_pic_view_delete_btn" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/login_account_select_marginLeft" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

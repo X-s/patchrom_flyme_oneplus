@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="default_config">
+        <item>普通</item>
+        <item>弦乐</item>
+        <item>柔和低音</item>
+        <item>淳美</item>
+        <item>强劲</item>
+        <item>现场</item>
+        <item>母带预制</item>
+        <item>流行</item>
+        <item>响亮</item>
+        <item>家庭影院</item>
+        <item>打击乐</item>
+        <item>死亡金属</item>
+        <item>黑暗</item>
+        <item>清晰</item>
+        <item>经典V型</item>
+        <item>汽车立体</item>
+        <item>清冷</item>
+        <item>怀旧</item>
+    </string-array>
+</resources>

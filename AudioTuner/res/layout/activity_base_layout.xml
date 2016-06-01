@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/title_layout_id" android:background="#ff5555b9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/title_height">
+        <ImageView android:layout_gravity="center|left" android:id="@id/left_btn" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/ic05" android:scaleType="center" />
+        <TextView android:textSize="20.0sp" android:textColor="#ffffffff" android:layout_gravity="center_vertical" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="56.0dip" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/right_btn" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="283.0dip" android:src="@drawable/ic12" />
+        <ImageView android:layout_gravity="center|right" android:id="@id/mixer_btn" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/ic13" android:scaleType="center" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/base_content_id" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/title_height" />
+</FrameLayout>

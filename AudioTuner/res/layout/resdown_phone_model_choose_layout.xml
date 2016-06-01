@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/activity_bg" android:paddingTop="@dimen/community_head_view_height" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center|right" android:id="@id/group_bottom" android:background="@drawable/popwindow_bottom_bg" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/group_bottom_img" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/pop_bottom_ad_img" />
+    </RelativeLayout>
+    <ScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:id="@id/phone_model_scrollview" android:fadingEdgeLength="0.0px" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/group_bottom">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/myphone_tag_img" android:background="@drawable/phone_tag_img" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="8.0dip" />
+            <TextView android:textSize="17.0sp" android:textColor="@color/select_type_title_color" android:gravity="center" android:layout_gravity="center" android:id="@id/myphone_tab_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/res_my_phone_lab" android:layout_alignTop="@id/myphone_tag_img" android:layout_alignBottom="@id/myphone_tag_img" />
+            <RelativeLayout android:id="@id/myphone_layout" android:background="@drawable/popwindow_type_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/myphone_tag_img">
+                <TextView android:textSize="@dimen/playercell_textSize" android:textColor="@color/select_type_nomal_color" android:gravity="center" android:id="@id/myphone_tab_textview" android:background="@drawable/list_item_selector" android:layout_width="160.0dip" android:layout_height="@dimen/playercell_height" android:text="@string/res_my_phone_lab" android:singleLine="true" />
+            </RelativeLayout>
+            <ImageView android:id="@id/phone_list_tag_img" android:background="@drawable/other_tag_img" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_below="@id/myphone_layout" android:layout_alignLeft="@id/myphone_tag_img" />
+            <TextView android:textSize="17.0sp" android:textColor="@color/select_type_title_color" android:gravity="center" android:layout_gravity="center" android:id="@id/phone_list_tab_text" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/res_phone_list" android:layout_alignTop="@id/phone_list_tag_img" android:layout_alignBottom="@id/phone_list_tag_img" />
+            <TextView android:gravity="center" android:id="@id/loading_txv" android:background="@drawable/popwindow_type_bg" android:layout_width="fill_parent" android:layout_height="200.0dip" android:text="@string/list_loading" android:layout_below="@id/phone_list_tag_img" />
+            <RelativeLayout android:background="@drawable/popwindow_type_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/phone_list_tag_img">
+                <TextView android:textSize="15.0sp" android:id="@id/use_other_theme_tip_txv" android:paddingLeft="7.0dip" android:paddingTop="5.0dip" android:paddingRight="7.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/use_other_theme_tip" android:maxLines="2" />
+                <com.oppo.tribune.ui.ConstantGridView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:id="@id/other_phone_model_grid" android:layout_width="wrap_content" android:layout_height="wrap_content" android:listSelector="@drawable/list_item_selector" android:cacheColorHint="@color/transparency_color" android:numColumns="3" android:layout_below="@id/use_other_theme_tip_txv" android:headerDividersEnabled="false" android:footerDividersEnabled="false" android:fadeScrollbars="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

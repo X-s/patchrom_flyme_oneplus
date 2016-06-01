@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingLeft="20.0px" android:paddingRight="9.0px" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="194.0px"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="46.0px" android:textColor="#ff333333" android:id="@id/text1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0px" android:layout_marginTop="48.0px" />
+    <TextView android:textSize="35.0px" android:textColor="#ff676767" android:id="@id/text2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/text1" android:layout_alignLeft="@id/text1" />
+    <Button android:textSize="36.0px" android:textColor="#ff676767" android:id="@id/request_share_button" android:background="@drawable/request_bt_bg" android:padding="10.0px" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/requestshare" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

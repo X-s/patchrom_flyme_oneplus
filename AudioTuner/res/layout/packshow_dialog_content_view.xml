@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/packshow_dialog_bg" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:id="@id/camera_btn" android:layout_marginTop="@dimen/packshow_dialog_btn_marginTop1" android:text="@string/take_pic_by_camera" style="@style/packshow_dialog_text_style" />
+    <Button android:id="@id/album_btn" android:layout_marginTop="@dimen/packshow_dialog_btn_marginTop2" android:text="@string/take_pic_by_album" style="@style/packshow_dialog_text_style" />
+    <Button android:id="@id/cancel_btn" android:layout_marginTop="@dimen/packshow_dialog_btn_marginTop2" android:layout_marginBottom="@dimen/packshow_dialog_btn_marginBottom" android:text="@string/take_pic_by_cancel" style="@style/packshow_dialog_text_style" />
+</LinearLayout>

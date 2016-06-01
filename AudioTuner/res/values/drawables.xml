@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="drawable" name="activity_bg">#ffd9d9d9</item>
+    <item type="drawable" name="list_item_normal">#ffececec</item>
+    <item type="drawable" name="reply_tool_bar">#ffbdbdbd</item>
+    <item type="drawable" name="fragment_bt_normal">#fff9f9f9</item>
+    <item type="drawable" name="fragment_bt_pressed">#26000000</item>
+    <item type="drawable" name="main_bg_drawable">#ffe9e9e9</item>
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#ff1e2233" android:layout_width="fill_parent" android:layout_height="481.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="160.0dip">
+        <FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.oneplus.tuner.view.ArcsProcessBar android:layout_gravity="center_horizontal" android:id="@id/arcsprocessbar0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" />
+            <TextView android:textSize="13.0sp" android:textColor="@color/mix_set_text_color" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="139.0dip" android:text="@string/volume_strengthen" />
+        </FrameLayout>
+        <FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.oneplus.tuner.view.ArcsProcessBar android:layout_gravity="center_horizontal" android:id="@id/arcsprocessbar1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" />
+            <TextView android:textSize="13.0sp" android:textColor="@color/mix_set_text_color" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="139.0dip" android:text="@string/speaker_expansion" />
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="160.0dip">
+        <FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.oneplus.tuner.view.ArcsProcessBar android:layout_gravity="center_horizontal" android:id="@id/bass_set" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" />
+            <TextView android:textSize="13.0sp" android:textColor="@color/mix_set_text_color" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="139.0dip" android:text="@string/bass_boost" />
+        </FrameLayout>
+        <FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.oneplus.tuner.view.ArcsProcessBar android:layout_gravity="center_horizontal" android:id="@id/treble_set" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" />
+            <TextView android:textSize="13.0sp" android:textColor="@color/mix_set_text_color" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="139.0dip" android:text="@string/transparent_treble" />
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="160.0dip">
+        <FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.oneplus.tuner.view.ArcsProcessBar android:layout_gravity="center_horizontal" android:id="@id/voice_set" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" />
+            <TextView android:textSize="13.0sp" android:textColor="@color/mix_set_text_color" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="139.0dip" android:text="@string/clear_vocal" />
+        </FrameLayout>
+        <FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.oneplus.tuner.view.ArcsProcessBar android:layout_gravity="center_horizontal" android:id="@id/channel_set" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" />
+            <TextView android:textSize="13.0sp" android:textColor="@color/mix_set_text_color" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="139.0dip" android:text="@string/channel_equalization" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

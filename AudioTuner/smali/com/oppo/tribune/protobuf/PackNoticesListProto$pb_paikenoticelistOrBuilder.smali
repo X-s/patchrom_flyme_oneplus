@@ -1,0 +1,103 @@
+.class public interface abstract Lcom/oppo/tribune/protobuf/PackNoticesListProto$pb_paikenoticelistOrBuilder;
+.super Ljava/lang/Object;
+.source "PackNoticesListProto.java"
+
+# interfaces
+.implements Lcom/google/protobuf/MessageOrBuilder;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/oppo/tribune/protobuf/PackNoticesListProto;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x609
+    name = "pb_paikenoticelistOrBuilder"
+.end annotation
+
+
+# virtual methods
+.method public abstract getNoticelist(I)Lcom/oppo/tribune/protobuf/PackNoticesListProto$pb_paikenotice;
+.end method
+
+.method public abstract getNoticelistCount()I
+.end method
+
+.method public abstract getNoticelistList()Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List",
+            "<",
+            "Lcom/oppo/tribune/protobuf/PackNoticesListProto$pb_paikenotice;",
+            ">;"
+        }
+    .end annotation
+.end method
+
+.method public abstract getNoticelistOrBuilder(I)Lcom/oppo/tribune/protobuf/PackNoticesListProto$pb_paikenoticeOrBuilder;
+.end method
+
+.method public abstract getNoticelistOrBuilderList()Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List",
+            "<+",
+            "Lcom/oppo/tribune/protobuf/PackNoticesListProto$pb_paikenoticeOrBuilder;",
+            ">;"
+        }
+    .end annotation
+.end method
+
+.method public abstract getPage()I
+.end method
+
+.method public abstract getPerpage()I
+.end method
+
+.method public abstract getTotal()I
+.end method
+
+.method public abstract getUserlist(I)Lcom/oppo/tribune/protobuf/UserInfoProto$pb_user;
+.end method
+
+.method public abstract getUserlistCount()I
+.end method
+
+.method public abstract getUserlistList()Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List",
+            "<",
+            "Lcom/oppo/tribune/protobuf/UserInfoProto$pb_user;",
+            ">;"
+        }
+    .end annotation
+.end method
+
+.method public abstract getUserlistOrBuilder(I)Lcom/oppo/tribune/protobuf/UserInfoProto$pb_userOrBuilder;
+.end method
+
+.method public abstract getUserlistOrBuilderList()Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List",
+            "<+",
+            "Lcom/oppo/tribune/protobuf/UserInfoProto$pb_userOrBuilder;",
+            ">;"
+        }
+    .end annotation
+.end method
+
+.method public abstract hasPage()Z
+.end method
+
+.method public abstract hasPerpage()Z
+.end method
+
+.method public abstract hasTotal()Z
+.end method

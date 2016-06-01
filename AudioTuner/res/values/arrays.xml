@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="default_config">
+        <item>普通</item>
+        <item>弦乐</item>
+        <item>柔和低音</item>
+        <item>淳美</item>
+        <item>强劲</item>
+        <item>现场</item>
+        <item>母带预制</item>
+        <item>流行</item>
+        <item>响亮</item>
+        <item>家庭影院</item>
+        <item>打击乐</item>
+        <item>死亡金属</item>
+        <item>黑暗</item>
+        <item>清晰</item>
+        <item>经典V型</item>
+        <item>汽车立体</item>
+        <item>清冷</item>
+        <item>怀旧</item>
+    </string-array>
+    <string-array name="default_earphone_type">
+        <item>1+ original</item>
+        <item>MX985</item>
+        <item>momentum on ear</item>
+        <item>JBL合作款 E1+</item>
+        <item>入耳式耳机 MH127</item>
+    </string-array>
+    <string-array name="default_earphone_type_file">
+        <item>oneplus_original</item>
+        <item>MX985</item>
+        <item>momentum_on_ear</item>
+        <item>JBL_E1</item>
+        <item>MH127</item>
+    </string-array>
+    <string-array name="fileEndingImage">
+        <item>.png</item>
+        <item>.gif</item>
+        <item>.jpg</item>
+        <item>.jpeg</item>
+        <item>.bmp</item>
+    </string-array>
+    <string-array name="fileEndingAudio">
+        <item>.mp3</item>
+        <item>.wma</item>
+        <item>.wav</item>
+        <item>.ogg</item>
+        <item>.midi</item>
+        <item>.flac</item>
+        <item>.ape</item>
+    </string-array>
+    <string-array name="fileEndingVideo">
+        <item>.mp4</item>
+        <item>.rmvb</item>
+        <item>.avi</item>
+        <item>.flv</item>
+    </string-array>
+    <string-array name="fileEndingPackage">
+        <item>.apk</item>
+    </string-array>
+    <string-array name="fileEndingWebText">
+        <item>.htm</item>
+        <item>.html</item>
+        <item>.php</item>
+        <item>.jsp</item>
+    </string-array>
+    <string-array name="fileEndingText">
+        <item>.txt</item>
+        <item>.java</item>
+        <item>.c</item>
+        <item>.cpp</item>
+        <item>.py</item>
+        <item>.xml</item>
+        <item>.json</item>
+        <item>.log</item>
+    </string-array>
+    <string-array name="fileEndingWord">
+        <item>.doc</item>
+        <item>.docx</item>
+    </string-array>
+    <string-array name="fileEndingExcel">
+        <item>.xls</item>
+        <item>.xlsx</item>
+    </string-array>
+    <string-array name="fileEndingPPT">
+        <item>.ppt</item>
+        <item>.pptx</item>
+    </string-array>
+    <string-array name="fileEndingPdf">
+        <item>.pdf</item>
+    </string-array>
+    <string-array name="fileEndingZip">
+        <item>.jar</item>
+        <item>.zip</item>
+        <item>.rar</item>
+        <item>.gz</item>
+        <item>.img</item>
+    </string-array>
+    <string-array name="nonlegal_word">
+        <item>FUCK</item>
+        <item>fuck</item>
+        <item>三级片</item>
+        <item>他妈的</item>
+        <item>作弊</item>
+        <item>你必记得我</item>
+        <item>俄罗斯姑娘</item>
+        <item>先帝</item>
+        <item>公关</item>
+        <item>刻章</item>
+        <item>功臣面首</item>
+        <item>千年玄冰</item>
+        <item>命犯桃花</item>
+        <item>地磅</item>
+        <item>多年以后</item>
+        <item>大盗</item>
+        <item>天龙风流</item>
+        <item>套牌</item>
+        <item>女服务</item>
+        <item>女模</item>
+        <item>妖艳人生</item>
+        <item>妹服务</item>
+        <item>娃娃娘子</item>
+        <item>学生妹</item>
+        <item>小姐</item>
+        <item>小 姐</item>
+        <item>小 姐</item>
+        <item>小 姐</item>
+        <item>小 姐</item>
+        <item>小 姐</item>
+        <item>小 姐</item>
+        <item>小{1}姐</item>
+        <item>小{2}姐</item>
+        <item>小{3}姐</item>
+        <item>小{4}姐</item>
+        <item>小{5}姐</item>
+        <item>小{6}姐</item>
+        <item>小村神医</item>
+        <item>少龙风流</item>
+        <item>强奸</item>
+        <item>性爱</item>
+        <item>搶</item>
+        <item>操你妈</item>
+        <item>支付宝收</item>
+        <item>无限网络</item>
+        <item>春光辉荒野</item>
+        <item>普光网络</item>
+        <item>月赚千元</item>
+        <item>李洪志</item>
+        <item>枪</item>
+        <item>桃花依旧笑春风</item>
+        <item>江山绝色榜</item>
+        <item>法轮</item>
+        <item>法轮功</item>
+        <item>浑蛋</item>
+        <item>消防工程</item>
+        <item>淘寶網</item>
+        <item>漂亮宝贝</item>
+        <item>独步天下</item>
+        <item>甜蜜欧洲行</item>
+        <item>百家乐</item>
+        <item>票务</item>
+        <item>窃听</item>
+        <item>缺一门</item>
+        <item>美国主机</item>
+        <item>老{1}虎{1}机</item>
+        <item>老{2}虎{2}机</item>
+        <item>老{3}虎{3}机</item>
+        <item>老{4}虎{4}机</item>
+        <item>老虎机</item>
+        <item>老 虎机</item>
+        <item>老 虎 机</item>
+        <item>老 虎 机</item>
+        <item>老 虎 机</item>
+        <item>老 虎 机</item>
+        <item>老 虎机</item>
+        <item>老 虎 机</item>
+        <item>老 虎 机</item>
+        <item>老 虎 机</item>
+        <item>老 虎 机</item>
+        <item>老 虎机</item>
+        <item>老 虎 机</item>
+        <item>老 虎 机</item>
+        <item>老 虎 机</item>
+        <item>老 虎 机</item>
+        <item>老 虎机</item>
+        <item>老 虎 机</item>
+        <item>老 虎 机</item>
+        <item>老 虎 机</item>
+        <item>老 虎 机</item>
+        <item>老虎机</item>
+        <item>考试答案</item>
+        <item>自白书</item>
+        <item>花夭</item>
+        <item>花好月圆</item>
+        <item>荡妇房东</item>
+        <item>葯</item>
+        <item>証</item>
+        <item>證</item>
+        <item>订票</item>
+        <item>赌</item>
+        <item>走私</item>
+        <item>迷药</item>
+        <item>透视</item>
+        <item>采花传</item>
+        <item>银行卡复制器</item>
+        <item>預定電話</item>
+        <item>预定电话</item>
+        <item>驾崩</item>
+        <item>鬼刹君心</item>
+        <item>黑车</item>
+        <item>垃圾</item>
+        <item>游行</item>
+        <item>坑爹</item>
+    </string-array>
+    <string-array name="rating_add_note">
+        <item>加音符</item>
+        <item>减音符</item>
+    </string-array>
+    <string-array name="resdown_item_title">
+        <item>精品游戏推荐</item>
+        <item>精品软件推荐</item>
+        <item>温馨主题推荐</item>
+        <item>无损音乐推荐</item>
+    </string-array>
+    <string-array name="resdown_item_description">
+        <item>精彩游戏，玩转你的手机，点亮你的游戏世界。</item>
+        <item>精品软件，生活、工具、社交、出行一网打尽。</item>
+        <item>温馨主题，给你的手机换换肤，感受OPPO魅力。</item>
+        <item>精品音乐，海量无损音质，属于你私人的音乐厅。</item>
+    </string-array>
+    <string-array name="setting_fontsize_type">
+        <item>大字</item>
+        <item>中字</item>
+        <item>小字</item>
+    </string-array>
+    <string-array name="usermsg_item_title">
+        <item>新提醒</item>
+        <item>已发布</item>
+        <item>已回复</item>
+        <item>已收藏</item>
+        <item>已点评</item>
+    </string-array>
+    <string-array name="product_service_item_title">
+        <item>在线咨询</item>
+        <item>产品中心</item>
+        <item>售后信息</item>
+        <item>常见问题</item>
+        <item>产品VIP注册</item>
+    </string-array>
+    <string-array name="product_service_item_tips">
+        <item>手机产品问题答疑</item>
+        <item>OPPO机型图片展示、参数介绍</item>
+        <item>查询售后热线、服务网点及政策</item>
+        <item>手机常见问题解决方案</item>
+        <item>产品注册免费获取O币</item>
+    </string-array>
+    <string-array name="sales_item_title">
+        <item>我的问题</item>
+        <item>在线提问</item>
+        <item>搜索问题</item>
+        <item>手机常见问题</item>
+        <item>OPPO售后服务热线</item>
+        <item>OPPO售后服务网点</item>
+        <item>OPPO手机服务政策</item>
+        <item>产品注册</item>
+    </string-array>
+    <string-array name="more_item_title">
+        <item>官方消息</item>
+        <item>设置</item>
+        <item>意见反馈</item>
+        <item>关于</item>
+        <item>检查更新</item>
+    </string-array>
+    <string-array name="setting_item_title">
+        <item>自动加载“更多”</item>
+        <item>允许点击大图</item>
+        <item>自动提醒</item>
+        <item>文字模式</item>
+        <item>字体大小</item>
+        <item>关于</item>
+    </string-array>
+    <string-array name="setting_item_explain">
+        <item>到达底部时自动加载“更多”内容</item>
+        <item>浏览内容中的图片可以选择是否放大</item>
+        <item>在线提问后收到回复自动提醒</item>
+        <item>非wifi连接时显示默认图片以节省流量</item>
+        <item>内容中字体大小的调节</item>
+        <item>OPPO乐园相关信息</item>
+    </string-array>
+    <string-array name="share_to_item">
+        <item>短信</item>
+        <item>邮件</item>
+    </string-array>
+    <string-array name="photo_to_item">
+        <item>相机</item>
+        <item>相册</item>
+    </string-array>
+    <string-array name="sales_webside_province">
+        <item>安徽</item>
+        <item>北京</item>
+        <item>福建</item>
+        <item>甘肃</item>
+        <item>广东</item>
+        <item>广西</item>
+        <item>贵州</item>
+        <item>海南</item>
+        <item>河北</item>
+        <item>河南</item>
+        <item>黑龙江</item>
+        <item>湖北</item>
+        <item>湖南</item>
+        <item>吉林</item>
+        <item>江苏</item>
+        <item>江西</item>
+        <item>辽宁</item>
+        <item>内蒙古</item>
+        <item>宁夏</item>
+        <item>青海</item>
+        <item>山东</item>
+        <item>山西</item>
+        <item>陕西</item>
+        <item>上海</item>
+        <item>四川</item>
+        <item>天津</item>
+        <item>西藏</item>
+        <item>新疆</item>
+        <item>云南</item>
+        <item>浙江</item>
+        <item>重庆</item>
+    </string-array>
+    <string-array name="homepage_recommed_bg_title_array">
+        <item>默认背景</item>
+        <item>麦田守望</item>
+        <item>金色麦穗</item>
+        <item>淡雅花香</item>
+        <item>金色沙丘</item>
+        <item>彩色天际</item>
+        <item>高楼耸立</item>
+        <item>金秋雏菊</item>
+        <item>白色世界</item>
+        <item>喜迎新春</item>
+    </string-array>
+</resources>

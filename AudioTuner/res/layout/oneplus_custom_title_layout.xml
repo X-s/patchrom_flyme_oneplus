@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/op_titlebar_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/op_titlebar_height" android:layout_marginLeft="@dimen/op_border_margin" android:layout_marginRight="@dimen/op_border_margin">
+        <ImageView android:id="@id/back" android:background="?android:selectableItemBackgroundBorderless" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/ic_titlebar_back" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/op_titlebar_text_size" android:textColor="@color/op_titlebar_text_color" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/op_border_margin" android:layout_toRightOf="@id/back" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/menu_one" android:background="?android:selectableItemBackgroundBorderless" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/ic_titlebar_diaodiao" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/menu_two" android:background="?android:selectableItemBackgroundBorderless" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/op_titlebar_icon_margin" android:src="@drawable/ic_titlebar_search" android:layout_toLeftOf="@id/menu_one" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

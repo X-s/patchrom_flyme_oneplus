@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="@dimen/normal_list_itme_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:id="@id/refresh_list_header_progressbar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/refresh_header_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/goicon" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:id="@id/refresh_list_header_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/refresh_list_header_progressbar" />
+    <TextView android:id="@id/refresh_list_header_last_update" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/refresh_list_header_progressbar" android:layout_below="@id/refresh_list_header_text" />
+</LinearLayout>

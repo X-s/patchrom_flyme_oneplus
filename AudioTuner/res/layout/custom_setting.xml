@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/custom_config_spinner" android:background="@drawable/choose_spinner_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="100.0px" android:layout_alignParentTop="true">
+        <TextView android:textSize="45.0px" android:textColor="#ff404040" android:gravity="center" android:id="@id/custom_config_textview" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/spinner_choose_config" />
+        <ImageView android:layout_gravity="bottom|center|right" android:id="@id/list_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/spinner_ic" android:layout_centerVertical="true" />
+    </FrameLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/change_panel" android:background="#ff514fad" android:layout_width="fill_parent" android:layout_height="37.0dip" android:layout_below="@id/custom_config_spinner">
+        <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/eq_button" android:background="?android:selectableItemBackground" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/eq_adjust" android:layout_weight="1.0" />
+        <TextView android:textSize="13.0sp" android:textColor="#89ffffff" android:gravity="center" android:id="@id/moresetting_button" android:background="?android:selectableItemBackground" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/param_setting" android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout android:id="@id/status_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_below="@id/change_panel">
+        <View android:id="@id/eq_status" android:background="@color/divide_line_color" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <View android:id="@id/moresetting_button_status" android:background="@color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout android:id="@id/bottom" android:background="#ff1b1f2d" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="16.0sp" android:textColor="#8affffff" android:gravity="center" android:layout_gravity="center" android:id="@id/save" android:background="?android:selectableItemBackground" android:visibility="visible" android:layout_width="120.0dip" android:layout_height="50.0dip" android:text="@string/saveas" android:layout_weight="1.0" />
+        <TextView android:textSize="16.0sp" android:textColor="#8affffff" android:gravity="center" android:id="@id/share" android:background="?android:selectableItemBackground" android:layout_width="120.0dip" android:layout_height="50.0dip" android:text="@string/share" android:layout_weight="1.0" />
+        <TextView android:textSize="16.0sp" android:textColor="#8affffff" android:gravity="center" android:id="@id/reset" android:background="?android:selectableItemBackground" android:layout_width="120.0dip" android:layout_height="50.0dip" android:text="@string/reset" android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/eq_panel" android:background="#ff1e2233" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/bottom" android:layout_below="@id/status_layout">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.oneplus.tuner.view.HLWaveFormBackground android:id="@id/hwfb" android:background="@drawable/waveformbg" android:layout_width="fill_parent" android:layout_height="120.0dip">
+                <com.oneplus.tuner.view.HLWaveFormFigure android:layout_gravity="center_vertical" android:id="@id/hwf" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="96.0dip" />
+            </com.oneplus.tuner.view.HLWaveFormBackground>
+            <ImageView android:id="@id/music_bt_test" android:background="?android:selectableItemBackground" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="92.0dip" android:layout_marginRight="32.0dip" android:src="@drawable/ic01_play" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+            <include android:id="@id/horizontal_scroll_seekbar_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="46.0dip" android:layout_below="@id/hwfb" layout="@layout/horizontal_scroll_seekbar" />
+"
+            
+                -->
+<ImageView android:id="@id/wavesmaxxaudio" android:background="@drawable/logo01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_marginBottom="6.5dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <com.oneplus.tuner.view.CustomConfigScrollView android:id="@id/moresetting_panel" android:background="#ff1e2233" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/bottom" android:layout_below="@id/status_layout">
+        <include layout="@layout/custom_more_setting" />
+    </com.oneplus.tuner.view.CustomConfigScrollView>
+</RelativeLayout>

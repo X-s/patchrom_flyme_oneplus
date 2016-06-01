@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/custom_alert_dialog_bg" android:layout_width="@dimen/custom_dialog_width" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <LinearLayout android:orientation="vertical" android:id="@id/dialog_head_layout" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <TextView android:textSize="@dimen/custom_dialog_title_size" android:textColor="@color/custom_dialog_title_color" android:gravity="center" android:id="@id/dialog_title" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <ImageView android:background="#ff008f59" android:layout_width="fill_parent" android:layout_height="1.3299866dip" android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:id="@id/dialog_content" android:paddingLeft="13.0dip" android:paddingRight="13.0dip" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/custom_dialog_message_size" android:textColor="@color/custom_dialog_message_color" android:id="@id/dialog_message" android:paddingLeft="2.0dip" android:paddingTop="13.0dip" android:paddingRight="2.0dip" android:paddingBottom="13.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/dialog_footer" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <ImageView android:background="@drawable/dialog_divider_h" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <LinearLayout android:gravity="bottom|center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <Button android:textSize="@dimen/custom_dialog_btn_size" android:textColor="@color/custom_dialog_button_color" android:gravity="center" android:id="@id/dialog_btn_yes" android:background="@drawable/dialog_btn_left_selector" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" android:layout_weight="1.0" />
+                <ImageView android:layout_gravity="center_horizontal" android:id="@id/dialog_btn_divider" android:background="@drawable/dialog_divider_v" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+                <Button android:textSize="@dimen/custom_dialog_btn_size" android:textColor="@color/custom_dialog_button_color" android:gravity="center" android:id="@id/dialog_btn_no" android:background="@drawable/dialog_btn_right_selector" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="0.0dip" android:singleLine="true" android:layout_weight="1.0" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

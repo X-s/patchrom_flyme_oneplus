@@ -1,0 +1,416 @@
+DROP TABLE IF EXISTS [common_question];
+DROP TABLE IF EXISTS [forum_advertise];
+DROP TABLE IF EXISTS [forum_hots];
+DROP TABLE IF EXISTS [forum_news];
+DROP TABLE IF EXISTS [forum_product_dateline];
+DROP TABLE IF EXISTS [forum_product_lastpost];
+DROP TABLE IF EXISTS [forum_product_recommend];
+DROP TABLE IF EXISTS [forum_search];
+DROP TABLE IF EXISTS [gallery];
+DROP TABLE IF EXISTS [resource_category];
+DROP TABLE IF EXISTS [theme_type];
+DROP TABLE IF EXISTS [user_comment];
+DROP TABLE IF EXISTS [user_medal];
+DROP TABLE IF EXISTS [user_posts];
+DROP TABLE IF EXISTS [user_question];
+DROP TABLE IF EXISTS [user_signin];
+
+DROP TABLE IF EXISTS [forum_type];
+CREATE TABLE [forum_type] (
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [groupid] INTEGER NOT NULL, 
+  [forumid] INTEGER NOT NULL, 
+  [forumname] TEXT NOT NULL, 
+  [subforumid] INTEGER, 
+  [subforumname] TEXT);
+
+DROP TABLE IF EXISTS [cookie];
+CREATE TABLE [cookie] (
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT, 
+  [name] TEXT NOT NULL, 
+  [value] TEXT NOT NULL, 
+  [expires] INTEGER, 
+  [path] TEXT, 
+  [domain] TEXT, 
+  [host] TEXT);
+  
+DROP TABLE IF EXISTS [user_replies];
+CREATE TABLE [user_replies] (
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [page] INTEGER NOT NULL,
+  [uid] INTEGER NOT NULL,
+  [authorid] INTEGER NOT NULL DEFAULT (0),
+  [tid] INTEGER NOT NULL,
+  [pid] INTEGER NOT NULL,  
+  [fid] INTEGER NOT NULL,
+  [invisible] INTEGER DEFAULT (0),
+  [dateline] TEXT,
+  [message] TEXT,
+  [subject] TEXT NOT NULL,
+  [attachment] INTEGER DEFAULT (0),
+  [replies] INTEGER DEFAULT (0),
+  [views] INTEGER DEFAULT (0),
+  [lastposter] TEXT,
+  [lastpost] TEXT,
+  [displayorder] INTEGER, 
+  [id] INTEGER,
+  [forumname] TEXT);
+
+DROP TABLE IF EXISTS [user_collect];
+CREATE TABLE [user_collect] (
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [page] INTEGER NOT NULL,
+  [uid] INTEGER NOT NULL,
+  [url] TEXT NOT NULL, 
+  [title] TEXT, 
+  [description] TEXT, 
+  [dateline] TEXT, 
+  [durl] TEXT, 
+  [dtitle] TEXT);
+
+DROP TABLE IF EXISTS [simple_thread];
+CREATE TABLE [simple_thread] (
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [fidtype] INTEGER,
+  [page] INTEGER,  
+  [author] TEXT,
+  [authorid] INTEGER,  
+  [groupid] INTEGER,
+  [isfollowing] INTEGER,
+  [subject] TEXT,  
+  [summary] TEXT,  
+  [dateline] INTEGER,   
+  [replies] INTEGER,
+  [imgs] TEXT,
+  [attachment] INTEGER,
+  [tid] INTEGER NOT NULL DEFAULT 0,
+  [fid] INTEGER NOT NULL DEFAULT 0,  
+  [views] INTEGER NOT NULL DEFAULT 0,
+  [praise] INTEGER NOT NULL DEFAULT 0,
+  [islike] INTEGER NOT NULL DEFAULT 0,
+  [sourcetype] INTEGER,
+  [common_forumname] TEXT,
+  [common_picurl] TEXT,
+  [category_id] INTEGER,
+  [download_num] INTEGER,
+  [local] INTEGER);
+
+DROP TABLE IF EXISTS [square_forum];
+CREATE TABLE [square_forum](
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [id] INTEGER,
+  [relateid] INTEGER,
+  [title] TEXT,
+  [description] TEXT,
+  [icon_url] TEXT,
+  [type] INTEGER NOT NULL,
+  [topicid] INTEGER,
+  [topic] TEXT,
+  [ispost] INTEGER,
+  [position] INTEGER,
+  [mobile] TEXT);
+
+DROP TABLE IF EXISTS [app_resource_album];
+CREATE TABLE [app_resource_album](
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [album_id] INTEGER NOT NULL,
+  [name] TEXT,
+  [title] TEXT,
+  [author] TEXT,
+  [mcimg] TEXT,
+  [releasetime] TEXT,
+  [detail] TEXT,
+  [apk_type] TEXT,
+  [page] INTEGER);
+  
+DROP TABLE IF EXISTS [app_resource];
+CREATE TABLE [app_resource](
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [app_id] INTEGER NOT NULL,
+  [album_id] INTEGER,
+  [name] TEXT,
+  [package] TEXT,
+  [version_name] TEXT,
+  [version_number] TEXT,
+  [description] TEXT,
+  [author] TEXT,
+  [release_time] INTEGER,
+  [file_size] TEXT,
+  [downloads] TEXT,
+  [views] TEXT,
+  [file_url] TEXT,
+  [icon_url] TEXT,
+  [apk_type] TEXT,
+  [praise] INTEGER,
+  [poor] INTEGER,
+  [nearme_id] INTEGER,
+  [extra] TEXT);
+  
+DROP TABLE IF EXISTS [app_screen_shot];
+CREATE TABLE [app_screen_shot](
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [app_id] INTEGER NOT NULL,
+  [album_id] INTEGER,
+  [apk_type] TEXT,
+  [small_url] TEXT,
+  [middle_url] TEXT,
+  [big_url] TEXT);
+  
+DROP TABLE IF EXISTS [app_stat];
+CREATE TABLE [app_stat](
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [app_id] INTEGER NOT NULL,
+  [stat_type] INTEGER,
+  [nearme_id] INTEGER,
+  [praise] INTEGER,
+  [poor] INTEGER,
+  [praise_poor] INTEGER,
+  [down_need_stat] INTEGER,
+  [record_time] INTEGER);
+  
+DROP TABLE IF EXISTS [music_album];
+CREATE TABLE [music_album](
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [album_id] INTEGER NOT NULL,
+  [name] TEXT,
+  [sharer] TEXT,
+  [release_time] INTEGER,
+  [description] TEXT,
+  [cover_url] TEXT,
+  [page] INTEGER);
+  
+DROP TABLE IF EXISTS [music_song];
+CREATE TABLE [music_song](
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [music_id] INTEGER NOT NULL,
+  [album_id] INTEGER,
+  [name] TEXT,
+  [singer] TEXT,
+  [format] TEXT,
+  [sharer] TEXT,
+  [release_time] INTEGER,
+  [file_size] TEXT,
+  [file_url] TEXT,
+  [downloads] TEXT);
+
+DROP TABLE IF EXISTS [signin_record];
+CREATE TABLE [signin_record] (
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [uid] INTEGER NOT NULL,  
+  [username] TEXT NOT NULL, 
+  [password] TEXT, 
+  [remember_password] INTEGER DEFAULT 0,
+  [auto_signin] INTEGER DEFAULT 0);
+  
+DROP TABLE IF EXISTS [square_advertise];
+CREATE TABLE [square_advertise](
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [ad_id] INTEGER NOT NULL,
+  [title] TEXT,
+  [relateid] INTEGER,
+  [url] TEXT,
+  [type] INTEGER);
+
+DROP TABLE IF EXISTS [gallery_img];
+CREATE TABLE [gallery_img](
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [galleryid] INTEGER,
+  [imgid] INTEGER,
+  [title] TEXT,
+  [relateid] INTEGER,
+  [url] TEXT,
+  [picurl] TEXT,
+  [type] INTEGER);
+  
+DROP TABLE IF EXISTS [friend];
+CREATE TABLE [friend](
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [uid] INTEGER NOT NULL,
+  [name] TEXT NOT NULL,
+  [age] INTEGER,
+  [sex] INTEGER,
+  [attented] INTEGER NOT NULL,
+  [group_id] INTEGER,
+  [group_name] TEXT,
+  [constellation] TEXT,
+  [dateline] INTEGER,
+  [address] TEXT,
+  [avatar] TEXT,
+  [friend_type] INTEGER,
+  [host_uid] INTEGER,
+  [page] INTEGER);
+
+DROP TABLE IF EXISTS [signin_user]; 
+CREATE TABLE [signin_user] (
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [uid] INTEGER NOT NULL,
+  [username] TEXT NOT NULL,
+  [realname] TEXT,
+  [headurl] TEXT,  
+  [gender] INTEGER,
+  [constellation] TEXT,
+  [city] TEXT,
+  [birthyear] INTEGER,
+  [birthmonth] INTEGER,
+  [birthday] INTEGER,
+  [age] INTEGER,
+  [level] INTEGER,
+  [levelname] TEXT,
+  [credit] INTEGER,
+  [follower] INTEGER,
+  [following] INTEGER,
+  [bg_type] INTEGER,
+  [bg_url] TEXT,
+  [mood] TEXT,
+  [sharenum] INTEGER,
+  [likednum] INTEGER,
+  [likesnum] INTEGER);
+  
+
+DROP TABLE IF EXISTS [friend_feed]; 
+CREATE TABLE [friend_feed] (
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [feedid] INTEGER,
+  [type] INTEGER,
+  [relateid] INTEGER,
+  [title] TEXT,
+  [content] TEXT,
+  [imglist] TEXT,
+  [uid] INTEGER NOT NULL,
+  [username] TEXT,
+  [age] INTEGER,
+  [city] TEXT,
+  [constellation] TEXT,
+  [headurl] TEXT,  
+  [dateline] TEXT,  
+  [comment] INTEGER,
+  [share] INTEGER,
+  [praise] INTEGER,
+  [islike] INTEGER, 
+  [source] TEXT,
+  [ext] TEXT,
+  [subtype] INTEGER,
+  [sourcetype] INTEGER,
+  [page] INTEGER);
+  
+DROP TABLE IF EXISTS [packshow_topic];
+CREATE TABLE [packshow_topic] (
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [id] INTEGER NOT NULL,
+  [title] TEXT,
+  [desc] TEXT,
+  [pic] TEXT,
+  [pic1] TEXT,
+  [page] INTEGER);
+
+DROP TABLE IF EXISTS [province];
+CREATE TABLE [province] (
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [province_code] INTEGER NOT NULL,
+  [province_name] TEXT NOT NULL);
+
+DROP TABLE IF EXISTS [city];
+CREATE TABLE [city] (
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [city_code] INTEGER NOT NULL,
+  [city_name] TEXT NOT NULL,
+  [province_code] INTEGER);
+  
+DROP TABLE IF EXISTS [last_user_signin];
+CREATE TABLE [last_user_signin](
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [uid] INTEGER NOT NULL,
+  [username] TEXT,
+  [new_notices] INTEGER,
+  [show_notices] INTEGER DEFAULT 1);
+  
+DROP TABLE IF EXISTS [remind_count];
+CREATE TABLE [remind_count](
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [friend] INTEGER DEFAULT 0,
+  [visitor] INTEGER DEFAULT 0,
+  [square_remind] INTEGER DEFAULT 0,
+  [pack_remind] INTEGER DEFAULT 0,
+  [pack_reply] INTEGER DEFAULT 0,
+  [reply_count] INTEGER DEFAULT 0,
+  [coll_count] INTEGER DEFAULT 0,
+  [ou_bi] INTEGER DEFAULT 0,
+  [follow_feed] INTEGER DEFAULT 0,
+  [followers] INTEGER DEFAULT 0,
+  [followings] INTEGER DEFAULT 0,
+  [yin_fu] INTEGER DEFAULT 0,
+  [sign_days] INTEGER DEFAULT 0,
+  [sign_lasted] INTEGER DEFAULT 0,
+  [issign] INTEGER DEFAULT 0);
+  
+DROP TABLE IF EXISTS [search_record];
+CREATE TABLE [search_record](
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [type] INTEGER DEFAULT 0,
+  [key] TEXT NOT NULL);
+  
+DROP TABLE IF EXISTS [product_center];
+CREATE TABLE [product_center](
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [product_id] INTEGER NOT NULL,
+  [fid] INTEGER,
+  [name] TEXT,
+  [description] TEXT,
+  [serial] INTEGER,
+  [is_new] INTEGER,
+  [icon_url] TEXT,  
+  [image_urls] TEXT);
+  
+DROP TABLE IF EXISTS [service];
+CREATE TABLE [service] (
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT, 
+  [province] TEXT NOT NULL, 
+  [city] TEXT NOT NULL, 
+  [netname] TEXT, 
+  [addr] TEXT, 
+  [phone] TEXT, 
+  [coordinate] TEXT, 
+  [traffic] TEXT, 
+  [worktime] TEXT);
+  
+  DROP TABLE IF EXISTS [store_info];
+CREATE TABLE [store_info](
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,  
+  [sid] TEXT,
+  [areaname] TEXT,
+  [area_id] TEXT,
+  [cityname] TEXT,
+  [city_id] TEXT,
+  [netname] TEXT,
+  [phone_number] TEXT,
+  [addr] TEXT,
+  [ntype] TEXT,
+  [otherinfo] TEXT,
+   [weight] TEXT,
+  [coordinate] TEXT,
+  [haspic] TEXT,
+  [zoom] TEXT,
+  [traffic] TEXT,
+  [postal] TEXT,
+  [worktime] TEXT,
+  [isshow] TEXT,
+  [pic_url] TEXT);
+  
+DROP TABLE IF EXISTS [store_region];
+CREATE TABLE [store_region](
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,  
+  [region_name] TEXT,
+  [region_id] TEXT,
+  [parent_id] TEXT,
+  [region_type] TEXT);
+  
+DROP TABLE IF EXISTS [config_num];
+CREATE TABLE [config_num](
+  [_id] INTEGER PRIMARY KEY AUTOINCREMENT,
+  [type_id] INTEGER,  
+  [config_num] INTEGER,
+  [type] TEXT,
+  [brand_id] INTEGER,
+  [request_num] INTEGER);
+
+  

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@color/main_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/brand_list" android:background="@color/brand_list_bg" android:layout_width="389.0px" android:layout_height="fill_parent" android:divider="@drawable/brand_list_divider" android:dividerHeight="1.0dip" />
+    <ListView android:scrollbarStyle="outsideOverlay" android:id="@id/model_list" android:background="@color/model_list_bg" android:paddingLeft="40.0px" android:paddingRight="41.0px" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@drawable/brand_list_divider" android:dividerHeight="1.0dip">
+"
+</ListView>
+</LinearLayout>

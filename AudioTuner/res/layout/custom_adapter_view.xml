@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@android:id/content" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/inner_content" android:background="@drawable/activated_background" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="28.0px" android:layout_marginRight="28.0px">
+        <LinearLayout android:orientation="horizontal" android:id="@id/top" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="30.0px" android:textColor="#ff5d5d5d" android:ellipsize="end" android:id="@id/earphone" android:paddingLeft="28.0px" android:paddingTop="11.0px" android:paddingBottom="11.0px" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:text="@string/current_earphone" android:singleLine="true" />
+            <TextView android:textSize="30.0px" android:textColor="#ff5d5d5d" android:ellipsize="end" android:gravity="center|right" android:id="@id/official_config" android:paddingTop="11.0px" android:paddingRight="28.0px" android:paddingBottom="11.0px" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/official_config" android:singleLine="true" android:layout_alignParentRight="true" />
+        </LinearLayout>
+        <RelativeLayout android:id="@id/mid" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="171.0px" android:layout_below="@id/top">
+            <TextView android:textSize="48.0px" android:textColor="#ff333333" android:id="@id/commend_info" android:layout_width="850.0px" android:layout_height="wrap_content" android:layout_marginLeft="28.0px" android:layout_marginTop="24.0px" android:singleLine="true" />
+            <ImageView android:gravity="right" android:id="@id/commend_image" android:background="@drawable/laud" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0px" android:layout_alignParentRight="true" />
+            <TextView android:textSize="30.0px" android:textColor="#ff5d5d5d" android:gravity="right" android:id="@id/num" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="65.0px" android:layout_marginRight="30.0px" android:layout_alignParentRight="true" />
+            <TextView android:textSize="30.0px" android:textColor="#775d5d5d" android:id="@id/time" android:paddingTop="20.0px" android:paddingBottom="20.0px" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="32.0px" android:text="@string/ok" android:layout_below="@id/commend_info" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+            <TextView android:textSize="30.0px" android:textColor="#775d5d5d" android:id="@id/user_name" android:paddingTop="20.0px" android:paddingBottom="20.0px" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="66.0px" android:text="@string/oppo" android:layout_toLeftOf="@id/time" android:layout_below="@id/commend_info" android:layout_alignTop="@id/time" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/expand_layout" android:background="@drawable/button_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="100.0px" android:layout_below="@id/mid">
+            <RelativeLayout android:id="@id/use_layout" android:background="@drawable/left_item_button_bg" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="-6.0px" android:layout_marginBottom="-8.0px" android:layout_weight="1.0">
+                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                    <ImageView android:id="@id/use_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/use_icon" />
+                    <TextView android:textSize="30.0px" android:textColor="#ff3c81a1" android:gravity="center_vertical" android:id="@id/use_button" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/use_str" android:singleLine="true" />
+                </LinearLayout>
+            </RelativeLayout>
+            <ImageView android:id="@id/item_use_divider" android:background="@drawable/oper_index_separate_line" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+            <RelativeLayout android:id="@id/modify_layout" android:background="@drawable/middle_item_button_bg" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="1.0dip" android:layout_marginBottom="-8.0px" android:layout_weight="1.0">
+                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_centerInParent="true">
+                    <ImageView android:id="@id/modify_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/modify_icon" />
+                    <TextView android:textSize="30.0px" android:textColor="#ff3c81a1" android:gravity="center_vertical" android:id="@id/modify_button" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/modify_str" android:singleLine="true" />
+                </LinearLayout>
+            </RelativeLayout>
+            <ImageView android:id="@id/item_modify_divider" android:background="@drawable/oper_index_separate_line" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+            <RelativeLayout android:id="@id/rename_layout" android:background="@drawable/middle_item_button_bg" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="1.0dip" android:layout_marginBottom="-8.0px" android:layout_weight="1.0">
+                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_centerInParent="true">
+                    <ImageView android:id="@id/rename_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/rename_icon" />
+                    <TextView android:textSize="30.0px" android:textColor="#ff3c81a1" android:gravity="center_vertical" android:id="@id/rename_button" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/rename_str" android:singleLine="true" />
+                </LinearLayout>
+            </RelativeLayout>
+            <ImageView android:id="@id/item_rename_divider" android:background="@drawable/oper_index_separate_line" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+            <RelativeLayout android:id="@id/delete_layout" android:background="@drawable/right_item_button_bg" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="1.0dip" android:layout_marginRight="-6.0px" android:layout_marginBottom="-8.0px" android:layout_weight="1.0">
+                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_centerInParent="true">
+                    <ImageView android:id="@id/delete_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/load_and_use_icon" />
+                    <TextView android:textSize="30.0px" android:textColor="#ff3c81a1" android:gravity="center_vertical" android:id="@id/delete_button" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/delete_str" android:singleLine="true" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

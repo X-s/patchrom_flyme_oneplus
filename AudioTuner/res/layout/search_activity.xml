@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText android:id="@id/search_edit" android:layout_width="fill_parent" android:layout_height="50.0dip" android:hint="input search key" android:inputType="text" android:imeOptions="actionSearch" />
+    <TextView android:id="@id/current_earphone" android:background="#ffff8877" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/history_info" />
+    <TextView android:background="#ff446699" android:layout_width="fill_parent" android:layout_height="30.0dip" android:text="@string/history" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:id="@id/list" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <TextView android:textColor="#ff000000" android:gravity="center" android:id="@android:id/empty" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/empty" />
+    </FrameLayout>
+</LinearLayout>

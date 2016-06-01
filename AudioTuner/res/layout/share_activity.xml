@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/main_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/sharetoselectearphone" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="72.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="#df000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/current_adaptive_earphone" />
+            <TextView android:textSize="13.0sp" android:textColor="#8a000000" android:id="@id/current_earphone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View android:background="@color/divide_line_color" android:layout_width="fill_parent" android:layout_height="0.33000004dip" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/effectcategorylayout" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="72.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="#df000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/op_share_effectcategory" />
+            <TextView android:textSize="13.0sp" android:textColor="#8a000000" android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:id="@id/effectcategory" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/op_choose_soundtype_title" />
+        </LinearLayout>
+        <View android:background="@color/divide_line_color" android:layout_width="fill_parent" android:layout_height="0.33000004dip" />
+        <LinearLayout android:orientation="vertical" android:id="@id/effecttitle" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="72.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="#df000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/nameing" />
+            <EditText android:textSize="13.0sp" android:textColor="#8a000000" android:id="@id/nameing_editor" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/nameing" android:singleLine="true" android:textCursorDrawable="@null" />
+        </LinearLayout>
+        <View android:layout_gravity="center_horizontal" android:background="#ffdadada" android:layout_width="328.0dip" android:layout_height="1.0dip" />
+        <LinearLayout android:orientation="vertical" android:id="@id/effectintroduction" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="72.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="#df000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/op_share_effectintroductiontitle" />
+            <EditText android:textSize="13.0sp" android:textColor="#8a000000" android:id="@id/fill_introduction_editor" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/more_introduction" android:maxLength="140" android:textCursorDrawable="@null" />
+        </LinearLayout>
+        <View android:layout_gravity="center_horizontal" android:background="#ffdadada" android:layout_width="328.0dip" android:layout_height="1.0dip" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <CheckBox android:id="@id/effectshare" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:checked="true" />
+                <TextView android:textSize="16.0sp" android:textColor="#df000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="24.0dip" android:text="@string/op_share_share" />
+            </LinearLayout>
+            <Button android:textSize="20.0sp" android:textColor="#ffffffff" android:id="@id/real_share_button" android:background="@drawable/button_save" android:layout_width="298.0dip" android:layout_height="43.0dip" android:layout_marginLeft="31.0dip" android:layout_marginTop="72.0dip" android:layout_marginRight="31.0dip" android:text="@string/share" />
+            <Button android:textSize="45.0px" android:textColor="#ff4f504e" android:id="@id/cancel_share_button" android:background="@drawable/button_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/cancel" android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

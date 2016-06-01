@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/group_list_item_background" android:layout_width="fill_parent" android:layout_height="@dimen/offical_item_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/op_category_item_name_text_size" android:textColor="@color/op_listitem_title_color" android:id="@id/name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/op_category_item_middle_margin" />
+    <TextView android:layout_width="0.0dip" android:layout_height="@dimen/offical_item_height" android:layout_weight="1.0" />
+</LinearLayout>

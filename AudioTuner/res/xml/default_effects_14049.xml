@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<default>
+    <effect name="Pop" describe="Most balanced EQ mode set as default for most common pop music" mediatypenumber="0" value="0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#3.0#0.0#0.0#25.0#45.0#65.0#0.0" />
+    <effect name="Metal" describe="Heavy metal with mainly electric guitar" mediatypenumber="1" value="0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#30.0#40.0#50.0#0.0" />
+    <effect name="Country" describe="Indie folk with mainly ukulele or guitar" mediatypenumber="2" value="0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#3.0#15.0#0.0#15.0#45.0#73.0#0.0" />
+    <effect name="Jazz minor" describe="Jazz mostly uses drums and wind instruments" mediatypenumber="3" value="0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#3.0#20.0#0.0#25.0#45.0#60.0#0.0" />
+    <effect name="EDM" describe="Techno with strong bass and dance music with a strong beat" mediatypenumber="4" value="0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#25.0#0.0#30.0#47.0#72.0#0.0" />
+    <effect name="Symphony" describe="Details and layers are emphasized in bigger orchestra music" mediatypenumber="5" value="0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#3.0#0.0#0.0#20.0#40.0#68.0#0.0" />
+    <effect name="Ethnic" describe="Ethnic music that emphasizes humming such as Tibetan urtiin duu" mediatypenumber="6" value="0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#3.0#20.0#0.0#30.0#35.0#70.0#0.0" />
+    <effect name="Light music" describe="Usually soothing instrumental music such as piano music" mediatypenumber="7" value="0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#3.0#15.0#0.0#15.0#47.0#65.0#0.0" />
+    <effect name="Vocal chorus" describe="A cappella choral accompaniment" mediatypenumber="8" value="0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#0.0#3.0#20.0#0.0#35.0#50.0#73.0#0.0" />
+</default>

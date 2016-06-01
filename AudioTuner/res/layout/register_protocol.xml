@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/normal_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:id="@id/register_portocol_scroll" android:paddingTop="@dimen/community_head_view_padding" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="-4.0dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/protocol_text_textSize" android:textColor="@color/black_color" android:gravity="left" android:id="@id/protocol_text" android:padding="@dimen/protocol_text_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/register_protocol_fail" />
+        </LinearLayout>
+    </ScrollView>
+    <com.oppo.tribune.ui.CommunityHeadView android:orientation="horizontal" android:id="@id/main_tribune_head" android:layout_width="fill_parent" android:layout_height="@dimen/community_head_view_height" />
+</RelativeLayout>

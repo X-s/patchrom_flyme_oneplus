@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/back" android:background="?android:selectableItemBackgroundBorderless" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/op_border_margin" android:layout_marginRight="@dimen/op_border_margin" android:src="@drawable/ic_titlebar_back" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <SearchView android:id="@id/search_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/back" android:inputType="textCapWords" android:imeOptions="actionSearch" android:iconifiedByDefault="true" android:queryHint="@string/search_hint_txt" />
+</RelativeLayout>

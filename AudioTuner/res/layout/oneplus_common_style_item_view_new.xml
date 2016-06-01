@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/grand" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/op_pic_common_style_bg_category_bg" android:layout_width="163.29999dip" android:layout_height="163.29999dip" android:layout_marginBottom="11.0dip">
+        <ImageView android:id="@id/commonstylepicture" android:background="?android:selectableItemBackgroundBorderless" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/commonstylecategorycontent" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <LinearLayout android:orientation="vertical" android:layout_width="113.29999dip" android:layout_height="wrap_content" android:layout_marginStart="10.0dip">
+                <TextView android:textSize="14.0sp" android:textColor="#ff565a5c" android:id="@id/commonstylecategoryname" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="11.0sp" android:textColor="#8a80878b" android:id="@id/commonstylecategorynameintro" android:layout_width="113.349976dip" android:layout_height="wrap_content" android:singleLine="true" />
+            </LinearLayout>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <ImageView android:id="@id/commonstylecategorypresetinfo" android:background="?android:selectableItemBackgroundBorderless" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@drawable/op_pic_common_style_bg_info" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

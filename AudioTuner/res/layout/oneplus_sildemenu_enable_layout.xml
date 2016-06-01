@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.oneplus.tuner.view.OnePlusDrawerLayout android:id="@id/drawer_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <Toolbar android:id="@id/toolbar" android:background="?android:colorPrimaryDark" android:layout_width="fill_parent" android:layout_height="@dimen/op_titlebar_height" android:contentInsetStart="0.0dip" android:contentInsetLeft="0.0dip" />
+        <FrameLayout android:id="@id/content_container" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <FrameLayout android:layout_gravity="start" android:id="@id/drawer_container" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.oneplus.tuner.view.OnePlusDrawerLayout>

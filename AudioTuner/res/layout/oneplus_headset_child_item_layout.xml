@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="#fff0f3f8" android:layout_width="fill_parent" android:layout_height="@dimen/op_headset_child_item_height">
+        <TextView android:textSize="@dimen/op_headset_child_item_name_text_size" android:textColor="@color/op_headset_child_item_name_text_color" android:id="@id/name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/op_border_margin" android:text="@string/op_tester" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/rb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/op_border_margin" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <View android:id="@id/divider" android:background="@color/op_listview_divider_color" android:layout_width="fill_parent" android:layout_height="@dimen/op_listview_divider_height" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</LinearLayout>

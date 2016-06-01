@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/history_container" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/op_search_history_title_text_size" android:textColor="@color/op_search_history_title_text_color" android:gravity="center|left" android:background="@color/op_search_history_title_bg_color" android:paddingLeft="@dimen/op_border_margin" android:paddingRight="@dimen/op_border_margin" android:layout_width="fill_parent" android:layout_height="@dimen/op_search_history_title_height" android:text="@string/op_search_history" />
+        <ListView android:id="@id/search_history_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@color/op_listview_divider_color" android:dividerHeight="@dimen/op_listview_divider_height" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/result_container" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.oppo.tribune.square.SquareTopLineView android:id="@id/search_result_list" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/empty_view" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="160.0dip" android:src="@drawable/op_ic_no_history" />
+        <TextView android:textSize="@dimen/op_empty_view_text_size" android:textColor="@color/op_empty_view_text_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/op_empty_view_text_margin_top" android:text="@string/op_empty_page_tip_no_history" />
+    </LinearLayout>
+</FrameLayout>

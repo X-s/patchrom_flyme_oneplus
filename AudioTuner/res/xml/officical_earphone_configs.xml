@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <brand name="1+">
+        <model name="1+ original" />
+        <model name="Silver Bullet" />
+        <model name="Feat. JBL E1+" />
+        <model name="Gold Bullet" />
+    </brand>
+    <brand name="Sennheiser">
+        <model name="momentum" />
+        <model name="momentum on ear" />
+        <model name="IE8" />
+        <model name="IE80" />
+        <model name="IE800" />
+        <model name="IE7" />
+        <model name="PX200-II" />
+        <model name="MX980" />
+        <model name="CX200" />
+        <model name="MX985" />
+    </brand>
+    <brand name="AKG">
+        <model name="K550" />
+        <model name="Q701" />
+        <model name="Q460" />
+        <model name="K420" />
+        <model name="K450" />
+        <model name="K3003" />
+    </brand>
+    <brand name="Grado">
+        <model name="Alice M1" />
+        <model name="GR10" />
+        <model name="SR80" />
+        <model name="SR60" />
+    </brand>
+    <brand name="Beyerdynamic">
+        <model name="DTX160" />
+    </brand>
+    <brand name="Klipsch">
+        <model name="X10" />
+    </brand>
+    <brand name="Shure">
+        <model name="SE846" />
+    </brand>
+    <brand name="Philips">
+        <model name="X1" />
+    </brand>
+    <brand name="Audio-Technica">
+        <model name="CK100PRO" />
+    </brand>
+    <brand name="Etymotic Research">
+        <model name="ER4PT" />
+    </brand>
+    <brand name="WESTONE">
+        <model name="W4R" />
+    </brand>
+    <brand name="Logitech">
+        <model name="TF10" />
+    </brand>
+    <brand name="Monster">
+        <model name="SOLO hd" />
+    </brand>
+    <brand name="Denon">
+        <model name="C710" />
+    </brand>
+    <brand name="HIFIMAN">
+        <model name="RE400" />
+    </brand>
+    <brand name="YUIN">
+        <model name="PK1" />
+    </brand>
+    <brand name="Topsound">
+        <model name="DN900" />
+    </brand>
+    <brand name="Vsonic">
+        <model name="VSD1" />
+    </brand>
+    <brand name="ECCI">
+        <model name="PR100MKII" />
+    </brand>
+    <brand name="SUNRISE">
+        <model name="SWD2" />
+    </brand>
+    <brand name="Creative">
+        <model name="AIR" />
+    </brand>
+    <brand name="Soundmagic">
+        <model name="E10" />
+    </brand>
+    <brand name="Astrotec">
+        <model name="AX60" />
+    </brand>
+    <brand name="B&amp;O">
+        <model name="A8" />
+    </brand>
+    <brand name="ULTRASONE">
+        <model name="PRO900" />
+    </brand>
+    <brand name="B&amp;W">
+        <model name="P7" />
+    </brand>
+    <brand name="KOSS">
+        <model name="PORTA PRO" />
+    </brand>
+    <brand name="JVC">
+        <model name="FXZ100" />
+    </brand>
+</configuration>

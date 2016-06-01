@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/default_style_layout_container" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/config_item_pressed" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="30.0px" android:textColor="#ff5d5d5d" android:gravity="center_vertical" android:paddingLeft="@dimen/earphone_item_padding" android:layout_width="fill_parent" android:layout_height="@dimen/earphone_offical_title_height" android:text="@string/official_config" />
+            <TextView android:textSize="45.0px" android:textColor="#ff333333" android:gravity="center_vertical" android:id="@id/deafult_lable" android:paddingLeft="@dimen/earphone_item_padding" android:layout_width="fill_parent" android:layout_height="148.0px" android:text="@string/general_style_choice" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/default_style_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0px" android:layout_marginRight="6.0px">
+            <LinearLayout android:orientation="horizontal" android:id="@id/first_pre_style" android:layout_width="fill_parent" android:layout_height="116.0px" android:layout_marginTop="26.0px">
+                <Button android:textSize="45.0px" android:textColor="#ff333333" android:id="@id/label1_button" android:background="@drawable/text_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                <Button android:textSize="45.0px" android:textColor="#ff333333" android:id="@id/label2_button" android:background="@drawable/text_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                <Button android:textSize="45.0px" android:textColor="#ff333333" android:id="@id/label3_button" android:background="@drawable/text_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                <Button android:textSize="45.0px" android:textColor="#ff333333" android:id="@id/label4_button" android:background="@drawable/text_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/second_pre_style" android:layout_width="fill_parent" android:layout_height="116.0px" android:layout_marginTop="15.0px">
+                <Button android:textSize="45.0px" android:textColor="#ff333333" android:id="@id/label5_button" android:background="@drawable/text_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                <Button android:textSize="45.0px" android:textColor="#ff333333" android:id="@id/label6_button" android:background="@drawable/text_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                <Button android:textSize="45.0px" android:textColor="#ff333333" android:id="@id/label7_button" android:background="@drawable/text_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                <Button android:textSize="45.0px" android:textColor="#ff333333" android:id="@id/label8_button" android:background="@drawable/text_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/third_pre_style" android:layout_width="fill_parent" android:layout_height="116.0px" android:layout_marginTop="15.0px">
+                <Button android:textSize="45.0px" android:textColor="#ff333333" android:id="@id/label9_button" android:background="@drawable/text_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                <Button android:textSize="45.0px" android:textColor="#ff333333" android:id="@id/label10_button" android:background="@drawable/text_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                <Button android:textSize="45.0px" android:textColor="#ff333333" android:id="@id/label11_button" android:background="@drawable/text_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                <Button android:textSize="45.0px" android:textColor="#ff333333" android:id="@id/label12_button" android:background="@drawable/text_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/forth_pre_style" android:layout_width="fill_parent" android:layout_height="116.0px" android:layout_marginTop="15.0px">
+                <Button android:textSize="45.0px" android:textColor="#ff333333" android:id="@id/label13_button" android:background="@drawable/text_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                <Button android:textSize="45.0px" android:textColor="#ff333333" android:id="@id/label14_button" android:background="@drawable/text_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                <Button android:textSize="45.0px" android:textColor="#ff333333" android:id="@id/label15_button" android:background="@drawable/text_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                <Button android:textSize="45.0px" android:textColor="#ff333333" android:id="@id/label16_button" android:background="@drawable/text_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <include android:id="@id/current_use_item_view_share" android:layout_width="fill_parent" android:layout_height="80.0dip" android:layout_marginTop="8.0dip" layout="@layout/tribune_post_item_view" />
+</LinearLayout>

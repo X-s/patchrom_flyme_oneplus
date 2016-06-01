@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/op_border_margin" android:paddingRight="@dimen/op_border_margin" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText android:textSize="@dimen/op_more_item_text_size" android:textColor="@color/op_headset_group_item_name_text_color" android:textColorHint="@color/op_headset_child_item_name_text_color" android:id="@id/brand" android:background="@null" android:layout_width="fill_parent" android:layout_height="@dimen/op_more_item_height" android:hint="@string/op_headset_brand" android:textCursorDrawable="@null" />
+    <View android:background="@color/op_listview_divider_color" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <EditText android:textSize="@dimen/op_more_item_text_size" android:textColor="@color/op_headset_group_item_name_text_color" android:textColorHint="@color/op_headset_child_item_name_text_color" android:id="@id/model" android:background="@null" android:layout_width="fill_parent" android:layout_height="@dimen/op_more_item_height" android:hint="@string/op_headset_model" android:textCursorDrawable="@null" />
+    <View android:background="@color/op_listview_divider_color" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <Button android:textSize="@dimen/op_report_headset_btn_text_size" android:id="@id/report_btn" android:background="@drawable/op_report_btn_shape" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/op_headset_report_btn_input_margin" android:text="@string/op_headset_add" />
+</LinearLayout>

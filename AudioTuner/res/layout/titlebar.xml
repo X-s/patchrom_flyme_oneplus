@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#fff3f3f3" android:layout_width="fill_parent" android:layout_height="@dimen/title_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageButton android:id="@id/handle" android:background="@drawable/handle_bt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/imageview_paddinghorizon" android:layout_marginRight="@dimen/imageview_paddinghorizon" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="51.0px" android:textColor="#ff404040" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:layout_centerVertical="true" />
+    <ImageButton android:id="@id/search" android:background="@drawable/search_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/imageview_paddinghorizon" android:layout_marginRight="@dimen/imageview_paddinghorizon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/wave_brand" android:layout_width="280.0px" android:layout_height="86.0px" android:layout_marginTop="23.0px" android:layout_marginRight="19.0px" android:src="@drawable/wave" android:layout_alignParentRight="true" />
+</RelativeLayout>

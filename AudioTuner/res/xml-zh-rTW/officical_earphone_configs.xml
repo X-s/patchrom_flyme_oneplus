@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <brand name="1+">
+        <model name="1+ original" />
+        <model name="1+ 銀耳" />
+        <model name="JBL合作款 E1+" />
+        <model name="1+ 金耳" />
+    </brand>
+    <brand name="森海塞爾">
+        <model name="momentum" />
+        <model name="momentum on ear" />
+        <model name="IE8" />
+        <model name="IE80" />
+        <model name="IE800" />
+        <model name="IE7" />
+        <model name="PX200-II" />
+        <model name="MX980" />
+        <model name="CX200" />
+        <model name="MX985" />
+    </brand>
+    <brand name="愛科技">
+        <model name="K550" />
+        <model name="Q701" />
+        <model name="Q460" />
+        <model name="K420" />
+        <model name="K450" />
+        <model name="K3003" />
+    </brand>
+    <brand name="歌德">
+        <model name="愛麗絲M1" />
+        <model name="GR10" />
+        <model name="SR80" />
+        <model name="SR60" />
+    </brand>
+    <brand name="拜亞動力">
+        <model name="DTX160" />
+    </brand>
+    <brand name="杰士">
+        <model name="X10" />
+    </brand>
+    <brand name="舒爾">
+        <model name="SE846" />
+    </brand>
+    <brand name="飛利浦">
+        <model name="X1" />
+    </brand>
+    <brand name="鐵三角">
+        <model name="CK100PRO" />
+    </brand>
+    <brand name="音特美">
+        <model name="ER4PT" />
+    </brand>
+    <brand name="威士頓">
+        <model name="W4R" />
+    </brand>
+    <brand name="羅技">
+        <model name="TF10" />
+    </brand>
+    <brand name="魔聲">
+        <model name="SOLO hd" />
+    </brand>
+    <brand name="天龍">
+        <model name="C710" />
+    </brand>
+    <brand name="海菲曼">
+        <model name="RE400" />
+    </brand>
+    <brand name="紫音">
+        <model name="PK1" />
+    </brand>
+    <brand name="達音科">
+        <model name="DN900" />
+    </brand>
+    <brand name="威索尼克">
+        <model name="VSD1" />
+    </brand>
+    <brand name="逸曦">
+        <model name="PR100MKII" />
+    </brand>
+    <brand name="新銳">
+        <model name="SWD2" />
+    </brand>
+    <brand name="創新">
+        <model name="AIR" />
+    </brand>
+    <brand name="聲美">
+        <model name="E10" />
+    </brand>
+    <brand name="阿思翠">
+        <model name="AX60" />
+    </brand>
+    <brand name="鉑傲">
+        <model name="A8" />
+    </brand>
+    <brand name="極致">
+        <model name="PRO900" />
+    </brand>
+    <brand name="寶華韋健">
+        <model name="P7" />
+    </brand>
+    <brand name="高斯">
+        <model name="PORTA PRO" />
+    </brand>
+    <brand name="傑偉世">
+        <model name="FXZ100" />
+    </brand>
+</configuration>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="40.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0sp" android:textColor="#ffb7b7b7" android:gravity="center" android:id="@id/ref_more" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="40.0dip" android:text="@string/tab_more" android:layout_centerHorizontal="true" />
+    <ProgressBar android:id="@id/ref_bar" android:visibility="visible" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="5.0dip" android:indeterminate="false" android:indeterminateDrawable="@drawable/progress_bar" android:layout_toLeftOf="@id/ref_more" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/ref_hint_left" android:background="@drawable/end_hint_left" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/ref_more" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/ref_hint_right" android:background="@drawable/end_hint_right" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/ref_more" android:layout_centerVertical="true" />
+</merge>

@@ -1,0 +1,25 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: AudioTuner.apk
+compressionType: false
+doNotCompress:
+- arsc
+- PNG
+isFrameworkApk: false
+packageInfo:
+  forcedPackageId: '127'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '21'
+  targetSdkVersion: '21'
+sharedLibrary: false
+unknownFiles:
+  entities-base.properties: '8'
+  entities-full.properties: '8'
+usesFramework:
+  ids:
+  - 1
+  tag: null
+version: 2.1.1-04d478-SNAPSHOT
+versionInfo:
+  versionCode: '1'
+  versionName: beta2.0.0.160204143757.c10fe47

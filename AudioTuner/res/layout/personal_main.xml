@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="#ffe9e9e9" android:layout_width="@dimen/personal_main_width" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.tuner.view.PersonalView android:id="@id/personal_view" android:layout_width="fill_parent" android:layout_height="wrap_content" />"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="110.0px" android:layout_below="@id/personal_view">
+        <Button android:textSize="48.0px" android:textColor="#ff333333" android:id="@id/control_button" android:background="@drawable/fragment_bt_bg" android:layout_width="fill_parent" android:layout_height="155.0px" android:text="@string/diaodiao" />
+        <Button android:textSize="48.0px" android:textColor="#ff333333" android:id="@id/custom_button" android:background="@drawable/fragment_bt_bg" android:layout_width="fill_parent" android:layout_height="155.0px" android:layout_marginTop="30.0px" android:text="@string/custom" />
+        <Button android:textSize="48.0px" android:textColor="#ff333333" android:id="@id/configs_button" android:background="@drawable/fragment_bt_bg" android:layout_width="fill_parent" android:layout_height="155.0px" android:layout_marginTop="30.0px" android:text="@string/myconfig" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="152.0px" android:layout_marginTop="83.0dip">
+            <TextView android:textSize="48.0px" android:textColor="#ff333333" android:layout_width="60.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/soundeffect_switch" android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

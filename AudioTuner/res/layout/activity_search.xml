@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/main_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/current_earphone_share" android:paddingLeft="@dimen/earphone_title_padding" android:paddingRight="@dimen/earphone_title_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip">
+        <TextView android:textColor="#ff5d5d5d" android:paddingLeft="@dimen/current_earphone_share_padding" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/current_earphone_margin_top" android:text="@string/ear_match" />
+        <View android:background="#ff0093f4" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginBottom="6.0dip" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff333333" android:gravity="center_vertical" android:id="@id/current_earphone" android:background="@drawable/text_background" android:paddingLeft="@dimen/earphone_item_padding" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/current_earphone_height" android:layout_marginLeft="-2.0dip" android:layout_marginRight="-2.0dip" android:text="@string/current_earphone" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/history_search" android:paddingLeft="@dimen/earphone_title_padding" android:paddingRight="@dimen/earphone_title_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
+        <TextView android:textColor="#ff5d5d5d" android:paddingLeft="@dimen/current_earphone_share_padding" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/history" />
+        <View android:background="#ff0093f4" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginBottom="6.0dip" />
+    </LinearLayout>
+    <ListView android:id="@id/history_content" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
+    <FrameLayout android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0px" android:layout_marginRight="10.0px">
+        <com.oneplus.tuner.widget.PullToRefreshListView android:id="@id/list" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="#ffffffff" android:dividerHeight="20.0px" />
+        <TextView android:textColor="#ff000000" android:gravity="center" android:id="@android:id/empty" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/empty" />
+    </FrameLayout>
+    <com.oppo.tribune.square.SquareTopLineView android:id="@id/topline_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <mode name="1+ original">
+        <id name="1" />
+    </mode>
+    <mode name="1+ 银耳">
+        <id name="104" />
+    </mode>
+    <mode name="JBL合作款 E1+">
+        <id name="105" />
+    </mode>
+    <mode name="1+ 金耳">
+        <id name="666" />
+    </mode>
+    <mode name="momentum">
+        <id name="11" />
+    </mode>
+    <mode name="momentum on ear">
+        <id name="3" />
+    </mode>
+    <mode name="IE8">
+        <id name="4" />
+    </mode>
+    <mode name="IE80">
+        <id name="5" />
+    </mode>
+    <mode name="IE800">
+        <id name="6" />
+    </mode>
+    <mode name="IE7">
+        <id name="7" />
+    </mode>
+    <mode name="PX200-II">
+        <id name="8" />
+    </mode>
+    <mode name="MX980">
+        <id name="9" />
+    </mode>
+    <mode name="CX200">
+        <id name="10" />
+    </mode>
+    <mode name="MX985">
+        <id name="2" />
+    </mode>
+    <mode name="K550">
+        <id name="17" />
+    </mode>
+    <mode name="Q701">
+        <id name="16" />
+    </mode>
+    <mode name="Q460">
+        <id name="15" />
+    </mode>
+    <mode name="K420">
+        <id name="14" />
+    </mode>
+    <mode name="K450">
+        <id name="13" />
+    </mode>
+    <mode name="K3003">
+        <id name="12" />
+    </mode>
+    <mode name="爱丽丝M1">
+        <id name="21" />
+    </mode>
+    <mode name="GR10">
+        <id name="20" />
+    </mode>
+    <mode name="SR80">
+        <id name="19" />
+    </mode>
+    <mode name="SR60">
+        <id name="18" />
+    </mode>
+    <mode name="DTX160">
+        <id name="26" />
+    </mode>
+    <mode name="X10">
+        <id name="27" />
+    </mode>
+    <mode name="SE846">
+        <id name="29" />
+    </mode>
+    <mode name="X1">
+        <id name="33" />
+    </mode>
+    <mode name="CK100PRO">
+        <id name="36" />
+    </mode>
+    <mode name="ER4PT">
+        <id name="50" />
+    </mode>
+    <mode name="W4R">
+        <id name="53" />
+    </mode>
+    <mode name="TF10">
+        <id name="58" />
+    </mode>
+    <mode name="C710">
+        <id name="63" />
+    </mode>
+    <mode name="RE400">
+        <id name="69" />
+    </mode>
+    <mode name="PK1">
+        <id name="71" />
+    </mode>
+    <mode name="DN900">
+        <id name="75" />
+    </mode>
+    <mode name="VSD1">
+        <id name="78" />
+    </mode>
+    <mode name="PR100MKII">
+        <id name="82" />
+    </mode>
+    <mode name="SWD2">
+        <id name="84" />
+    </mode>
+    <mode name="AIR">
+        <id name="85" />
+    </mode>
+    <mode name="E10">
+        <id name="86" />
+    </mode>
+    <mode name="AX60">
+        <id name="89" />
+    </mode>
+    <mode name="A8">
+        <id name="90" />
+    </mode>
+    <mode name="PRO900">
+        <id name="91" />
+    </mode>
+    <mode name="P7">
+        <id name="94" />
+    </mode>
+    <mode name="PORTA PRO">
+        <id name="97" />
+    </mode>
+    <mode name="FXZ100">
+        <id name="98" />
+    </mode>
+    <mode name="SOLO hd">
+        <id name="64" />
+    </mode>
+</configuration>

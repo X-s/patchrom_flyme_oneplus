@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/search_menu" android:showAsAction="always" android:actionLayout="@layout/searchview" />
+    <item android:id="@id/space" android:title="sapce" android:showAsAction="always" android:actionLayout="@layout/search_space" />
+</menu>

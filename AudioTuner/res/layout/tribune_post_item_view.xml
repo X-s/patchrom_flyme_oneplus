@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.oppo.tribune.square.TribunePostItemView android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/item_content" android:background="@drawable/activated_background" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/top" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="30.0px" android:textColor="#ff5d5d5d" android:ellipsize="end" android:id="@id/item_title" android:paddingLeft="28.0px" android:paddingTop="11.0px" android:paddingBottom="11.0px" android:layout_width="750.0px" android:layout_height="wrap_content" android:text="@string/current_earphone" android:singleLine="true" android:layout_alignParentLeft="true" />
+            <TextView android:textSize="30.0px" android:textColor="#ff5d5d5d" android:id="@id/item_offical" android:paddingTop="11.0px" android:paddingRight="28.0px" android:paddingBottom="11.0px" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/official_config" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/mid" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="171.0px" android:layout_below="@id/top">
+            <TextView android:textSize="48.0px" android:textColor="#ff333333" android:id="@id/item_summary" android:layout_width="850.0px" android:layout_height="wrap_content" android:layout_marginLeft="28.0px" android:layout_marginTop="24.0px" android:singleLine="true" />
+            <TextView android:gravity="right" android:id="@id/commend_image" android:background="@drawable/laud" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0px" android:layout_alignParentRight="true" />
+            <TextView android:textSize="30.0px" android:textColor="#ff5d5d5d" android:gravity="right" android:id="@id/num" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="65.0px" android:layout_marginRight="30.0px" android:layout_alignParentRight="true" />
+            <TextView android:textSize="30.0px" android:textColor="#775d5d5d" android:id="@id/tuner_time" android:paddingTop="20.0px" android:paddingBottom="20.0px" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="32.0px" android:layout_below="@id/item_summary" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+            <TextView android:textSize="30.0px" android:textColor="#775d5d5d" android:id="@id/tuner_user" android:paddingTop="20.0px" android:paddingBottom="20.0px" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="66.0px" android:layout_toLeftOf="@id/tuner_time" android:layout_below="@id/item_summary" android:layout_alignTop="@id/tuner_time" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/expand_layout" android:background="@drawable/button_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="100.0px" android:layout_below="@id/mid">
+            <RelativeLayout android:id="@id/zan_layout" android:background="@drawable/left_item_button_bg" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="-6.0px" android:layout_marginBottom="-8.0px" android:layout_weight="1.0">
+                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                    <ImageView android:id="@id/zan_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/zan_icon" />
+                    <TextView android:textSize="30.0px" android:textColor="#ff3c81a1" android:gravity="center_vertical" android:id="@id/zan_button" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/zan" android:singleLine="true" />
+                </LinearLayout>
+            </RelativeLayout>
+            <ImageView android:id="@id/item_praise_divider" android:background="@drawable/oper_index_separate_line" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+            <RelativeLayout android:id="@id/load_layout" android:background="@drawable/right_item_button_bg" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="1.0dip" android:layout_marginRight="-6.0px" android:layout_marginBottom="-8.0px" android:layout_weight="1.0">
+                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_centerInParent="true">
+                    <ImageView android:id="@id/load_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/load_and_use_icon" />
+                    <TextView android:textSize="30.0px" android:textColor="#ff3c81a1" android:gravity="center_vertical" android:id="@id/load_button" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/load" android:singleLine="true" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/oper_content_two_btn" android:background="@drawable/feed_item_card_oper_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/feed_list_item_oper_index_height" android:layout_below="@id/mid">
+        <TextView android:textSize="@dimen/feed_list_item_oper_index_textsize" android:textColor="@drawable/feed_item_operbtn_textcolor" android:gravity="center" android:id="@id/item_txt_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/feed_item_card_view_txt" android:singleLine="true" android:layout_weight="1.0" />
+        <ImageView android:background="@drawable/oper_index_separate_line" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        <TextView android:textSize="@dimen/feed_list_item_oper_index_textsize" android:textColor="@drawable/feed_item_operbtn_textcolor" android:gravity="center" android:id="@id/item_txt_comment" android:layout_width="fill_parent" android:layout_height="fill_parent" android:singleLine="true" android:layout_weight="1.0" />
+        <ImageView android:id="@id/item_praise_divider" android:background="@drawable/oper_index_separate_line" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        <TextView android:textSize="@dimen/feed_list_item_oper_index_textsize" android:textColor="@drawable/feed_item_operbtn_textcolor" android:gravity="center" android:id="@id/item_txt_praise" android:layout_width="fill_parent" android:layout_height="fill_parent" android:singleLine="true" android:layout_weight="1.0" />
+    </LinearLayout>
+</com.oppo.tribune.square.TribunePostItemView>
