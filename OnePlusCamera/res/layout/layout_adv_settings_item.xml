@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/adv_settings_item_height" android:paddingStart="@dimen/adv_settings_item_padding_left" android:paddingEnd="@dimen/adv_settings_item_padding_right"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:ellipsize="end" android:id="@id/menu_item_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/AdvSettingsItemTitle" />
+    <TextView android:ellipsize="end" android:id="@id/menu_item_summary" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.0" style="@style/AdvSettingsItemSummary" />
+    <Switch android:theme="@style/ThemeOverlay.SwitchBar" android:id="@id/menu_item_switch" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.0" />
+</LinearLayout>

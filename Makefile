@@ -66,7 +66,7 @@ vendor_saved_apps := Bluetooth KeyChain HTMLViewer UserDictionaryProvider Backup
 # You need ro decode FMRadio.apk to the project directory(use apktool d FMRadio.apk) first,
 # and then you can make it by:   make FMRadio
 #-----------------------------------------------------------------------------
-vendor_modify_apps := AudioTuner
+vendor_modify_apps := AudioTuner OnePlusCamera
 
 ##############################################################################
 # The value decides which vendor jar you want to modify.

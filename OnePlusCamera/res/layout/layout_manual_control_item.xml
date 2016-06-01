@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/control_touch_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:ellipsize="end" android:gravity="center" android:id="@id/control_text_view" android:padding="@dimen/manual_text_view_text_padding" android:layout_width="@dimen/manual_control_text_view_width" android:layout_height="wrap_content" android:text="@string/manual_mode_auto" android:singleLine="true" style="@style/ManualModeKnobText" />
+        <ImageView android:id="@id/control_image_view" android:layout_width="@dimen/manual_control_icon_width_height" android:layout_height="@dimen/manual_control_icon_width_height" android:layout_marginBottom="@dimen/manual_control_image_view_margin_bottom" />
+    </LinearLayout>
+</RelativeLayout>

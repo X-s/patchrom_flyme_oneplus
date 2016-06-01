@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/panorama_thumb_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/panorama_thumb_container_margin_top" android:layout_alignParentTop="true">
+        <ImageView android:id="@id/panorama_thumb" android:background="@color/panorama_thumb_background" android:layout_width="fill_parent" android:layout_height="@dimen/panorama_thumb_height" android:scaleType="fitXY" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/panorama_preview_frame" android:visibility="visible" android:layout_width="@dimen/panorama_thumb_width" android:layout_height="@dimen/panorama_thumb_height" android:layout_marginLeft="@dimen/panorama_thumb_curr_frame_thickness" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <View android:id="@id/panorama_curr_frame" android:background="@drawable/panorama_curr_frame" android:visibility="visible" android:layout_width="@dimen/panorama_thumb_curr_frame_width" android:layout_height="@dimen/panorama_thumb_curr_frame_height" android:layout_alignParentLeft="true" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/panorama_direction_indicator_container" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="22.0dip" android:layout_toEndOf="@id/panorama_curr_frame">
+            <View android:id="@id/panorama_dot1" android:background="@drawable/panorama_thumb_dot" android:layout_width="4.0dip" android:layout_height="4.0dip" android:alpha="1.0" />
+            <View android:id="@id/panorama_dot2" android:background="@drawable/panorama_thumb_dot" android:layout_width="4.0dip" android:layout_height="4.0dip" android:alpha="1.0" android:layout_marginStart="22.0dip" />
+            <View android:id="@id/panorama_dot3" android:background="@drawable/panorama_thumb_dot" android:layout_width="4.0dip" android:layout_height="4.0dip" android:alpha="1.0" android:layout_marginStart="22.0dip" />
+            <View android:id="@id/panorama_dot4" android:background="@drawable/panorama_thumb_dot" android:layout_width="4.0dip" android:layout_height="4.0dip" android:alpha="1.0" android:layout_marginStart="22.0dip" />
+            <View android:id="@id/panorama_dot5" android:background="@drawable/panorama_thumb_dot" android:layout_width="4.0dip" android:layout_height="4.0dip" android:alpha="1.0" android:layout_marginStart="22.0dip" />
+            <View android:id="@id/panorama_dot6" android:background="@drawable/panorama_thumb_dot" android:layout_width="4.0dip" android:layout_height="4.0dip" android:alpha="1.0" android:layout_marginStart="22.0dip" />
+            <View android:id="@id/panorama_dot7" android:background="@drawable/panorama_thumb_dot" android:layout_width="4.0dip" android:layout_height="4.0dip" android:alpha="1.0" android:layout_marginStart="22.0dip" />
+            <View android:id="@id/panorama_dot8" android:background="@drawable/panorama_thumb_dot" android:layout_width="4.0dip" android:layout_height="4.0dip" android:alpha="1.0" android:layout_marginStart="22.0dip" />
+            <View android:id="@id/panorama_dot9" android:background="@drawable/panorama_thumb_dot" android:layout_width="4.0dip" android:layout_height="4.0dip" android:alpha="1.0" android:layout_marginStart="22.0dip" />
+            <View android:id="@id/panorama_dot10" android:background="@drawable/panorama_thumb_dot" android:layout_width="4.0dip" android:layout_height="4.0dip" android:alpha="1.0" android:layout_marginStart="22.0dip" />
+            <View android:id="@id/panorama_dot11" android:background="@drawable/panorama_thumb_dot" android:layout_width="4.0dip" android:layout_height="4.0dip" android:alpha="1.0" android:layout_marginStart="22.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
