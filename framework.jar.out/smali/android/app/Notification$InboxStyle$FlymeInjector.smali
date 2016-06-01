@@ -52,6 +52,11 @@
     .line 4620
     iget-object v0, p0, Landroid/app/Notification$InboxStyle;->mFlymeSimSlots:Ljava/util/ArrayList;
 
+    if-eqz v0, :cond_0
+
+    :goto_0
+    iget-object v0, p0, Landroid/app/Notification$InboxStyle;->mFlymeSimSlots:Ljava/util/ArrayList;
+
     sget v1, Landroid/app/NotificationBuilderExt;->SIM_SLOT_HIDE:I
 
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -62,6 +67,11 @@
 
     .line 4622
     return-void
+
+    :cond_0
+    invoke-static {p0}, Landroid/app/Notification$InboxStyle$FlymeInjector;->initFlymeExtFields(Landroid/app/Notification$InboxStyle;)V
+
+    goto :goto_0
 .end method
 
 .method static initFlymeExtFields(Landroid/app/Notification$InboxStyle;)V
