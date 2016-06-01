@@ -1015,14 +1015,14 @@
 
     move-result-object v2
 
-    iget v3, p0, Lcom/android/internal/telephony/SMSDispatcher$SmsTracker;->mSubId:I
+    iget v3, p0, Lcom/android/internal/telephony/SMSDispatcher$SmsTracker;->mPhoneId:I
 
     invoke-virtual {v2, v3}, Landroid/telephony/TelephonyManager;->getSubscriberId(I)Ljava/lang/String;
 
     move-result-object v0
 
     .local v0, "imsi":Ljava/lang/String;
-    iget v2, p0, Lcom/android/internal/telephony/SMSDispatcher$SmsTracker;->mSubId:I
+    iget v2, p0, Lcom/android/internal/telephony/SMSDispatcher$SmsTracker;->mPhoneId:I
 
     invoke-static {v2}, Landroid/telephony/SubscriptionManager;->getPhoneId(I)I
 
