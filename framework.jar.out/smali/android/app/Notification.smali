@@ -910,6 +910,8 @@
 
     iput v1, p0, Landroid/app/Notification;->color:I
 
+    invoke-static/range {p0 .. p1}, Landroid/app/Notification$FlymeInjector;->readFromParcelFlyme(Landroid/app/Notification;Landroid/os/Parcel;)V
+
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
@@ -991,8 +993,6 @@
     iput-object v1, p0, Landroid/app/Notification;->mActionIntentOnStatusBar:Landroid/content/Intent;
 
     :cond_c
-    invoke-static/range {p0 .. p1}, Landroid/app/Notification$FlymeInjector;->readFromParcelFlyme(Landroid/app/Notification;Landroid/os/Parcel;)V
-
     return-void
 
     :cond_d
@@ -1898,6 +1898,8 @@
     invoke-virtual {p1}, Landroid/app/Notification;->lightenPayload()V
 
     :cond_b
+    invoke-static/range {p0 .. p1}, Landroid/app/Notification$FlymeInjector;->cloneIntoFlyme(Landroid/app/Notification;Landroid/app/Notification;)V
+
     iget v5, p0, Landroid/app/Notification;->mStatusBarIcon:I
 
     iput v5, p1, Landroid/app/Notification;->mStatusBarIcon:I
@@ -1933,8 +1935,6 @@
     iget-object v5, p0, Landroid/app/Notification;->mActionIntentOnStatusBar:Landroid/content/Intent;
 
     iput-object v5, p1, Landroid/app/Notification;->mActionIntentOnStatusBar:Landroid/content/Intent;
-
-    invoke-static/range {p0 .. p1}, Landroid/app/Notification$FlymeInjector;->cloneIntoFlyme(Landroid/app/Notification;Landroid/app/Notification;)V
 
     return-void
 .end method
@@ -2860,6 +2860,8 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
+    invoke-static/range {p0 .. p2}, Landroid/app/Notification$FlymeInjector;->writeToParcelFlyme(Landroid/app/Notification;Landroid/os/Parcel;I)V
+
     iget v0, p0, Landroid/app/Notification;->mStatusBarIcon:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
@@ -2918,8 +2920,6 @@
     invoke-virtual {v0, p1, v2}, Landroid/content/Intent;->writeToParcel(Landroid/os/Parcel;I)V
 
     :goto_e
-    invoke-static/range {p0 .. p2}, Landroid/app/Notification$FlymeInjector;->writeToParcelFlyme(Landroid/app/Notification;Landroid/os/Parcel;I)V
-
     return-void
 
     :cond_0

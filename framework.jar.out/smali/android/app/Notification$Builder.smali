@@ -4284,6 +4284,8 @@
     invoke-virtual {v1, v2, v3}, Landroid/app/Notification;->cloneInto(Landroid/app/Notification;Z)V
 
     :cond_4
+    invoke-direct {p0, v0}, Landroid/app/Notification$Builder;->buildUnstyledFlyme(Landroid/app/Notification;)V
+
     iget v1, p0, Landroid/app/Notification$Builder;->mStatusBarIcon:I
 
     # setter for: Landroid/app/Notification;->mStatusBarIcon:I
@@ -4328,8 +4330,6 @@
 
     # setter for: Landroid/app/Notification;->mActionIntentOnStatusBar:Landroid/content/Intent;
     invoke-static {v0, v1}, Landroid/app/Notification;->access$1402(Landroid/app/Notification;Landroid/content/Intent;)Landroid/content/Intent;
-
-    invoke-direct {p0, v0}, Landroid/app/Notification$Builder;->buildUnstyledFlyme(Landroid/app/Notification;)V
 
     return-object v0
 .end method
