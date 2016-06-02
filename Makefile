@@ -132,6 +132,7 @@ board_modify_apps := SystemUI TelephonyProvider TeleService Telecom Settings
 
 # my build.prop
 override_property += \
+    persist.xsdensity=480 \
     ro.product.model=A2001 \
     ro.product.device=A2001 \
     ro.product.brand=OnePlus \

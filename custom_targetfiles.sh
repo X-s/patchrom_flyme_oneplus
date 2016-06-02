@@ -15,3 +15,7 @@ cp -f other/static_nvbk.bin $TARGET_DIR/BOOTABLE_IMAGES/
 cp -f other/tz.mbn $TARGET_DIR/BOOTABLE_IMAGES/
 
 rm -rf $TARGET_DIR/SYSTEM/framework/hydrongen-framework-res.apk
+
+# mv ro.sf.lcd_density > persist.xsdensity
+sed -i 's/ro.sf.lcd_density/persist.xsdensity/g' $TARGET_DIR/SYSTEM/lib/libsurfaceflinger.so
+sed -i 's/ro.sf.lcd_density/persist.xsdensity/g' $TARGET_DIR/SYSTEM/lib64/libsurfaceflinger.so
