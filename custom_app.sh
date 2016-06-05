@@ -21,6 +21,23 @@ function applyPatch () {
 	done
 }
 
+if [ "$1" = "TeleService" ];then
+        echo ">>>> in custom_app for $1 to adjust the interface SubId PhoneId"
+        sed -i 's#    add-int/lit8 v2, v3, -0x1#    add-int/lit8 v2, v3, -0x1\
+\
+    invoke-static {}, Landroid/telephony/SubscriptionManager;->getDefaultDataSubId()I\
+\
+    move-result v3\
+\
+    invoke-static {}, Lcom/android/internal/telephony/SubscriptionController;->getInstance()Lcom/android/internal/telephony/SubscriptionController;\
+\
+    move-result-object v4\
+\
+    invoke-virtual {v4, v3}, Lcom/android/internal/telephony/SubscriptionController;->getPhoneId(I)I\
+\
+    move-result v2#g' $tempSmaliDir/smali/com/android/phone/MzPhoneInterfaceManager.smali
+fi
+
 if [ "$1" = "Settings" ];then
 
     echo ">>>> in custom_app for $1 to remove flyme screenlock xml"
