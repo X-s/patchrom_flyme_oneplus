@@ -95,3 +95,24 @@ if [ "$1" = "Settings" ];then
 \
     .end local v0    # "intent":Landroid\/content\/Intent;' $2/smali/com/meizu/settings/security/SecuritySettings.smali
 fi
+
+if [ "$1" = "SystemUI" ]; then
+    echo ">>> in custom_app for $1 fix mobile data"
+    sed -i 's#    .end packed-switch#        :pswitch_0\
+        :pswitch_0\
+        :pswitch_0\
+        :pswitch_0\
+        :pswitch_0\
+        :pswitch_0\
+        :pswitch_0\
+        :pswitch_2\
+        :pswitch_0\
+        :pswitch_4\
+    .end packed-switch#g' $2/smali/com/flyme/systemui/qs/tiles/MobileDataTile.smali
+
+    sed -i 's#    aput v4, v1, v5#    const/16 v3, 0x12\
+\
+    aput v3, v1, v5#g' $2/smali/com/android/systemui/statusbar/policy/MobileDataControllerImpl.smali
+
+    sed -i 's#const/16 v3, 0x9#const/16 v3, 0x14#g' $2/smali/com/android/systemui/statusbar/policy/MobileDataControllerImpl.smali
+fi
