@@ -32,6 +32,10 @@
 # instance fields
 .field private final Back_GESTURE_KEY_CLICK_TIMEOUT:I
 
+.field private final FINGERKEY_HOMEKEY_TIMEOUT:J
+
+.field private final FINGERKEY_LONGPRESS_HOMEKEY_TIMEOUT:J
+
 .field private final MSG_SEND_BACK_KEY:I
 
 .field private final PLAY_TOUCH_HOME_AUDIO:I
@@ -53,6 +57,10 @@
 .field private mHandler:Landroid/os/Handler;
 
 .field private mHomeKeyDown:Z
+
+.field private mHomeKeyDownTime:J
+
+.field private mHomeKeyUpTime:J
 
 .field private final mInterceptHeadsethook:Ljava/lang/Runnable;
 
@@ -83,90 +91,84 @@
 .end method
 
 .method public constructor <init>(Lcom/android/internal/policy/impl/PhoneWindowManager;)V
-    .locals 2
+    .locals 4
     .param p1, "pwm"    # Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     .prologue
+    const-wide/16 v2, 0x0
+
     const/4 v1, 0x0
 
-    .line 86
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 57
     const-string v0, "MzPhoneWindowManager"
 
     iput-object v0, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->TAG:Ljava/lang/String;
 
-    .line 62
     iput-boolean v1, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->mPowerSaveMode:Z
 
-    .line 63
     iput-boolean v1, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->isTouchValid:Z
 
-    .line 64
     iput-boolean v1, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->backGestureKeyValid:Z
 
-    .line 65
     iput-boolean v1, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->homeKeySleep:Z
 
-    .line 66
     iput-boolean v1, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->bHomeKeyLongFlag:Z
 
-    .line 67
     iput-boolean v1, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->preventBackGestureKey:Z
 
-    .line 68
     iput-boolean v1, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->mHomeKeyDown:Z
 
-    .line 69
     iput-boolean v1, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->fingerTouchConsumed:Z
 
-    .line 72
     iput v1, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->effectType:I
 
-    .line 73
     const/4 v0, 0x5
 
     iput v0, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->PLAY_TOUCH_HOME_AUDIO:I
 
-    .line 74
     const/4 v0, 0x6
 
     iput v0, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->MSG_SEND_BACK_KEY:I
 
-    .line 75
     const/16 v0, 0x32
 
     iput v0, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->Back_GESTURE_KEY_CLICK_TIMEOUT:I
 
-    .line 84
     iput-boolean v1, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->mVloumeKeyConsumed:Z
 
-    .line 180
+    iput-wide v2, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->mHomeKeyUpTime:J
+
+    iput-wide v2, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->mHomeKeyDownTime:J
+
+    const-wide/16 v0, 0x12c
+
+    iput-wide v0, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->FINGERKEY_HOMEKEY_TIMEOUT:J
+
+    const-wide/16 v0, 0x3e8
+
+    iput-wide v0, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->FINGERKEY_LONGPRESS_HOMEKEY_TIMEOUT:J
+
     new-instance v0, Lcom/android/internal/policy/impl/MzPhoneWindowManager$1;
 
     invoke-direct {v0, p0}, Lcom/android/internal/policy/impl/MzPhoneWindowManager$1;-><init>(Lcom/android/internal/policy/impl/MzPhoneWindowManager;)V
 
     iput-object v0, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->mLaunchVoiceActivity:Ljava/lang/Runnable;
 
-    .line 354
     new-instance v0, Lcom/android/internal/policy/impl/MzPhoneWindowManager$3;
 
     invoke-direct {v0, p0}, Lcom/android/internal/policy/impl/MzPhoneWindowManager$3;-><init>(Lcom/android/internal/policy/impl/MzPhoneWindowManager;)V
 
     iput-object v0, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->mInterceptHeadsethook:Ljava/lang/Runnable;
 
-    .line 539
     new-instance v0, Lcom/android/internal/policy/impl/MzPhoneWindowManager$4;
 
     invoke-direct {v0, p0}, Lcom/android/internal/policy/impl/MzPhoneWindowManager$4;-><init>(Lcom/android/internal/policy/impl/MzPhoneWindowManager;)V
 
     iput-object v0, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->mVolumeUPLongPress:Ljava/lang/Runnable;
 
-    .line 87
     iput-object p1, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->pw:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
-    .line 88
     new-instance v0, Lcom/android/internal/policy/impl/MzPhoneWindowManager$MzPolicyHandler;
 
     const/4 v1, 0x0
@@ -1908,4 +1910,71 @@
 
     .line 373
     return-void
+.end method
+
+.method public SetHomeDownTime(J)V
+    .locals 1
+    .param p1, "time"    # J
+
+    .prologue
+    iput-wide p1, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->mHomeKeyDownTime:J
+
+    return-void
+.end method
+
+.method public SetHomeUpTime(J)V
+    .locals 1
+    .param p1, "time"    # J
+
+    .prologue
+    iput-wide p1, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->mHomeKeyUpTime:J
+
+    return-void
+.end method
+
+.method public isFingerKeyTime(J)Z
+    .locals 7
+    .param p1, "time"    # J
+
+    .prologue
+    const-wide/16 v4, 0x0
+
+    iget-wide v0, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->mHomeKeyUpTime:J
+
+    sub-long v0, p1, v0
+
+    const-wide/16 v2, 0x12c
+
+    cmp-long v0, v0, v2
+
+    if-gtz v0, :cond_0
+
+    iget-wide v0, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->mHomeKeyDownTime:J
+
+    sub-long v0, p1, v0
+
+    const-wide/16 v2, 0x3e8
+
+    cmp-long v0, v0, v2
+
+    if-lez v0, :cond_1
+
+    :cond_0
+    iput-wide v4, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->mHomeKeyUpTime:J
+
+    iput-wide v4, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->mHomeKeyDownTime:J
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_1
+    iput-wide v4, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->mHomeKeyUpTime:J
+
+    iput-wide v4, p0, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->mHomeKeyDownTime:J
+
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method

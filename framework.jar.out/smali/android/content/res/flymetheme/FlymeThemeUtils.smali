@@ -6,6 +6,10 @@
 # static fields
 .field public static final ANDROID_RES:I = 0x1
 
+.field private static final BLACK_LIST:[Ljava/lang/String;
+
+.field private static final BLACK_PREFIX_LIST:[Ljava/lang/String;
+
 .field public static final CALENDAR_ICON:Ljava/lang/String; = "com.android.calendar"
 
 .field public static final CALENDAR_ICON_NO_NAME:Ljava/lang/String; = "com.android.calendar.nodate"
@@ -88,35 +92,66 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 3
+    .locals 5
 
     .prologue
-    .line 23
+    const/4 v4, 0x1
+
+    const/4 v3, 0x0
+
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     sput-object v0, Landroid/content/res/flymetheme/FlymeThemeUtils;->FLYME_ICON_PACKAGE_NAME_LIST:Ljava/util/ArrayList;
 
-    .line 25
     sget-object v0, Landroid/content/res/flymetheme/FlymeThemeUtils;->FLYME_ICON_PACKAGE_NAME_LIST:Ljava/util/ArrayList;
 
     const-string v1, "com.android.calendar"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 81
-    const/4 v0, 0x1
+    new-array v0, v4, [Ljava/lang/String;
+
+    const-string v1, "com.rsupport.rs.activity.meizu"
+
+    aput-object v1, v0, v3
+
+    sput-object v0, Landroid/content/res/flymetheme/FlymeThemeUtils;->WHITE_LIST:[Ljava/lang/String;
+
+    const/4 v0, 0x4
 
     new-array v0, v0, [Ljava/lang/String;
 
-    const/4 v1, 0x0
+    const-string v1, "com.meizu.watch"
 
-    const-string v2, "com.rsupport.rs.activity.meizu"
+    aput-object v1, v0, v3
+
+    const-string v1, "com.meizu.speaker"
+
+    aput-object v1, v0, v4
+
+    const/4 v1, 0x2
+
+    const-string v2, "com.meizu.meijia"
 
     aput-object v2, v0, v1
 
-    sput-object v0, Landroid/content/res/flymetheme/FlymeThemeUtils;->WHITE_LIST:[Ljava/lang/String;
+    const/4 v1, 0x3
+
+    const-string v2, "com.meizu.router"
+
+    aput-object v2, v0, v1
+
+    sput-object v0, Landroid/content/res/flymetheme/FlymeThemeUtils;->BLACK_LIST:[Ljava/lang/String;
+
+    new-array v0, v4, [Ljava/lang/String;
+
+    const-string v1, "com.meizu.smart."
+
+    aput-object v1, v0, v3
+
+    sput-object v0, Landroid/content/res/flymetheme/FlymeThemeUtils;->BLACK_PREFIX_LIST:[Ljava/lang/String;
 
     return-void
 .end method
@@ -194,31 +229,46 @@
     .param p0, "packageName"    # Ljava/lang/String;
 
     .prologue
-    .line 136
+    invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_1
+
     const/4 v4, 0x0
 
-    .line 137
-    .local v4, "result":Z
-    if-eqz p0, :cond_1
+    :cond_0
+    :goto_0
+    return v4
 
+    :cond_1
+    const/4 v4, 0x0
+
+    .local v4, "result":Z
     const-string v5, "com.meizu"
 
     invoke-virtual {p0, v5}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
     move-result v5
 
-    if-eqz v5, :cond_1
+    if-eqz v5, :cond_3
 
-    .line 138
+    invoke-static {p0}, Landroid/content/res/flymetheme/FlymeThemeUtils;->isInBlackList(Ljava/lang/String;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_2
+
+    const/4 v4, 0x0
+
+    goto :goto_0
+
+    :cond_2
     const/4 v4, 0x1
 
-    .line 147
-    :cond_0
-    :goto_0
-    return v4
+    goto :goto_0
 
-    .line 140
-    :cond_1
+    :cond_3
     sget-object v0, Landroid/content/res/flymetheme/FlymeThemeUtils;->WHITE_LIST:[Ljava/lang/String;
 
     .local v0, "arr$":[Ljava/lang/String;
@@ -239,16 +289,13 @@
 
     move-result v5
 
-    if-eqz v5, :cond_2
+    if-eqz v5, :cond_4
 
-    .line 142
     const/4 v4, 0x1
 
-    .line 143
     goto :goto_0
 
-    .line 140
-    :cond_2
+    :cond_4
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_1
@@ -315,4 +362,74 @@
     const/4 v0, 0x1
 
     return v0
+.end method
+
+.method private static isInBlackList(Ljava/lang/String;)Z
+    .locals 7
+    .param p0, "packageName"    # Ljava/lang/String;
+
+    .prologue
+    const/4 v5, 0x1
+
+    sget-object v0, Landroid/content/res/flymetheme/FlymeThemeUtils;->BLACK_PREFIX_LIST:[Ljava/lang/String;
+
+    .local v0, "arr$":[Ljava/lang/String;
+    array-length v2, v0
+
+    .local v2, "len$":I
+    const/4 v1, 0x0
+
+    .local v1, "i$":I
+    :goto_0
+    if-ge v1, v2, :cond_2
+
+    aget-object v4, v0, v1
+
+    .local v4, "prefix":Ljava/lang/String;
+    invoke-virtual {p0, v4}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result v6
+
+    if-eqz v6, :cond_1
+
+    .end local v4    # "prefix":Ljava/lang/String;
+    :cond_0
+    :goto_1
+    return v5
+
+    .restart local v4    # "prefix":Ljava/lang/String;
+    :cond_1
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+
+    .end local v4    # "prefix":Ljava/lang/String;
+    :cond_2
+    sget-object v0, Landroid/content/res/flymetheme/FlymeThemeUtils;->BLACK_LIST:[Ljava/lang/String;
+
+    array-length v2, v0
+
+    const/4 v1, 0x0
+
+    :goto_2
+    if-ge v1, v2, :cond_3
+
+    aget-object v3, v0, v1
+
+    .local v3, "name":Ljava/lang/String;
+    invoke-static {p0, v3}, Landroid/text/TextUtils;->equals(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+
+    move-result v6
+
+    if-nez v6, :cond_0
+
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_2
+
+    .end local v3    # "name":Ljava/lang/String;
+    :cond_3
+    const/4 v5, 0x0
+
+    goto :goto_1
 .end method

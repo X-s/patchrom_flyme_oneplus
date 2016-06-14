@@ -322,23 +322,39 @@
 .end method
 
 .method static performFlymeBootDexOpt(Lcom/android/server/pm/PackageManagerService;Landroid/content/pm/PackageParser$Package;II)Z
-    .locals 9
+    .locals 12
     .param p0, "pms"    # Lcom/android/server/pm/PackageManagerService;
     .param p1, "pkg"    # Landroid/content/pm/PackageParser$Package;
     .param p2, "curr"    # I
     .param p3, "total"    # I
 
     .prologue
-    const/4 v8, 0x1
+    const/4 v11, 0x1
 
-    .line 13962
     invoke-virtual {p0}, Lcom/android/server/pm/PackageManagerService;->isFirstBoot()Z
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    .line 13965
+    int-to-double v2, p2
+
+    int-to-double v4, p3
+
+    div-double v6, v2, v4
+
+    .local v6, "percent":D
+    const-wide/high16 v2, 0x4059000000000000L    # 100.0
+
+    mul-double/2addr v2, v6
+
+    const-wide/high16 v4, 0x3fe0000000000000L    # 0.5
+
+    sub-double/2addr v2, v4
+
+    double-to-int v8, v2
+
+    .local v8, "percentNum":I
     :try_start_0
     invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
 
@@ -354,27 +370,19 @@
 
     move-result-object v3
 
-    sget v4, Lcom/flyme/internal/R$string;->dexopt_apps_apk:I
+    sget v4, Lcom/flyme/internal/R$string;->dexopt_apps_apk_percent:I
 
-    const/4 v5, 0x2
+    const/4 v5, 0x1
 
     new-array v5, v5, [Ljava/lang/Object;
 
-    const/4 v6, 0x0
+    const/4 v9, 0x0
 
-    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v8}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v7
+    move-result-object v10
 
-    aput-object v7, v5, v6
-
-    const/4 v6, 0x1
-
-    invoke-static {p3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v7
-
-    aput-object v7, v5, v6
+    aput-object v10, v5, v9
 
     invoke-virtual {v3, v4, v5}, Landroid/content/res/Resources;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
 
@@ -414,18 +422,17 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 13973
+    .end local v6    # "percent":D
+    .end local v8    # "percentNum":I
     :cond_0
     :goto_0
     move-object v1, p1
 
-    .line 13974
     .local v1, "p":Landroid/content/pm/PackageParser$Package;
-    iget-object v6, p0, Lcom/android/server/pm/PackageManagerService;->mInstallLock:Ljava/lang/Object;
+    iget-object v9, p0, Lcom/android/server/pm/PackageManagerService;->mInstallLock:Ljava/lang/Object;
 
-    monitor-enter v6
+    monitor-enter v9
 
-    .line 13975
     const/4 v2, 0x0
 
     const/4 v3, 0x0
@@ -439,17 +446,14 @@
     :try_start_1
     invoke-virtual/range {v0 .. v5}, Lcom/android/server/pm/PackageManagerService;->flymeInvokeMethodPerformDexOptLI(Landroid/content/pm/PackageParser$Package;[Ljava/lang/String;ZZZ)I
 
-    .line 13977
-    monitor-exit v6
+    monitor-exit v9
 
-    .line 13978
-    return v8
+    return v11
 
-    .line 13977
     :catchall_0
     move-exception v0
 
-    monitor-exit v6
+    monitor-exit v9
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
@@ -457,6 +461,8 @@
 
     .line 13970
     .end local v1    # "p":Landroid/content/pm/PackageParser$Package;
+    .restart local v6    # "percent":D
+    .restart local v8    # "percentNum":I
     :catch_0
     move-exception v0
 
@@ -719,6 +725,18 @@
     .line 13896
     if-eqz p0, :cond_0
 
+    invoke-virtual {p0}, Landroid/content/ComponentName;->getPackageName()Ljava/lang/String;
+
+    move-result-object v1
+
+    const-string v2, "android"
+
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
     invoke-virtual {p0}, Landroid/content/ComponentName;->getClassName()Ljava/lang/String;
 
     move-result-object v1
@@ -801,75 +819,68 @@
 
     iput-object v1, v0, Landroid/content/pm/ActivityInfo;->processName:Ljava/lang/String;
 
-    .line 13933
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService;->mAccessActivity:Landroid/content/pm/ActivityInfo;
 
     iput v2, v0, Landroid/content/pm/ActivityInfo;->launchMode:I
 
-    .line 13934
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService;->mAccessActivity:Landroid/content/pm/ActivityInfo;
 
     const/16 v1, 0x20
 
     iput v1, v0, Landroid/content/pm/ActivityInfo;->flags:I
 
-    .line 13935
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService;->mAccessActivity:Landroid/content/pm/ActivityInfo;
 
     iput v3, v0, Landroid/content/pm/ActivityInfo;->screenOrientation:I
 
-    .line 13936
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService;->mAccessActivity:Landroid/content/pm/ActivityInfo;
 
     iget-object v0, v0, Landroid/content/pm/ActivityInfo;->mFlymeActivityInfo:Landroid/content/ActivityInfoExt;
 
     iput-boolean v2, v0, Landroid/content/ActivityInfoExt;->needAccessControl:Z
 
-    .line 13937
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService;->mAccessActivity:Landroid/content/pm/ActivityInfo;
 
     sget v1, Lcom/flyme/internal/R$style;->Theme_Flyme_Light_AccessControl:I
 
     iput v1, v0, Landroid/content/pm/ActivityInfo;->theme:I
 
-    .line 13938
+    iget-object v0, p0, Lcom/android/server/pm/PackageManagerService;->mAccessActivity:Landroid/content/pm/ActivityInfo;
+
+    const/16 v1, 0x480
+
+    iput v1, v0, Landroid/content/pm/ActivityInfo;->configChanges:I
+
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService;->mAccessActivity:Landroid/content/pm/ActivityInfo;
 
     iput-boolean v3, v0, Landroid/content/pm/ActivityInfo;->exported:Z
 
-    .line 13939
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService;->mAccessActivity:Landroid/content/pm/ActivityInfo;
 
     iput-boolean v3, v0, Landroid/content/pm/ActivityInfo;->enabled:Z
 
-    .line 13940
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService;->mAccessInfo:Landroid/content/pm/ResolveInfo;
 
     iget-object v1, p0, Lcom/android/server/pm/PackageManagerService;->mAccessActivity:Landroid/content/pm/ActivityInfo;
 
     iput-object v1, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
 
-    .line 13941
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService;->mAccessInfo:Landroid/content/pm/ResolveInfo;
 
     iput v2, v0, Landroid/content/pm/ResolveInfo;->priority:I
 
-    .line 13942
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService;->mAccessInfo:Landroid/content/pm/ResolveInfo;
 
     iput v2, v0, Landroid/content/pm/ResolveInfo;->preferredOrder:I
 
-    .line 13943
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService;->mAccessInfo:Landroid/content/pm/ResolveInfo;
 
     iput v2, v0, Landroid/content/pm/ResolveInfo;->match:I
 
-    .line 13944
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService;->mAccessActivity:Landroid/content/pm/ActivityInfo;
 
     iput v3, v0, Landroid/content/pm/ActivityInfo;->uiOptions:I
 
-    .line 13945
     new-instance v0, Landroid/content/ComponentName;
 
     iget-object v1, p0, Lcom/android/server/pm/PackageManagerService;->mAndroidApplication:Landroid/content/pm/ApplicationInfo;
