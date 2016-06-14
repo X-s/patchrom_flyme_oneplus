@@ -40,6 +40,13 @@ fi
 
 if [ "$1" = "Settings" ];then
 
+    echo ">>>> in custom_app for $1 to remove flyme volte xml"
+    sed -i '/iput-object v12, p0, Lcom\/android\/settings\/MobileNetworkSettings;->mSimDataDisableToast:Lcom\/meizu\/settings\/MzSettingsToast;/a\
+\
+    iget-object v12, p0, Lcom\/android\/settings\/MobileNetworkSettings;->mButton4glte:Lcom\/meizu\/common\/preference\/SwitchPreference;\
+\
+    invoke-virtual {v7, v12}, Landroid\/preference\/PreferenceScreen;->removePreference(Landroid\/preference\/Preference;)Z' $2/smali/com/android/settings/MobileNetworkSettings.smali
+
     echo ">>>> in custom_app for $1 to remove flyme screenlock xml"
     sed -i '/->removePreferenceInGuestMode()V/a\
 \
