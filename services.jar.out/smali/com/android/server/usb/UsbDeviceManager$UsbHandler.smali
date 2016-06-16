@@ -933,7 +933,9 @@
 
     .line 802
     .local v8, "notification":Landroid/app/Notification;
-    const v0, 0x1080688
+    #const v0, 0x1080688
+
+    sget v0, Lcom/flyme/internal/R$drawable;->mz_stat_sys_adb:I
 
     iput v0, v8, Landroid/app/Notification;->icon:I
 
@@ -1647,7 +1649,9 @@
 
     .line 761
     .local v8, "notification":Landroid/app/Notification;
-    const v0, 0x10806a7
+    #const v0, 0x10806a7
+
+    sget v0, Lcom/flyme/internal/R$drawable;->mz_stat_sys_data_usb:I
 
     iput v0, v8, Landroid/app/Notification;->icon:I
 
