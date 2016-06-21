@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:gravity="center" android:id="@id/mute" android:layout_width="wrap_content" android:layout_height="@dimen/three_key_layout_height" android:layout_marginTop="@dimen/three_key_layout_item_mute_marginTop" android:layout_weight="1.0">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/mute_img" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/three_key_mute_unselect" />
+        <TextView android:textSize="@dimen/three_key_text_size" android:textColor="#ffef4f6a" android:layout_gravity="center_horizontal" android:id="@id/mute_tv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/three_key_layout_item_textview_marginTop" android:text="@string/three_key_mute" />
+    </FrameLayout>
+    <FrameLayout android:gravity="center" android:id="@id/no_disturb" android:layout_width="wrap_content" android:layout_height="@dimen/three_key_layout_height" android:layout_marginTop="@dimen/three_key_layout_item_disturb_marginTop" android:layout_weight="1.0">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/no_disturb_img" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/three_key_no_distrub_unselect" />
+        <TextView android:textSize="@dimen/three_key_text_size" android:textColor="#ff23aff3" android:layout_gravity="center_horizontal" android:id="@id/no_disturb_tv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/three_key_layout_item_textview_marginTop" android:text="@string/three_key_no_distrub" />
+    </FrameLayout>
+    <FrameLayout android:gravity="center" android:id="@id/normal" android:layout_width="wrap_content" android:layout_height="@dimen/three_key_layout_height" android:layout_marginTop="@dimen/three_key_layout_item_normal_marginTop" android:layout_weight="1.0">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/normal_img" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/three_key_normal_unselect" />
+        <TextView android:textSize="@dimen/three_key_text_size" android:textColor="#ff0ecab2" android:layout_gravity="center_horizontal" android:id="@id/normal_tv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/three_key_layout_item_textview_marginTop" android:text="@string/three_key_normal" />
+    </FrameLayout>
+</LinearLayout>

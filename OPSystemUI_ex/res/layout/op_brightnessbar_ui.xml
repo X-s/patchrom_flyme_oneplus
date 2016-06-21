@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="bottom" android:background="@color/control_panel_background" android:layout_width="fill_parent" android:layout_height="@dimen/control_panel_brightness_view_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <SeekBar android:id="@id/opseekbar" android:layout_width="240.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/SeekBarStyle" />
+    <ImageView android:id="@id/headerimage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/icon_light_min" android:scaleType="fitXY" android:layout_toLeftOf="@id/opseekbar" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/endimage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/icon_light_max" android:scaleType="fitXY" android:layout_toRightOf="@id/opseekbar" android:layout_centerVertical="true" />
+</RelativeLayout>

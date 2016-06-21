@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_029" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_028" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_027" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_026" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_025" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_024" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_023" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_022" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_021" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_020" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_019" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_018" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_017" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_016" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_015" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_014" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_013" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_012" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_011" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_010" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_009" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_008" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_007" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_006" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_005" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_004" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_003" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_002" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_001" />
+    <item android:duration="@integer/threekey_img_animation_duration_time" android:drawable="@drawable/normal_000" />
+</animation-list>

@@ -1,0 +1,23 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: OPSystemUI_ex.apk
+compressionType: false
+doNotCompress:
+- arsc
+isFrameworkApk: false
+packageInfo:
+  forcedPackageId: '127'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '20'
+  targetSdkVersion: '22'
+sharedLibrary: false
+unknownFiles: {}
+usesFramework:
+  ids:
+  - 1
+  - 3
+  tag: null
+version: 2.1.1-04d478-SNAPSHOT
+versionInfo:
+  versionCode: '0'
+  versionName: 1.2.0.160324164613.3519e85

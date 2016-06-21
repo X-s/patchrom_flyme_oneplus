@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_01" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_02" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_03" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_04" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_05" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_06" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_07" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_08" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_09" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_10" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_11" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_12" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_13" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_14" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_15" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_16" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_17" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_18" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_19" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_20" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_21" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_22" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_23" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_24" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_25" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_26" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_27" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_28" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_29" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_30" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_31" />
+    <item android:duration="30" android:drawable="@drawable/statusbar_data_loading_dark_32" />
+</animation-list>

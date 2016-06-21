@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/background" android:bottom="@dimen/control_panel_tile_cross_line_height">
+        <shape android:shape="rectangle">
+            <solid android:color="#00000000" />
+            <size android:height="@dimen/control_panel_tile_cross_line_height" android:width="@dimen/control_panel_tile_cross_line_width" />
+        </shape>
+    </item>
+    <item android:id="@id/line" android:top="@dimen/control_panel_tile_cross_line_height">
+        <shape android:shape="rectangle">
+            <solid android:color="#ffffffff" />
+            <size android:height="@dimen/control_panel_tile_cross_line_height" android:width="@dimen/control_panel_tile_cross_line_width" />
+        </shape>
+    </item>
+</layer-list>

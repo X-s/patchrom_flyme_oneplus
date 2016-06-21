@@ -1,0 +1,55 @@
+.class Lcom/android/systemui_ex/DessertCaseDream$1;
+.super Ljava/lang/Object;
+.source "DessertCaseDream.java"
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/android/systemui_ex/DessertCaseDream;->onDreamingStarted()V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+
+# instance fields
+.field final synthetic this$0:Lcom/android/systemui_ex/DessertCaseDream;
+
+
+# direct methods
+.method constructor <init>(Lcom/android/systemui_ex/DessertCaseDream;)V
+    .locals 0
+
+    .prologue
+    .line 42
+    iput-object p1, p0, Lcom/android/systemui_ex/DessertCaseDream$1;->this$0:Lcom/android/systemui_ex/DessertCaseDream;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public run()V
+    .locals 1
+
+    .prologue
+    .line 44
+    iget-object v0, p0, Lcom/android/systemui_ex/DessertCaseDream$1;->this$0:Lcom/android/systemui_ex/DessertCaseDream;
+
+    # getter for: Lcom/android/systemui_ex/DessertCaseDream;->mView:Lcom/android/systemui_ex/DessertCaseView;
+    invoke-static {v0}, Lcom/android/systemui_ex/DessertCaseDream;->access$000(Lcom/android/systemui_ex/DessertCaseDream;)Lcom/android/systemui_ex/DessertCaseView;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/android/systemui_ex/DessertCaseView;->start()V
+
+    .line 45
+    return-void
+.end method

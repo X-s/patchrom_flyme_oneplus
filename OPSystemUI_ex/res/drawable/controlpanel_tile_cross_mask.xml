@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:id="@id/background" android:shape="rectangle"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/control_panel_background" />
+    <size android:height="@dimen/control_panel_tile_cross_mask_height" android:width="@dimen/control_panel_tile_cross_line_width" />
+</shape>

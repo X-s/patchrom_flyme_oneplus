@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="oneplus_control_panel_default_functions">flashlight,calculator,recorder,camera,setting,airplane,wifi,cell,bt,rotation,bottomkeys,vpn,location</string>
+    <string name="oneplus_control_panel_full_functions">flashlight,calculator,recorder,camera,setting,airplane,wifi,cell,bt,rotation,bottomkeys,vpn,location,mute,donotdisturb</string>
+    <string name="toast_rotation_locked">Screen is now locked in landscape orientation.</string>
+</resources>

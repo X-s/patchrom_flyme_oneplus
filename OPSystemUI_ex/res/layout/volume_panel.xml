@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/visible_panel" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/slider_panel" android:paddingTop="0.0dip" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="0.0dip" android:paddingEnd="0.0dip" />
+    <include android:layout_width="1.0dip" android:layout_height="wrap_content" layout="@layout/zen_mode_panel" />
+</LinearLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.systemui_ex.BatteryIconGroup android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.systemui_ex.BatteryMeterView android:id="@id/battery" android:layout_width="@dimen/status_bar_battery_view_width" android:layout_height="@dimen/status_bar_battery_view_height" android:layout_marginBottom="@dimen/battery_margin_bottom" android:layout_marginStart="@dimen/battery_start_margin" android:layout_marginEnd="@dimen/battery_end_margin" />
+    <TextView android:textSize="@dimen/battery_level_text_size" android:textColor="#ffffffff" android:id="@id/battery_level" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:importantForAccessibility="noHideDescendants" android:fontFamily="century-gothic-regular" android:layout_marginStart="@dimen/header_battery_margin_keyguard" />
+    <ImageView android:id="@id/battery_charging" android:paddingRight="1.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/stat_charging" />
+</com.android.systemui_ex.BatteryIconGroup>

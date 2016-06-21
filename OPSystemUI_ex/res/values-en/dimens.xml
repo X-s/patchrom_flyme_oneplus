@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="three_key_dialog_height">139.0dip</dimen>
+    <dimen name="three_key_text_size">6.0dip</dimen>
+    <dimen name="three_key_layout_item_mute_marginTop">7.0dip</dimen>
+    <dimen name="three_key_layout_item_disturb_marginTop">12.0dip</dimen>
+    <dimen name="three_key_layout_item_normal_marginTop">12.0dip</dimen>
+    <dimen name="three_key_layout_item_textview_marginTop">21.5dip</dimen>
+    <dimen name="three_key_layout_item_horizontal_textview_marginTop">24.0dip</dimen>
+    <dimen name="three_key_layout_item_horizontal_imageview_marginTop">5.0dip</dimen>
+</resources>

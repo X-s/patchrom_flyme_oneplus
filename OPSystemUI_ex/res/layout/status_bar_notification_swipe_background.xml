@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.systemui_ex.statusbar.NotificationSwipeBackground android:gravity="center_vertical" android:id="@id/notification_swipe_notifier" android:background="@drawable/notification_guts_bg" android:padding="@dimen/notification_side_padding" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:gravity="center" android:id="@id/open_notification" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/notification_swipe_logo_side_padding" android:src="@drawable/notification_swipe_open" android:layout_alignParentLeft="true" />
+    <ImageView android:gravity="center" android:id="@id/dismiss_notification" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/notification_swipe_logo_side_padding" android:src="@drawable/notification_swipe_delete" android:layout_alignParentRight="true" />
+</com.android.systemui_ex.statusbar.NotificationSwipeBackground>

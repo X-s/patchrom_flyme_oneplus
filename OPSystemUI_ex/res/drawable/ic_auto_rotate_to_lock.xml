@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_19" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_18" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_17" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_16" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_15" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_14" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_13" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_12" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_11" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_10" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_09" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_08" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_07" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_06" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_05" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_04" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_03" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_02" />
+    <item android:duration="@integer/control_panel_rotation_tile_duration" android:drawable="@drawable/auto_rotate_01" />
+</animation-list>

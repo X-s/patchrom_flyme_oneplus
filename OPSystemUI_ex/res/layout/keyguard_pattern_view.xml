@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.keyguard.KeyguardPatternView android:orientation="vertical" android:id="@id/keyguard_pattern_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/keyguard_accessibility_pattern_unlock" androidprv:layout_maxHeight="@dimen/keyguard_security_height_pattern" androidprv:layout_maxWidth="@dimen/keyguard_security_width"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:androidprv="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_gravity="bottom|center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/phone_locked_image" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/kg_phone_locked" />
+            <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="69.0dip" layout="@layout/keyguard_message_area" />
+            <FrameLayout android:id="@id/keyguard_bouncer_frame" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="276.0dip" android:layout_marginTop="97.0dip">
+                <com.android.internal.widget.LockPatternView android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/lockPatternView" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.0dip" android:contentDescription="@string/keyguard_accessibility_pattern_area" />
+            </FrameLayout>
+            <include android:gravity="center_horizontal" android:layout_gravity="bottom|center" android:orientation="vertical" android:id="@id/keyguard_selector_fade_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/keyguard_eca" />
+        </RelativeLayout>
+    </FrameLayout>
+</com.android.keyguard.KeyguardPatternView>

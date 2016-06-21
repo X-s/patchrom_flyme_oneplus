@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center|left|top" android:orientation="vertical" android:layout_width="@dimen/three_key_dialog_width" android:layout_height="@dimen/three_key_dialog_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/three_key_panel" layout="@layout/three_key_panel" />
+</LinearLayout>

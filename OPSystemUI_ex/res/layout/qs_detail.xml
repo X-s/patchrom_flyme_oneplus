@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="vertical" android:background="@drawable/qs_detail_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/qs_detail_header" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/qs_detail_header" />
+    <FrameLayout android:id="@android:id/content" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="63.0dip">
+        <TextView android:textAppearance="@style/TextAppearance.QS.DetailButton" android:id="@android:id/button2" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="16.0dip" style="@style/QSBorderlessButton" />
+        <Space android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <TextView android:textAppearance="@style/TextAppearance.QS.DetailButton" android:id="@android:id/button1" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingEnd="16.0dip" style="@style/QSBorderlessButton" />
+    </LinearLayout>
+</LinearLayout>

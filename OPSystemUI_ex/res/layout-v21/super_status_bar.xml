@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.systemui_ex.statusbar.phone.StatusBarWindowView android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.systemui_ex.statusbar.BackDropView android:id="@id/backdrop" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/backdrop_wallpaper" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/default_lockscreen_bg" android:scaleType="centerCrop" />
+        <FrameLayout android:id="@id/backdrop_media" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/backdrop_back" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+            <ImageView android:id="@id/backdrop_front" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        </FrameLayout>
+    </com.android.systemui_ex.statusbar.BackDropView>
+    <View android:id="@id/keyguard_gause_shadow" android:background="#ff000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/keyguard_camera_icon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.android.systemui_ex.statusbar.ScrimView android:id="@id/scrim_behind" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:layout_width="fill_parent" android:layout_height="@dimen/status_bar_height" layout="@layout/status_bar" />
+    <FrameLayout android:layout_gravity="@integer/notification_panel_layout_gravity" android:id="@id/brightness_mirror" android:visibility="gone" android:layout_width="@dimen/notification_panel_width" android:layout_height="wrap_content">
+        <FrameLayout android:background="@drawable/brightness_mirror_background" android:paddingLeft="@dimen/notification_side_padding" android:paddingRight="@dimen/notification_side_padding" android:layout_width="fill_parent" android:layout_height="fill_parent" android:elevation="2.0dip">
+            <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/quick_settings_brightness_dialog" />
+        </FrameLayout>
+    </FrameLayout>
+    <com.android.systemui_ex.statusbar.phone.PanelHolder android:id="@id/panel_holder" android:background="@color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/status_bar_expanded" />
+    </com.android.systemui_ex.statusbar.phone.PanelHolder>
+    <com.android.systemui_ex.statusbar.ScrimView android:id="@id/scrim_in_front" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <View android:gravity="center" android:id="@id/dial_ignore_tip_bg" android:background="@color/statusbar_dial_ignore_bg_color" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/status_bar_height" />
+            <TextView android:gravity="center" android:id="@id/dial_ignore_tip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/status_bar_height" android:text="@string/status_bar_return_phone_call_tip" />
+        </FrameLayout>
+        <LinearLayout android:gravity="left" android:orientation="horizontal" android:id="@id/highlight_hint_notification" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/status_bar_height">
+            <ImageView android:gravity="center_vertical" android:id="@id/highlight_hint_notification_icon" android:layout_width="11.0dip" android:layout_height="11.0dip" android:layout_marginLeft="4.0dip" android:layout_marginTop="5.0dip" />
+            <TextView android:textSize="10.0sp" android:textColor="#ccffffff" android:id="@id/highlight_hint_notification_text" android:layout_width="wrap_content" android:layout_height="@dimen/status_bar_height" android:layout_marginLeft="2.0dip" android:layout_marginTop="3.0dip" />
+            <Chronometer android:textSize="10.0sp" android:textColor="#ccffffff" android:id="@id/highlight_hint_notification_chronometer" android:layout_width="wrap_content" android:layout_height="@dimen/status_bar_height" android:layout_marginLeft="2.0dip" android:layout_marginTop="3.0dip" />
+        </LinearLayout>
+    </FrameLayout>
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/keyguard_prevent_mode" />
+</com.android.systemui_ex.statusbar.phone.StatusBarWindowView>

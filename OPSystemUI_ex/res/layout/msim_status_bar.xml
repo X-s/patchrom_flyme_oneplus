@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.systemui_ex.statusbar.phone.PhoneStatusBarView android:orientation="vertical" android:id="@id/msim_status_bar" android:background="@drawable/system_bar_background" android:focusable="true" android:descendantFocusability="afterDescendants"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:systemui="http://schemas.android.com/apk/res/com.android.systemui_ex">
+    <ImageView android:id="@id/notification_lights_out" android:paddingBottom="2.0dip" android:visibility="gone" android:layout_width="@dimen/status_bar_icon_size" android:layout_height="fill_parent" android:src="@drawable/ic_sysbar_lights_out_dot_small" android:scaleType="center" android:paddingStart="6.0dip" />
+    <RelativeLayout android:id="@id/status_bar_contents" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="6.0dip" android:paddingEnd="8.0dip">
+        <com.android.systemui_ex.statusbar.AlphaOptimizedFrameLayout android:orientation="horizontal" android:id="@id/notification_icon_area" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/three_key_tips" android:layout_alignParentLeft="true">
+            <com.android.keyguard.AlphaOptimizedLinearLayout android:id="@id/notification_icon_area_inner" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <include android:layout_width="@dimen/status_bar_icon_size" android:layout_height="fill_parent" layout="@layout/notification_notifier_group" />
+                <com.android.systemui_ex.statusbar.StatusBarIconView android:id="@id/moreIcon" android:visibility="gone" android:layout_width="@dimen/status_bar_icon_size" android:layout_height="fill_parent" android:src="@drawable/stat_notify_more" />
+                <com.android.systemui_ex.statusbar.phone.IconMerger android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/notificationIcons" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentStart="true" />
+                <include android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/notificationIcons" layout="@layout/status_icons" />
+            </com.android.keyguard.AlphaOptimizedLinearLayout>
+        </com.android.systemui_ex.statusbar.AlphaOptimizedFrameLayout>
+        <com.android.systemui_ex.statusbar.policy.Clock android:textAppearance="@style/TextAppearance.StatusBar.Clock" android:gravity="center_vertical" android:id="@id/clock" android:paddingBottom="0.6dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" android:layout_centerInParent="true" />
+        <com.android.systemui_ex.statusbar.policy.ThreeKeyTipsView android:textAppearance="@style/TextAppearance.StatusBar.Threekey" android:gravity="center_vertical" android:id="@id/three_key_tips" android:paddingBottom="0.6dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" android:layout_centerInParent="true" />
+        <com.android.keyguard.AlphaOptimizedLinearLayout android:orientation="horizontal" android:id="@id/system_icon_area" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+            <LinearLayout android:gravity="center_vertical" android:id="@id/system_icons" android:layout_width="wrap_content" android:layout_height="fill_parent"
+              xmlns:android="http://schemas.android.com/apk/res/android">
+                <include android:id="@id/msim_signal_cluster" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="2.0dip" layout="@layout/msim_signal_cluster_view" />
+                <include android:id="@id/battery_icon_group" android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/battery_icon_group" />
+            </LinearLayout>
+        </com.android.keyguard.AlphaOptimizedLinearLayout>
+    </RelativeLayout>
+    <ViewStub android:id="@id/ticker_stub" android:layout="@layout/status_bar_ticker" android:inflatedId="@id/ticker" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.android.systemui_ex.statusbar.phone.PhoneStatusBarView>

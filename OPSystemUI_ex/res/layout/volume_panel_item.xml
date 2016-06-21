@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textAppearance="@style/TextAppearance.QS.VolumeSuppressor" android:ellipsize="end" android:id="@id/suppressor" android:visibility="gone" android:layout_width="1.0dip" android:layout_height="1.0dip" android:singleLine="true" android:paddingStart="8.0dip" android:paddingEnd="8.0dip" />
+    <com.android.systemui_ex.volume.VerticalProgressBar android:id="@id/seekbar" android:layout_width="fill_parent" android:layout_height="fill_parent" android:max="100" android:progress="1" android:progressDrawable="@drawable/volume_progressbar_define_style" style="?android:attr/progressBarStyleHorizontal" />
+    <ImageView android:id="@id/stream_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" android:contentDescription="@null" />
+    <View android:id="@id/divider" android:background="@color/volume_panel_divider" android:visibility="gone" android:layout_width="1.0dip" android:layout_height="32.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" />
+    <ImageView android:id="@id/secondary_icon" android:background="@drawable/btn_borderless_rect" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:scaleType="center" android:contentDescription="@null" />
+</FrameLayout>
