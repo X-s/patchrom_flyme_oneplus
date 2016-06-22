@@ -95,10 +95,9 @@
 
     .prologue
     .line 312
-    const-string/jumbo v0, "qemu.sf.lcd_density"
+    const-string/jumbo v0, "persist.sys.density"
 
-    #const-string/jumbo v1, "ro.sf.lcd_density"
-    const-string/jumbo v1, "persist.xsdensity"
+    const-string/jumbo v1, "ro.sf.lcd_density"
 
     const/16 v2, 0xa0
 
