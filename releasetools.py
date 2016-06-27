@@ -3,9 +3,9 @@ import edify_generator
 import os
 
 def InstallBased(info):
-    for filename in os.listdir("other"):
+    for filename in os.listdir("firmware"):
         if not (filename.find('.mbn')==-1 and filename.find('.bin')==-1 and filename.find('static_nvbk')==-1):
-            data=open(os.path.join(os.getcwd(),"other",filename)).read()
+            data=open(os.path.join(os.getcwd(),"firmware",filename)).read()
             common.ZipWriteStr(info.output_zip, filename, data)
     extra_img_flash = """ui_print("Writing static_nvbk image...");
 package_extract_file("static_nvbk.bin", "/dev/block/bootdevice/by-name/oem_stanvbk");
