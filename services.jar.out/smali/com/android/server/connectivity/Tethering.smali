@@ -1384,7 +1384,8 @@
     invoke-virtual {v1, v0, v2}, Landroid/content/Context;->sendStickyBroadcastAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
 
     .line 416
-    const v1, 0x10806c9
+    #const v1, #android:drawable@stat_sys_tether_wifi#t
+    sget v1, Lcom/flyme/internal/R$drawable;->mz_stat_sys_tether_wifi:I
 
     invoke-direct {p0, v1}, Lcom/android/server/connectivity/Tethering;->showTetheredNotification(I)V
 
@@ -1395,7 +1396,8 @@
     .locals 16
 
     .prologue
-    const v15, 0x10806c7
+    #const v15, #android:drawable@stat_sys_tether_general#t
+    sget v15, Lcom/flyme/internal/R$drawable;->mz_stat_sys_tether_general:I
 
     .line 602
     invoke-direct/range {p0 .. p0}, Lcom/android/server/connectivity/Tethering;->getConnectivityManager()Landroid/net/ConnectivityManager;
@@ -1742,7 +1744,8 @@
 
     .line 652
     :cond_9
-    const v12, 0x10806c8
+    #const v12, #android:drawable@stat_sys_tether_usb#t
+    sget v12, Lcom/flyme/internal/R$drawable;->mz_stat_sys_tether_usb:I
 
     move-object/from16 v0, p0
 
@@ -1766,7 +1769,8 @@
 
     .line 659
     :cond_b
-    const v12, 0x10806c9
+    #const v12, #android:drawable@stat_sys_tether_wifi#t
+    sget v12, Lcom/flyme/internal/R$drawable;->mz_stat_sys_tether_wifi:I
 
     move-object/from16 v0, p0
 
@@ -1779,7 +1783,8 @@
     if-eqz v3, :cond_d
 
     .line 666
-    const v12, 0x10806c6
+    #const v12, #android:drawable@stat_sys_tether_bluetooth#t
+    sget v12, Lcom/flyme/internal/R$drawable;->mz_stat_sys_tether_bluetooth:I
 
     move-object/from16 v0, p0
 
@@ -1951,7 +1956,8 @@
 
     if-eqz v0, :cond_0
 
-    const v0, 0x10806c9
+    #const v0, #android:drawable@stat_sys_tether_wifi#t
+    sget v0, Lcom/flyme/internal/R$drawable;->mz_stat_sys_tether_wifi:I
 
     if-ne p1, v0, :cond_0
 
@@ -2039,7 +2045,8 @@
 
     if-eqz v0, :cond_7
 
-    const v0, 0x10806c9
+    #const v0, #android:drawable@stat_sys_tether_wifi#t
+    sget v0, Lcom/flyme/internal/R$drawable;->mz_stat_sys_tether_wifi:I
 
     if-ne p1, v0, :cond_7
 
@@ -2111,7 +2118,8 @@
 
     if-eqz v0, :cond_8
 
-    const v0, 0x10806c9
+    #const v0, #android:drawable@stat_sys_tether_wifi#t
+    sget v0, Lcom/flyme/internal/R$drawable;->mz_stat_sys_tether_wifi:I
 
     if-ne p1, v0, :cond_8
 
