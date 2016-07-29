@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/aboutImage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/about_iamge_margin_top" android:src="@drawable/app_icon" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-    <TextView android:id="@id/version" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/about_version_margin_top" android:text="@string/about_version" android:layout_below="@id/aboutImage" android:layout_centerHorizontal="true" style="@style/AboutText.VersionCopy" />
-    <TextView android:id="@id/agreement" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/about_agreement_margin_bottom" android:text="@string/about_agreement" android:layout_above="@id/copyright" android:layout_centerHorizontal="true" style="@style/AboutText.Agreement" />
-    <TextView android:id="@id/copyright" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/about_copyright_margin_bottom" android:text="@string/about_copyright" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/AboutText.VersionCopy" />
-</RelativeLayout>

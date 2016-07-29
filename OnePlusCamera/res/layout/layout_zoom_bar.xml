@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/zoom_bar_container" android:visibility="gone" android:layout_width="@dimen/zoom_bar_container_width" android:layout_height="@dimen/zoom_bar_container_height" android:layout_marginTop="@dimen/zoom_bar_container_margin_top" android:layout_marginRight="@dimen/zoom_bar_container_margin_right" android:layout_alignParentTop="true" android:layout_alignParentRight="true"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/zoom_bar_icon_plus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/exposure_comp_icon_plus" />
-    <com.oneplus.widget.VerticalSeekBar android:id="@id/zoom_bar" android:paddingLeft="@dimen/zoom_bar_padding_left_right" android:paddingTop="@dimen/zoom_bar_padding_top_bottom" android:paddingRight="@dimen/zoom_bar_padding_left_right" android:paddingBottom="@dimen/zoom_bar_padding_top_bottom" android:layout_width="fill_parent" android:layout_height="@dimen/zoom_bar_height" android:layout_marginTop="@dimen/zoom_bar_margin_top" android:layout_marginBottom="@dimen/zoom_bar_margin_bottom" android:max="100" android:thumb="@drawable/zoom_thumb" />
-    <ImageView android:id="@id/zoom_bar_icon_minus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/exposure_comp_icon_minus" />
-</LinearLayout>

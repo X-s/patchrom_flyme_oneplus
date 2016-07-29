@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/camera_switch_animation_container" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/camera_switch_animation_background_view" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/camera_switch_animation_image_1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" />
-    <ImageView android:id="@id/camera_switch_animation_image_2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" />
-</RelativeLayout>

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/capture_modes_panel_item_height"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/capture_modes_panel_item_icon" android:layout_width="@dimen/capture_modes_panel_item_icon_width" android:layout_height="wrap_content" android:scaleType="centerInside" android:layout_centerInParent="true" />
-    <TextView android:ellipsize="end" android:gravity="start|center" android:id="@id/capture_modes_panel_item_title" android:paddingLeft="@dimen/capture_modes_panel_item_icon_title_margin" android:layout_width="wrap_content" android:layout_height="fill_parent" style="@style/CaptureModesPanelItemText" />
-</LinearLayout>

@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/exposure_indicator_container" android:visibility="gone" android:layout_width="@dimen/exposure_indicator_container_width" android:layout_height="@dimen/exposure_indicator_container_height" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/exposure_indicator" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-</RelativeLayout>

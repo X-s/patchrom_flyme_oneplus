@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:theme="@android:style/Theme.Material.Light" android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/resolution_layout" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@color/resolution_window_listview_divider" android:dividerHeight="1.0px" android:layout_alignParentBottom="true" />
-</RelativeLayout>
