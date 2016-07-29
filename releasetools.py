@@ -22,5 +22,19 @@ package_extract_file("NON-HLOS.bin", "/dev/block/bootdevice/by-name/modem");
 package_extract_file("BTFM.bin", "/dev/block/bootdevice/by-name/bluetooth");"""
     info.script.AppendExtra(extra_img_flash);
 
+def InstallSuperSU(info):
+    for filename in os.listdir("overlay"):
+        if not (filename.find('SuperSU_v2.76_Modify.zip')==-1):
+            data=open(os.path.join(os.getcwd(),"overlay",filename)).read()
+            common.ZipWriteStr(info.output_zip, "SuperSU/" + filename, data)
+            info.script.AppendExtra(('ui_print("Flashing SuperSU");'))
+            info.script.AppendExtra(('package_extract_dir("SuperSU", "/tmp/supersu");'))
+            info.script.AppendExtra(('run_program("/sbin/busybox", "unzip", "/tmp/supersu/'+filename+'", "META-INF/com/google/android/*", "-d", "/tmp/supersu");'))
+            info.script.AppendExtra(('run_program("/sbin/busybox", "sh", "/tmp/supersu/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/supersu/'+filename+'");'))
+
 def FullOTA_InstallEnd(info):
     InstallBased(info)
+    InstallSuperSU(info)
+
+def IncrementalOTA_InstallEnd(info):
+    InstallSuperSU(info)
