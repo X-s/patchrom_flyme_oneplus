@@ -30,6 +30,8 @@
 
 .field private mIntercepted:Z
 
+.field private mShutdownOrReboot:Z
+
 .field mWindowManagerFuncs:Landroid/view/WindowManagerPolicy$WindowManagerFuncs;
 
 .field private final mWindowTouchSlop:I
@@ -143,38 +145,7 @@
     return-void
 .end method
 
-.method static synthetic access$1000(Lcom/android/internal/policy/impl/MzGlobalActions;)Lcom/android/internal/policy/impl/EnableAccessibilityController;
-    .locals 1
-    .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
-
-    .prologue
-    iget-object v0, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mEnableAccessibilityController:Lcom/android/internal/policy/impl/EnableAccessibilityController;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1002(Lcom/android/internal/policy/impl/MzGlobalActions;Lcom/android/internal/policy/impl/EnableAccessibilityController;)Lcom/android/internal/policy/impl/EnableAccessibilityController;
-    .locals 0
-    .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
-    .param p1, "x1"    # Lcom/android/internal/policy/impl/EnableAccessibilityController;
-
-    .prologue
-    iput-object p1, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mEnableAccessibilityController:Lcom/android/internal/policy/impl/EnableAccessibilityController;
-
-    return-object p1
-.end method
-
-.method static synthetic access$1100(Lcom/android/internal/policy/impl/MzGlobalActions;)I
-    .locals 1
-    .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
-
-    .prologue
-    iget v0, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mWindowTouchSlop:I
-
-    return v0
-.end method
-
-.method static synthetic access$1200(Lcom/android/internal/policy/impl/MzGlobalActions;)Z
+.method static synthetic access$1300(Lcom/android/internal/policy/impl/MzGlobalActions;)Z
     .locals 1
     .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
 
@@ -184,7 +155,7 @@
     return v0
 .end method
 
-.method static synthetic access$1202(Lcom/android/internal/policy/impl/MzGlobalActions;Z)Z
+.method static synthetic access$1302(Lcom/android/internal/policy/impl/MzGlobalActions;Z)Z
     .locals 0
     .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
     .param p1, "x1"    # Z
@@ -195,7 +166,59 @@
     return p1
 .end method
 
-.method static synthetic access$1300(Lcom/android/internal/policy/impl/MzGlobalActions;)Z
+.method static synthetic access$1000(Lcom/android/internal/policy/impl/MzGlobalActions;)Z
+    .locals 1
+    .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
+
+    .prologue
+    iget-boolean v0, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mShutdownOrReboot:Z
+
+    return v0
+.end method
+
+.method static synthetic access$1002(Lcom/android/internal/policy/impl/MzGlobalActions;Z)Z
+    .locals 0
+    .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
+    .param p1, "x1"    # Z
+
+    .prologue
+    iput-boolean p1, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mShutdownOrReboot:Z
+
+    return p1
+.end method
+
+.method static synthetic access$1100(Lcom/android/internal/policy/impl/MzGlobalActions;)Lcom/android/internal/policy/impl/EnableAccessibilityController;
+    .locals 1
+    .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mEnableAccessibilityController:Lcom/android/internal/policy/impl/EnableAccessibilityController;
+
+    return-object v0
+.end method
+
+.method static synthetic access$1102(Lcom/android/internal/policy/impl/MzGlobalActions;Lcom/android/internal/policy/impl/EnableAccessibilityController;)Lcom/android/internal/policy/impl/EnableAccessibilityController;
+    .locals 0
+    .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
+    .param p1, "x1"    # Lcom/android/internal/policy/impl/EnableAccessibilityController;
+
+    .prologue
+    iput-object p1, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mEnableAccessibilityController:Lcom/android/internal/policy/impl/EnableAccessibilityController;
+
+    return-object p1
+.end method
+
+.method static synthetic access$1200(Lcom/android/internal/policy/impl/MzGlobalActions;)I
+    .locals 1
+    .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
+
+    .prologue
+    iget v0, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mWindowTouchSlop:I
+
+    return v0
+.end method
+
+.method static synthetic access$1400(Lcom/android/internal/policy/impl/MzGlobalActions;)Z
     .locals 1
     .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
 
@@ -205,7 +228,7 @@
     return v0
 .end method
 
-.method static synthetic access$1302(Lcom/android/internal/policy/impl/MzGlobalActions;Z)Z
+.method static synthetic access$1402(Lcom/android/internal/policy/impl/MzGlobalActions;Z)Z
     .locals 0
     .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
     .param p1, "x1"    # Z
