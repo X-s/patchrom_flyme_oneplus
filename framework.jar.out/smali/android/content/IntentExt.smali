@@ -136,7 +136,11 @@
 
 .field public mAccessPackageName:Ljava/lang/String;
 
+.field public mAccessSrcClassName:Ljava/lang/String;
+
 .field public mAccessSrcFlags:I
+
+.field public mAccessSrcPackageName:Ljava/lang/String;
 
 .field public mMeizuFlags:I
 
@@ -265,6 +269,44 @@
 
     .prologue
     iput p1, p0, Landroid/content/IntentExt;->mAccessSrcFlags:I
+
+    return-void
+.end method
+
+.method public getAccessSrcClassName()Ljava/lang/String;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/content/IntentExt;->mAccessSrcClassName:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public getAccessSrcPackageName()Ljava/lang/String;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/content/IntentExt;->mAccessSrcPackageName:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public setAccessSrcClassName(Ljava/lang/String;)V
+    .locals 0
+    .param p1, "className"    # Ljava/lang/String;
+
+    .prologue
+    iput-object p1, p0, Landroid/content/IntentExt;->mAccessSrcClassName:Ljava/lang/String;
+
+    return-void
+.end method
+
+.method public setAccessSrcPackageName(Ljava/lang/String;)V
+    .locals 0
+    .param p1, "packageName"    # Ljava/lang/String;
+
+    .prologue
+    iput-object p1, p0, Landroid/content/IntentExt;->mAccessSrcPackageName:Ljava/lang/String;
 
     return-void
 .end method

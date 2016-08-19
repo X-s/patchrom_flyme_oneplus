@@ -66,6 +66,22 @@
 
     iput-object v1, v0, Landroid/content/IntentExt;->mAccessPackageLabel:Ljava/lang/String;
 
+    iget-object v0, p0, Landroid/content/Intent;->mFlymeIntent:Landroid/content/IntentExt;
+
+    iget-object v1, p1, Landroid/content/Intent;->mFlymeIntent:Landroid/content/IntentExt;
+
+    iget-object v1, v1, Landroid/content/IntentExt;->mAccessSrcPackageName:Ljava/lang/String;
+
+    iput-object v1, v0, Landroid/content/IntentExt;->mAccessSrcPackageName:Ljava/lang/String;
+
+    iget-object v0, p0, Landroid/content/Intent;->mFlymeIntent:Landroid/content/IntentExt;
+
+    iget-object v1, p1, Landroid/content/Intent;->mFlymeIntent:Landroid/content/IntentExt;
+
+    iget-object v1, v1, Landroid/content/IntentExt;->mAccessSrcClassName:Ljava/lang/String;
+
+    iput-object v1, v0, Landroid/content/IntentExt;->mAccessSrcClassName:Ljava/lang/String;
+
     .line 7976
     return-void
 .end method
@@ -162,6 +178,22 @@
 
     iput-object v1, v0, Landroid/content/IntentExt;->mAccessPackageLabel:Ljava/lang/String;
 
+    iget-object v0, p0, Landroid/content/Intent;->mFlymeIntent:Landroid/content/IntentExt;
+
+    invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v1
+
+    iput-object v1, v0, Landroid/content/IntentExt;->mAccessSrcPackageName:Ljava/lang/String;
+
+    iget-object v0, p0, Landroid/content/Intent;->mFlymeIntent:Landroid/content/IntentExt;
+
+    invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v1
+
+    iput-object v1, v0, Landroid/content/IntentExt;->mAccessSrcClassName:Ljava/lang/String;
+
     .line 7992
     return-void
 .end method
@@ -193,6 +225,18 @@
     iget-object v0, p0, Landroid/content/Intent;->mFlymeIntent:Landroid/content/IntentExt;
 
     iget-object v0, v0, Landroid/content/IntentExt;->mAccessPackageLabel:Ljava/lang/String;
+
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    iget-object v0, p0, Landroid/content/Intent;->mFlymeIntent:Landroid/content/IntentExt;
+
+    iget-object v0, v0, Landroid/content/IntentExt;->mAccessSrcPackageName:Ljava/lang/String;
+
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    iget-object v0, p0, Landroid/content/Intent;->mFlymeIntent:Landroid/content/IntentExt;
+
+    iget-object v0, v0, Landroid/content/IntentExt;->mAccessSrcClassName:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 

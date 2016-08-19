@@ -37,30 +37,10 @@
 
 # virtual methods
 .method public onClick(Landroid/view/View;)V
-    .locals 5
+    .locals 4
     .param p1, "v"    # Landroid/view/View;
 
     .prologue
-    const/4 v4, 0x1
-
-    iget-object v0, p0, Lcom/android/internal/policy/impl/MzGlobalActions$MzGlobalActionsDialog$4;->this$1:Lcom/android/internal/policy/impl/MzGlobalActions$MzGlobalActionsDialog;
-
-    iget-object v0, v0, Lcom/android/internal/policy/impl/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/internal/policy/impl/MzGlobalActions;
-
-    # getter for: Lcom/android/internal/policy/impl/MzGlobalActions;->mShutdownOrReboot:Z
-    invoke-static {v0}, Lcom/android/internal/policy/impl/MzGlobalActions;->access$1000(Lcom/android/internal/policy/impl/MzGlobalActions;)Z
-
-    move-result v0
-
-    if-nez v0, :cond_0
-
-    iget-object v0, p0, Lcom/android/internal/policy/impl/MzGlobalActions$MzGlobalActionsDialog$4;->this$1:Lcom/android/internal/policy/impl/MzGlobalActions$MzGlobalActionsDialog;
-
-    iget-object v0, v0, Lcom/android/internal/policy/impl/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/internal/policy/impl/MzGlobalActions;
-
-    # setter for: Lcom/android/internal/policy/impl/MzGlobalActions;->mShutdownOrReboot:Z
-    invoke-static {v0, v4}, Lcom/android/internal/policy/impl/MzGlobalActions;->access$1002(Lcom/android/internal/policy/impl/MzGlobalActions;Z)Z
-
     iget-object v0, p0, Lcom/android/internal/policy/impl/MzGlobalActions$MzGlobalActionsDialog$4;->this$1:Lcom/android/internal/policy/impl/MzGlobalActions$MzGlobalActionsDialog;
 
     iget-object v0, v0, Lcom/android/internal/policy/impl/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/internal/policy/impl/MzGlobalActions;
@@ -93,9 +73,11 @@
 
     move-result-object v0
 
+    const/4 v1, 0x1
+
     const-wide/16 v2, 0x320
 
-    invoke-virtual {v0, v4, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
+    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
     .line 349
     :cond_0

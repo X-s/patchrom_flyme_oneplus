@@ -30,8 +30,6 @@
 
 .field private mIntercepted:Z
 
-.field private mShutdownOrReboot:Z
-
 .field mWindowManagerFuncs:Landroid/view/WindowManagerPolicy$WindowManagerFuncs;
 
 .field private final mWindowTouchSlop:I
@@ -150,7 +148,7 @@
     .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
 
     .prologue
-    iget-boolean v0, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mCancelOnUp:Z
+    iget-boolean v0, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mIntercepted:Z
 
     return v0
 .end method
@@ -161,33 +159,12 @@
     .param p1, "x1"    # Z
 
     .prologue
-    iput-boolean p1, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mCancelOnUp:Z
+    iput-boolean p1, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mIntercepted:Z
 
     return p1
 .end method
 
-.method static synthetic access$1000(Lcom/android/internal/policy/impl/MzGlobalActions;)Z
-    .locals 1
-    .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
-
-    .prologue
-    iget-boolean v0, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mShutdownOrReboot:Z
-
-    return v0
-.end method
-
-.method static synthetic access$1002(Lcom/android/internal/policy/impl/MzGlobalActions;Z)Z
-    .locals 0
-    .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
-    .param p1, "x1"    # Z
-
-    .prologue
-    iput-boolean p1, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mShutdownOrReboot:Z
-
-    return p1
-.end method
-
-.method static synthetic access$1100(Lcom/android/internal/policy/impl/MzGlobalActions;)Lcom/android/internal/policy/impl/EnableAccessibilityController;
+.method static synthetic access$1000(Lcom/android/internal/policy/impl/MzGlobalActions;)Lcom/android/internal/policy/impl/EnableAccessibilityController;
     .locals 1
     .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
 
@@ -197,7 +174,7 @@
     return-object v0
 .end method
 
-.method static synthetic access$1102(Lcom/android/internal/policy/impl/MzGlobalActions;Lcom/android/internal/policy/impl/EnableAccessibilityController;)Lcom/android/internal/policy/impl/EnableAccessibilityController;
+.method static synthetic access$1002(Lcom/android/internal/policy/impl/MzGlobalActions;Lcom/android/internal/policy/impl/EnableAccessibilityController;)Lcom/android/internal/policy/impl/EnableAccessibilityController;
     .locals 0
     .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
     .param p1, "x1"    # Lcom/android/internal/policy/impl/EnableAccessibilityController;
@@ -208,7 +185,7 @@
     return-object p1
 .end method
 
-.method static synthetic access$1200(Lcom/android/internal/policy/impl/MzGlobalActions;)I
+.method static synthetic access$1100(Lcom/android/internal/policy/impl/MzGlobalActions;)I
     .locals 1
     .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
 
@@ -218,23 +195,23 @@
     return v0
 .end method
 
-.method static synthetic access$1400(Lcom/android/internal/policy/impl/MzGlobalActions;)Z
+.method static synthetic access$1200(Lcom/android/internal/policy/impl/MzGlobalActions;)Z
     .locals 1
     .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
 
     .prologue
-    iget-boolean v0, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mIntercepted:Z
+    iget-boolean v0, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mCancelOnUp:Z
 
     return v0
 .end method
 
-.method static synthetic access$1402(Lcom/android/internal/policy/impl/MzGlobalActions;Z)Z
+.method static synthetic access$1202(Lcom/android/internal/policy/impl/MzGlobalActions;Z)Z
     .locals 0
     .param p0, "x0"    # Lcom/android/internal/policy/impl/MzGlobalActions;
     .param p1, "x1"    # Z
 
     .prologue
-    iput-boolean p1, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mIntercepted:Z
+    iput-boolean p1, p0, Lcom/android/internal/policy/impl/MzGlobalActions;->mCancelOnUp:Z
 
     return p1
 .end method
