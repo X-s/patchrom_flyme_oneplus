@@ -2731,3 +2731,22 @@
 
     goto :goto_0
 .end method
+
+.method public static isMarshallowFlymePermissionDisable()Z
+    .locals 2
+
+    .prologue
+    const-string v0, "persist.sys.m.flymesafe"
+
+    invoke-static {v0}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    const-string v1, "disable"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    return v0
+.end method

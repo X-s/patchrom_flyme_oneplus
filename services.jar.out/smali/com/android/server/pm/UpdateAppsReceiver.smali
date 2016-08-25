@@ -245,17 +245,6 @@
     return-void
 .end method
 
-.method static synthetic access$102(Landroid/content/pm/PackageManager;)Landroid/content/pm/PackageManager;
-    .locals 0
-    .param p0, "x0"    # Landroid/content/pm/PackageManager;
-
-    .prologue
-    .line 40
-    sput-object p0, Lcom/android/server/pm/UpdateAppsReceiver;->mPm:Landroid/content/pm/PackageManager;
-
-    return-object p0
-.end method
-
 .method static synthetic access$1100(Lcom/android/server/pm/UpdateAppsReceiver;)V
     .locals 0
     .param p0, "x0"    # Lcom/android/server/pm/UpdateAppsReceiver;
@@ -1431,14 +1420,12 @@
     .param p1, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 95
     new-instance v0, Lcom/android/server/pm/UpdateAppsReceiver$1;
 
-    invoke-direct {v0, p0, p1}, Lcom/android/server/pm/UpdateAppsReceiver$1;-><init>(Lcom/android/server/pm/UpdateAppsReceiver;Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lcom/android/server/pm/UpdateAppsReceiver$1;-><init>(Lcom/android/server/pm/UpdateAppsReceiver;)V
 
     invoke-virtual {v0}, Lcom/android/server/pm/UpdateAppsReceiver$1;->start()V
 
-    .line 154
     return-void
 .end method
 
@@ -2165,14 +2152,18 @@
     .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 78
+    invoke-virtual {p1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    move-result-object v1
+
+    sput-object v1, Lcom/android/server/pm/UpdateAppsReceiver;->mPm:Landroid/content/pm/PackageManager;
+
     invoke-static {p1}, Landroid/content/pm/FlymePackageManager;->getInstance(Landroid/content/Context;)Landroid/content/pm/FlymePackageManager;
 
     move-result-object v1
 
     iput-object v1, p0, Lcom/android/server/pm/UpdateAppsReceiver;->mFpm:Landroid/content/pm/FlymePackageManager;
 
-    .line 79
     const-string v1, "android.intent.action.BOOT_COMPLETED"
 
     invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
