@@ -2110,7 +2110,7 @@
     return-object p1
 .end method
 
-.method private static setDrawsSystemBarBackgrounds(Landroid/app/Activity;ZLandroid/view/WindowManager$LayoutParams;Z)V
+.method static setDrawsSystemBarBackgrounds(Landroid/app/Activity;ZLandroid/view/WindowManager$LayoutParams;Z)V
     .locals 3
     .param p0, "activity"    # Landroid/app/Activity;
     .param p1, "on"    # Z
@@ -2807,6 +2807,18 @@
     iget-boolean v0, p0, Landroid/app/Activity;->mFlymeStatusBarColorLock:Z
 
     if-nez v0, :cond_0
+
+    iget-object v0, p0, Landroid/app/Activity;->mFlymeWindow:Landroid/view/Window;
+
+    invoke-virtual {v0}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
+
+    move-result-object v0
+
+    iget v0, v0, Landroid/view/WindowManager$LayoutParams;->type:I
+
+    const/4 v1, 0x3
+
+    if-eq v0, v1, :cond_0
 
     const/4 v0, 0x1
 
