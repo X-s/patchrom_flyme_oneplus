@@ -15,6 +15,10 @@
 
 
 # static fields
+.field public static final APP_CLONE_ENABLED:Ljava/lang/String; = "mz_app_clone_enabled"
+
+.field public static final APP_CLONE_ENABLED_PACKAGES:Ljava/lang/String; = "mz_app_clone_eabled_pkgs"
+
 .field public static final ESE_SMARTMX:Ljava/lang/String; = "smartmx_ese"
 
 .field public static final MEIZU_DEVICE_NAME:Ljava/lang/String; = "meizu_device_name"

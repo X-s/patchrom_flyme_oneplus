@@ -12,6 +12,8 @@
 
 .field public static final ACTION_MSIM_MODE_CHANGED:Ljava/lang/String; = "android.intent.action.MSIM_MODE"
 
+.field public static final ACTION_PROXIMITY_SCREEN_OFF:Ljava/lang/String; = "android.intent.action.PROXIMITY_SCREEN_OFF"
+
 .field public static final ACTION_RECOMMEND:Ljava/lang/String; = "android.intent.action.RECOMMEND"
 
 .field public static final ACTION_SCREEN_OFF_FOR_FINGERPRINT:Ljava/lang/String; = "android.intent.action.SCREEN_OFF_FOR_FINGERPRINT"
