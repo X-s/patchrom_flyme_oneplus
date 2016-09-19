@@ -75,3 +75,18 @@
     :cond_0
     return-void
 .end method
+
+.method static cleanFlymeTypeface()V
+    .locals 1
+
+    .prologue
+    invoke-static {}, Landroid/content/res/flymetheme/FlymeFontsHelper;->cleanflymeTypeface()V
+
+    invoke-static {}, Landroid/content/res/flymetheme/iconfilter/IconFilter;->getInstance()Landroid/content/res/flymetheme/iconfilter/IconFilter;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/content/res/flymetheme/iconfilter/IconFilter;->cleanFilter()V
+
+    return-void
+.end method

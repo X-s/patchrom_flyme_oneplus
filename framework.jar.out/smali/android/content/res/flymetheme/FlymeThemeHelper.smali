@@ -2629,38 +2629,35 @@
     .local v5, "retDrawable":Landroid/graphics/drawable/Drawable;
     move-object v10, p1
 
-    .line 588
     check-cast v10, Landroid/graphics/drawable/BitmapDrawable;
 
     invoke-virtual {v10}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
 
     move-result-object v6
 
-    .line 589
     .local v6, "src":Landroid/graphics/Bitmap;
     const/4 v7, 0x0
 
-    .line 590
     .local v7, "step1Bitmap":Landroid/graphics/Bitmap;
     const/4 v8, 0x0
 
-    .line 591
     .local v8, "step2Bitmap":Landroid/graphics/Bitmap;
     const/4 v4, 0x0
 
-    .line 593
     .local v4, "result":Landroid/graphics/Bitmap;
+    invoke-static {v6}, Landroid/content/res/flymetheme/FlymeThemeHelper;->makeFilterBitmap(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+
+    move-result-object v6
+
     invoke-static {}, Landroid/content/res/flymetheme/FlymeThemeHelper;->generateThemeBitmap()[Landroid/graphics/Bitmap;
 
     move-result-object v9
 
-    .line 594
     .local v9, "themeBitmap":[Landroid/graphics/Bitmap;
     sget v10, Landroid/content/res/flymetheme/FlymeThemeHelper;->mMBBFlag:I
 
     packed-switch v10, :pswitch_data_0
 
-    .line 653
     :goto_1
     if-eqz v7, :cond_1
 
@@ -3020,38 +3017,35 @@
     .local v5, "retDrawable":Landroid/graphics/drawable/Drawable;
     move-object v10, p1
 
-    .line 684
     check-cast v10, Landroid/graphics/drawable/BitmapDrawable;
 
     invoke-virtual {v10}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
 
     move-result-object v6
 
-    .line 685
     .local v6, "src":Landroid/graphics/Bitmap;
     const/4 v7, 0x0
 
-    .line 686
     .local v7, "step1Bitmap":Landroid/graphics/Bitmap;
     const/4 v8, 0x0
 
-    .line 687
     .local v8, "step2Bitmap":Landroid/graphics/Bitmap;
     const/4 v4, 0x0
 
-    .line 689
     .local v4, "result":Landroid/graphics/Bitmap;
+    invoke-static {v6}, Landroid/content/res/flymetheme/FlymeThemeHelper;->makeFilterBitmap(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+
+    move-result-object v6
+
     invoke-static {}, Landroid/content/res/flymetheme/FlymeThemeHelper;->generateThemeBitmap()[Landroid/graphics/Bitmap;
 
     move-result-object v9
 
-    .line 690
     .local v9, "themeBitmap":[Landroid/graphics/Bitmap;
     sget v10, Landroid/content/res/flymetheme/FlymeThemeHelper;->mMBBFlag:I
 
     packed-switch v10, :pswitch_data_0
 
-    .line 749
     :goto_1
     if-eqz v7, :cond_1
 
@@ -3677,4 +3671,151 @@
     move-object v8, p0
 
     goto :goto_0
+.end method
+
+.method private static getIconFilterConfig()Ljava/io/InputStream;
+    .locals 7
+
+    .prologue
+    const/4 v4, 0x0
+
+    const/4 v1, 0x0
+
+    .local v1, "is":Ljava/io/InputStream;
+    :try_start_0
+    new-instance v2, Landroid/content/res/flymetheme/MtpkManager;
+
+    invoke-direct {v2}, Landroid/content/res/flymetheme/MtpkManager;-><init>()V
+
+    .local v2, "mZipThemeManager":Landroid/content/res/flymetheme/MtpkManager;
+    const-string v3, "filter_config.xml"
+
+    .local v3, "resPath":Ljava/lang/String;
+    const-string v5, "icons"
+
+    const/4 v6, 0x0
+
+    invoke-virtual {v2, v5, v3, v6}, Landroid/content/res/flymetheme/MtpkManager;->getStreamFromPackage(Ljava/lang/String;Ljava/lang/String;Landroid/util/TypedValue;)Ljava/io/InputStream;
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result-object v1
+
+    .end local v1    # "is":Ljava/io/InputStream;
+    .end local v2    # "mZipThemeManager":Landroid/content/res/flymetheme/MtpkManager;
+    .end local v3    # "resPath":Ljava/lang/String;
+    :goto_0
+    return-object v1
+
+    .restart local v1    # "is":Ljava/io/InputStream;
+    :catch_0
+    move-exception v0
+
+    .local v0, "e":Ljava/lang/Exception;
+    invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
+
+    move-object v1, v4
+
+    goto :goto_0
+.end method
+
+.method private static makeFilterBitmap(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+    .locals 6
+    .param p0, "src"    # Landroid/graphics/Bitmap;
+
+    .prologue
+    const/4 v3, 0x0
+
+    .local v3, "resultBmp":Landroid/graphics/Bitmap;
+    :try_start_0
+    invoke-static {}, Landroid/content/res/flymetheme/iconfilter/IconFilter;->getInstance()Landroid/content/res/flymetheme/iconfilter/IconFilter;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Landroid/content/res/flymetheme/iconfilter/IconFilter;->isLoaded()Z
+
+    move-result v4
+
+    if-nez v4, :cond_0
+
+    invoke-static {}, Landroid/content/res/flymetheme/FlymeThemeHelper;->getIconFilterConfig()Ljava/io/InputStream;
+
+    move-result-object v2
+
+    .local v2, "is":Ljava/io/InputStream;
+    if-eqz v2, :cond_0
+
+    invoke-static {}, Landroid/content/res/flymetheme/iconfilter/IconFilter;->getInstance()Landroid/content/res/flymetheme/iconfilter/IconFilter;
+
+    move-result-object v4
+
+    invoke-virtual {v4, v2}, Landroid/content/res/flymetheme/iconfilter/IconFilter;->setConfig(Ljava/io/InputStream;)V
+    :try_end_0
+    .catch Ljava/lang/OutOfMemoryError; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_2
+
+    :try_start_1
+    invoke-virtual {v2}, Ljava/io/InputStream;->close()V
+    :try_end_1
+    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_0
+    .catch Ljava/lang/OutOfMemoryError; {:try_start_1 .. :try_end_1} :catch_1
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_2
+
+    .end local v2    # "is":Ljava/io/InputStream;
+    :cond_0
+    :goto_0
+    :try_start_2
+    sget-object v4, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    const/4 v5, 0x1
+
+    invoke-virtual {p0, v4, v5}, Landroid/graphics/Bitmap;->copy(Landroid/graphics/Bitmap$Config;Z)Landroid/graphics/Bitmap;
+
+    move-result-object v3
+
+    invoke-static {}, Landroid/content/res/flymetheme/iconfilter/IconFilter;->getInstance()Landroid/content/res/flymetheme/iconfilter/IconFilter;
+
+    move-result-object v4
+
+    invoke-virtual {v4, v3}, Landroid/content/res/flymetheme/iconfilter/IconFilter;->filter(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+
+    move-result-object v3
+
+    :goto_1
+    return-object v3
+
+    .restart local v2    # "is":Ljava/io/InputStream;
+    :catch_0
+    move-exception v0
+
+    .local v0, "e":Ljava/io/IOException;
+    invoke-virtual {v0}, Ljava/io/IOException;->printStackTrace()V
+    :try_end_2
+    .catch Ljava/lang/OutOfMemoryError; {:try_start_2 .. :try_end_2} :catch_1
+    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_2
+
+    goto :goto_0
+
+    .end local v0    # "e":Ljava/io/IOException;
+    .end local v2    # "is":Ljava/io/InputStream;
+    :catch_1
+    move-exception v1
+
+    .local v1, "er":Ljava/lang/OutOfMemoryError;
+    invoke-virtual {v1}, Ljava/lang/OutOfMemoryError;->printStackTrace()V
+
+    move-object v3, p0
+
+    goto :goto_1
+
+    .end local v1    # "er":Ljava/lang/OutOfMemoryError;
+    :catch_2
+    move-exception v0
+
+    .local v0, "e":Ljava/lang/Exception;
+    invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
+
+    move-object v3, p0
+
+    goto :goto_1
 .end method

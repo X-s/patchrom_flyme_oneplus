@@ -1241,6 +1241,12 @@
 
     invoke-static {}, Landroid/graphics/Canvas;->freeTextLayoutCaches()V
 
+    invoke-static {}, Landroid/content/res/flymetheme/iconfilter/IconFilter;->getInstance()Landroid/content/res/flymetheme/iconfilter/IconFilter;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/content/res/flymetheme/iconfilter/IconFilter;->cleanFilter()V
+
     :cond_0
     const v0, 0x8000
 

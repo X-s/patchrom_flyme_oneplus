@@ -44,7 +44,11 @@
 
 .field public static final IS_M91:Ljava/lang/Boolean;
 
+.field public static final IS_M92:Ljava/lang/Boolean;
+
 .field public static final IS_M95:Ljava/lang/Boolean;
+
+.field public static final IS_M96:Ljava/lang/Boolean;
 
 .field public static final IS_M98:Ljava/lang/Boolean;
 
@@ -1033,6 +1037,30 @@
     move-result-object v0
 
     sput-object v0, Landroid/os/BuildExt;->IS_S25:Ljava/lang/Boolean;
+
+    const-string v0, "9690"
+
+    invoke-static {v0}, Landroid/os/BuildExt;->checkProductModel(Ljava/lang/String;)Z
+
+    move-result v0
+
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v0
+
+    sput-object v0, Landroid/os/BuildExt;->IS_M96:Ljava/lang/Boolean;
+
+    const-string v0, "9257"
+
+    invoke-static {v0}, Landroid/os/BuildExt;->checkProductModel(Ljava/lang/String;)Z
+
+    move-result v0
+
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v0
+
+    sput-object v0, Landroid/os/BuildExt;->IS_M92:Ljava/lang/Boolean;
 
     .line 146
     const-string/jumbo v0, "ro.meizu.product.model"
