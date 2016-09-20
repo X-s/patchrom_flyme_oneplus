@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center" android:id="@id/preview_gallery" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:scaleimageview="http://schemas.android.com/apk/res/com.oneplus.camera">
+    <com.oneplus.camera.ui.ScaleImageView android:id="@id/preview_image" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="matrix" android:layout_centerInParent="true" scaleimageview:oriental="vertical" />
+    <ImageView android:id="@id/play_icon" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/playback" android:scaleType="center" android:layout_centerInParent="true" android:rotation="90.0" />
+</RelativeLayout>

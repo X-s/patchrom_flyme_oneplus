@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/saved_media_cue_container" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/saved_media_cue_portrait" android:visibility="gone" android:layout_width="@dimen/camera_gallery_item_max_width_port" android:layout_height="@dimen/camera_gallery_item_max_height_port" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/saved_media_cue_landscape" android:visibility="gone" android:layout_width="@dimen/camera_gallery_item_max_height_land" android:layout_height="@dimen/camera_gallery_item_max_width_land" android:scaleType="fitStart" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>
