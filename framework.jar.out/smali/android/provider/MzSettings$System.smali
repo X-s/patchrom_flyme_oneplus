@@ -117,6 +117,8 @@
 
 .field public static final KEY_SECOND_SCREEN_SCREENOFF_MUSIC:Ljava/lang/String; = "second_screen_screenoff_music"
 
+.field public static final KEY_SECOND_SCREEN_SCREENOFF_PHONE_CALLING:Ljava/lang/String; = "second_screen_screenoff_calling"
+
 .field public static final KEY_SECOND_SCREEN_SCREENOFF_VOICE_ASSIS:Ljava/lang/String; = "second_screen_screenoff_voice_assis"
 
 .field public static final KEY_SECOND_SCREEN_SCREENOFF_WIRELESS:Ljava/lang/String; = "second_screen_screenoff_wireless"
@@ -402,6 +404,8 @@
 .field public static final SUB_DISPLAY_SCREEN_BRIGHTNESS:Ljava/lang/String; = "sub_display_screen_brightness"
 
 .field public static final SUB_DISPLAY_SCREEN_OFF_TIMEOUT:Ljava/lang/String; = "sub_display_screen_off_timeout"
+
+.field public static final SUB_POINTER_LOCATION:Ljava/lang/String; = "sub_pointer_location"
 
 .field public static final VOICE_ASSISTENT_USE_IN_LOCKSCREEN:Ljava/lang/String; = "voice_assistent_use_in_lockscreen"
 
