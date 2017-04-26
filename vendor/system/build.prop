@@ -1,4 +1,5 @@
-
+ro.product.device=OnePlus3T
+ro.build.fingerprint=6.0.1/MXB48T/213713:user/release-keys
 #
 #
 #
