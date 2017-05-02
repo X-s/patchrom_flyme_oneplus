@@ -3557,7 +3557,7 @@
 
     move-result-object v2
 
-    const v3, 0x1160031
+    const v3, #android:^attr-private@accessibilityFocusedDrawable#t
 
     const/4 v4, 0x1
 
@@ -5388,7 +5388,7 @@
 
     .line 1190
     .local v4, "packageMetrics":Landroid/util/DisplayMetrics;
-    const v6, 0x105000e
+    const v6, #android:dimen@config_prefDialogWidth#t
 
     iget-object v7, p0, Landroid/view/ViewRootImpl;->mTmpValue:Landroid/util/TypedValue;
 
@@ -16389,6 +16389,22 @@
 
     invoke-virtual {v0, v4, v5}, Landroid/view/ViewRootImpl;->setAccessibilityFocus(Landroid/view/View;Landroid/view/accessibility/AccessibilityNodeInfo;)V
 
+    move-object/from16 v0, p0
+
+    move/from16 v1, v21
+
+    invoke-direct {v0, v1}, Landroid/view/ViewRootImpl;->isFlymeKeyguardAllowed(I)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_flyme_0
+
+    monitor-exit p0
+
+    return-void
+
+    :cond_flyme_0
+
     .line 572
     packed-switch v21, :pswitch_data_0
 
@@ -17652,4 +17668,65 @@
 
     .line 6295
     goto :goto_1
+.end method
+
+.method private isFlymeKeyguardAllowed(I)Z
+    .locals 1
+    .param p1, "res"    # I
+
+    .prologue
+    const/16 v0, -0x6f
+
+    if-ne p1, v0, :cond_0
+
+    const/4 v0, 0x1
+
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public mzGetMeizuFlags()I
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/view/ViewRootImpl;->mWindowAttributes:Landroid/view/WindowManager$LayoutParams;
+
+    iget v0, v0, Landroid/view/WindowManager$LayoutParams;->meizuFlags:I
+
+    return v0
+.end method
+
+.method public processEventForMoveWinIfNeed(Landroid/view/InputEvent;)V
+    .locals 1
+    .param p1, "event"    # Landroid/view/InputEvent;
+
+    .prologue
+    instance-of v0, p1, Landroid/view/MotionEvent;
+
+    if-eqz v0, :cond_0
+
+    move-object v0, p1
+
+    check-cast v0, Landroid/view/MotionEvent;
+
+    invoke-virtual {v0}, Landroid/view/MotionEvent;->getAction()I
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    iget-object v0, p0, Landroid/view/ViewRootImpl;->mContext:Landroid/content/Context;
+
+    invoke-static {v0}, Lmeizu/view/MoveWinManager;->getInstance(Landroid/content/Context;)Lmeizu/view/MoveWinManager;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p1}, Lmeizu/view/MoveWinManager;->processInputEvent(Landroid/view/InputEvent;)V
+
+    :cond_0
+    return-void
 .end method

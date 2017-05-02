@@ -21,6 +21,8 @@
 
 
 # instance fields
+.field private mFlymeBackListener:Landroid/view/ActionMode$BackPressedListener;
+
 .field private mTag:Ljava/lang/Object;
 
 .field private mTitleOptionalHint:Z
@@ -192,5 +194,24 @@
     iput p1, p0, Landroid/view/ActionMode;->mType:I
 
     .line 186
+    return-void
+.end method
+
+.method public getBackPressListener()Landroid/view/ActionMode$BackPressedListener;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/view/ActionMode;->mFlymeBackListener:Landroid/view/ActionMode$BackPressedListener;
+
+    return-object v0
+.end method
+
+.method public setBackPressListener(Landroid/view/ActionMode$BackPressedListener;)V
+    .locals 0
+    .param p1, "listener"    # Landroid/view/ActionMode$BackPressedListener;
+
+    .prologue
+    iput-object p1, p0, Landroid/view/ActionMode;->mFlymeBackListener:Landroid/view/ActionMode$BackPressedListener;
+
     return-void
 .end method

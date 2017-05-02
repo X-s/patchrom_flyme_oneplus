@@ -160,23 +160,19 @@
 
     if-eqz v2, :cond_2
 
-    .line 8466
     const-string v2, "WindowManager"
 
     const-string v3, "handleMessage: exit"
 
     invoke-static {v2, v3}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 8468
     :cond_2
     :goto_1
     return-void
 
-    .line 7936
     :pswitch_1
     const/4 v14, 0x0
 
-    .line 7938
     .local v14, "accessibilityController":Lcom/android/server/wm/AccessibilityController;
     move-object/from16 v0, p0
 

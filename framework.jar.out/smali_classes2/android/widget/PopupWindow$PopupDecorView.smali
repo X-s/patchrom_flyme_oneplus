@@ -518,3 +518,27 @@
 
     goto :goto_1
 .end method
+
+.method private onFlymeTouchEvent(Landroid/view/MotionEvent;)Z
+    .locals 3
+    .param p1, "event"    # Landroid/view/MotionEvent;
+
+    .prologue
+    iget-object v0, p0, Landroid/widget/PopupWindow$PopupDecorView;->this$0:Landroid/widget/PopupWindow;
+
+    iget-object v0, v0, Landroid/widget/PopupWindow;->mMzHelper:Landroid/widget/MzPopupWindowHelper;
+
+    invoke-virtual {p0}, Landroid/widget/PopupWindow$PopupDecorView;->getWidth()I
+
+    move-result v1
+
+    invoke-virtual {p0}, Landroid/widget/PopupWindow$PopupDecorView;->getHeight()I
+
+    move-result v2
+
+    invoke-virtual {v0, p1, v1, v2}, Landroid/widget/MzPopupWindowHelper;->onTouchEvent(Landroid/view/MotionEvent;II)Z
+
+    move-result v0
+
+    return v0
+.end method

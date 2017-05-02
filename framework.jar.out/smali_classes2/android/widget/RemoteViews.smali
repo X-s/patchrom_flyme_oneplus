@@ -3907,3 +3907,104 @@
     :cond_5
     return-void
 .end method
+
+.method public clearTextsColor()V
+    .locals 6
+
+    .prologue
+    iget-object v5, p0, Landroid/widget/RemoteViews;->mActions:Ljava/util/ArrayList;
+
+    if-eqz v5, :cond_2
+
+    iget-object v5, p0, Landroid/widget/RemoteViews;->mActions:Ljava/util/ArrayList;
+
+    invoke-interface {v5}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    move-result-object v1
+
+    .local v1, "action$iterator":Ljava/util/Iterator;
+    :cond_0
+    :goto_0
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v5
+
+    if-eqz v5, :cond_2
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/RemoteViews$Action;
+
+    .local v0, "action":Landroid/widget/RemoteViews$Action;
+    instance-of v5, v0, Landroid/widget/RemoteViews$ReflectionAction;
+
+    if-eqz v5, :cond_0
+
+    move-object v3, v0
+
+    check-cast v3, Landroid/widget/RemoteViews$ReflectionAction;
+
+    .local v3, "reflectionAction":Landroid/widget/RemoteViews$ReflectionAction;
+    iget-object v5, v3, Landroid/widget/RemoteViews$ReflectionAction;->value:Ljava/lang/Object;
+
+    if-eqz v5, :cond_0
+
+    iget-object v2, v3, Landroid/widget/RemoteViews$ReflectionAction;->methodName:Ljava/lang/String;
+
+    .local v2, "actionName":Ljava/lang/String;
+    iget-object v4, v3, Landroid/widget/RemoteViews$ReflectionAction;->value:Ljava/lang/Object;
+
+    .local v4, "v":Ljava/lang/Object;
+    const-string v5, "setTextColor"
+
+    invoke-virtual {v5, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_1
+
+    instance-of v5, v4, Ljava/lang/Integer;
+
+    if-eqz v5, :cond_0
+
+    const/4 v5, -0x1
+
+    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v5
+
+    iput-object v5, v3, Landroid/widget/RemoteViews$ReflectionAction;->value:Ljava/lang/Object;
+
+    goto :goto_0
+
+    :cond_1
+    const-string v5, "setText"
+
+    invoke-virtual {v5, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_0
+
+    instance-of v5, v4, Landroid/text/Spanned;
+
+    if-eqz v5, :cond_0
+
+    invoke-virtual {v4}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    iput-object v5, v3, Landroid/widget/RemoteViews$ReflectionAction;->value:Ljava/lang/Object;
+
+    goto :goto_0
+
+    .end local v0    # "action":Landroid/widget/RemoteViews$Action;
+    .end local v1    # "action$iterator":Ljava/util/Iterator;
+    .end local v2    # "actionName":Ljava/lang/String;
+    .end local v3    # "reflectionAction":Landroid/widget/RemoteViews$ReflectionAction;
+    .end local v4    # "v":Ljava/lang/Object;
+    :cond_2
+    return-void
+.end method

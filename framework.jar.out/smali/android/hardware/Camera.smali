@@ -205,33 +205,26 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 624
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 225
     iput-boolean v2, p0, Landroid/hardware/Camera;->mFaceDetectionRunning:Z
 
-    .line 226
     new-instance v1, Ljava/lang/Object;
 
     invoke-direct {v1}, Ljava/lang/Object;-><init>()V
 
     iput-object v1, p0, Landroid/hardware/Camera;->mAutoFocusCallbackLock:Ljava/lang/Object;
 
-    .line 248
     iput-boolean v2, p0, Landroid/hardware/Camera;->mIsOPService:Z
 
-    .line 249
     const/4 v1, 0x0
 
     iput-object v1, p0, Landroid/hardware/Camera;->mOPServiceJpegCallback:Landroid/hardware/Camera$PictureCallback;
 
-    .line 625
     invoke-direct {p0, p1}, Landroid/hardware/Camera;->cameraInitNormal(I)I
 
     move-result v0
 
-    .line 626
     .local v0, "err":I
     invoke-static {v0}, Landroid/hardware/Camera;->checkInitErrors(I)Z
 
@@ -2837,4 +2830,29 @@
 .end method
 
 .method public final native unlock()V
+.end method
+
+.method private hook_cameraInitNormal(I)I
+    .locals 1
+    .param p1, "cameraId"    # I
+
+    .prologue
+    const/16 v0, 0x4c
+
+    invoke-static {v0}, Lmeizu/security/FlymePermissionManager;->isFlymePermissionGranted(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    invoke-direct {p0, p1}, Landroid/hardware/Camera;->cameraInitNormal(I)I
+
+    move-result v0
+
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    return v0
 .end method
