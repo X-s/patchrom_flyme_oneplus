@@ -238,6 +238,7 @@
     <protected-broadcast android:name="android.internal.policy.action.BURN_IN_PROTECTION"/>
     <protected-broadcast android:name="android.app.action.SYSTEM_UPDATE_POLICY_CHANGED"/>
     <protected-broadcast android:name="android.app.action.DEVICE_OWNER_CHANGED"/>
+    <protected-broadcast android:name="com.meizu.safe.ACTION_BLOCK_LOCKED_SCREEN_SHOW"/>
     <eat-comment/>
     <eat-comment/>
     <permission-group android:description="@string/permgroupdesc_contacts" android:icon="@drawable/perm_group_contacts" android:label="@string/permgrouplab_contacts" android:name="android.permission-group.CONTACTS" android:priority="100"/>
