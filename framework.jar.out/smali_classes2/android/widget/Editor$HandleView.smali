@@ -1065,6 +1065,16 @@
     if-eqz p2, :cond_0
 
     :cond_2
+    invoke-direct/range {p0 .. p1}, Landroid/widget/Editor$HandleView;->flymePositionAtCursorOffset(I)Z
+
+    move-result v4
+
+    if-eqz v3, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
+
     if-eqz v2, :cond_3
 
     invoke-virtual {p0, p1}, Landroid/widget/Editor$HandleView;->updateSelection(I)V

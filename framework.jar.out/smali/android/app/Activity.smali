@@ -14,6 +14,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/app/Activity$TintBarInject;,
+        Landroid/app/Activity$FlymeDecorView;,
         Landroid/app/Activity$1;,
         Landroid/app/Activity$HostCallbacks;,
         Landroid/app/Activity$TranslucentConversionListener;,

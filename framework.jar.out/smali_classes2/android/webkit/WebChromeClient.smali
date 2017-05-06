@@ -6,6 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/webkit/WebChromeClient$WebViewMediaPlayerController;,
+        Landroid/webkit/WebChromeClient$WebViewMediaPlayerStatusListener;,
         Landroid/webkit/WebChromeClient$FileChooserParams;,
         Landroid/webkit/WebChromeClient$CustomViewCallback;
     }

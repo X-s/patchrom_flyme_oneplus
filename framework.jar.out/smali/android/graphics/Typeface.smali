@@ -882,6 +882,12 @@
 
     invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
+    move-object/from16 v0, v19
+
+    move-object/from16 v1, v18
+
+    invoke-static {v12, v0, v1}, Landroid/graphics/Typeface;->putFlymeSystemFonts(Landroid/graphics/FontListParser$Family;Landroid/graphics/Typeface;Ljava/util/Map;)V
+
     .end local v19    # "typeface":Landroid/graphics/Typeface;
     :cond_3
     add-int/lit8 v14, v14, 0x1
@@ -1014,9 +1020,9 @@
 
     invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-object/from16 v0, v19
+    move-object/from16 v0, v16
 
-    move-object/from16 v1, v21
+    move-object/from16 v1, v18
 
     invoke-static {v4, v0, v1}, Landroid/graphics/Typeface;->putFlymeSystemFonts(Landroid/graphics/FontListParser$Alias;Landroid/graphics/Typeface;Ljava/util/Map;)V
     :try_end_0

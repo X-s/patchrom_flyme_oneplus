@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/inputmethodservice/InputMethodService$FlymeInjector;,
         Landroid/inputmethodservice/InputMethodService$Insets;,
         Landroid/inputmethodservice/InputMethodService$InputMethodSessionImpl;,
         Landroid/inputmethodservice/InputMethodService$InputMethodImpl;
@@ -2782,50 +2783,65 @@
     .locals 4
 
     .prologue
-    const/4 v1, 0x0
+    const/4 v3, 0x0
 
     .line 1001
     invoke-virtual {p0}, Landroid/inputmethodservice/InputMethodService;->getResources()Landroid/content/res/Resources;
 
-    move-result-object v2
+    move-result-object v1
 
-    invoke-virtual {v2}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+    invoke-virtual {v1}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
 
     move-result-object v0
 
     .line 1002
     .local v0, "config":Landroid/content/res/Configuration;
-    iget v2, v0, Landroid/content/res/Configuration;->orientation:I
+    iget v1, v0, Landroid/content/res/Configuration;->orientation:I
 
-    const/4 v3, 0x2
+    const/4 v2, 0x2
 
-    if-eq v2, v3, :cond_1
+    if-eq v1, v2, :cond_0
 
-    .line 1009
-    :cond_0
-    :goto_0
-    return v1
+    .line 1003
+    return v3
 
     .line 1005
+    :cond_0
+    iget-object v1, p0, Landroid/inputmethodservice/InputMethodService;->mInputEditorInfo:Landroid/view/inputmethod/EditorInfo;
+
+    if-eqz v1, :cond_1
+
+    .line 1006
+    iget-object v1, p0, Landroid/inputmethodservice/InputMethodService;->mInputEditorInfo:Landroid/view/inputmethod/EditorInfo;
+
+    iget v1, v1, Landroid/view/inputmethod/EditorInfo;->imeOptions:I
+
+    const/high16 v2, 0x2000000
+
+    and-int/2addr v1, v2
+
+    if-eqz v1, :cond_1
+
+    .line 1007
+    return v3
+
+    .line 1009
     :cond_1
-    iget-object v2, p0, Landroid/inputmethodservice/InputMethodService;->mInputEditorInfo:Landroid/view/inputmethod/EditorInfo;
+    invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->onEvaluateFullscreenMode(Landroid/inputmethodservice/InputMethodService;)Z
 
-    if-eqz v2, :cond_2
+    move-result v1
 
-    iget-object v2, p0, Landroid/inputmethodservice/InputMethodService;->mInputEditorInfo:Landroid/view/inputmethod/EditorInfo;
+    if-eqz v1, :cond_flyme_0
 
-    iget v2, v2, Landroid/view/inputmethod/EditorInfo;->imeOptions:I
+    iget-boolean v1, p0, Landroid/inputmethodservice/InputMethodService;->mIsFullscreen:Z
 
-    const/high16 v3, 0x2000000
+    return v1
 
-    and-int/2addr v2, v3
+    :cond_flyme_0
 
-    if-nez v2, :cond_0
-
-    :cond_2
     const/4 v1, 0x1
 
-    goto :goto_0
+    return v1
 .end method
 
 .method public onEvaluateInputViewShown()Z
@@ -3166,52 +3182,70 @@
     .param p2, "event"    # Landroid/view/KeyEvent;
 
     .prologue
-    const/4 v1, 0x1
+    const/4 v4, 0x1
 
-    const/4 v2, 0x0
+    const/4 v3, 0x0
 
+    .line 1848
     invoke-virtual {p2}, Landroid/view/KeyEvent;->getKeyCode()I
 
-    move-result v3
+    move-result v1
 
-    const/4 v4, 0x4
+    const/4 v2, 0x4
 
-    if-ne v3, v4, :cond_2
+    if-ne v1, v2, :cond_2
 
+    .line 1849
     invoke-direct {p0}, Landroid/inputmethodservice/InputMethodService;->getExtractEditTextIfVisible()Landroid/inputmethodservice/ExtractEditText;
 
     move-result-object v0
 
+    .line 1850
     .local v0, "eet":Landroid/inputmethodservice/ExtractEditText;
     if-eqz v0, :cond_0
 
     invoke-virtual {v0, p2}, Landroid/inputmethodservice/ExtractEditText;->handleBackInTextActionModeIfNeeded(Landroid/view/KeyEvent;)Z
 
-    move-result v3
+    move-result v1
 
-    if-eqz v3, :cond_0
+    if-eqz v1, :cond_0
 
-    .end local v0    # "eet":Landroid/inputmethodservice/ExtractEditText;
-    :goto_0
+    .line 1851
+    return v4
+
+    .line 1853
+    :cond_0
+    invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->isImeInterceptBackKey(Landroid/inputmethodservice/InputMethodService;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_flyme_0
+
+    invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->handleBack(Landroid/inputmethodservice/InputMethodService;)Z
+
+    move-result v1
+
     return v1
 
-    .restart local v0    # "eet":Landroid/inputmethodservice/ExtractEditText;
-    :cond_0
-    invoke-direct {p0, v2}, Landroid/inputmethodservice/InputMethodService;->handleBack(Z)Z
+    :cond_flyme_0
 
-    move-result v3
+    invoke-direct {p0, v3}, Landroid/inputmethodservice/InputMethodService;->handleBack(Z)Z
 
-    if-eqz v3, :cond_1
+    move-result v1
 
+    if-eqz v1, :cond_1
+
+    .line 1854
     invoke-virtual {p2}, Landroid/view/KeyEvent;->startTracking()V
 
-    goto :goto_0
+    .line 1855
+    return v4
 
+    .line 1857
     :cond_1
-    move v1, v2
+    return v3
 
-    goto :goto_0
-
+    .line 1859
     .end local v0    # "eet":Landroid/inputmethodservice/ExtractEditText;
     :cond_2
     const/4 v1, -0x1
@@ -3220,7 +3254,7 @@
 
     move-result v1
 
-    goto :goto_0
+    return v1
 .end method
 
 .method public onKeyLongPress(ILandroid/view/KeyEvent;)Z
@@ -4384,6 +4418,8 @@
     invoke-virtual {p0, v6}, Landroid/inputmethodservice/InputMethodService;->startExtractingText(Z)V
 
     :cond_4
+    invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->updateCoverViewShown(Landroid/inputmethodservice/InputMethodService;)V
+
     invoke-virtual {p0}, Landroid/inputmethodservice/InputMethodService;->isInputViewShown()Z
 
     move-result v4

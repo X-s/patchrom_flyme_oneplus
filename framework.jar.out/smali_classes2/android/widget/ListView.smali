@@ -9,6 +9,10 @@
 
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/widget/ListView$OnDragSelectListener;,
+        Landroid/widget/ListView$MzScrollSelectionRunnable;,
+        Landroid/widget/ListView$DividerFilter;,
+        Landroid/widget/ListView$DividerPadding;,
         Landroid/widget/ListView$1;,
         Landroid/widget/ListView$ArrowScrollFocusResult;,
         Landroid/widget/ListView$FocusSelector;,
@@ -5870,6 +5874,8 @@
     invoke-virtual {v0, v10}, Landroid/view/View;->setPressed(Z)V
 
     :cond_5
+    invoke-direct/range {p0 .. p2}, Landroid/widget/ListView;->setFlymeHoldView(Landroid/view/View;I)V
+
     move-object/from16 v0, p0
 
     iget v0, v0, Landroid/widget/ListView;->mChoiceMode:I

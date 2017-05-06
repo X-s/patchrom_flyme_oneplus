@@ -9,6 +9,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/internal/policy/PhoneWindow$FlymeInjector;,
         Lcom/android/internal/policy/PhoneWindow$ColorViewState;,
         Lcom/android/internal/policy/PhoneWindow$DialogMenuCallback;,
         Lcom/android/internal/policy/PhoneWindow$RotationWatcher;,
@@ -10679,6 +10680,10 @@
     .param p1, "color"    # I
 
     .prologue
+    invoke-static/range {p0 .. p1}, Lcom/android/internal/policy/PhoneWindow$FlymeInjector;->flymeOnStatusBarColorChange(Lcom/android/internal/policy/PhoneWindow;I)I
+
+    move-result p1
+
     iput p1, p0, Lcom/android/internal/policy/PhoneWindow;->mStatusBarColor:I
 
     const/4 v0, 0x1

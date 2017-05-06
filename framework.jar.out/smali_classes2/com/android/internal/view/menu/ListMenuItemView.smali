@@ -493,6 +493,7 @@
     .param p1, "checkable"    # Z
 
     .prologue
+    invoke-direct/range {p0 .. p0}, Lcom/android/internal/view/menu/ListMenuItemView;->setFlymeTextColor()V
     const/16 v3, 0x8
 
     .line 130

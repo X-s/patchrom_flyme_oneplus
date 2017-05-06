@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/app/Instrumentation$FlymeRecommendActivity;,
         Landroid/app/Instrumentation$1;,
         Landroid/app/Instrumentation$Idler;,
         Landroid/app/Instrumentation$ActivityGoing;,
@@ -2689,6 +2690,24 @@
     move-result v20
 
     .local v20, "result":I
+    move-object/from16 v10, p0
+
+    move-object/from16 v11, p1
+
+    move-object/from16 v12, p2
+
+    move-object/from16 v13, p3
+
+    move-object/from16 v14, p4
+
+    move-object/from16 v15, p5
+
+    move/from16 v16, p6
+
+    move-object/from16 v17, p7
+
+    invoke-direct/range {v10 .. v18}, Landroid/app/Instrumentation;->startFlymeRecommendActivity(Landroid/content/Context;Landroid/os/IBinder;Landroid/os/IBinder;Landroid/app/Activity;Landroid/content/Intent;ILandroid/os/Bundle;I)V
+
     move/from16 v0, v20
 
     move-object/from16 v1, p5
