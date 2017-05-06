@@ -7,7 +7,7 @@
 # The default value is base.
 # Support values: base, base_cm, base_mt6592 and other devices in the future.
 #-----------------------------------------------------------------------------
-#BASE := base_cm
+BASE := base
 
 ##############################################################################
 # The value is used for resource adapter with the aapt tool.
@@ -40,21 +40,24 @@ vendor_modify_images := boot
 # The default value is app or pri-app which not need to configure.
 # You can configure the directory name which relative to the vendor/system directory.
 #-----------------------------------------------------------------------------
-#vendor_remove_dirs := vendor/operator/app
+vendor_remove_dirs := media/themes reserve
 
 ##############################################################################
 # The value decides the file which you want to remove in the vendor directory for the ota package.
 # The default value is nothing.
 # You can configure the file name which relative to the vendor/system directory.
 #-----------------------------------------------------------------------------
-#vendor_remove_files := bin/zchgd
+vendor_remove_files := recovery-from-boot.bak
 
 ##############################################################################
 # The value decides the vendor apk which you want to save in the vendor directory for the ota package.
 # The default value is Bluetooth.
 # You can configure the apk name in the vendor/system/app or vendor/system/priv-app directory.
 #-----------------------------------------------------------------------------
-vendor_saved_apps := Bluetooth BluetoothExt BluetoothMidiService HTMLViewer KeyChain NfcNci PicoTts PrintSpooler Stk UserDictionaryProvider BackupRestoreConfirmation DefaultContainerService ExternalStorageProvider FusedLocation InputDevices ProxyHandler SharedStorageBackup Shell
+vendor_saved_apps := Bluetooth BluetoothExt BluetoothMidiService HTMLViewer KeyChain \
+				NfcNci PicoTts PrintSpooler Stk UserDictionaryProvider BackupRestoreConfirmation \
+				DefaultContainerService ExternalStorageProvider FusedLocation InputDevices ProxyHandler \
+				SharedStorageBackup Shell
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.
@@ -138,8 +141,8 @@ vendor_modify_jars := framework services telephony-common wifi-service
 # The default value is Nexus-6P_Unofficial.
 # You should configure the property according to your device and your ID with replace the "Nexus-6P_Unofficial".
 override_property += \
-    ro.flyme.romer=Unofficial \
-    ro.product.model_romer=Nexus-6P_Unofficial
+    ro.flyme.romer=xs \
+    ro.product.model_romer=A3010_xs
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
