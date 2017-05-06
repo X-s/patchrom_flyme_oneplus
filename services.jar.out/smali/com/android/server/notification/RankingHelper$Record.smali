@@ -21,6 +21,10 @@
 # instance fields
 .field keyguard:I
 
+.field mFlymeHeadsUp:I
+
+.field mFlymeRemind:Z
+
 .field peekable:Z
 
 .field pkg:Ljava/lang/String;
@@ -68,6 +72,14 @@
     iput v0, p0, Lcom/android/server/notification/RankingHelper$Record;->visibility:I
 
     iput v1, p0, Lcom/android/server/notification/RankingHelper$Record;->keyguard:I
+
+    const/4 v0, -0x1
+
+    iput v0, p0, Lcom/android/server/notification/RankingHelper$Record;->mFlymeHeadsUp:I
+
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/android/server/notification/RankingHelper$Record;->mFlymeRemind:Z
 
     return-void
 .end method

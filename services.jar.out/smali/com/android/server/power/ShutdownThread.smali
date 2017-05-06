@@ -354,13 +354,8 @@
 
     invoke-virtual {v2, v3}, Landroid/view/Window;->setType(I)V
 
-    sget-boolean v2, Lcom/android/server/power/ShutdownThread;->mNeedShutdownDialog:Z
+    invoke-static {p0}, Lcom/android/server/power/ShutdownThread$FlymeInjector;->showShutDownAnimation(Landroid/content/Context;)V
 
-    if-eqz v2, :cond_1
-
-    invoke-virtual {v1}, Landroid/app/ProgressDialog;->show()V
-
-    :cond_1
     sget-object v2, Lcom/android/server/power/ShutdownThread;->sInstance:Lcom/android/server/power/ShutdownThread;
 
     iput-object v1, v2, Lcom/android/server/power/ShutdownThread;->mProgressDialog:Landroid/app/ProgressDialog;

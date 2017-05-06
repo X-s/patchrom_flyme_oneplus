@@ -6,6 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/server/notification/NotificationManagerService$FlymeExtNotificationManagerServiceInternal;,
+        Lcom/android/server/notification/NotificationManagerService$FlymeWakeUpScreenRunnable;,
         Lcom/android/server/notification/NotificationManagerService$PolicyAccess;,
         Lcom/android/server/notification/NotificationManagerService$StatusBarNotificationHolder;,
         Lcom/android/server/notification/NotificationManagerService$DumpFilter;,
@@ -2212,6 +2214,8 @@
 
     .line 2709
     invoke-virtual/range {p0 .. p0}, Lcom/android/server/notification/NotificationManagerService;->updateLightsLocked()V
+
+    invoke-direct/range {p0 .. p1}, Lcom/android/server/notification/NotificationManagerService;->notifyFlymeWakeupScreen(Lcom/android/server/notification/NotificationRecord;)V
 
     .line 2710
     move-object/from16 v0, p0

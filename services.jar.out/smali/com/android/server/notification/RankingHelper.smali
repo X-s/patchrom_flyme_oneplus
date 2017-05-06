@@ -16,6 +16,10 @@
 
 
 # static fields
+.field private mFlymeConfigCloud:Lcom/android/server/notification/ConfigCloud;
+
+.field private mFlymeRankingController:Lcom/flyme/server/notfication/RankingController;
+
 .field private static final ATT_KEYGUARD:Ljava/lang/String; = "keyguard"
 
 .field private static final ATT_NAME:Ljava/lang/String; = "name"
@@ -1600,6 +1604,8 @@
     iput v10, v5, Lcom/android/server/notification/RankingHelper$Record;->visibility:I
 
     :cond_8
+    invoke-direct {p0, p1, v5}, Lcom/android/server/notification/RankingHelper;->readFlymeExtraFields(Lorg/xmlpull/v1/XmlPullParser;Lcom/android/server/notification/RankingHelper$Record;)V
+
     const/4 v11, 0x1
 
     if-eq v0, v11, :cond_2

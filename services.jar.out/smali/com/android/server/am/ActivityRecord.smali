@@ -5150,7 +5150,7 @@
     .locals 2
 
     .prologue
-    .line 452
+    .line 432
     const-class v0, Lcom/android/internal/app/ResolverActivity;
 
     invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
@@ -5167,15 +5167,21 @@
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_0
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/am/ActivityRecord;->isFlymeResolverActivity()Z
 
-    const/4 v0, 0x1
+    move-result v0
+
+    if-eqz v0, :cond_flyme_0
+
+    const/4 v0, 0x0
 
     :goto_0
     return v0
 
     :cond_0
-    const/4 v0, 0x0
+    :cond_flyme_0
+    const/4 v0, 0x1
 
     goto :goto_0
 .end method

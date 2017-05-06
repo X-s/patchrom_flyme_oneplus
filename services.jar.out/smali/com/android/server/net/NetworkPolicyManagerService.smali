@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/server/net/NetworkPolicyManagerService$FlymeInjector;,
         Lcom/android/server/net/NetworkPolicyManagerService$AppIdleStateChangeListener;
     }
 .end annotation
@@ -9808,260 +9809,272 @@
 .end method
 
 .method updateRulesForUidLocked(I)V
-    .locals 11
+    .locals 13
     .param p1, "uid"    # I
 
     .prologue
-    const/4 v10, 0x2
+    const/4 v12, 0x2
 
-    const/4 v3, 0x0
+    const/4 v11, 0x1
 
-    const/4 v8, 0x1
+    const/4 v10, 0x0
 
-    .line 2372
+    .line 2337
     invoke-static {p1}, Lcom/android/server/net/NetworkPolicyManagerService;->isUidValidForRules(I)Z
-
-    move-result v9
-
-    if-nez v9, :cond_1
-
-    .line 2444
-    :cond_0
-    :goto_0
-    return-void
-
-    .line 2376
-    :cond_1
-    invoke-static {}, Landroid/app/AppGlobals;->getPackageManager()Landroid/content/pm/IPackageManager;
-
-    move-result-object v1
-
-    .line 2378
-    .local v1, "ipm":Landroid/content/pm/IPackageManager;
-    :try_start_0
-    const-string v9, "android.permission.INTERNET"
-
-    invoke-interface {v1, v9, p1}, Landroid/content/pm/IPackageManager;->checkUidPermission(Ljava/lang/String;I)I
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_1
 
     move-result v9
 
     if-nez v9, :cond_0
 
-    .line 2385
-    :goto_1
+    return-void
+
+    .line 2341
+    :cond_0
+    invoke-static {}, Landroid/app/AppGlobals;->getPackageManager()Landroid/content/pm/IPackageManager;
+
+    move-result-object v2
+
+    .line 2343
+    .local v2, "ipm":Landroid/content/pm/IPackageManager;
+    :try_start_0
+    const-string/jumbo v9, "android.permission.INTERNET"
+
+    invoke-interface {v2, v9, p1}, Landroid/content/pm/IPackageManager;->checkUidPermission(Ljava/lang/String;I)I
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result v9
+
+    if-eqz v9, :cond_1
+
+    .line 2345
+    return-void
+
+    .line 2347
+    :catch_0
+    move-exception v1
+
+    .line 2350
+    :cond_1
     iget-object v9, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mUidPolicy:Landroid/util/SparseIntArray;
 
-    invoke-virtual {v9, p1, v3}, Landroid/util/SparseIntArray;->get(II)I
+    invoke-virtual {v9, p1, v10}, Landroid/util/SparseIntArray;->get(II)I
+
+    move-result v6
+
+    .line 2351
+    .local v6, "uidPolicy":I
+    invoke-virtual {p0, p1}, Lcom/android/server/net/NetworkPolicyManagerService;->isUidForegroundLocked(I)Z
 
     move-result v5
 
-    .line 2386
-    .local v5, "uidPolicy":I
-    invoke-virtual {p0, p1}, Lcom/android/server/net/NetworkPolicyManagerService;->isUidForegroundLocked(I)Z
-
-    move-result v4
-
-    .line 2389
-    .local v4, "uidForeground":Z
+    .line 2354
+    .local v5, "uidForeground":Z
     invoke-static {p1}, Landroid/os/UserHandle;->getAppId(I)I
 
     move-result v0
 
-    .line 2390
+    .line 2355
     .local v0, "appId":I
-    const/4 v6, 0x0
+    const/4 v7, 0x0
 
-    .line 2391
-    .local v6, "uidRules":I
-    if-nez v4, :cond_7
+    .line 2356
+    .local v7, "uidRules":I
+    if-nez v5, :cond_6
 
-    and-int/lit8 v9, v5, 0x1
+    and-int/lit8 v9, v6, 0x1
 
-    if-eqz v9, :cond_7
+    if-eqz v9, :cond_6
 
-    .line 2393
-    const/4 v6, 0x1
+    .line 2358
+    const/4 v7, 0x1
 
-    .line 2412
+    .line 2377
     :cond_2
-    :goto_2
+    :goto_0
     iget-object v9, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mFirewallChainStates:Landroid/util/SparseBooleanArray;
 
-    invoke-virtual {v9, v8}, Landroid/util/SparseBooleanArray;->get(I)Z
+    invoke-virtual {v9, v11}, Landroid/util/SparseBooleanArray;->get(I)Z
 
     move-result v9
 
     if-eqz v9, :cond_3
 
+    .line 2378
     iget-object v9, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mUidFirewallDozableRules:Landroid/util/SparseIntArray;
 
-    invoke-virtual {v9, p1, v3}, Landroid/util/SparseIntArray;->get(II)I
+    invoke-virtual {v9, p1, v10}, Landroid/util/SparseIntArray;->get(II)I
 
     move-result v9
 
-    if-eq v9, v8, :cond_3
+    if-eq v9, v11, :cond_3
 
-    .line 2414
-    const/4 v6, 0x2
+    .line 2379
+    const/4 v7, 0x2
 
-    .line 2418
+    .line 2383
     :cond_3
     iget-object v9, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mFirewallChainStates:Landroid/util/SparseBooleanArray;
 
-    invoke-virtual {v9, v10}, Landroid/util/SparseBooleanArray;->get(I)Z
+    invoke-virtual {v9, v12}, Landroid/util/SparseBooleanArray;->get(I)Z
 
     move-result v9
 
     if-eqz v9, :cond_4
 
+    .line 2384
     iget-object v9, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mUidFirewallStandbyRules:Landroid/util/SparseIntArray;
 
-    invoke-virtual {v9, p1, v3}, Landroid/util/SparseIntArray;->get(II)I
+    invoke-virtual {v9, p1, v10}, Landroid/util/SparseIntArray;->get(II)I
 
     move-result v9
 
-    if-ne v9, v10, :cond_4
+    if-ne v9, v12, :cond_4
 
-    .line 2420
-    const/4 v6, 0x2
+    .line 2385
+    const/4 v7, 0x2
 
-    .line 2423
+    .line 2388
     :cond_4
     iget-object v9, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mUidRules:Landroid/util/SparseIntArray;
 
     invoke-virtual {v9, p1}, Landroid/util/SparseIntArray;->get(I)I
 
-    move-result v2
+    move-result v3
 
-    .local v2, "oldRules":I
-    if-nez v6, :cond_b
+    .line 2389
+    .local v3, "oldRules":I
+    invoke-static {p0, p1, v7}, Lcom/android/server/net/NetworkPolicyManagerService$FlymeInjector;->flymeChangeUidRules(Lcom/android/server/net/NetworkPolicyManagerService;II)I
 
+    move-result v7
+
+    if-nez v7, :cond_9
+
+    .line 2390
     iget-object v9, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mUidRules:Landroid/util/SparseIntArray;
 
     invoke-virtual {v9, p1}, Landroid/util/SparseIntArray;->delete(I)V
 
-    :goto_3
-    if-ne v6, v8, :cond_5
-
-    move v3, v8
-
-    .local v3, "rejectMetered":Z
-    :cond_5
-    invoke-direct {p0, p1, v3}, Lcom/android/server/net/NetworkPolicyManagerService;->setUidNetworkRules(IZ)V
-
-    if-eq v2, v6, :cond_6
-
-    iget-object v9, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mHandler:Landroid/os/Handler;
-
-    invoke-virtual {v9, v8, p1, v6}, Landroid/os/Handler;->obtainMessage(III)Landroid/os/Message;
-
-    move-result-object v8
-
-    invoke-virtual {v8}, Landroid/os/Message;->sendToTarget()V
-
-    .line 2440
-    :cond_6
-    :try_start_1
-    iget-object v8, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mNetworkStats:Landroid/net/INetworkStatsService;
-
-    invoke-interface {v8, p1, v4}, Landroid/net/INetworkStatsService;->setUidForeground(IZ)V
-    :try_end_1
-    .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_0
-
-    goto :goto_0
-
-    .line 2441
-    :catch_0
-    move-exception v8
-
-    goto :goto_0
-
-    .line 2394
-    .end local v2    # "oldRules":I
-    .end local v3    # "rejectMetered":Z
-    :cond_7
-    iget-boolean v9, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mRestrictBackground:Z
-
-    if-eqz v9, :cond_8
-
     .line 2395
-    if-nez v4, :cond_2
+    :goto_1
+    if-ne v7, v11, :cond_a
 
-    .line 2397
-    const/4 v6, 0x1
+    const/4 v4, 0x1
 
-    goto :goto_2
+    .line 2396
+    .local v4, "rejectMetered":Z
+    :goto_2
+    invoke-direct {p0, p1, v4}, Lcom/android/server/net/NetworkPolicyManagerService;->setUidNetworkRules(IZ)V
 
     .line 2399
-    :cond_8
+    if-eq v3, v7, :cond_5
+
+    .line 2400
+    iget-object v9, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mHandler:Landroid/os/Handler;
+
+    invoke-virtual {v9, v11, p1, v7}, Landroid/os/Handler;->obtainMessage(III)Landroid/os/Message;
+
+    move-result-object v9
+
+    invoke-virtual {v9}, Landroid/os/Message;->sendToTarget()V
+
+    .line 2405
+    :cond_5
+    :try_start_1
+    iget-object v9, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mNetworkStats:Landroid/net/INetworkStatsService;
+
+    invoke-interface {v9, p1, v5}, Landroid/net/INetworkStatsService;->setUidForeground(IZ)V
+    :try_end_1
+    .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_1
+
+    .line 2336
+    :goto_3
+    return-void
+
+    .line 2359
+    .end local v3    # "oldRules":I
+    .end local v4    # "rejectMetered":Z
+    :cond_6
+    iget-boolean v9, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mRestrictBackground:Z
+
+    if-eqz v9, :cond_7
+
+    .line 2360
+    if-nez v5, :cond_2
+
+    .line 2362
+    const/4 v7, 0x1
+
+    goto :goto_0
+
+    .line 2364
+    :cond_7
     iget-boolean v9, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mRestrictPower:Z
 
     if-eqz v9, :cond_2
 
-    .line 2400
+    .line 2365
     iget-object v9, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mPowerSaveWhitelistExceptIdleAppIds:Landroid/util/SparseBooleanArray;
 
     invoke-virtual {v9, v0}, Landroid/util/SparseBooleanArray;->get(I)Z
 
     move-result v9
 
-    if-nez v9, :cond_9
+    if-nez v9, :cond_8
 
+    .line 2366
     iget-object v9, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mPowerSaveTempWhitelistAppIds:Landroid/util/SparseBooleanArray;
 
     invoke-virtual {v9, v0}, Landroid/util/SparseBooleanArray;->get(I)Z
 
-    move-result v9
+    move-result v8
 
-    if-eqz v9, :cond_a
-
-    :cond_9
-    move v7, v8
-
-    .line 2402
-    .local v7, "whitelisted":Z
+    .line 2367
     :goto_4
-    if-nez v7, :cond_2
+    if-nez v8, :cond_2
 
-    if-nez v4, :cond_2
+    if-nez v5, :cond_2
 
-    and-int/lit8 v9, v5, 0x2
+    .line 2368
+    and-int/lit8 v9, v6, 0x2
 
     if-nez v9, :cond_2
 
-    .line 2407
-    const/4 v6, 0x1
+    .line 2372
+    const/4 v7, 0x1
 
-    goto :goto_2
+    goto :goto_0
 
-    .end local v7    # "whitelisted":Z
-    :cond_a
-    move v7, v3
+    .line 2365
+    :cond_8
+    const/4 v8, 0x1
 
-    .line 2400
+    .local v8, "whitelisted":Z
     goto :goto_4
 
-    .line 2427
-    .restart local v2    # "oldRules":I
-    :cond_b
+    .line 2392
+    .end local v8    # "whitelisted":Z
+    .restart local v3    # "oldRules":I
+    :cond_9
     iget-object v9, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mUidRules:Landroid/util/SparseIntArray;
 
-    invoke-virtual {v9, p1, v6}, Landroid/util/SparseIntArray;->put(II)V
+    invoke-virtual {v9, p1, v7}, Landroid/util/SparseIntArray;->put(II)V
 
-    goto :goto_3
+    goto :goto_1
 
-    .line 2382
-    .end local v0    # "appId":I
-    .end local v2    # "oldRules":I
-    .end local v4    # "uidForeground":Z
-    .end local v5    # "uidPolicy":I
-    .end local v6    # "uidRules":I
+    .line 2395
+    :cond_a
+    const/4 v4, 0x0
+
+    .restart local v4    # "rejectMetered":Z
+    goto :goto_2
+
+    .line 2406
     :catch_1
-    move-exception v9
+    move-exception v1
 
-    goto/16 :goto_1
+    .local v1, "e":Landroid/os/RemoteException;
+    goto :goto_3
 .end method
 
 .method updateRulesForUidStateChangeLocked(III)V

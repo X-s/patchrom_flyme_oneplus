@@ -168,6 +168,14 @@
 
     :cond_2
     :goto_1
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/server/wm/WindowManagerService$H;->this$0:Lcom/android/server/wm/WindowManagerService;
+
+    move-object/from16 v0, p1
+
+    invoke-static {v2, v0}, Lcom/android/server/wm/WindowManagerService$FlymeInjector;->handleFlymeMessage(Lcom/android/server/wm/WindowManagerService;Landroid/os/Message;)V
+
     return-void
 
     :pswitch_1

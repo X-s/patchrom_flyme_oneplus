@@ -57,15 +57,13 @@
 
 # virtual methods
 .method public run()V
-    .locals 9
+    .locals 8
 
     .prologue
     .line 908
     iget-object v7, p0, Lcom/android/server/wm/WindowManagerService$3;->val$holder:[Lcom/android/server/wm/WindowManagerService;
 
-    const/4 v8, 0x0
-
-    new-instance v0, Lcom/android/server/wm/WindowManagerService;
+    new-instance v0, Lcom/android/server/wm/FlymeExtWindowManagerService;
 
     iget-object v1, p0, Lcom/android/server/wm/WindowManagerService$3;->val$context:Landroid/content/Context;
 
@@ -79,9 +77,11 @@
 
     const/4 v6, 0x0
 
-    invoke-direct/range {v0 .. v6}, Lcom/android/server/wm/WindowManagerService;-><init>(Landroid/content/Context;Lcom/android/server/input/InputManagerService;ZZZLcom/android/server/wm/WindowManagerService$1;)V
+    invoke-direct/range {v0 .. v5}, Lcom/android/server/wm/FlymeExtWindowManagerService;-><init>(Landroid/content/Context;Lcom/android/server/input/InputManagerService;ZZZ)V
 
-    aput-object v0, v7, v8
+    const/4 v1, 0x0
+
+    aput-object v0, v7, v1
 
     .line 910
     return-void
