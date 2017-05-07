@@ -1,11 +1,11 @@
 #
 # ADDITIONAL_DEFAULT_PROPERTIES
 #
-ro.secure=0
+ro.secure=1
 security.perf_harden=1
 ro.allow.mock.location=0
-ro.debuggable=1
-ro.adb.secure=0
+ro.debuggable=0
+ro.adb.secure=1
 ro.zygote=zygote64_32
 dalvik.vm.image-dex2oat-Xms=64m
 dalvik.vm.image-dex2oat-Xmx=64m
@@ -19,4 +19,4 @@ logd.klogd=true
 #
 ro.bootimage.build.date=Tue Dec 20 01:00:54 CST 2016
 ro.bootimage.build.date.utc=1482166854
-persist.sys.usb.config=mtp,adb
+persist.sys.usb.config=none
