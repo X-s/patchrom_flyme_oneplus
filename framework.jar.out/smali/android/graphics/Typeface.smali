@@ -886,7 +886,7 @@
 
     move-object/from16 v1, v18
 
-    invoke-static {v12, v0, v1}, Landroid/graphics/Typeface;->putFlymeSystemFonts(Landroid/graphics/FontListParser$Family;Landroid/graphics/Typeface;Ljava/util/Map;)V
+    invoke-static {v8, v0, v1}, Landroid/graphics/Typeface;->putFlymeSystemFonts(Landroid/graphics/FontListParser$Family;Landroid/graphics/Typeface;Ljava/util/Map;)V
 
     .end local v19    # "typeface":Landroid/graphics/Typeface;
     :cond_3

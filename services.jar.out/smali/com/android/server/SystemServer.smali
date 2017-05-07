@@ -3212,11 +3212,11 @@
     .restart local v79    # "mmsService":Lcom/android/server/MmsServiceBroker;
     move-object/from16 v0, p0
 
-    move-object/from16 v4, v110
+    move-object/from16 v6, v110
 
-    move-object/from16 v5, v102
+    move-object/from16 v7, v102
 
-    invoke-static {v0, v4, v5}, Lcom/android/server/SystemServer$FlymeInjector;->addFlymeServices(Lcom/android/server/SystemServer;Lcom/android/server/wm/WindowManagerService;Lcom/android/server/wallpaper/WallpaperManagerService;)V
+    invoke-static {v0, v6, v7}, Lcom/android/server/SystemServer$FlymeInjector;->addFlymeServices(Lcom/android/server/SystemServer;Lcom/android/server/wm/WindowManagerService;Lcom/android/server/wallpaper/WallpaperManagerService;)V
 
     :try_start_3e
     invoke-virtual/range {v99 .. v99}, Lcom/android/server/VibratorService;->systemReady()V
