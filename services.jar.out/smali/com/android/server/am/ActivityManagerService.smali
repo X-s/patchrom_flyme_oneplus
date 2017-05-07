@@ -39581,7 +39581,6 @@
     #invoke-virtual {v4, v5}, Lcom/android/server/wm/WindowManagerService;->lockNow(Landroid/os/Bundle;)V
 
     :goto_1
-    :goto_flyme_0
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mStartedUsers:Landroid/util/SparseArray;
@@ -75198,6 +75197,7 @@
 
     .local v12, "i":I
     :goto_5
+    :goto_flyme_0
     if-ge v12, v15, :cond_d
 
     if-lez p1, :cond_d

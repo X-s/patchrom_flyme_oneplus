@@ -8495,6 +8495,7 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
+    :cond_flyme_0
     iget-object v6, p0, Lcom/android/server/pm/PackageManagerService;->mInstaller:Lcom/android/server/pm/Installer;
 
     iget-object v7, v2, Landroid/content/pm/PackageParser$Package;->volumeUuid:Ljava/lang/String;
@@ -19336,6 +19337,14 @@
     move-result-object v9
 
     :cond_14
+    move-object/from16 v0, p1
+
+    move-object/from16 v1, v21
+
+    move/from16 v2, v25
+
+    invoke-static {v0, v1, v7, v2}, Lcom/android/server/pm/PackageManagerService$FlymePackageManagerServiceInjector;->grantFlymeRuntimePermission(Landroid/content/pm/PackageParser$Package;Lcom/android/server/pm/PermissionsState;Lcom/android/server/pm/BasePermission;I)V
+
     move-object/from16 v0, v21
 
     move/from16 v1, v25
@@ -71141,25 +71150,27 @@
 .end method
 
 .method public resetApplicationPreferences(I)V
-    .locals 6
+    .locals 5
     .param p1, "userId"    # I
 
     .prologue
     const/4 v4, 0x0
 
-    .line 14851
+    .line 14253
     iget-object v2, p0, Lcom/android/server/pm/PackageManagerService;->mContext:Landroid/content/Context;
 
-    const-string v3, "android.permission.SET_PREFERRED_APPLICATIONS"
+    .line 14254
+    const-string/jumbo v3, "android.permission.SET_PREFERRED_APPLICATIONS"
 
+    .line 14253
     invoke-virtual {v2, v3, v4}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 14854
+    .line 14256
     iget-object v3, p0, Lcom/android/server/pm/PackageManagerService;->mPackages:Landroid/util/ArrayMap;
 
     monitor-enter v3
 
-    .line 14855
+    .line 14257
     :try_start_0
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
     :try_end_0
@@ -71167,67 +71178,73 @@
 
     move-result-wide v0
 
+    .line 14259
     .local v0, "identity":J
     const/4 v2, 0x0
 
     :try_start_1
     invoke-virtual {p0, v2, p1}, Lcom/android/server/pm/PackageManagerService;->clearPackagePreferredActivitiesLPw(Ljava/lang/String;I)Z
 
+    .line 14260
     iget-object v2, p0, Lcom/android/server/pm/PackageManagerService;->mSettings:Lcom/android/server/pm/Settings;
 
     invoke-virtual {v2, p0, p1}, Lcom/android/server/pm/Settings;->applyDefaultPreferredAppsLPw(Lcom/android/server/pm/PackageManagerService;I)V
 
+    .line 14265
     invoke-direct {p0, p1}, Lcom/android/server/pm/PackageManagerService;->applyFactoryDefaultBrowserLPw(I)V
 
+    .line 14266
     invoke-direct {p0, p1}, Lcom/android/server/pm/PackageManagerService;->clearIntentFilterVerificationsLPw(I)V
 
+    .line 14267
     invoke-direct {p0, p1}, Lcom/android/server/pm/PackageManagerService;->primeDomainVerificationsLPw(I)V
 
-    const/4 v2, 0x1
-
-    new-array v2, v2, [I
-
-    const/4 v4, 0x0
-
-    const/16 v5, 0xc
-
-    aput v5, v2, v4
-
-    invoke-static {v2}, Landroid/util/OpFeatures;->isSupport([I)Z
+    invoke-static {}, Lcom/android/server/pm/PackageManagerService$FlymePackageManagerServiceInjector;->isResetFlymeRuntimePermissions()Z
 
     move-result v2
 
-    if-nez v2, :cond_0
+    if-nez v2, :cond_flyme_0
 
+    .line 14268
     invoke-direct {p0, p1}, Lcom/android/server/pm/PackageManagerService;->resetUserChangesToRuntimePermissionsAndFlagsLPw(I)V
 
-    :cond_0
+    :cond_flyme_0
+
+    .line 14269
     invoke-virtual {p0, p1}, Lcom/android/server/pm/PackageManagerService;->scheduleWritePackageRestrictionsLocked(I)V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
+    .line 14271
     :try_start_2
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
     monitor-exit v3
 
+    .line 14252
     return-void
 
+    .line 14270
     :catchall_0
     move-exception v2
 
+    .line 14271
+    :try_start_3
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
+    .line 14270
     throw v2
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_1
 
-    .line 14873
+    .line 14256
     .end local v0    # "identity":J
     :catchall_1
     move-exception v2
 
     monitor-exit v3
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
     throw v2
 .end method
