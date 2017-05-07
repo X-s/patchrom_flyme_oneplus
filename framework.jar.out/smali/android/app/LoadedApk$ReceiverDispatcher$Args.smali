@@ -245,6 +245,7 @@
 
     invoke-virtual {v5, v8, v2}, Landroid/content/BroadcastReceiver;->onReceive(Landroid/content/Context;Landroid/content/Intent;)V
 
+    :cond_flyme_0
     .line 909
     sget-boolean v8, Landroid/app/ActivityThread;->DEBUG_ONEPLUS:Z
 
@@ -309,7 +310,6 @@
     .end local v0    # "cl":Ljava/lang/ClassLoader;
     .end local v6    # "startTime":J
     :cond_4
-    :cond_flyme_0
     invoke-virtual {v5}, Landroid/content/BroadcastReceiver;->getPendingResult()Landroid/content/BroadcastReceiver$PendingResult;
 
     move-result-object v8

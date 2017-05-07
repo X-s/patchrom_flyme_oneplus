@@ -2513,7 +2513,7 @@
     .prologue
     const/4 v10, 0x0
 
-    const v4, #android:style@Theme.DeviceDefault.InputMethod#t
+    sget v4, Lcom/flyme/internal/R$style;->Theme_Flyme_InputMethod:I
 
     const/4 v9, 0x0
 

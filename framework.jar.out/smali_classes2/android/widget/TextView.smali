@@ -24397,7 +24397,7 @@
     or-int/2addr v1, v9
 
     :cond_d
-    iget-object v7, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
+    #iget-object v7, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
 
     #invoke-virtual {v7, p1}, Landroid/widget/Editor;->onTouchUpEvent(Landroid/view/MotionEvent;)V
 
