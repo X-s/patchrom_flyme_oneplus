@@ -4872,6 +4872,7 @@
     .param p1, "typeface"    # Landroid/graphics/Typeface;
 
     .prologue
+
     invoke-direct/range {p0 .. p1}, Landroid/graphics/Paint;->setFlymeTypeface(Landroid/graphics/Typeface;)V
 
     const-wide/16 v0, 0x0

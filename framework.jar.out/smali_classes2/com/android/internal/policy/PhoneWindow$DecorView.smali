@@ -1451,6 +1451,7 @@
     .param p7, "animate"    # Z
 
     .prologue
+
     iget-object v0, p0, Lcom/android/internal/policy/PhoneWindow$DecorView;->this$0:Lcom/android/internal/policy/PhoneWindow;
 
     move/from16 v1, p4

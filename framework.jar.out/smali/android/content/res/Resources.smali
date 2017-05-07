@@ -868,6 +868,7 @@
 
     .line 2085
     :cond_1
+
     invoke-static/range {p0 .. p0}, Landroid/content/res/Resources$FlymeInjector;->isFlymeThemeChange(Landroid/content/res/Resources;)V
 
     iget-object v2, p0, Landroid/content/res/Resources;->mConfiguration:Landroid/content/res/Configuration;
@@ -2026,6 +2027,7 @@
 
     .restart local v1    # "value":Landroid/util/TypedValue;
     :cond_0
+
     invoke-static/range {p0 .. p1}, Landroid/content/res/Resources$FlymeInjector;->isFlymeThemeColor(Landroid/content/res/Resources;I)Z
 
     move-result v2
@@ -2041,6 +2043,7 @@
     return v2
 
     :cond_flyme_0
+
     const/4 v2, 0x1
 
     invoke-virtual {p0, p1, v1, v2}, Landroid/content/res/Resources;->getValue(ILandroid/util/TypedValue;Z)V
@@ -4603,6 +4606,7 @@
     .end annotation
 
     .prologue
+
     invoke-static/range {p0 .. p2}, Landroid/content/res/Resources$FlymeInjector;->loadFlymeColorStateList(Landroid/content/res/Resources;Landroid/util/TypedValue;I)Landroid/content/res/ColorStateList;
 
     move-result-object v0

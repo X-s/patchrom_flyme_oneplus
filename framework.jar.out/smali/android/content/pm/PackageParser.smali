@@ -5515,7 +5515,7 @@
 
     iput-object v2, v14, Landroid/content/pm/PackageParser$Activity;->metaData:Landroid/os/Bundle;
 
-    if-nez v2, :cond_flyme_0
+    if-nez v2, :cond_20
 
     const/4 v14, 0x0
 
@@ -21191,6 +21191,7 @@
     .param p2, "requireFilename"    # Z
 
     .prologue
+
     invoke-static/range {p0 .. p0}, Landroid/content/pm/PackageParser$FlymeInjector;->validateName(Ljava/lang/String;)Z
 
     move-result v0

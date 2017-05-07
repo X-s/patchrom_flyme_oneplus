@@ -201,6 +201,7 @@
     .line 499
     .restart local v0    # "mode":I
     :cond_0
+
     invoke-direct/range {p0 .. p1}, Landroid/content/ContentProvider$Transport;->isFlymeAllowedWriteSms(Ljava/lang/String;)I
 
     move-result v0

@@ -35043,6 +35043,7 @@
 
     :cond_18
     :goto_9
+
     invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowManagerService$FlymeInjector;->applyFlymeAnimateWallpaper(Lcom/android/server/wm/WindowManagerService;)V
 
     move-object/from16 v0, p0
@@ -36015,7 +36016,7 @@
 
     move-result v0
 
-    if-eqz v0, :code_flyme_0
+    if-eqz v0, :cond_flyme_0
 
     move-object/from16 v0, p0
 
@@ -36027,7 +36028,7 @@
 
     goto :goto_flyme_0
 
-    :code_flyme_0
+    :cond_flyme_0
 
     move-object/from16 v0, p0
 
@@ -45660,6 +45661,7 @@
 
     .end local v1    # "cwin":Lcom/android/server/wm/WindowState;
     :cond_1
+
     invoke-static/range {p0 .. p1}, Lcom/android/server/wm/WindowManagerService$FlymeInjector;->notifyFlymeMoveWin(Lcom/android/server/wm/WindowManagerService;Lcom/android/server/wm/WindowState;)V
 
     iput-boolean v10, p1, Lcom/android/server/wm/WindowState;->mRemoved:Z

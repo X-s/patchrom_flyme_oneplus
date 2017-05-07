@@ -3428,6 +3428,7 @@
     .locals 2
 
     .prologue
+
     invoke-static/range {p0 .. p0}, Lcom/android/server/BatteryService$FlymeInjector;->shutdownIfNoPowerLocked(Lcom/android/server/BatteryService;)Z
 
     move-result v0
@@ -3469,6 +3470,7 @@
     .locals 2
 
     .prologue
+
     invoke-static {}, Lcom/android/server/BatteryService$FlymeInjector;->shutdownIfOverTempLocked()Z
 
     move-result v0

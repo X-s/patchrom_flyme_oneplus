@@ -855,7 +855,7 @@
 
     const/4 v8, 0x1
 
-    if-ne v4, v8, :cond_flyme_1
+    if-ne v4, v8, :cond_8
 
     const/4 v7, 0x1
 
@@ -893,6 +893,7 @@
 
     .line 2008
     .local v13, "reason":Ljava/lang/String;
+
     invoke-static/range {p1 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->isFlymePackageShouldRestart(Landroid/os/Message;)Z
 
     move-result v4
@@ -906,14 +907,10 @@
     move-object/from16 v0, p1
 
     invoke-virtual {v4, v0}, Lcom/android/server/am/ActivityManagerService;->forceStopFlymePackageLocked(Landroid/os/Message;)V
+
     monitor-exit v15
 
     return-void
-
-    :cond_flyme_1
-    const/4 v7, 0x0
-
-    goto :goto_flyme_0
 
     :cond_flyme_0
 

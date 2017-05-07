@@ -7200,6 +7200,7 @@
     .line 3262
     .local v11, "drawDividers":Z
     :goto_2
+
     move-object/from16 v0, p0
 
     invoke-direct {v0, v10}, Landroid/widget/ListView;->getFlymeDividerHeight(I)I
@@ -8368,26 +8369,26 @@
 .end method
 
 .method drawDivider(Landroid/graphics/Canvas;Landroid/graphics/Rect;I)V
-    .locals 1
+    .locals 2
     .param p1, "canvas"    # Landroid/graphics/Canvas;
     .param p2, "bounds"    # Landroid/graphics/Rect;
     .param p3, "childIndex"    # I
 
     .prologue
-    invoke-direct {p0, p3}, Landroid/widget/ListView;->flymeDrawDivider(I)Z
-
-    move-result v0
-
-    if-nez v0, :cond_flyme_0
-
-    return-void
-
-    :cond_flyme_0
-
     iget-object v0, p0, Landroid/widget/ListView;->mDivider:Landroid/graphics/drawable/Drawable;
 
     .local v0, "divider":Landroid/graphics/drawable/Drawable;
     invoke-virtual {v0, p2}, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
+
+    invoke-direct/range {p0 .. p3}, Landroid/widget/ListView;->flymeDrawDivider(Landroid/graphics/Canvas;Landroid/graphics/Rect;I)Z
+
+    move-result v1
+
+    if-nez v1, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
 
     invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
@@ -13806,528 +13807,6 @@
     goto :goto_0
 .end method
 
-.method private flymeDrawDivider(I)Z
-    .locals 22
-    .param p1, "childIndex"    # I
-
-    .prologue
-    move-object/from16 v0, p0
-
-    iget v6, v0, Landroid/widget/ListView;->mFirstPosition:I
-
-    .local v6, "first":I
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/widget/ListView;->mHeaderViewInfos:Ljava/util/ArrayList;
-
-    move-object/from16 v20, v0
-
-    invoke-virtual/range {v20 .. v20}, Ljava/util/ArrayList;->size()I
-
-    move-result v8
-
-    .local v8, "headerCount":I
-    move-object/from16 v0, p0
-
-    iget v14, v0, Landroid/widget/ListView;->mItemCount:I
-
-    .local v14, "itemCount":I
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/widget/ListView;->mFooterViewInfos:Ljava/util/ArrayList;
-
-    move-object/from16 v20, v0
-
-    invoke-virtual/range {v20 .. v20}, Ljava/util/ArrayList;->size()I
-
-    move-result v20
-
-    sub-int v7, v14, v20
-
-    .local v7, "footerLimit":I
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Landroid/widget/ListView;->mAdapter:Landroid/widget/ListAdapter;
-
-    .local v2, "adapter":Landroid/widget/ListAdapter;
-    instance-of v10, v2, Landroid/widget/ListView$DividerFilter;
-
-    .local v10, "isDividerFilter":Z
-    instance-of v13, v2, Landroid/widget/HeaderViewListAdapter;
-
-    .local v13, "isHeaderViewListAdapter":Z
-    const/16 v19, 0x0
-
-    .local v19, "wrappedAdapter":Landroid/widget/ListAdapter;
-    if-eqz v13, :cond_0
-
-    move-object/from16 v20, v2
-
-    check-cast v20, Landroid/widget/HeaderViewListAdapter;
-
-    invoke-virtual/range {v20 .. v20}, Landroid/widget/HeaderViewListAdapter;->getWrappedAdapter()Landroid/widget/ListAdapter;
-
-    move-result-object v19
-
-    .local v19, "wrappedAdapter":Landroid/widget/ListAdapter;
-    move-object/from16 v0, v19
-
-    instance-of v10, v0, Landroid/widget/ListView$DividerFilter;
-
-    if-nez v10, :cond_0
-
-    const/16 v19, 0x0
-
-    .end local v19    # "wrappedAdapter":Landroid/widget/ListAdapter;
-    :cond_0
-    move/from16 v9, p1
-
-    .local v9, "index":I
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Landroid/widget/ListView;->mStackFromBottom:Z
-
-    move/from16 v20, v0
-
-    if-eqz v20, :cond_1
-
-    add-int/lit8 v9, v9, 0x1
-
-    :cond_1
-    add-int v15, v6, v9
-
-    .local v15, "itemIndex":I
-    if-ge v15, v8, :cond_6
-
-    const/4 v12, 0x1
-
-    .local v12, "isHeader":Z
-    :goto_0
-    if-lt v15, v7, :cond_7
-
-    const/4 v11, 0x1
-
-    .local v11, "isFooter":Z
-    :goto_1
-    const/16 v18, 0x1
-
-    .local v18, "toDraw":Z
-    if-eqz v10, :cond_a
-
-    if-eqz v13, :cond_9
-
-    if-eqz v19, :cond_2
-
-    if-eqz v12, :cond_8
-
-    .end local v18    # "toDraw":Z
-    :cond_2
-    :goto_2
-    move-object/from16 v0, p0
-
-    iget-boolean v0, v0, Landroid/widget/ListView;->mStackFromBottom:Z
-
-    move/from16 v20, v0
-
-    if-nez v20, :cond_10
-
-    const/4 v5, 0x0
-
-    .local v5, "drawTop":Z
-    if-eqz v10, :cond_e
-
-    if-eqz v13, :cond_d
-
-    if-eqz v19, :cond_3
-
-    check-cast v19, Landroid/widget/ListView$DividerFilter;
-
-    invoke-interface/range {v19 .. v19}, Landroid/widget/ListView$DividerFilter;->topDividerEnabled()Z
-
-    move-result v5
-
-    .end local v2    # "adapter":Landroid/widget/ListAdapter;
-    .end local v5    # "drawTop":Z
-    :cond_3
-    :goto_3
-    const/16 v20, -0x1
-
-    move/from16 v0, p1
-
-    move/from16 v1, v20
-
-    if-ne v0, v1, :cond_4
-
-    if-eqz v5, :cond_f
-
-    :cond_4
-    move-object/from16 v0, p0
-
-    iget-object v3, v0, Landroid/widget/ListView;->mDivider:Landroid/graphics/drawable/Drawable;
-
-    .local v3, "divider":Landroid/graphics/drawable/Drawable;
-    if-eqz v18, :cond_15
-
-    if-eqz v3, :cond_15
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/widget/ListView;->mDividerPadding:Landroid/widget/ListView$DividerPadding;
-
-    move-object/from16 v20, v0
-
-    if-eqz v20, :cond_15
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/widget/ListView;->mDividerPadding:Landroid/widget/ListView$DividerPadding;
-
-    move-object/from16 v20, v0
-
-    move-object/from16 v0, v20
-
-    invoke-interface {v0, v15}, Landroid/widget/ListView$DividerPadding;->getDividerPadding(I)[I
-
-    move-result-object v16
-
-    .local v16, "paddings":[I
-    if-eqz v16, :cond_5
-
-    move-object/from16 v0, v16
-
-    array-length v0, v0
-
-    move/from16 v20, v0
-
-    const/16 v21, 0x2
-
-    move/from16 v0, v20
-
-    move/from16 v1, v21
-
-    if-eq v0, v1, :cond_14
-
-    :cond_5
-    return v18
-
-    .end local v3    # "divider":Landroid/graphics/drawable/Drawable;
-    .end local v11    # "isFooter":Z
-    .end local v12    # "isHeader":Z
-    .end local v16    # "paddings":[I
-    .restart local v2    # "adapter":Landroid/widget/ListAdapter;
-    :cond_6
-    const/4 v12, 0x0
-
-    .restart local v12    # "isHeader":Z
-    goto :goto_0
-
-    :cond_7
-    const/4 v11, 0x0
-
-    .restart local v11    # "isFooter":Z
-    goto :goto_1
-
-    .restart local v18    # "toDraw":Z
-    :cond_8
-    if-nez v11, :cond_2
-
-    move-object/from16 v20, v19
-
-    check-cast v20, Landroid/widget/ListView$DividerFilter;
-
-    sub-int v21, v15, v8
-
-    invoke-interface/range {v20 .. v21}, Landroid/widget/ListView$DividerFilter;->dividerEnabled(I)Z
-
-    move-result v18
-
-    .local v18, "toDraw":Z
-    goto :goto_2
-
-    .local v18, "toDraw":Z
-    :cond_9
-    move-object/from16 v20, v2
-
-    check-cast v20, Landroid/widget/ListView$DividerFilter;
-
-    move-object/from16 v0, v20
-
-    invoke-interface {v0, v15}, Landroid/widget/ListView$DividerFilter;->dividerEnabled(I)Z
-
-    move-result v18
-
-    .local v18, "toDraw":Z
-    goto :goto_2
-
-    .local v18, "toDraw":Z
-    :cond_a
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
-
-    move-object/from16 v20, v0
-
-    if-eqz v20, :cond_2
-
-    if-eqz v13, :cond_b
-
-    if-eqz v12, :cond_c
-
-    :cond_b
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
-
-    move-object/from16 v20, v0
-
-    move-object/from16 v0, v20
-
-    invoke-interface {v0, v15}, Landroid/widget/ListView$DividerFilter;->dividerEnabled(I)Z
-
-    move-result v18
-
-    .local v18, "toDraw":Z
-    goto :goto_2
-
-    .local v18, "toDraw":Z
-    :cond_c
-    if-nez v11, :cond_b
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
-
-    move-object/from16 v20, v0
-
-    sub-int v21, v15, v8
-
-    invoke-interface/range {v20 .. v21}, Landroid/widget/ListView$DividerFilter;->dividerEnabled(I)Z
-
-    move-result v18
-
-    .local v18, "toDraw":Z
-    goto/16 :goto_2
-
-    .end local v18    # "toDraw":Z
-    .restart local v5    # "drawTop":Z
-    :cond_d
-    check-cast v2, Landroid/widget/ListView$DividerFilter;
-
-    .end local v2    # "adapter":Landroid/widget/ListAdapter;
-    invoke-interface {v2}, Landroid/widget/ListView$DividerFilter;->topDividerEnabled()Z
-
-    move-result v5
-
-    .local v5, "drawTop":Z
-    goto/16 :goto_3
-
-    .restart local v2    # "adapter":Landroid/widget/ListAdapter;
-    .local v5, "drawTop":Z
-    :cond_e
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
-
-    move-object/from16 v20, v0
-
-    if-eqz v20, :cond_3
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
-
-    move-object/from16 v20, v0
-
-    invoke-interface/range {v20 .. v20}, Landroid/widget/ListView$DividerFilter;->topDividerEnabled()Z
-
-    move-result v5
-
-    .local v5, "drawTop":Z
-    goto/16 :goto_3
-
-    .end local v2    # "adapter":Landroid/widget/ListAdapter;
-    .end local v5    # "drawTop":Z
-    :cond_f
-    const/16 v20, 0x0
-
-    return v20
-
-    .restart local v2    # "adapter":Landroid/widget/ListAdapter;
-    :cond_10
-    const/4 v4, 0x0
-
-    .local v4, "drawBottom":Z
-    if-eqz v10, :cond_13
-
-    if-eqz v13, :cond_12
-
-    if-eqz v19, :cond_11
-
-    check-cast v19, Landroid/widget/ListView$DividerFilter;
-
-    invoke-interface/range {v19 .. v19}, Landroid/widget/ListView$DividerFilter;->bottomDeviderEnabled()Z
-
-    move-result v4
-
-    .end local v2    # "adapter":Landroid/widget/ListAdapter;
-    .end local v4    # "drawBottom":Z
-    :cond_11
-    :goto_4
-    const/16 v20, -0x1
-
-    move/from16 v0, p1
-
-    move/from16 v1, v20
-
-    if-ne v0, v1, :cond_4
-
-    if-nez v4, :cond_4
-
-    const/16 v20, 0x0
-
-    return v20
-
-    .restart local v2    # "adapter":Landroid/widget/ListAdapter;
-    .restart local v4    # "drawBottom":Z
-    :cond_12
-    check-cast v2, Landroid/widget/ListView$DividerFilter;
-
-    .end local v2    # "adapter":Landroid/widget/ListAdapter;
-    invoke-interface {v2}, Landroid/widget/ListView$DividerFilter;->bottomDeviderEnabled()Z
-
-    move-result v4
-
-    .local v4, "drawBottom":Z
-    goto :goto_4
-
-    .restart local v2    # "adapter":Landroid/widget/ListAdapter;
-    .local v4, "drawBottom":Z
-    :cond_13
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
-
-    move-object/from16 v20, v0
-
-    if-eqz v20, :cond_11
-
-    move-object/from16 v0, p0
-
-    iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
-
-    move-object/from16 v20, v0
-
-    invoke-interface/range {v20 .. v20}, Landroid/widget/ListView$DividerFilter;->bottomDeviderEnabled()Z
-
-    move-result v4
-
-    .local v4, "drawBottom":Z
-    goto :goto_4
-
-    .end local v2    # "adapter":Landroid/widget/ListAdapter;
-    .end local v4    # "drawBottom":Z
-    .restart local v3    # "divider":Landroid/graphics/drawable/Drawable;
-    .restart local v16    # "paddings":[I
-    :cond_14
-    invoke-virtual {v3}, Landroid/graphics/drawable/Drawable;->getBounds()Landroid/graphics/Rect;
-
-    move-result-object v17
-
-    .local v17, "rect":Landroid/graphics/Rect;
-    invoke-virtual/range {p0 .. p0}, Landroid/widget/ListView;->isLayoutRtl()Z
-
-    move-result v20
-
-    if-eqz v20, :cond_16
-
-    move-object/from16 v0, v17
-
-    iget v0, v0, Landroid/graphics/Rect;->left:I
-
-    move/from16 v20, v0
-
-    const/16 v21, 0x1
-
-    aget v21, v16, v21
-
-    add-int v20, v20, v21
-
-    move/from16 v0, v20
-
-    move-object/from16 v1, v17
-
-    iput v0, v1, Landroid/graphics/Rect;->left:I
-
-    move-object/from16 v0, v17
-
-    iget v0, v0, Landroid/graphics/Rect;->right:I
-
-    move/from16 v20, v0
-
-    const/16 v21, 0x0
-
-    aget v21, v16, v21
-
-    sub-int v20, v20, v21
-
-    move/from16 v0, v20
-
-    move-object/from16 v1, v17
-
-    iput v0, v1, Landroid/graphics/Rect;->right:I
-
-    :goto_5
-    move-object/from16 v0, v17
-
-    invoke-virtual {v3, v0}, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
-
-    .end local v16    # "paddings":[I
-    .end local v17    # "rect":Landroid/graphics/Rect;
-    :cond_15
-    return v18
-
-    .restart local v16    # "paddings":[I
-    .restart local v17    # "rect":Landroid/graphics/Rect;
-    :cond_16
-    move-object/from16 v0, v17
-
-    iget v0, v0, Landroid/graphics/Rect;->left:I
-
-    move/from16 v20, v0
-
-    const/16 v21, 0x0
-
-    aget v21, v16, v21
-
-    add-int v20, v20, v21
-
-    move/from16 v0, v20
-
-    move-object/from16 v1, v17
-
-    iput v0, v1, Landroid/graphics/Rect;->left:I
-
-    move-object/from16 v0, v17
-
-    iget v0, v0, Landroid/graphics/Rect;->right:I
-
-    move/from16 v20, v0
-
-    const/16 v21, 0x1
-
-    aget v21, v16, v21
-
-    sub-int v20, v20, v21
-
-    move/from16 v0, v20
-
-    move-object/from16 v1, v17
-
-    iput v0, v1, Landroid/graphics/Rect;->right:I
-
-    goto :goto_5
-.end method
-
 .method private flymeEndDragSelection()V
     .locals 2
 
@@ -16534,4 +16013,528 @@
     invoke-virtual {p0}, Landroid/widget/ListView;->requestLayout()V
 
     goto :goto_0
+.end method
+
+.method private flymeDrawDivider(Landroid/graphics/Canvas;Landroid/graphics/Rect;I)Z
+    .locals 22
+    .param p1, "canvas"    # Landroid/graphics/Canvas;
+    .param p2, "bounds"    # Landroid/graphics/Rect;
+    .param p3, "childIndex"    # I
+
+    .prologue
+    move-object/from16 v0, p0
+
+    iget v6, v0, Landroid/widget/ListView;->mFirstPosition:I
+
+    .local v6, "first":I
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/widget/ListView;->mHeaderViewInfos:Ljava/util/ArrayList;
+
+    move-object/from16 v20, v0
+
+    invoke-virtual/range {v20 .. v20}, Ljava/util/ArrayList;->size()I
+
+    move-result v8
+
+    .local v8, "headerCount":I
+    move-object/from16 v0, p0
+
+    iget v14, v0, Landroid/widget/ListView;->mItemCount:I
+
+    .local v14, "itemCount":I
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/widget/ListView;->mFooterViewInfos:Ljava/util/ArrayList;
+
+    move-object/from16 v20, v0
+
+    invoke-virtual/range {v20 .. v20}, Ljava/util/ArrayList;->size()I
+
+    move-result v20
+
+    sub-int v7, v14, v20
+
+    .local v7, "footerLimit":I
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Landroid/widget/ListView;->mAdapter:Landroid/widget/ListAdapter;
+
+    .local v2, "adapter":Landroid/widget/ListAdapter;
+    instance-of v10, v2, Landroid/widget/ListView$DividerFilter;
+
+    .local v10, "isDividerFilter":Z
+    instance-of v13, v2, Landroid/widget/HeaderViewListAdapter;
+
+    .local v13, "isHeaderViewListAdapter":Z
+    const/16 v19, 0x0
+
+    .local v19, "wrappedAdapter":Landroid/widget/ListAdapter;
+    if-eqz v13, :cond_0
+
+    move-object/from16 v20, v2
+
+    check-cast v20, Landroid/widget/HeaderViewListAdapter;
+
+    invoke-virtual/range {v20 .. v20}, Landroid/widget/HeaderViewListAdapter;->getWrappedAdapter()Landroid/widget/ListAdapter;
+
+    move-result-object v19
+
+    .local v19, "wrappedAdapter":Landroid/widget/ListAdapter;
+    move-object/from16 v0, v19
+
+    instance-of v10, v0, Landroid/widget/ListView$DividerFilter;
+
+    if-nez v10, :cond_0
+
+    const/16 v19, 0x0
+
+    .end local v19    # "wrappedAdapter":Landroid/widget/ListAdapter;
+    :cond_0
+    move/from16 v9, p3
+
+    .local v9, "index":I
+    move-object/from16 v0, p0
+
+    iget-boolean v0, v0, Landroid/widget/ListView;->mStackFromBottom:Z
+
+    move/from16 v20, v0
+
+    if-eqz v20, :cond_1
+
+    add-int/lit8 v9, v9, 0x1
+
+    :cond_1
+    add-int v15, v6, v9
+
+    .local v15, "itemIndex":I
+    if-ge v15, v8, :cond_6
+
+    const/4 v12, 0x1
+
+    .local v12, "isHeader":Z
+    :goto_0
+    if-lt v15, v7, :cond_7
+
+    const/4 v11, 0x1
+
+    .local v11, "isFooter":Z
+    :goto_1
+    const/16 v18, 0x1
+
+    .local v18, "toDraw":Z
+    if-eqz v10, :cond_a
+
+    if-eqz v13, :cond_9
+
+    if-eqz v19, :cond_2
+
+    if-eqz v12, :cond_8
+
+    .end local v18    # "toDraw":Z
+    :cond_2
+    :goto_2
+    move-object/from16 v0, p0
+
+    iget-boolean v0, v0, Landroid/widget/ListView;->mStackFromBottom:Z
+
+    move/from16 v20, v0
+
+    if-nez v20, :cond_10
+
+    const/4 v5, 0x0
+
+    .local v5, "drawTop":Z
+    if-eqz v10, :cond_e
+
+    if-eqz v13, :cond_d
+
+    if-eqz v19, :cond_3
+
+    check-cast v19, Landroid/widget/ListView$DividerFilter;
+
+    invoke-interface/range {v19 .. v19}, Landroid/widget/ListView$DividerFilter;->topDividerEnabled()Z
+
+    move-result v5
+
+    .end local v2    # "adapter":Landroid/widget/ListAdapter;
+    .end local v5    # "drawTop":Z
+    :cond_3
+    :goto_3
+    const/16 v20, -0x1
+
+    move/from16 v0, p3
+
+    move/from16 v1, v20
+
+    if-ne v0, v1, :cond_4
+
+    if-eqz v5, :cond_f
+
+    :cond_4
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Landroid/widget/ListView;->mDivider:Landroid/graphics/drawable/Drawable;
+
+    .local v3, "divider":Landroid/graphics/drawable/Drawable;
+    if-eqz v18, :cond_15
+
+    if-eqz v3, :cond_15
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/widget/ListView;->mDividerPadding:Landroid/widget/ListView$DividerPadding;
+
+    move-object/from16 v20, v0
+
+    if-eqz v20, :cond_15
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/widget/ListView;->mDividerPadding:Landroid/widget/ListView$DividerPadding;
+
+    move-object/from16 v20, v0
+
+    move-object/from16 v0, v20
+
+    invoke-interface {v0, v15}, Landroid/widget/ListView$DividerPadding;->getDividerPadding(I)[I
+
+    move-result-object v16
+
+    .local v16, "paddings":[I
+    if-eqz v16, :cond_5
+
+    move-object/from16 v0, v16
+
+    array-length v0, v0
+
+    move/from16 v20, v0
+
+    const/16 v21, 0x2
+
+    move/from16 v0, v20
+
+    move/from16 v1, v21
+
+    if-eq v0, v1, :cond_14
+
+    :cond_5
+    return v18
+
+    .end local v3    # "divider":Landroid/graphics/drawable/Drawable;
+    .end local v11    # "isFooter":Z
+    .end local v12    # "isHeader":Z
+    .end local v16    # "paddings":[I
+    .restart local v2    # "adapter":Landroid/widget/ListAdapter;
+    :cond_6
+    const/4 v12, 0x0
+
+    .restart local v12    # "isHeader":Z
+    goto :goto_0
+
+    :cond_7
+    const/4 v11, 0x0
+
+    .restart local v11    # "isFooter":Z
+    goto :goto_1
+
+    .restart local v18    # "toDraw":Z
+    :cond_8
+    if-nez v11, :cond_2
+
+    move-object/from16 v20, v19
+
+    check-cast v20, Landroid/widget/ListView$DividerFilter;
+
+    sub-int v21, v15, v8
+
+    invoke-interface/range {v20 .. v21}, Landroid/widget/ListView$DividerFilter;->dividerEnabled(I)Z
+
+    move-result v18
+
+    .local v18, "toDraw":Z
+    goto :goto_2
+
+    .local v18, "toDraw":Z
+    :cond_9
+    move-object/from16 v20, v2
+
+    check-cast v20, Landroid/widget/ListView$DividerFilter;
+
+    move-object/from16 v0, v20
+
+    invoke-interface {v0, v15}, Landroid/widget/ListView$DividerFilter;->dividerEnabled(I)Z
+
+    move-result v18
+
+    .local v18, "toDraw":Z
+    goto :goto_2
+
+    .local v18, "toDraw":Z
+    :cond_a
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
+
+    move-object/from16 v20, v0
+
+    if-eqz v20, :cond_2
+
+    if-eqz v13, :cond_b
+
+    if-eqz v12, :cond_c
+
+    :cond_b
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
+
+    move-object/from16 v20, v0
+
+    move-object/from16 v0, v20
+
+    invoke-interface {v0, v15}, Landroid/widget/ListView$DividerFilter;->dividerEnabled(I)Z
+
+    move-result v18
+
+    .local v18, "toDraw":Z
+    goto :goto_2
+
+    .local v18, "toDraw":Z
+    :cond_c
+    if-nez v11, :cond_b
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
+
+    move-object/from16 v20, v0
+
+    sub-int v21, v15, v8
+
+    invoke-interface/range {v20 .. v21}, Landroid/widget/ListView$DividerFilter;->dividerEnabled(I)Z
+
+    move-result v18
+
+    .local v18, "toDraw":Z
+    goto/16 :goto_2
+
+    .end local v18    # "toDraw":Z
+    .restart local v5    # "drawTop":Z
+    :cond_d
+    check-cast v2, Landroid/widget/ListView$DividerFilter;
+
+    .end local v2    # "adapter":Landroid/widget/ListAdapter;
+    invoke-interface {v2}, Landroid/widget/ListView$DividerFilter;->topDividerEnabled()Z
+
+    move-result v5
+
+    .local v5, "drawTop":Z
+    goto/16 :goto_3
+
+    .restart local v2    # "adapter":Landroid/widget/ListAdapter;
+    .local v5, "drawTop":Z
+    :cond_e
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
+
+    move-object/from16 v20, v0
+
+    if-eqz v20, :cond_3
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
+
+    move-object/from16 v20, v0
+
+    invoke-interface/range {v20 .. v20}, Landroid/widget/ListView$DividerFilter;->topDividerEnabled()Z
+
+    move-result v5
+
+    .local v5, "drawTop":Z
+    goto/16 :goto_3
+
+    .end local v2    # "adapter":Landroid/widget/ListAdapter;
+    .end local v5    # "drawTop":Z
+    :cond_f
+    const/16 v20, 0x0
+
+    return v20
+
+    .restart local v2    # "adapter":Landroid/widget/ListAdapter;
+    :cond_10
+    const/4 v4, 0x0
+
+    .local v4, "drawBottom":Z
+    if-eqz v10, :cond_13
+
+    if-eqz v13, :cond_12
+
+    if-eqz v19, :cond_11
+
+    check-cast v19, Landroid/widget/ListView$DividerFilter;
+
+    invoke-interface/range {v19 .. v19}, Landroid/widget/ListView$DividerFilter;->bottomDeviderEnabled()Z
+
+    move-result v4
+
+    .end local v2    # "adapter":Landroid/widget/ListAdapter;
+    .end local v4    # "drawBottom":Z
+    :cond_11
+    :goto_4
+    const/16 v20, -0x1
+
+    move/from16 v0, p3
+
+    move/from16 v1, v20
+
+    if-ne v0, v1, :cond_4
+
+    if-nez v4, :cond_4
+
+    const/16 v20, 0x0
+
+    return v20
+
+    .restart local v2    # "adapter":Landroid/widget/ListAdapter;
+    .restart local v4    # "drawBottom":Z
+    :cond_12
+    check-cast v2, Landroid/widget/ListView$DividerFilter;
+
+    .end local v2    # "adapter":Landroid/widget/ListAdapter;
+    invoke-interface {v2}, Landroid/widget/ListView$DividerFilter;->bottomDeviderEnabled()Z
+
+    move-result v4
+
+    .local v4, "drawBottom":Z
+    goto :goto_4
+
+    .restart local v2    # "adapter":Landroid/widget/ListAdapter;
+    .local v4, "drawBottom":Z
+    :cond_13
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
+
+    move-object/from16 v20, v0
+
+    if-eqz v20, :cond_11
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
+
+    move-object/from16 v20, v0
+
+    invoke-interface/range {v20 .. v20}, Landroid/widget/ListView$DividerFilter;->bottomDeviderEnabled()Z
+
+    move-result v4
+
+    .local v4, "drawBottom":Z
+    goto :goto_4
+
+    .end local v2    # "adapter":Landroid/widget/ListAdapter;
+    .end local v4    # "drawBottom":Z
+    .restart local v3    # "divider":Landroid/graphics/drawable/Drawable;
+    .restart local v16    # "paddings":[I
+    :cond_14
+    invoke-virtual {v3}, Landroid/graphics/drawable/Drawable;->getBounds()Landroid/graphics/Rect;
+
+    move-result-object v17
+
+    .local v17, "rect":Landroid/graphics/Rect;
+    invoke-virtual/range {p0 .. p0}, Landroid/widget/ListView;->isLayoutRtl()Z
+
+    move-result v20
+
+    if-eqz v20, :cond_16
+
+    move-object/from16 v0, v17
+
+    iget v0, v0, Landroid/graphics/Rect;->left:I
+
+    move/from16 v20, v0
+
+    const/16 v21, 0x1
+
+    aget v21, v16, v21
+
+    add-int v20, v20, v21
+
+    move/from16 v0, v20
+
+    move-object/from16 v1, v17
+
+    iput v0, v1, Landroid/graphics/Rect;->left:I
+
+    move-object/from16 v0, v17
+
+    iget v0, v0, Landroid/graphics/Rect;->right:I
+
+    move/from16 v20, v0
+
+    const/16 v21, 0x0
+
+    aget v21, v16, v21
+
+    sub-int v20, v20, v21
+
+    move/from16 v0, v20
+
+    move-object/from16 v1, v17
+
+    iput v0, v1, Landroid/graphics/Rect;->right:I
+
+    :goto_5
+    move-object/from16 v0, v17
+
+    invoke-virtual {v3, v0}, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
+
+    .end local v16    # "paddings":[I
+    .end local v17    # "rect":Landroid/graphics/Rect;
+    :cond_15
+    return v18
+
+    .restart local v16    # "paddings":[I
+    .restart local v17    # "rect":Landroid/graphics/Rect;
+    :cond_16
+    move-object/from16 v0, v17
+
+    iget v0, v0, Landroid/graphics/Rect;->left:I
+
+    move/from16 v20, v0
+
+    const/16 v21, 0x0
+
+    aget v21, v16, v21
+
+    add-int v20, v20, v21
+
+    move/from16 v0, v20
+
+    move-object/from16 v1, v17
+
+    iput v0, v1, Landroid/graphics/Rect;->left:I
+
+    move-object/from16 v0, v17
+
+    iget v0, v0, Landroid/graphics/Rect;->right:I
+
+    move/from16 v20, v0
+
+    const/16 v21, 0x1
+
+    aget v21, v16, v21
+
+    sub-int v20, v20, v21
+
+    move/from16 v0, v20
+
+    move-object/from16 v1, v17
+
+    iput v0, v1, Landroid/graphics/Rect;->right:I
+
+    goto :goto_5
 .end method

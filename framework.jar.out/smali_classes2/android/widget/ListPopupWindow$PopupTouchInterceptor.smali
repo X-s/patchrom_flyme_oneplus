@@ -54,7 +54,8 @@
     .param p2, "event"    # Landroid/view/MotionEvent;
 
     .prologue
-    invoke-direct {p0, p2}, Landroid/widget/ListPopupWindow$PopupTouchInterceptor;->flymeHookOnTouch(Landroid/view/MotionEvent;)Z
+
+    invoke-direct/range {p0 .. p2}, Landroid/widget/ListPopupWindow$PopupTouchInterceptor;->flymeHookOnTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
 
     move-result v0
 
@@ -195,26 +196,27 @@
     goto :goto_0
 .end method
 
-.method private flymeHookOnTouch(Landroid/view/MotionEvent;)Z
+.method private flymeHookOnTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
     .locals 9
-    .param p1, "event"    # Landroid/view/MotionEvent;
+    .param p1, "v"    # Landroid/view/View;
+    .param p2, "event"    # Landroid/view/MotionEvent;
 
     .prologue
     const/4 v8, 0x0
 
-    invoke-virtual {p1}, Landroid/view/MotionEvent;->getAction()I
+    invoke-virtual {p2}, Landroid/view/MotionEvent;->getAction()I
 
     move-result v0
 
     .local v0, "action":I
-    invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
+    invoke-virtual {p2}, Landroid/view/MotionEvent;->getX()F
 
     move-result v4
 
     float-to-int v2, v4
 
     .local v2, "x":I
-    invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
+    invoke-virtual {p2}, Landroid/view/MotionEvent;->getY()F
 
     move-result v4
 

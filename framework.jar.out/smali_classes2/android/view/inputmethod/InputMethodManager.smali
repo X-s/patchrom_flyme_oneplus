@@ -26,7 +26,6 @@
 
 .field public static final OLD_ID_IME_MEIZU:Ljava/lang/String; = "com.baidu.input_mz/com.meizu.input.MzInputService"
 
-
 .field mFlymeHandler:Landroid/os/Handler;
 
 .field mFlymeInputMethodManagerService:Lcom/android/internal/view/MzIInputMethodManager;
@@ -6176,17 +6175,16 @@
 
     if-ne v0, p1, :cond_0
 
-    .line 1302
     invoke-virtual {p0}, Landroid/view/inputmethod/InputMethodManager;->finishInputLocked()V
 
-    .line 1304
     :cond_0
+
+    invoke-static/range {p0 .. p0}, Landroid/view/inputmethod/InputMethodManager$FlymeInjector;->windowDismissed(Landroid/view/inputmethod/InputMethodManager;)V
+
     monitor-exit v1
 
-    .line 1305
     return-void
 
-    .line 1304
     :catchall_0
     move-exception v0
 

@@ -1128,6 +1128,7 @@
     .end local v1    # "info":Lcom/android/server/notification/ManagedServices$ManagedServiceInfo;
     .end local v3    # "update":Landroid/service/notification/NotificationRankingUpdate;
     :cond_1
+
     invoke-direct/range {p0 .. p1}, Lcom/android/server/notification/NotificationManagerService$NotificationListeners;->notifyFlymeRemoved(Landroid/service/notification/StatusBarNotification;)V
 
     return-void

@@ -41,6 +41,7 @@
 
 
 # instance fields
+
 .field public mFlymeNotificationBuilder:Landroid/app/NotificationBuilderExt;
 
 .field private mFlymeReplyIntent:Landroid/app/PendingIntent;
@@ -835,10 +836,15 @@
     .param p1, "resId"    # I
 
     .prologue
-    .line 3106
+    invoke-direct {p0, p1}, Landroid/app/Notification$Builder;->applyStandardTemplateFlyme(I)Landroid/widget/RemoteViews;
+
+    move-result-object v0
+
+    return-object v0
+
     const/4 v0, 0x1
 
-    invoke-direct {p0, p1}, Landroid/app/Notification$Builder;->applyStandardTemplateFlyme(I)Landroid/widget/RemoteViews;
+    invoke-direct {p0, p1, v0}, Landroid/app/Notification$Builder;->applyStandardTemplate(IZ)Landroid/widget/RemoteViews;
 
     move-result-object v0
 
@@ -2210,7 +2216,7 @@
 
     move-result v0
 
-    invoke-direct {p0, v0}, Landroid/app/Notification$Builder;->applyStandardTemplateWithActionsFlyme(I)Landroid/widget/RemoteViews;
+    invoke-virtual {p0, v0}, Landroid/app/Notification$Builder;->applyStandardTemplateWithActionsFlyme(I)Landroid/widget/RemoteViews;
 
     move-result-object v0
 
@@ -2258,11 +2264,13 @@
 
     if-nez v0, :cond_0
 
-    const/4 v0, 0x0
-
     invoke-direct/range {p0 .. p0}, Landroid/app/Notification$Builder;->makeFlymeHeadsUpContentView()Landroid/widget/RemoteViews;
 
     move-result-object v0
+    return-object v0
+
+    const/4 v0, 0x0
+
     return-object v0
 
     :cond_0
@@ -2270,7 +2278,7 @@
 
     move-result v0
 
-    invoke-direct {p0, v0}, Landroid/app/Notification$Builder;->applyStandardTemplateWithActionsFlyme(I)Landroid/widget/RemoteViews;
+    invoke-virtual {p0, v0}, Landroid/app/Notification$Builder;->applyStandardTemplateWithActionsFlyme(I)Landroid/widget/RemoteViews;
 
     move-result-object v0
 
@@ -6101,7 +6109,7 @@
     goto :goto_2
 .end method
 
-.method private applyStandardTemplateWithActionsFlyme(I)Landroid/widget/RemoteViews;
+.method applyStandardTemplateWithActionsFlyme(I)Landroid/widget/RemoteViews;
     .locals 14
     .param p1, "layoutId"    # I
 
@@ -6945,3 +6953,4 @@
 
     return-object p0
 .end method
+

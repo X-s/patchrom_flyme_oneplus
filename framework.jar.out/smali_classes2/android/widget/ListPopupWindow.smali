@@ -751,6 +751,7 @@
     .line 1182
     :cond_4
     :goto_4
+
     invoke-direct/range {p0 .. p0}, Landroid/widget/ListPopupWindow;->setFlymeDropDownVerticalOffset()V
 
     move-object/from16 v0, p0
@@ -788,6 +789,7 @@
 
     .line 1187
     .local v17, "maxHeight":I
+
     invoke-direct/range {p0 .. p0}, Landroid/widget/ListPopupWindow;->adjustFlymeWindowPositionHeight()I
 
     move-result v17
@@ -2234,6 +2236,7 @@
     .param p1, "mode"    # I
 
     .prologue
+
     iget-boolean v0, p0, Landroid/widget/ListPopupWindow;->mMzKeepInputMethodNeeded:Z
 
     if-eqz v0, :cond_flyme_0
@@ -2413,6 +2416,7 @@
 
     .line 741
     :cond_0
+
     invoke-direct/range {p0 .. p1}, Landroid/widget/ListPopupWindow;->setFlymeSelection(I)V
 
     return-void
@@ -2490,6 +2494,7 @@
     move-result v6
 
     .local v6, "height":I
+
     invoke-direct {p0, v6}, Landroid/widget/ListPopupWindow;->initFlymeContentHeight(I)V
 
     invoke-virtual {p0}, Landroid/widget/ListPopupWindow;->isInputMethodNotNeeded()Z

@@ -3346,6 +3346,7 @@
     .locals 4
 
     .prologue
+
     invoke-direct/range {p0 .. p0}, Lcom/android/server/InputMethodManagerService;->flymeHideCurrentInputLocked()V
 
     new-instance v0, Landroid/content/Intent;
@@ -4582,11 +4583,11 @@
     :try_start_1
     iget-boolean v7, p0, Lcom/android/server/InputMethodManagerService;->mNotificationShown:Z
 
-    if-eqz v7, :cond_3
+    if-eqz v7, :cond_flyme_0
 
     iget-object v7, p0, Lcom/android/server/InputMethodManagerService;->mNotificationManager:Landroid/app/NotificationManager;
 
-    if-eqz v7, :cond_3
+    if-eqz v7, :cond_flyme_0
 
     .line 1895
     iget-object v7, p0, Lcom/android/server/InputMethodManagerService;->mNotificationManager:Landroid/app/NotificationManager;

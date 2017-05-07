@@ -16730,7 +16730,9 @@
     .param p4, "reallyResume"    # Z
 
     .prologue
+
     invoke-static/range {p0 .. p0}, Landroid/app/ActivityThread$FlymeInjector;->handleFlymeResumeActivity(Landroid/app/ActivityThread;)V
+
     invoke-virtual {p0}, Landroid/app/ActivityThread;->unscheduleGcIdler()V
 
     const/4 v7, 0x1
