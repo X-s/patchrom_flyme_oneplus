@@ -9211,7 +9211,6 @@
 
     invoke-virtual {v7, v10, v11}, Landroid/content/BroadcastReceiver;->onReceive(Landroid/content/Context;Landroid/content/Intent;)V
 
-    :cond_flyme_0
     sget-boolean v10, Landroid/app/ActivityThread;->DEBUG_ONEPLUS:Z
 
     if-eqz v10, :cond_0
@@ -9269,6 +9268,8 @@
     move-result-object v11
 
     invoke-static {v10, v11}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    :cond_flyme_0
     :try_end_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
