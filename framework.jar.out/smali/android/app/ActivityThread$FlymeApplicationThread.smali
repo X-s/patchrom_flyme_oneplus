@@ -35,7 +35,7 @@
 
     const/4 v0, 0x0
 
-    invoke-direct {p0, p1, v0}, Landroid/app/ActivityThread$ApplicationThread;-><init>(Landroid/app/ActivityThread;Landroid/app/ActivityThread$ApplicationThread;)V
+    invoke-direct {p0, p1, v0}, Landroid/app/ActivityThread$ApplicationThread;-><init>(Landroid/app/ActivityThread;Landroid/app/ActivityThread$1;)V
 
     return-void
 .end method
