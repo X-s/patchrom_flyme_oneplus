@@ -57,7 +57,8 @@ vendor_remove_files := recovery-from-boot.bak
 vendor_saved_apps := Bluetooth BluetoothExt BluetoothMidiService HTMLViewer KeyChain \
 				NfcNci PicoTts PrintSpooler Stk UserDictionaryProvider BackupRestoreConfirmation \
 				DefaultContainerService ExternalStorageProvider FusedLocation InputDevices ProxyHandler \
-				SharedStorageBackup Shell telresources
+				SharedStorageBackup Shell telresources OnePlusCameraService OnePlusCamera TimeService \
+				FingerprintServiceExtension WebViewGoogle
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.
