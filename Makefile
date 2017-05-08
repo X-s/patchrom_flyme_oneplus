@@ -58,7 +58,10 @@ vendor_saved_apps := Bluetooth BluetoothExt BluetoothMidiService HTMLViewer KeyC
 				NfcNci PicoTts PrintSpooler Stk UserDictionaryProvider BackupRestoreConfirmation \
 				DefaultContainerService ExternalStorageProvider FusedLocation InputDevices ProxyHandler \
 				SharedStorageBackup Shell telresources OnePlusCameraService OnePlusCamera TimeService \
-				FingerprintServiceExtension WebViewGoogle
+				FingerprintServiceExtension WebViewGoogle AntHalService datastatusnotification \
+				DiracAudioControlService DiracManager FidoCryptoService QtiGbaAuthService \
+				QtiTelephonyService SdCardService SeempService shutdownlistener WfdService \
+				CNEService com.qualcomm.location ims QtiTetherService SmartcardService dpmserviceapp
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.
@@ -97,7 +100,7 @@ vendor_modify_jars := framework services telephony-common wifi-service
 # The default value is nothing.
 # You can configure the board system apk name in the value.
 #-----------------------------------------------------------------------------
-#board_remove_apps := LogReport
+board_remove_apps := webview
 
 ##############################################################################
 # The value decides which apk you want to modify, when the apk is based on the board system apk.
