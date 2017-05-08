@@ -23963,7 +23963,8 @@
 
     if-nez v4, :cond_flyme_0
 
-    return v5
+    const/4 v4, 0x1
+    return v4
 
     :cond_flyme_0
 
