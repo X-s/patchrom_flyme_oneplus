@@ -730,23 +730,9 @@
     .line 256
     .end local v0    # "_arg0":I
     :sswitch_1a
-    const-string v8, "com.android.internal.statusbar.IStatusBar"
-
-    invoke-virtual {p2, v8}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 257
-    invoke-virtual {p0}, Lcom/android/internal/statusbar/IStatusBar$Stub;->getLockedPackageList()Ljava/util/List;
-
-    move-result-object v6
-
-    .line 258
-    .local v6, "_result":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
-    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
-
-    .line 259
-    invoke-virtual {p3, v6}, Landroid/os/Parcel;->writeStringList(Ljava/util/List;)V
-
     goto/16 :goto_0
+
+    nop
 
     .line 39
     :sswitch_data_0
