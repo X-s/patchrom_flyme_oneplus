@@ -1012,8 +1012,6 @@
     .end annotation
 .end field
 
-.field private mPerf:Landroid/util/BoostFramework;
-
 .field private mPermissionControlServiceBinderProxy:Landroid/os/IBinder;
 
 .field private mPermissionRequestServiceBinderProxy:Landroid/os/IBinder;
@@ -1352,8 +1350,6 @@
         }
     .end annotation
 .end field
-
-.field perf:Z
 
 .field qc_handler:Landroid/os/Handler;
 
@@ -1915,16 +1911,6 @@
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/server/am/ActivityManagerService;->mShowDialogs:Z
-
-    .line 536
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mPerf:Landroid/util/BoostFramework;
-
-    .line 537
-    const/4 v0, 0x0
-
-    iput-boolean v0, p0, Lcom/android/server/am/ActivityManagerService;->perf:Z
 
     .line 544
     const/4 v0, 0x2
@@ -9620,9 +9606,7 @@
     :goto_9
     if-eqz v57, :cond_14
 
-    move-object/from16 v0, v22
-
-    invoke-static {v0}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->isFlymePackageShouldRestart(Landroid/content/Intent;)Z
+    invoke-static/range {v22 .. v22}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->isFlymePackageShouldRestart(Landroid/content/Intent;)Z
 
     move-result v6
 
@@ -18205,8 +18189,6 @@
     :goto_16
     const-string v3, "provider"
 
-    invoke-static/range {p1 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->modifyFlymeOomAdj(Lcom/android/server/am/ProcessRecord;)V
-
     move-object/from16 v0, p1
 
     iput-object v3, v0, Lcom/android/server/am/ProcessRecord;->adjType:Ljava/lang/String;
@@ -18491,7 +18473,8 @@
 
     iput-boolean v0, v1, Lcom/android/server/am/ProcessRecord;->foregroundActivities:Z
 
-    .line 20032
+    invoke-static/range {p1 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->modifyFlymeOomAdj(Lcom/android/server/am/ProcessRecord;)V
+
     move-object/from16 v0, p1
 
     iget v3, v0, Lcom/android/server/am/ProcessRecord;->curRawAdj:I
@@ -41981,46 +41964,15 @@
 .end method
 
 .method public final activityPaused(Landroid/os/IBinder;)V
-    .locals 6
+    .locals 4
     .param p1, "token"    # Landroid/os/IBinder;
 
     .prologue
-    const/4 v5, 0x0
-
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v0
 
     .local v0, "origId":J
-    if-eqz p1, :cond_0
-
-    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    const-string v4, "com.tencent.mm/.ui.LauncherUI"
-
-    invoke-virtual {v3, v4}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_0
-
-    iget-boolean v3, p0, Lcom/android/server/am/ActivityManagerService;->perf:Z
-
-    if-eqz v3, :cond_0
-
-    iget-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mPerf:Landroid/util/BoostFramework;
-
-    if-eqz v3, :cond_0
-
-    iget-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mPerf:Landroid/util/BoostFramework;
-
-    invoke-virtual {v3}, Landroid/util/BoostFramework;->perfLockRelease()I
-
-    iput-boolean v5, p0, Lcom/android/server/am/ActivityManagerService;->perf:Z
-
-    :cond_0
     monitor-enter p0
 
     :try_start_0
@@ -42029,13 +41981,13 @@
     move-result-object v2
 
     .local v2, "stack":Lcom/android/server/am/ActivityStack;
-    if-eqz v2, :cond_1
+    if-eqz v2, :cond_0
 
     const/4 v3, 0x0
 
     invoke-virtual {v2, p1, v3}, Lcom/android/server/am/ActivityStack;->activityPausedLocked(Landroid/os/IBinder;Z)V
 
-    :cond_1
+    :cond_0
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
@@ -42057,177 +42009,103 @@
 .end method
 
 .method public final activityResumed(Landroid/os/IBinder;)V
-    .locals 8
+    .locals 5
     .param p1, "token"    # Landroid/os/IBinder;
 
     .prologue
-    const/4 v7, 0x1
-
-    const/4 v6, 0x0
-
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
-    move-result-wide v2
+    move-result-wide v0
 
-    .local v2, "origId":J
+    .local v0, "origId":J
     invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->forTokenLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
 
-    move-result-object v4
+    move-result-object v3
 
-    if-eqz v4, :cond_4
-
-    invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->forTokenLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
-
-    move-result-object v4
-
-    iget-object v4, v4, Lcom/android/server/am/ActivityRecord;->appInfo:Landroid/content/pm/ApplicationInfo;
-
-    if-eqz v4, :cond_4
+    if-eqz v3, :cond_2
 
     invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->forTokenLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
 
-    move-result-object v4
+    move-result-object v3
 
-    iget-object v4, v4, Lcom/android/server/am/ActivityRecord;->appInfo:Landroid/content/pm/ApplicationInfo;
+    iget-object v3, v3, Lcom/android/server/am/ActivityRecord;->appInfo:Landroid/content/pm/ApplicationInfo;
 
-    iget-object v4, v4, Landroid/content/pm/ApplicationInfo;->processName:Ljava/lang/String;
+    if-eqz v3, :cond_2
 
-    invoke-direct {p0, v4}, Lcom/android/server/am/ActivityManagerService;->nativeGetwalflag(Ljava/lang/String;)Z
+    invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->forTokenLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
 
-    move-result v4
+    move-result-object v3
 
-    if-eqz v4, :cond_4
+    iget-object v3, v3, Lcom/android/server/am/ActivityRecord;->appInfo:Landroid/content/pm/ApplicationInfo;
 
-    sput-boolean v7, Lcom/android/server/am/ActivityManagerService;->mWalFlag:Z
+    iget-object v3, v3, Landroid/content/pm/ApplicationInfo;->processName:Ljava/lang/String;
 
-    const-string v4, "sys.thermal.para"
+    invoke-direct {p0, v3}, Lcom/android/server/am/ActivityManagerService;->nativeGetwalflag(Ljava/lang/String;)Z
 
-    const-string v5, "242654746854"
+    move-result v3
 
-    invoke-static {v4, v5}, Landroid/os/SystemProperties;->set(Ljava/lang/String;Ljava/lang/String;)V
+    if-eqz v3, :cond_2
+
+    const/4 v3, 0x1
+
+    sput-boolean v3, Lcom/android/server/am/ActivityManagerService;->mWalFlag:Z
+
+    const-string v3, "sys.thermal.para"
+
+    const-string v4, "242654746854"
+
+    invoke-static {v3, v4}, Landroid/os/SystemProperties;->set(Ljava/lang/String;Ljava/lang/String;)V
 
     :cond_0
     :goto_0
-    if-eqz p1, :cond_5
-
-    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object v4
-
-    const-string v5, "com.tencent.mm/.ui.LauncherUI"
-
-    invoke-virtual {v4, v5}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_5
-
-    iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mPerf:Landroid/util/BoostFramework;
-
-    if-nez v4, :cond_1
-
-    new-instance v4, Landroid/util/BoostFramework;
-
-    invoke-direct {v4}, Landroid/util/BoostFramework;-><init>()V
-
-    iput-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mPerf:Landroid/util/BoostFramework;
-
-    :cond_1
-    iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mPerf:Landroid/util/BoostFramework;
-
-    if-eqz v4, :cond_2
-
-    const/16 v4, 0x8
-
-    new-array v0, v4, [I
-
-    fill-array-data v0, :array_0
-
-    .local v0, "lBoostParamVal":[I
-    iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mPerf:Landroid/util/BoostFramework;
-
-    invoke-virtual {v4, v6, v0}, Landroid/util/BoostFramework;->perfLockAcquire(I[I)I
-
-    iput-boolean v7, p0, Lcom/android/server/am/ActivityManagerService;->perf:Z
-
-    .end local v0    # "lBoostParamVal":[I
-    :cond_2
-    :goto_1
     monitor-enter p0
 
     :try_start_0
     invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->getStackLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityStack;
 
-    move-result-object v1
+    move-result-object v2
 
-    .local v1, "stack":Lcom/android/server/am/ActivityStack;
-    if-eqz v1, :cond_3
+    .local v2, "stack":Lcom/android/server/am/ActivityStack;
+    if-eqz v2, :cond_1
 
     invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->activityResumedLocked(Landroid/os/IBinder;)V
 
-    :cond_3
+    :cond_1
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    invoke-static {v2, v3}, Landroid/os/Binder;->restoreCallingIdentity(J)V
+    invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
     return-void
 
-    .end local v1    # "stack":Lcom/android/server/am/ActivityStack;
-    :cond_4
-    sget-boolean v4, Lcom/android/server/am/ActivityManagerService;->mWalFlag:Z
+    .end local v2    # "stack":Lcom/android/server/am/ActivityStack;
+    :cond_2
+    sget-boolean v3, Lcom/android/server/am/ActivityManagerService;->mWalFlag:Z
 
-    if-eqz v4, :cond_0
+    if-eqz v3, :cond_0
 
-    const-string v4, "sys.thermal.para"
+    const-string v3, "sys.thermal.para"
 
-    const-string v5, "2426543426744"
+    const-string v4, "2426543426744"
 
-    invoke-static {v4, v5}, Landroid/os/SystemProperties;->set(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v3, v4}, Landroid/os/SystemProperties;->set(Ljava/lang/String;Ljava/lang/String;)V
 
-    sput-boolean v6, Lcom/android/server/am/ActivityManagerService;->mWalFlag:Z
+    const/4 v3, 0x0
+
+    sput-boolean v3, Lcom/android/server/am/ActivityManagerService;->mWalFlag:Z
 
     goto :goto_0
 
-    :cond_5
-    iget-boolean v4, p0, Lcom/android/server/am/ActivityManagerService;->perf:Z
-
-    if-eqz v4, :cond_2
-
-    iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mPerf:Landroid/util/BoostFramework;
-
-    if-eqz v4, :cond_2
-
-    iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mPerf:Landroid/util/BoostFramework;
-
-    invoke-virtual {v4}, Landroid/util/BoostFramework;->perfLockRelease()I
-
-    iput-boolean v6, p0, Lcom/android/server/am/ActivityManagerService;->perf:Z
-
-    goto :goto_1
-
     :catchall_0
-    move-exception v4
+    move-exception v3
 
     :try_start_1
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    throw v4
-
-    :array_0
-    .array-data 4
-        0x41424000
-        0xa
-        0x41424100
-        0xa
-        0x4141c000    # 12.109375f
-        0x9
-        0x4141c100
-        0x9
-    .end array-data
+    throw v3
 .end method
 
 .method public final activitySlept(Landroid/os/IBinder;)V
