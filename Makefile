@@ -61,7 +61,8 @@ vendor_saved_apps := Bluetooth BluetoothExt BluetoothMidiService HTMLViewer KeyC
 				FingerprintServiceExtension WebViewGoogle AntHalService datastatusnotification \
 				DiracAudioControlService DiracManager FidoCryptoService QtiGbaAuthService \
 				QtiTelephonyService SdCardService SeempService shutdownlistener WfdService \
-				CNEService com.qualcomm.location ims QtiTetherService SmartcardService dpmserviceapp
+				CNEService com.qualcomm.location ims QtiTetherService SmartcardService dpmserviceapp \
+				PermissionUtil SmscPlugger MdtpService qcrilmsgtunnel
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.

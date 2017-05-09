@@ -2,3 +2,4 @@
 /autopatch/*
 /out/*
 *.pyc
+history_package
