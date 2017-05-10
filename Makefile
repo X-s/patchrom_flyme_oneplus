@@ -134,7 +134,8 @@ board_modify_apps := TeleService
 
 # my build.prop
 override_property += \
-    ro.product.model=ONEPLUS A3010
+    ro.product.model=ONEPLUS A3010 \
+    persist.sys.oem.otg_support=true
 
 # The property decide whether hide the soft mainkeys.
 # If 1, hide the soft mainkeys. If 0, display the soft mainkeys.
