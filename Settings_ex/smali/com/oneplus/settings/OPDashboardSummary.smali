@@ -96,6 +96,8 @@
 
 .field private mGesturesSettingsDashboard:Lcom/oneplus/settings/OPDashboardPreference;
 
+.field private mDisplaySettingsDashboard:Lcom/oneplus/settings/OPDashboardPreference;
+
 .field private mGoogleDashborad:Lcom/oneplus/settings/OPDashboardPreference;
 
 .field private mHandler:Landroid/os/Handler;
@@ -943,6 +945,16 @@
 
     iput-object v3, p0, Lcom/oneplus/settings/OPDashboardSummary;->mGesturesSettingsDashboard:Lcom/oneplus/settings/OPDashboardPreference;
 
+    const-string v3, "display_settings"
+
+    invoke-virtual {p0, v3}, Lcom/oneplus/settings/OPDashboardSummary;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/oneplus/settings/OPDashboardPreference;
+
+    iput-object v3, p0, Lcom/oneplus/settings/OPDashboardSummary;->mDisplaySettingsDashboard:Lcom/oneplus/settings/OPDashboardPreference;
+
     .line 196
     const-string v3, "storage_settings"
 
@@ -1153,6 +1165,36 @@
 
     .line 234
     :cond_b
+    invoke-virtual {p0}, Lcom/oneplus/settings/OPDashboardSummary;->getPreferenceScreen()Landroid/preference/PreferenceScreen;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/preference/PreferenceScreen;->removeAll()V
+
+    invoke-virtual {p0}, Lcom/oneplus/settings/OPDashboardSummary;->getPreferenceScreen()Landroid/preference/PreferenceScreen;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lcom/oneplus/settings/OPDashboardSummary;->mButtonsSettingsDashboard:Lcom/oneplus/settings/OPDashboardPreference;
+
+    invoke-virtual {v0, v1}, Landroid/preference/PreferenceScreen;->addPreference(Landroid/preference/Preference;)Z
+
+    invoke-virtual {p0}, Lcom/oneplus/settings/OPDashboardSummary;->getPreferenceScreen()Landroid/preference/PreferenceScreen;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lcom/oneplus/settings/OPDashboardSummary;->mGesturesSettingsDashboard:Lcom/oneplus/settings/OPDashboardPreference;
+
+    invoke-virtual {v0, v1}, Landroid/preference/PreferenceScreen;->addPreference(Landroid/preference/Preference;)Z
+
+    invoke-virtual {p0}, Lcom/oneplus/settings/OPDashboardSummary;->getPreferenceScreen()Landroid/preference/PreferenceScreen;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lcom/oneplus/settings/OPDashboardSummary;->mDisplaySettingsDashboard:Lcom/oneplus/settings/OPDashboardPreference;
+
+    invoke-virtual {v0, v1}, Landroid/preference/PreferenceScreen;->addPreference(Landroid/preference/Preference;)Z
+
     return-void
 .end method
 
