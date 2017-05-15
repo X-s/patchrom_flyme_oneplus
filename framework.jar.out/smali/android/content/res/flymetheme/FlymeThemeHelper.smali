@@ -4117,3 +4117,176 @@
     .local v8, "newbmp":Landroid/graphics/Bitmap;
     goto :goto_0
 .end method
+
+.method public static addMutilLaunchAppMarkToIcon(Landroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
+    .locals 12
+    .param p0, "srcDrawable"    # Landroid/graphics/drawable/Drawable;
+
+    .prologue
+    const/4 v4, 0x0
+
+    .local v4, "newBitmap":Landroid/graphics/Bitmap;
+    :try_start_0
+    invoke-static {}, Landroid/content/res/Resources;->getSystem()Landroid/content/res/Resources;
+
+    move-result-object v5
+
+    .local v5, "resources":Landroid/content/res/Resources;
+    move-object v0, p0
+
+    check-cast v0, Landroid/graphics/drawable/BitmapDrawable;
+
+    move-object v7, v0
+
+    .local v7, "srcBitmapDrawable":Landroid/graphics/drawable/BitmapDrawable;
+    invoke-virtual {v7}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
+
+    move-result-object v8
+
+    sget-object v9, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    const/4 v10, 0x1
+
+    invoke-virtual {v8, v9, v10}, Landroid/graphics/Bitmap;->copy(Landroid/graphics/Bitmap$Config;Z)Landroid/graphics/Bitmap;
+
+    move-result-object v4
+
+    .local v4, "newBitmap":Landroid/graphics/Bitmap;
+    new-instance v1, Landroid/graphics/Canvas;
+
+    invoke-direct {v1, v4}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
+
+    .local v1, "canvas":Landroid/graphics/Canvas;
+    sget v8, Lcom/flyme/internal/R$drawable;->mutil_launch_app_mark:I
+
+    invoke-virtual {v5, v8}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v3
+
+    .local v3, "mutilLaunchAppIconDrawable":Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v4}, Landroid/graphics/Bitmap;->getWidth()I
+
+    move-result v8
+
+    invoke-virtual {v4}, Landroid/graphics/Bitmap;->getHeight()I
+
+    move-result v9
+
+    const/4 v10, 0x0
+
+    const/4 v11, 0x0
+
+    invoke-virtual {v3, v10, v11, v8, v9}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
+
+    invoke-virtual {v3, v1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+
+    new-instance v6, Landroid/graphics/drawable/BitmapDrawable;
+
+    invoke-direct {v6, v5, v4}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .local v6, "resultIconDrawable":Landroid/graphics/drawable/Drawable;
+    if-eqz v4, :cond_0
+
+    invoke-virtual {v4}, Landroid/graphics/Bitmap;->isRecycled()Z
+
+    move-result v8
+
+    if-eqz v8, :cond_1
+
+    .end local v1    # "canvas":Landroid/graphics/Canvas;
+    .end local v3    # "mutilLaunchAppIconDrawable":Landroid/graphics/drawable/Drawable;
+    .end local v4    # "newBitmap":Landroid/graphics/Bitmap;
+    .end local v5    # "resources":Landroid/content/res/Resources;
+    .end local v7    # "srcBitmapDrawable":Landroid/graphics/drawable/BitmapDrawable;
+    :cond_0
+    :goto_0
+    return-object v6
+
+    .restart local v1    # "canvas":Landroid/graphics/Canvas;
+    .restart local v3    # "mutilLaunchAppIconDrawable":Landroid/graphics/drawable/Drawable;
+    .restart local v4    # "newBitmap":Landroid/graphics/Bitmap;
+    .restart local v5    # "resources":Landroid/content/res/Resources;
+    .restart local v7    # "srcBitmapDrawable":Landroid/graphics/drawable/BitmapDrawable;
+    :cond_1
+    if-eqz v6, :cond_0
+
+    move-object v8, v6
+
+    check-cast v8, Landroid/graphics/drawable/BitmapDrawable;
+
+    invoke-virtual {v8}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
+
+    move-result-object v8
+
+    if-eq v4, v8, :cond_0
+
+    invoke-virtual {v4}, Landroid/graphics/Bitmap;->recycle()V
+
+    .end local v1    # "canvas":Landroid/graphics/Canvas;
+    .end local v3    # "mutilLaunchAppIconDrawable":Landroid/graphics/drawable/Drawable;
+    .end local v4    # "newBitmap":Landroid/graphics/Bitmap;
+    .end local v5    # "resources":Landroid/content/res/Resources;
+    .end local v7    # "srcBitmapDrawable":Landroid/graphics/drawable/BitmapDrawable;
+    :goto_1
+    const/4 v4, 0x0
+
+    .local v4, "newBitmap":Landroid/graphics/Bitmap;
+    goto :goto_0
+
+    .end local v4    # "newBitmap":Landroid/graphics/Bitmap;
+    .end local v6    # "resultIconDrawable":Landroid/graphics/drawable/Drawable;
+    :catch_0
+    move-exception v2
+
+    .local v2, "e":Ljava/lang/Exception;
+    :try_start_1
+    invoke-virtual {v2}, Ljava/lang/Exception;->printStackTrace()V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    move-object v6, p0
+
+    .restart local v6    # "resultIconDrawable":Landroid/graphics/drawable/Drawable;
+    if-eqz v4, :cond_0
+
+    invoke-virtual {v4}, Landroid/graphics/Bitmap;->isRecycled()Z
+
+    move-result v8
+
+    if-nez v8, :cond_0
+
+    if-eqz v6, :cond_0
+
+    move-object v8, v6
+
+    check-cast v8, Landroid/graphics/drawable/BitmapDrawable;
+
+    invoke-virtual {v8}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
+
+    move-result-object v8
+
+    if-eq v4, v8, :cond_0
+
+    invoke-virtual {v4}, Landroid/graphics/Bitmap;->recycle()V
+
+    goto :goto_1
+
+    .end local v2    # "e":Ljava/lang/Exception;
+    .end local v6    # "resultIconDrawable":Landroid/graphics/drawable/Drawable;
+    :catchall_0
+    move-exception v8
+
+    if-eqz v4, :cond_2
+
+    invoke-virtual {v4}, Landroid/graphics/Bitmap;->isRecycled()Z
+
+    move-result v9
+
+    if-eqz v9, :cond_2
+
+    :cond_2
+    throw v8
+.end method

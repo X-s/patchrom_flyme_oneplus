@@ -425,46 +425,44 @@
 .end method
 
 .method private isNeedSendCCScreenOffBroadcast()Z
-    .locals 10
+    .locals 12
 
     .prologue
-    const-wide/16 v8, 0x0
+    const/4 v6, 0x1
 
-    const/4 v4, 0x1
+    const-wide/16 v10, 0x0
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    .line 67
-    sget v6, Landroid/os/Build$VERSION;->SDK_INT:I
+    sget v8, Landroid/os/Build$VERSION;->SDK_INT:I
 
-    const/16 v7, 0x15
+    const/16 v9, 0x15
 
-    if-lt v6, v7, :cond_1
+    if-lt v8, v9, :cond_2
 
-    .line 68
-    iget-object v6, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mContext:Landroid/content/Context;
+    iget-object v8, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v6}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+    invoke-virtual {v8}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
-    move-result-object v6
+    move-result-object v8
 
-    sget-object v7, Landroid/content/res/flymetheme/FlymeThemeManager;->SEND_CC_SCREEN_OFF_BROADCAST_MIN_TIME_INTERVAL:Ljava/lang/String;
+    sget-object v9, Landroid/content/res/flymetheme/FlymeThemeManager;->SEND_CC_SCREEN_OFF_BROADCAST_MIN_TIME_INTERVAL:Ljava/lang/String;
 
-    invoke-static {v6, v7, v8, v9}, Landroid/provider/Settings$System;->getLong(Landroid/content/ContentResolver;Ljava/lang/String;J)J
+    invoke-static {v8, v9, v10, v11}, Landroid/provider/Settings$System;->getLong(Landroid/content/ContentResolver;Ljava/lang/String;J)J
 
     move-result-wide v2
 
     .line 69
     .local v2, "minTimeInterval":J
-    iget-object v6, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mContext:Landroid/content/Context;
+    iget-object v8, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v6}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+    invoke-virtual {v8}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
-    move-result-object v6
+    move-result-object v8
 
-    sget-object v7, Landroid/content/res/flymetheme/FlymeThemeManager;->LAST_TIME_SEND_CC_SCREEN_OFF_BROADCAST:Ljava/lang/String;
+    sget-object v9, Landroid/content/res/flymetheme/FlymeThemeManager;->LAST_TIME_SEND_CC_SCREEN_OFF_BROADCAST:Ljava/lang/String;
 
-    invoke-static {v6, v7, v8, v9}, Landroid/provider/Settings$System;->getLong(Landroid/content/ContentResolver;Ljava/lang/String;J)J
+    invoke-static {v8, v9, v10, v11}, Landroid/provider/Settings$System;->getLong(Landroid/content/ContentResolver;Ljava/lang/String;J)J
 
     move-result-wide v0
 
@@ -472,42 +470,48 @@
     .local v0, "lastTime":J
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
-    move-result-wide v6
+    move-result-wide v8
 
-    sub-long/2addr v6, v0
+    sub-long v4, v8, v0
 
-    cmp-long v6, v6, v2
+    .local v4, "timeInterval":J
+    cmp-long v8, v4, v2
 
-    if-ltz v6, :cond_1
+    if-gez v8, :cond_0
 
-    .line 71
-    iget-object v6, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mContext:Landroid/content/Context;
+    cmp-long v8, v4, v10
 
-    invoke-virtual {v6}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
-
-    move-result-object v6
-
-    sget-object v7, Landroid/content/res/flymetheme/FlymeThemeManager;->IS_NEED_SEND_CC_SCREEN_OFF_BROADCAST:Ljava/lang/String;
-
-    invoke-static {v6, v7, v5}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
-
-    move-result v6
-
-    if-ne v6, v4, :cond_0
-
-    :goto_0
-    return v4
+    if-gez v8, :cond_2
 
     :cond_0
-    move v4, v5
+    iget-object v8, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v8}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v8
+
+    sget-object v9, Landroid/content/res/flymetheme/FlymeThemeManager;->IS_NEED_SEND_CC_SCREEN_OFF_BROADCAST:Ljava/lang/String;
+
+    invoke-static {v8, v9, v7}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+
+    move-result v8
+
+    if-ne v8, v6, :cond_1
+
+    :goto_0
+    return v6
+
+    :cond_1
+    move v6, v7
 
     goto :goto_0
 
     .line 74
     .end local v0    # "lastTime":J
     .end local v2    # "minTimeInterval":J
-    :cond_1
-    return v5
+    .end local v4    # "timeInterval":J
+    :cond_2
+    return v7
 .end method
 
 .method private isSystemApp(Ljava/lang/String;)Z

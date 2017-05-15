@@ -68,7 +68,7 @@
 
     iget-object v2, v2, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mRestartView:Lcom/android/server/policy/MzCustomCircleButton;
 
-    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get1()Landroid/content/Context;
+    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get3()Landroid/content/Context;
 
     move-result-object v3
 
@@ -76,23 +76,19 @@
 
     move-result-object v3
 
-    .line 411
     sget v4, Lcom/flyme/internal/R$string;->global_action_power_restart:I
 
-    .line 410
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
     move-result-object v3
 
     invoke-virtual {v2, v3}, Lcom/android/server/policy/MzCustomCircleButton;->setText(Ljava/lang/CharSequence;)V
 
-    .line 412
     iget-object v2, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$2;->this$1:Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;
 
     iget-object v2, v2, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mShutdownView:Lcom/android/server/policy/MzCustomCircleButton;
 
-    .line 413
-    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get1()Landroid/content/Context;
+    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get3()Landroid/content/Context;
 
     move-result-object v3
 

@@ -152,39 +152,9 @@
 
 # virtual methods
 .method public getCount()I
-    .locals 3
+    .locals 1
 
     .prologue
-    .line 1585
-    const-string/jumbo v0, "MzResolverActivity"
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v2, "getCount : "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    iget-object v2, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mList:Ljava/util/List;
-
-    invoke-interface {v2}, Ljava/util/List;->size()I
-
-    move-result v2
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 1586
     iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mList:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->size()I
@@ -227,34 +197,10 @@
 .end method
 
 .method public getItem(I)Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;
-    .locals 3
+    .locals 1
     .param p1, "i"    # I
 
     .prologue
-    .line 1626
-    const-string/jumbo v0, "MzResolverActivity"
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v2, "getItem i : "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 1627
     iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mList:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -280,34 +226,10 @@
 .end method
 
 .method public getItemId(I)J
-    .locals 3
+    .locals 2
     .param p1, "i"    # I
 
     .prologue
-    .line 1620
-    const-string/jumbo v0, "MzResolverActivity"
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v2, "getView i : "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 1621
     const-wide/16 v0, 0x0
 
     return-wide v0
@@ -324,52 +246,26 @@
 .end method
 
 .method public getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
-    .locals 6
+    .locals 5
     .param p1, "i"    # I
     .param p2, "convertView"    # Landroid/view/View;
     .param p3, "viewGroup"    # Landroid/view/ViewGroup;
 
     .prologue
-    const/4 v5, 0x0
+    const/4 v4, 0x0
 
-    .line 1591
     invoke-virtual {p0, p1}, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->getItem(I)Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;
 
     move-result-object v0
 
-    .line 1592
     .local v0, "info":Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;
-    const-string/jumbo v2, "MzResolverActivity"
-
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v4, "getView i : "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 1594
     if-nez p2, :cond_2
 
-    .line 1595
     iget-object v2, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mInflater:Landroid/view/LayoutInflater;
 
     sget v3, Lcom/flyme/internal/R$layout;->mz_resolve_grid_item:I
 
-    invoke-virtual {v2, v3, p3, v5}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
+    invoke-virtual {v2, v3, p3, v4}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
     move-result-object p2
 
@@ -419,7 +315,7 @@
 
     move-result-object v3
 
-    invoke-static {v5}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+    invoke-static {v4}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
     move-result-object v4
 

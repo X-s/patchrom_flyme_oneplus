@@ -34,6 +34,10 @@
 
 .field private static final MESSAGE_MZ_FADEOUT:I = 0x1
 
+.field private static final SHOW_BUTTONS:I = 0x0
+
+.field private static final SHOW_PASSWORD:I = 0x1
+
 
 # instance fields
 .field ai:Landroid/view/animation/AccelerateInterpolator;
@@ -54,9 +58,13 @@
 
 .field private mButtonSFadeOutAnimator:Landroid/animation/ObjectAnimator;
 
-.field private mButtonView:Landroid/view/View;
-
 .field mButtons:Landroid/widget/LinearLayout;
+
+.field private mConfirmFadeInAnimator:Landroid/animation/ObjectAnimator;
+
+.field private mConfirmSet:Landroid/animation/AnimatorSet;
+
+.field mConfirmView:Lcom/android/server/policy/FlymeConfirmPasswordView;
 
 .field mContainer:Landroid/widget/LinearLayout;
 
@@ -74,6 +82,8 @@
 
 .field private mInAnimtor:Landroid/animation/ObjectAnimator;
 
+.field mKeyguardManager:Landroid/app/KeyguardManager;
+
 .field mMzRecevier:Landroid/content/BroadcastReceiver;
 
 .field private mOutAnimtor:Landroid/animation/ObjectAnimator;
@@ -81,10 +91,6 @@
 .field mRestartView:Lcom/android/server/policy/MzCustomCircleButton;
 
 .field mShutdownView:Lcom/android/server/policy/MzCustomCircleButton;
-
-.field private newConfig:I
-
-.field private oldConfig:I
 
 .field private params:Landroid/view/WindowManager$LayoutParams;
 
@@ -393,26 +399,48 @@
 
     iput-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mButtonRFadeOutAnimator:Landroid/animation/ObjectAnimator;
 
-    .line 570
     iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mButtonRFadeOutAnimator:Landroid/animation/ObjectAnimator;
 
     invoke-virtual {v0, v6, v7}, Landroid/animation/ObjectAnimator;->setDuration(J)Landroid/animation/ObjectAnimator;
 
-    .line 571
     iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mButtonRFadeOutAnimator:Landroid/animation/ObjectAnimator;
 
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->di:Landroid/view/animation/DecelerateInterpolator;
 
     invoke-virtual {v0, v1}, Landroid/animation/ObjectAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)V
 
-    .line 573
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmView:Lcom/android/server/policy/FlymeConfirmPasswordView;
+
+    const-string v1, "Alpha"
+
+    new-array v2, v4, [F
+
+    fill-array-data v2, :array_6
+
+    invoke-static {v0, v1, v2}, Landroid/animation/ObjectAnimator;->ofFloat(Ljava/lang/Object;Ljava/lang/String;[F)Landroid/animation/ObjectAnimator;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmFadeInAnimator:Landroid/animation/ObjectAnimator;
+
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmFadeInAnimator:Landroid/animation/ObjectAnimator;
+
+    const-wide/16 v2, 0x100
+
+    invoke-virtual {v0, v2, v3}, Landroid/animation/ObjectAnimator;->setDuration(J)Landroid/animation/ObjectAnimator;
+
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmFadeInAnimator:Landroid/animation/ObjectAnimator;
+
+    iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->ai:Landroid/view/animation/AccelerateInterpolator;
+
+    invoke-virtual {v0, v1}, Landroid/animation/ObjectAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)V
+
     new-instance v0, Landroid/animation/AnimatorSet;
 
     invoke-direct {v0}, Landroid/animation/AnimatorSet;-><init>()V
 
     iput-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mFadeInSet:Landroid/animation/AnimatorSet;
 
-    .line 574
     iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mFadeInSet:Landroid/animation/AnimatorSet;
 
     new-array v1, v9, [Landroid/animation/Animator;
@@ -436,9 +464,9 @@
     .line 576
     iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mFadeInSet:Landroid/animation/AnimatorSet;
 
-    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$8;
+    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$12;
 
-    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$8;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$12;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
 
     invoke-virtual {v0, v1}, Landroid/animation/AnimatorSet;->addListener(Landroid/animation/Animator$AnimatorListener;)V
 
@@ -473,9 +501,33 @@
     .line 606
     iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mFadeOutSet:Landroid/animation/AnimatorSet;
 
-    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$9;
+    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$13;
 
-    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$9;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$13;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+
+    invoke-virtual {v0, v1}, Landroid/animation/AnimatorSet;->addListener(Landroid/animation/Animator$AnimatorListener;)V
+
+    new-instance v0, Landroid/animation/AnimatorSet;
+
+    invoke-direct {v0}, Landroid/animation/AnimatorSet;-><init>()V
+
+    iput-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmSet:Landroid/animation/AnimatorSet;
+
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmSet:Landroid/animation/AnimatorSet;
+
+    new-array v1, v8, [Landroid/animation/Animator;
+
+    iget-object v2, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmFadeInAnimator:Landroid/animation/ObjectAnimator;
+
+    aput-object v2, v1, v5
+
+    invoke-virtual {v0, v1}, Landroid/animation/AnimatorSet;->playTogether([Landroid/animation/Animator;)V
+
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmSet:Landroid/animation/AnimatorSet;
+
+    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$14;
+
+    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$14;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
 
     invoke-virtual {v0, v1}, Landroid/animation/AnimatorSet;->addListener(Landroid/animation/Animator$AnimatorListener;)V
 
@@ -525,6 +577,12 @@
         0x3f800000    # 1.0f
         0x0
     .end array-data
+
+    :array_6
+    .array-data 4
+        0x0
+        0x3f800000    # 1.0f
+    .end array-data
 .end method
 
 .method private showLandscape()V
@@ -533,29 +591,24 @@
     .prologue
     const/4 v7, 0x0
 
-    .line 164
     new-instance v5, Landroid/util/DisplayMetrics;
 
     invoke-direct {v5}, Landroid/util/DisplayMetrics;-><init>()V
 
     iput-object v5, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->dm:Landroid/util/DisplayMetrics;
 
-    .line 165
-    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get1()Landroid/content/Context;
+    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get3()Landroid/content/Context;
 
     move-result-object v5
 
-    .line 166
-    const-string/jumbo v6, "window"
+    const-string v6, "window"
 
-    .line 165
     invoke-virtual {v5, v6}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v4
 
     check-cast v4, Landroid/view/WindowManager;
 
-    .line 167
     .local v4, "wm":Landroid/view/WindowManager;
     invoke-interface {v4}, Landroid/view/WindowManager;->getDefaultDisplay()Landroid/view/Display;
 
@@ -668,29 +721,24 @@
     .prologue
     const/4 v6, 0x1
 
-    .line 190
     new-instance v4, Landroid/util/DisplayMetrics;
 
     invoke-direct {v4}, Landroid/util/DisplayMetrics;-><init>()V
 
     iput-object v4, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->dm:Landroid/util/DisplayMetrics;
 
-    .line 191
-    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get1()Landroid/content/Context;
+    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get3()Landroid/content/Context;
 
     move-result-object v4
 
-    .line 192
-    const-string/jumbo v5, "window"
+    const-string v5, "window"
 
-    .line 191
     invoke-virtual {v4, v5}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v3
 
     check-cast v3, Landroid/view/WindowManager;
 
-    .line 193
     .local v3, "wm":Landroid/view/WindowManager;
     invoke-interface {v3}, Landroid/view/WindowManager;->getDefaultDisplay()Landroid/view/Display;
 
@@ -786,7 +834,7 @@
     .line 491
     iget-object v2, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
 
-    invoke-static {v2}, Lcom/android/server/policy/MzGlobalActions;->-get2(Lcom/android/server/policy/MzGlobalActions;)Lcom/android/server/policy/EnableAccessibilityController;
+    invoke-static {v2}, Lcom/android/server/policy/MzGlobalActions;->-get4(Lcom/android/server/policy/MzGlobalActions;)Lcom/android/server/policy/EnableAccessibilityController;
 
     move-result-object v2
 
@@ -830,7 +878,7 @@
     .local v11, "eventY":I
     iget-object v2, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
 
-    invoke-static {v2}, Lcom/android/server/policy/MzGlobalActions;->-get4(Lcom/android/server/policy/MzGlobalActions;)I
+    invoke-static {v2}, Lcom/android/server/policy/MzGlobalActions;->-get6(Lcom/android/server/policy/MzGlobalActions;)I
 
     move-result v2
 
@@ -841,7 +889,7 @@
     .line 498
     iget-object v2, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
 
-    invoke-static {v2}, Lcom/android/server/policy/MzGlobalActions;->-get4(Lcom/android/server/policy/MzGlobalActions;)I
+    invoke-static {v2}, Lcom/android/server/policy/MzGlobalActions;->-get6(Lcom/android/server/policy/MzGlobalActions;)I
 
     move-result v2
 
@@ -864,7 +912,7 @@
     :try_start_0
     iget-object v2, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
 
-    invoke-static {v2}, Lcom/android/server/policy/MzGlobalActions;->-get3(Lcom/android/server/policy/MzGlobalActions;)Z
+    invoke-static {v2}, Lcom/android/server/policy/MzGlobalActions;->-get5(Lcom/android/server/policy/MzGlobalActions;)Z
 
     move-result v2
 
@@ -875,7 +923,7 @@
 
     iget-object v3, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
 
-    invoke-static {v3}, Lcom/android/server/policy/MzGlobalActions;->-get2(Lcom/android/server/policy/MzGlobalActions;)Lcom/android/server/policy/EnableAccessibilityController;
+    invoke-static {v3}, Lcom/android/server/policy/MzGlobalActions;->-get4(Lcom/android/server/policy/MzGlobalActions;)Lcom/android/server/policy/EnableAccessibilityController;
 
     move-result-object v3
 
@@ -888,7 +936,7 @@
     .line 507
     iget-object v2, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
 
-    invoke-static {v2}, Lcom/android/server/policy/MzGlobalActions;->-get3(Lcom/android/server/policy/MzGlobalActions;)Z
+    invoke-static {v2}, Lcom/android/server/policy/MzGlobalActions;->-get5(Lcom/android/server/policy/MzGlobalActions;)Z
 
     move-result v2
 
@@ -938,7 +986,7 @@
     .line 519
     iget-object v2, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
 
-    invoke-static {v2}, Lcom/android/server/policy/MzGlobalActions;->-get0(Lcom/android/server/policy/MzGlobalActions;)Z
+    invoke-static {v2}, Lcom/android/server/policy/MzGlobalActions;->-get1(Lcom/android/server/policy/MzGlobalActions;)Z
 
     move-result v2
 
@@ -979,7 +1027,7 @@
 
     iget-object v3, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
 
-    invoke-static {v3}, Lcom/android/server/policy/MzGlobalActions;->-get4(Lcom/android/server/policy/MzGlobalActions;)I
+    invoke-static {v3}, Lcom/android/server/policy/MzGlobalActions;->-get6(Lcom/android/server/policy/MzGlobalActions;)I
 
     move-result v3
 
@@ -994,7 +1042,7 @@
 
     iget-object v3, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
 
-    invoke-static {v3}, Lcom/android/server/policy/MzGlobalActions;->-get4(Lcom/android/server/policy/MzGlobalActions;)I
+    invoke-static {v3}, Lcom/android/server/policy/MzGlobalActions;->-get6(Lcom/android/server/policy/MzGlobalActions;)I
 
     move-result v3
 
@@ -1012,7 +1060,7 @@
     :try_start_1
     iget-object v2, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
 
-    invoke-static {v2}, Lcom/android/server/policy/MzGlobalActions;->-get2(Lcom/android/server/policy/MzGlobalActions;)Lcom/android/server/policy/EnableAccessibilityController;
+    invoke-static {v2}, Lcom/android/server/policy/MzGlobalActions;->-get4(Lcom/android/server/policy/MzGlobalActions;)Lcom/android/server/policy/EnableAccessibilityController;
 
     move-result-object v2
 
@@ -1028,7 +1076,7 @@
     .line 519
     iget-object v3, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
 
-    invoke-static {v3}, Lcom/android/server/policy/MzGlobalActions;->-get0(Lcom/android/server/policy/MzGlobalActions;)Z
+    invoke-static {v3}, Lcom/android/server/policy/MzGlobalActions;->-get1(Lcom/android/server/policy/MzGlobalActions;)Z
 
     move-result v3
 
@@ -1062,7 +1110,7 @@
     .line 519
     iget-object v3, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
 
-    invoke-static {v3}, Lcom/android/server/policy/MzGlobalActions;->-get0(Lcom/android/server/policy/MzGlobalActions;)Z
+    invoke-static {v3}, Lcom/android/server/policy/MzGlobalActions;->-get1(Lcom/android/server/policy/MzGlobalActions;)Z
 
     move-result v3
 
@@ -1088,11 +1136,11 @@
 .end method
 
 .method protected onCreate(Landroid/os/Bundle;)V
-    .locals 5
+    .locals 4
     .param p1, "savedInstanceState"    # Landroid/os/Bundle;
 
     .prologue
-    const/4 v4, 0x0
+    const/4 v3, 0x0
 
     .line 213
     invoke-super {p0, p1}, Landroid/app/Dialog;->onCreate(Landroid/os/Bundle;)V
@@ -1133,14 +1181,12 @@
 
     iput-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->window:Landroid/view/Window;
 
-    .line 218
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->window:Landroid/view/Window;
 
-    const/16 v2, 0x7e0
+    const/16 v2, 0x7d9
 
     invoke-virtual {v1, v2}, Landroid/view/Window;->setType(I)V
 
-    .line 219
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->window:Landroid/view/Window;
 
     invoke-virtual {v1}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
@@ -1149,23 +1195,11 @@
 
     iput-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->params:Landroid/view/WindowManager$LayoutParams;
 
-    .line 220
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->params:Landroid/view/WindowManager$LayoutParams;
 
-    const-string/jumbo v2, "MzGlobalActions"
+    const-string v2, "MzGlobalActions"
 
     invoke-virtual {v1, v2}, Landroid/view/WindowManager$LayoutParams;->setTitle(Ljava/lang/CharSequence;)V
-
-    .line 227
-    iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->params:Landroid/view/WindowManager$LayoutParams;
-
-    iget v2, v1, Landroid/view/WindowManager$LayoutParams;->flags:I
-
-    const/high16 v3, 0x20000
-
-    or-int/2addr v2, v3
-
-    iput v2, v1, Landroid/view/WindowManager$LayoutParams;->flags:I
 
     .line 228
     invoke-static {}, Lcom/meizu/findphone/FindPhoneAbstract;->newFindphoneUtils()Lcom/meizu/findphone/FindPhoneAbstract;
@@ -1177,11 +1211,25 @@
     .line 229
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mFindPhoneAbstract:Lcom/meizu/findphone/FindPhoneAbstract;
 
-    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get1()Landroid/content/Context;
+    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get3()Landroid/content/Context;
 
     move-result-object v2
 
     invoke-virtual {v1, v2}, Lcom/meizu/findphone/FindPhoneAbstract;->init(Landroid/content/Context;)V
+
+    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get3()Landroid/content/Context;
+
+    move-result-object v1
+
+    const-string v2, "keyguard"
+
+    invoke-virtual {v1, v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Landroid/app/KeyguardManager;
+
+    iput-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mKeyguardManager:Landroid/app/KeyguardManager;
 
     .line 230
     sget-object v1, Lcom/android/server/policy/MzGlobalActions;->mMzDialog:Landroid/app/Dialog;
@@ -1209,7 +1257,7 @@
 
     move-result-object v1
 
-    invoke-virtual {v1, v4, v4, v4, v4}, Landroid/view/View;->setPadding(IIII)V
+    invoke-virtual {v1, v3, v3, v3, v3}, Landroid/view/View;->setPadding(IIII)V
 
     .line 232
     new-instance v1, Landroid/view/animation/DecelerateInterpolator;
@@ -1276,10 +1324,20 @@
 
     iput-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mRestartView:Lcom/android/server/policy/MzCustomCircleButton;
 
+    sget v1, Lcom/flyme/internal/R$id;->mz_confirm:I
+
+    invoke-virtual {p0, v1}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->findViewById(I)Landroid/view/View;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/android/server/policy/FlymeConfirmPasswordView;
+
+    iput-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmView:Lcom/android/server/policy/FlymeConfirmPasswordView;
+
     .line 335
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mRestartView:Lcom/android/server/policy/MzCustomCircleButton;
 
-    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get1()Landroid/content/Context;
+    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get3()Landroid/content/Context;
 
     move-result-object v2
 
@@ -1300,7 +1358,7 @@
     .line 337
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mRestartView:Lcom/android/server/policy/MzCustomCircleButton;
 
-    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get1()Landroid/content/Context;
+    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get3()Landroid/content/Context;
 
     move-result-object v2
 
@@ -1321,7 +1379,7 @@
     .line 339
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mShutdownView:Lcom/android/server/policy/MzCustomCircleButton;
 
-    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get1()Landroid/content/Context;
+    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get3()Landroid/content/Context;
 
     move-result-object v2
 
@@ -1342,7 +1400,7 @@
     .line 341
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mShutdownView:Lcom/android/server/policy/MzCustomCircleButton;
 
-    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get1()Landroid/content/Context;
+    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get3()Landroid/content/Context;
 
     move-result-object v2
 
@@ -1350,22 +1408,14 @@
 
     move-result-object v2
 
-    .line 342
     sget v3, Lcom/flyme/internal/R$color;->mz_global_shutdown_bg_color:I
 
-    .line 341
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getColor(I)I
 
     move-result v2
 
     invoke-virtual {v1, v2}, Lcom/android/server/policy/MzCustomCircleButton;->setCustomColor(I)V
 
-    .line 343
-    const/4 v1, 0x1
-
-    invoke-virtual {p0, v1}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->setCanceledOnTouchOutside(Z)V
-
-    .line 344
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mShutdownView:Lcom/android/server/policy/MzCustomCircleButton;
 
     new-instance v2, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$5;
@@ -1383,44 +1433,36 @@
 
     invoke-virtual {v1, v2}, Lcom/android/server/policy/MzCustomCircleButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 386
     new-instance v0, Landroid/content/IntentFilter;
 
     invoke-direct {v0}, Landroid/content/IntentFilter;-><init>()V
 
-    .line 387
     .local v0, "mzFilter":Landroid/content/IntentFilter;
-    const-string/jumbo v1, "android.intent.action.CONFIGURATION_CHANGED"
+    const-string v1, "android.intent.action.CONFIGURATION_CHANGED"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 388
-    const-string/jumbo v1, "android.intent.action.LOCALE_CHANGED"
+    const-string v1, "android.intent.action.LOCALE_CHANGED"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 389
-    const-string/jumbo v1, "android.intent.action.SCREEN_OFF"
+    const-string v1, "android.intent.action.SCREEN_OFF"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 390
-    const-string/jumbo v1, "android.intent.action.CLOSE_SYSTEM_DIALOGS"
+    const-string v1, "android.intent.action.CLOSE_SYSTEM_DIALOGS"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 391
-    const-string/jumbo v1, "android.intent.action.LOCALE_CHANGED"
+    const-string v1, "android.intent.action.LOCALE_CHANGED"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 392
-    const-string/jumbo v1, "com.meizu.font.change"
+    const-string v1, "com.meizu.font.change"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 393
-    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get1()Landroid/content/Context;
+    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get3()Landroid/content/Context;
 
     move-result-object v1
 
@@ -1476,72 +1518,122 @@
 .end method
 
 .method protected onStart()V
-    .locals 7
+    .locals 9
 
     .prologue
+    const/high16 v8, 0x3f800000    # 1.0f
+
+    const v7, 0x3e99999a    # 0.3f
+
     const/4 v6, 0x0
 
-    const/high16 v4, 0x3f800000    # 1.0f
-
-    const v3, 0x3e99999a    # 0.3f
-
-    const/4 v2, 0x1
+    const/4 v4, 0x1
 
     const/4 v5, 0x0
 
-    .line 437
     invoke-super {p0}, Landroid/app/Dialog;->onStart()V
 
-    .line 439
-    iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mFindPhoneAbstract:Lcom/meizu/findphone/FindPhoneAbstract;
+    iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmView:Lcom/android/server/policy/FlymeConfirmPasswordView;
 
     if-eqz v1, :cond_0
 
-    .line 440
+    iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmView:Lcom/android/server/policy/FlymeConfirmPasswordView;
+
+    invoke-virtual {v1}, Lcom/android/server/policy/FlymeConfirmPasswordView;->initValues()V
+
+    :cond_0
+    const-string v1, "MzGlobalActions"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "mConfirm = "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    iget-object v3, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
+
+    invoke-static {v3}, Lcom/android/server/policy/MzGlobalActions;->-get2(Lcom/android/server/policy/MzGlobalActions;)Z
+
+    move-result v3
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 464
+    iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
+
+    invoke-static {v1}, Lcom/android/server/policy/MzGlobalActions;->-get2(Lcom/android/server/policy/MzGlobalActions;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_1
+
+    invoke-virtual {p0, v5}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->setCanceledOnTouchOutside(Z)V
+
+    invoke-direct {p0, v4}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->switchView(I)V
+
+    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$10;
+
+    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$10;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+
+    invoke-direct {p0, v1}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->confirmPassword(Ljava/lang/Runnable;)V
+
+    return-void
+
+    :cond_1
+    invoke-direct {p0, v5}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->switchView(I)V
+
+    iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mFindPhoneAbstract:Lcom/meizu/findphone/FindPhoneAbstract;
+
+    if-eqz v1, :cond_2
+
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mFindPhoneAbstract:Lcom/meizu/findphone/FindPhoneAbstract;
 
     invoke-virtual {v1}, Lcom/meizu/findphone/FindPhoneAbstract;->isFindphoneLocked()Z
 
     move-result v1
 
-    .line 439
-    if-nez v1, :cond_1
+    if-nez v1, :cond_3
 
-    .line 440
-    :cond_0
+    :cond_2
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
 
     invoke-static {v1}, Lcom/android/server/policy/MzGlobalActions;->-wrap0(Lcom/android/server/policy/MzGlobalActions;)Z
 
     move-result v1
 
-    .line 439
-    if-eqz v1, :cond_2
+    if-eqz v1, :cond_4
 
-    .line 441
-    :cond_1
+    :cond_3
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mShutdownView:Lcom/android/server/policy/MzCustomCircleButton;
 
-    invoke-virtual {v1, v3}, Lcom/android/server/policy/MzCustomCircleButton;->setAlpha(F)V
+    invoke-virtual {v1, v7}, Lcom/android/server/policy/MzCustomCircleButton;->setAlpha(F)V
 
-    .line 442
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mRestartView:Lcom/android/server/policy/MzCustomCircleButton;
 
-    invoke-virtual {v1, v3}, Lcom/android/server/policy/MzCustomCircleButton;->setAlpha(F)V
+    invoke-virtual {v1, v7}, Lcom/android/server/policy/MzCustomCircleButton;->setAlpha(F)V
 
-    .line 443
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mShutdownView:Lcom/android/server/policy/MzCustomCircleButton;
 
     invoke-virtual {v1, v5}, Lcom/android/server/policy/MzCustomCircleButton;->setEnabled(Z)V
 
-    .line 444
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mRestartView:Lcom/android/server/policy/MzCustomCircleButton;
 
     invoke-virtual {v1, v5}, Lcom/android/server/policy/MzCustomCircleButton;->setEnabled(Z)V
 
-    .line 451
     :goto_0
-    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get1()Landroid/content/Context;
+    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get3()Landroid/content/Context;
 
     move-result-object v1
 
@@ -1555,21 +1647,17 @@
 
     iget v0, v1, Landroid/content/res/Configuration;->orientation:I
 
-    .line 452
     .local v0, "Config":I
+    invoke-virtual {p0, v4}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->setCanceledOnTouchOutside(Z)V
+
     const/4 v1, 0x2
 
-    if-ne v0, v1, :cond_3
+    if-ne v0, v1, :cond_5
 
-    .line 453
     invoke-direct {p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->showLandscape()V
 
-    .line 457
     :goto_1
-    iput v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->oldConfig:I
-
-    .line 463
-    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get1()Landroid/content/Context;
+    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get3()Landroid/content/Context;
 
     move-result-object v1
 
@@ -1577,73 +1665,61 @@
 
     move-result v1
 
-    if-eqz v1, :cond_4
+    if-eqz v1, :cond_6
 
-    .line 464
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
 
     new-instance v2, Lcom/android/server/policy/EnableAccessibilityController;
 
-    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get1()Landroid/content/Context;
+    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get3()Landroid/content/Context;
 
     move-result-object v3
 
-    .line 465
-    new-instance v4, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$7;
+    new-instance v4, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$11;
 
-    invoke-direct {v4, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$7;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+    invoke-direct {v4, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$11;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
 
-    .line 464
     invoke-direct {v2, v3, v4}, Lcom/android/server/policy/EnableAccessibilityController;-><init>(Landroid/content/Context;Ljava/lang/Runnable;)V
 
     invoke-static {v1, v2}, Lcom/android/server/policy/MzGlobalActions;->-set1(Lcom/android/server/policy/MzGlobalActions;Lcom/android/server/policy/EnableAccessibilityController;)Lcom/android/server/policy/EnableAccessibilityController;
 
-    .line 474
     invoke-super {p0, v5}, Landroid/app/Dialog;->setCanceledOnTouchOutside(Z)V
 
-    .line 435
     :goto_2
     return-void
 
-    .line 446
     .end local v0    # "Config":I
-    :cond_2
+    :cond_4
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mShutdownView:Lcom/android/server/policy/MzCustomCircleButton;
 
-    invoke-virtual {v1, v2}, Lcom/android/server/policy/MzCustomCircleButton;->setEnabled(Z)V
+    invoke-virtual {v1, v4}, Lcom/android/server/policy/MzCustomCircleButton;->setEnabled(Z)V
 
-    .line 447
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mRestartView:Lcom/android/server/policy/MzCustomCircleButton;
 
-    invoke-virtual {v1, v2}, Lcom/android/server/policy/MzCustomCircleButton;->setEnabled(Z)V
+    invoke-virtual {v1, v4}, Lcom/android/server/policy/MzCustomCircleButton;->setEnabled(Z)V
 
-    .line 448
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mShutdownView:Lcom/android/server/policy/MzCustomCircleButton;
 
-    invoke-virtual {v1, v4}, Lcom/android/server/policy/MzCustomCircleButton;->setAlpha(F)V
+    invoke-virtual {v1, v8}, Lcom/android/server/policy/MzCustomCircleButton;->setAlpha(F)V
 
-    .line 449
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mRestartView:Lcom/android/server/policy/MzCustomCircleButton;
 
-    invoke-virtual {v1, v4}, Lcom/android/server/policy/MzCustomCircleButton;->setAlpha(F)V
+    invoke-virtual {v1, v8}, Lcom/android/server/policy/MzCustomCircleButton;->setAlpha(F)V
 
     goto :goto_0
 
-    .line 455
     .restart local v0    # "Config":I
-    :cond_3
+    :cond_5
     invoke-direct {p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->showPortrit()V
 
     goto :goto_1
 
-    .line 476
-    :cond_4
+    :cond_6
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
 
     invoke-static {v1, v6}, Lcom/android/server/policy/MzGlobalActions;->-set1(Lcom/android/server/policy/MzGlobalActions;Lcom/android/server/policy/EnableAccessibilityController;)Lcom/android/server/policy/EnableAccessibilityController;
 
-    .line 477
-    invoke-super {p0, v2}, Landroid/app/Dialog;->setCanceledOnTouchOutside(Z)V
+    invoke-super {p0, v4}, Landroid/app/Dialog;->setCanceledOnTouchOutside(Z)V
 
     goto :goto_2
 .end method
@@ -1655,7 +1731,7 @@
     .line 483
     iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
 
-    invoke-static {v0}, Lcom/android/server/policy/MzGlobalActions;->-get2(Lcom/android/server/policy/MzGlobalActions;)Lcom/android/server/policy/EnableAccessibilityController;
+    invoke-static {v0}, Lcom/android/server/policy/MzGlobalActions;->-get4(Lcom/android/server/policy/MzGlobalActions;)Lcom/android/server/policy/EnableAccessibilityController;
 
     move-result-object v0
 
@@ -1664,7 +1740,7 @@
     .line 484
     iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
 
-    invoke-static {v0}, Lcom/android/server/policy/MzGlobalActions;->-get2(Lcom/android/server/policy/MzGlobalActions;)Lcom/android/server/policy/EnableAccessibilityController;
+    invoke-static {v0}, Lcom/android/server/policy/MzGlobalActions;->-get4(Lcom/android/server/policy/MzGlobalActions;)Lcom/android/server/policy/EnableAccessibilityController;
 
     move-result-object v0
 
@@ -1676,4 +1752,233 @@
 
     .line 482
     return-void
+.end method
+
+.method static synthetic -wrap0(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)Z
+    .locals 1
+
+    invoke-direct {p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->needConfirm()Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic -wrap1(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;Ljava/lang/Runnable;)V
+    .locals 0
+    .param p1, "endRunnable"    # Ljava/lang/Runnable;
+
+    .prologue
+    invoke-direct {p0, p1}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->confirmPassword(Ljava/lang/Runnable;)V
+
+    return-void
+.end method
+
+.method static synthetic -wrap2(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->startAnim2()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap3(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;IZ)V
+    .locals 0
+    .param p1, "witch"    # I
+    .param p2, "withAnim"    # Z
+
+    .prologue
+    invoke-direct {p0, p1, p2}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->switchView(IZ)V
+
+    return-void
+.end method
+
+.method private confirmPassword(Ljava/lang/Runnable;)V
+    .locals 3
+    .param p1, "endRunnable"    # Ljava/lang/Runnable;
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmView:Lcom/android/server/policy/FlymeConfirmPasswordView;
+
+    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$7;
+
+    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$7;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+
+    new-instance v2, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$8;
+
+    invoke-direct {v2, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$8;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+
+    invoke-virtual {v0, p1, v1, v2}, Lcom/android/server/policy/FlymeConfirmPasswordView;->show(Ljava/lang/Runnable;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
+
+    return-void
+.end method
+
+.method private needConfirm()Z
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmView:Lcom/android/server/policy/FlymeConfirmPasswordView;
+
+    invoke-virtual {v0}, Lcom/android/server/policy/FlymeConfirmPasswordView;->isKeyguardSecure()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmView:Lcom/android/server/policy/FlymeConfirmPasswordView;
+
+    invoke-virtual {v0}, Lcom/android/server/policy/FlymeConfirmPasswordView;->hasFlymeAccount()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmView:Lcom/android/server/policy/FlymeConfirmPasswordView;
+
+    invoke-virtual {v0}, Lcom/android/server/policy/FlymeConfirmPasswordView;->isFindPhoneEnabled()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mKeyguardManager:Landroid/app/KeyguardManager;
+
+    invoke-virtual {v0}, Landroid/app/KeyguardManager;->inKeyguardRestrictedInputMode()Z
+
+    move-result v0
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method private startAnim2()V
+    .locals 3
+
+    .prologue
+    const/4 v2, 0x0
+
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmView:Lcom/android/server/policy/FlymeConfirmPasswordView;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmView:Lcom/android/server/policy/FlymeConfirmPasswordView;
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Lcom/android/server/policy/FlymeConfirmPasswordView;->setVisibility(I)V
+
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmView:Lcom/android/server/policy/FlymeConfirmPasswordView;
+
+    const/4 v1, 0x2
+
+    invoke-virtual {v0, v1, v2}, Lcom/android/server/policy/FlymeConfirmPasswordView;->setLayerType(ILandroid/graphics/Paint;)V
+
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmSet:Landroid/animation/AnimatorSet;
+
+    invoke-virtual {v0}, Landroid/animation/AnimatorSet;->start()V
+
+    :cond_0
+    return-void
+.end method
+
+.method private switchView(I)V
+    .locals 1
+    .param p1, "witch"    # I
+
+    .prologue
+    const/4 v0, 0x0
+
+    invoke-direct {p0, p1, v0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->switchView(IZ)V
+
+    return-void
+.end method
+
+.method private switchView(IZ)V
+    .locals 5
+    .param p1, "witch"    # I
+    .param p2, "withAnim"    # Z
+
+    .prologue
+    const/16 v2, 0x8
+
+    const/4 v4, 0x1
+
+    const/4 v3, 0x0
+
+    const/4 v1, 0x0
+
+    if-eqz p2, :cond_0
+
+    if-nez p1, :cond_4
+
+    :cond_0
+    iget-object v3, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mButtons:Landroid/widget/LinearLayout;
+
+    if-nez p1, :cond_2
+
+    move v0, v1
+
+    :goto_0
+    invoke-virtual {v3, v0}, Landroid/widget/LinearLayout;->setVisibility(I)V
+
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmView:Lcom/android/server/policy/FlymeConfirmPasswordView;
+
+    if-ne p1, v4, :cond_3
+
+    :goto_1
+    invoke-virtual {v0, v1}, Lcom/android/server/policy/FlymeConfirmPasswordView;->setVisibility(I)V
+
+    :cond_1
+    :goto_2
+    return-void
+
+    :cond_2
+    move v0, v2
+
+    goto :goto_0
+
+    :cond_3
+    move v1, v2
+
+    goto :goto_1
+
+    :cond_4
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmView:Lcom/android/server/policy/FlymeConfirmPasswordView;
+
+    invoke-virtual {v0, v3}, Lcom/android/server/policy/FlymeConfirmPasswordView;->setAlpha(F)V
+
+    if-ne p1, v4, :cond_1
+
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mButtons:Landroid/widget/LinearLayout;
+
+    invoke-virtual {v0}, Landroid/widget/LinearLayout;->animate()Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v3}, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    const-wide/16 v2, 0x41
+
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$9;
+
+    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$9;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+
+    invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->withEndAction(Ljava/lang/Runnable;)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/view/ViewPropertyAnimator;->start()V
+
+    goto :goto_2
 .end method

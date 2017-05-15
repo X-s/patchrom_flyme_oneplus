@@ -103,15 +103,17 @@
     .param p3, "pid"    # I
 
     .prologue
-    .line 34
+    if-gtz p3, :cond_0
+
+    return-void
+
+    :cond_0
     iget-object v0, p0, Lcom/android/server/shrinker/Shrinker;->mPackageList:Lcom/android/server/shrinker/RunningPackageList;
 
     invoke-virtual {v0, p1, p2, p3}, Lcom/android/server/shrinker/RunningPackageList;->add(Landroid/content/pm/ApplicationInfo;Ljava/lang/String;I)V
 
-    .line 35
     invoke-virtual {p0}, Lcom/android/server/shrinker/Shrinker;->statusChanded()V
 
-    .line 33
     return-void
 .end method
 
@@ -123,30 +125,28 @@
     .param p4, "pkg"    # Ljava/lang/String;
 
     .prologue
-    .line 63
     sget v1, Lcom/android/server/shrinker/Shrinker;->MY_PID:I
 
-    if-ne p2, v1, :cond_0
+    if-eq p2, v1, :cond_0
 
+    if-gtz p2, :cond_1
+
+    :cond_0
     return-void
 
-    .line 64
-    :cond_0
+    :cond_1
     iget-object v1, p0, Lcom/android/server/shrinker/Shrinker;->mPackageList:Lcom/android/server/shrinker/RunningPackageList;
 
     invoke-virtual {v1, p1, p2}, Lcom/android/server/shrinker/RunningPackageList;->getProcess(II)Lcom/android/server/shrinker/ProcessRecord;
 
     move-result-object v0
 
-    .line 65
     .local v0, "app":Lcom/android/server/shrinker/ProcessRecord;
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_2
 
-    .line 66
     invoke-virtual {v0, p3}, Lcom/android/server/shrinker/ProcessRecord;->destoryWindow(I)V
 
-    .line 62
-    :cond_1
+    :cond_2
     return-void
 .end method
 
@@ -438,30 +438,28 @@
     .param p4, "pkg"    # Ljava/lang/String;
 
     .prologue
-    .line 55
     sget v1, Lcom/android/server/shrinker/Shrinker;->MY_PID:I
 
-    if-ne p2, v1, :cond_0
+    if-eq p2, v1, :cond_0
 
+    if-gtz p2, :cond_1
+
+    :cond_0
     return-void
 
-    .line 56
-    :cond_0
+    :cond_1
     iget-object v1, p0, Lcom/android/server/shrinker/Shrinker;->mPackageList:Lcom/android/server/shrinker/RunningPackageList;
 
     invoke-virtual {v1, p1, p2}, Lcom/android/server/shrinker/RunningPackageList;->getProcess(II)Lcom/android/server/shrinker/ProcessRecord;
 
     move-result-object v0
 
-    .line 57
     .local v0, "app":Lcom/android/server/shrinker/ProcessRecord;
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_2
 
-    .line 58
     invoke-virtual {v0, p3}, Lcom/android/server/shrinker/ProcessRecord;->hideWindow(I)V
 
-    .line 54
-    :cond_1
+    :cond_2
     return-void
 .end method
 
@@ -711,33 +709,33 @@
     .param p3, "pid"    # I
 
     .prologue
-    .line 39
+    if-gtz p3, :cond_0
+
+    return-void
+
+    :cond_0
     iget-object v1, p0, Lcom/android/server/shrinker/Shrinker;->mPackageList:Lcom/android/server/shrinker/RunningPackageList;
 
     invoke-virtual {v1, p1, p2, p3}, Lcom/android/server/shrinker/RunningPackageList;->remove(Landroid/content/pm/ApplicationInfo;Ljava/lang/String;I)Lcom/android/server/shrinker/PackageRecord;
 
     move-result-object v0
 
-    .line 40
     .local v0, "r":Lcom/android/server/shrinker/PackageRecord;
     invoke-virtual {p0}, Lcom/android/server/shrinker/Shrinker;->statusChanded()V
 
-    .line 41
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_1
 
     invoke-virtual {v0}, Lcom/android/server/shrinker/PackageRecord;->size()I
 
     move-result v1
 
-    if-nez v1, :cond_0
+    if-nez v1, :cond_1
 
-    .line 42
     iget-object v1, p0, Lcom/android/server/shrinker/Shrinker;->mTaskList:Lcom/android/server/shrinker/RecentTasks;
 
     invoke-virtual {v1, v0}, Lcom/android/server/shrinker/RecentTasks;->removeTask(Lcom/android/server/shrinker/PackageRecord;)V
 
-    .line 38
-    :cond_0
+    :cond_1
     return-void
 .end method
 
@@ -820,30 +818,28 @@
     .param p6, "height"    # I
 
     .prologue
-    .line 47
     sget v1, Lcom/android/server/shrinker/Shrinker;->MY_PID:I
 
-    if-ne p2, v1, :cond_0
+    if-eq p2, v1, :cond_0
 
+    if-gtz p2, :cond_1
+
+    :cond_0
     return-void
 
-    .line 48
-    :cond_0
+    :cond_1
     iget-object v1, p0, Lcom/android/server/shrinker/Shrinker;->mPackageList:Lcom/android/server/shrinker/RunningPackageList;
 
     invoke-virtual {v1, p1, p2}, Lcom/android/server/shrinker/RunningPackageList;->getProcess(II)Lcom/android/server/shrinker/ProcessRecord;
 
     move-result-object v0
 
-    .line 49
     .local v0, "app":Lcom/android/server/shrinker/ProcessRecord;
-    if-eqz v0, :cond_1
+    if-eqz v0, :cond_2
 
-    .line 50
     invoke-virtual {v0, p3, p5, p6}, Lcom/android/server/shrinker/ProcessRecord;->showWindow(III)V
 
-    .line 46
-    :cond_1
+    :cond_2
     return-void
 .end method
 

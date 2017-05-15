@@ -41,7 +41,7 @@
     .prologue
     .line 366
     :try_start_0
-    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get1()Landroid/content/Context;
+    invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get3()Landroid/content/Context;
 
     move-result-object v1
 

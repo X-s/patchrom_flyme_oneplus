@@ -35,10 +35,12 @@
 
 # virtual methods
 .method public handleMessage(Landroid/os/Message;)V
-    .locals 7
+    .locals 8
     .param p1, "msg"    # Landroid/os/Message;
 
     .prologue
+    const/16 v7, 0x8
+
     const/4 v6, 0x2
 
     const/4 v5, 0x1
@@ -59,6 +61,12 @@
 
     .line 132
     :pswitch_0
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$1;->this$1:Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;
+
+    iget-object v0, v0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmView:Lcom/android/server/policy/FlymeConfirmPasswordView;
+
+    invoke-virtual {v0, v7}, Lcom/android/server/policy/FlymeConfirmPasswordView;->setVisibility(I)V
+
     sget-object v0, Lcom/android/server/policy/MzGlobalActions;->mMzDialog:Landroid/app/Dialog;
 
     invoke-virtual {v0}, Landroid/app/Dialog;->dismiss()V
@@ -187,10 +195,13 @@
 
     invoke-virtual {v0}, Landroid/animation/AnimatorSet;->start()V
 
-    goto :goto_0
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$1;->this$1:Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;
 
-    .line 130
-    nop
+    iget-object v0, v0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmView:Lcom/android/server/policy/FlymeConfirmPasswordView;
+
+    invoke-virtual {v0, v7}, Lcom/android/server/policy/FlymeConfirmPasswordView;->setVisibility(I)V
+
+    goto/16 :goto_0
 
     :pswitch_data_0
     .packed-switch 0x0

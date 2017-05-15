@@ -61,6 +61,8 @@
     .end annotation
 .end field
 
+.field private mOverScrollLayout:Lcom/meizu/widget/ViewPagerOverScrollLayout;
+
 .field private mPageViews:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -95,7 +97,7 @@
 
 .field private mTitle:Ljava/lang/CharSequence;
 
-.field private mViewPager:Lcom/meizu/widget/ShareViewPager;
+.field private mViewPager:Lcom/android/internal/widget/ViewPager;
 
 .field private mWith:I
 
@@ -440,8 +442,7 @@
     .locals 3
 
     .prologue
-    .line 2232
-    iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mViewPager:Lcom/meizu/widget/ShareViewPager;
+    iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mViewPager:Lcom/android/internal/widget/ViewPager;
 
     new-instance v1, Lcom/android/internal/app/MzResolverActivity$ViewPagerAdapter;
 
@@ -449,23 +450,21 @@
 
     invoke-direct {v1, v2}, Lcom/android/internal/app/MzResolverActivity$ViewPagerAdapter;-><init>(Ljava/util/List;)V
 
-    invoke-virtual {v0, v1}, Lcom/meizu/widget/ShareViewPager;->setAdapter(Lcom/android/internal/widget/PagerAdapter;)V
+    invoke-virtual {v0, v1}, Lcom/android/internal/widget/ViewPager;->setAdapter(Lcom/android/internal/widget/PagerAdapter;)V
 
-    .line 2233
-    iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mViewPager:Lcom/meizu/widget/ShareViewPager;
+    iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mViewPager:Lcom/android/internal/widget/ViewPager;
 
     const/4 v1, 0x0
 
-    invoke-virtual {v0, v1}, Lcom/meizu/widget/ShareViewPager;->setCurrentItem(I)V
+    invoke-virtual {v0, v1}, Lcom/android/internal/widget/ViewPager;->setCurrentItem(I)V
 
-    .line 2234
-    iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mViewPager:Lcom/meizu/widget/ShareViewPager;
+    iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mOverScrollLayout:Lcom/meizu/widget/ViewPagerOverScrollLayout;
 
     new-instance v1, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag$2;
 
     invoke-direct {v1, p0}, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag$2;-><init>(Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;)V
 
-    invoke-virtual {v0, v1}, Lcom/meizu/widget/ShareViewPager;->setOnPageChangeListener(Lcom/android/internal/widget/ViewPager$OnPageChangeListener;)V
+    invoke-virtual {v0, v1}, Lcom/meizu/widget/ViewPagerOverScrollLayout;->setViewPagerSelectChangeListener(Lcom/meizu/widget/ViewPagerOverScrollLayout$ViewPagerSelectChangeListener;)V
 
     .line 2231
     return-void
@@ -632,64 +631,6 @@
 
     iput-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mTargetIntent:Landroid/content/Intent;
 
-    .line 2135
-    const-string/jumbo v1, "MzResolverActivity"
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v5, "mTargetIntent action : "
-
-    invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    iget-object v5, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mTargetIntent:Landroid/content/Intent;
-
-    invoke-virtual {v5}, Landroid/content/Intent;->getAction()Ljava/lang/String;
-
-    move-result-object v5
-
-    invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 2136
-    const-string/jumbo v1, "MzResolverActivity"
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v5, "mTargetIntent Type : "
-
-    invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    iget-object v5, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mTargetIntent:Landroid/content/Intent;
-
-    invoke-virtual {v5}, Landroid/content/Intent;->getType()Ljava/lang/String;
-
-    move-result-object v5
-
-    invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
     .line 2137
     new-instance v9, Landroid/content/Intent;
 
@@ -709,39 +650,9 @@
 
     if-lez v1, :cond_0
 
-    .line 2142
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mInitialIntents:[Landroid/content/Intent;
 
     invoke-direct {p0, v1}, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->buildListfromInitialIntent([Landroid/content/Intent;)V
-
-    .line 2143
-    const-string/jumbo v1, "MzResolverActivity"
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v5, "MzShare--> mList size : "
-
-    invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    iget-object v5, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mList:Ljava/util/List;
-
-    invoke-interface {v5}, Ljava/util/List;->size()I
-
-    move-result v5
-
-    invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 2145
     :cond_0
@@ -766,113 +677,22 @@
 
     iput-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mResolveList:Ljava/util/List;
 
-    .line 2151
     :goto_0
-    const-string/jumbo v1, "MzResolverActivity"
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v5, "ResolverList size is : "
-
-    invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    iget-object v5, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mResolveList:Ljava/util/List;
-
-    invoke-interface {v5}, Ljava/util/List;->size()I
-
-    move-result v5
-
-    invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 2152
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mResolveList:Ljava/util/List;
 
     invoke-direct {p0, v1}, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->removePriorityItems(Ljava/util/List;)V
 
-    .line 2153
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mResolveList:Ljava/util/List;
 
     invoke-direct {p0, v1}, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->resortTheResolveList(Ljava/util/List;)V
 
-    .line 2154
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mResolveList:Ljava/util/List;
 
     invoke-direct {p0, v1}, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->removeNotExportItems(Ljava/util/List;)V
 
-    .line 2155
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mResolveList:Ljava/util/List;
 
     invoke-direct {p0, v1}, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->handleSameNameItems(Ljava/util/List;)V
-
-    .line 2156
-    const-string/jumbo v1, "MzResolverActivity"
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v5, "Normal--> mList size : "
-
-    invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    iget-object v5, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mList:Ljava/util/List;
-
-    invoke-interface {v5}, Ljava/util/List;->size()I
-
-    move-result v5
-
-    invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 2157
-    const-string/jumbo v1, "MzResolverActivity"
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v5, "mList size : "
-
-    invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    iget-object v5, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mList:Ljava/util/List;
-
-    invoke-interface {v5}, Ljava/util/List;->size()I
-
-    move-result v5
-
-    invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 2159
     const/4 v7, 0x0
@@ -900,34 +720,10 @@
 
     move v1, v10
 
-    .line 2159
     :goto_2
     add-int/2addr v1, v2
 
     if-ge v7, v1, :cond_7
-
-    .line 2161
-    const-string/jumbo v1, "MzResolverActivity"
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v5, "i = "
-
-    invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v7}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 2163
     new-instance v3, Ljava/util/ArrayList;
@@ -980,29 +776,6 @@
 
     invoke-interface {v3, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 2168
-    const-string/jumbo v1, "MzResolverActivity"
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v5, "j = "
-
-    invoke-virtual {v2, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
     .line 2166
     add-int/lit8 v8, v8, 0x1
 
@@ -1038,7 +811,7 @@
 
     iput-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mResolveList:Ljava/util/List;
 
-    goto/16 :goto_0
+    goto :goto_0
 
     :cond_2
     move v1, v4
@@ -1780,22 +1553,18 @@
 
     if-le v1, v2, :cond_4
 
-    .line 2092
     iget-boolean v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mAlwaysUseOption:Z
 
     if-eqz v1, :cond_2
 
-    .line 2093
-    iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mViewPager:Lcom/meizu/widget/ShareViewPager;
+    iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mViewPager:Lcom/android/internal/widget/ViewPager;
 
     if-eqz v1, :cond_0
 
-    .line 2094
-    iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mViewPager:Lcom/meizu/widget/ShareViewPager;
+    iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mViewPager:Lcom/android/internal/widget/ViewPager;
 
-    invoke-virtual {v1, v3, v3, v3, v3}, Lcom/meizu/widget/ShareViewPager;->setPadding(IIII)V
+    invoke-virtual {v1, v3, v3, v3, v3}, Lcom/android/internal/widget/ViewPager;->setPadding(IIII)V
 
-    .line 2096
     :cond_0
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mContext:Landroid/content/Context;
 
@@ -1815,73 +1584,19 @@
 
     if-ne v1, v4, :cond_1
 
-    .line 2097
     iget v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mHeight:I
 
     div-int/lit8 v1, v1, 0x2
 
     iput v1, v0, Landroid/view/ViewGroup$LayoutParams;->height:I
 
-    .line 2125
     :goto_0
-    const-string/jumbo v1, "MzResolverActivity"
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v3, "Fragment-->setShareLayoutSize with = "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    iget v3, v0, Landroid/view/ViewGroup$LayoutParams;->width:I
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 2126
-    const-string/jumbo v1, "MzResolverActivity"
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v3, "Fragment-->setShareLayoutSize height = "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    iget v3, v0, Landroid/view/ViewGroup$LayoutParams;->height:I
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 2127
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mShareLayout:Landroid/widget/LinearLayout;
 
     invoke-virtual {v1, v0}, Landroid/widget/LinearLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 2088
     return-void
 
-    .line 2099
     :cond_1
     iget v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mHeight:I
 
@@ -1936,23 +1651,19 @@
 
     goto :goto_0
 
-    .line 2109
     :cond_4
     iget-boolean v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mAlwaysUseOption:Z
 
     if-eqz v1, :cond_5
 
-    .line 2110
-    iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mViewPager:Lcom/meizu/widget/ShareViewPager;
+    iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mViewPager:Lcom/android/internal/widget/ViewPager;
 
     if-eqz v1, :cond_5
 
-    .line 2111
-    iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mViewPager:Lcom/meizu/widget/ShareViewPager;
+    iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mViewPager:Lcom/android/internal/widget/ViewPager;
 
-    invoke-virtual {v1, v3, v3, v3, v3}, Lcom/meizu/widget/ShareViewPager;->setPadding(IIII)V
+    invoke-virtual {v1, v3, v3, v3, v3}, Lcom/android/internal/widget/ViewPager;->setPadding(IIII)V
 
-    .line 2114
     :cond_5
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mContext:Landroid/content/Context;
 
@@ -1979,7 +1690,7 @@
 
     iput v1, v0, Landroid/view/ViewGroup$LayoutParams;->height:I
 
-    goto/16 :goto_0
+    goto :goto_0
 
     .line 2117
     :cond_6
@@ -1996,7 +1707,7 @@
 
     iput v1, v0, Landroid/view/ViewGroup$LayoutParams;->height:I
 
-    goto/16 :goto_0
+    goto :goto_0
 
     .line 2120
     :cond_7
@@ -2006,7 +1717,7 @@
 
     iput v1, v0, Landroid/view/ViewGroup$LayoutParams;->height:I
 
-    goto/16 :goto_0
+    goto :goto_0
 .end method
 
 
@@ -2282,9 +1993,19 @@
 
     move-result-object v2
 
-    check-cast v2, Lcom/meizu/widget/ShareViewPager;
+    check-cast v2, Lcom/android/internal/widget/ViewPager;
 
-    iput-object v2, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mViewPager:Lcom/meizu/widget/ShareViewPager;
+    iput-object v2, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mViewPager:Lcom/android/internal/widget/ViewPager;
+
+    sget v2, Lcom/flyme/internal/R$id;->viewpager_overscroll_layout:I
+
+    invoke-virtual {v1, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v2
+
+    check-cast v2, Lcom/meizu/widget/ViewPagerOverScrollLayout;
+
+    iput-object v2, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mOverScrollLayout:Lcom/meizu/widget/ViewPagerOverScrollLayout;
 
     .line 1999
     iget-object v2, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mTitle:Ljava/lang/CharSequence;
@@ -2352,82 +2073,16 @@
 
     invoke-virtual {v2, v3}, Landroid/widget/CheckBox;->setText(Ljava/lang/CharSequence;)V
 
-    .line 2017
     .end local v0    # "checkBarLayout":Landroid/view/ViewGroup;
     :cond_0
     :goto_1
     invoke-direct {p0}, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->initViewPager()V
 
-    .line 2018
     invoke-direct {p0}, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->initData()V
 
-    .line 2019
     invoke-direct {p0}, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->initPoint()V
 
-    .line 2020
     invoke-direct {p0}, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->setShareLayoutSize()V
-
-    .line 2021
-    const-string/jumbo v2, "MzResolverActivity"
-
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v4, "before reture view mShareLayout with = "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    iget-object v4, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mShareLayout:Landroid/widget/LinearLayout;
-
-    invoke-virtual {v4}, Landroid/widget/LinearLayout;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
-
-    move-result-object v4
-
-    iget v4, v4, Landroid/view/ViewGroup$LayoutParams;->width:I
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 2022
-    const-string/jumbo v2, "MzResolverActivity"
-
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v4, "before reture view mShareLayout height = "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    iget-object v4, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mShareLayout:Landroid/widget/LinearLayout;
-
-    invoke-virtual {v4}, Landroid/widget/LinearLayout;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
-
-    move-result-object v4
-
-    iget v4, v4, Landroid/view/ViewGroup$LayoutParams;->height:I
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 2023
     return-object v1
@@ -2451,7 +2106,7 @@
 
     move-result-object v3
 
-    const v4, 0x1040362
+    const v4, #android:string@whichViewApplication#t
 
     invoke-virtual {v3, v4}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -2459,7 +2114,7 @@
 
     invoke-virtual {v2, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    goto/16 :goto_0
+    goto :goto_0
 
     .line 2014
     .restart local v0    # "checkBarLayout":Landroid/view/ViewGroup;

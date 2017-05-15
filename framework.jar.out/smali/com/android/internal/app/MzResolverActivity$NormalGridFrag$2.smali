@@ -3,7 +3,7 @@
 .source "MzResolverActivity.java"
 
 # interfaces
-.implements Lcom/android/internal/widget/ViewPager$OnPageChangeListener;
+.implements Lcom/meizu/widget/ViewPagerOverScrollLayout$ViewPagerSelectChangeListener;
 
 
 # annotations
@@ -37,29 +37,9 @@
 
 
 # virtual methods
-.method public onPageScrollStateChanged(I)V
-    .locals 0
-    .param p1, "arg0"    # I
-
-    .prologue
-    .line 2246
-    return-void
-.end method
-
-.method public onPageScrolled(IFI)V
-    .locals 0
-    .param p1, "arg0"    # I
-    .param p2, "arg1"    # F
-    .param p3, "arg2"    # I
-
-    .prologue
-    .line 2242
-    return-void
-.end method
-
-.method public onPageSelected(I)V
+.method public onPagerSelected(I)V
     .locals 1
-    .param p1, "arg0"    # I
+    .param p1, "position"    # I
 
     .prologue
     .line 2238
