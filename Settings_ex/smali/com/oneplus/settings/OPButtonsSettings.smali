@@ -1105,6 +1105,12 @@
     .line 388
     .end local v14    # "value":I
     :cond_5
+    const-string v15, "camera_double_tap_power_gesture"
+
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v15}, Lcom/oneplus/settings/OPButtonsSettings;->removePreference(Ljava/lang/String;)V
+
     return-void
 
     .line 320
@@ -1283,7 +1289,7 @@
 .end method
 
 .method public onCreate(Landroid/os/Bundle;)V
-    .locals 1
+    .locals 2
     .param p1, "savedInstanceState"    # Landroid/os/Bundle;
 
     .prologue
@@ -1411,6 +1417,14 @@
 
     .line 159
     :cond_0
+    const-string v0, "buttons_force_home"
+
+    invoke-virtual {p0, v0}, Lcom/oneplus/settings/OPButtonsSettings;->removePreference(Ljava/lang/String;)V
+
+    const-string v0, "buttons_enable_on_screen_navkeys"
+
+    invoke-virtual {p0, v0}, Lcom/oneplus/settings/OPButtonsSettings;->removePreference(Ljava/lang/String;)V
+
     return-void
 
     .line 153
