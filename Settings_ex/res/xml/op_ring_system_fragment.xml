@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.settings.ringtone.OPRadioButtonPreference android:title="@string/oneplus_notification_sound_default" android:key="defualt_select" />
+    <com.oneplus.settings.ringtone.OPRadioButtonPreference android:title="@string/oneplus_local_ringtone" android:key="local_select" android:summary="@string/oneplus_no_choice" />
+    <com.oneplus.settings.ringtone.OPRadioButtonPreference android:title="@string/oneplus_no_ringtone" android:key="no_select" />
+</PreferenceScreen>

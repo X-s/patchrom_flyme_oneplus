@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="@dimen/oneplus_dashboard_tile_minimum_height">
+        <TextView android:textColor="@color/oneplus_font_list_text" android:id="@id/summary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/oneplus_screen_color_mode_title_summary" />
+    </RelativeLayout>
+</LinearLayout>

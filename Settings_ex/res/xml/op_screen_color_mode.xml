@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <com.oneplus.settings.ui.OPScreenColorModePreference android:key="screen_color_mode_page" />
+    <com.android.settings_ex.ui.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_screen_color_mode_default" android:key="screen_color_mode_default_settings" />
+    <com.android.settings_ex.ui.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_screen_color_mode_basic" android:key="screen_color_mode_basic_settings" />
+    <com.android.settings_ex.ui.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_screen_color_mode_defined" android:key="screen_color_mode_defined_settings" />
+    <com.oneplus.settings.ui.OPSeekBarPreference android:key="screen_color_mode_seekbar" />
+    <com.oneplus.settings.ui.OPScreenColorModeSummary android:key="oneplus_screen_color_mode_title_summary" android:summary="@string/oneplus_screen_color_mode_title_summary" />
+</PreferenceScreen>

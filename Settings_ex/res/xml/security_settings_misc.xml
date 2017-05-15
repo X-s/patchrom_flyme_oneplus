@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/op_fingerprint_settings"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceCategory android:persistent="false" android:title="@string/oneplus_app_locker_catagory" android:key="privacy_catagory">
+        <Preference android:persistent="false" android:title="@string/oneplus_app_locker_title" android:key="oneplus_app_locker" android:summary="@string/oneplus_app_locker_summary" />
+    </PreferenceCategory>
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceCategory android:persistent="false" android:title="@string/device_admin_title" android:key="device_admin_category">
+        <Preference android:persistent="false" android:title="@string/manage_device_admin" android:key="manage_device_admin" android:summary="@string/manage_device_admin_summary" android:fragment="com.android.settings_ex.DeviceAdminSettings" />
+        <SwitchPreference android:persistent="false" android:title="@string/install_applications" android:key="toggle_install_applications" android:summaryOn="@string/install_unknown_applications" android:summaryOff="@string/install_unknown_applications" />
+    </PreferenceCategory>
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="simlock_preference_divider_line" />
+    <PreferenceCategory android:persistent="false" android:title="@string/sim_lock_settings_title" android:key="sim_lock">
+        <Preference android:persistent="false" android:title="@string/sim_lock_settings_category" android:key="sim_lock_settings">
+            <intent android:targetPackage="com.android.settings_ex" android:action="android.intent.action.MAIN" android:targetClass="com.android.settings_ex.IccLockSettings" />
+        </Preference>
+    </PreferenceCategory>
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceCategory android:persistent="false" android:title="@string/advanced_security_title" android:key="advanced_security">
+        <Preference android:title="@string/credentials_title" android:key="credentials_management" android:fragment="com.oneplus.settings.OPCredentialsManagementSettings" />
+        <Preference android:persistent="false" android:title="@string/manage_trust_agents" android:key="manage_trust_agents" android:summary="@string/manage_trust_agents_summary" android:fragment="com.android.settings_ex.TrustAgentSettings" />
+        <PreferenceScreen android:title="@string/screen_pinning_title" android:key="screen_pinning_settings" android:summary="@string/switch_off_text" android:fragment="com.android.settings_ex.ScreenPinningSettings" />
+        <Preference android:title="@string/usage_access_title" android:key="usage_access" android:fragment="com.android.settings_ex.applications.ManageApplications">
+            <extra android:name="classname" android:value="com.android.settings_ex.Settings$UsageAccessSettingsActivity" />
+        </Preference>
+    </PreferenceCategory>
+</PreferenceScreen>

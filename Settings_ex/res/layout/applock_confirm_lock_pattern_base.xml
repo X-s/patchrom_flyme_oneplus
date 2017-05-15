@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.internal.widget.LinearLayoutWithDefaultTouchRecepient android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/topLayout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/main_view" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/package_icon" android:layout_width="@dimen/oneplus_applock_package_icon_width" android:layout_height="@dimen/oneplus_applock_package_icon_height" android:layout_marginTop="@dimen/oneplus_applock_package_icon_marginTop" android:src="@drawable/applock_default_icon" />
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/fingerprintIcon" android:visibility="invisible" android:layout_width="@dimen/oneplus_applock_fp_icon_width" android:layout_height="@dimen/oneplus_applock_fp_icon_height" android:layout_marginTop="@dimen/oneplus_applock_fp_icon_pattern_marginTop" android:contentDescription="@string/confirm_fingerprint_icon_content_description" />
+        <RelativeLayout android:gravity="center_horizontal" android:layout_width="@dimen/oneplus_applock_header_width" android:layout_height="wrap_content" android:layout_marginTop="@dimen/oneplus_applock_header_marginTop">
+            <TextView android:gravity="center_horizontal" android:layout_gravity="center" android:id="@id/headerText" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/applock_header_style" />
+            <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/errorText" android:layout_width="fill_parent" android:layout_height="wrap_content" android:accessibilityLiveRegion="polite" style="@style/TextAppearance.ConfirmDeviceCredentialsErrorText" />
+        </RelativeLayout>
+        <com.android.internal.widget.LockPatternView android:layout_gravity="center" android:id="@id/lockPattern" android:background="@color/lock_pattern_background" android:layout_width="@dimen/oneplus_applock_pattern_width" android:layout_height="@dimen/oneplus_applock_pattern_height" android:layout_marginLeft="@dimen/oneplus_applock_pattern_marginLeft" android:layout_marginTop="@dimen/oneplus_applock_pattern_marginTop" android:layout_marginRight="@dimen/oneplus_applock_pattern_marginRight" />
+    </LinearLayout>
+</com.android.internal.widget.LinearLayoutWithDefaultTouchRecepient>
