@@ -2,16 +2,18 @@
 <PreferenceScreen android:title="@string/op_gestures_settings"
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
-    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/oneplus_black_screen_gestures_settings_title" android:key="black_screen_gestures">
-        <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/oneplus_double_click_light_screen_title" android:key="double_click_light_screen_key" android:summary="@string/oneplus_double_click_light_screen_summary" />
-        <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/oneplus_draw_o_start_camera_title" android:key="draw_o_start_camera_key" android:summary="@string/oneplus_draw_o_start_camera_summary" />
-        <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/oneplus_open_light_device_title" android:key="open_light_device_key" android:summary="@string/oneplus_open_light_device_summary" />
-        <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/oneplus_music_control_title" android:key="music_control_key" android:summary="@string/oneplus_music_control_des" />
-    </com.oneplus.widget.preference.OPPreferenceCategory>
+    <PreferenceCategory android:title="@string/oneplus_black_screen_gestures_settings_title" android:key="black_screen_gestures">
+        <SwitchPreference android:title="@string/oneplus_double_click_light_screen_title" android:key="double_click_light_screen_key" android:summary="@string/oneplus_double_click_light_screen_summary" />
+        <SwitchPreference android:title="@string/oneplus_draw_o_start_camera_title" android:key="draw_o_start_camera_key" android:summary="@string/oneplus_draw_o_start_camera_summary" />
+        <SwitchPreference android:title="@string/oneplus_open_light_device_title" android:key="open_light_device_key" android:summary="@string/oneplus_open_light_device_summary" />
+        <SwitchPreference android:title="@string/oneplus_music_control_title" android:key="music_control_key" android:summary="@string/oneplus_music_control_des" />
+    </PreferenceCategory>
+<!--
     <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line" />
-    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/oneplus_motion_sensor_settings_title" android:key="motion_sensor__control">
-        <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/oneplus_rotation_silent_enable_title" android:key="rotation_silent_enable" android:summary="@string/oneplus_rotation_silent_enable_summary" />
-        <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/oneplus_three_screenshots_enable_title" android:key="three_screenshots_enable" android:summary="@string/oneplus_three_screenshots_enable_summary" />
-        <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/oneplus_anti_misoperation_of_the_screen_touch_enable_title" android:key="anti_misoperation_of_the_screen_touch_enable" android:summary="@string/oneplus_anti_misoperation_of_the_screen_touch_enable_summary" />
-    </com.oneplus.widget.preference.OPPreferenceCategory>
+-->
+    <PreferenceCategory android:title="@string/oneplus_motion_sensor_settings_title" android:key="motion_sensor__control">
+        <SwitchPreference android:title="@string/oneplus_rotation_silent_enable_title" android:key="rotation_silent_enable" android:summary="@string/oneplus_rotation_silent_enable_summary" />
+        <SwitchPreference android:title="@string/oneplus_three_screenshots_enable_title" android:key="three_screenshots_enable" android:summary="@string/oneplus_three_screenshots_enable_summary" />
+        <SwitchPreference android:title="@string/oneplus_anti_misoperation_of_the_screen_touch_enable_title" android:key="anti_misoperation_of_the_screen_touch_enable" android:summary="@string/oneplus_anti_misoperation_of_the_screen_touch_enable_summary" />
+    </PreferenceCategory>
 </PreferenceScreen>

@@ -60,7 +60,7 @@
     iput-boolean v0, p0, Lcom/oneplus/settings/OPSettingsActivity;->mNeedToRevertToInitialFragment:Z
 
     .line 49
-    const/4 v0, 0x1
+    const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/oneplus/settings/OPSettingsActivity;->mDisplaySearch:Z
 

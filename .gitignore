@@ -3,3 +3,5 @@
 /out/*
 *.pyc
 history_package
+/Settings_ex/build/*
+/Settings_ex/dist/*
