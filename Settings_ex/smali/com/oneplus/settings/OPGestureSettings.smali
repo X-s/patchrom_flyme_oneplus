@@ -389,9 +389,9 @@
     iput-object v0, p0, Lcom/oneplus/settings/OPGestureSettings;->mCameraPerference:Landroid/preference/SwitchPreference;
 
     .line 166
-    iget-object v0, p0, Lcom/oneplus/settings/OPGestureSettings;->mCameraPerference:Landroid/preference/SwitchPreference;
+    #iget-object v0, p0, Lcom/oneplus/settings/OPGestureSettings;->mCameraPerference:Landroid/preference/SwitchPreference;
 
-    invoke-virtual {v0, p0}, Landroid/preference/SwitchPreference;->setOnPreferenceClickListener(Landroid/preference/Preference$OnPreferenceClickListener;)V
+    #invoke-virtual {v0, p0}, Landroid/preference/SwitchPreference;->setOnPreferenceClickListener(Landroid/preference/Preference$OnPreferenceClickListener;)V
 
     .line 168
     const-string v0, "double_click_light_screen_key"
@@ -454,7 +454,7 @@
     move v0, v1
 
     :goto_0
-    invoke-virtual {v3, v0}, Landroid/preference/SwitchPreference;->setChecked(Z)V
+    #invoke-virtual {v3, v0}, Landroid/preference/SwitchPreference;->setChecked(Z)V
 
     .line 197
     iget-object v3, p0, Lcom/oneplus/settings/OPGestureSettings;->mDoubleLightScreenPreference:Landroid/preference/SwitchPreference;
