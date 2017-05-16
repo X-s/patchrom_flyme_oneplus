@@ -3071,6 +3071,10 @@ system/priv-app/Settings/oat 0 0 755 selabel=u:object_r:system_file:s0 capabilit
 system/priv-app/Settings/oat/arm64 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/priv-app/Settings/oat/arm64/Settings.odex 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/priv-app/Settings/Settings.apk 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
+system/priv-app/Settings_ex 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
+system/priv-app/Settings_ex/Settings_ex.apk 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
+system/priv-app/StockSettings 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
+system/priv-app/StockSettings/StockSettings.apk 0 0 644 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/priv-app/SharedStorageBackup 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/priv-app/SharedStorageBackup/oat 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
 system/priv-app/SharedStorageBackup/oat/arm64 0 0 755 selabel=u:object_r:system_file:s0 capabilities=0x0
