@@ -38,8 +38,6 @@
 
 .field static final TRANSACTION_forceStopAuthentication:I = 0xf
 
-.field static final TRANSACTION_getAuthenticatedPackage:I = 0x10
-
 .field static final TRANSACTION_getAuthenticatorId:I = 0xc
 
 .field static final TRANSACTION_getEnrolledFingerprints:I = 0x7
@@ -826,36 +824,6 @@
 
     goto/16 :goto_0
 
-    .line 228
-    .end local v5    # "_arg0":Ljava/lang/String;
-    :sswitch_10
-    const-string v4, "android.hardware.fingerprint.IFingerprintService"
-
-    move-object/from16 v0, p2
-
-    invoke-virtual {v0, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
-
-    .line 229
-    invoke-virtual/range {p0 .. p0}, Landroid/hardware/fingerprint/IFingerprintService$Stub;->getAuthenticatedPackage()Ljava/lang/String;
-
-    move-result-object v20
-
-    .line 230
-    .local v20, "_result":Ljava/lang/String;
-    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
-
-    .line 231
-    move-object/from16 v0, p3
-
-    move-object/from16 v1, v20
-
-    invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
-
-    .line 232
-    const/4 v4, 0x1
-
-    goto/16 :goto_0
-
     .line 42
     nop
 
@@ -876,7 +844,6 @@
         0xd -> :sswitch_d
         0xe -> :sswitch_e
         0xf -> :sswitch_f
-        0x10 -> :sswitch_10
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method

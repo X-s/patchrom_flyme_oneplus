@@ -63,14 +63,6 @@
     .end annotation
 .end method
 
-.method public abstract getAuthenticatedPackage()Ljava/lang/String;
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Landroid/os/RemoteException;
-        }
-    .end annotation
-.end method
-
 .method public abstract getAuthenticatorId(Ljava/lang/String;)J
     .annotation system Ldalvik/annotation/Throws;
         value = {

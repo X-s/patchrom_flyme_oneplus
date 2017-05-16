@@ -503,21 +503,6 @@
     return-void
 .end method
 
-.method public getAuthenticatedPackage()Ljava/lang/String;
-    .locals 1
-
-    .prologue
-    .line 1218
-    iget-object v0, p0, Lcom/android/server/fingerprint/FingerprintService$FingerprintServiceWrapper;->this$0:Lcom/android/server/fingerprint/FingerprintService;
-
-    # invokes: Lcom/android/server/fingerprint/FingerprintService;->getAuthPackageInternal()Ljava/lang/String;
-    invoke-static {v0}, Lcom/android/server/fingerprint/FingerprintService;->access$2500(Lcom/android/server/fingerprint/FingerprintService;)Ljava/lang/String;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
 .method public getAuthenticatorId(Ljava/lang/String;)J
     .locals 2
     .param p1, "opPackageName"    # Ljava/lang/String;
