@@ -134,6 +134,7 @@ board_modify_apps := TeleService
 
 # my build.prop
 override_property += \
+    persist.dbg.volte_avail_ovr=1 \
     ro.product.model=ONEPLUS A3010
 
 # The property decide whether hide the soft mainkeys.
