@@ -212,11 +212,11 @@
     <string name="oneplus_black_screen_gestures_settings_title">黑屏手势</string>
     <string name="oneplus_motion_sensor_settings_title">動作感應器設定</string>
     <string name="oneplus_rotation_silent_enable_title">翻转静音</string>
-    <string name="oneplus_rotation_silent_enable_summary">來電后，翻轉手機，手機靜音</string>
+    <string name="oneplus_rotation_silent_enable_summary">來電后，翻轉手機，手機靜音\n提示：點擊文字打開，不要點擊右邊的按鈕</string>
     <string name="oneplus_three_screenshots_enable_title">三指截屏</string>
-    <string name="oneplus_three_screenshots_enable_summary">三指上/下滑動，截取屏幕</string>
+    <string name="oneplus_three_screenshots_enable_summary">三指上/下滑動，截取屏幕\n提示：點擊文字打開，不要點擊右邊的按鈕</string>
     <string name="oneplus_anti_misoperation_of_the_screen_touch_enable_title">口袋模式</string>
-    <string name="oneplus_anti_misoperation_of_the_screen_touch_enable_summary">防止手機在口袋中引起屏幕和指紋的誤操作</string>
+    <string name="oneplus_anti_misoperation_of_the_screen_touch_enable_summary">防止手機在口袋中引起屏幕和指紋的誤操作\n提示：點擊文字打開，不要點擊右邊的按鈕</string>
     <string name="oneplus_fingerprint_settings_list_title">指紋列表</string>
     <string name="oneplus_opfinger_input_up_title">擡起手指</string>
     <string name="oneplus_opfinger_input_up_sub">請擡起手指後再次放置</string>
@@ -357,14 +357,14 @@
     <string name="oneplus_password_cancel">取消</string>
     <string name="oneplus_must_reset">一定清除</string>
     <string name="oneplus_open_light_device_title">畫V打開手電筒</string>
-    <string name="oneplus_open_light_device_summary">熄屏時在螢幕畫V，打開手電筒</string>
-    <string name="oneplus_double_click_light_screen_summary">熄屏時在螢幕雙擊即可喚醒螢幕</string>
+    <string name="oneplus_open_light_device_summary">熄屏時在螢幕畫V，打開手電筒\n提示：點擊文字打開，不要點擊右邊的按鈕</string>
+    <string name="oneplus_double_click_light_screen_summary">熄屏時在螢幕雙擊即可喚醒螢幕\n提示：點擊文字打開，不要點擊右邊的按鈕</string>
     <string name="oneplus_draw_o_start_camera_summary">熄屏時在螢幕畫圈，啟動相機</string>
     <string name="oneplus_double_click_light_screen_title">双击亮屏</string>
     <string name="oneplus_draw_o_start_camera_title">畫圈啟動相機</string>
     <string name="oneplus_music_control_title">音樂控制</string>
     <string name="oneplus_music_control_des">" 用兩根手指描繪 "<strong>||</strong>"，即可播放音樂。描繪 
-"<strong>&lt;</strong> 或 <strong>></strong>，即可轉到上一首或下一首曲目。</string>
+"<strong>&lt;</strong> 或 <strong>></strong>，即可轉到上一首或下一首曲目。\n提示：點擊文字打開，不要點擊右邊的按鈕</string>
     <string name="oneplus_quick_startup">快速啟動</string>
     <string name="oneplus_fingerprint_settings_title">指紋用於</string>
     <string name="oneplus_fingerprint_unlock_mobile">指紋解鎖手機</string>
