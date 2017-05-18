@@ -2339,6 +2339,8 @@
     invoke-interface {p1, v6, v3, v4}, Lorg/xmlpull/v1/XmlSerializer;->attribute(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
 
     :cond_6
+    invoke-direct {p0, p1, v2}, Lcom/android/server/notification/RankingHelper;->writeFlymeExtraFields(Lorg/xmlpull/v1/XmlSerializer;Lcom/android/server/notification/RankingHelper$Record;)V
+
     if-nez p2, :cond_7
 
     const-string v3, "uid"

@@ -2212,10 +2212,10 @@
 
     invoke-virtual {v4, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
+    invoke-direct/range {p0 .. p1}, Lcom/android/server/notification/NotificationManagerService;->notifyFlymeWakeupScreen(Lcom/android/server/notification/NotificationRecord;)V
+
     .line 2709
     invoke-virtual/range {p0 .. p0}, Lcom/android/server/notification/NotificationManagerService;->updateLightsLocked()V
-
-    invoke-direct/range {p0 .. p1}, Lcom/android/server/notification/NotificationManagerService;->notifyFlymeWakeupScreen(Lcom/android/server/notification/NotificationRecord;)V
 
     .line 2710
     move-object/from16 v0, p0
