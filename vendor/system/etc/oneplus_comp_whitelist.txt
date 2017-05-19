@@ -1,0 +1,4 @@
+# type, packageName, parameter1,...
+1,com.oneplus.deskclock,net.oneplus.deskclock,com.google.android.deskclock
+1,net.oneplus.launcher,com.oneplus.launcher,com.android.launcher3,com.oneplus.hydrogen.launcher
+1,com.oneplus.calculator,com.google.android.calculator

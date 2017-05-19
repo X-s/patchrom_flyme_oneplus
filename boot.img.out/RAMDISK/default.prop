@@ -1,0 +1,23 @@
+#
+# ADDITIONAL_DEFAULT_PROPERTIES
+#
+dalvik.vm.dex2oat-thread_count=4
+ro.secure=1
+security.perf_harden=1
+ro.allow.mock.location=0
+ro.debuggable=0
+ro.adb.secure=1
+ro.zygote=zygote64_32
+dalvik.vm.image-dex2oat-Xms=64m
+dalvik.vm.image-dex2oat-Xmx=64m
+dalvik.vm.dex2oat-Xms=64m
+dalvik.vm.dex2oat-Xmx=512m
+ro.dalvik.vm.native.bridge=0
+debug.atrace.tags.enableflags=0
+#
+# BOOTIMAGE_BUILD_PROPERTIES
+#
+ro.bootimage.build.date=Wed Dec 28 18:53:46 CST 2016
+ro.bootimage.build.date.utc=1482922426
+ro.bootimage.build.fingerprint=OnePlus2/OnePlus2/OnePlus2:6.0.1/MMB29M/70:user/dev-keys
+persist.sys.usb.config=none

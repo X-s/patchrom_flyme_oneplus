@@ -1,0 +1,286 @@
+﻿##################################################################################
+### VENDOR_EDIT, OEM All rights reserved.
+###
+### File: - init.oem.rc
+### Author: jiangyonggao
+### all oem triger & init are here
+### ------------------------------- Revision History: ----------------------------
+### <author>                        <data>       <version>   <desc>
+### ------------------------------------------------------------------------------
+### jiangyg@PM                     2013-10-21                Create this file
+##################################################################################
+
+#ifdef VENDOR_EDIT
+on init
+# ic, Slow Motion Scheduling Group (SMSG), in order to intercept the very first app/service, must be this section
+    mkdir /dev/cpuctl/smsg
+    chown system system /dev/cpuctl/smsg/tasks
+    chown system system /dev/cpuctl/smsg/cpu.cfs_period_us
+    chown system system /dev/cpuctl/smsg/cpu.cfs_quota_us
+    chown system system /dev/cpuctl/smsg/cpu.cfs_quota_us_per_task
+    chmod 0666 /dev/cpuctl/smsg/tasks
+    write /dev/cpuctl/smsg/cpu.shares 52
+    write /dev/cpuctl/smsg/cpu.upmigrate_discourage 1
+#endif
+
+#ifdef VENDOR_EDIT
+#Add for fpc fingerprints permission
+on boot
+    mkdir /data/oemnvitems  0771 radio radio
+
+    chmod -h 777 /dev/qseecom
+    chmod 0664 /sys/bus/spi/devices/spi12.0/irq
+    chown system system /sys/bus/spi/devices/spi12.0/irq
+    chmod 0660 /sys/bus/spi/devices/spi12.0/report_home
+    chown system system /sys/bus/spi/devices/spi12.0/report_home
+    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/update_info
+    chown system system /sys/devices/soc/soc:fpc_fpc1020/update_info
+    chmod 0660 /sys/bus/spi/devices/spi12.0/screen_state
+    chown system system /sys/bus/spi/devices/spi12.0/screen_state
+    chmod 0660 /sys/bus/spi/devices/spi12.0/clk_enable
+    chown system system /sys/bus/spi/devices/spi12.0/clk_enable
+    #chmod 0660 /sys/bus/spi/devices/spi12.0/wakeup_enable
+    #chown system system /sys/bus/spi/devices/spi12.0/wakeup_enable
+# 2015.3.26 Likelong@camera chmod /dev/stmvl6180_ranging to test Laser AF in factory mode
+    chown system system /dev/stmvl6180_ranging
+
+# add by likelong@camera 2015.12.18 for laser
+    chown system system /system/bin/laser_init
+    chmod 0750 /system/bin/laser_init
+
+#endif
+
+#ifdef VENDOR_EDIT
+#lifeng@bsp tp 2015/6/3 for firmware update
+  #  write /sys/bus/i2c/devices/2-0020/tp_fw_update 0
+   # write /proc/s1302/fw_update 0
+#endif
+
+#ifdef VENDOR_EDIT
+#added by zhangxiaowei@camera 20150325 for leds permission
+    chown system system /sys/class/leds/led:flash_0/brightness
+    chown system system /sys/class/leds/led:flash_1/brightness
+    chown system system /sys/class/leds/led:torch_0/brightness
+    chown system system /sys/class/leds/led:torch_1/brightness
+#added by kenlin@perflab 2015/08/14 for scheduler
+    chown system system /sys/module/cpu_boost/parameters/sysctl_thermal_aware_scheduling
+#endif /*VENDOR_EDIT*/
+#VENDOR_EDIT	niqiangbo@camera add for oneplus torch 2015-07-15
+    chown system system /sys/class/leds/led:torch_0/brightness
+    chmod 0666 /sys/class/leds/led:torch_0/brightness
+    chown system system /sys/class/leds/led:torch_1/brightness
+    chmod 0666 /sys/class/leds/led:torch_1/brightness
+#endif /*VENDOR_EDIT*/
+#ifdef VENDOR_EDIT
+#added by zhangxiaowei@camera 20150413  for product mode flashlight
+    chown system system /proc/qcom_flash
+#endif /*VENDOR_EDIT*/
+ #ifdef VENDOR_EDIT
+    #shankai@bsp , 2015/03/26, Modify for RGB light support
+    chown system system /sys/class/leds/red/pause_lo
+    chown system system /sys/class/leds/blue/pause_lo
+    chown system system /sys/class/leds/green/pause_lo
+
+    chown system system /sys/class/leds/red/pause_hi
+    chown system system /sys/class/leds/blue/pause_hi
+    chown system system /sys/class/leds/green/pause_hi
+
+    chown system system /sys/class/leds/red/blink
+    chown system system /sys/class/leds/blue/blink
+    chown system system /sys/class/leds/green/blink
+ #endif /*VENDOR_EDIT*/
+
+ #ifdef VENDOR_EDIT
+   #shankai@bsp , 2015/04/26,modify for RGB breath effect control support
+    chown system system /sys/class/leds/red/ramp_step_ms
+    chown system system /sys/class/leds/blue/ramp_step_ms
+    chown system system /sys/class/leds/green/ramp_step_ms
+
+    chown system system /sys/class/leds/red/duty_pcts
+    chown system system /sys/class/leds/blue/duty_pcts
+    chown system system /sys/class/leds/green/duty_pcts
+
+    chmod 660 /sys/class/leds/red/ramp_step_ms
+    chmod 660 /sys/class/leds/green/ramp_step_ms
+    chmod 660 /sys/class/leds/blue/ramp_step_ms
+
+
+    chmod 660 /sys/class/leds/red/duty_pcts
+    chmod 660 /sys/class/leds/green/duty_pcts
+    chmod 660 /sys/class/leds/blue/duty_pcts
+
+ #endif /*VENDOR_EDIT*/
+
+#ifdef VENDOR_EDIT
+#/* wifi ftm test */
+    chown system system /system/bin/wifi_ftm
+    chmod 0777  /system/bin/wifi_ftm
+    chown system system /system/bin/wifi_single
+    chmod 0777  /system/bin/wifi_single
+    chown system system /system/bin/iwpriv
+    chmod 0777  /system/bin/iwpriv
+    chown system system /system/bin/iwlist
+    chmod 0777  /system/bin/iwlist
+    chown system system /system/xbin/tcpdump
+    chmod 0777  /system/xbin/tcpdump
+#endif
+    write /sys/module/printk/parameters/print_wall_time 1
+
+#erik.yang, 2015/3/20, add for property self-adaptive
+service self-init /sbin/self-init
+    class core
+    user root
+    oneshot
+    seclabel u:r:self-init:s0
+
+service laserinit /system/bin/laser_init
+    class late_start
+    user root
+    group root
+    oneshot
+
+service wififtmserver /system/bin/sh system/bin/wifi_ftm
+    class late_start
+    user root
+    group root
+    disabled
+    #oneshot
+
+on property:WFtmUp=1
+    start wififtmserver
+on init
+    mkdir /sys/fs/cgroup/freezer 0750 root system
+    mount cgroup none /sys/fs/cgroup/freezer  freezer
+    chmod 777 /sys/fs/cgroup/freezer
+
+service wifisingle /system/bin/sh system/bin/wifi_single
+    class late_start
+    user root
+    group root
+    disabled
+    oneshot
+
+#on property:sys.boot_completed=1
+on property:init.svc.bootanim=running
+	write /sys/bus/i2c/devices/2-0020/tp_fw_update 0
+    write /proc/s1302/fw_update 0
+
+
+on property:wlan.WifiSgle=1
+    start wifisingle
+
+on property:wlan.WifiSgle=0
+    stop wifisingle
+
+#endif /* VENDOR_EDIT */
+
+# Adb over Network
+on property:service.adb.tcp.port=5555
+    stop adbd
+    start adbd
+on property:service.adb.tcp.port=-1
+    stop adbd
+    start adbd
+
+#ifdef VENDOR_EDIT
+#niejianan@oneplus.framework , 2015/04/25, add for mmi charging test
+on property:persist.sys.fastcharger=true
+	write /sys/class/power_supply/battery/charging_enabled 1
+
+on property:persist.sys.fastcharger=false
+	write /sys/class/power_supply/battery/charging_enabled 0
+#endif /* VENDOR_EDIT */
+
+
+#changhua.li Add for [alipay ta upate], {
+service updateTA /system/bin/sh /updateTA.sh
+	class main
+    user root
+    disabled
+    oneshot
+#} add end for [alipay ta upate].
+
+#ifdef VENDOR_EDIT
+#liuhuisheng@framework 2015-05-06 Add begin for OTG switch
+on property:persist.sys.oem.otg_support=true
+    write /proc/otg_config/otg_switch 1
+on property:persist.sys.oem.otg_support=false
+    write /proc/otg_config/otg_switch 0
+#endif
+
+
+
+#ifdef VENDOR_EDIT
+#added by wuaijun@system
+on post-fs
+    chown system system /proc/ship_mode
+    chown system system /dev/param
+    chown system system /dev/block/mmcblk0p21
+    chmod 660 /dev/block/mmcblk0p21
+#endif /*VENDOR_EDIT*/
+
+#ifdef VENDOR_EDIT
+#liuhuisheng@framework add for enginerr app for sys/class selinux recon
+    restorecon /sys/class/leds/keyboard-backlight/brightness
+    restorecon /sys/class/leds/button-backlight/brightness
+    restorecon /sys/class/leds/red/brightness
+    restorecon /sys/class/leds/green/brightness
+    restorecon /sys/class/leds/blue/brightness
+    restorecon /sys/class/leds/red/blink
+    restorecon /sys/class/leds/green/blink
+    restorecon /sys/class/leds/blue/blink
+#endif /*VENDOR_EDIT*/
+
+on post-fs-data
+    #fingerint, changhua add for fp debug image usage,feature default off
+    mkdir /data/fpc_images 0770 system system
+    mkdir /data/fpc_images/verify 0770 system system
+    mkdir /data/fpc_images/enroll 0770 system system
+    mkdir /data/fpc 0770 system system
+
+on property:persist.sys.adbroot=1
+    setprop selinux.reload_policy 1
+
+#ifdef VENDOR_EDIT
+#WayneChang, 2016/1/8, add for init write permission to /proc/touchpanel/changer_connet
+on property:sys.is_charger_present=1
+    write /proc/touchpanel/changer_connet 1
+
+on property:sys.is_charger_present=0
+    write /proc/touchpanel/changer_connet 0
+#endif
+
+#ifdef VENDOR_EDIT
+#hieu@oneplus.net, 2015/10/30, SND-10768, add service for bugreport
+service bugreport /system/bin/dumpstate -d -p -B \
+        -o /data/data/com.android.shell/files/bugreports/bugreport
+    class main
+    disabled
+    oneshot
+#endif
+
+#ifdef VENDOR_EDIT
+#lifei@oneplus.media, 2016/02/14,  add service for CTS and engineer app
+service oem_audio_device /system/bin/chcon u:object_r:oem_audio_device:s0 /dev/snd
+    class late_start
+    oneshot
+#endif
+
+#ifdef VENDOR_EDIT
+#kimi, 2016/03/29, trigger systrace
+on property:persist.sys.systrace.enable=true
+    start izanami
+on property:persist.sys.systrace.enable=false
+    start stop_izanami
+service izanami /system/bin/izanami
+    class main
+    user root
+    disabled
+    oneshot
+    keycodes 115 116
+service stop_izanami /system/bin/izanami stop
+    class main
+    user root
+    disabled
+    oneshot
+#endif

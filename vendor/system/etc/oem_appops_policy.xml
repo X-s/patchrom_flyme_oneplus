@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<appops_policy>
+    <pkg name="com.tencent.mm" >
+        <op name="android:system_alert_window" permission="allowed" />
+    </pkg>
+    <pkg name="com.taobao.taobao" >
+        <op name="android:system_alert_window" permission="allowed" />
+    </pkg>
+    <pkg name="com.netease.cloudmusic" >
+        <op name="android:system_alert_window" permission="allowed" />
+    </pkg>
+    <pkg name="com.sina.weibo" >
+        <op name="android:system_alert_window" permission="allowed" />
+    </pkg>
+    <pkg name="cmb.pb" >
+        <op name="android:system_alert_window" permission="denied" />
+    </pkg>
+</appops_policy>

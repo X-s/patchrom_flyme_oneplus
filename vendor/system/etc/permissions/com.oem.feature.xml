@@ -1,0 +1,25 @@
+<permissions>
+    <feature name="oem.finger.print.support" />
+    <feature name="oem.gyroscope.support" />
+    <feature name="oem.laser.focus.support" />
+    <feature name="oem.optical.stabilizer.support" />
+    <feature name="oem.heat.pipe.support" />
+    <feature name="oem.dualsim.support" />
+    <feature name="oem.breathLight.support" />
+    <feature name="oem.blackScreenGesture.support" />
+    <feature name="oem.threeStageKey.support" />
+    <feature name="oem.threeScreenshot.support" />
+    <feature name="oem.hapticsService.support" />
+    <feature name="oem.keyDefine.support" />
+    <feature name="oem.timePoweroffWakeup.support" />
+    <feature name="oem.otgSwitch.support" />
+    <feature name="oem.inexact.alarm" />
+    <feature name="oem.button.light.support" />
+    <feature name="oem.audiotuner.support" />
+    <feature name="oem.direct.support" />
+    <feature name="oem.cover.support" />
+    <feature name="oem.op_dark_mode.support" />
+    <feature name="oem.no_aging.support" />
+    <feature name="oem.autobrightctl.animation.support" />
+    <feature name="oem.opcamera_manual_zsl.support" />
+</permissions>
