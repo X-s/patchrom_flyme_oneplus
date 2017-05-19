@@ -1068,7 +1068,7 @@
     :cond_2
     invoke-direct/range {p0 .. p1}, Landroid/widget/Editor$HandleView;->flymePositionAtCursorOffset(I)Z
 
-    move-result v4
+    move-result v3
 
     if-eqz v3, :cond_flyme_0
 

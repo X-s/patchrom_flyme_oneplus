@@ -15751,6 +15751,8 @@
     move-result-object v8
 
     .local v8, "r":Landroid/content/res/Resources;
+    invoke-virtual {v8, p1}, Landroid/content/res/Resources;->setFlymeThemeResource(Ljava/lang/String;)V
+
     return-object v8
 .end method
 
@@ -15829,6 +15831,12 @@
     move-result-object v9
 
     .local v9, "r":Landroid/content/res/Resources;
+    move-object/from16 v0, p7
+
+    iget-object v0, v0, Landroid/content/res/CompatibilityInfo;->packageName:Ljava/lang/String;
+
+    invoke-virtual {v9, v0}, Landroid/content/res/Resources;->setFlymeThemeResource(Ljava/lang/String;)V
+
     return-object v9
 .end method
 
