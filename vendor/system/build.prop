@@ -1,4 +1,9 @@
-
+# this build info are ready to upload MeiZu Server
+# the real build info are inside the kernel with default.prop
+ro.product.model=A2001
+ro.product.device=A2001
+ro.build.fingerprint=6.0.1/MMB29M/1447840950:user/release-keys
+# end
 #
 #
 #
