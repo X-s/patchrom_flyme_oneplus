@@ -33,7 +33,7 @@ RESOLUTION := 1080x1920
 # If the boot.img or recovery.img exists, the system of build will use a prebuilt boot.img or recovery.img.
 # If the boot.img or recovery.img doesn't exists, the system of build will do nothing.
 #-----------------------------------------------------------------------------
-vendor_modify_images := boot
+#vendor_modify_images := boot
 
 ##############################################################################
 # The value decides the directory which you want to remove in the vendor directory for the ota package.

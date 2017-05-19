@@ -21,3 +21,7 @@ ro.bootimage.build.date=Wed Dec 28 18:53:46 CST 2016
 ro.bootimage.build.date.utc=1482922426
 ro.bootimage.build.fingerprint=OnePlus2/OnePlus2/OnePlus2:6.0.1/MMB29M/70:user/dev-keys
 persist.sys.usb.config=none
+# real build info
+ro.product.model=ONE A2001
+ro.product.device=OnePlus2
+# end
