@@ -3087,19 +3087,15 @@
 
     invoke-virtual {v10, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 607
     iput-object v1, p0, Landroid/app/LoadedApk;->mApplication:Landroid/app/Application;
 
-    .line 609
     if-eqz p2, :cond_6
 
-    .line 611
     :try_start_1
     invoke-virtual {p2, v1}, Landroid/app/Instrumentation;->callApplicationOnCreate(Landroid/app/Application;)V
     :try_end_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
 
-    .line 622
     :cond_6
     iget-object v10, p0, Landroid/app/LoadedApk;->mActivityThread:Landroid/app/ActivityThread;
 
@@ -3680,5 +3676,17 @@
     invoke-virtual {v0, p1}, Landroid/view/DisplayAdjustments;->setCompatibilityInfo(Landroid/content/res/CompatibilityInfo;)V
 
     .line 234
+    return-void
+.end method
+
+.method flymeInvokeMethodRewriteRValues(Ljava/lang/ClassLoader;Ljava/lang/String;I)V
+    .locals 0
+    .param p1, "cl"    # Ljava/lang/ClassLoader;
+    .param p2, "packageName"    # Ljava/lang/String;
+    .param p3, "id"    # I
+
+    .prologue
+    invoke-direct {p0, p1, p2, p3}, Landroid/app/LoadedApk;->rewriteRValues(Ljava/lang/ClassLoader;Ljava/lang/String;I)V
+
     return-void
 .end method

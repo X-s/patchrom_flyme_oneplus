@@ -19,6 +19,8 @@
 
 
 # instance fields
+.field private mIsFlymeBigPictureTemplate:Z
+
 .field private mBigLargeIcon:Landroid/graphics/drawable/Icon;
 
 .field private mBigLargeIconSet:Z
@@ -105,21 +107,23 @@
 
     move-result-object v0
 
-    .line 4247
     .local v0, "contentView":Landroid/widget/RemoteViews;
+
+    invoke-direct {p0, v0}, Landroid/app/Notification$BigPictureStyle;->getFlymeContentView(Landroid/widget/RemoteViews;)Landroid/widget/RemoteViews;
+
+    move-result-object v0
+
     iget-boolean v3, p0, Landroid/app/Notification$BigPictureStyle;->mBigLargeIconSet:Z
 
     if-eqz v3, :cond_1
 
-    .line 4248
     iget-object v3, p0, Landroid/app/Notification$BigPictureStyle;->mBuilder:Landroid/app/Notification$Builder;
 
     # setter for: Landroid/app/Notification$Builder;->mLargeIcon:Landroid/graphics/drawable/Icon;
     invoke-static {v3, v1}, Landroid/app/Notification$Builder;->access$2302(Landroid/app/Notification$Builder;Landroid/graphics/drawable/Icon;)Landroid/graphics/drawable/Icon;
 
-    .line 4251
     :cond_1
-    const v3, 0x1020372
+    const v3, #android:id@big_picture#t
 
     iget-object v4, p0, Landroid/app/Notification$BigPictureStyle;->mPicture:Landroid/graphics/Bitmap;
 
@@ -156,11 +160,13 @@
 
     if-eqz v2, :cond_3
 
-    const v3, 0x102037f
+    const v3, #android:id@profile_badge_line2#t
 
     :goto_1
     # invokes: Landroid/app/Notification$Builder;->addProfileBadge(Landroid/widget/RemoteViews;I)Z
     invoke-static {v4, v0, v3}, Landroid/app/Notification$Builder;->access$2600(Landroid/app/Notification$Builder;Landroid/widget/RemoteViews;I)Z
+
+    invoke-virtual {p0, v0}, Landroid/app/Notification$BigPictureStyle;->makeBigContentViewFlyme(Landroid/widget/RemoteViews;)V
 
     .line 4258
     return-object v0
@@ -175,7 +181,7 @@
     .line 4256
     .restart local v2    # "twoTextLines":Z
     :cond_3
-    const v3, 0x1020382
+    const v3, #android:id@profile_badge_line3#t
 
     goto :goto_1
 .end method
@@ -421,4 +427,53 @@
 
     .line 4187
     return-object p0
+.end method
+
+.method private getFlymeContentView(Landroid/widget/RemoteViews;)Landroid/widget/RemoteViews;
+    .locals 1
+    .param p1, "contentView"    # Landroid/widget/RemoteViews;
+
+    .prologue
+    iget-boolean v0, p0, Landroid/app/Notification$BigPictureStyle;->mIsFlymeBigPictureTemplate:Z
+
+    if-eqz v0, :cond_0
+
+    sget v0, Lcom/flyme/internal/R$layout;->mz_notification_template_big_picture:I
+
+    invoke-virtual {p0, v0}, Landroid/app/Notification$BigPictureStyle;->getStandardView(I)Landroid/widget/RemoteViews;
+
+    move-result-object p1
+
+    :cond_0
+    return-object p1
+.end method
+
+.method public makeBigContentViewFlyme(Landroid/widget/RemoteViews;)V
+    .locals 2
+    .param p1, "contentView"    # Landroid/widget/RemoteViews;
+
+    .prologue
+    iget-boolean v0, p0, Landroid/app/Notification$BigPictureStyle;->mIsFlymeBigPictureTemplate:Z
+
+    if-nez v0, :cond_0
+
+    sget v0, Lcom/flyme/internal/R$id;->big_picture:I
+
+    iget-object v1, p0, Landroid/app/Notification$BigPictureStyle;->mPicture:Landroid/graphics/Bitmap;
+
+    invoke-virtual {p1, v0, v1}, Landroid/widget/RemoteViews;->setImageViewBitmap(ILandroid/graphics/Bitmap;)V
+
+    :cond_0
+    return-void
+.end method
+
+.method public setMeizuBigPictureTemplate()V
+    .locals 1
+
+    .prologue
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Landroid/app/Notification$BigPictureStyle;->mIsFlymeBigPictureTemplate:Z
+
+    return-void
 .end method

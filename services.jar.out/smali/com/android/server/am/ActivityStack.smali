@@ -384,7 +384,7 @@
 
     move-result-object v0
 
-    const v1, 0x11200a8
+    const v1, #android:bool@config_enablePerfBoostForAnimation#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -406,7 +406,7 @@
 
     move-result-object v0
 
-    const v1, 0x10e009d
+    const v1, #android:integer@animationboost_timeout_param#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -423,7 +423,7 @@
 
     move-result-object v0
 
-    const v1, 0x1070048
+    const v1, #android:array@animationboost_param_value#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getIntArray(I)[I
 
@@ -11022,20 +11022,20 @@
 
     if-ne v14, v15, :cond_7
 
-    .line 4257
     :cond_6
     move-object v12, v8
 
-    .line 4258
     const/4 v7, 0x0
 
     move v6, v7
 
-    .line 4262
     :cond_7
     add-int/lit8 v6, v6, 0x1
 
-    .line 4263
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v11}, Lcom/android/server/am/ActivityStack;->addFlymeArrayList(Lcom/android/server/am/ActivityRecord;)V
+
     iget-object v14, v8, Lcom/android/server/am/ActivityRecord;->app:Lcom/android/server/am/ProcessRecord;
 
     if-eqz v14, :cond_4
@@ -11082,54 +11082,48 @@
 
     iput-object v14, v4, Landroid/app/ActivityManager$RunningTaskInfo;->topActivity:Landroid/content/ComponentName;
 
-    .line 4276
     iget-wide v14, v9, Lcom/android/server/am/TaskRecord;->lastActiveTime:J
 
     iput-wide v14, v4, Landroid/app/ActivityManager$RunningTaskInfo;->lastActiveTime:J
 
-    .line 4277
     if-eqz v5, :cond_9
 
     if-eqz v13, :cond_9
 
-    .line 4280
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v14
 
     iput-wide v14, v4, Landroid/app/ActivityManager$RunningTaskInfo;->lastActiveTime:J
 
-    .line 4281
     const/4 v13, 0x0
 
-    .line 4284
     :cond_9
     iget-object v14, v12, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
 
     if-eqz v14, :cond_a
 
-    .line 4285
     iget-object v14, v12, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
 
     iget-object v14, v14, Lcom/android/server/am/TaskRecord;->lastDescription:Ljava/lang/CharSequence;
 
     iput-object v14, v4, Landroid/app/ActivityManager$RunningTaskInfo;->description:Ljava/lang/CharSequence;
 
-    .line 4287
     :cond_a
     iput v6, v4, Landroid/app/ActivityManager$RunningTaskInfo;->numActivities:I
 
-    .line 4288
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v4}, Lcom/android/server/am/ActivityStack;->clearFlymeArrayList(Landroid/app/ActivityManager$RunningTaskInfo;)V
+
     iput v7, v4, Landroid/app/ActivityManager$RunningTaskInfo;->numRunning:I
 
-    .line 4289
     move-object/from16 v0, p1
 
     invoke-interface {v0, v4}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     goto/16 :goto_2
 
-    .line 4291
     .end local v2    # "activities":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ActivityRecord;>;"
     .end local v3    # "activityNdx":I
     .end local v4    # "ci":Landroid/app/ActivityManager$RunningTaskInfo;
@@ -18410,4 +18404,73 @@
     move v4, v6
 
     goto :goto_3
+.end method
+
+.method private addFlymeArrayList(Lcom/android/server/am/ActivityRecord;)V
+    .locals 3
+    .param p1, "tmp"    # Lcom/android/server/am/ActivityRecord;
+
+    .prologue
+    if-eqz p1, :cond_1
+
+    iget-object v1, p1, Lcom/android/server/am/ActivityRecord;->intent:Landroid/content/Intent;
+
+    if-eqz v1, :cond_1
+
+    iget-object v1, p1, Lcom/android/server/am/ActivityRecord;->intent:Landroid/content/Intent;
+
+    invoke-virtual {v1}, Landroid/content/Intent;->getComponent()Landroid/content/ComponentName;
+
+    move-result-object v0
+
+    .local v0, "name":Landroid/content/ComponentName;
+    iget-object v1, p0, Lcom/android/server/am/ActivityStack;->mFlymeArrayList:Ljava/util/ArrayList;
+
+    if-nez v1, :cond_0
+
+    new-instance v1, Ljava/util/ArrayList;
+
+    invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
+
+    iput-object v1, p0, Lcom/android/server/am/ActivityStack;->mFlymeArrayList:Ljava/util/ArrayList;
+
+    :cond_0
+    iget-object v1, p0, Lcom/android/server/am/ActivityStack;->mFlymeArrayList:Ljava/util/ArrayList;
+
+    if-eqz v1, :cond_1
+
+    if-eqz v0, :cond_1
+
+    iget-object v1, p0, Lcom/android/server/am/ActivityStack;->mFlymeArrayList:Ljava/util/ArrayList;
+
+    invoke-virtual {v0}, Landroid/content/ComponentName;->getClassName()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .end local v0    # "name":Landroid/content/ComponentName;
+    :cond_1
+    return-void
+.end method
+
+.method private clearFlymeArrayList(Landroid/app/ActivityManager$RunningTaskInfo;)V
+    .locals 2
+    .param p1, "ci"    # Landroid/app/ActivityManager$RunningTaskInfo;
+
+    .prologue
+    const/4 v1, 0x0
+
+    iget-object v0, p0, Lcom/android/server/am/ActivityStack;->mFlymeArrayList:Ljava/util/ArrayList;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/server/am/ActivityStack;->mFlymeArrayList:Ljava/util/ArrayList;
+
+    iput-object v0, p1, Landroid/app/ActivityManager$RunningTaskInfo;->allActivitiesClass:Ljava/util/ArrayList;
+
+    iput-object v1, p0, Lcom/android/server/am/ActivityStack;->mFlymeArrayList:Ljava/util/ArrayList;
+
+    :cond_0
+    return-void
 .end method

@@ -9,6 +9,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/server/wm/WindowState$FlymeInjector;,
         Lcom/android/server/wm/WindowState$DeathRecipient;
     }
 .end annotation
@@ -19,6 +20,8 @@
 
 
 # instance fields
+.field mWindowStateExt:Lcom/android/server/wm/WindowStateExt;
+
 .field mAppFreezing:Z
 
 .field final mAppOp:I
@@ -2025,6 +2028,9 @@
 
     .line 655
     :goto_7
+
+    invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowState$FlymeInjector;->computeFrameLw(Lcom/android/server/wm/WindowState;)V
+
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lcom/android/server/wm/WindowState;->mContentFrame:Landroid/graphics/Rect;
@@ -8351,4 +8357,29 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
+.end method
+
+.method public isInMovedMode()Z
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/wm/WindowState;->mWindowStateExt:Lcom/android/server/wm/WindowStateExt;
+
+    invoke-virtual {v0}, Lcom/android/server/wm/WindowStateExt;->isInMovedMode()Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public setBackupFlag(I)V
+    .locals 1
+    .param p1, "flag"    # I
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/wm/WindowState;->mWindowStateExt:Lcom/android/server/wm/WindowStateExt;
+
+    iput p1, v0, Lcom/android/server/wm/WindowStateExt;->mBackupFlags:I
+
+    return-void
 .end method
