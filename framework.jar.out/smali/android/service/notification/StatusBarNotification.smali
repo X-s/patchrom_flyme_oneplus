@@ -6,6 +6,15 @@
 .implements Landroid/os/Parcelable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;,
+        Landroid/service/notification/StatusBarNotification$FlymeInjector;
+    }
+.end annotation
+
+
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
     .annotation system Ldalvik/annotation/Signature;

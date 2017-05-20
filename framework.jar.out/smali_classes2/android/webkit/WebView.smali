@@ -11,6 +11,9 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/webkit/WebView$ReaderModeListener;,
+        Landroid/webkit/WebView$ReaderCallBack;,
+        Landroid/webkit/WebView$ReaderTitleAndNumCallBack;,
         Landroid/webkit/WebView$1;,
         Landroid/webkit/WebView$FindListenerDistributor;,
         Landroid/webkit/WebView$PrivateAccess;,

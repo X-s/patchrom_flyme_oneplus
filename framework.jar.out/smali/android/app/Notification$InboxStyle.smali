@@ -360,6 +360,8 @@
     # invokes: Landroid/app/Notification$Builder;->addProfileBadge(Landroid/widget/RemoteViews;I)Z
     invoke-static {v11, v1, v12}, Landroid/app/Notification$Builder;->access$2600(Landroid/app/Notification$Builder;Landroid/widget/RemoteViews;I)Z
 
+    invoke-virtual {p0, v1}, Landroid/app/Notification$InboxStyle;->makeBigContentViewFlyme(Landroid/widget/RemoteViews;)V
+
     return-object v1
 
     :cond_4

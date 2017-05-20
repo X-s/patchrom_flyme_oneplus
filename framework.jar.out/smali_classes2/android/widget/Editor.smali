@@ -6,6 +6,11 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/widget/Editor$OptionWrapper;,
+        Landroid/widget/Editor$FlymeInjector;,
+        Landroid/widget/Editor$FlymeStartSelectionActionModeRunnable;,
+        Landroid/widget/Editor$FlymeShowSuggestionsRunnable;,
+        Landroid/widget/Editor$FlymeInsertionPointCursorController;,
         Landroid/widget/Editor$ProcessTextIntentActionsHandler;,
         Landroid/widget/Editor$EditOperation;,
         Landroid/widget/Editor$UndoInputFilter;,
@@ -5703,9 +5708,9 @@
 
     if-nez v2, :cond_1
 
-    new-instance v2, Landroid/widget/Editor$InsertionPointCursorController;
+    new-instance v2, Landroid/widget/Editor$FlymeInsertionPointCursorController;
 
-    invoke-direct {v2, p0, v1}, Landroid/widget/Editor$InsertionPointCursorController;-><init>(Landroid/widget/Editor;Landroid/widget/Editor$1;)V
+    invoke-direct {v2, p0}, Landroid/widget/Editor$FlymeInsertionPointCursorController;-><init>(Landroid/widget/Editor;)V
 
     iput-object v2, p0, Landroid/widget/Editor;->mInsertionPointCursorController:Landroid/widget/Editor$InsertionPointCursorController;
 

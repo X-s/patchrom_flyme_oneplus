@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/provider/Settings$ShareList;,
         Landroid/provider/Settings$Bookmarks;,
         Landroid/provider/Settings$Global;,
         Landroid/provider/Settings$Secure;,
@@ -518,7 +519,7 @@
 .end method
 
 .method public static isCallingPackageAllowedToPerformAppOpsProtectedOperation(Landroid/content/Context;ILjava/lang/String;ZI[Ljava/lang/String;Z)Z
-    .locals 10
+    .locals 8
     .param p0, "context"    # Landroid/content/Context;
     .param p1, "uid"    # I
     .param p2, "callingPackage"    # Ljava/lang/String;
@@ -528,194 +529,205 @@
     .param p6, "makeNote"    # Z
 
     .prologue
-    .line 9090
+    .line 8420
     if-nez p2, :cond_0
 
-    .line 9091
-    const/4 v8, 0x0
+    .line 8421
+    const/4 v5, 0x0
 
-    .line 9121
-    :goto_0
-    return v8
+    return v5
 
-    .line 9094
+    .line 8424
     :cond_0
-    const-string v8, "appops"
+    const-string/jumbo v5, "appops"
 
-    invoke-virtual {p0, v8}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    invoke-virtual {p0, v5}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Landroid/app/AppOpsManager;
 
-    .line 9095
+    .line 8425
     .local v0, "appOpsMgr":Landroid/app/AppOpsManager;
-    const/4 v6, 0x3
+    const/4 v3, 0x3
 
-    .line 9096
-    .local v6, "mode":I
+    .line 8426
+    .local v3, "mode":I
     if-eqz p6, :cond_2
 
-    .line 9097
+    .line 8427
     invoke-virtual {v0, p4, p1, p2}, Landroid/app/AppOpsManager;->noteOpNoThrow(IILjava/lang/String;)I
 
-    move-result v6
+    move-result v3
 
-    .line 9102
-    :goto_1
-    packed-switch v6, :pswitch_data_0
+    .line 8432
+    :goto_0
+    packed-switch v3, :pswitch_data_0
 
-    .line 9120
+    .line 8450
     :cond_1
     :pswitch_0
     if-nez p3, :cond_4
 
-    .line 9121
-    const/4 v8, 0x0
+    .line 8451
+    const/4 v5, 0x0
 
-    goto :goto_0
+    return v5
 
-    .line 9099
+    .line 8429
     :cond_2
     invoke-virtual {v0, p4, p1, p2}, Landroid/app/AppOpsManager;->checkOpNoThrow(IILjava/lang/String;)I
 
-    move-result v6
+    move-result v3
+
+    goto :goto_0
+
+    .line 8434
+    :pswitch_1
+    const/4 v5, 0x1
+
+    return v5
+
+    .line 8440
+    :pswitch_2
+
+    const/16 v5, 0x17
+
+    if-ne p4, v5, :cond_flyme_0
+
+    const/16 v5, 0x17
+
+    invoke-static {v5}, Lmeizu/security/FlymePermissionManager;->isFlymePermissionGranted(I)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_flyme_0
+
+    const/4 v5, 0x1
+
+    return v5
+
+    :cond_flyme_0
+
+    const/4 v5, 0x0
+
+    array-length v6, p5
+
+    :goto_1
+    if-ge v5, v6, :cond_1
+
+    aget-object v4, p5, v5
+
+    .line 8441
+    .local v4, "permission":Ljava/lang/String;
+    invoke-virtual {p0, v4}, Landroid/content/Context;->checkCallingOrSelfPermission(Ljava/lang/String;)I
+
+    move-result v7
+
+    if-nez v7, :cond_3
+
+    .line 8444
+    const/4 v5, 0x1
+
+    return v5
+
+    .line 8440
+    :cond_3
+    add-int/lit8 v5, v5, 0x1
 
     goto :goto_1
 
-    .line 9104
-    :pswitch_1
-    const/4 v8, 0x1
-
-    goto :goto_0
-
-    .line 9110
-    :pswitch_2
-    move-object v1, p5
-
-    .local v1, "arr$":[Ljava/lang/String;
-    array-length v5, v1
-
-    .local v5, "len$":I
-    const/4 v4, 0x0
-
-    .local v4, "i$":I
-    :goto_2
-    if-ge v4, v5, :cond_1
-
-    aget-object v7, v1, v4
-
-    .line 9111
-    .local v7, "permission":Ljava/lang/String;
-    invoke-virtual {p0, v7}, Landroid/content/Context;->checkCallingOrSelfPermission(Ljava/lang/String;)I
-
-    move-result v8
-
-    if-nez v8, :cond_3
-
-    .line 9114
-    const/4 v8, 0x1
-
-    goto :goto_0
-
-    .line 9110
-    :cond_3
-    add-int/lit8 v4, v4, 0x1
-
-    goto :goto_2
-
-    .line 9126
-    .end local v1    # "arr$":[Ljava/lang/String;
-    .end local v4    # "i$":I
-    .end local v5    # "len$":I
-    .end local v7    # "permission":Ljava/lang/String;
+    .line 8456
+    .end local v4    # "permission":Ljava/lang/String;
     :cond_4
-    new-instance v2, Ljava/lang/StringBuilder;
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 9127
-    .local v2, "exceptionMessage":Ljava/lang/StringBuilder;
-    invoke-virtual {v2, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 8457
+    .local v1, "exceptionMessage":Ljava/lang/StringBuilder;
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 9128
-    const-string v8, " was not granted "
+    .line 8458
+    const-string/jumbo v5, " was not granted "
 
-    invoke-virtual {v2, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 9129
-    array-length v8, p5
+    .line 8459
+    array-length v5, p5
 
-    const/4 v9, 0x1
+    const/4 v6, 0x1
 
-    if-le v8, v9, :cond_5
+    if-le v5, v6, :cond_5
 
-    .line 9130
-    const-string v8, " either of these permissions: "
+    .line 8460
+    const-string/jumbo v5, " either of these permissions: "
 
-    invoke-virtual {v2, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 9134
+    .line 8464
+    :goto_2
+    const/4 v2, 0x0
+
+    .local v2, "i":I
     :goto_3
-    const/4 v3, 0x0
+    array-length v5, p5
 
-    .local v3, "i":I
+    if-ge v2, v5, :cond_7
+
+    .line 8465
+    aget-object v5, p5, v2
+
+    invoke-virtual {v1, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 8466
+    array-length v5, p5
+
+    add-int/lit8 v5, v5, -0x1
+
+    if-ne v2, v5, :cond_6
+
+    const-string/jumbo v5, "."
+
     :goto_4
-    array-length v8, p5
+    invoke-virtual {v1, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    if-ge v3, v8, :cond_7
-
-    .line 9135
-    aget-object v8, p5, v3
-
-    invoke-virtual {v2, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 9136
-    array-length v8, p5
-
-    add-int/lit8 v8, v8, -0x1
-
-    if-ne v3, v8, :cond_6
-
-    const-string v8, "."
-
-    :goto_5
-    invoke-virtual {v2, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 9134
-    add-int/lit8 v3, v3, 0x1
-
-    goto :goto_4
-
-    .line 9132
-    .end local v3    # "i":I
-    :cond_5
-    const-string v8, " this permission: "
-
-    invoke-virtual {v2, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 8464
+    add-int/lit8 v2, v2, 0x1
 
     goto :goto_3
 
-    .line 9136
-    .restart local v3    # "i":I
+    .line 8462
+    .end local v2    # "i":I
+    :cond_5
+    const-string/jumbo v5, " this permission: "
+
+    invoke-virtual {v1, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    goto :goto_2
+
+    .line 8466
+    .restart local v2    # "i":I
     :cond_6
-    const-string v8, ", "
+    const-string/jumbo v5, ", "
 
-    goto :goto_5
+    goto :goto_4
 
-    .line 9139
+    .line 8469
     :cond_7
-    new-instance v8, Ljava/lang/SecurityException;
+    new-instance v5, Ljava/lang/SecurityException;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v9
+    move-result-object v6
 
-    invoke-direct {v8, v9}, Ljava/lang/SecurityException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v5, v6}, Ljava/lang/SecurityException;-><init>(Ljava/lang/String;)V
 
-    throw v8
+    throw v5
 
-    .line 9102
+    .line 8432
+    nop
+
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_1

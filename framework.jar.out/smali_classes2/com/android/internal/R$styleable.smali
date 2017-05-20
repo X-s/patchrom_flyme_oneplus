@@ -6461,6 +6461,22 @@
 
     sput-object v0, Lcom/android/internal/R$styleable;->ShapeDrawablePadding:[I
 
+    const/4 v1, 0x0
+
+    new-array v0, v1, [I
+
+    sput-object v0, Lcom/android/internal/R$styleable;->SizeAdaptiveLayout:[I
+
+    const v0, #android:^attr-private@layout_maxHeight#t
+
+    const v1, #android:^attr-private@layout_minHeight#t
+
+    filled-new-array {v0, v1}, [I
+
+    move-result-object v0
+
+    sput-object v0, Lcom/android/internal/R$styleable;->SizeAdaptiveLayout_Layout:[I
+
     new-array v0, v3, [I
 
     const v1, #android:attr@slideEdge#t

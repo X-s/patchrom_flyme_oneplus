@@ -13,6 +13,9 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/widget/AbsListView$OnItemDragListener;,
+        Landroid/widget/AbsListView$onTouchOutOfItemListener;,
+        Landroid/widget/AbsListView$HoldView;,
         Landroid/widget/AbsListView$PositionScroller;,
         Landroid/widget/AbsListView$AbsPositionScroller;,
         Landroid/widget/AbsListView$RecycleBin;,

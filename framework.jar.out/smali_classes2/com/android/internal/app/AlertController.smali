@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/internal/app/AlertController$FlymeInjector;,
         Lcom/android/internal/app/AlertController$CheckedItemAdapter;,
         Lcom/android/internal/app/AlertController$AlertParams;,
         Lcom/android/internal/app/AlertController$RecycleListView;,

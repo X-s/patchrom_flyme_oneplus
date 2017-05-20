@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/app/SystemServiceRegistry$FlymeAccessControlServiceFetcher;,
         Landroid/app/SystemServiceRegistry$StaticOuterContextServiceFetcher;,
         Landroid/app/SystemServiceRegistry$StaticServiceFetcher;,
         Landroid/app/SystemServiceRegistry$CachedServiceFetcher;,
@@ -841,6 +842,8 @@
     invoke-direct {v2}, Landroid/app/SystemServiceRegistry$70;-><init>()V
 
     invoke-static {v0, v1, v2}, Landroid/app/SystemServiceRegistry;->registerService(Ljava/lang/String;Ljava/lang/Class;Landroid/app/SystemServiceRegistry$ServiceFetcher;)V
+
+    invoke-static {}, Landroid/app/SystemServiceRegistry;->registerFlymeExtraManager()V
 
     return-void
 .end method

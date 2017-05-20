@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/app/ApplicationPackageManager$FlymeInjector;,
         Landroid/app/ApplicationPackageManager$OnPermissionsChangeListenerDelegate;,
         Landroid/app/ApplicationPackageManager$MoveCallbackDelegate;,
         Landroid/app/ApplicationPackageManager$ResourceName;

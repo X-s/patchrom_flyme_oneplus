@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/content/pm/PackageParser$FlymeInjector;,
         Landroid/content/pm/PackageParser$1;,
         Landroid/content/pm/PackageParser$PackageParserException;,
         Landroid/content/pm/PackageParser$ProviderIntentInfo;,
@@ -5210,6 +5211,7 @@
     .line 3270
     .local v15, "outerDepth":I
     :cond_21
+    invoke-static {v14}, Landroid/content/pm/PackageParser$FlymeInjector;->parseAccessMetaFromResource(Landroid/content/pm/PackageParser$Activity;)V
     :goto_8
     invoke-interface/range {p3 .. p3}, Lorg/xmlpull/v1/XmlPullParser;->next()I
 

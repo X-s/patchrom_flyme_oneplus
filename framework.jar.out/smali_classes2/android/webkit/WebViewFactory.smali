@@ -794,6 +794,7 @@
 
     .line 173
     :cond_2
+    :goto_flyme_0
     const-wide/16 v6, 0x10
 
     :try_start_1
