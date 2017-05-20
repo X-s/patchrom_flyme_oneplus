@@ -6,6 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/server/notification/NotificationManagerService$FlymeExtNotificationManagerServiceInternal;,
+        Lcom/android/server/notification/NotificationManagerService$FlymeWakeUpScreenRunnable;,
         Lcom/android/server/notification/NotificationManagerService$PolicyAccess;,
         Lcom/android/server/notification/NotificationManagerService$StatusBarNotificationHolder;,
         Lcom/android/server/notification/NotificationManagerService$DumpFilter;,
@@ -2231,6 +2233,8 @@
 
     invoke-virtual {v4, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
+    invoke-direct/range {p0 .. p1}, Lcom/android/server/notification/NotificationManagerService;->notifyFlymeWakeupScreen(Lcom/android/server/notification/NotificationRecord;)V
+
     .line 2707
     invoke-virtual/range {p0 .. p0}, Lcom/android/server/notification/NotificationManagerService;->updateLightsLocked()V
 
@@ -2951,11 +2955,7 @@
 
     invoke-virtual {v9, v0}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
 
-    move-object/from16 v0, p1
-
-    move/from16 v1, p3
-
-    invoke-direct {p0, v0, v1}, Lcom/android/server/notification/NotificationManagerService;->addFlymePackageRemoveByUserNumber(Lcom/android/server/notification/NotificationRecord;I)V
+    invoke-direct {p0, p1, p3}, Lcom/android/server/notification/NotificationManagerService;->addFlymePackageRemoveByUserNumber(Lcom/android/server/notification/NotificationRecord;I)V
 
     packed-switch p3, :pswitch_data_0
 

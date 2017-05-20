@@ -19,6 +19,8 @@
 
 .field final mKeyguardWallpaperFile:Ljava/io/File;
 
+.field mFlymeLockWallpaperFile:Ljava/io/File;
+
 .field final mWallpaper:Lcom/android/server/wallpaper/WallpaperManagerService$WallpaperData;
 
 .field final mWallpaperDir:Ljava/io/File;
@@ -104,6 +106,8 @@
     invoke-direct {v0, v1, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
 
     iput-object v0, p0, Lcom/android/server/wallpaper/WallpaperManagerService$WallpaperObserver;->mKeyguardWallpaperFile:Ljava/io/File;
+
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/wallpaper/WallpaperManagerService$WallpaperObserver;->initFlymeLockWallpaperFile()V
 
     .line 154
     return-void
@@ -275,6 +279,8 @@
     .end local v10    # "written":Z
     :cond_7
     :goto_1
+    invoke-direct {p0, v7}, Lcom/android/server/wallpaper/WallpaperManagerService$WallpaperObserver;->notifyFlymeLockWallpaperChanged(Ljava/io/File;)V
+
     monitor-exit v11
 
     goto :goto_0
