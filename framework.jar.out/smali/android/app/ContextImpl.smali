@@ -379,7 +379,7 @@
 
     move-result-object v12
 
-    invoke-direct {p0, v10}, Landroid/app/ContextImpl;->setFlymeThemeResource(Landroid/content/res/Resources;)V
+    invoke-direct {p0, v12}, Landroid/app/ContextImpl;->setFlymeThemeResource(Landroid/content/res/Resources;)V
 
     .line 1863
     :cond_4
