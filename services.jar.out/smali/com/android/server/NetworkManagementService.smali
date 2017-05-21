@@ -1066,7 +1066,7 @@
     :sswitch_data_0
     .sparse-switch
         0x1 -> :sswitch_0
-        0x6 -> :sswitch_1
+        0x4 -> :sswitch_1
     .end sparse-switch
 .end method
 
