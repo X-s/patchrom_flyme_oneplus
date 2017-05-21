@@ -7543,7 +7543,8 @@
 
     const/4 v14, 0x2
 
-    if-eq v13, v14, :cond_d
+    #if-eq v13, v14, :cond_d
+    goto/16: cond_d
 
     .line 2547
     const/4 v13, 0x3
