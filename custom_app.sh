@@ -24,8 +24,3 @@ if [ "$apkBaseName" = "TeleService" ];then
         echo ">>>> in custom_app for $apkBaseName to fix phone fc"
         applyPatch $apkBaseName $tempSmaliDir
 fi
-
-if [ "$apkBaseName" = "ConnectivitySettings" ];then
-        echo ">>>> in custom_app for $apkBaseName to fix apn save fc"
-        applyPatch $apkBaseName $tempSmaliDir
-fi
