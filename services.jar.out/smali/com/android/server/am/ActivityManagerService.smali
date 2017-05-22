@@ -13208,15 +13208,6 @@
 
     .line 17532
     :cond_17
-    invoke-static/range {p1 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->isRestartFavoriteApp(Lcom/android/server/am/ProcessRecord;)Z
-
-    move-result v11
-
-    if-eqz v11, :cond_flyme_0
-
-    const/4 v10, 0x1
-
-    :cond_flyme_0
     if-eqz v10, :cond_1a
 
     move-object/from16 v0, p1
@@ -112237,3 +112228,4 @@
     .line 22951
     return-void
 .end method
+
