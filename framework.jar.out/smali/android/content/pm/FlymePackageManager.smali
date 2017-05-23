@@ -6,9 +6,7 @@
 # static fields
 .field private static volatile mFpm:Landroid/content/pm/FlymePackageManager;
 
-
-# instance fields
-.field private mService:Landroid/content/pm/IFlymePackageManager;
+.field private static mService:Landroid/content/pm/IFlymePackageManager;
 
 
 # direct methods
@@ -46,7 +44,7 @@
 
     move-result-object v1
 
-    iput-object v1, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sput-object v1, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     .line 31
     return-void
@@ -57,41 +55,49 @@
     .param p0, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 37
     sget-object v0, Landroid/content/pm/FlymePackageManager;->mFpm:Landroid/content/pm/FlymePackageManager;
 
-    if-nez v0, :cond_1
+    if-nez v0, :cond_3
 
-    .line 38
     const-class v1, Landroid/content/pm/FlymePackageManager;
 
     monitor-enter v1
 
-    .line 39
     :try_start_0
     sget-object v0, Landroid/content/pm/FlymePackageManager;->mFpm:Landroid/content/pm/FlymePackageManager;
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_0
 
-    .line 40
+    sget-object v0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+
+    if-nez v0, :cond_1
+
+    :cond_0
     new-instance v0, Landroid/content/pm/FlymePackageManager;
 
     invoke-direct {v0, p0}, Landroid/content/pm/FlymePackageManager;-><init>(Landroid/content/Context;)V
 
     sput-object v0, Landroid/content/pm/FlymePackageManager;->mFpm:Landroid/content/pm/FlymePackageManager;
+
+    :cond_1
+    sget-object v0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+
+    if-nez v0, :cond_2
+
+    const/4 v0, 0x0
+
+    sput-object v0, Landroid/content/pm/FlymePackageManager;->mFpm:Landroid/content/pm/FlymePackageManager;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    :cond_0
+    :cond_2
     monitor-exit v1
 
-    .line 44
-    :cond_1
+    :cond_3
     sget-object v0, Landroid/content/pm/FlymePackageManager;->mFpm:Landroid/content/pm/FlymePackageManager;
 
     return-object v0
 
-    .line 38
     :catchall_0
     move-exception v0
 
@@ -159,7 +165,7 @@
 
     .line 57
     :try_start_0
-    iget-object v6, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v6, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-virtual {v5}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
 
@@ -203,7 +209,7 @@
 
     .line 65
     :try_start_1
-    iget-object v6, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v6, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-virtual {v5}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
 
@@ -232,7 +238,7 @@
 
     .line 71
     :try_start_2
-    iget-object v6, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v6, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-interface {v6, p1, p2}, Landroid/content/pm/IFlymePackageManager;->backupData(Ljava/lang/String;Ljava/lang/String;)Z
     :try_end_2
@@ -278,7 +284,7 @@
     .prologue
     .line 139
     :try_start_0
-    iget-object v1, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v1, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-interface {v1, p1, p2}, Landroid/content/pm/IFlymePackageManager;->changeInterceptPackage(Ljava/lang/String;Z)Z
     :try_end_0
@@ -307,7 +313,7 @@
     .prologue
     .line 193
     :try_start_0
-    iget-object v1, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v1, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-interface {v1, p1, p2}, Landroid/content/pm/IFlymePackageManager;->changeMayForbitPackage(Ljava/lang/String;Z)Z
     :try_end_0
@@ -343,7 +349,7 @@
     .prologue
     .line 124
     :try_start_0
-    iget-object v1, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v1, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-interface {v1}, Landroid/content/pm/IFlymePackageManager;->getInterceptPackage()Ljava/util/List;
     :try_end_0
@@ -379,7 +385,7 @@
     .prologue
     .line 106
     :try_start_0
-    iget-object v1, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v1, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-interface {v1}, Landroid/content/pm/IFlymePackageManager;->getInternalAppList()Ljava/util/List;
     :try_end_0
@@ -415,7 +421,7 @@
     .prologue
     .line 176
     :try_start_0
-    iget-object v1, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v1, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-interface {v1}, Landroid/content/pm/IFlymePackageManager;->getMayForbitPackage()Ljava/util/List;
     :try_end_0
@@ -443,7 +449,7 @@
     .prologue
     .line 115
     :try_start_0
-    iget-object v1, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v1, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-interface {v1, p1}, Landroid/content/pm/IFlymePackageManager;->getPackageActivateState(Ljava/lang/String;)Z
     :try_end_0
@@ -472,7 +478,7 @@
     .prologue
     .line 97
     :try_start_0
-    iget-object v1, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v1, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-interface {v1, p1, p2}, Landroid/content/pm/IFlymePackageManager;->getPackageInfoForVersion(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
     :try_end_0
@@ -499,7 +505,7 @@
     .prologue
     .line 159
     :try_start_0
-    iget-object v1, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v1, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-interface {v1}, Landroid/content/pm/IFlymePackageManager;->getProtectionState()Z
     :try_end_0
@@ -527,7 +533,7 @@
     .prologue
     .line 89
     :try_start_0
-    iget-object v1, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v1, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-interface {v1, p1}, Landroid/content/pm/IFlymePackageManager;->resetVersion(Ljava/lang/String;)V
     :try_end_0
@@ -561,7 +567,7 @@
     .line 132
     .local p1, "packageSet":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     :try_start_0
-    iget-object v1, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v1, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-interface {v1, p1}, Landroid/content/pm/IFlymePackageManager;->setInterceptPackage(Ljava/util/List;)V
     :try_end_0
@@ -588,7 +594,7 @@
     .prologue
     .line 203
     :try_start_0
-    iget-object v1, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v1, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-interface {v1, p1, p2, p3}, Landroid/content/pm/IFlymePackageManager;->setKeyGuardPackage(Ljava/lang/String;ZI)V
     :try_end_0
@@ -622,7 +628,7 @@
     .line 185
     .local p1, "packageSet":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     :try_start_0
-    iget-object v1, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v1, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-interface {v1, p1}, Landroid/content/pm/IFlymePackageManager;->setMayForbitPackage(Ljava/util/List;)V
     :try_end_0
@@ -648,7 +654,7 @@
     .prologue
     .line 168
     :try_start_0
-    iget-object v1, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v1, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-interface {v1, p1, p2}, Landroid/content/pm/IFlymePackageManager;->setProtectionState(ZLandroid/os/IBinder;)V
     :try_end_0
@@ -672,7 +678,7 @@
     .prologue
     .line 149
     :try_start_0
-    iget-object v1, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v1, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-interface {v1}, Landroid/content/pm/IFlymePackageManager;->syncPackageState()V
     :try_end_0
@@ -697,7 +703,7 @@
     .prologue
     .line 81
     :try_start_0
-    iget-object v1, p0, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
+    sget-object v1, Landroid/content/pm/FlymePackageManager;->mService:Landroid/content/pm/IFlymePackageManager;
 
     invoke-interface {v1, p1}, Landroid/content/pm/IFlymePackageManager;->updatePermissions(Ljava/lang/String;)V
     :try_end_0
