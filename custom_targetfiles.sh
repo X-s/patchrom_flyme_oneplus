@@ -2,8 +2,7 @@
 
 TARGET_DIR=out/merged_target_files
 
-mv $TARGET_DIR/SYSTEM/framework/flyme-res/flyme-res.apk $TARGET_DIR/SYSTEM/framework/hydrogen-framework-res.apk
-rm -rf $TARGET_DIR/SYSTEM/framework/flyme-res
+rm -rf $TARGET_DIR/SYSTEM/framework/hydrogen-framework-res.apk
 
 cp -f overlay/firmware-update/BTFM.bin $TARGET_DIR/BOOTABLE_IMAGES/
 cp -f overlay/firmware-update/emmc_appsboot.mbn $TARGET_DIR/BOOTABLE_IMAGES/

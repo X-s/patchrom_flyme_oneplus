@@ -2128,7 +2128,7 @@
     .locals 1
 
     .prologue
-    const-string v0, "/system/framework/hydrogen-framework-res.apk"
+    const-string v0, "/system/framework/flyme-res/flyme-res.apk"
 
     invoke-virtual {p0, v0}, Landroid/content/res/AssetManager;->addAssetPath(Ljava/lang/String;)I
 
