@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.setupwizardlib.SetupWizardLayout android:id="@id/setup_wizard_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" settings:suwBackgroundTile="@drawable/ic_settings_setup_title_bg" settings:suwHeaderText="@string/oneplus_use_fingerprint_to_unlock" settings:suwIllustrationHorizontalTile="@drawable/setup_illustration_horizontal_tile" settings:suwIllustrationImage="@drawable/oneplus_fingerprint_enrolling_title_bg"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:settings="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/SuwContentFrame">
+        <TextView android:id="@id/encryption_message" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/SuwDescription" />
+        <RadioGroup android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:checkedButton="@id/encrypt_require_password">
+            <RadioButton android:id="@id/encrypt_require_password" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <RadioButton android:id="@id/encrypt_dont_require_password" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </RadioGroup>
+    </LinearLayout>
+</com.android.setupwizardlib.SetupWizardLayout>

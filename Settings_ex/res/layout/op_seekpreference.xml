@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/oneplus_dashboard_tile_minimum_height">
+        <TextView android:textColor="?android:colorAccent" android:id="@id/header" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:text="@string/oneplus_screen_better_warm" android:layout_toLeftOf="@id/screen_color_mode_seekbar" />
+        <SeekBar android:id="@id/screen_color_mode_seekbar" android:layout_width="246.0dip" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+        <TextView android:textColor="?android:colorAccent" android:id="@id/end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/oneplus_screen_better_cold" android:layout_toRightOf="@id/screen_color_mode_seekbar" />
+    </RelativeLayout>
+</LinearLayout>

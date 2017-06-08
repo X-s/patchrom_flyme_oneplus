@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textAppearance="@style/TextAppearance.Switch" android:textSize="16.0sp" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/switch_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:textAlignment="viewStart" />
+    <com.android.settings_ex.widget.ToggleSwitch android:theme="@style/ThemeOverlay.SwitchBar" android:layout_gravity="center|right" android:id="@id/switch_widget" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:layout_gravity="bottom" android:background="@color/oneplus_switchar_line" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+</FrameLayout>

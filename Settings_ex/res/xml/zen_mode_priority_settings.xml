@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/zen_mode_priority_settings_title" android:key="zen_mode_priority_settings"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference android:persistent="false" android:title="@string/zen_mode_alarms" android:key="alarms" android:summary="@string/oneplus_zen_alarm_summary" android:defaultValue="true" />
+    <SwitchPreference android:persistent="false" android:title="@string/zen_mode_reminders" android:key="reminders" />
+    <SwitchPreference android:persistent="false" android:title="@string/zen_mode_events" android:key="events" />
+    <Preference android:title="@string/oneplus_favourite_contacts" android:key="favourite_contacts_settings" />
+    <com.android.settings_ex.DropDownPreference android:persistent="false" android:title="@string/zen_mode_messages" android:key="messages" />
+    <com.android.settings_ex.DropDownPreference android:persistent="false" android:title="@string/zen_mode_calls" android:key="calls" />
+    <SwitchPreference android:persistent="false" android:title="@string/zen_mode_repeat_callers" android:key="repeat_callers" />
+    <SwitchPreference android:persistent="false" android:title="@string/oneplus_suspend_notification" android:key="suspend_notification" />
+    <SwitchPreference android:persistent="false" android:title="@string/oneplus_led_support" android:key="led_switch" />
+    <Preference android:persistent="false" android:title="@string/manage_zen_access_title" android:key="manage_zen_access" android:fragment="com.android.settings_ex.notification.ZenAccessSettings" />
+</PreferenceScreen>

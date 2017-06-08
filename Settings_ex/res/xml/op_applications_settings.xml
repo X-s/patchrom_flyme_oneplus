@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/op_apps"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.widget.preference.OPPreference android:title="@string/oneplus_application_manage_title" android:key="oneplus_applications_manager_settings" android:fragment="com.android.settings_ex.applications.ManageApplications" />
+    <com.oneplus.widget.preference.OPPreference android:title="@string/oneplus_application_permisstion_manage_title" android:key="oneplus_applications_permission_settings" />
+    <com.oneplus.widget.preference.OPPreference android:title="@string/oneplus_default_application_setting" android:key="onepluse_default_applications_setting" />
+</PreferenceScreen>

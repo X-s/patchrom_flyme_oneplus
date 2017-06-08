@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/op_storage" settings:keywords="@string/op_storage"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <Preference android:id="@id/storage_settings" android:title="@string/storage_usb_settings" android:fragment="com.android.settings_ex.deviceinfo.StorageSettings" settings:keywords="@string/storage_usb_settings" />
+    <Preference android:id="@id/manage_memory" android:title="@string/memory_settings_title" android:fragment="com.android.settings_ex.applications.ProcessStatsSummary" settings:keywords="@string/memory_settings_title" />
+    <SwitchPreference android:title="@string/otg_read_enable" android:key="otg_read_enable" android:summary="@string/otg_read_summary" settings:keywords="@string/otg_read_summary" />
+</PreferenceScreen>

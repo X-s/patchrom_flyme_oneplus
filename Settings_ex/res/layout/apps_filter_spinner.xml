@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:theme="?switchBarTheme" android:background="@color/oneplus_switchbar_background_color" android:layout_width="fill_parent" android:layout_height="?android:actionBarSize"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Spinner android:id="@id/filter_spinner" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_alignWithParentIfMissing="true" android:textAlignment="viewStart" android:layout_marginStart="16.0dip" style="@style/OpSpinnerTheme" />
+    <View android:id="@id/row_divider" android:background="@color/oneplus_switchar_line" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>
