@@ -61,7 +61,7 @@ vendor_saved_apps := Bluetooth BluetoothExt BluetoothMidiService HTMLViewer KeyC
 					AntHalService datastatusnotification DiracAudioControlService DiracManager \
 					FidoCryptoService QtiTelephonyService SdCardService SampleAuthenticatorService \
 					shutdownlistener WfdService CNEService com.qualcomm.location QtiTetherService \
-					dpmserviceapp PermissionUtil SmscPlugger qcrilmsgtunnel SecureSampleAuthService
+					dpmserviceapp PermissionUtil SmscPlugger qcrilmsgtunnel SecureSampleAuthService colorservice
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.
