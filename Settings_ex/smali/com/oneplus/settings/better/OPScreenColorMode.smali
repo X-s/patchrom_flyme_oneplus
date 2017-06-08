@@ -408,6 +408,14 @@
 
     invoke-virtual {v0, v1}, Landroid/preference/PreferenceScreen;->removePreference(Landroid/preference/Preference;)Z
 
+    invoke-virtual {p0}, Lcom/oneplus/settings/better/OPScreenColorMode;->getPreferenceScreen()Landroid/preference/PreferenceScreen;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lcom/oneplus/settings/better/OPScreenColorMode;->mScreenColorModeBasicSettings:Lcom/android/settings_ex/ui/RadioButtonPreference;
+
+    invoke-virtual {v0, v1}, Landroid/preference/PreferenceScreen;->removePreference(Landroid/preference/Preference;)Z
+
     .line 66
     new-instance v0, Lcom/oneplus/settings/OneplusColorManager;
 
