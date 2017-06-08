@@ -1,3 +1,5 @@
+name="StockSettings.apk" certificate="build/security/platform.x509.pem" private_key="build/security/platform.pk8"
+name="Settings_ex.apk" certificate="build/security/platform.x509.pem" private_key="build/security/platform.pk8"
 name="Account.apk" certificate="PRESIGNED" private_key=""
 name="amap.apk" certificate="PRESIGNED" private_key=""
 name="AntHalService.apk" certificate="build/security/platform.x509.pem" private_key="build/security/platform.pk8"
