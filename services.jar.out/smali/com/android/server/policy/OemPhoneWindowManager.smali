@@ -1934,6 +1934,8 @@
 
     .prologue
     .line 1575
+    return-void
+
     const/4 v0, 0x1
 
     new-array v0, v0, [I
