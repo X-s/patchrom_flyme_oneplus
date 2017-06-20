@@ -11,13 +11,16 @@ if [ "$jarBaseName" = "framework" ];then
     do
         mv -v $tempSmaliDir/smali/${moveDirs[$dir_name]} $tempSmaliDir/smali_classes2/${moveDirs[$dir_name]}
     done
-    echo ">>>> in custom_jar $jarBaseName, use base Editor*.smali to replace OnePlus Editor*.smali"
+    echo ">>>> in custom_jar $jarBaseName, use base smali to replace OnePlus smali"
     rm -rf overlay/temp
     mkdir overlay/temp
     cp -rf ../base/framework.jar.out/smali_classes2/android/widget/Editor*.smali overlay/temp/
+    cp -rf ../base/framework.jar.out/smali_classes2/android/widget/AbsListView*.smali overlay/temp/
     idtoname ../base/framework-res/res/values/public.xml overlay/temp/
     rm -rf $tempSmaliDir/smali_classes2/android/widget/Editor*.smali
+    rm -rf $tempSmaliDir/smali_classes2/android/widget/AbsListView*.smali
     cp -rf overlay/temp/Editor*.smali $tempSmaliDir/smali_classes2/android/widget/
+    cp -rf overlay/temp/AbsListView*.smali $tempSmaliDir/smali_classes2/android/widget/
     nametoid framework-res/res/values/public.xml $tempSmaliDir/smali_classes2/android/widget/
     rm -rf overlay/temp
 fi
