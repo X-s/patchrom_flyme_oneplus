@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set android:shareInterpolator="false" android:zAdjustment="top"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <alpha android:interpolator="@interpolator/decelerate_cubic" android:duration="275" android:fillBefore="false" android:fillAfter="true" android:fromAlpha="1.0" android:toAlpha="0.0" android:fillEnabled="true" />
+    <translate android:interpolator="@interpolator/decelerate_cubic" android:duration="275" android:fillBefore="true" android:fillAfter="true" android:fromYDelta="0.0%" android:toYDelta="2.9999971%" android:fillEnabled="true" />
+</set>
