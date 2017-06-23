@@ -1,4 +1,5 @@
-
+ro.product.device=OnePlus
+ro.build.fingerprint=6.0.1/MMB29M/08191123:user/release-keys
 #
 #
 #
