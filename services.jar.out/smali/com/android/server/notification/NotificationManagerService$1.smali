@@ -248,14 +248,14 @@
     .param p4, "actionIndex"    # I
 
     .prologue
-    .line 671
+    .line 551
     iget-object v3, p0, Lcom/android/server/notification/NotificationManagerService$1;->this$0:Lcom/android/server/notification/NotificationManagerService;
 
     iget-object v4, v3, Lcom/android/server/notification/NotificationManagerService;->mNotificationList:Ljava/util/ArrayList;
 
     monitor-enter v4
 
-    .line 672
+    .line 552
     :try_start_0
     iget-object v3, p0, Lcom/android/server/notification/NotificationManagerService$1;->this$0:Lcom/android/server/notification/NotificationManagerService;
 
@@ -267,18 +267,18 @@
 
     check-cast v2, Lcom/android/server/notification/NotificationRecord;
 
-    .line 673
+    .line 553
     .local v2, "r":Lcom/android/server/notification/NotificationRecord;
     if-nez v2, :cond_0
 
-    .line 674
-    const-string v3, "NotificationService"
+    .line 554
+    const-string/jumbo v3, "NotificationService"
 
     new-instance v5, Ljava/lang/StringBuilder;
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v6, "No notification with key: "
+    const-string/jumbo v6, "No notification with key: "
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -293,17 +293,27 @@
     move-result-object v5
 
     invoke-static {v3, v5}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     monitor-exit v4
 
-    :goto_0
+    .line 555
     return-void
 
+    .line 557
     :cond_0
+
+    iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService$1;->this$0:Lcom/android/server/notification/NotificationManagerService;
+
+    invoke-virtual {v0, p3}, Lcom/android/server/notification/NotificationManagerService;->addFlymePackageClickNumber(Ljava/lang/String;)V
+
+    :try_start_1
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v0
 
+    .line 559
     .local v0, "now":J
     invoke-virtual {v2, v0, v1}, Lcom/android/server/notification/NotificationRecord;->getLifespanMs(J)I
 
@@ -317,21 +327,23 @@
 
     move-result v6
 
+    .line 558
     invoke-static {p3, p4, v3, v5, v6}, Lcom/android/server/EventLogTags;->writeNotificationActionClicked(Ljava/lang/String;IIII)V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 681
     monitor-exit v4
 
-    goto :goto_0
+    .line 550
+    return-void
 
+    .line 551
     .end local v0    # "now":J
     .end local v2    # "r":Lcom/android/server/notification/NotificationRecord;
     :catchall_0
     move-exception v3
 
     monitor-exit v4
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v3
 .end method

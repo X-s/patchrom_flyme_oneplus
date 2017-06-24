@@ -4331,6 +4331,8 @@
 
     .line 1467
     :cond_5
+    goto :goto_flyme_0
+
     iget-object v1, p0, Lcom/android/server/audio/AudioService;->mVolumeController:Lcom/android/server/audio/AudioService$VolumeController;
 
     move/from16 v0, p3
@@ -4358,6 +4360,9 @@
     invoke-static {v1, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     :cond_6
+
+    :goto_flyme_0
+
     move-object v1, p0
 
     move v3, p1

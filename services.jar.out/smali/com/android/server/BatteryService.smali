@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/server/BatteryService$FlymeInjector;,
         Lcom/android/server/BatteryService$LocalService;,
         Lcom/android/server/BatteryService$BinderService;,
         Lcom/android/server/BatteryService$BatteryListener;,
@@ -318,6 +319,8 @@
 
     .line 201
     :cond_1
+    invoke-static/range {p0 .. p0}, Lcom/android/server/BatteryService$FlymeInjector;->registerBootCompleted(Lcom/android/server/BatteryService;)V
+
     return-void
 .end method
 
@@ -2787,6 +2790,8 @@
 
     :cond_8
     :goto_7
+    invoke-static/range {p0 .. p0}, Lcom/android/server/BatteryService$FlymeInjector;->onBatteryLow(Lcom/android/server/BatteryService;)V
+
     iget-object v0, p0, Lcom/android/server/BatteryService;->mLed:Lcom/android/server/BatteryService$Led;
 
     invoke-virtual {v0}, Lcom/android/server/BatteryService$Led;->updateLightsLocked()V
@@ -3317,6 +3322,7 @@
     move-result v0
 
     if-nez v0, :cond_0
+    invoke-static/range {p0 .. p0}, Lcom/android/server/BatteryService$FlymeInjector;->writeMessageToFileIfNoPowerLocked(Lcom/android/server/BatteryService;)V
 
     iget-object v0, p0, Lcom/android/server/BatteryService;->mHandler:Landroid/os/Handler;
 
@@ -3606,6 +3612,8 @@
     invoke-virtual {v4, v5, v7, v3, v8}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;I)V
 
     invoke-direct {p0}, Lcom/android/server/BatteryService;->updateBatteryWarningLevelLocked()V
+
+    invoke-static {}, Lcom/android/server/BatteryService$FlymeInjector;->onBootPhase()V
 
     invoke-static {}, Landroid/util/OpFeatures;->isH2()Z
 

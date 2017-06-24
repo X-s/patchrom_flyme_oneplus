@@ -2832,6 +2832,8 @@
     invoke-virtual/range {v22 .. v24}, Landroid/graphics/RectF;->offset(FF)V
 
     :cond_1b
+    invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowStateAnimator$FlymeInjector;->moveShownFrameIfNeed(Lcom/android/server/wm/WindowStateAnimator;)V
+
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/server/wm/WindowStateAnimator;->mAlpha:F

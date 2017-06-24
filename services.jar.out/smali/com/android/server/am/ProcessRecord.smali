@@ -8,6 +8,8 @@
 
 
 # instance fields
+.field mFlymeKilledReason:Ljava/lang/String;
+
 .field final ReceiverRecords:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -2579,7 +2581,7 @@
 
     iget v1, p0, Lcom/android/server/am/ProcessRecord;->pid:I
 
-    invoke-static {v0, v1}, Lcom/android/server/am/ActivityManagerService;->oemKillProcessGroup(II)V
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/am/ProcessRecord;->killFlymeProcessGroup()V
 
     iget-boolean v0, p0, Lcom/android/server/am/ProcessRecord;->persistent:Z
 
@@ -2590,6 +2592,8 @@
     iput-boolean v4, p0, Lcom/android/server/am/ProcessRecord;->killedByAm:Z
 
     :cond_1
+    invoke-direct/range {p0 .. p1}, Lcom/android/server/am/ProcessRecord;->setFlymeKilledReason(Ljava/lang/String;)V
+
     invoke-static {v6, v7}, Landroid/os/Trace;->traceEnd(J)V
 
     :cond_2

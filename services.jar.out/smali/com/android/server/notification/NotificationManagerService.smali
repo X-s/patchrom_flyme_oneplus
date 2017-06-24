@@ -6,6 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/server/notification/NotificationManagerService$FlymeExtNotificationManagerServiceInternal;,
+        Lcom/android/server/notification/NotificationManagerService$FlymeWakeUpScreenRunnable;,
         Lcom/android/server/notification/NotificationManagerService$PolicyAccess;,
         Lcom/android/server/notification/NotificationManagerService$StatusBarNotificationHolder;,
         Lcom/android/server/notification/NotificationManagerService$DumpFilter;,
@@ -562,9 +564,13 @@
 
     iput-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mBuzzBeepBlinked:Ljava/lang/Runnable;
 
-    new-instance v0, Lcom/android/server/notification/NotificationManagerService$6;
+    #new-instance v0, Lcom/android/server/notification/NotificationManagerService$6;
 
-    invoke-direct {v0, p0}, Lcom/android/server/notification/NotificationManagerService$6;-><init>(Lcom/android/server/notification/NotificationManagerService;)V
+    #invoke-direct {v0, p0}, Lcom/android/server/notification/NotificationManagerService$6;-><init>(Lcom/android/server/notification/NotificationManagerService;)V
+
+    new-instance v0, Lcom/android/server/notification/NotificationManagerService$FlymeExtNotificationManagerServiceInternal;
+
+    invoke-direct {v0, p0}, Lcom/android/server/notification/NotificationManagerService$FlymeExtNotificationManagerServiceInternal;-><init>(Lcom/android/server/notification/NotificationManagerService;)V
 
     iput-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mService:Landroid/os/IBinder;
 
@@ -2301,6 +2307,8 @@
     move-result-object v5
 
     invoke-virtual {v4, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    invoke-direct/range {p0 .. p1}, Lcom/android/server/notification/NotificationManagerService;->notifyFlymeWakeupScreen(Lcom/android/server/notification/NotificationRecord;)V
 
     .line 2703
     invoke-virtual/range {p0 .. p0}, Lcom/android/server/notification/NotificationManagerService;->updateLightsLocked()V
@@ -10768,6 +10776,8 @@
     iput v11, v0, Lcom/android/server/notification/NotificationManagerService;->mWarningLevel:I
 
     :cond_3
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/notification/NotificationManagerService;->initFlymeExtraFields()V
+
     return-void
 
     .end local v4    # "pkgFilter":Landroid/content/IntentFilter;

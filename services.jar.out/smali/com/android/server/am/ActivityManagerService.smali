@@ -10,6 +10,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;,
         Lcom/android/server/am/ActivityManagerService$AppTaskImpl;,
         Lcom/android/server/am/ActivityManagerService$SleepTokenImpl;,
         Lcom/android/server/am/ActivityManagerService$LocalService;,
@@ -8984,6 +8985,22 @@
     :goto_9
     if-eqz v57, :cond_14
 
+    invoke-static/range {v22 .. v22}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->isFlymePackageShouldRestart(Landroid/content/Intent;)Z
+
+    move-result v6
+
+    if-eqz v6, :cond_flyme_0
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, v22
+
+    invoke-virtual {v0, v1}, Lcom/android/server/am/ActivityManagerService;->forceStopFlymePackageLocked(Landroid/content/Intent;)V
+
+    goto/16 :goto_flyme_0
+
+    :cond_flyme_0
+
     const-string v6, "android.intent.extra.UID"
 
     const/4 v8, -0x1
@@ -9019,6 +9036,7 @@
 
     .line 17396
     :cond_14
+    :goto_flyme_0
     if-eqz v66, :cond_18
 
     .line 17397
@@ -9196,6 +9214,13 @@
 
     :goto_b
     invoke-virtual {v8, v7, v6}, Lcom/android/server/am/BatteryStatsService;->notePackageInstalled(Ljava/lang/String;I)V
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, v22
+
+    invoke-static {v0, v1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->addFlymeAppLocked(Lcom/android/server/am/ActivityManagerService;Landroid/content/Intent;)V
+
     :try_end_2
     .catch Landroid/os/RemoteException; {:try_start_2 .. :try_end_2} :catch_1
 
@@ -17135,6 +17160,7 @@
 
     iput-boolean v0, v1, Lcom/android/server/am/ProcessRecord;->foregroundActivities:Z
 
+    invoke-static/range {p1 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->modifyFlymeOomAdj(Lcom/android/server/am/ProcessRecord;)V
     .line 19135
     move-object/from16 v0, p1
 
@@ -21897,6 +21923,16 @@
     .param p1, "func"    # Ljava/lang/String;
 
     .prologue
+
+    invoke-static {}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->isSystemUid()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
     move-result v1
@@ -40736,7 +40772,7 @@
 
     move/from16 v0, p2
 
-    invoke-static {v2, v0}, Lcom/android/server/am/ActivityManagerService;->killProcessGroup(II)V
+    invoke-static {v2, v0}, Lcom/android/server/am/ActivityManagerService;->killFlymeProcessGroup(II)V
 
     .line 5139
     const/4 v2, 0x1
@@ -72334,6 +72370,7 @@
 
     .local v12, "i":I
     :goto_5
+    :goto_flyme_0
     if-ge v12, v15, :cond_d
 
     if-lez p1, :cond_d
@@ -87052,6 +87089,19 @@
     .param p1, "taskId"    # I
 
     .prologue
+    invoke-static/range {p0 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->shouldKeepAppProcess(Lcom/android/server/am/ActivityManagerService;I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_flyme_0
+
+    invoke-static/range {p0 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->removeTaskNotKillProcess(Lcom/android/server/am/ActivityManagerService;I)Z
+
+    move-result v0
+
+    return v0
+
+    :cond_flyme_0
     const/4 v3, 0x0
 
     monitor-enter p0
@@ -107176,6 +107226,8 @@
     .end local v38    # "numCachedAndEmpty":I
     .end local v53    # "trackerMemFactor":I
     :cond_46
+    invoke-static/range {p0 .. p0}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->updateFlymeOomAdjLocked(Lcom/android/server/am/ActivityManagerService;)V
+
     return-void
 
     .restart local v4    # "app":Lcom/android/server/am/ProcessRecord;
@@ -107686,6 +107738,8 @@
     monitor-exit v0
 
     :goto_0
+    invoke-static/range {p1 .. p2}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->adjustFlymeShrinkerGround(Lcom/android/server/am/ActivityRecord;Z)V
+
     return-void
 
     :catchall_0

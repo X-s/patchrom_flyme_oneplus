@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/server/wallpaper/WallpaperManagerService$FlymeChildrenModeToast;,
         Lcom/android/server/wallpaper/WallpaperManagerService$MyPackageMonitor;,
         Lcom/android/server/wallpaper/WallpaperManagerService$WallpaperConnection;,
         Lcom/android/server/wallpaper/WallpaperManagerService$KeyguardWallpaperData;,
@@ -3002,6 +3003,8 @@
 
     invoke-interface {v2, v5, v6}, Lorg/xmlpull/v1/XmlSerializer;->endTag(Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
 
+    invoke-direct/range {p0 .. p1}, Lcom/android/server/wallpaper/WallpaperManagerService;->sendFlymeWallpaperBroadcastAsUser(Lcom/android/server/wallpaper/WallpaperManagerService$WallpaperData;)V
+
     .line 1615
     invoke-interface {v2}, Lorg/xmlpull/v1/XmlSerializer;->endDocument()V
 
@@ -5919,6 +5922,8 @@
     .local v1, "keyguardWallpaperInfoFile":Ljava/io/File;
     invoke-virtual {v1}, Ljava/io/File;->delete()Z
 
+    invoke-direct/range {p0 .. p1}, Lcom/android/server/wallpaper/WallpaperManagerService;->onFlymeRemoveUser(I)V
+
     monitor-exit v5
 
     goto :goto_0
@@ -7444,6 +7449,18 @@
     .param p2, "callingPackage"    # Ljava/lang/String;
 
     .prologue
+
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/wallpaper/WallpaperManagerService;->isFlymeChildrenMode()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_flyme_0
+
+    const/4 v0, 0x0
+
+    return-object v0
+
+    :cond_flyme_0
     const/4 v3, 0x0
 
     .line 1080
@@ -7634,6 +7651,9 @@
     const/4 v7, 0x1
 
     iput-boolean v7, v6, Lcom/android/server/wallpaper/WallpaperManagerService$WallpaperData;->imageWallpaperPending:Z
+
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/wallpaper/WallpaperManagerService;->setFlymeWallpaperSimultaneously()V
+
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 

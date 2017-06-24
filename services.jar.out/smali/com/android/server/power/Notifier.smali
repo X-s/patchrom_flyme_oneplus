@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/server/power/Notifier$FlymeInjector;,
         Lcom/android/server/power/Notifier$NotifierHandler;
     }
 .end annotation
