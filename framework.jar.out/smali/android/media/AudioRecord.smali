@@ -2521,13 +2521,11 @@
 
     move-result-object v0
 
-    .line 907
     .local v0, "context":Landroid/content/Context;
     new-instance v2, Landroid/util/Permission;
 
     invoke-direct {v2, v0}, Landroid/util/Permission;-><init>(Landroid/content/Context;)V
 
-    .line 908
     .local v2, "requester":Landroid/util/Permission;
     const-string v4, "android.permission.RECORD_AUDIO"
 
@@ -2662,7 +2660,7 @@
 
     move-result v2
 
-    invoke-direct {p0, v0, v2}, Landroid/media/AudioRecord;->native_start(II)I
+    invoke-direct {p0, v0, v2}, Landroid/media/AudioRecord;->hook_native_start(II)I
 
     move-result v0
 
@@ -2756,4 +2754,30 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
+.end method
+
+.method private hook_native_start(II)I
+    .locals 1
+    .param p1, "syncEvent"    # I
+    .param p2, "sessionId"    # I
+
+    .prologue
+    const/16 v0, 0x1b
+
+    invoke-static {v0}, Lmeizu/security/FlymePermissionManager;->isFlymePermissionGranted(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    invoke-direct {p0, p1, p2}, Landroid/media/AudioRecord;->native_start(II)I
+
+    move-result v0
+
+    return v0
+
+    :cond_0
+    const/4 v0, -0x1
+
+    return v0
 .end method

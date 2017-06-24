@@ -284,7 +284,6 @@
 
     invoke-virtual {v5, v6, v8, v9}, Landroid/widget/AbsListView;->postDelayed(Ljava/lang/Runnable;J)Z
 
-    .line 3344
     .end local v0    # "child":Landroid/view/View;
     .end local v2    # "longClickable":Z
     .end local v3    # "longPressTimeout":I

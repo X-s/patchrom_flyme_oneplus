@@ -32,6 +32,10 @@
 
 
 # instance fields
+.field private mFlymeDividerFilter:Z
+
+.field private mFlymePreferenceView:Landroid/view/View;
+
 .field private mBaseMethodCalled:Z
 
 .field private mCanRecycleLayout:Z
@@ -127,12 +131,10 @@
     .param p2, "attrs"    # Landroid/util/AttributeSet;
 
     .prologue
-    .line 333
-    const v0, 0x101008e
+    const v0, #android:attr@preferenceStyle#t
 
     invoke-direct {p0, p1, p2, v0}, Landroid/preference/Preference;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    .line 334
     return-void
 .end method
 
@@ -164,51 +166,38 @@
 
     const/4 v4, 0x1
 
-    .line 219
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 102
     const v3, 0x7fffffff
 
     iput v3, p0, Landroid/preference/Preference;->mOrder:I
 
-    .line 117
     iput-boolean v4, p0, Landroid/preference/Preference;->mEnabled:Z
 
-    .line 118
     iput-boolean v4, p0, Landroid/preference/Preference;->mSelectable:Z
 
-    .line 120
     iput-boolean v4, p0, Landroid/preference/Preference;->mPersistent:Z
 
-    .line 123
     iput-boolean v4, p0, Landroid/preference/Preference;->mDependencyMet:Z
 
-    .line 124
     iput-boolean v4, p0, Landroid/preference/Preference;->mParentDependencyMet:Z
 
-    .line 129
     iput-boolean v4, p0, Landroid/preference/Preference;->mShouldDisableView:Z
 
-    .line 131
-    const v3, 0x109009d
+    const v3, #android:layout@preference#t
 
     iput v3, p0, Landroid/preference/Preference;->mLayoutResId:I
 
-    .line 133
     iput-boolean v4, p0, Landroid/preference/Preference;->mCanRecycleLayout:Z
 
-    .line 220
     iput-object p1, p0, Landroid/preference/Preference;->mContext:Landroid/content/Context;
 
-    .line 222
     sget-object v3, Lcom/android/internal/R$styleable;->Preference:[I
 
     invoke-virtual {p1, p2, v3, p3, p4}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
 
     move-result-object v0
 
-    .line 224
     .local v0, "a":Landroid/content/res/TypedArray;
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->getIndexCount()I
 
@@ -430,14 +419,11 @@
 
     if-nez v3, :cond_1
 
-    .line 290
     iput-boolean v5, p0, Landroid/preference/Preference;->mCanRecycleLayout:Z
 
-    .line 292
     :cond_1
     return-void
 
-    .line 226
     nop
 
     :pswitch_data_0
@@ -1642,6 +1628,8 @@
 
     if-eqz v0, :cond_0
 
+    return v0
+
     iget-boolean v0, p0, Landroid/preference/Preference;->mParentDependencyMet:Z
 
     if-eqz v0, :cond_0
@@ -1802,8 +1790,7 @@
 
     const/4 v8, 0x0
 
-    .line 546
-    const v7, 0x1020016
+    const v7, #android:id@title#t
 
     invoke-virtual {p1, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -1838,7 +1825,7 @@
     .end local v5    # "title":Ljava/lang/CharSequence;
     :cond_0
     :goto_0
-    const v7, 0x1020010
+    const v7, #android:id@summary#t
 
     invoke-virtual {p1, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -1873,7 +1860,7 @@
     .end local v3    # "summary":Ljava/lang/CharSequence;
     :cond_1
     :goto_1
-    const v7, 0x1020006
+    const v7, #android:id@icon#t
 
     invoke-virtual {p1, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -1937,7 +1924,7 @@
 
     .line 582
     :cond_5
-    const v7, 0x102038f
+    const v7, #android:id@icon_frame#t
 
     invoke-virtual {p1, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -1959,7 +1946,7 @@
 
     .line 587
     :cond_6
-    const v7, 0x102038e
+    const v7, #android:id@secondary_icon#t
 
     invoke-virtual {p1, v7}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -1980,13 +1967,11 @@
 
     if-eqz v7, :cond_9
 
-    .line 591
     :cond_7
     iget-object v7, p0, Landroid/preference/Preference;->mSecondaryIcon:Landroid/graphics/drawable/Drawable;
 
     if-nez v7, :cond_8
 
-    .line 592
     invoke-virtual {p0}, Landroid/preference/Preference;->getContext()Landroid/content/Context;
 
     move-result-object v7
@@ -2115,7 +2100,7 @@
 
     .line 521
     .local v0, "layout":Landroid/view/View;
-    const v3, 0x1020018
+    const v3, #android:id@widget_frame#t
 
     invoke-virtual {v0, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -3397,4 +3382,143 @@
     move-result-object v0
 
     return-object v0
+.end method
+
+.method private flymeShouldRecycle()V
+    .locals 2
+
+    .prologue
+    invoke-virtual {p0}, Landroid/preference/Preference;->getClass()Ljava/lang/Class;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
+
+    move-result-object v0
+
+    const-string v1, "com.meizu"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Landroid/preference/Preference;->mCanRecycleLayout:Z
+
+    :cond_0
+    return-void
+.end method
+
+.method public filterDivider(Z)V
+    .locals 0
+    .param p1, "filter"    # Z
+
+    .prologue
+    iput-boolean p1, p0, Landroid/preference/Preference;->mFlymeDividerFilter:Z
+
+    return-void
+.end method
+
+.method public getPreferenceView()Landroid/view/View;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/preference/Preference;->mFlymePreferenceView:Landroid/view/View;
+
+    return-object v0
+.end method
+
+.method public isFilterDivider()Z
+    .locals 1
+
+    .prologue
+    iget-boolean v0, p0, Landroid/preference/Preference;->mFlymeDividerFilter:Z
+
+    return v0
+.end method
+
+.method public final onPreferenceChange()V
+    .locals 6
+
+    .prologue
+    invoke-virtual {p0}, Landroid/preference/Preference;->getOnPreferenceClickListener()Landroid/preference/Preference$OnPreferenceClickListener;
+
+    move-result-object v5
+
+    if-eqz v5, :cond_0
+
+    invoke-virtual {p0}, Landroid/preference/Preference;->getOnPreferenceClickListener()Landroid/preference/Preference$OnPreferenceClickListener;
+
+    move-result-object v5
+
+    invoke-interface {v5, p0}, Landroid/preference/Preference$OnPreferenceClickListener;->onPreferenceClick(Landroid/preference/Preference;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_0
+
+    return-void
+
+    :cond_0
+    invoke-virtual {p0}, Landroid/preference/Preference;->getPreferenceManager()Landroid/preference/PreferenceManager;
+
+    move-result-object v3
+
+    .local v3, "preferenceManager":Landroid/preference/PreferenceManager;
+    invoke-virtual {v3}, Landroid/preference/PreferenceManager;->getPreferenceScreen()Landroid/preference/PreferenceScreen;
+
+    move-result-object v4
+
+    .local v4, "preferenceScreen":Landroid/preference/PreferenceScreen;
+    if-eqz v3, :cond_1
+
+    invoke-virtual {v3}, Landroid/preference/PreferenceManager;->getOnPreferenceTreeClickListener()Landroid/preference/PreferenceManager$OnPreferenceTreeClickListener;
+
+    move-result-object v2
+
+    .local v2, "listener":Landroid/preference/PreferenceManager$OnPreferenceTreeClickListener;
+    if-eqz v4, :cond_1
+
+    if-eqz v2, :cond_1
+
+    invoke-interface {v2, v4, p0}, Landroid/preference/PreferenceManager$OnPreferenceTreeClickListener;->onPreferenceTreeClick(Landroid/preference/PreferenceScreen;Landroid/preference/Preference;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_1
+
+    return-void
+
+    .end local v2    # "listener":Landroid/preference/PreferenceManager$OnPreferenceTreeClickListener;
+    :cond_1
+    invoke-virtual {p0}, Landroid/preference/Preference;->getIntent()Landroid/content/Intent;
+
+    move-result-object v1
+
+    .local v1, "intent":Landroid/content/Intent;
+    if-eqz v1, :cond_2
+
+    invoke-virtual {p0}, Landroid/preference/Preference;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    .local v0, "context":Landroid/content/Context;
+    invoke-virtual {v0, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+
+    .end local v0    # "context":Landroid/content/Context;
+    :cond_2
+    return-void
+.end method
+
+.method public setPreferenceView(Landroid/view/View;)V
+    .locals 0
+    .param p1, "view"    # Landroid/view/View;
+
+    .prologue
+    iput-object p1, p0, Landroid/preference/Preference;->mFlymePreferenceView:Landroid/view/View;
+
+    return-void
 .end method

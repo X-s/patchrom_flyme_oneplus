@@ -1079,7 +1079,6 @@
     .param p0, "cameraId"    # I
 
     .prologue
-    .line 370
     invoke-static {}, Landroid/util/OpFeatures;->isSupportedCTAPermissionControl()Z
 
     move-result v0
@@ -2561,4 +2560,27 @@
 .end method
 
 .method public final native unlock()V
+.end method
+
+.method private static isFlymePermissionGranted()Z
+    .locals 1
+
+    .prologue
+    const/16 v0, 0x4c
+
+    invoke-static {v0}, Lmeizu/security/FlymePermissionManager;->isFlymePermissionGranted(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x0
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x1
+
+    goto :goto_0
 .end method

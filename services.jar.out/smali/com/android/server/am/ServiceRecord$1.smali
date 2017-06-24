@@ -303,7 +303,7 @@
 
     iget-object v2, v2, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
-    const v3, 0x1060064
+    const v3, #android:color@system_notification_accent_color#t
 
     invoke-virtual {v2, v3}, Landroid/content/Context;->getColor(I)I
 
@@ -320,7 +320,7 @@
 
     iget-object v2, v2, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
-    const v3, 0x104037f
+    const v3, #android:string@app_running_notification_title#t
 
     const/4 v4, 0x1
 
@@ -345,7 +345,7 @@
 
     iget-object v2, v2, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
-    const v3, 0x1040380
+    const v3, #android:string@app_running_notification_text#t
 
     const/4 v4, 0x1
 
@@ -501,6 +501,14 @@
     .line 508
     .end local v13    # "e":Ljava/lang/RuntimeException;
     :cond_3
+    :goto_flyme_0
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/server/am/ServiceRecord$1;->this$0:Lcom/android/server/am/ServiceRecord;
+
+    invoke-virtual {v2, v8}, Lcom/android/server/am/ServiceRecord;->setFlymeNotification(Landroid/app/Notification;)V
+    
     const/4 v2, 0x1
 
     :try_start_3

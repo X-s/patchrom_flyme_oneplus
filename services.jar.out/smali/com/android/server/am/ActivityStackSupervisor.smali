@@ -114,6 +114,14 @@
 
 
 # instance fields
+.field mFlymeAccessControlManager:Lmeizu/security/AccessControlManager;
+
+.field mFlymePackageManagerService:Lcom/android/server/pm/FlymePackageManagerService;
+
+.field mFlymeRealPm:Lcom/android/server/pm/PackageManagerService;
+
+.field mIsIntercepted:Z
+
 .field inResumeTopActivity:Z
 
 .field public lBoostCpuParamVal:[I
@@ -532,7 +540,7 @@
 
     move-result-object v0
 
-    const v1, 0x11200a6
+    const v1, #android:bool@config_enableCpuBoostForAppLaunch#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -549,7 +557,7 @@
 
     move-result-object v0
 
-    const v1, 0x11200a7
+    const v1, #android:bool@config_disablePacking#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -571,7 +579,7 @@
 
     move-result-object v0
 
-    const v1, 0x10e00a4
+    const v1, #android:integer@launchboost_timeout_param#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -588,7 +596,7 @@
 
     move-result-object v0
 
-    const v1, 0x1070046
+    const v1, #android:array@launchboost_param_value#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getIntArray(I)[I
 
@@ -611,7 +619,7 @@
 
     move-result-object v0
 
-    const v1, 0x10e00a5
+    const v1, #android:integer@disablepacking_timeout_param#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -628,7 +636,7 @@
 
     move-result-object v0
 
-    const v1, 0x1070047
+    const v1, #android:array@launchboost_packing_param_value#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getIntArray(I)[I
 
@@ -12612,7 +12620,6 @@
     .param p5, "userId"    # I
 
     .prologue
-    .line 896
     :try_start_0
     invoke-static {}, Landroid/app/AppGlobals;->getPackageManager()Landroid/content/pm/IPackageManager;
 
@@ -16484,18 +16491,15 @@
 
     move/from16 v7, p17
 
-    .line 970
     invoke-virtual/range {v2 .. v7}, Lcom/android/server/am/ActivityStackSupervisor;->resolveActivity(Landroid/content/Intent;Ljava/lang/String;ILandroid/app/ProfilerInfo;I)Landroid/content/pm/ActivityInfo;
 
     move-result-object v30
 
-    .line 975
     .local v30, "aInfo":Landroid/content/pm/ActivityInfo;
     sget-boolean v2, Lcom/android/server/am/OnePlusAppBootManager;->DEBUG:Z
 
     if-eqz v2, :cond_1
 
-    .line 976
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -21556,5 +21560,15 @@
     .end local v5    # "stackNdx":I
     .end local v6    # "stacks":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ActivityStack;>;"
     :cond_8
+    return-void
+.end method
+
+.method setPackageManager(Lcom/android/server/pm/PackageManagerService;)V
+    .locals 0
+    .param p1, "pm"    # Lcom/android/server/pm/PackageManagerService;
+
+    .prologue
+    iput-object p1, p0, Lcom/android/server/am/ActivityStackSupervisor;->mFlymeRealPm:Lcom/android/server/pm/PackageManagerService;
+
     return-void
 .end method

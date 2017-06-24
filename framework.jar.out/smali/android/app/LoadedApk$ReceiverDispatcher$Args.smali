@@ -382,7 +382,7 @@
 
     move-result-object v10
 
-    const-string/jumbo v11, "ms"
+    const-string v11, "ms"
 
     invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

@@ -746,22 +746,18 @@
 
     invoke-static {v0, v1}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1639
     :cond_1
     return-void
 
-    .line 1416
     :pswitch_1
     const-string v0, "activityStart"
 
     invoke-static {v12, v13, v0}, Landroid/os/Trace;->traceBegin(JLjava/lang/String;)V
 
-    .line 1417
     iget-object v9, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v9, Landroid/app/ActivityThread$ActivityClientRecord;
 
-    .line 1419
     .local v9, "r":Landroid/app/ActivityThread$ActivityClientRecord;
     iget-object v0, p0, Landroid/app/ActivityThread$H;->this$0:Landroid/app/ActivityThread;
 
@@ -1852,5 +1848,32 @@
         :pswitch_2f
         :pswitch_30
         :pswitch_31
+    .end packed-switch
+.end method
+
+.method private handleFlymeMessage(Landroid/os/Message;)V
+    .locals 2
+    .param p1, "msg"    # Landroid/os/Message;
+
+    .prologue
+    iget v0, p1, Landroid/os/Message;->what:I
+
+    packed-switch v0, :pswitch_data_0
+
+    :goto_0
+    return-void
+
+    :pswitch_0
+    iget-object v0, p0, Landroid/app/ActivityThread$H;->this$0:Landroid/app/ActivityThread;
+
+    iget v1, p1, Landroid/os/Message;->arg1:I
+
+    invoke-virtual {v0, v1}, Landroid/app/ActivityThread;->handleShrinkMemory(I)V
+
+    goto :goto_0
+
+    :pswitch_data_0
+    .packed-switch 0xcb
+        :pswitch_0
     .end packed-switch
 .end method

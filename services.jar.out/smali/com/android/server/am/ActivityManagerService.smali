@@ -1,4 +1,4 @@
-.class public final Lcom/android/server/am/ActivityManagerService;
+.class public Lcom/android/server/am/ActivityManagerService;
 .super Landroid/app/ActivityManagerNative;
 .source "ActivityManagerService.java"
 
@@ -2746,7 +2746,7 @@
 
     move-result-object v1
 
-    const v2, 0x1070058
+    const v2, #android:array@backgroundprocess_detection_app_blacklist#t
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
 
@@ -2785,7 +2785,7 @@
 
     move-result-object v0
 
-    const v1, 0x1070053
+    const v1, #android:array@config_oemImportantProcesses#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
 
@@ -2869,7 +2869,7 @@
 
     move-result-object v0
 
-    const v1, 0x1070054
+    const v1, #android:array@config_oemBoostAppLaunchList#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
 
@@ -4082,10 +4082,11 @@
     .param p5, "nowElapsed"    # J
 
     .prologue
-    .line 19593
+
+    invoke-static/range {p1 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->applyFlymeOomAdjLocked(Lcom/android/server/am/ProcessRecord;)V
+
     const/16 v21, 0x1
 
-    .line 19595
     .local v21, "success":Z
     move-object/from16 v0, p1
 
@@ -8979,12 +8980,10 @@
 
     const/16 v57, 0x1
 
-    .line 17390
     .local v57, "killProcess":Z
     :goto_9
     if-eqz v57, :cond_14
 
-    .line 17391
     const-string v6, "android.intent.extra.UID"
 
     const/4 v8, -0x1
@@ -21898,20 +21897,16 @@
     .param p1, "func"    # Ljava/lang/String;
 
     .prologue
-    .line 18148
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
     move-result v1
 
-    .line 18149
     .local v1, "uid":I
     if-nez v1, :cond_1
 
-    .line 18155
     :cond_0
     return-void
 
-    .line 18153
     :cond_1
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
@@ -29075,7 +29070,7 @@
 
     .line 12187
     .local v0, "res":Landroid/content/res/Resources;
-    const v1, 0x1120085
+    const v1, #android:bool@config_hasRecents#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -29083,8 +29078,7 @@
 
     iput-boolean v1, p0, Lcom/android/server/am/ActivityManagerService;->mHasRecents:Z
 
-    .line 12188
-    const v1, 0x1050002
+    const v1, #android:dimen@thumbnail_width#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -29092,8 +29086,7 @@
 
     iput v1, p0, Lcom/android/server/am/ActivityManagerService;->mThumbnailWidth:I
 
-    .line 12189
-    const v1, 0x1050001
+    const v1, #android:dimen@thumbnail_height#t
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -34354,7 +34347,11 @@
     .param p2, "userName"    # Ljava/lang/String;
 
     .prologue
-    .line 20895
+
+    invoke-static/range {p0 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->flymeShowUserSwitchDialog(Lcom/android/server/am/ActivityManagerService;I)V
+
+    return-void
+
     new-instance v0, Lcom/android/server/am/UserSwitchingDialog;
 
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
@@ -36450,9 +36447,9 @@
 
     iget-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
 
-    const v5, 0x10a0061
+    const v5, #android:anim@screen_user_exit#t
 
-    const v6, 0x10a0060
+    const v6, #android:anim@screen_user_enter#t
 
     invoke-virtual {v4, v5, v6}, Lcom/android/server/wm/WindowManagerService;->startFreezingScreen(II)V
 
@@ -36566,7 +36563,7 @@
 
     const/4 v5, 0x0
 
-    invoke-virtual {v4, v5}, Lcom/android/server/wm/WindowManagerService;->lockNow(Landroid/os/Bundle;)V
+    #invoke-virtual {v4, v5}, Lcom/android/server/wm/WindowManagerService;->lockNow(Landroid/os/Bundle;)V
 
     .line 20969
     :goto_1
@@ -72354,6 +72351,17 @@
 
     .line 9018
     .local v18, "tr":Lcom/android/server/am/TaskRecord;
+
+    invoke-static/range {v18 .. v18}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->isFlymeMayForbitPackage(Lcom/android/server/am/TaskRecord;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_flyme_0
+
+    goto :goto_flyme_0
+
+    :cond_flyme_0
+
     move-object/from16 v0, v18
 
     iget v2, v0, Lcom/android/server/am/TaskRecord;->userId:I
@@ -73864,31 +73872,42 @@
 
     move-result-object v0
 
-    .line 9081
     .local v0, "tr":Lcom/android/server/am/TaskRecord;
+
+    invoke-static/range {p0 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->isHomeTask(Lcom/android/server/am/ActivityManagerService;I)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_flyme_0
+
+    invoke-static/range {p0 .. p0}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->getHomeThumbnail(Lcom/android/server/am/ActivityManagerService;)Landroid/app/ActivityManager$TaskThumbnail;
+
+    move-result-object v1
+
+    monitor-exit p0
+
+    return-object v1
+
+    :cond_flyme_0
+
     if-eqz v0, :cond_0
 
-    .line 9082
     invoke-virtual {v0}, Lcom/android/server/am/TaskRecord;->getTaskThumbnailLocked()Landroid/app/ActivityManager$TaskThumbnail;
 
     move-result-object v1
 
     monitor-exit p0
 
-    .line 9085
     :goto_0
     return-object v1
 
-    .line 9084
     :cond_0
     monitor-exit p0
 
-    .line 9085
     const/4 v1, 0x0
 
     goto :goto_0
 
-    .line 9084
     .end local v0    # "tr":Lcom/android/server/am/TaskRecord;
     :catchall_0
     move-exception v1
@@ -86939,51 +86958,43 @@
 
     invoke-static {v1, v2}, Landroid/util/Slog;->wtfStack(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3087
     iget v1, p1, Lcom/android/server/am/ProcessRecord;->pid:I
 
     invoke-static {v1}, Landroid/os/Process;->killProcessQuiet(I)V
 
-    .line 3088
     iget v1, p1, Lcom/android/server/am/ProcessRecord;->uid:I
 
     iget v2, p1, Lcom/android/server/am/ProcessRecord;->pid:I
 
-    invoke-static {v1, v2}, Lcom/android/server/am/ActivityManagerService;->killProcessGroup(II)V
+    invoke-static {v1, v2}, Lcom/android/server/am/ActivityManagerService;->killFlymeProcessGroup(II)V
 
-    .line 3090
     :cond_0
     iget v1, p0, Lcom/android/server/am/ActivityManagerService;->mLruProcessActivityStart:I
 
     if-gt v0, v1, :cond_1
 
-    .line 3091
     iget v1, p0, Lcom/android/server/am/ActivityManagerService;->mLruProcessActivityStart:I
 
     add-int/lit8 v1, v1, -0x1
 
     iput v1, p0, Lcom/android/server/am/ActivityManagerService;->mLruProcessActivityStart:I
 
-    .line 3093
     :cond_1
     iget v1, p0, Lcom/android/server/am/ActivityManagerService;->mLruProcessServiceStart:I
 
     if-gt v0, v1, :cond_2
 
-    .line 3094
     iget v1, p0, Lcom/android/server/am/ActivityManagerService;->mLruProcessServiceStart:I
 
     add-int/lit8 v1, v1, -0x1
 
     iput v1, p0, Lcom/android/server/am/ActivityManagerService;->mLruProcessServiceStart:I
 
-    .line 3096
     :cond_2
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
 
     invoke-virtual {v1, v0}, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
 
-    .line 3098
     :cond_3
     return-void
 .end method
@@ -87043,10 +87054,8 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 9396
     monitor-enter p0
 
-    .line 9397
     :try_start_0
     const-string v4, "android.permission.REMOVE_TASKS"
 
@@ -87054,14 +87063,12 @@
 
     invoke-virtual {p0, v4, v5}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 9399
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     move-result-wide v0
 
-    .line 9401
     .local v0, "ident":J
     :try_start_1
     iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
@@ -87072,11 +87079,9 @@
 
     move-result-object v2
 
-    .line 9402
     .local v2, "tr":Lcom/android/server/am/TaskRecord;
     if-nez v2, :cond_0
 
-    .line 9403
     const-string v4, "ActivityManager"
 
     new-instance v5, Ljava/lang/StringBuilder;
@@ -87101,7 +87106,6 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
-    .line 9408
     :try_start_2
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
@@ -87112,7 +87116,6 @@
     :goto_0
     return v3
 
-    .line 9406
     :cond_0
     :try_start_3
     invoke-direct {p0, v2}, Lcom/android/server/am/ActivityManagerService;->removeTaskByRecordLocked(Lcom/android/server/am/TaskRecord;)Z
@@ -87121,7 +87124,6 @@
 
     move-result v3
 
-    .line 9408
     :try_start_4
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
@@ -87129,7 +87131,6 @@
 
     goto :goto_0
 
-    .line 9410
     .end local v0    # "ident":J
     .end local v2    # "tr":Lcom/android/server/am/TaskRecord;
     :catchall_0
@@ -87141,7 +87142,6 @@
 
     throw v3
 
-    .line 9408
     .restart local v0    # "ident":J
     :catchall_1
     move-exception v3
@@ -87159,12 +87159,10 @@
     .param p1, "perm"    # Lcom/android/server/am/UriPermission;
 
     .prologue
-    .line 8285
     iget v1, p1, Lcom/android/server/am/UriPermission;->modeFlags:I
 
     if-nez v1, :cond_1
 
-    .line 8286
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mGrantedUriPermissions:Landroid/util/SparseArray;
 
     iget v2, p1, Lcom/android/server/am/UriPermission;->targetUid:I
@@ -87175,11 +87173,9 @@
 
     check-cast v0, Landroid/util/ArrayMap;
 
-    .line 8288
     .local v0, "perms":Landroid/util/ArrayMap;, "Landroid/util/ArrayMap<Lcom/android/server/am/ActivityManagerService$GrantUri;Lcom/android/server/am/UriPermission;>;"
     if-eqz v0, :cond_1
 
-    .line 8289
     sget-boolean v1, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_URI_PERMISSION:Z
 
     if-eqz v1, :cond_0
@@ -87220,27 +87216,23 @@
 
     invoke-static {v1, v2}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 8292
     :cond_0
     iget-object v1, p1, Lcom/android/server/am/UriPermission;->uri:Lcom/android/server/am/ActivityManagerService$GrantUri;
 
     invoke-virtual {v0, v1}, Landroid/util/ArrayMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 8293
     invoke-virtual {v0}, Landroid/util/ArrayMap;->isEmpty()Z
 
     move-result v1
 
     if-eqz v1, :cond_1
 
-    .line 8294
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mGrantedUriPermissions:Landroid/util/SparseArray;
 
     iget v2, p1, Lcom/android/server/am/UriPermission;->targetUid:I
 
     invoke-virtual {v1, v2}, Landroid/util/SparseArray;->remove(I)V
 
-    .line 8298
     .end local v0    # "perms":Landroid/util/ArrayMap;, "Landroid/util/ArrayMap<Lcom/android/server/am/ActivityManagerService$GrantUri;Lcom/android/server/am/UriPermission;>;"
     :cond_1
     return-void
@@ -87251,31 +87243,24 @@
     .param p1, "token"    # Landroid/os/IBinder;
 
     .prologue
-    .line 4660
     monitor-enter p0
 
-    .line 4661
     :try_start_0
     invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->isInStackLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
 
     move-result-object v0
 
-    .line 4662
     .local v0, "r":Lcom/android/server/am/ActivityRecord;
     if-nez v0, :cond_0
 
-    .line 4663
     monitor-exit p0
 
-    .line 4667
     :goto_0
     return-void
 
-    .line 4665
     :cond_0
     invoke-virtual {v0}, Lcom/android/server/am/ActivityRecord;->reportFullyDrawnLocked()V
 
-    .line 4666
     monitor-exit p0
 
     goto :goto_0
@@ -87300,35 +87285,28 @@
     .param p5, "referrer"    # Landroid/net/Uri;
 
     .prologue
-    .line 11592
     move-object v6, p1
 
     check-cast v6, Lcom/android/server/am/ActivityManagerService$PendingAssistExtras;
 
-    .line 11593
     .local v6, "pae":Lcom/android/server/am/ActivityManagerService$PendingAssistExtras;
     monitor-enter v6
 
-    .line 11594
     :try_start_0
     move-object/from16 v0, p2
 
     iput-object v0, v6, Lcom/android/server/am/ActivityManagerService$PendingAssistExtras;->result:Landroid/os/Bundle;
 
-    .line 11595
     move-object/from16 v0, p3
 
     iput-object v0, v6, Lcom/android/server/am/ActivityManagerService$PendingAssistExtras;->structure:Landroid/app/assist/AssistStructure;
 
-    .line 11596
     move-object/from16 v0, p4
 
     iput-object v0, v6, Lcom/android/server/am/ActivityManagerService$PendingAssistExtras;->content:Landroid/app/assist/AssistContent;
 
-    .line 11597
     if-eqz p5, :cond_0
 
-    .line 11598
     iget-object v10, v6, Lcom/android/server/am/ActivityManagerService$PendingAssistExtras;->extras:Landroid/os/Bundle;
 
     const-string v11, "android.intent.extra.REFERRER"
@@ -87337,16 +87315,13 @@
 
     invoke-virtual {v10, v11, v0}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V
 
-    .line 11600
     :cond_0
     const/4 v10, 0x1
 
     iput-boolean v10, v6, Lcom/android/server/am/ActivityManagerService$PendingAssistExtras;->haveResult:Z
 
-    .line 11601
     invoke-virtual {v6}, Ljava/lang/Object;->notifyAll()V
 
-    .line 11602
     iget-object v10, v6, Lcom/android/server/am/ActivityManagerService$PendingAssistExtras;->intent:Landroid/content/Intent;
 
     if-nez v10, :cond_1
@@ -87355,58 +87330,46 @@
 
     if-nez v10, :cond_1
 
-    .line 11604
     monitor-exit v6
 
-    .line 11650
     :goto_0
     return-void
 
-    .line 11606
     :cond_1
     monitor-exit v6
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 11609
     const/4 v9, 0x0
 
-    .line 11610
     .local v9, "sendReceiver":Lcom/android/internal/os/IResultReceiver;
     const/4 v7, 0x0
 
-    .line 11611
     .local v7, "sendBundle":Landroid/os/Bundle;
     monitor-enter p0
 
-    .line 11612
     :try_start_1
     move-object/from16 v0, p2
 
     invoke-direct {p0, v6, v0}, Lcom/android/server/am/ActivityManagerService;->buildAssistBundleLocked(Lcom/android/server/am/ActivityManagerService$PendingAssistExtras;Landroid/os/Bundle;)V
 
-    .line 11613
     iget-object v10, p0, Lcom/android/server/am/ActivityManagerService;->mPendingAssistExtras:Ljava/util/ArrayList;
 
     invoke-virtual {v10, v6}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
 
     move-result v3
 
-    .line 11614
     .local v3, "exists":Z
     iget-object v10, p0, Lcom/android/server/am/ActivityManagerService;->mUiHandler:Lcom/android/server/am/ActivityManagerService$UiHandler;
 
     invoke-virtual {v10, v6}, Lcom/android/server/am/ActivityManagerService$UiHandler;->removeCallbacks(Ljava/lang/Runnable;)V
 
-    .line 11615
     if-nez v3, :cond_2
 
-    .line 11617
     monitor-exit p0
 
     goto :goto_0
 
-    .line 11626
     .end local v3    # "exists":Z
     :catchall_0
     move-exception v10
@@ -87418,7 +87381,6 @@
 
     throw v10
 
-    .line 11606
     .end local v7    # "sendBundle":Landroid/os/Bundle;
     .end local v9    # "sendReceiver":Lcom/android/internal/os/IResultReceiver;
     :catchall_1
@@ -87431,7 +87393,6 @@
 
     throw v10
 
-    .line 11619
     .restart local v3    # "exists":Z
     .restart local v7    # "sendBundle":Landroid/os/Bundle;
     .restart local v9    # "sendReceiver":Lcom/android/internal/os/IResultReceiver;
@@ -87441,14 +87402,12 @@
 
     if-eqz v9, :cond_3
 
-    .line 11621
     new-instance v8, Landroid/os/Bundle;
 
     invoke-direct {v8}, Landroid/os/Bundle;-><init>()V
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    .line 11622
     .end local v7    # "sendBundle":Landroid/os/Bundle;
     .local v8, "sendBundle":Landroid/os/Bundle;
     :try_start_4
@@ -87458,14 +87417,12 @@
 
     invoke-virtual {v8, v10, v11}, Landroid/os/Bundle;->putBundle(Ljava/lang/String;Landroid/os/Bundle;)V
 
-    .line 11623
     const-string v10, "structure"
 
     iget-object v11, v6, Lcom/android/server/am/ActivityManagerService$PendingAssistExtras;->structure:Landroid/app/assist/AssistStructure;
 
     invoke-virtual {v8, v10, v11}, Landroid/os/Bundle;->putParcelable(Ljava/lang/String;Landroid/os/Parcelable;)V
 
-    .line 11624
     const-string v10, "content"
 
     iget-object v11, v6, Lcom/android/server/am/ActivityManagerService$PendingAssistExtras;->content:Landroid/app/assist/AssistContent;
@@ -87476,7 +87433,6 @@
 
     move-object v7, v8
 
-    .line 11626
     .end local v8    # "sendBundle":Landroid/os/Bundle;
     .restart local v7    # "sendBundle":Landroid/os/Bundle;
     :cond_3
@@ -87485,10 +87441,8 @@
     :try_end_5
     .catchall {:try_start_5 .. :try_end_5} :catchall_0
 
-    .line 11627
     if-eqz v9, :cond_4
 
-    .line 11629
     const/4 v10, 0x0
 
     :try_start_6
@@ -87498,19 +87452,16 @@
 
     goto :goto_0
 
-    .line 11630
     :catch_0
     move-exception v10
 
     goto :goto_0
 
-    .line 11635
     :cond_4
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v4
 
-    .line 11637
     .local v4, "ident":J
     :try_start_7
     iget-object v10, v6, Lcom/android/server/am/ActivityManagerService$PendingAssistExtras;->intent:Landroid/content/Intent;
@@ -87519,21 +87470,18 @@
 
     invoke-virtual {v10, v11}, Landroid/content/Intent;->replaceExtras(Landroid/os/Bundle;)Landroid/content/Intent;
 
-    .line 11638
     iget-object v10, v6, Lcom/android/server/am/ActivityManagerService$PendingAssistExtras;->intent:Landroid/content/Intent;
 
     const/high16 v11, 0x34000000
 
     invoke-virtual {v10, v11}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
 
-    .line 11641
     const-string v10, "assist"
 
     invoke-virtual {p0, v10}, Lcom/android/server/am/ActivityManagerService;->closeSystemDialogs(Ljava/lang/String;)V
     :try_end_7
     .catchall {:try_start_7 .. :try_end_7} :catchall_2
 
-    .line 11643
     :try_start_8
     iget-object v10, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
@@ -87550,17 +87498,14 @@
     .catch Landroid/content/ActivityNotFoundException; {:try_start_8 .. :try_end_8} :catch_1
     .catchall {:try_start_8 .. :try_end_8} :catchall_2
 
-    .line 11648
     :goto_2
     invoke-static {v4, v5}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
     goto :goto_0
 
-    .line 11644
     :catch_1
     move-exception v2
 
-    .line 11645
     .local v2, "e":Landroid/content/ActivityNotFoundException;
     :try_start_9
     const-string v10, "ActivityManager"
@@ -87573,7 +87518,6 @@
 
     goto :goto_2
 
-    .line 11648
     .end local v2    # "e":Landroid/content/ActivityNotFoundException;
     :catchall_2
     move-exception v10
@@ -87582,7 +87526,6 @@
 
     throw v10
 
-    .line 11626
     .end local v4    # "ident":J
     .end local v7    # "sendBundle":Landroid/os/Bundle;
     .restart local v8    # "sendBundle":Landroid/os/Bundle;
@@ -87609,7 +87552,6 @@
     .end annotation
 
     .prologue
-    .line 15880
     .local p1, "memInfos":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ProcessMemInfo;>;"
     new-instance v37, Landroid/util/SparseArray;
 
@@ -87621,7 +87563,6 @@
 
     invoke-direct {v0, v5}, Landroid/util/SparseArray;-><init>(I)V
 
-    .line 15881
     .local v37, "infoMap":Landroid/util/SparseArray;, "Landroid/util/SparseArray<Lcom/android/server/am/ProcessMemInfo;>;"
     const/16 v36, 0x0
 
@@ -87638,7 +87579,6 @@
 
     if-ge v0, v1, :cond_0
 
-    .line 15882
     move-object/from16 v0, p1
 
     move/from16 v1, v36
@@ -87649,7 +87589,6 @@
 
     check-cast v4, Lcom/android/server/am/ProcessMemInfo;
 
-    .line 15883
     .local v4, "mi":Lcom/android/server/am/ProcessMemInfo;
     iget v5, v4, Lcom/android/server/am/ProcessMemInfo;->pid:I
 
@@ -87657,24 +87596,20 @@
 
     invoke-virtual {v0, v5, v4}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 15881
     add-int/lit8 v36, v36, 0x1
 
     goto :goto_0
 
-    .line 15885
     .end local v4    # "mi":Lcom/android/server/am/ProcessMemInfo;
     :cond_0
     invoke-virtual/range {p0 .. p0}, Lcom/android/server/am/ActivityManagerService;->updateCpuStatsNow()V
 
-    .line 15886
     const/4 v5, 0x1
 
     new-array v0, v5, [J
 
     move-object/from16 v44, v0
 
-    .line 15887
     .local v44, "memtrackTmp":[J
     move-object/from16 v0, p0
 
@@ -87682,7 +87617,6 @@
 
     monitor-enter v14
 
-    .line 15888
     :try_start_0
     move-object/from16 v0, p0
 
@@ -87692,7 +87626,6 @@
 
     move-result v28
 
-    .line 15889
     const/16 v36, 0x0
 
     :goto_1
@@ -87702,7 +87635,6 @@
 
     if-ge v0, v1, :cond_2
 
-    .line 15890
     move-object/from16 v0, p0
 
     iget-object v5, v0, Lcom/android/server/am/ActivityManagerService;->mProcessCpuTracker:Lcom/android/internal/os/ProcessCpuTracker;
@@ -87713,7 +87645,6 @@
 
     move-result-object v45
 
-    .line 15891
     .local v45, "st":Lcom/android/internal/os/ProcessCpuTracker$Stats;
     move-object/from16 v0, v45
 
@@ -87725,7 +87656,6 @@
 
     if-lez v5, :cond_1
 
-    .line 15892
     move-object/from16 v0, v45
 
     iget v5, v0, Lcom/android/internal/os/ProcessCpuTracker$Stats;->pid:I
@@ -87738,7 +87668,6 @@
 
     move-result-wide v48
 
-    .line 15893
     .local v48, "pss":J
     const-wide/16 v8, 0x0
 
@@ -87746,7 +87675,6 @@
 
     if-lez v5, :cond_1
 
-    .line 15894
     move-object/from16 v0, v45
 
     iget v5, v0, Lcom/android/internal/os/ProcessCpuTracker$Stats;->pid:I
@@ -87759,7 +87687,6 @@
 
     if-gez v5, :cond_1
 
-    .line 15895
     new-instance v4, Lcom/android/server/am/ProcessMemInfo;
 
     move-object/from16 v0, v45
@@ -87780,25 +87707,21 @@
 
     invoke-direct/range {v4 .. v10}, Lcom/android/server/am/ProcessMemInfo;-><init>(Ljava/lang/String;IIILjava/lang/String;Ljava/lang/String;)V
 
-    .line 15897
     .restart local v4    # "mi":Lcom/android/server/am/ProcessMemInfo;
     move-wide/from16 v0, v48
 
     iput-wide v0, v4, Lcom/android/server/am/ProcessMemInfo;->pss:J
 
-    .line 15898
     const/4 v5, 0x0
 
     aget-wide v8, v44, v5
 
     iput-wide v8, v4, Lcom/android/server/am/ProcessMemInfo;->memtrack:J
 
-    .line 15899
     move-object/from16 v0, p1
 
     invoke-virtual {v0, v4}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 15889
     .end local v4    # "mi":Lcom/android/server/am/ProcessMemInfo;
     .end local v48    # "pss":J
     :cond_1
@@ -87806,21 +87729,17 @@
 
     goto :goto_1
 
-    .line 15904
     .end local v45    # "st":Lcom/android/internal/os/ProcessCpuTracker$Stats;
     :cond_2
     monitor-exit v14
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 15906
     const-wide/16 v54, 0x0
 
-    .line 15907
     .local v54, "totalPss":J
     const-wide/16 v52, 0x0
 
-    .line 15908
     .local v52, "totalMemtrack":J
     const/16 v36, 0x0
 
@@ -87835,7 +87754,6 @@
 
     if-ge v0, v1, :cond_4
 
-    .line 15909
     move-object/from16 v0, p1
 
     move/from16 v1, v36
@@ -87846,7 +87764,6 @@
 
     check-cast v4, Lcom/android/server/am/ProcessMemInfo;
 
-    .line 15910
     .restart local v4    # "mi":Lcom/android/server/am/ProcessMemInfo;
     iget-wide v8, v4, Lcom/android/server/am/ProcessMemInfo;->pss:J
 
@@ -87856,7 +87773,6 @@
 
     if-nez v5, :cond_3
 
-    .line 15911
     iget v5, v4, Lcom/android/server/am/ProcessMemInfo;->pid:I
 
     const/4 v6, 0x0
@@ -87869,30 +87785,25 @@
 
     iput-wide v8, v4, Lcom/android/server/am/ProcessMemInfo;->pss:J
 
-    .line 15912
     const/4 v5, 0x0
 
     aget-wide v8, v44, v5
 
     iput-wide v8, v4, Lcom/android/server/am/ProcessMemInfo;->memtrack:J
 
-    .line 15915
     :cond_3
     iget-wide v8, v4, Lcom/android/server/am/ProcessMemInfo;->pss:J
 
     add-long v54, v54, v8
 
-    .line 15916
     iget-wide v8, v4, Lcom/android/server/am/ProcessMemInfo;->memtrack:J
 
     add-long v52, v52, v8
 
-    .line 15908
     add-int/lit8 v36, v36, 0x1
 
     goto :goto_2
 
-    .line 15904
     .end local v4    # "mi":Lcom/android/server/am/ProcessMemInfo;
     .end local v52    # "totalMemtrack":J
     .end local v54    # "totalPss":J
@@ -87906,7 +87817,6 @@
 
     throw v5
 
-    .line 15918
     .restart local v52    # "totalMemtrack":J
     .restart local v54    # "totalPss":J
     :cond_4
@@ -87920,7 +87830,6 @@
 
     invoke-static {v0, v5}, Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V
 
-    .line 15930
     new-instance v51, Ljava/lang/StringBuilder;
 
     const/16 v5, 0x80
@@ -87929,7 +87838,6 @@
 
     invoke-direct {v0, v5}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    .line 15931
     .local v51, "tag":Ljava/lang/StringBuilder;
     new-instance v50, Ljava/lang/StringBuilder;
 
@@ -87939,7 +87847,6 @@
 
     invoke-direct {v0, v5}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    .line 15932
     .local v50, "stack":Ljava/lang/StringBuilder;
     const-string v5, "Low on memory -- "
 
@@ -87947,7 +87854,6 @@
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 15933
     const-string v5, "total"
 
     const/4 v6, 0x0
@@ -87958,7 +87864,6 @@
 
     invoke-static {v0, v1, v2, v5, v6}, Lcom/android/server/am/ActivityManagerService;->appendMemBucket(Ljava/lang/StringBuilder;JLjava/lang/String;Z)V
 
-    .line 15934
     const-string v5, "total"
 
     const/4 v6, 0x1
@@ -87969,7 +87874,6 @@
 
     invoke-static {v0, v1, v2, v5, v6}, Lcom/android/server/am/ActivityManagerService;->appendMemBucket(Ljava/lang/StringBuilder;JLjava/lang/String;Z)V
 
-    .line 15936
     new-instance v35, Ljava/lang/StringBuilder;
 
     const/16 v5, 0x400
@@ -87978,7 +87882,6 @@
 
     invoke-direct {v0, v5}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    .line 15937
     .local v35, "fullNativeBuilder":Ljava/lang/StringBuilder;
     new-instance v7, Ljava/lang/StringBuilder;
 
@@ -87986,7 +87889,6 @@
 
     invoke-direct {v7, v5}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    .line 15938
     .local v7, "shortNativeBuilder":Ljava/lang/StringBuilder;
     new-instance v34, Ljava/lang/StringBuilder;
 
@@ -87996,27 +87898,21 @@
 
     invoke-direct {v0, v5}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    .line 15940
     .local v34, "fullJavaBuilder":Ljava/lang/StringBuilder;
     const/16 v33, 0x1
 
-    .line 15941
     .local v33, "firstLine":Z
     const/high16 v41, -0x80000000
 
-    .line 15942
     .local v41, "lastOomAdj":I
     const-wide/16 v10, 0x0
 
-    .line 15943
     .local v10, "extraNativeRam":J
     const-wide/16 v12, 0x0
 
-    .line 15944
     .local v12, "extraNativeMemtrack":J
     const-wide/16 v30, 0x0
 
-    .line 15945
     .local v30, "cachedPss":J
     const/16 v36, 0x0
 
@@ -88031,7 +87927,6 @@
 
     if-ge v0, v1, :cond_13
 
-    .line 15946
     move-object/from16 v0, p1
 
     move/from16 v1, v36
@@ -88042,7 +87937,6 @@
 
     check-cast v4, Lcom/android/server/am/ProcessMemInfo;
 
-    .line 15948
     .restart local v4    # "mi":Lcom/android/server/am/ProcessMemInfo;
     iget v5, v4, Lcom/android/server/am/ProcessMemInfo;->oomAdj:I
 
@@ -88050,12 +87944,10 @@
 
     if-lt v5, v6, :cond_5
 
-    .line 15949
     iget-wide v8, v4, Lcom/android/server/am/ProcessMemInfo;->pss:J
 
     add-long v30, v30, v8
 
-    .line 15952
     :cond_5
     iget v5, v4, Lcom/android/server/am/ProcessMemInfo;->oomAdj:I
 
@@ -88081,7 +87973,6 @@
 
     if-ne v5, v6, :cond_f
 
-    .line 15956
     :cond_6
     iget v5, v4, Lcom/android/server/am/ProcessMemInfo;->oomAdj:I
 
@@ -88089,43 +87980,35 @@
 
     if-eq v0, v5, :cond_d
 
-    .line 15957
     iget v0, v4, Lcom/android/server/am/ProcessMemInfo;->oomAdj:I
 
     move/from16 v41, v0
 
-    .line 15958
     iget v5, v4, Lcom/android/server/am/ProcessMemInfo;->oomAdj:I
 
     if-gtz v5, :cond_7
 
-    .line 15959
     const-string v5, " / "
 
     move-object/from16 v0, v51
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 15961
     :cond_7
     iget v5, v4, Lcom/android/server/am/ProcessMemInfo;->oomAdj:I
 
     if-ltz v5, :cond_c
 
-    .line 15962
     if-eqz v33, :cond_8
 
-    .line 15963
     const-string v5, ":"
 
     move-object/from16 v0, v50
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 15964
     const/16 v33, 0x0
 
-    .line 15966
     :cond_8
     const-string v5, "\n\t at "
 
@@ -88133,13 +88016,11 @@
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 15974
     :goto_4
     iget v5, v4, Lcom/android/server/am/ProcessMemInfo;->oomAdj:I
 
     if-gtz v5, :cond_9
 
-    .line 15975
     iget-wide v8, v4, Lcom/android/server/am/ProcessMemInfo;->pss:J
 
     iget-object v5, v4, Lcom/android/server/am/ProcessMemInfo;->name:Ljava/lang/String;
@@ -88150,7 +88031,6 @@
 
     invoke-static {v0, v8, v9, v5, v6}, Lcom/android/server/am/ActivityManagerService;->appendMemBucket(Ljava/lang/StringBuilder;JLjava/lang/String;Z)V
 
-    .line 15977
     :cond_9
     iget-wide v8, v4, Lcom/android/server/am/ProcessMemInfo;->pss:J
 
@@ -88162,7 +88042,6 @@
 
     invoke-static {v0, v8, v9, v5, v6}, Lcom/android/server/am/ActivityManagerService;->appendMemBucket(Ljava/lang/StringBuilder;JLjava/lang/String;Z)V
 
-    .line 15978
     iget v5, v4, Lcom/android/server/am/ProcessMemInfo;->oomAdj:I
 
     if-ltz v5, :cond_f
@@ -88189,7 +88068,6 @@
 
     if-eq v5, v0, :cond_f
 
-    .line 15980
     :cond_a
     const-string v5, "("
 
@@ -88197,7 +88075,6 @@
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 15981
     const/16 v39, 0x0
 
     .local v39, "k":I
@@ -88210,7 +88087,6 @@
 
     if-ge v0, v5, :cond_e
 
-    .line 15982
     sget-object v5, Lcom/android/server/am/ActivityManagerService;->DUMP_MEM_OOM_ADJ:[I
 
     aget v5, v5, v39
@@ -88219,7 +88095,6 @@
 
     if-ne v5, v6, :cond_b
 
-    .line 15983
     sget-object v5, Lcom/android/server/am/ActivityManagerService;->DUMP_MEM_OOM_LABEL:[Ljava/lang/String;
 
     aget-object v5, v5, v39
@@ -88228,14 +88103,12 @@
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 15984
     const-string v5, ":"
 
     move-object/from16 v0, v50
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 15985
     sget-object v5, Lcom/android/server/am/ActivityManagerService;->DUMP_MEM_OOM_ADJ:[I
 
     aget v5, v5, v39
@@ -88244,13 +88117,11 @@
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    .line 15981
     :cond_b
     add-int/lit8 v39, v39, 0x1
 
     goto :goto_5
 
-    .line 15968
     .end local v39    # "k":I
     :cond_c
     const-string v5, "$"
@@ -88261,7 +88132,6 @@
 
     goto :goto_4
 
-    .line 15971
     :cond_d
     const-string v5, " "
 
@@ -88269,7 +88139,6 @@
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 15972
     const-string v5, "$"
 
     move-object/from16 v0, v50
@@ -88278,7 +88147,6 @@
 
     goto :goto_4
 
-    .line 15988
     .restart local v39    # "k":I
     :cond_e
     const-string v5, ")"
@@ -88287,7 +88155,6 @@
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 15992
     .end local v39    # "k":I
     :cond_f
     move-object/from16 v0, p0
@@ -88296,14 +88163,12 @@
 
     invoke-direct {v0, v1, v4}, Lcom/android/server/am/ActivityManagerService;->appendMemInfo(Ljava/lang/StringBuilder;Lcom/android/server/am/ProcessMemInfo;)V
 
-    .line 15993
     iget v5, v4, Lcom/android/server/am/ProcessMemInfo;->oomAdj:I
 
     const/16 v6, -0x11
 
     if-ne v5, v6, :cond_11
 
-    .line 15995
     iget-wide v8, v4, Lcom/android/server/am/ProcessMemInfo;->pss:J
 
     const-wide/16 v14, 0x200
@@ -88312,31 +88177,26 @@
 
     if-ltz v5, :cond_10
 
-    .line 15996
     move-object/from16 v0, p0
 
     invoke-direct {v0, v7, v4}, Lcom/android/server/am/ActivityManagerService;->appendMemInfo(Ljava/lang/StringBuilder;Lcom/android/server/am/ProcessMemInfo;)V
 
-    .line 15945
     :goto_6
     add-int/lit8 v36, v36, 0x1
 
     goto/16 :goto_3
 
-    .line 15998
     :cond_10
     iget-wide v8, v4, Lcom/android/server/am/ProcessMemInfo;->pss:J
 
     add-long/2addr v10, v8
 
-    .line 15999
     iget-wide v8, v4, Lcom/android/server/am/ProcessMemInfo;->memtrack:J
 
     add-long/2addr v12, v8
 
     goto :goto_6
 
-    .line 16004
     :cond_11
     const-wide/16 v8, 0x0
 
@@ -88344,7 +88204,6 @@
 
     if-lez v5, :cond_12
 
-    .line 16005
     const/16 v8, -0x11
 
     const/4 v9, -0x1
@@ -88355,15 +88214,12 @@
 
     invoke-direct/range {v6 .. v14}, Lcom/android/server/am/ActivityManagerService;->appendBasicMemEntry(Ljava/lang/StringBuilder;IIJJLjava/lang/String;)V
 
-    .line 16007
     const/16 v5, 0xa
 
     invoke-virtual {v7, v5}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 16008
     const-wide/16 v10, 0x0
 
-    .line 16010
     :cond_12
     move-object/from16 v0, p0
 
@@ -88373,7 +88229,6 @@
 
     goto :goto_6
 
-    .line 16014
     .end local v4    # "mi":Lcom/android/server/am/ProcessMemInfo;
     :cond_13
     const-string v5, "           "
@@ -88382,49 +88237,42 @@
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16015
     move-object/from16 v0, v34
 
     move-wide/from16 v1, v54
 
     invoke-static {v0, v1, v2}, Lcom/android/server/am/ProcessList;->appendRamKb(Ljava/lang/StringBuilder;J)V
 
-    .line 16016
     const-string v5, " kB: TOTAL"
 
     move-object/from16 v0, v34
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16017
     const-wide/16 v8, 0x0
 
     cmp-long v5, v52, v8
 
     if-lez v5, :cond_14
 
-    .line 16018
     const-string v5, " ("
 
     move-object/from16 v0, v34
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16019
     move-object/from16 v0, v34
 
     move-wide/from16 v1, v52
 
     invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    .line 16020
     const-string v5, " kB memtrack)"
 
     move-object/from16 v0, v34
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16023
     :cond_14
     const-string v5, "\n"
 
@@ -88432,21 +88280,17 @@
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16025
     new-instance v42, Lcom/android/internal/util/MemInfoReader;
 
     invoke-direct/range {v42 .. v42}, Lcom/android/internal/util/MemInfoReader;-><init>()V
 
-    .line 16026
     .local v42, "memInfo":Lcom/android/internal/util/MemInfoReader;
     invoke-virtual/range {v42 .. v42}, Lcom/android/internal/util/MemInfoReader;->readMemInfo()V
 
-    .line 16027
     invoke-virtual/range {v42 .. v42}, Lcom/android/internal/util/MemInfoReader;->getRawInfo()[J
 
     move-result-object v38
 
-    .line 16029
     .local v38, "infos":[J
     new-instance v43, Ljava/lang/StringBuilder;
 
@@ -88456,18 +88300,15 @@
 
     invoke-direct {v0, v5}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    .line 16030
     .local v43, "memInfoBuilder":Ljava/lang/StringBuilder;
     invoke-static/range {v38 .. v38}, Landroid/os/Debug;->getMemInfo([J)V
 
-    .line 16031
     const-string v5, "  MemInfo: "
 
     move-object/from16 v0, v43
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16032
     const/4 v5, 0x5
 
     aget-wide v8, v38, v5
@@ -88482,7 +88323,6 @@
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16033
     const/4 v5, 0x4
 
     aget-wide v8, v38, v5
@@ -88497,7 +88337,6 @@
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16034
     const/16 v5, 0xa
 
     aget-wide v8, v38, v5
@@ -88512,7 +88351,6 @@
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16035
     const/16 v5, 0xb
 
     aget-wide v8, v38, v5
@@ -88527,7 +88365,6 @@
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16036
     const/16 v5, 0xc
 
     aget-wide v8, v38, v5
@@ -88542,14 +88379,12 @@
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16037
     const-string v5, "           "
 
     move-object/from16 v0, v43
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16038
     const/4 v5, 0x2
 
     aget-wide v8, v38, v5
@@ -88564,7 +88399,6 @@
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16039
     const/4 v5, 0x3
 
     aget-wide v8, v38, v5
@@ -88579,7 +88413,6 @@
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16040
     const/16 v5, 0x9
 
     aget-wide v8, v38, v5
@@ -88594,7 +88427,6 @@
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16041
     const/4 v5, 0x1
 
     aget-wide v8, v38, v5
@@ -88609,7 +88441,6 @@
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16042
     const/16 v5, 0x8
 
     aget-wide v8, v38, v5
@@ -88620,14 +88451,12 @@
 
     if-eqz v5, :cond_15
 
-    .line 16043
     const-string v5, "  ZRAM: "
 
     move-object/from16 v0, v43
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16044
     const/16 v5, 0x8
 
     aget-wide v8, v38, v5
@@ -88636,14 +88465,12 @@
 
     invoke-virtual {v0, v8, v9}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    .line 16045
     const-string v5, " kB RAM, "
 
     move-object/from16 v0, v43
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16046
     const/4 v5, 0x6
 
     aget-wide v8, v38, v5
@@ -88652,14 +88479,12 @@
 
     invoke-virtual {v0, v8, v9}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    .line 16047
     const-string v5, " kB swap total, "
 
     move-object/from16 v0, v43
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16048
     const/4 v5, 0x7
 
     aget-wide v8, v38, v5
@@ -88668,20 +88493,17 @@
 
     invoke-virtual {v0, v8, v9}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    .line 16049
     const-string v5, " kB swap free\n"
 
     move-object/from16 v0, v43
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16051
     :cond_15
     invoke-direct/range {p0 .. p0}, Lcom/android/server/am/ActivityManagerService;->getKsmInfo()[J
 
     move-result-object v40
 
-    .line 16052
     .local v40, "ksm":[J
     const/4 v5, 0x1
 
@@ -88723,7 +88545,6 @@
 
     if-eqz v5, :cond_17
 
-    .line 16054
     :cond_16
     const-string v5, "  KSM: "
 
@@ -88739,14 +88560,12 @@
 
     invoke-virtual {v0, v8, v9}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    .line 16055
     const-string v5, " kB saved from shared "
 
     move-object/from16 v0, v43
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16056
     const/4 v5, 0x0
 
     aget-wide v8, v40, v5
@@ -88761,7 +88580,6 @@
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16057
     const-string v5, "       "
 
     move-object/from16 v0, v43
@@ -88776,14 +88594,12 @@
 
     invoke-virtual {v0, v8, v9}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    .line 16058
     const-string v5, " kB unshared; "
 
     move-object/from16 v0, v43
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16059
     const/4 v5, 0x3
 
     aget-wide v8, v40, v5
@@ -88798,7 +88614,6 @@
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16061
     :cond_17
     const-string v5, "  Free RAM: "
 
@@ -88806,7 +88621,6 @@
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16062
     invoke-virtual/range {v42 .. v42}, Lcom/android/internal/util/MemInfoReader;->getCachedSizeKb()J
 
     move-result-wide v8
@@ -88823,21 +88637,18 @@
 
     invoke-virtual {v0, v8, v9}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    .line 16064
     const-string v5, " kB\n"
 
     move-object/from16 v0, v43
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16065
     const-string v5, "  Used RAM: "
 
     move-object/from16 v0, v43
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16066
     sub-long v8, v54, v30
 
     invoke-virtual/range {v42 .. v42}, Lcom/android/internal/util/MemInfoReader;->getKernelUsedSizeKb()J
@@ -88850,21 +88661,18 @@
 
     invoke-virtual {v0, v8, v9}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    .line 16067
     const-string v5, " kB\n"
 
     move-object/from16 v0, v43
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16068
     const-string v5, "  Lost RAM: "
 
     move-object/from16 v0, v43
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16069
     invoke-virtual/range {v42 .. v42}, Lcom/android/internal/util/MemInfoReader;->getTotalSizeKb()J
 
     move-result-wide v8
@@ -88893,21 +88701,18 @@
 
     invoke-virtual {v0, v8, v9}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    .line 16072
     const-string v5, " kB\n"
 
     move-object/from16 v0, v43
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16073
     const-string v5, "ActivityManager"
 
     const-string v6, "Low on memory:"
 
     invoke-static {v5, v6}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 16074
     const-string v5, "ActivityManager"
 
     invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
@@ -88916,7 +88721,6 @@
 
     invoke-static {v5, v6}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 16075
     const-string v5, "ActivityManager"
 
     invoke-virtual/range {v34 .. v34}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
@@ -88925,7 +88729,6 @@
 
     invoke-static {v5, v6}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 16076
     const-string v5, "ActivityManager"
 
     invoke-virtual/range {v43 .. v43}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
@@ -88934,7 +88737,6 @@
 
     invoke-static {v5, v6}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 16078
     new-instance v32, Ljava/lang/StringBuilder;
 
     const/16 v5, 0x400
@@ -88943,7 +88745,6 @@
 
     invoke-direct {v0, v5}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    .line 16089
     .local v32, "dropBuilder":Ljava/lang/StringBuilder;
     const-string v5, "Low on memory:"
 
@@ -88951,65 +88752,55 @@
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16090
     move-object/from16 v0, v32
 
     move-object/from16 v1, v50
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
 
-    .line 16091
     const/16 v5, 0xa
 
     move-object/from16 v0, v32
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 16092
     move-object/from16 v0, v32
 
     move-object/from16 v1, v35
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
 
-    .line 16093
     move-object/from16 v0, v32
 
     move-object/from16 v1, v34
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
 
-    .line 16094
     const/16 v5, 0xa
 
     move-object/from16 v0, v32
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 16095
     move-object/from16 v0, v32
 
     move-object/from16 v1, v43
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;)Ljava/lang/StringBuilder;
 
-    .line 16096
     const/16 v5, 0xa
 
     move-object/from16 v0, v32
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 16101
     new-instance v29, Ljava/io/StringWriter;
 
     invoke-direct/range {v29 .. v29}, Ljava/io/StringWriter;-><init>()V
 
-    .line 16102
     .local v29, "catSw":Ljava/io/StringWriter;
     monitor-enter p0
 
-    .line 16103
     :try_start_2
     new-instance v16, Lcom/android/internal/util/FastPrintWriter;
 
@@ -89023,7 +88814,6 @@
 
     invoke-direct {v0, v1, v5, v6}, Lcom/android/internal/util/FastPrintWriter;-><init>(Ljava/io/Writer;ZI)V
 
-    .line 16104
     .local v16, "catPw":Ljava/io/PrintWriter;
     const/4 v5, 0x0
 
@@ -89031,11 +88821,9 @@
 
     move-object/from16 v17, v0
 
-    .line 16105
     .local v17, "emptyArgs":[Ljava/lang/String;
     invoke-virtual/range {v16 .. v16}, Ljava/io/PrintWriter;->println()V
 
-    .line 16106
     const/4 v15, 0x0
 
     const/16 v18, 0x0
@@ -89048,10 +88836,8 @@
 
     invoke-virtual/range {v14 .. v20}, Lcom/android/server/am/ActivityManagerService;->dumpProcessesLocked(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;IZLjava/lang/String;)V
 
-    .line 16107
     invoke-virtual/range {v16 .. v16}, Ljava/io/PrintWriter;->println()V
 
-    .line 16108
     move-object/from16 v0, p0
 
     iget-object v14, v0, Lcom/android/server/am/ActivityManagerService;->mServices:Lcom/android/server/am/ActiveServices;
@@ -89068,10 +88854,8 @@
 
     invoke-virtual/range {v14 .. v21}, Lcom/android/server/am/ActiveServices;->dumpServicesLocked(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;IZZLjava/lang/String;)V
 
-    .line 16110
     invoke-virtual/range {v16 .. v16}, Ljava/io/PrintWriter;->println()V
 
-    .line 16111
     const/4 v15, 0x0
 
     const/16 v18, 0x0
@@ -89086,15 +88870,12 @@
 
     invoke-virtual/range {v14 .. v21}, Lcom/android/server/am/ActivityManagerService;->dumpActivitiesLocked(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;IZZLjava/lang/String;)V
 
-    .line 16112
     invoke-virtual/range {v16 .. v16}, Ljava/io/PrintWriter;->flush()V
 
-    .line 16113
     monitor-exit p0
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 16114
     invoke-virtual/range {v29 .. v29}, Ljava/io/StringWriter;->toString()Ljava/lang/String;
 
     move-result-object v5
@@ -89103,7 +88884,6 @@
 
     invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 16115
     const-string v19, "lowmem"
 
     const/16 v20, 0x0
@@ -89130,16 +88910,13 @@
 
     invoke-virtual/range {v18 .. v27}, Lcom/android/server/am/ActivityManagerService;->addErrorToDropBox(Ljava/lang/String;Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Lcom/android/server/am/ActivityRecord;Lcom/android/server/am/ActivityRecord;Ljava/lang/String;Ljava/lang/String;Ljava/io/File;Landroid/app/ApplicationErrorReport$CrashInfo;)V
 
-    .line 16119
     monitor-enter p0
 
-    .line 16120
     :try_start_3
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v46
 
-    .line 16121
     .local v46, "now":J
     move-object/from16 v0, p0
 
@@ -89149,23 +88926,19 @@
 
     if-gez v5, :cond_18
 
-    .line 16122
     move-wide/from16 v0, v46
 
     move-object/from16 v2, p0
 
     iput-wide v0, v2, Lcom/android/server/am/ActivityManagerService;->mLastMemUsageReportTime:J
 
-    .line 16124
     :cond_18
     monitor-exit p0
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_2
 
-    .line 16125
     return-void
 
-    .line 16113
     .end local v16    # "catPw":Ljava/io/PrintWriter;
     .end local v17    # "emptyArgs":[Ljava/lang/String;
     .end local v46    # "now":J
@@ -89179,7 +88952,6 @@
 
     throw v5
 
-    .line 16124
     .restart local v16    # "catPw":Ljava/io/PrintWriter;
     .restart local v17    # "emptyArgs":[Ljava/lang/String;
     :catchall_2
@@ -89202,7 +88974,6 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 11518
     invoke-static {}, Landroid/os/UserHandle;->getCallingUserId()I
 
     move-result v6
@@ -89242,21 +89013,18 @@
     .locals 2
 
     .prologue
-    .line 11356
     const-string v0, "android.permission.DUMP"
 
     const-string v1, "requestBugReport"
 
     invoke-virtual {p0, v0, v1}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 11357
     const-string v0, "ctl.start"
 
     const-string v1, "bugreport"
 
     invoke-static {v0, v1}, Landroid/os/SystemProperties;->set(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 11358
     return-void
 .end method
 
@@ -89269,10 +89037,8 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 19250
     if-nez p3, :cond_1
 
-    .line 19251
     iget-wide v2, p0, Lcom/android/server/am/ActivityManagerService;->mLastFullPssTime:J
 
     if-eqz p4, :cond_0
@@ -89288,17 +89054,14 @@
 
     if-gez v0, :cond_1
 
-    .line 19275
     :goto_1
     return-void
 
-    .line 19251
     :cond_0
     const v0, 0x927c0
 
     goto :goto_0
 
-    .line 19256
     :cond_1
     sget-boolean v0, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_PSS:Z
 
@@ -89326,14 +89089,11 @@
 
     invoke-static {v0, v2}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 19257
     :cond_2
     iput-wide p1, p0, Lcom/android/server/am/ActivityManagerService;->mLastFullPssTime:J
 
-    .line 19258
     iput-boolean v1, p0, Lcom/android/server/am/ActivityManagerService;->mFullPssPending:Z
 
-    .line 19259
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mPendingPssProcesses:Ljava/util/ArrayList;
 
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
@@ -89344,12 +89104,10 @@
 
     invoke-virtual {v0, v2}, Ljava/util/ArrayList;->ensureCapacity(I)V
 
-    .line 19260
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mPendingPssProcesses:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->clear()V
 
-    .line 19261
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
 
     invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
@@ -89362,7 +89120,6 @@
     :goto_2
     if-ltz v7, :cond_6
 
-    .line 19262
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
 
     invoke-virtual {v0, v7}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -89371,7 +89128,6 @@
 
     check-cast v6, Lcom/android/server/am/ProcessRecord;
 
-    .line 19263
     .local v6, "app":Lcom/android/server/am/ProcessRecord;
     iget-object v0, v6, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
 
@@ -89383,14 +89139,12 @@
 
     if-ne v0, v2, :cond_4
 
-    .line 19261
     :cond_3
     :goto_3
     add-int/lit8 v7, v7, -0x1
 
     goto :goto_2
 
-    .line 19267
     :cond_4
     if-nez p4, :cond_5
 
@@ -89404,13 +89158,11 @@
 
     if-lez v0, :cond_3
 
-    .line 19268
     :cond_5
     iget v0, v6, Lcom/android/server/am/ProcessRecord;->setProcState:I
 
     iput v0, v6, Lcom/android/server/am/ProcessRecord;->pssProcState:I
 
-    .line 19269
     iget v0, v6, Lcom/android/server/am/ProcessRecord;->curProcState:I
 
     iget-boolean v2, p0, Lcom/android/server/am/ActivityManagerService;->mTestPssMode:Z
@@ -89427,14 +89179,12 @@
 
     iput-wide v2, v6, Lcom/android/server/am/ProcessRecord;->nextPssTime:J
 
-    .line 19271
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mPendingPssProcesses:Ljava/util/ArrayList;
 
     invoke-virtual {v0, v6}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     goto :goto_3
 
-    .line 19274
     .end local v6    # "app":Lcom/android/server/am/ProcessRecord;
     :cond_6
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mBgHandler:Landroid/os/Handler;
@@ -89450,7 +89200,6 @@
     .param p2, "procState"    # I
 
     .prologue
-    .line 19235
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mPendingPssProcesses:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
@@ -89459,11 +89208,9 @@
 
     if-eqz v0, :cond_0
 
-    .line 19244
     :goto_0
     return-void
 
-    .line 19238
     :cond_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mPendingPssProcesses:Ljava/util/ArrayList;
 
@@ -89473,14 +89220,12 @@
 
     if-nez v0, :cond_1
 
-    .line 19239
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mBgHandler:Landroid/os/Handler;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-    .line 19241
     :cond_1
     sget-boolean v0, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_PSS:Z
 
@@ -89508,11 +89253,9 @@
 
     invoke-static {v0, v1}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 19242
     :cond_2
     iput p2, p1, Lcom/android/server/am/ProcessRecord;->pssProcState:I
 
-    .line 19243
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mPendingPssProcesses:Ljava/util/ArrayList;
 
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
@@ -89526,29 +89269,24 @@
     .param p2, "visible"    # Z
 
     .prologue
-    .line 11739
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v0
 
-    .line 11741
     .local v0, "origId":J
     :try_start_0
     monitor-enter p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 11742
     :try_start_1
     invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->isInStackLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
 
     move-result-object v2
 
-    .line 11743
     .local v2, "r":Lcom/android/server/am/ActivityRecord;
     if-eqz v2, :cond_0
 
-    .line 11744
     iget-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
     invoke-virtual {v3, v2, p2}, Lcom/android/server/am/ActivityStackSupervisor;->requestVisibleBehindLocked(Lcom/android/server/am/ActivityRecord;Z)Z
@@ -89559,28 +89297,23 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 11749
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
     :goto_0
     return v3
 
-    .line 11746
     :cond_0
     :try_start_2
     monitor-exit p0
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 11747
     const/4 v3, 0x0
 
-    .line 11749
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
     goto :goto_0
 
-    .line 11746
     .end local v2    # "r":Lcom/android/server/am/ActivityRecord;
     :catchall_0
     move-exception v3
@@ -89595,7 +89328,6 @@
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_1
 
-    .line 11749
     :catchall_1
     move-exception v3
 
@@ -89610,43 +89342,35 @@
     .param p2, "bounds"    # Landroid/graphics/Rect;
 
     .prologue
-    .line 9620
     const-string v2, "android.permission.MANAGE_ACTIVITY_STACKS"
 
     const-string v3, "resizeStack()"
 
     invoke-virtual {p0, v2, v3}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 9622
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v0
 
-    .line 9624
     .local v0, "ident":J
     :try_start_0
     monitor-enter p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 9625
     :try_start_1
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
     invoke-virtual {v2, p1, p2}, Lcom/android/server/am/ActivityStackSupervisor;->resizeStackLocked(ILandroid/graphics/Rect;)V
 
-    .line 9626
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 9628
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 9630
     return-void
 
-    .line 9626
     :catchall_0
     move-exception v2
 
@@ -89660,7 +89384,6 @@
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_1
 
-    .line 9628
     :catchall_1
     move-exception v2
 
@@ -89675,26 +89398,22 @@
     .param p2, "bounds"    # Landroid/graphics/Rect;
 
     .prologue
-    .line 9208
     const-string v3, "android.permission.MANAGE_ACTIVITY_STACKS"
 
     const-string v4, "resizeTask()"
 
     invoke-virtual {p0, v3, v4}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 9210
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v0
 
-    .line 9212
     .local v0, "ident":J
     :try_start_0
     monitor-enter p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 9213
     :try_start_1
     iget-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
@@ -89702,11 +89421,9 @@
 
     move-result-object v2
 
-    .line 9214
     .local v2, "task":Lcom/android/server/am/TaskRecord;
     if-nez v2, :cond_0
 
-    .line 9215
     const-string v3, "ActivityManager"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -89735,36 +89452,29 @@
 
     invoke-static {v3, v4}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 9216
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 9221
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 9223
     :goto_0
     return-void
 
-    .line 9218
     :cond_0
     :try_start_2
     iget-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
     invoke-virtual {v3, v2, p2}, Lcom/android/server/am/ActivityStackSupervisor;->resizeTaskLocked(Lcom/android/server/am/TaskRecord;Landroid/graphics/Rect;)V
 
-    .line 9219
     monitor-exit p0
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 9221
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
     goto :goto_0
 
-    .line 9219
     .end local v2    # "task":Lcom/android/server/am/TaskRecord;
     :catchall_0
     move-exception v3
@@ -89779,7 +89489,6 @@
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_1
 
-    .line 9221
     :catchall_1
     move-exception v3
 
@@ -89792,7 +89501,6 @@
     .locals 4
 
     .prologue
-    .line 12052
     const-string v2, "android.permission.SET_ACTIVITY_WATCHER"
 
     invoke-virtual {p0, v2}, Lcom/android/server/am/ActivityManagerService;->checkCallingPermission(Ljava/lang/String;)I
@@ -89801,7 +89509,6 @@
 
     if-eqz v2, :cond_0
 
-    .line 12054
     new-instance v2, Ljava/lang/SecurityException;
 
     const-string v3, "Requires permission android.permission.SET_ACTIVITY_WATCHER"
@@ -89810,7 +89517,6 @@
 
     throw v2
 
-    .line 12058
     :cond_0
     const-string v2, "ActivityManager"
 
@@ -89818,12 +89524,10 @@
 
     invoke-static {v2, v3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 12060
     new-instance v0, Lcom/android/server/am/ActivityManagerService$15;
 
     invoke-direct {v0, p0}, Lcom/android/server/am/ActivityManagerService$15;-><init>(Lcom/android/server/am/ActivityManagerService;)V
 
-    .line 12072
     .local v0, "br":Landroid/content/BroadcastReceiver;
     new-instance v1, Landroid/content/Intent;
 
@@ -89831,25 +89535,21 @@
 
     invoke-direct {v1, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 12073
     .local v1, "intent":Landroid/content/Intent;
     const/high16 v2, 0x10000000
 
     invoke-virtual {v1, v2}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 12074
     const-string v2, "android.intent.extra.SHUTDOWN_USERSPACE_ONLY"
 
     const/4 v3, 0x1
 
     invoke-virtual {v1, v2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
 
-    .line 12079
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
     invoke-virtual {v0, v2, v1}, Landroid/content/BroadcastReceiver;->onReceive(Landroid/content/Context;Landroid/content/Intent;)V
 
-    .line 12080
     return-void
 .end method
 
@@ -89857,7 +89557,6 @@
     .locals 2
 
     .prologue
-    .line 11188
     const-string v0, "android.permission.STOP_APP_SWITCHES"
 
     invoke-virtual {p0, v0}, Lcom/android/server/am/ActivityManagerService;->checkCallingPermission(Ljava/lang/String;)I
@@ -89866,7 +89565,6 @@
 
     if-eqz v0, :cond_0
 
-    .line 11190
     new-instance v0, Ljava/lang/SecurityException;
 
     const-string v1, "Requires permission android.permission.STOP_APP_SWITCHES"
@@ -89875,23 +89573,18 @@
 
     throw v0
 
-    .line 11194
     :cond_0
     monitor-enter p0
 
-    .line 11198
     const-wide/16 v0, 0x0
 
     :try_start_0
     iput-wide v0, p0, Lcom/android/server/am/ActivityManagerService;->mAppSwitchesAllowedTime:J
 
-    .line 11199
     monitor-exit p0
 
-    .line 11200
     return-void
 
-    .line 11199
     :catchall_0
     move-exception v0
 
@@ -89910,25 +89603,22 @@
     .param p4, "userId"    # I
 
     .prologue
-    .line 8385
     const-string v3, "revokeUriPermission"
 
     invoke-virtual {p0, v3}, Lcom/android/server/am/ActivityManagerService;->enforceNotIsolatedCaller(Ljava/lang/String;)V
 
-    .line 8386
+    .line 9396
     monitor-enter p0
 
-    .line 8387
+    .line 9397
     :try_start_0
     invoke-virtual {p0, p1}, Lcom/android/server/am/ActivityManagerService;->getRecordForAppLocked(Landroid/app/IApplicationThread;)Lcom/android/server/am/ProcessRecord;
 
     move-result-object v2
 
-    .line 8388
     .local v2, "r":Lcom/android/server/am/ProcessRecord;
     if-nez v2, :cond_0
 
-    .line 8389
     new-instance v3, Ljava/lang/SecurityException;
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -89963,7 +89653,6 @@
 
     throw v3
 
-    .line 8411
     .end local v2    # "r":Lcom/android/server/am/ProcessRecord;
     :catchall_0
     move-exception v3
@@ -89974,12 +89663,10 @@
 
     throw v3
 
-    .line 8393
     .restart local v2    # "r":Lcom/android/server/am/ProcessRecord;
     :cond_0
     if-nez p2, :cond_1
 
-    .line 8394
     :try_start_1
     const-string v3, "ActivityManager"
 
@@ -89987,14 +89674,11 @@
 
     invoke-static {v3, v4}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 8395
     monitor-exit p0
 
-    .line 8412
     :goto_0
     return-void
 
-    .line 8398
     :cond_1
     invoke-static {p3}, Landroid/content/Intent;->isAccessUriMode(I)Z
 
@@ -90002,28 +89686,23 @@
 
     if-nez v3, :cond_2
 
-    .line 8399
     monitor-exit p0
 
     goto :goto_0
 
-    .line 8402
     :cond_2
     invoke-virtual {p2}, Landroid/net/Uri;->getAuthority()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 8403
     .local v0, "authority":Ljava/lang/String;
     invoke-direct {p0, v0, p4}, Lcom/android/server/am/ActivityManagerService;->getProviderInfoLocked(Ljava/lang/String;I)Landroid/content/pm/ProviderInfo;
 
     move-result-object v1
 
-    .line 8404
     .local v1, "pi":Landroid/content/pm/ProviderInfo;
     if-nez v1, :cond_3
 
-    .line 8405
     const-string v3, "ActivityManager"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -90050,12 +89729,10 @@
 
     invoke-static {v3, v4}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 8407
     monitor-exit p0
 
     goto :goto_0
 
-    .line 8410
     :cond_3
     iget v3, v2, Lcom/android/server/am/ProcessRecord;->uid:I
 
@@ -90067,7 +89744,6 @@
 
     invoke-direct {p0, v3, v4, p3}, Lcom/android/server/am/ActivityManagerService;->revokeUriPermissionLocked(ILcom/android/server/am/ActivityManagerService$GrantUri;I)V
 
-    .line 8411
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
@@ -90083,20 +89759,16 @@
     .param p4, "userId"    # I
 
     .prologue
-    .line 8519
     monitor-enter p0
 
-    .line 8520
     :try_start_0
     invoke-static {p1}, Lcom/android/server/am/UriPermissionOwner;->fromExternalToken(Landroid/os/IBinder;)Lcom/android/server/am/UriPermissionOwner;
 
     move-result-object v0
 
-    .line 8521
     .local v0, "owner":Lcom/android/server/am/UriPermissionOwner;
     if-nez v0, :cond_0
 
-    .line 8522
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -90121,7 +89793,6 @@
 
     throw v1
 
-    .line 8530
     .end local v0    # "owner":Lcom/android/server/am/UriPermissionOwner;
     :catchall_0
     move-exception v1
@@ -90132,23 +89803,18 @@
 
     throw v1
 
-    .line 8525
     .restart local v0    # "owner":Lcom/android/server/am/UriPermissionOwner;
     :cond_0
     if-nez p2, :cond_1
 
-    .line 8526
     :try_start_1
     invoke-virtual {v0, p3}, Lcom/android/server/am/UriPermissionOwner;->removeUriPermissionsLocked(I)V
 
-    .line 8530
     :goto_0
     monitor-exit p0
 
-    .line 8531
     return-void
 
-    .line 8528
     :cond_1
     new-instance v1, Lcom/android/server/am/ActivityManagerService$GrantUri;
 
@@ -90168,12 +89834,10 @@
     .param p1, "app"    # Lcom/android/server/am/ProcessRecord;
 
     .prologue
-    .line 19412
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v0
 
-    .line 19413
     .local v0, "now":J
     iget-wide v2, p1, Lcom/android/server/am/ProcessRecord;->lastRequestedGc:J
 
@@ -90185,12 +89849,10 @@
 
     if-lez v2, :cond_1
 
-    .line 19420
     :cond_0
     :goto_0
     return-void
 
-    .line 19416
     :cond_1
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mProcessesToGc:Ljava/util/ArrayList;
 
@@ -90200,10 +89862,8 @@
 
     if-nez v2, :cond_0
 
-    .line 19417
     invoke-virtual {p0, p1}, Lcom/android/server/am/ActivityManagerService;->addProcessToGcListLocked(Lcom/android/server/am/ProcessRecord;)V
 
-    .line 19418
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->scheduleAppGcsLocked()V
 
     goto :goto_0
@@ -90217,12 +89877,10 @@
 
     const/4 v8, 0x5
 
-    .line 19370
     iget-object v6, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     invoke-virtual {v6, v8}, Lcom/android/server/am/ActivityManagerService$MainHandler;->removeMessages(I)V
 
-    .line 19372
     iget-object v6, p0, Lcom/android/server/am/ActivityManagerService;->mProcessesToGc:Ljava/util/ArrayList;
 
     invoke-virtual {v6}, Ljava/util/ArrayList;->size()I
@@ -90231,7 +89889,6 @@
 
     if-lez v6, :cond_1
 
-    .line 19374
     iget-object v6, p0, Lcom/android/server/am/ActivityManagerService;->mProcessesToGc:Ljava/util/ArrayList;
 
     const/4 v7, 0x0
@@ -90242,7 +89899,6 @@
 
     check-cast v1, Lcom/android/server/am/ProcessRecord;
 
-    .line 19375
     .local v1, "proc":Lcom/android/server/am/ProcessRecord;
     iget-object v6, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
@@ -90250,7 +89906,6 @@
 
     move-result-object v0
 
-    .line 19377
     .local v0, "msg":Landroid/os/Message;
     iget-wide v6, v1, Lcom/android/server/am/ProcessRecord;->lastRequestedGc:J
 
@@ -90258,13 +89913,11 @@
 
     add-long v4, v6, v8
 
-    .line 19378
     .local v4, "when":J
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v2
 
-    .line 19379
     .local v2, "now":J
     add-long v6, v2, v10
 
@@ -90272,16 +89925,13 @@
 
     if-gez v6, :cond_0
 
-    .line 19380
     add-long v4, v2, v10
 
-    .line 19382
     :cond_0
     iget-object v6, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     invoke-virtual {v6, v0, v4, v5}, Lcom/android/server/am/ActivityManagerService$MainHandler;->sendMessageAtTime(Landroid/os/Message;J)Z
 
-    .line 19384
     .end local v0    # "msg":Landroid/os/Message;
     .end local v1    # "proc":Lcom/android/server/am/ProcessRecord;
     .end local v2    # "now":J
@@ -90296,7 +89946,6 @@
     .prologue
     const/16 v2, 0x28
 
-    .line 21265
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     invoke-virtual {v0, v2}, Lcom/android/server/am/ActivityManagerService$MainHandler;->hasMessages(I)Z
@@ -90305,7 +89954,6 @@
 
     if-nez v0, :cond_0
 
-    .line 21266
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
@@ -90318,7 +89966,6 @@
 
     invoke-virtual {v0, v1, v2, v3}, Lcom/android/server/am/ActivityManagerService$MainHandler;->sendMessageDelayed(Landroid/os/Message;J)Z
 
-    .line 21269
     :cond_0
     return-void
 .end method
@@ -90330,19 +89977,16 @@
     .param p3, "newUserId"    # I
 
     .prologue
-    .line 21172
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mCurUserSwitchCallback:Ljava/lang/Object;
 
-    .line 21173
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     const/16 v1, 0x24
 
     invoke-virtual {v0, v1}, Lcom/android/server/am/ActivityManagerService$MainHandler;->removeMessages(I)V
 
-    .line 21174
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
@@ -90355,7 +89999,6 @@
 
     invoke-virtual {v0, v1}, Lcom/android/server/am/ActivityManagerService$MainHandler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 21176
     return-void
 .end method
 
@@ -90364,10 +90007,8 @@
     .param p1, "app"    # Lcom/android/server/am/ProcessRecord;
 
     .prologue
-    .line 16920
     const/4 v1, 0x0
 
-    .line 16921
     .local v1, "didSomething":Z
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mBroadcastQueues:[Lcom/android/server/am/BroadcastQueue;
 
@@ -90383,7 +90024,6 @@
 
     aget-object v4, v0, v2
 
-    .line 16922
     .local v4, "queue":Lcom/android/server/am/BroadcastQueue;
     invoke-virtual {v4, p1}, Lcom/android/server/am/BroadcastQueue;->sendPendingBroadcastsLocked(Lcom/android/server/am/ProcessRecord;)Z
 
@@ -90391,12 +90031,10 @@
 
     or-int/2addr v1, v5
 
-    .line 16921
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 16924
     .end local v4    # "queue":Lcom/android/server/am/BroadcastQueue;
     :cond_0
     return v1
@@ -90408,16 +90046,13 @@
     .param p2, "newUserId"    # I
 
     .prologue
-    .line 21080
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v38
 
-    .line 21083
     .local v38, "ident":J
     if-ltz p1, :cond_0
 
-    .line 21085
     :try_start_0
     move-object/from16 v0, p0
 
@@ -90431,13 +90066,11 @@
 
     move-result-object v40
 
-    .line 21086
     .local v40, "profiles":Ljava/util/List;, "Ljava/util/List<Landroid/content/pm/UserInfo;>;"
     invoke-interface/range {v40 .. v40}, Ljava/util/List;->size()I
 
     move-result v36
 
-    .line 21087
     .local v36, "count":I
     const/16 v37, 0x0
 
@@ -90449,7 +90082,6 @@
 
     if-ge v0, v1, :cond_0
 
-    .line 21088
     move-object/from16 v0, v40
 
     move/from16 v1, v37
@@ -90464,7 +90096,6 @@
 
     move/from16 v18, v0
 
-    .line 21089
     .local v18, "profileUserId":I
     new-instance v5, Landroid/content/Intent;
 
@@ -90472,20 +90103,17 @@
 
     invoke-direct {v5, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 21090
     .local v5, "intent":Landroid/content/Intent;
     const/high16 v2, 0x50000000
 
     invoke-virtual {v5, v2}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 21092
     const-string v2, "android.intent.extra.user_handle"
 
     move/from16 v0, v18
 
     invoke-virtual {v5, v2, v0}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 21093
     const/4 v3, 0x0
 
     const/4 v4, 0x0
@@ -90518,12 +90146,10 @@
 
     invoke-direct/range {v2 .. v18}, Lcom/android/server/am/ActivityManagerService;->broadcastIntentLocked(Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Landroid/content/Intent;Ljava/lang/String;Landroid/content/IIntentReceiver;ILjava/lang/String;Landroid/os/Bundle;[Ljava/lang/String;ILandroid/os/Bundle;ZZIII)I
 
-    .line 21087
     add-int/lit8 v37, v37, 0x1
 
     goto :goto_0
 
-    .line 21098
     .end local v5    # "intent":Landroid/content/Intent;
     .end local v18    # "profileUserId":I
     .end local v36    # "count":I
@@ -90532,7 +90158,6 @@
     :cond_0
     if-ltz p2, :cond_2
 
-    .line 21100
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/server/am/ActivityManagerService;->mUserManager:Lcom/android/server/pm/UserManagerService;
@@ -90545,13 +90170,11 @@
 
     move-result-object v40
 
-    .line 21101
     .restart local v40    # "profiles":Ljava/util/List;, "Ljava/util/List<Landroid/content/pm/UserInfo;>;"
     invoke-interface/range {v40 .. v40}, Ljava/util/List;->size()I
 
     move-result v36
 
-    .line 21102
     .restart local v36    # "count":I
     const/16 v37, 0x0
 
@@ -90563,7 +90186,6 @@
 
     if-ge v0, v1, :cond_1
 
-    .line 21103
     move-object/from16 v0, v40
 
     move/from16 v1, v37
@@ -90578,7 +90200,6 @@
 
     move/from16 v18, v0
 
-    .line 21104
     .restart local v18    # "profileUserId":I
     new-instance v5, Landroid/content/Intent;
 
@@ -90586,20 +90207,17 @@
 
     invoke-direct {v5, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 21105
     .restart local v5    # "intent":Landroid/content/Intent;
     const/high16 v2, 0x50000000
 
     invoke-virtual {v5, v2}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 21107
     const-string v2, "android.intent.extra.user_handle"
 
     move/from16 v0, v18
 
     invoke-virtual {v5, v2, v0}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 21108
     const/4 v3, 0x0
 
     const/4 v4, 0x0
@@ -90632,12 +90250,10 @@
 
     invoke-direct/range {v2 .. v18}, Lcom/android/server/am/ActivityManagerService;->broadcastIntentLocked(Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Landroid/content/Intent;Ljava/lang/String;Landroid/content/IIntentReceiver;ILjava/lang/String;Landroid/os/Bundle;[Ljava/lang/String;ILandroid/os/Bundle;ZZIII)I
 
-    .line 21102
     add-int/lit8 v37, v37, 0x1
 
     goto :goto_1
 
-    .line 21112
     .end local v5    # "intent":Landroid/content/Intent;
     .end local v18    # "profileUserId":I
     :cond_1
@@ -90647,20 +90263,17 @@
 
     invoke-direct {v5, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 21113
     .restart local v5    # "intent":Landroid/content/Intent;
     const/high16 v2, 0x50000000
 
     invoke-virtual {v5, v2}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 21115
     const-string v2, "android.intent.extra.user_handle"
 
     move/from16 v0, p2
 
     invoke-virtual {v5, v2, v0}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 21116
     const/16 v20, 0x0
 
     const/16 v21, 0x0
@@ -90709,7 +90322,6 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 21123
     .end local v5    # "intent":Landroid/content/Intent;
     .end local v36    # "count":I
     .end local v37    # "i":I
@@ -90717,10 +90329,8 @@
     :cond_2
     invoke-static/range {v38 .. v39}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 21125
     return-void
 
-    .line 21123
     :catchall_0
     move-exception v2
 
@@ -90737,16 +90347,13 @@
     .param p4, "res"    # I
 
     .prologue
-    .line 16733
     monitor-enter p0
 
-    .line 16734
     :try_start_0
     instance-of v0, p1, Lcom/android/server/am/ServiceRecord;
 
     if-nez v0, :cond_0
 
-    .line 16735
     const-string v0, "ActivityManager"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -90769,7 +90376,6 @@
 
     invoke-static {v0, v1}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 16736
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "Invalid service token"
@@ -90778,7 +90384,6 @@
 
     throw v0
 
-    .line 16739
     .end local p1    # "token":Landroid/os/IBinder;
     :catchall_0
     move-exception v0
@@ -90789,7 +90394,6 @@
 
     throw v0
 
-    .line 16738
     .restart local p1    # "token":Landroid/os/IBinder;
     :cond_0
     :try_start_1
@@ -90800,12 +90404,10 @@
     .end local p1    # "token":Landroid/os/IBinder;
     invoke-virtual {v0, p1, p2, p3, p4}, Lcom/android/server/am/ActiveServices;->serviceDoneExecutingLocked(Lcom/android/server/am/ServiceRecord;III)V
 
-    .line 16739
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 16740
     return-void
 .end method
 
@@ -90814,34 +90416,27 @@
     .param p1, "controller"    # Landroid/app/IActivityController;
 
     .prologue
-    .line 11321
     const-string v0, "android.permission.SET_ACTIVITY_WATCHER"
 
     const-string v1, "setActivityController()"
 
     invoke-virtual {p0, v0, v1}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 11323
     monitor-enter p0
 
-    .line 11324
     :try_start_0
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService;->mController:Landroid/app/IActivityController;
 
-    .line 11325
     invoke-static {}, Lcom/android/server/Watchdog;->getInstance()Lcom/android/server/Watchdog;
 
     move-result-object v0
 
     invoke-virtual {v0, p1}, Lcom/android/server/Watchdog;->setActivityController(Landroid/app/IActivityController;)V
 
-    .line 11326
     monitor-exit p0
 
-    .line 11327
     return-void
 
-    .line 11326
     :catchall_0
     move-exception v0
 
@@ -90857,14 +90452,12 @@
     .param p1, "enabled"    # Z
 
     .prologue
-    .line 11307
     const-string v0, "android.permission.SET_ALWAYS_FINISH"
 
     const-string v1, "setAlwaysFinish()"
 
     invoke-virtual {p0, v0, v1}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 11310
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
     invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
@@ -90880,26 +90473,20 @@
     :goto_0
     invoke-static {v1, v2, v0}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
 
-    .line 11314
     monitor-enter p0
 
-    .line 11315
     :try_start_0
     iput-boolean p1, p0, Lcom/android/server/am/ActivityManagerService;->mAlwaysFinishActivities:Z
 
-    .line 11316
     monitor-exit p0
 
-    .line 11317
     return-void
 
-    .line 11310
     :cond_0
     const/4 v0, 0x0
 
     goto :goto_0
 
-    .line 11316
     :catchall_0
     move-exception v0
 
@@ -90916,10 +90503,8 @@
     .param p2, "mode"    # I
 
     .prologue
-    .line 21855
     monitor-enter p0
 
-    .line 21856
     const/4 v0, 0x0
 
     :try_start_0
@@ -90935,7 +90520,6 @@
 
     return v0
 
-    .line 21857
     :catchall_0
     move-exception v0
 
@@ -90951,10 +90535,8 @@
     .param p1, "on"    # Z
 
     .prologue
-    .line 21871
     monitor-enter p0
 
-    .line 21872
     const/4 v0, 0x0
 
     :try_start_0
@@ -90964,13 +90546,10 @@
 
     invoke-virtual {v0, p1}, Lcom/android/server/am/OnePlusAppBootManager;->setAppBootState(Z)V
 
-    .line 21873
     monitor-exit p0
 
-    .line 21874
     return-void
 
-    .line 21873
     :catchall_0
     move-exception v0
 
@@ -90988,23 +90567,19 @@
     .param p3, "persistent"    # Z
 
     .prologue
-    .line 11232
     const-string v0, "android.permission.SET_DEBUG_APP"
 
     const-string v1, "setDebugApp()"
 
     invoke-virtual {p0, v0, v1}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 11235
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v10
 
-    .line 11240
     .local v10, "ident":J
     if-eqz p3, :cond_0
 
-    .line 11241
     :try_start_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
@@ -91012,13 +90587,11 @@
 
     move-result-object v12
 
-    .line 11242
     .local v12, "resolver":Landroid/content/ContentResolver;
     const-string v0, "debug_app"
 
     invoke-static {v12, v0, p1}, Landroid/provider/Settings$Global;->putString(Landroid/content/ContentResolver;Ljava/lang/String;Ljava/lang/String;)Z
 
-    .line 11245
     const-string v1, "wait_for_debugger"
 
     if-eqz p2, :cond_3
@@ -91028,35 +90601,28 @@
     :goto_0
     invoke-static {v12, v1, v0}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
 
-    .line 11250
     .end local v12    # "resolver":Landroid/content/ContentResolver;
     :cond_0
     monitor-enter p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 11251
     if-nez p3, :cond_1
 
-    .line 11252
     :try_start_1
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mDebugApp:Ljava/lang/String;
 
     iput-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mOrigDebugApp:Ljava/lang/String;
 
-    .line 11253
     iget-boolean v0, p0, Lcom/android/server/am/ActivityManagerService;->mWaitForDebugger:Z
 
     iput-boolean v0, p0, Lcom/android/server/am/ActivityManagerService;->mOrigWaitForDebugger:Z
 
-    .line 11255
     :cond_1
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService;->mDebugApp:Ljava/lang/String;
 
-    .line 11256
     iput-boolean p2, p0, Lcom/android/server/am/ActivityManagerService;->mWaitForDebugger:Z
 
-    .line 11257
     if-nez p3, :cond_4
 
     const/4 v0, 0x1
@@ -91064,10 +90630,8 @@
     :goto_1
     iput-boolean v0, p0, Lcom/android/server/am/ActivityManagerService;->mDebugTransient:Z
 
-    .line 11258
     if-eqz p1, :cond_2
 
-    .line 11259
     const/4 v2, -0x1
 
     const/4 v3, 0x0
@@ -91090,36 +90654,31 @@
 
     invoke-direct/range {v0 .. v9}, Lcom/android/server/am/ActivityManagerService;->forceStopPackageLocked(Ljava/lang/String;IZZZZZILjava/lang/String;)Z
 
-    .line 11262
     :cond_2
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 11264
     invoke-static {v10, v11}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 11266
     return-void
 
-    .line 11245
     .restart local v12    # "resolver":Landroid/content/ContentResolver;
     :cond_3
     const/4 v0, 0x0
 
     goto :goto_0
 
-    .line 11257
     .end local v12    # "resolver":Landroid/content/ContentResolver;
     :cond_4
     const/4 v0, 0x0
 
     goto :goto_1
 
-    .line 11262
     :catchall_0
     move-exception v0
 
+    .line 9408
     :try_start_2
     monitor-exit p0
     :try_end_2
@@ -91130,7 +90689,6 @@
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_1
 
-    .line 11264
     :catchall_1
     move-exception v0
 
@@ -91147,28 +90705,23 @@
     .param p5, "reportPackage"    # Ljava/lang/String;
 
     .prologue
-    .line 20745
     if-eqz p1, :cond_0
 
-    .line 20746
     const-string v1, "android.permission.SET_DEBUG_APP"
 
     const-string v2, "setDumpHeapDebugLimit()"
 
     invoke-virtual {p0, v1, v2}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 20767
     :goto_0
     monitor-enter p0
 
-    .line 20768
     const-wide/16 v2, 0x0
 
     cmp-long v1, p3, v2
 
     if-lez v1, :cond_4
 
-    .line 20769
     :try_start_0
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mMemWatchProcesses:Lcom/android/internal/app/ProcessMap;
 
@@ -91182,22 +90735,19 @@
 
     invoke-virtual {v1, p1, p2, v2}, Lcom/android/internal/app/ProcessMap;->put(Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/Object;
 
-    .line 20777
     :goto_1
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 20778
     return-void
 
-    .line 20749
+    .line 9406
     :cond_0
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mPidsSelfLocked:Landroid/util/SparseArray;
 
     monitor-enter v2
 
-    .line 20750
     :try_start_1
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mPidsSelfLocked:Landroid/util/SparseArray;
 
@@ -91211,11 +90761,9 @@
 
     check-cast v0, Lcom/android/server/am/ProcessRecord;
 
-    .line 20751
     .local v0, "proc":Lcom/android/server/am/ProcessRecord;
     if-nez v0, :cond_1
 
-    .line 20752
     new-instance v1, Ljava/lang/SecurityException;
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -91244,7 +90792,6 @@
 
     throw v1
 
-    .line 20765
     .end local v0    # "proc":Lcom/android/server/am/ProcessRecord;
     :catchall_0
     move-exception v1
@@ -91255,7 +90802,6 @@
 
     throw v1
 
-    .line 20755
     .restart local v0    # "proc":Lcom/android/server/am/ProcessRecord;
     :cond_1
     :try_start_2
@@ -91271,7 +90817,6 @@
 
     if-nez v1, :cond_2
 
-    .line 20757
     new-instance v1, Ljava/lang/SecurityException;
 
     const-string v3, "Not running a debuggable build"
@@ -91280,14 +90825,11 @@
 
     throw v1
 
-    .line 20759
     :cond_2
     iget-object p1, v0, Lcom/android/server/am/ProcessRecord;->processName:Ljava/lang/String;
 
-    .line 20760
     iget p2, v0, Lcom/android/server/am/ProcessRecord;->uid:I
 
-    .line 20761
     if-eqz p5, :cond_3
 
     iget-object v1, v0, Lcom/android/server/am/ProcessRecord;->pkgList:Landroid/util/ArrayMap;
@@ -91298,7 +90840,6 @@
 
     if-nez v1, :cond_3
 
-    .line 20762
     new-instance v1, Ljava/lang/SecurityException;
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -91333,7 +90874,6 @@
 
     throw v1
 
-    .line 20765
     :cond_3
     monitor-exit v2
     :try_end_2
@@ -91341,12 +90881,10 @@
 
     goto/16 :goto_0
 
-    .line 20771
     .end local v0    # "proc":Lcom/android/server/am/ProcessRecord;
     :cond_4
     if-eqz p2, :cond_5
 
-    .line 20772
     :try_start_3
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mMemWatchProcesses:Lcom/android/internal/app/ProcessMap;
 
@@ -91354,7 +90892,6 @@
 
     goto/16 :goto_1
 
-    .line 20777
     :catchall_1
     move-exception v1
 
@@ -91364,7 +90901,6 @@
 
     throw v1
 
-    .line 20774
     :cond_5
     :try_start_4
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mMemWatchProcesses:Lcom/android/internal/app/ProcessMap;
@@ -91396,14 +90932,12 @@
 
     const/4 v4, 0x1
 
-    .line 2916
     if-eqz p1, :cond_5
 
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mFocusedActivity:Lcom/android/server/am/ActivityRecord;
 
     if-eq v1, p1, :cond_5
 
-    .line 2917
     sget-boolean v1, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_FOCUS:Z
 
     if-eqz v1, :cond_0
@@ -91430,15 +90964,12 @@
 
     invoke-static {v1, v2}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2918
     :cond_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mFocusedActivity:Lcom/android/server/am/ActivityRecord;
 
-    .line 2919
     .local v0, "last":Lcom/android/server/am/ActivityRecord;
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService;->mFocusedActivity:Lcom/android/server/am/ActivityRecord;
 
-    .line 2920
     iget-object v1, p1, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
 
     iget v1, v1, Lcom/android/server/am/TaskRecord;->taskType:I
@@ -91451,24 +90982,20 @@
 
     if-eq v1, v6, :cond_7
 
-    .line 2922
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mCurAppTimeTracker:Lcom/android/server/am/AppTimeTracker;
 
     iget-object v2, p1, Lcom/android/server/am/ActivityRecord;->appTimeTracker:Lcom/android/server/am/AppTimeTracker;
 
     if-eq v1, v2, :cond_6
 
-    .line 2924
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mCurAppTimeTracker:Lcom/android/server/am/AppTimeTracker;
 
     if-eqz v1, :cond_1
 
-    .line 2925
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mCurAppTimeTracker:Lcom/android/server/am/AppTimeTracker;
 
     invoke-virtual {v1}, Lcom/android/server/am/AppTimeTracker;->stop()V
 
-    .line 2926
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     const/16 v2, 0x37
@@ -91481,31 +91008,25 @@
 
     invoke-virtual {v1}, Landroid/os/Message;->sendToTarget()V
 
-    .line 2928
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
     iget-object v2, p1, Lcom/android/server/am/ActivityRecord;->appTimeTracker:Lcom/android/server/am/AppTimeTracker;
 
     invoke-virtual {v1, v2}, Lcom/android/server/am/ActivityStackSupervisor;->clearOtherAppTimeTrackers(Lcom/android/server/am/AppTimeTracker;)V
 
-    .line 2929
     iput-object v8, p0, Lcom/android/server/am/ActivityManagerService;->mCurAppTimeTracker:Lcom/android/server/am/AppTimeTracker;
 
-    .line 2931
     :cond_1
     iget-object v1, p1, Lcom/android/server/am/ActivityRecord;->appTimeTracker:Lcom/android/server/am/AppTimeTracker;
 
     if-eqz v1, :cond_2
 
-    .line 2932
     iget-object v1, p1, Lcom/android/server/am/ActivityRecord;->appTimeTracker:Lcom/android/server/am/AppTimeTracker;
 
     iput-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mCurAppTimeTracker:Lcom/android/server/am/AppTimeTracker;
 
-    .line 2933
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->startTimeTrackingFocusedActivityLocked()V
 
-    .line 2941
     :cond_2
     :goto_0
     iget-object v1, p1, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
@@ -91518,7 +91039,6 @@
 
     if-eqz v1, :cond_8
 
-    .line 2942
     iget-object v1, p1, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
 
     iget-object v1, v1, Lcom/android/server/am/TaskRecord;->voiceSession:Landroid/service/voice/IVoiceInteractionSession;
@@ -91531,7 +91051,6 @@
 
     invoke-virtual {p0, v1, v2}, Lcom/android/server/am/ActivityManagerService;->startRunningVoiceLocked(Landroid/service/voice/IVoiceInteractionSession;I)V
 
-    .line 2953
     :cond_3
     :goto_1
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
@@ -91560,18 +91079,15 @@
 
     if-eqz v1, :cond_4
 
-    .line 2954
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
 
     iget-object v2, p1, Lcom/android/server/am/ActivityRecord;->appToken:Landroid/view/IApplicationToken$Stub;
 
     invoke-virtual {v1, v2, v4}, Lcom/android/server/wm/WindowManagerService;->setFocusedApp(Landroid/os/IBinder;Z)V
 
-    .line 2956
     :cond_4
     invoke-virtual {p0, p1}, Lcom/android/server/am/ActivityManagerService;->applyUpdateLockStateLocked(Lcom/android/server/am/ActivityRecord;)V
 
-    .line 2957
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mFocusedActivity:Lcom/android/server/am/ActivityRecord;
 
     iget v1, v1, Lcom/android/server/am/ActivityRecord;->userId:I
@@ -91580,12 +91096,10 @@
 
     if-eq v1, v2, :cond_5
 
-    .line 2958
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     invoke-virtual {v1, v7}, Lcom/android/server/am/ActivityManagerService$MainHandler;->removeMessages(I)V
 
-    .line 2959
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
@@ -91600,14 +91114,12 @@
 
     invoke-virtual {v1, v2}, Lcom/android/server/am/ActivityManagerService$MainHandler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 2961
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mFocusedActivity:Lcom/android/server/am/ActivityRecord;
 
     iget v1, v1, Lcom/android/server/am/ActivityRecord;->userId:I
 
     iput v1, p0, Lcom/android/server/am/ActivityManagerService;->mLastFocusedUserId:I
 
-    .line 2964
     .end local v0    # "last":Lcom/android/server/am/ActivityRecord;
     :cond_5
     const/16 v2, 0x755b
@@ -91638,27 +91150,22 @@
 
     invoke-static {v2, v3}, Landroid/util/EventLog;->writeEvent(I[Ljava/lang/Object;)I
 
-    .line 2967
     return-void
 
-    .line 2936
     .restart local v0    # "last":Lcom/android/server/am/ActivityRecord;
     :cond_6
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->startTimeTrackingFocusedActivityLocked()V
 
     goto :goto_0
 
-    .line 2939
     :cond_7
     iput-object v8, p1, Lcom/android/server/am/ActivityRecord;->appTimeTracker:Lcom/android/server/am/AppTimeTracker;
 
     goto :goto_0
 
-    .line 2944
     :cond_8
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->finishRunningVoiceLocked()V
 
-    .line 2945
     if-eqz v0, :cond_3
 
     iget-object v1, v0, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
@@ -91667,7 +91174,6 @@
 
     if-eqz v1, :cond_3
 
-    .line 2950
     iget-object v1, v0, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
 
     iget-object v1, v1, Lcom/android/server/am/TaskRecord;->voiceSession:Landroid/service/voice/IVoiceInteractionSession;
@@ -91676,7 +91182,6 @@
 
     goto :goto_1
 
-    .line 2964
     .end local v0    # "last":Lcom/android/server/am/ActivityRecord;
     :cond_9
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mFocusedActivity:Lcom/android/server/am/ActivityRecord;
@@ -91698,7 +91203,6 @@
     .param p1, "stackId"    # I
 
     .prologue
-    .line 2988
     sget-boolean v2, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_FOCUS:Z
 
     if-eqz v2, :cond_0
@@ -91725,11 +91229,9 @@
 
     invoke-static {v2, v3}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2989
     :cond_0
     monitor-enter p0
 
-    .line 2990
     :try_start_0
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
@@ -91737,27 +91239,22 @@
 
     move-result-object v1
 
-    .line 2991
     .local v1, "stack":Lcom/android/server/am/ActivityStack;
     if-eqz v1, :cond_1
 
-    .line 2992
     const/4 v2, 0x0
 
     invoke-virtual {v1, v2}, Lcom/android/server/am/ActivityStack;->topRunningActivityLocked(Lcom/android/server/am/ActivityRecord;)Lcom/android/server/am/ActivityRecord;
 
     move-result-object v0
 
-    .line 2993
     .local v0, "r":Lcom/android/server/am/ActivityRecord;
     if-eqz v0, :cond_1
 
-    .line 2994
     const-string v2, "setFocusedStack"
 
     invoke-virtual {p0, v0, v2}, Lcom/android/server/am/ActivityManagerService;->setFocusedActivityLocked(Lcom/android/server/am/ActivityRecord;Ljava/lang/String;)V
 
-    .line 2995
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
     const/4 v3, 0x0
@@ -91766,15 +91263,12 @@
 
     invoke-virtual {v2, v1, v3, v4}, Lcom/android/server/am/ActivityStackSupervisor;->resumeTopActivitiesLocked(Lcom/android/server/am/ActivityStack;Lcom/android/server/am/ActivityRecord;Landroid/os/Bundle;)Z
 
-    .line 2998
     .end local v0    # "r":Lcom/android/server/am/ActivityRecord;
     :cond_1
     monitor-exit p0
 
-    .line 2999
     return-void
 
-    .line 2998
     .end local v1    # "stack":Lcom/android/server/am/ActivityStack;
     :catchall_0
     move-exception v2
@@ -91791,29 +91285,23 @@
     .param p1, "mode"    # I
 
     .prologue
-    .line 3976
     const-string v0, "android.permission.SET_SCREEN_COMPATIBILITY"
 
     const-string v1, "setFrontActivityScreenCompatMode"
 
     invoke-virtual {p0, v0, v1}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 3978
     monitor-enter p0
 
-    .line 3979
     :try_start_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mCompatModePackages:Lcom/android/server/am/CompatModePackages;
 
     invoke-virtual {v0, p1}, Lcom/android/server/am/CompatModePackages;->setFrontActivityScreenCompatModeLocked(I)V
 
-    .line 3980
     monitor-exit p0
 
-    .line 3981
     return-void
 
-    .line 3980
     :catchall_0
     move-exception v0
 
@@ -91831,24 +91319,19 @@
     .prologue
     const v4, 0xd348
 
-    .line 2392
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     invoke-virtual {v1, v4}, Lcom/android/server/am/ActivityManagerService$MainHandler;->removeMessages(I)V
 
-    .line 2394
     if-nez p1, :cond_0
 
-    .line 2395
     const-string v1, ""
 
     sput-object v1, Lcom/android/server/am/ActivityManagerService;->mIgnoredAnrProcess:Ljava/lang/String;
 
-    .line 2402
     :goto_0
     return-void
 
-    .line 2397
     :cond_0
     const-string v1, "ActivityManager"
 
@@ -91872,21 +91355,18 @@
 
     invoke-static {v1, v2}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2398
     new-instance v1, Ljava/lang/String;
 
     invoke-direct {v1, p1}, Ljava/lang/String;-><init>(Ljava/lang/String;)V
 
     sput-object v1, Lcom/android/server/am/ActivityManagerService;->mIgnoredAnrProcess:Ljava/lang/String;
 
-    .line 2399
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     invoke-virtual {v1, v4}, Lcom/android/server/am/ActivityManagerService$MainHandler;->obtainMessage(I)Landroid/os/Message;
 
     move-result-object v0
 
-    .line 2400
     .local v0, "msg":Landroid/os/Message;
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
@@ -91903,27 +91383,22 @@
     .param p2, "immersive"    # Z
 
     .prologue
-    .line 11789
     monitor-enter p0
 
-    .line 11790
     :try_start_0
     invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->isInStackLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
 
     move-result-object v0
 
-    .line 11791
     .local v0, "r":Lcom/android/server/am/ActivityRecord;
     if-nez v0, :cond_0
 
-    .line 11792
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     invoke-direct {v1}, Ljava/lang/IllegalArgumentException;-><init>()V
 
     throw v1
 
-    .line 11801
     .end local v0    # "r":Lcom/android/server/am/ActivityRecord;
     :catchall_0
     move-exception v1
@@ -91934,18 +91409,15 @@
 
     throw v1
 
-    .line 11794
     .restart local v0    # "r":Lcom/android/server/am/ActivityRecord;
     :cond_0
     :try_start_1
     iput-boolean p2, v0, Lcom/android/server/am/ActivityRecord;->immersive:Z
 
-    .line 11797
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mFocusedActivity:Lcom/android/server/am/ActivityRecord;
 
     if-ne v0, v1, :cond_2
 
-    .line 11798
     sget-boolean v1, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_IMMERSIVE:Z
 
     if-eqz v1, :cond_1
@@ -91972,17 +91444,14 @@
 
     invoke-static {v1, v2}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 11799
     :cond_1
     invoke-virtual {p0, v0}, Lcom/android/server/am/ActivityManagerService;->applyUpdateLockStateLocked(Lcom/android/server/am/ActivityRecord;)V
 
-    .line 11801
     :cond_2
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 11802
     return-void
 .end method
 
@@ -91991,10 +91460,8 @@
     .param p1, "installer"    # Lcom/android/server/pm/Installer;
 
     .prologue
-    .line 2678
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService;->mInstaller:Lcom/android/server/pm/Installer;
 
-    .line 2679
     return-void
 .end method
 
@@ -92003,7 +91470,6 @@
     .param p1, "shown"    # Z
 
     .prologue
-    .line 11151
     const-string v2, "android.permission.DEVICE_POWER"
 
     invoke-virtual {p0, v2}, Lcom/android/server/am/ActivityManagerService;->checkCallingPermission(Ljava/lang/String;)I
@@ -92012,7 +91478,6 @@
 
     if-eqz v2, :cond_0
 
-    .line 11153
     new-instance v2, Ljava/lang/SecurityException;
 
     const-string v3, "Requires permission android.permission.DEVICE_POWER"
@@ -92021,11 +91486,9 @@
 
     throw v2
 
-    .line 11157
     :cond_0
     monitor-enter p0
 
-    .line 11158
     :try_start_0
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
     :try_end_0
@@ -92033,7 +91496,6 @@
 
     move-result-wide v0
 
-    .line 11160
     .local v0, "ident":J
     :try_start_1
     sget-boolean v2, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_LOCKSCREEN:Z
@@ -92060,7 +91522,6 @@
 
     invoke-virtual {p0, v2}, Lcom/android/server/am/ActivityManagerService;->logLockScreen(Ljava/lang/String;)V
 
-    .line 11161
     :cond_1
     if-eqz p1, :cond_2
 
@@ -92069,28 +91530,22 @@
     :goto_0
     iput v2, p0, Lcom/android/server/am/ActivityManagerService;->mLockScreenShown:I
 
-    .line 11162
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->updateSleepIfNeededLocked()V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 11164
     :try_start_2
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 11166
     monitor-exit p0
 
-    .line 11167
     return-void
 
-    .line 11161
     :cond_2
     const/4 v2, 0x0
 
     goto :goto_0
 
-    .line 11164
     :catchall_0
     move-exception v2
 
@@ -92098,7 +91553,6 @@
 
     throw v2
 
-    .line 11166
     .end local v0    # "ident":J
     :catchall_1
     move-exception v2
@@ -92116,10 +91570,8 @@
     .param p2, "processName"    # Ljava/lang/String;
 
     .prologue
-    .line 11269
     monitor-enter p0
 
-    .line 11270
     :try_start_0
     const-string v1, "1"
 
@@ -92135,18 +91587,15 @@
 
     move-result v0
 
-    .line 11271
     .local v0, "isDebuggable":Z
     if-nez v0, :cond_0
 
-    .line 11272
     iget v1, p1, Landroid/content/pm/ApplicationInfo;->flags:I
 
     and-int/lit8 v1, v1, 0x2
 
     if-nez v1, :cond_0
 
-    .line 11273
     new-instance v1, Ljava/lang/SecurityException;
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -92173,7 +91622,6 @@
 
     throw v1
 
-    .line 11278
     .end local v0    # "isDebuggable":Z
     :catchall_0
     move-exception v1
@@ -92184,18 +91632,15 @@
 
     throw v1
 
-    .line 11277
     .restart local v0    # "isDebuggable":Z
     :cond_0
     :try_start_1
     iput-object p2, p0, Lcom/android/server/am/ActivityManagerService;->mOpenGlTraceApp:Ljava/lang/String;
 
-    .line 11278
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 11279
     return-void
 .end method
 
@@ -92205,29 +91650,23 @@
     .param p2, "ask"    # Z
 
     .prologue
-    .line 4010
     const-string v0, "android.permission.SET_SCREEN_COMPATIBILITY"
 
     const-string v1, "setPackageAskScreenCompat"
 
     invoke-virtual {p0, v0, v1}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 4012
     monitor-enter p0
 
-    .line 4013
     :try_start_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mCompatModePackages:Lcom/android/server/am/CompatModePackages;
 
     invoke-virtual {v0, p1, p2}, Lcom/android/server/am/CompatModePackages;->setPackageAskCompatModeLocked(Ljava/lang/String;Z)V
 
-    .line 4014
     monitor-exit p0
 
-    .line 4015
     return-void
 
-    .line 4014
     :catchall_0
     move-exception v0
 
@@ -92244,29 +91683,23 @@
     .param p2, "mode"    # I
 
     .prologue
-    .line 3993
     const-string v0, "android.permission.SET_SCREEN_COMPATIBILITY"
 
     const-string v1, "setPackageScreenCompatMode"
 
     invoke-virtual {p0, v0, v1}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 3995
     monitor-enter p0
 
-    .line 3996
     :try_start_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mCompatModePackages:Lcom/android/server/am/CompatModePackages;
 
     invoke-virtual {v0, p1, p2}, Lcom/android/server/am/CompatModePackages;->setPackageScreenCompatModeLocked(Ljava/lang/String;I)V
 
-    .line 3997
     monitor-exit p0
 
-    .line 3998
     return-void
 
-    .line 3997
     :catchall_0
     move-exception v0
 
@@ -92288,24 +91721,20 @@
     .end annotation
 
     .prologue
-    .line 9563
     invoke-static {}, Landroid/util/OpFeatures;->isSupportedCTAPermissionControl()Z
 
     move-result v1
 
     if-nez v1, :cond_0
 
-    .line 9581
     :goto_0
     return-void
 
-    .line 9566
     :cond_0
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
     move-result v0
 
-    .line 9567
     .local v0, "callingUid":I
     if-eqz v0, :cond_1
 
@@ -92313,7 +91742,6 @@
 
     if-eq v0, v1, :cond_1
 
-    .line 9568
     new-instance v1, Ljava/lang/SecurityException;
 
     const-string v2, "setPermissionServiceBinderProxy called from non-system process"
@@ -92322,17 +91750,14 @@
 
     throw v1
 
-    .line 9571
     :cond_1
     packed-switch p2, :pswitch_data_0
 
     goto :goto_0
 
-    .line 9573
     :pswitch_0
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService;->mPermissionRequestServiceBinderProxy:Landroid/os/IBinder;
 
-    .line 9574
     const-string v1, "ActivityManager"
 
     const-string v2, "[CTAPermission] set request service proxy done"
@@ -92341,11 +91766,9 @@
 
     goto :goto_0
 
-    .line 9577
     :pswitch_1
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService;->mPermissionControlServiceBinderProxy:Landroid/os/IBinder;
 
-    .line 9578
     const-string v1, "ActivityManager"
 
     const-string v2, "[CTAPermission] set control service proxy done"
@@ -92354,7 +91777,6 @@
 
     goto :goto_0
 
-    .line 9571
     nop
 
     :pswitch_data_0
@@ -92371,20 +91793,16 @@
     .param p3, "isForeground"    # Z
 
     .prologue
-    .line 7525
     const-string v4, "android.permission.SET_PROCESS_LIMIT"
 
     const-string v5, "setProcessForeground()"
 
     invoke-virtual {p0, v4, v5}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 7527
     monitor-enter p0
 
-    .line 7528
     const/4 v0, 0x0
 
-    .line 7530
     .local v0, "changed":Z
     :try_start_0
     iget-object v5, p0, Lcom/android/server/am/ActivityManagerService;->mPidsSelfLocked:Landroid/util/SparseArray;
@@ -92393,7 +91811,6 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 7531
     :try_start_1
     iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mPidsSelfLocked:Landroid/util/SparseArray;
 
@@ -92403,13 +91820,11 @@
 
     check-cast v3, Lcom/android/server/am/ProcessRecord;
 
-    .line 7532
     .local v3, "pr":Lcom/android/server/am/ProcessRecord;
     if-nez v3, :cond_0
 
     if-eqz p3, :cond_0
 
-    .line 7533
     const-string v4, "ActivityManager"
 
     new-instance v6, Ljava/lang/StringBuilder;
@@ -92432,7 +91847,6 @@
 
     invoke-static {v4, v6}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 7534
     monitor-exit v5
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
@@ -92442,11 +91856,9 @@
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 7570
     :goto_0
     return-void
 
-    .line 7536
     :cond_0
     :try_start_3
     iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mForegroundProcesses:Landroid/util/SparseArray;
@@ -92457,75 +91869,61 @@
 
     check-cast v2, Lcom/android/server/am/ActivityManagerService$ForegroundToken;
 
-    .line 7537
     .local v2, "oldToken":Lcom/android/server/am/ActivityManagerService$ForegroundToken;
     if-eqz v2, :cond_2
 
-    .line 7538
     iget-object v4, v2, Lcom/android/server/am/ActivityManagerService$ForegroundToken;->token:Landroid/os/IBinder;
 
     const/4 v6, 0x0
 
     invoke-interface {v4, v2, v6}, Landroid/os/IBinder;->unlinkToDeath(Landroid/os/IBinder$DeathRecipient;I)Z
 
-    .line 7539
     iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mForegroundProcesses:Landroid/util/SparseArray;
 
     invoke-virtual {v4, p2}, Landroid/util/SparseArray;->remove(I)V
 
-    .line 7540
     if-eqz v3, :cond_1
 
-    .line 7541
     const/4 v4, 0x0
 
     iput-object v4, v3, Lcom/android/server/am/ProcessRecord;->forcingToForeground:Landroid/os/IBinder;
 
-    .line 7543
     :cond_1
     const/4 v0, 0x1
 
-    .line 7545
     :cond_2
     if-eqz p3, :cond_3
 
     if-eqz p1, :cond_3
 
-    .line 7546
     new-instance v1, Lcom/android/server/am/ActivityManagerService$12;
 
     invoke-direct {v1, p0}, Lcom/android/server/am/ActivityManagerService$12;-><init>(Lcom/android/server/am/ActivityManagerService;)V
 
-    .line 7552
     .local v1, "newToken":Lcom/android/server/am/ActivityManagerService$ForegroundToken;
     iput p2, v1, Lcom/android/server/am/ActivityManagerService$ForegroundToken;->pid:I
 
-    .line 7553
     iput-object p1, v1, Lcom/android/server/am/ActivityManagerService$ForegroundToken;->token:Landroid/os/IBinder;
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_1
 
-    .line 7555
     const/4 v4, 0x0
 
+    .line 9408
     :try_start_4
     invoke-interface {p1, v1, v4}, Landroid/os/IBinder;->linkToDeath(Landroid/os/IBinder$DeathRecipient;I)V
 
-    .line 7556
     iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mForegroundProcesses:Landroid/util/SparseArray;
 
     invoke-virtual {v4, p2, v1}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 7557
     iput-object p1, v3, Lcom/android/server/am/ProcessRecord;->forcingToForeground:Landroid/os/IBinder;
     :try_end_4
     .catch Landroid/os/RemoteException; {:try_start_4 .. :try_end_4} :catch_0
     .catchall {:try_start_4 .. :try_end_4} :catchall_1
 
-    .line 7558
     const/4 v0, 0x1
 
-    .line 7564
     .end local v1    # "newToken":Lcom/android/server/am/ActivityManagerService$ForegroundToken;
     :cond_3
     :goto_1
@@ -92534,14 +91932,11 @@
     :try_end_5
     .catchall {:try_start_5 .. :try_end_5} :catchall_1
 
-    .line 7566
     if-eqz v0, :cond_4
 
-    .line 7567
     :try_start_6
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->updateOomAdjLocked()V
 
-    .line 7569
     :cond_4
     monitor-exit p0
 
@@ -92558,7 +91953,6 @@
 
     throw v4
 
-    .line 7564
     :catchall_1
     move-exception v4
 
@@ -92572,7 +91966,6 @@
     :try_end_8
     .catchall {:try_start_8 .. :try_end_8} :catchall_0
 
-    .line 7559
     .restart local v1    # "newToken":Lcom/android/server/am/ActivityManagerService$ForegroundToken;
     .restart local v2    # "oldToken":Lcom/android/server/am/ActivityManagerService$ForegroundToken;
     .restart local v3    # "pr":Lcom/android/server/am/ProcessRecord;
@@ -92587,17 +91980,14 @@
     .param p1, "max"    # I
 
     .prologue
-    .line 7487
     const-string v0, "android.permission.SET_PROCESS_LIMIT"
 
     const-string v1, "setProcessLimit()"
 
     invoke-virtual {p0, v0, v1}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 7489
     monitor-enter p0
 
-    .line 7490
     if-gez p1, :cond_0
 
     :try_start_0
@@ -92606,27 +91996,21 @@
     :goto_0
     iput v0, p0, Lcom/android/server/am/ActivityManagerService;->mProcessLimit:I
 
-    .line 7491
     iput p1, p0, Lcom/android/server/am/ActivityManagerService;->mProcessLimitOverride:I
 
-    .line 7492
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 7493
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->trimApplications()V
 
-    .line 7494
     return-void
 
     :cond_0
     move v0, p1
 
-    .line 7490
     goto :goto_0
 
-    .line 7492
     :catchall_0
     move-exception v0
 
@@ -92647,10 +92031,8 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 4063
     monitor-enter p0
 
-    .line 4064
     :try_start_0
     const-string v2, "setProcessMemoryTrimLevel"
 
@@ -92658,18 +92040,14 @@
 
     move-result-object v0
 
-    .line 4065
     .local v0, "app":Lcom/android/server/am/ProcessRecord;
     if-nez v0, :cond_0
 
-    .line 4066
     monitor-exit p0
 
-    .line 4080
     :goto_0
     return v1
 
-    .line 4068
     :cond_0
     iget v2, v0, Lcom/android/server/am/ProcessRecord;->trimMemoryLevel:I
 
@@ -92691,20 +92069,17 @@
 
     if-lt v2, v3, :cond_2
 
-    .line 4072
     :cond_1
     :try_start_1
     iget-object v2, v0, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
 
     invoke-interface {v2, p3}, Landroid/app/IApplicationThread;->scheduleTrimMemory(I)V
 
-    .line 4073
     iput p3, v0, Lcom/android/server/am/ProcessRecord;->trimMemoryLevel:I
     :try_end_1
     .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_0
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 4074
     const/4 v1, 0x1
 
     :try_start_2
@@ -92712,7 +92087,6 @@
 
     goto :goto_0
 
-    .line 4079
     .end local v0    # "app":Lcom/android/server/am/ProcessRecord;
     :catchall_0
     move-exception v1
@@ -92723,12 +92097,10 @@
 
     throw v1
 
-    .line 4075
     .restart local v0    # "app":Lcom/android/server/am/ProcessRecord;
     :catch_0
     move-exception v2
 
-    .line 4079
     :cond_2
     :try_start_3
     monitor-exit p0
@@ -92745,10 +92117,8 @@
     .param p3, "profilerInfo"    # Landroid/app/ProfilerInfo;
 
     .prologue
-    .line 11282
     monitor-enter p0
 
-    .line 11283
     :try_start_0
     const-string v1, "1"
 
@@ -92764,18 +92134,15 @@
 
     move-result v0
 
-    .line 11284
     .local v0, "isDebuggable":Z
     if-nez v0, :cond_0
 
-    .line 11285
     iget v1, p1, Landroid/content/pm/ApplicationInfo;->flags:I
 
     and-int/lit8 v1, v1, 0x2
 
     if-nez v1, :cond_0
 
-    .line 11286
     new-instance v1, Ljava/lang/SecurityException;
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -92802,7 +92169,6 @@
 
     throw v1
 
-    .line 11302
     .end local v0    # "isDebuggable":Z
     :catchall_0
     move-exception v1
@@ -92813,25 +92179,21 @@
 
     throw v1
 
-    .line 11289
     .restart local v0    # "isDebuggable":Z
     :cond_0
     :try_start_1
     iput-object p2, p0, Lcom/android/server/am/ActivityManagerService;->mProfileApp:Ljava/lang/String;
 
-    .line 11290
     iget-object v1, p3, Landroid/app/ProfilerInfo;->profileFile:Ljava/lang/String;
 
     iput-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mProfileFile:Ljava/lang/String;
 
-    .line 11291
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mProfileFd:Landroid/os/ParcelFileDescriptor;
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     if-eqz v1, :cond_1
 
-    .line 11293
     :try_start_2
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mProfileFd:Landroid/os/ParcelFileDescriptor;
 
@@ -92840,43 +92202,35 @@
     .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_0
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 11296
     :goto_0
     const/4 v1, 0x0
 
     :try_start_3
     iput-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mProfileFd:Landroid/os/ParcelFileDescriptor;
 
-    .line 11298
     :cond_1
     iget-object v1, p3, Landroid/app/ProfilerInfo;->profileFd:Landroid/os/ParcelFileDescriptor;
 
     iput-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mProfileFd:Landroid/os/ParcelFileDescriptor;
 
-    .line 11299
     iget v1, p3, Landroid/app/ProfilerInfo;->samplingInterval:I
 
     iput v1, p0, Lcom/android/server/am/ActivityManagerService;->mSamplingInterval:I
 
-    .line 11300
     iget-boolean v1, p3, Landroid/app/ProfilerInfo;->autoStopProfiler:Z
 
     iput-boolean v1, p0, Lcom/android/server/am/ActivityManagerService;->mAutoStopProfiler:Z
 
-    .line 11301
     const/4 v1, 0x0
 
     iput v1, p0, Lcom/android/server/am/ActivityManagerService;->mProfileType:I
 
-    .line 11302
     monitor-exit p0
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    .line 11303
     return-void
 
-    .line 11294
     :catch_0
     move-exception v1
 
@@ -92889,27 +92243,21 @@
     .param p2, "requestedOrientation"    # I
 
     .prologue
-    .line 4671
     monitor-enter p0
 
-    .line 4672
     :try_start_0
     invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->isInStackLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
 
     move-result-object v1
 
-    .line 4673
     .local v1, "r":Lcom/android/server/am/ActivityRecord;
     if-nez v1, :cond_0
 
-    .line 4674
     monitor-exit p0
 
-    .line 4692
     :goto_0
     return-void
 
-    .line 4676
     :cond_0
     iget-object v4, v1, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
 
@@ -92921,12 +92269,10 @@
 
     if-eqz v4, :cond_1
 
-    .line 4678
     monitor-exit p0
 
     goto :goto_0
 
-    .line 4691
     .end local v1    # "r":Lcom/android/server/am/ActivityRecord;
     :catchall_0
     move-exception v4
@@ -92937,7 +92283,6 @@
 
     throw v4
 
-    .line 4680
     .restart local v1    # "r":Lcom/android/server/am/ActivityRecord;
     :cond_1
     :try_start_1
@@ -92945,7 +92290,6 @@
 
     move-result-wide v2
 
-    .line 4681
     .local v2, "origId":J
     iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
 
@@ -92953,7 +92297,6 @@
 
     invoke-virtual {v4, v5, p2}, Lcom/android/server/wm/WindowManagerService;->setAppOrientation(Landroid/view/IApplicationToken;I)V
 
-    .line 4682
     iget-object v5, p0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
 
     iget-object v6, p0, Lcom/android/server/am/ActivityManagerService;->mConfiguration:Landroid/content/res/Configuration;
@@ -92973,16 +92316,13 @@
 
     move-result-object v0
 
-    .line 4684
     .local v0, "config":Landroid/content/res/Configuration;
     if-eqz v0, :cond_2
 
-    .line 4685
     const/4 v4, 0x1
 
     iput-boolean v4, v1, Lcom/android/server/am/ActivityRecord;->frozenBeforeDestroy:Z
 
-    .line 4686
     const/4 v4, 0x0
 
     const/4 v5, 0x0
@@ -92993,23 +92333,19 @@
 
     if-nez v4, :cond_2
 
-    .line 4687
     iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
     invoke-virtual {v4}, Lcom/android/server/am/ActivityStackSupervisor;->resumeTopActivitiesLocked()Z
 
-    .line 4690
     :cond_2
     invoke-static {v2, v3}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 4691
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     goto :goto_0
 
-    .line 4682
     .end local v0    # "config":Landroid/content/res/Configuration;
     :cond_3
     const/4 v4, 0x0
@@ -93026,10 +92362,8 @@
     .param p5, "removeNotification"    # Z
 
     .prologue
-    .line 16527
     monitor-enter p0
 
-    .line 16528
     :try_start_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mServices:Lcom/android/server/am/ActiveServices;
 
@@ -93045,13 +92379,10 @@
 
     invoke-virtual/range {v0 .. v5}, Lcom/android/server/am/ActiveServices;->setServiceForegroundLocked(Landroid/content/ComponentName;Landroid/os/IBinder;ILandroid/app/Notification;Z)V
 
-    .line 16530
     monitor-exit p0
 
-    .line 16531
     return-void
 
-    .line 16530
     :catchall_0
     move-exception v0
 
@@ -93066,7 +92397,6 @@
     .locals 6
 
     .prologue
-    .line 2357
     :try_start_0
     const-string v3, "activity"
 
@@ -93074,14 +92404,12 @@
 
     invoke-static {v3, p0, v4}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;Z)V
 
-    .line 2358
     const-string v3, "procstats"
 
     iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mProcessStats:Lcom/android/server/am/ProcessStatsService;
 
     invoke-static {v3, v4}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
 
-    .line 2359
     const-string v3, "meminfo"
 
     new-instance v4, Lcom/android/server/am/ActivityManagerService$MemBinder;
@@ -93090,7 +92418,6 @@
 
     invoke-static {v3, v4}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
 
-    .line 2360
     const-string v3, "gfxinfo"
 
     new-instance v4, Lcom/android/server/am/ActivityManagerService$GraphicsBinder;
@@ -93099,7 +92426,6 @@
 
     invoke-static {v3, v4}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
 
-    .line 2361
     const-string v3, "dbinfo"
 
     new-instance v4, Lcom/android/server/am/ActivityManagerService$DbBinder;
@@ -93108,7 +92434,6 @@
 
     invoke-static {v3, v4}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
 
-    .line 2363
     const-string v3, "cpuinfo"
 
     new-instance v4, Lcom/android/server/am/ActivityManagerService$CpuBinder;
@@ -93117,7 +92442,6 @@
 
     invoke-static {v3, v4}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
 
-    .line 2365
     const-string v3, "permission"
 
     new-instance v4, Lcom/android/server/am/ActivityManagerService$PermissionController;
@@ -93126,7 +92450,6 @@
 
     invoke-static {v3, v4}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
 
-    .line 2366
     const-string v3, "processinfo"
 
     new-instance v4, Lcom/android/server/am/ActivityManagerService$ProcessInfoService;
@@ -93135,7 +92458,6 @@
 
     invoke-static {v3, v4}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
 
-    .line 2368
     iget-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
     invoke-virtual {v3}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
@@ -93150,7 +92472,6 @@
 
     move-result-object v2
 
-    .line 2370
     .local v2, "info":Landroid/content/pm/ApplicationInfo;
     iget-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mSystemThread:Landroid/app/ActivityThread;
 
@@ -93164,12 +92485,10 @@
 
     invoke-virtual {v3, v2, v4}, Landroid/app/ActivityThread;->installSystemApplicationInfo(Landroid/content/pm/ApplicationInfo;Ljava/lang/ClassLoader;)V
 
-    .line 2372
     monitor-enter p0
     :try_end_0
     .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 2373
     :try_start_1
     iget-object v3, v2, Landroid/content/pm/ApplicationInfo;->processName:Ljava/lang/String;
 
@@ -93181,23 +92500,19 @@
 
     move-result-object v0
 
-    .line 2374
     .local v0, "app":Lcom/android/server/am/ProcessRecord;
     const/4 v3, 0x1
 
     iput-boolean v3, v0, Lcom/android/server/am/ProcessRecord;->persistent:Z
 
-    .line 2375
     sget v3, Lcom/android/server/am/ActivityManagerService;->MY_PID:I
 
     iput v3, v0, Lcom/android/server/am/ProcessRecord;->pid:I
 
-    .line 2376
     const/16 v3, -0x10
 
     iput v3, v0, Lcom/android/server/am/ProcessRecord;->maxAdj:I
 
-    .line 2377
     iget-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mSystemThread:Landroid/app/ActivityThread;
 
     invoke-virtual {v3}, Landroid/app/ActivityThread;->getApplicationThread()Landroid/app/ActivityThread$ApplicationThread;
@@ -93208,14 +92523,12 @@
 
     invoke-virtual {v0, v3, v4}, Lcom/android/server/am/ProcessRecord;->makeActive(Landroid/app/IApplicationThread;Lcom/android/server/am/ProcessStatsService;)V
 
-    .line 2378
     iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mPidsSelfLocked:Landroid/util/SparseArray;
 
     monitor-enter v4
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
-    .line 2379
     :try_start_2
     iget-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mPidsSelfLocked:Landroid/util/SparseArray;
 
@@ -93223,12 +92536,10 @@
 
     invoke-virtual {v3, v5, v0}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 2380
     monitor-exit v4
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 2381
     const/4 v3, 0x0
 
     const/4 v4, 0x0
@@ -93236,18 +92547,14 @@
     :try_start_3
     invoke-virtual {p0, v0, v3, v4}, Lcom/android/server/am/ActivityManagerService;->updateLruProcessLocked(Lcom/android/server/am/ProcessRecord;ZLcom/android/server/am/ProcessRecord;)V
 
-    .line 2382
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->updateOomAdjLocked()V
 
-    .line 2383
     monitor-exit p0
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_1
 
-    .line 2388
     return-void
 
-    .line 2380
     :catchall_0
     move-exception v3
 
@@ -93259,7 +92566,6 @@
     :try_start_5
     throw v3
 
-    .line 2383
     .end local v0    # "app":Lcom/android/server/am/ProcessRecord;
     :catchall_1
     move-exception v3
@@ -93273,12 +92579,10 @@
     :try_end_6
     .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_6 .. :try_end_6} :catch_0
 
-    .line 2384
     .end local v2    # "info":Landroid/content/pm/ApplicationInfo;
     :catch_0
     move-exception v1
 
-    .line 2385
     .local v1, "e":Landroid/content/pm/PackageManager$NameNotFoundException;
     new-instance v3, Ljava/lang/RuntimeException;
 
@@ -93294,10 +92598,8 @@
     .param p1, "mgr"    # Lcom/android/server/SystemServiceManager;
 
     .prologue
-    .line 2674
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService;->mSystemServiceManager:Lcom/android/server/SystemServiceManager;
 
-    .line 2675
     return-void
 .end method
 
@@ -93307,35 +92609,27 @@
     .param p2, "td"    # Landroid/app/ActivityManager$TaskDescription;
 
     .prologue
-    .line 9181
     monitor-enter p0
 
-    .line 9182
     :try_start_0
     invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->isInStackLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
 
     move-result-object v0
 
-    .line 9183
     .local v0, "r":Lcom/android/server/am/ActivityRecord;
     if-eqz v0, :cond_0
 
-    .line 9184
     invoke-virtual {v0, p2}, Lcom/android/server/am/ActivityRecord;->setTaskDescription(Landroid/app/ActivityManager$TaskDescription;)V
 
-    .line 9185
     iget-object v1, v0, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
 
     invoke-virtual {v1}, Lcom/android/server/am/TaskRecord;->updateTaskDescription()V
 
-    .line 9187
     :cond_0
     monitor-exit p0
 
-    .line 9188
     return-void
 
-    .line 9187
     .end local v0    # "r":Lcom/android/server/am/ActivityRecord;
     :catchall_0
     move-exception v1
@@ -93353,10 +92647,8 @@
     .param p2, "resizeable"    # Z
 
     .prologue
-    .line 9192
     monitor-enter p0
 
-    .line 9193
     :try_start_0
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
@@ -93366,11 +92658,9 @@
 
     move-result-object v0
 
-    .line 9194
     .local v0, "task":Lcom/android/server/am/TaskRecord;
     if-nez v0, :cond_0
 
-    .line 9195
     const-string v1, "ActivityManager"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -93399,23 +92689,18 @@
 
     invoke-static {v1, v2}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 9196
     monitor-exit p0
 
-    .line 9204
     :goto_0
     return-void
 
-    .line 9198
     :cond_0
     iget-boolean v1, v0, Lcom/android/server/am/TaskRecord;->mResizeable:Z
 
     if-eq v1, p2, :cond_1
 
-    .line 9199
     iput-boolean p2, v0, Lcom/android/server/am/TaskRecord;->mResizeable:Z
 
-    .line 9200
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
     const/4 v2, 0x0
@@ -93424,12 +92709,10 @@
 
     invoke-virtual {v1, v2, v3}, Lcom/android/server/am/ActivityStackSupervisor;->ensureActivitiesVisibleLocked(Lcom/android/server/am/ActivityRecord;I)V
 
-    .line 9201
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
     invoke-virtual {v1}, Lcom/android/server/am/ActivityStackSupervisor;->resumeTopActivitiesLocked()Z
 
-    .line 9203
     :cond_1
     monitor-exit p0
 
@@ -93451,17 +92734,13 @@
     .param p1, "enabled"    # Z
 
     .prologue
-    .line 19278
     monitor-enter p0
 
-    .line 19279
     :try_start_0
     iput-boolean p1, p0, Lcom/android/server/am/ActivityManagerService;->mTestPssMode:Z
 
-    .line 19280
     if-eqz p1, :cond_0
 
-    .line 19283
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v0
@@ -93472,14 +92751,11 @@
 
     invoke-virtual {p0, v0, v1, v2, v3}, Lcom/android/server/am/ActivityManagerService;->requestPssAllProcsLocked(JZZ)V
 
-    .line 19285
     :cond_0
     monitor-exit p0
 
-    .line 19286
     return-void
 
-    .line 19285
     :catchall_0
     move-exception v0
 
@@ -93495,10 +92771,8 @@
     .param p1, "usageStatsManager"    # Landroid/app/usage/UsageStatsManagerInternal;
 
     .prologue
-    .line 2431
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService;->mUsageStatsService:Landroid/app/usage/UsageStatsManagerInternal;
 
-    .line 2432
     return-void
 .end method
 
@@ -93507,10 +92781,8 @@
     .param p1, "userIsMonkey"    # Z
 
     .prologue
-    .line 11331
     monitor-enter p0
 
-    .line 11332
     :try_start_0
     iget-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mPidsSelfLocked:Landroid/util/SparseArray;
 
@@ -93518,13 +92790,11 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 11333
     :try_start_1
     invoke-static {}, Landroid/os/Binder;->getCallingPid()I
 
     move-result v0
 
-    .line 11334
     .local v0, "callingPid":I
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mPidsSelfLocked:Landroid/util/SparseArray;
 
@@ -93534,11 +92804,9 @@
 
     check-cast v1, Lcom/android/server/am/ProcessRecord;
 
-    .line 11335
     .local v1, "precessRecord":Lcom/android/server/am/ProcessRecord;
     if-nez v1, :cond_0
 
-    .line 11336
     new-instance v2, Ljava/lang/SecurityException;
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -93563,7 +92831,6 @@
 
     throw v2
 
-    .line 11342
     .end local v0    # "callingPid":I
     .end local v1    # "precessRecord":Lcom/android/server/am/ProcessRecord;
     :catchall_0
@@ -93576,7 +92843,6 @@
     :try_start_2
     throw v2
 
-    .line 11344
     :catchall_1
     move-exception v2
 
@@ -93586,7 +92852,6 @@
 
     throw v2
 
-    .line 11338
     .restart local v0    # "callingPid":I
     .restart local v1    # "precessRecord":Lcom/android/server/am/ProcessRecord;
     :cond_0
@@ -93595,7 +92860,6 @@
 
     if-nez v2, :cond_1
 
-    .line 11339
     new-instance v2, Ljava/lang/SecurityException;
 
     const-string v4, "Only an instrumentation process with a UiAutomation can call setUserIsMonkey"
@@ -93604,22 +92868,18 @@
 
     throw v2
 
-    .line 11342
     :cond_1
     monitor-exit v3
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    .line 11343
     :try_start_4
     iput-boolean p1, p0, Lcom/android/server/am/ActivityManagerService;->mUserIsMonkey:Z
 
-    .line 11344
     monitor-exit p0
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_1
 
-    .line 11345
     return-void
 .end method
 
@@ -93629,10 +92889,8 @@
     .param p2, "keepAwake"    # Z
 
     .prologue
-    .line 4441
     monitor-enter p0
 
-    .line 4442
     :try_start_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mRunningVoice:Landroid/service/voice/IVoiceInteractionSession;
 
@@ -93650,23 +92908,18 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 4443
     if-eqz p2, :cond_1
 
-    .line 4444
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mVoiceWakeLock:Landroid/os/PowerManager$WakeLock;
 
     invoke-virtual {v0}, Landroid/os/PowerManager$WakeLock;->acquire()V
 
-    .line 4449
     :cond_0
     :goto_0
     monitor-exit p0
 
-    .line 4450
     return-void
 
-    .line 4446
     :cond_1
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mVoiceWakeLock:Landroid/os/PowerManager$WakeLock;
 
@@ -93674,7 +92927,6 @@
 
     goto :goto_0
 
-    .line 4449
     :catchall_0
     move-exception v0
 
@@ -93690,15 +92942,12 @@
     .param p1, "wm"    # Lcom/android/server/wm/WindowManagerService;
 
     .prologue
-    .line 2426
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
 
-    .line 2427
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
     invoke-virtual {v0, p1}, Lcom/android/server/am/ActivityStackSupervisor;->setWindowManager(Lcom/android/server/wm/WindowManagerService;)V
 
-    .line 2428
     return-void
 .end method
 
@@ -93708,20 +92957,16 @@
     .param p2, "destAffinity"    # Ljava/lang/String;
 
     .prologue
-    .line 18326
     monitor-enter p0
 
-    .line 18327
     :try_start_0
     invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->forTokenLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
 
     move-result-object v0
 
-    .line 18328
     .local v0, "srec":Lcom/android/server/am/ActivityRecord;
     if-eqz v0, :cond_0
 
-    .line 18329
     iget-object v1, v0, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
 
     iget-object v1, v1, Lcom/android/server/am/TaskRecord;->stack:Lcom/android/server/am/ActivityStack;
@@ -93732,20 +92977,16 @@
 
     monitor-exit p0
 
-    .line 18332
     :goto_0
     return v1
 
-    .line 18331
     :cond_0
     monitor-exit p0
 
-    .line 18332
     const/4 v1, 0x0
 
     goto :goto_0
 
-    .line 18331
     .end local v0    # "srec":Lcom/android/server/am/ActivityRecord;
     :catchall_0
     move-exception v1
@@ -93762,18 +93003,15 @@
     .param p1, "r"    # Lcom/android/server/am/ActivityRecord;
 
     .prologue
-    .line 3033
     invoke-static {}, Landroid/os/Message;->obtain()Landroid/os/Message;
 
     move-result-object v0
 
-    .line 3034
     .local v0, "msg":Landroid/os/Message;
     const/16 v1, 0x1e
 
     iput v1, v0, Landroid/os/Message;->what:I
 
-    .line 3035
     iget-object v1, p1, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
 
     iget-boolean v1, v1, Lcom/android/server/am/TaskRecord;->askedCompatMode:Z
@@ -93786,12 +93024,10 @@
     :cond_0
     iput-object p1, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    .line 3036
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mUiHandler:Lcom/android/server/am/ActivityManagerService$UiHandler;
 
     invoke-virtual {v1, v0}, Lcom/android/server/am/ActivityManagerService$UiHandler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 3037
     return-void
 .end method
 
@@ -93803,25 +93039,21 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 11491
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v2
 
-    .line 11493
     .local v2, "ident":J
     :try_start_0
     monitor-enter p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 11494
     :try_start_1
     invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->forTokenLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
 
     move-result-object v0
 
-    .line 11495
     .local v0, "caller":Lcom/android/server/am/ActivityRecord;
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->getFocusedStack()Lcom/android/server/am/ActivityStack;
 
@@ -93831,11 +93063,9 @@
 
     move-result-object v1
 
-    .line 11496
     .local v1, "top":Lcom/android/server/am/ActivityRecord;
     if-eq v1, v0, :cond_0
 
-    .line 11497
     const-string v6, "ActivityManager"
 
     new-instance v7, Ljava/lang/StringBuilder;
@@ -93868,25 +93098,21 @@
 
     invoke-static {v6, v7}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 11499
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 11511
     invoke-static {v2, v3}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
     :goto_0
     return v5
 
-    .line 11501
     :cond_0
     :try_start_2
     iget-boolean v6, v1, Lcom/android/server/am/ActivityRecord;->nowVisible:Z
 
     if-nez v6, :cond_1
 
-    .line 11502
     const-string v6, "ActivityManager"
 
     new-instance v7, Ljava/lang/StringBuilder;
@@ -93915,24 +93141,20 @@
 
     invoke-static {v6, v7}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 11504
     monitor-exit p0
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 11511
     invoke-static {v2, v3}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
     goto :goto_0
 
-    .line 11506
     :cond_1
     :try_start_3
     monitor-exit p0
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    .line 11507
     :try_start_4
     new-instance v4, Lcom/android/internal/app/AssistUtils;
 
@@ -93940,7 +93162,6 @@
 
     invoke-direct {v4, v5}, Lcom/android/internal/app/AssistUtils;-><init>(Landroid/content/Context;)V
 
-    .line 11508
     .local v4, "utils":Lcom/android/internal/app/AssistUtils;
     const/16 v5, 0x8
 
@@ -93952,12 +93173,10 @@
 
     move-result v5
 
-    .line 11511
     invoke-static {v2, v3}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
     goto :goto_0
 
-    .line 11506
     .end local v0    # "caller":Lcom/android/server/am/ActivityRecord;
     .end local v1    # "top":Lcom/android/server/am/ActivityRecord;
     .end local v4    # "utils":Lcom/android/internal/app/AssistUtils;
@@ -93974,7 +93193,6 @@
     :try_end_6
     .catchall {:try_start_6 .. :try_end_6} :catchall_1
 
-    .line 11511
     :catchall_1
     move-exception v5
 
@@ -93989,7 +93207,6 @@
     .param p2, "always"    # Z
 
     .prologue
-    .line 6800
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
     move-result v0
@@ -94000,13 +93217,11 @@
 
     if-eq v0, v1, :cond_0
 
-    .line 6804
     :cond_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
 
     invoke-virtual {v0, p1, p2}, Lcom/android/server/wm/WindowManagerService;->showBootMessage(Ljava/lang/CharSequence;Z)V
 
-    .line 6805
     return-void
 .end method
 
@@ -94016,17 +93231,14 @@
     .param p2, "next"    # Lcom/android/server/am/ActivityRecord;
 
     .prologue
-    .line 5578
     iget-boolean v0, p0, Lcom/android/server/am/ActivityManagerService;->mLaunchWarningShown:Z
 
     if-nez v0, :cond_0
 
-    .line 5579
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/server/am/ActivityManagerService;->mLaunchWarningShown:Z
 
-    .line 5580
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mUiHandler:Lcom/android/server/am/ActivityManagerService$UiHandler;
 
     new-instance v1, Lcom/android/server/am/ActivityManagerService$7;
@@ -94035,7 +93247,6 @@
 
     invoke-virtual {v0, v1}, Lcom/android/server/am/ActivityManagerService$UiHandler;->post(Ljava/lang/Runnable;)Z
 
-    .line 5599
     :cond_0
     return-void
 .end method
@@ -94045,27 +93256,21 @@
     .param p1, "token"    # Landroid/os/IBinder;
 
     .prologue
-    .line 9857
     monitor-enter p0
 
-    .line 9858
     :try_start_0
     invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->forTokenLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
 
     move-result-object v0
 
-    .line 9859
     .local v0, "r":Lcom/android/server/am/ActivityRecord;
     if-nez v0, :cond_0
 
-    .line 9860
     monitor-exit p0
 
-    .line 9864
     :goto_0
     return-void
 
-    .line 9862
     :cond_0
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
@@ -94073,7 +93278,6 @@
 
     invoke-virtual {v1, v2}, Lcom/android/server/am/ActivityStackSupervisor;->showLockTaskEscapeMessageLocked(Lcom/android/server/am/TaskRecord;)V
 
-    .line 9863
     monitor-exit p0
 
     goto :goto_0
@@ -94095,14 +93299,13 @@
     .prologue
     const/4 v5, -0x2
 
-    .line 11850
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
     invoke-static {v2}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
 
     move-result-object v2
 
-    const v3, 0x10900c6
+    const v3, #android:layout@safe_mode#t
 
     const/4 v4, 0x0
 
@@ -94110,30 +93313,24 @@
 
     move-result-object v1
 
-    .line 11852
     .local v1, "v":Landroid/view/View;
     new-instance v0, Landroid/view/WindowManager$LayoutParams;
 
     invoke-direct {v0}, Landroid/view/WindowManager$LayoutParams;-><init>()V
 
-    .line 11853
     .local v0, "lp":Landroid/view/WindowManager$LayoutParams;
     const/16 v2, 0x7df
 
     iput v2, v0, Landroid/view/WindowManager$LayoutParams;->type:I
 
-    .line 11854
     iput v5, v0, Landroid/view/WindowManager$LayoutParams;->width:I
 
-    .line 11855
     iput v5, v0, Landroid/view/WindowManager$LayoutParams;->height:I
 
-    .line 11856
     const v2, 0x800053
 
     iput v2, v0, Landroid/view/WindowManager$LayoutParams;->gravity:I
 
-    .line 11857
     invoke-virtual {v1}, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
 
     move-result-object v2
@@ -94144,19 +93341,16 @@
 
     iput v2, v0, Landroid/view/WindowManager$LayoutParams;->format:I
 
-    .line 11858
     const/16 v2, 0x18
 
     iput v2, v0, Landroid/view/WindowManager$LayoutParams;->flags:I
 
-    .line 11860
     iget v2, v0, Landroid/view/WindowManager$LayoutParams;->privateFlags:I
 
     or-int/lit8 v2, v2, 0x10
 
     iput v2, v0, Landroid/view/WindowManager$LayoutParams;->privateFlags:I
 
-    .line 11861
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
     const-string v3, "window"
@@ -94169,7 +93363,6 @@
 
     invoke-interface {v2, v1, v0}, Landroid/view/WindowManager;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 11863
     return-void
 .end method
 
@@ -94179,10 +93372,8 @@
     .param p2, "waiting"    # Z
 
     .prologue
-    .line 8827
     monitor-enter p0
 
-    .line 8828
     if-eqz p1, :cond_0
 
     :try_start_0
@@ -94190,41 +93381,34 @@
 
     move-result-object v0
 
-    .line 8830
     .local v0, "app":Lcom/android/server/am/ProcessRecord;
     :goto_0
     if-nez v0, :cond_1
 
     monitor-exit p0
 
-    .line 8838
     :goto_1
     return-void
 
-    .line 8828
     .end local v0    # "app":Lcom/android/server/am/ProcessRecord;
     :cond_0
     const/4 v0, 0x0
 
     goto :goto_0
 
-    .line 8832
     .restart local v0    # "app":Lcom/android/server/am/ProcessRecord;
     :cond_1
     invoke-static {}, Landroid/os/Message;->obtain()Landroid/os/Message;
 
     move-result-object v1
 
-    .line 8833
     .local v1, "msg":Landroid/os/Message;
     const/4 v2, 0x6
 
     iput v2, v1, Landroid/os/Message;->what:I
 
-    .line 8834
     iput-object v0, v1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    .line 8835
     if-eqz p2, :cond_2
 
     const/4 v2, 0x1
@@ -94232,12 +93416,10 @@
     :goto_2
     iput v2, v1, Landroid/os/Message;->arg1:I
 
-    .line 8836
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mUiHandler:Lcom/android/server/am/ActivityManagerService$UiHandler;
 
     invoke-virtual {v2, v1}, Lcom/android/server/am/ActivityManagerService$UiHandler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 8837
     monitor-exit p0
 
     goto :goto_1
@@ -94253,7 +93435,6 @@
 
     throw v2
 
-    .line 8835
     .restart local v0    # "app":Lcom/android/server/am/ProcessRecord;
     .restart local v1    # "msg":Landroid/os/Message;
     :cond_2
@@ -94267,7 +93448,6 @@
     .param p1, "timeout"    # I
 
     .prologue
-    .line 11076
     const-string v1, "android.permission.SHUTDOWN"
 
     invoke-virtual {p0, v1}, Lcom/android/server/am/ActivityManagerService;->checkCallingPermission(Ljava/lang/String;)I
@@ -94276,7 +93456,6 @@
 
     if-eqz v1, :cond_0
 
-    .line 11078
     new-instance v1, Ljava/lang/SecurityException;
 
     const-string v2, "Requires permission android.permission.SHUTDOWN"
@@ -94285,81 +93464,65 @@
 
     throw v1
 
-    .line 11082
     :cond_0
     const/4 v0, 0x0
 
-    .line 11084
     .local v0, "timedout":Z
     monitor-enter p0
 
-    .line 11085
     const/4 v1, 0x1
 
     :try_start_0
     iput-boolean v1, p0, Lcom/android/server/am/ActivityManagerService;->mShuttingDown:Z
 
-    .line 11086
     invoke-direct {p0}, Lcom/android/server/am/ActivityManagerService;->updateEventDispatchingLocked()V
 
-    .line 11087
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
     invoke-virtual {v1, p1}, Lcom/android/server/am/ActivityStackSupervisor;->shutdownLocked(I)Z
 
     move-result v0
 
-    .line 11088
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 11090
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mAppOpsService:Lcom/android/server/AppOpsService;
 
     invoke-virtual {v1}, Lcom/android/server/AppOpsService;->shutdown()V
 
-    .line 11091
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mUsageStatsService:Landroid/app/usage/UsageStatsManagerInternal;
 
     if-eqz v1, :cond_1
 
-    .line 11092
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mUsageStatsService:Landroid/app/usage/UsageStatsManagerInternal;
 
     invoke-virtual {v1}, Landroid/app/usage/UsageStatsManagerInternal;->prepareShutdown()V
 
-    .line 11094
     :cond_1
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mBatteryStatsService:Lcom/android/server/am/BatteryStatsService;
 
     invoke-virtual {v1}, Lcom/android/server/am/BatteryStatsService;->shutdown()V
 
-    .line 11095
     monitor-enter p0
 
-    .line 11096
     :try_start_1
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mProcessStats:Lcom/android/server/am/ProcessStatsService;
 
     invoke-virtual {v1}, Lcom/android/server/am/ProcessStatsService;->shutdownLocked()V
 
-    .line 11097
     const/4 v1, 0x0
 
     const/4 v2, 0x1
 
     invoke-virtual {p0, v1, v2}, Lcom/android/server/am/ActivityManagerService;->notifyTaskPersisterLocked(Lcom/android/server/am/TaskRecord;Z)V
 
-    .line 11098
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
-    .line 11100
     return v0
 
-    .line 11088
     :catchall_0
     move-exception v1
 
@@ -94370,7 +93533,6 @@
 
     throw v1
 
-    .line 11098
     :catchall_1
     move-exception v1
 
@@ -94392,12 +93554,10 @@
     .end annotation
 
     .prologue
-    .line 20548
     const/16 v2, 0xa
 
     if-eq p1, v2, :cond_0
 
-    .line 20549
     new-instance v2, Ljava/lang/SecurityException;
 
     const-string v3, "Only SIGNAL_USR1 is allowed"
@@ -94406,11 +93566,9 @@
 
     throw v2
 
-    .line 20552
     :cond_0
     monitor-enter p0
 
-    .line 20553
     :try_start_0
     const-string v2, "android.permission.SIGNAL_PERSISTENT_PROCESSES"
 
@@ -94420,7 +93578,6 @@
 
     if-eqz v2, :cond_1
 
-    .line 20555
     new-instance v2, Ljava/lang/SecurityException;
 
     const-string v3, "Requires permission android.permission.SIGNAL_PERSISTENT_PROCESSES"
@@ -94429,7 +93586,6 @@
 
     throw v2
 
-    .line 20565
     :catchall_0
     move-exception v2
 
@@ -94439,7 +93595,6 @@
 
     throw v2
 
-    .line 20559
     :cond_1
     :try_start_1
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
@@ -94454,7 +93609,6 @@
     :goto_0
     if-ltz v0, :cond_3
 
-    .line 20560
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
 
     invoke-virtual {v2, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -94463,7 +93617,6 @@
 
     check-cast v1, Lcom/android/server/am/ProcessRecord;
 
-    .line 20561
     .local v1, "r":Lcom/android/server/am/ProcessRecord;
     iget-object v2, v1, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
 
@@ -94473,25 +93626,21 @@
 
     if-eqz v2, :cond_2
 
-    .line 20562
     iget v2, v1, Lcom/android/server/am/ProcessRecord;->pid:I
 
     invoke-static {v2, p1}, Landroid/os/Process;->sendSignal(II)V
 
-    .line 20559
     :cond_2
     add-int/lit8 v0, v0, -0x1
 
     goto :goto_0
 
-    .line 20565
     .end local v1    # "r":Lcom/android/server/am/ProcessRecord;
     :cond_3
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 20566
     return-void
 .end method
 
@@ -94500,7 +93649,6 @@
     .param p1, "uid"    # I
 
     .prologue
-    .line 21828
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mBroadcastQueues:[Lcom/android/server/am/BroadcastQueue;
 
     .local v0, "arr$":[Lcom/android/server/am/BroadcastQueue;
@@ -94515,23 +93663,19 @@
 
     aget-object v3, v0, v1
 
-    .line 21829
     .local v3, "queue":Lcom/android/server/am/BroadcastQueue;
     invoke-virtual {v3, p1}, Lcom/android/server/am/BroadcastQueue;->skipPendingBroadcastForUid(I)V
 
-    .line 21828
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 21831
     .end local v3    # "queue":Lcom/android/server/am/BroadcastQueue;
     :cond_0
     iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mServices:Lcom/android/server/am/ActiveServices;
 
     invoke-virtual {v4, p1}, Lcom/android/server/am/ActiveServices;->clearPendingServiceForUid(I)V
 
-    .line 21832
     return-void
 .end method
 
@@ -94540,7 +93684,6 @@
     .param p1, "app"    # Lcom/android/server/am/ProcessRecord;
 
     .prologue
-    .line 12776
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mBroadcastQueues:[Lcom/android/server/am/BroadcastQueue;
 
     .local v0, "arr$":[Lcom/android/server/am/BroadcastQueue;
@@ -94555,16 +93698,13 @@
 
     aget-object v3, v0, v1
 
-    .line 12777
     .local v3, "queue":Lcom/android/server/am/BroadcastQueue;
     invoke-virtual {v3, p1}, Lcom/android/server/am/BroadcastQueue;->skipCurrentReceiverLocked(Lcom/android/server/am/ProcessRecord;)V
 
-    .line 12776
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 12779
     .end local v3    # "queue":Lcom/android/server/am/BroadcastQueue;
     :cond_0
     return-void
@@ -94575,14 +93715,12 @@
     .param p1, "pid"    # I
 
     .prologue
-    .line 16912
     const-string v4, "ActivityManager"
 
     const-string v5, "Unattached app died before broadcast acknowledged, skipping"
 
     invoke-static {v4, v5}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 16913
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mBroadcastQueues:[Lcom/android/server/am/BroadcastQueue;
 
     .local v0, "arr$":[Lcom/android/server/am/BroadcastQueue;
@@ -94597,16 +93735,13 @@
 
     aget-object v3, v0, v1
 
-    .line 16914
     .local v3, "queue":Lcom/android/server/am/BroadcastQueue;
     invoke-virtual {v3, p1}, Lcom/android/server/am/BroadcastQueue;->skipPendingBroadcastLocked(I)V
 
-    .line 16913
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 16916
     .end local v3    # "queue":Lcom/android/server/am/BroadcastQueue;
     :cond_0
     return-void
@@ -94623,12 +93758,10 @@
     .param p7, "userId"    # I
 
     .prologue
-    .line 4626
     const-string v0, "startActivities"
 
     invoke-virtual {p0, v0}, Lcom/android/server/am/ActivityManagerService;->enforceNotIsolatedCaller(Ljava/lang/String;)V
 
-    .line 4627
     invoke-static {}, Landroid/os/Binder;->getCallingPid()I
 
     move-result v1
@@ -94653,15 +93786,12 @@
 
     move-result p7
 
-    .line 4631
     iget-boolean v0, p0, Lcom/android/server/am/ActivityManagerService;->IS_AUTO_STARTUP_SUPPORTED:Z
 
     if-eqz v0, :cond_0
 
-    .line 4632
     invoke-direct {p0, p3}, Lcom/android/server/am/ActivityManagerService;->updateForbidAutostartListWithIntents([Landroid/content/Intent;)V
 
-    .line 4635
     :cond_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
@@ -94685,7 +93815,6 @@
 
     move-result v9
 
-    .line 4637
     .local v9, "ret":I
     return v9
 .end method
@@ -94701,7 +93830,6 @@
     .param p7, "userId"    # I
 
     .prologue
-    .line 4644
     invoke-static {}, Landroid/os/Binder;->getCallingPid()I
 
     move-result v1
@@ -94726,15 +93854,12 @@
 
     move-result p7
 
-    .line 4649
     iget-boolean v0, p0, Lcom/android/server/am/ActivityManagerService;->IS_AUTO_STARTUP_SUPPORTED:Z
 
     if-eqz v0, :cond_0
 
-    .line 4650
     invoke-direct {p0, p3}, Lcom/android/server/am/ActivityManagerService;->updateForbidAutostartListWithIntents([Landroid/content/Intent;)V
 
-    .line 4653
     :cond_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
@@ -94758,7 +93883,6 @@
 
     move-result v9
 
-    .line 4655
     .local v9, "ret":I
     return v9
 .end method
@@ -94777,7 +93901,6 @@
     .param p10, "options"    # Landroid/os/Bundle;
 
     .prologue
-    .line 4211
     invoke-static {}, Landroid/os/UserHandle;->getCallingUserId()I
 
     move-result v11
@@ -94826,14 +93949,12 @@
     .param p11, "userId"    # I
 
     .prologue
-    .line 4342
     const-string v2, "startActivityAndWait"
 
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v2}, Lcom/android/server/am/ActivityManagerService;->enforceNotIsolatedCaller(Ljava/lang/String;)V
 
-    .line 4343
     invoke-static {}, Landroid/os/Binder;->getCallingPid()I
 
     move-result v3
@@ -94858,12 +93979,10 @@
 
     move-result p11
 
-    .line 4345
     new-instance v15, Landroid/app/IActivityManager$WaitResult;
 
     invoke-direct {v15}, Landroid/app/IActivityManager$WaitResult;-><init>()V
 
-    .line 4348
     .local v15, "res":Landroid/app/IActivityManager$WaitResult;
     move-object/from16 v0, p0
 
@@ -94871,14 +93990,12 @@
 
     if-eqz v2, :cond_0
 
-    .line 4349
     move-object/from16 v0, p0
 
     move-object/from16 v1, p3
 
     invoke-direct {v0, v1}, Lcom/android/server/am/ActivityManagerService;->updateForbidAutostartListWithIntent(Landroid/content/Intent;)V
 
-    .line 4352
     :cond_0
     move-object/from16 v0, p0
 
@@ -94922,7 +94039,6 @@
 
     invoke-virtual/range {v2 .. v21}, Lcom/android/server/am/ActivityStackSupervisor;->startActivityMayWait(Landroid/app/IApplicationThread;ILjava/lang/String;Landroid/content/Intent;Ljava/lang/String;Landroid/service/voice/IVoiceInteractionSession;Lcom/android/internal/app/IVoiceInteractor;Landroid/os/IBinder;Ljava/lang/String;IILandroid/app/ProfilerInfo;Landroid/app/IActivityManager$WaitResult;Landroid/content/res/Configuration;Landroid/os/Bundle;ZILandroid/app/IActivityContainer;Lcom/android/server/am/TaskRecord;)I
 
-    .line 4355
     return-object v15
 .end method
 
@@ -94942,28 +94058,23 @@
     .param p12, "userId"    # I
 
     .prologue
-    .line 4266
     move-object/from16 v0, p0
 
     iget-boolean v2, v0, Lcom/android/server/am/ActivityManagerService;->IS_AUTO_STARTUP_SUPPORTED:Z
 
     if-eqz v2, :cond_0
 
-    .line 4267
     move-object/from16 v0, p0
 
     move-object/from16 v1, p3
 
     invoke-direct {v0, v1}, Lcom/android/server/am/ActivityManagerService;->updateForbidAutostartListWithIntent(Landroid/content/Intent;)V
 
-    .line 4273
     :cond_0
     monitor-enter p0
 
-    .line 4274
     if-nez p5, :cond_1
 
-    .line 4275
     :try_start_0
     new-instance v2, Ljava/lang/SecurityException;
 
@@ -94973,7 +94084,6 @@
 
     throw v2
 
-    .line 4310
     :catchall_0
     move-exception v2
 
@@ -94983,7 +94093,6 @@
 
     throw v2
 
-    .line 4277
     :cond_1
     :try_start_1
     move-object/from16 v0, p0
@@ -94996,11 +94105,9 @@
 
     move-result-object v24
 
-    .line 4278
     .local v24, "sourceRecord":Lcom/android/server/am/ActivityRecord;
     if-nez v24, :cond_2
 
-    .line 4279
     new-instance v2, Ljava/lang/SecurityException;
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -95027,7 +94134,6 @@
 
     throw v2
 
-    .line 4281
     :cond_2
     move-object/from16 v0, v24
 
@@ -95043,7 +94149,6 @@
 
     if-nez v2, :cond_3
 
-    .line 4282
     new-instance v2, Ljava/lang/SecurityException;
 
     const-string v3, "Must be called from an activity that is declared in the android package"
@@ -95052,7 +94157,6 @@
 
     throw v2
 
-    .line 4285
     :cond_3
     move-object/from16 v0, v24
 
@@ -95060,7 +94164,6 @@
 
     if-nez v2, :cond_4
 
-    .line 4286
     new-instance v2, Ljava/lang/SecurityException;
 
     const-string v3, "Called without a process attached to activity"
@@ -95069,7 +94172,6 @@
 
     throw v2
 
-    .line 4288
     :cond_4
     move-object/from16 v0, v24
 
@@ -95085,7 +94187,6 @@
 
     if-eq v2, v3, :cond_5
 
-    .line 4291
     move-object/from16 v0, v24
 
     iget-object v2, v0, Lcom/android/server/am/ActivityRecord;->app:Lcom/android/server/am/ProcessRecord;
@@ -95098,7 +94199,6 @@
 
     if-eq v2, v3, :cond_5
 
-    .line 4292
     new-instance v2, Ljava/lang/SecurityException;
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -95143,18 +94243,15 @@
 
     throw v2
 
-    .line 4298
     :cond_5
     if-eqz p11, :cond_7
 
-    .line 4299
     invoke-virtual/range {p3 .. p3}, Landroid/content/Intent;->getComponent()Landroid/content/ComponentName;
 
     move-result-object v2
 
     if-nez v2, :cond_6
 
-    .line 4300
     new-instance v2, Ljava/lang/SecurityException;
 
     const-string v3, "Component must be specified with ignoreTargetSecurity"
@@ -95163,7 +94260,6 @@
 
     throw v2
 
-    .line 4303
     :cond_6
     invoke-virtual/range {p3 .. p3}, Landroid/content/Intent;->getSelector()Landroid/content/Intent;
 
@@ -95171,7 +94267,6 @@
 
     if-eqz v2, :cond_7
 
-    .line 4304
     new-instance v2, Ljava/lang/SecurityException;
 
     const-string v3, "Selector not allowed with ignoreTargetSecurity"
@@ -95180,32 +94275,27 @@
 
     throw v2
 
-    .line 4308
     :cond_7
     move-object/from16 v0, v24
 
     iget v4, v0, Lcom/android/server/am/ActivityRecord;->launchedFromUid:I
 
-    .line 4309
     .local v4, "targetUid":I
     move-object/from16 v0, v24
 
     iget-object v5, v0, Lcom/android/server/am/ActivityRecord;->launchedFromPackage:Ljava/lang/String;
 
-    .line 4310
     .local v5, "targetPackage":Ljava/lang/String;
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 4312
     const/16 v2, -0x2710
 
     move/from16 v0, p12
 
     if-ne v0, v2, :cond_8
 
-    .line 4313
     move-object/from16 v0, v24
 
     iget-object v2, v0, Lcom/android/server/am/ActivityRecord;->app:Lcom/android/server/am/ProcessRecord;
@@ -95216,7 +94306,6 @@
 
     move-result p12
 
-    .line 4318
     :cond_8
     :try_start_2
     move-object/from16 v0, p0
@@ -95263,16 +94352,13 @@
 
     move-result v23
 
-    .line 4321
     .local v23, "ret":I
     return v23
 
-    .line 4322
     .end local v23    # "ret":I
     :catch_0
     move-exception v22
 
-    .line 4334
     .local v22, "e":Ljava/lang/SecurityException;
     throw v22
 .end method
@@ -95292,14 +94378,12 @@
     .param p11, "userId"    # I
 
     .prologue
-    .line 4240
     const-string v2, "startActivity"
 
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v2}, Lcom/android/server/am/ActivityManagerService;->enforceNotIsolatedCaller(Ljava/lang/String;)V
 
-    .line 4241
     invoke-static {}, Landroid/os/Binder;->getCallingPid()I
 
     move-result v3
@@ -95324,21 +94408,18 @@
 
     move-result p11
 
-    .line 4245
     move-object/from16 v0, p0
 
     iget-boolean v2, v0, Lcom/android/server/am/ActivityManagerService;->IS_AUTO_STARTUP_SUPPORTED:Z
 
     if-eqz v2, :cond_0
 
-    .line 4246
     move-object/from16 v0, p0
 
     move-object/from16 v1, p3
 
     invoke-direct {v0, v1}, Lcom/android/server/am/ActivityManagerService;->updateForbidAutostartListWithIntent(Landroid/content/Intent;)V
 
-    .line 4249
     :cond_0
     move-object/from16 v0, p0
 
@@ -95395,7 +94476,6 @@
     .param p2, "options"    # Landroid/os/Bundle;
 
     .prologue
-    .line 4565
     const-string v1, "android.permission.START_TASKS_FROM_RECENTS"
 
     invoke-virtual {p0, v1}, Lcom/android/server/am/ActivityManagerService;->checkCallingPermission(Ljava/lang/String;)I
@@ -95404,23 +94484,19 @@
 
     if-eqz v1, :cond_0
 
-    .line 4566
     const-string v0, "Permission Denial: startActivityFromRecents called without android.permission.START_TASKS_FROM_RECENTS"
 
-    .line 4568
     .local v0, "msg":Ljava/lang/String;
     const-string v1, "ActivityManager"
 
     invoke-static {v1, v0}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 4569
     new-instance v1, Ljava/lang/SecurityException;
 
     invoke-direct {v1, v0}, Ljava/lang/SecurityException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
-    .line 4571
     .end local v0    # "msg":Ljava/lang/String;
     :cond_0
     invoke-virtual {p0, p1, p2}, Lcom/android/server/am/ActivityManagerService;->startActivityFromRecentsInner(ILandroid/os/Bundle;)I
@@ -95440,10 +94516,8 @@
 
     const/4 v4, 0x0
 
-    .line 4580
     monitor-enter p0
 
-    .line 4581
     :try_start_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
@@ -95451,11 +94525,9 @@
 
     move-result-object v12
 
-    .line 4582
     .local v12, "task":Lcom/android/server/am/TaskRecord;
     if-nez v12, :cond_0
 
-    .line 4583
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -95486,7 +94558,6 @@
 
     throw v0
 
-    .line 4597
     .end local v12    # "task":Lcom/android/server/am/TaskRecord;
     :catchall_0
     move-exception v0
@@ -95497,7 +94568,6 @@
 
     throw v0
 
-    .line 4585
     .restart local v12    # "task":Lcom/android/server/am/TaskRecord;
     :cond_0
     :try_start_1
@@ -95507,7 +94577,6 @@
 
     if-eqz v0, :cond_1
 
-    .line 4586
     iget v0, v12, Lcom/android/server/am/TaskRecord;->taskId:I
 
     const/4 v4, 0x0
@@ -95516,48 +94585,38 @@
 
     invoke-virtual {p0, v0, v4, v5}, Lcom/android/server/am/ActivityManagerService;->moveTaskToFrontLocked(IILandroid/os/Bundle;)V
 
-    .line 4587
     const/4 v0, 0x2
 
     monitor-exit p0
 
-    .line 4598
     :goto_0
     return v0
 
-    .line 4589
     :cond_1
     iget v1, v12, Lcom/android/server/am/TaskRecord;->mCallingUid:I
 
-    .line 4590
     .local v1, "callingUid":I
     iget-object v2, v12, Lcom/android/server/am/TaskRecord;->mCallingPackage:Ljava/lang/String;
 
-    .line 4591
     .local v2, "callingPackage":Ljava/lang/String;
     iget-object v3, v12, Lcom/android/server/am/TaskRecord;->intent:Landroid/content/Intent;
 
-    .line 4592
     .local v3, "intent":Landroid/content/Intent;
     iget-object v0, v12, Lcom/android/server/am/TaskRecord;->origActivity:Landroid/content/ComponentName;
 
     if-eqz v0, :cond_2
 
-    .line 4593
     iget-object v0, v12, Lcom/android/server/am/TaskRecord;->origActivity:Landroid/content/ComponentName;
 
     invoke-virtual {v3, v0}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
 
-    .line 4595
     :cond_2
     const/high16 v0, 0x100000
 
     invoke-virtual {v3, v0}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 4596
     iget v10, v12, Lcom/android/server/am/TaskRecord;->userId:I
 
-    .line 4597
     .local v10, "userId":I
     monitor-exit p0
     :try_end_1
@@ -95575,7 +94634,6 @@
 
     move-object v11, v4
 
-    .line 4598
     invoke-virtual/range {v0 .. v12}, Lcom/android/server/am/ActivityManagerService;->startActivityInPackage(ILjava/lang/String;Landroid/content/Intent;Ljava/lang/String;Landroid/os/IBinder;Ljava/lang/String;IILandroid/os/Bundle;ILandroid/app/IActivityContainer;Lcom/android/server/am/TaskRecord;)I
 
     move-result v0
@@ -95599,7 +94657,6 @@
     .param p12, "inTask"    # Lcom/android/server/am/TaskRecord;
 
     .prologue
-    .line 4607
     invoke-static {}, Landroid/os/Binder;->getCallingPid()I
 
     move-result v3
@@ -95624,21 +94681,18 @@
 
     move-result p10
 
-    .line 4612
     move-object/from16 v0, p0
 
     iget-boolean v2, v0, Lcom/android/server/am/ActivityManagerService;->IS_AUTO_STARTUP_SUPPORTED:Z
 
     if-eqz v2, :cond_0
 
-    .line 4613
     move-object/from16 v0, p0
 
     move-object/from16 v1, p3
 
     invoke-direct {v0, v1}, Lcom/android/server/am/ActivityManagerService;->updateForbidAutostartListWithIntent(Landroid/content/Intent;)V
 
-    .line 4616
     :cond_0
     move-object/from16 v0, p0
 
@@ -95686,7 +94740,6 @@
 
     move-result v22
 
-    .line 4619
     .local v22, "ret":I
     return v22
 .end method
@@ -95710,14 +94763,12 @@
     .end annotation
 
     .prologue
-    .line 4382
     const-string v3, "startActivityIntentSender"
 
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v3}, Lcom/android/server/am/ActivityManagerService;->enforceNotIsolatedCaller(Ljava/lang/String;)V
 
-    .line 4384
     if-eqz p3, :cond_0
 
     invoke-virtual/range {p3 .. p3}, Landroid/content/Intent;->hasFileDescriptors()Z
@@ -95726,7 +94777,6 @@
 
     if-eqz v3, :cond_0
 
-    .line 4385
     new-instance v3, Ljava/lang/IllegalArgumentException;
 
     const-string v4, "File descriptors passed in Intent"
@@ -95735,13 +94785,11 @@
 
     throw v3
 
-    .line 4388
     :cond_0
     invoke-virtual/range {p2 .. p2}, Landroid/content/IntentSender;->getTarget()Landroid/content/IIntentSender;
 
     move-result-object v16
 
-    .line 4389
     .local v16, "sender":Landroid/content/IIntentSender;
     move-object/from16 v0, v16
 
@@ -95749,7 +94797,6 @@
 
     if-nez v3, :cond_1
 
-    .line 4390
     new-instance v3, Ljava/lang/IllegalArgumentException;
 
     const-string v4, "Bad PendingIntent object"
@@ -95761,20 +94808,16 @@
     :cond_1
     move-object/from16 v2, v16
 
-    .line 4393
     check-cast v2, Lcom/android/server/am/PendingIntentRecord;
 
-    .line 4395
     .local v2, "pir":Lcom/android/server/am/PendingIntentRecord;
     monitor-enter p0
 
-    .line 4398
     :try_start_0
     invoke-virtual/range {p0 .. p0}, Lcom/android/server/am/ActivityManagerService;->getFocusedStack()Lcom/android/server/am/ActivityStack;
 
     move-result-object v17
 
-    .line 4399
     .local v17, "stack":Lcom/android/server/am/ActivityStack;
     move-object/from16 v0, v17
 
@@ -95798,20 +94841,17 @@
 
     if-ne v3, v4, :cond_2
 
-    .line 4401
     const-wide/16 v4, 0x0
 
     move-object/from16 v0, p0
 
     iput-wide v4, v0, Lcom/android/server/am/ActivityManagerService;->mAppSwitchesAllowedTime:J
 
-    .line 4403
     :cond_2
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 4404
     const/4 v3, 0x0
 
     const/4 v6, 0x0
@@ -95840,11 +94880,9 @@
 
     move-result v15
 
-    .line 4406
     .local v15, "ret":I
     return v15
 
-    .line 4403
     .end local v15    # "ret":I
     .end local v17    # "stack":Lcom/android/server/am/ActivityStack;
     :catchall_0
@@ -95873,14 +94911,12 @@
     .param p11, "userId"    # I
 
     .prologue
-    .line 4362
     const-string v2, "startActivityWithConfig"
 
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v2}, Lcom/android/server/am/ActivityManagerService;->enforceNotIsolatedCaller(Ljava/lang/String;)V
 
-    .line 4363
     invoke-static {}, Landroid/os/Binder;->getCallingPid()I
 
     move-result v3
@@ -95905,21 +94941,18 @@
 
     move-result p11
 
-    .line 4367
     move-object/from16 v0, p0
 
     iget-boolean v2, v0, Lcom/android/server/am/ActivityManagerService;->IS_AUTO_STARTUP_SUPPORTED:Z
 
     if-eqz v2, :cond_0
 
-    .line 4368
     move-object/from16 v0, p0
 
     move-object/from16 v1, p3
 
     invoke-direct {v0, v1}, Lcom/android/server/am/ActivityManagerService;->updateForbidAutostartListWithIntent(Landroid/content/Intent;)V
 
-    .line 4371
     :cond_0
     move-object/from16 v0, p0
 
@@ -95967,7 +95000,6 @@
 
     move-result v22
 
-    .line 4374
     .local v22, "ret":I
     return v22
 .end method
@@ -95976,27 +95008,23 @@
     .locals 3
 
     .prologue
-    .line 3857
     new-instance v0, Landroid/content/Intent;
 
     const-string v1, "org.codeaurora.alarm.action.POWER_OFF_ALARM"
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 3858
     .local v0, "intent":Landroid/content/Intent;
     const/high16 v1, 0x10000000
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 3859
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
     sget-object v2, Landroid/os/UserHandle;->CURRENT:Landroid/os/UserHandle;
 
     invoke-virtual {v1, v0, v2}, Landroid/content/Context;->startActivityAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
 
-    .line 3860
     return-void
 .end method
 
@@ -96005,12 +95033,10 @@
     .param p1, "app"    # Lcom/android/server/am/ProcessRecord;
 
     .prologue
-    .line 12764
     const/4 v4, 0x0
 
     iput-object v4, p1, Lcom/android/server/am/ProcessRecord;->errorReportReceiver:Landroid/content/ComponentName;
 
-    .line 12766
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mCurrentProfileIds:[I
 
     .local v0, "arr$":[I
@@ -96025,13 +95051,11 @@
 
     aget v3, v0, v1
 
-    .line 12767
     .local v3, "userId":I
     iget v4, p1, Lcom/android/server/am/ProcessRecord;->userId:I
 
     if-ne v4, v3, :cond_0
 
-    .line 12768
     iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
     iget-object v5, p1, Lcom/android/server/am/ProcessRecord;->info:Landroid/content/pm/ApplicationInfo;
@@ -96048,18 +95072,15 @@
 
     iput-object v4, p1, Lcom/android/server/am/ProcessRecord;->errorReportReceiver:Landroid/content/ComponentName;
 
-    .line 12766
     :cond_0
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 12772
     .end local v3    # "userId":I
     :cond_1
     invoke-virtual {p0, p1}, Lcom/android/server/am/ActivityManagerService;->skipCurrentReceiverLocked(Lcom/android/server/am/ProcessRecord;)V
 
-    .line 12773
     return-void
 .end method
 
@@ -96072,20 +95093,16 @@
     .param p5, "targetProcess"    # Ljava/lang/String;
 
     .prologue
-    .line 18397
     iget-boolean v1, p0, Lcom/android/server/am/ActivityManagerService;->mTrackingAssociations:Z
 
     if-nez v1, :cond_1
 
-    .line 18398
     const/4 v0, 0x0
 
-    .line 18427
     :cond_0
     :goto_0
     return-object v0
 
-    .line 18400
     :cond_1
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mAssociations:Landroid/util/SparseArray;
 
@@ -96095,23 +95112,19 @@
 
     check-cast v6, Landroid/util/ArrayMap;
 
-    .line 18402
     .local v6, "components":Landroid/util/ArrayMap;, "Landroid/util/ArrayMap<Landroid/content/ComponentName;Landroid/util/SparseArray<Landroid/util/ArrayMap<Ljava/lang/String;Lcom/android/server/am/ActivityManagerService$Association;>;>;>;"
     if-nez v6, :cond_2
 
-    .line 18403
     new-instance v6, Landroid/util/ArrayMap;
 
     .end local v6    # "components":Landroid/util/ArrayMap;, "Landroid/util/ArrayMap<Landroid/content/ComponentName;Landroid/util/SparseArray<Landroid/util/ArrayMap<Ljava/lang/String;Lcom/android/server/am/ActivityManagerService$Association;>;>;>;"
     invoke-direct {v6}, Landroid/util/ArrayMap;-><init>()V
 
-    .line 18404
     .restart local v6    # "components":Landroid/util/ArrayMap;, "Landroid/util/ArrayMap<Landroid/content/ComponentName;Landroid/util/SparseArray<Landroid/util/ArrayMap<Ljava/lang/String;Lcom/android/server/am/ActivityManagerService$Association;>;>;>;"
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mAssociations:Landroid/util/SparseArray;
 
     invoke-virtual {v1, p3, v6}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 18406
     :cond_2
     invoke-virtual {v6, p4}, Landroid/util/ArrayMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -96119,21 +95132,17 @@
 
     check-cast v8, Landroid/util/SparseArray;
 
-    .line 18407
     .local v8, "sourceUids":Landroid/util/SparseArray;, "Landroid/util/SparseArray<Landroid/util/ArrayMap<Ljava/lang/String;Lcom/android/server/am/ActivityManagerService$Association;>;>;"
     if-nez v8, :cond_3
 
-    .line 18408
     new-instance v8, Landroid/util/SparseArray;
 
     .end local v8    # "sourceUids":Landroid/util/SparseArray;, "Landroid/util/SparseArray<Landroid/util/ArrayMap<Ljava/lang/String;Lcom/android/server/am/ActivityManagerService$Association;>;>;"
     invoke-direct {v8}, Landroid/util/SparseArray;-><init>()V
 
-    .line 18409
     .restart local v8    # "sourceUids":Landroid/util/SparseArray;, "Landroid/util/SparseArray<Landroid/util/ArrayMap<Ljava/lang/String;Lcom/android/server/am/ActivityManagerService$Association;>;>;"
     invoke-virtual {v6, p4, v8}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 18411
     :cond_3
     invoke-virtual {v8, p1}, Landroid/util/SparseArray;->get(I)Ljava/lang/Object;
 
@@ -96141,21 +95150,17 @@
 
     check-cast v7, Landroid/util/ArrayMap;
 
-    .line 18412
     .local v7, "sourceProcesses":Landroid/util/ArrayMap;, "Landroid/util/ArrayMap<Ljava/lang/String;Lcom/android/server/am/ActivityManagerService$Association;>;"
     if-nez v7, :cond_4
 
-    .line 18413
     new-instance v7, Landroid/util/ArrayMap;
 
     .end local v7    # "sourceProcesses":Landroid/util/ArrayMap;, "Landroid/util/ArrayMap<Ljava/lang/String;Lcom/android/server/am/ActivityManagerService$Association;>;"
     invoke-direct {v7}, Landroid/util/ArrayMap;-><init>()V
 
-    .line 18414
     .restart local v7    # "sourceProcesses":Landroid/util/ArrayMap;, "Landroid/util/ArrayMap<Ljava/lang/String;Lcom/android/server/am/ActivityManagerService$Association;>;"
     invoke-virtual {v8, p1, v7}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 18416
     :cond_4
     invoke-virtual {v7, p2}, Landroid/util/ArrayMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -96163,11 +95168,9 @@
 
     check-cast v0, Lcom/android/server/am/ActivityManagerService$Association;
 
-    .line 18417
     .local v0, "ass":Lcom/android/server/am/ActivityManagerService$Association;
     if-nez v0, :cond_5
 
-    .line 18418
     new-instance v0, Lcom/android/server/am/ActivityManagerService$Association;
 
     .end local v0    # "ass":Lcom/android/server/am/ActivityManagerService$Association;
@@ -96183,11 +95186,9 @@
 
     invoke-direct/range {v0 .. v5}, Lcom/android/server/am/ActivityManagerService$Association;-><init>(ILjava/lang/String;ILandroid/content/ComponentName;Ljava/lang/String;)V
 
-    .line 18420
     .restart local v0    # "ass":Lcom/android/server/am/ActivityManagerService$Association;
     invoke-virtual {v7, p2, v0}, Landroid/util/ArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 18422
     :cond_5
     iget v1, v0, Lcom/android/server/am/ActivityManagerService$Association;->mCount:I
 
@@ -96195,21 +95196,18 @@
 
     iput v1, v0, Lcom/android/server/am/ActivityManagerService$Association;->mCount:I
 
-    .line 18423
     iget v1, v0, Lcom/android/server/am/ActivityManagerService$Association;->mNesting:I
 
     add-int/lit8 v1, v1, 0x1
 
     iput v1, v0, Lcom/android/server/am/ActivityManagerService$Association;->mNesting:I
 
-    .line 18424
     iget v1, v0, Lcom/android/server/am/ActivityManagerService$Association;->mNesting:I
 
     const/4 v2, 0x1
 
     if-ne v1, v2, :cond_0
 
-    .line 18425
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v2
@@ -96229,7 +95227,6 @@
 
     const/4 v7, 0x1
 
-    .line 3789
     iget v8, p0, Lcom/android/server/am/ActivityManagerService;->mFactoryTest:I
 
     if-ne v8, v7, :cond_0
@@ -96238,17 +95235,14 @@
 
     if-nez v8, :cond_0
 
-    .line 3840
     :goto_0
     return v6
 
-    .line 3796
     :cond_0
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->getHomeIntent()Landroid/content/Intent;
 
     move-result-object v4
 
-    .line 3797
     .local v4, "intent":Landroid/content/Intent;
     const/16 v8, 0x400
 
@@ -96256,11 +95250,9 @@
 
     move-result-object v0
 
-    .line 3799
     .local v0, "aInfo":Landroid/content/pm/ActivityInfo;
     if-eqz v0, :cond_5
 
-    .line 3800
     new-instance v8, Landroid/content/ComponentName;
 
     iget-object v9, v0, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
@@ -96273,12 +95265,10 @@
 
     invoke-virtual {v4, v8}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
 
-    .line 3804
     new-instance v1, Landroid/content/pm/ActivityInfo;
 
     invoke-direct {v1, v0}, Landroid/content/pm/ActivityInfo;-><init>(Landroid/content/pm/ActivityInfo;)V
 
-    .line 3805
     .end local v0    # "aInfo":Landroid/content/pm/ActivityInfo;
     .local v1, "aInfo":Landroid/content/pm/ActivityInfo;
     iget-object v8, v1, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
@@ -96289,7 +95279,6 @@
 
     iput-object v8, v1, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
-    .line 3806
     iget-object v8, v1, Landroid/content/pm/ActivityInfo;->processName:Ljava/lang/String;
 
     iget-object v9, v1, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
@@ -96300,7 +95289,6 @@
 
     move-result-object v2
 
-    .line 3808
     .local v2, "app":Lcom/android/server/am/ProcessRecord;
     if-eqz v2, :cond_1
 
@@ -96308,7 +95296,6 @@
 
     if-nez v8, :cond_4
 
-    .line 3809
     :cond_1
     invoke-virtual {v4}, Landroid/content/Intent;->getFlags()I
 
@@ -96320,24 +95307,20 @@
 
     invoke-virtual {v4, v8}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
 
-    .line 3810
     iget-object v8, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
     invoke-virtual {v8, v4, v1, p2}, Lcom/android/server/am/ActivityStackSupervisor;->startHomeActivity(Landroid/content/Intent;Landroid/content/pm/ActivityInfo;Ljava/lang/String;)V
 
-    .line 3817
     invoke-direct {p0}, Lcom/android/server/am/ActivityManagerService;->isDeviceProvisioned()Z
 
     move-result v8
 
     if-nez v8, :cond_4
 
-    .line 3818
     iget-boolean v8, p0, Lcom/android/server/am/ActivityManagerService;->mPointerEventListenerRegistered:Z
 
     if-eqz v8, :cond_2
 
-    .line 3820
     :try_start_0
     iget-object v8, p0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
 
@@ -96345,21 +95328,18 @@
 
     invoke-virtual {v8, v9}, Lcom/android/server/wm/WindowManagerService;->unregisterPointerEventListener(Landroid/view/WindowManagerPolicy$PointerEventListener;)V
 
-    .line 3821
     const/4 v8, 0x0
 
     iput-boolean v8, p0, Lcom/android/server/am/ActivityManagerService;->mPointerEventListenerRegistered:Z
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 3826
     :cond_2
     :goto_1
     iget-object v8, p0, Lcom/android/server/am/ActivityManagerService;->mAutoShutdownWakelock:Landroid/os/PowerManager$WakeLock;
 
     if-nez v8, :cond_3
 
-    .line 3827
     iget-object v8, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
     const-string v9, "power"
@@ -96370,7 +95350,6 @@
 
     check-cast v5, Landroid/os/PowerManager;
 
-    .line 3828
     .local v5, "powerManager":Landroid/os/PowerManager;
     const-string v8, "auto_shutdown"
 
@@ -96380,12 +95359,10 @@
 
     iput-object v8, p0, Lcom/android/server/am/ActivityManagerService;->mAutoShutdownWakelock:Landroid/os/PowerManager$WakeLock;
 
-    .line 3829
     iget-object v8, p0, Lcom/android/server/am/ActivityManagerService;->mAutoShutdownWakelock:Landroid/os/PowerManager$WakeLock;
 
     invoke-virtual {v8, v6}, Landroid/os/PowerManager$WakeLock;->setReferenceCounted(Z)V
 
-    .line 3831
     .end local v5    # "powerManager":Landroid/os/PowerManager;
     :cond_3
     iget-object v6, p0, Lcom/android/server/am/ActivityManagerService;->mAutoShutdownWakelock:Landroid/os/PowerManager$WakeLock;
@@ -96394,24 +95371,20 @@
 
     invoke-virtual {v6, v8, v9}, Landroid/os/PowerManager$WakeLock;->acquire(J)V
 
-    .line 3832
     invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
 
     move-result-wide v8
 
     iput-wide v8, p0, Lcom/android/server/am/ActivityManagerService;->mLastInputEvent:J
 
-    .line 3833
     iget-object v6, p0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
 
     iget-object v8, p0, Lcom/android/server/am/ActivityManagerService;->mPointerEventListener:Landroid/view/WindowManagerPolicy$PointerEventListener;
 
     invoke-virtual {v6, v8}, Lcom/android/server/wm/WindowManagerService;->registerPointerEventListener(Landroid/view/WindowManagerPolicy$PointerEventListener;)V
 
-    .line 3834
     iput-boolean v7, p0, Lcom/android/server/am/ActivityManagerService;->mPointerEventListenerRegistered:Z
 
-    .line 3835
     iget-object v6, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     iget-object v8, p0, Lcom/android/server/am/ActivityManagerService;->mTurnOffScreenIfSetupIdle:Ljava/lang/Runnable;
@@ -96429,17 +95402,14 @@
     :cond_5
     move v6, v7
 
-    .line 3840
     goto/16 :goto_0
 
-    .line 3822
     .end local v0    # "aInfo":Landroid/content/pm/ActivityInfo;
     .restart local v1    # "aInfo":Landroid/content/pm/ActivityInfo;
     .restart local v2    # "app":Lcom/android/server/am/ProcessRecord;
     :catch_0
     move-exception v3
 
-    .line 3823
     .local v3, "e":Ljava/lang/Exception;
     const-string v8, "ActivityManager"
 
@@ -96476,7 +95446,6 @@
     .end annotation
 
     .prologue
-    .line 9237
     invoke-virtual {p1}, Landroid/app/ActivityOptions;->getAnimationType()I
 
     move-result v0
@@ -96491,7 +95460,6 @@
 
     if-nez v0, :cond_1
 
-    .line 9239
     :cond_0
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
@@ -96501,7 +95469,6 @@
 
     throw v0
 
-    .line 9242
     :cond_1
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
 
@@ -96511,7 +95478,6 @@
 
     invoke-virtual {v0, v1, v2}, Lcom/android/server/wm/WindowManagerService;->prepareAppTransition(IZ)V
 
-    .line 9243
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
 
     invoke-virtual {p1}, Landroid/app/ActivityOptions;->getPackageName()Ljava/lang/String;
@@ -96524,12 +95490,10 @@
 
     invoke-virtual {v0, v1, v2}, Lcom/android/server/wm/WindowManagerService;->overridePendingAppTransitionInPlace(Ljava/lang/String;I)V
 
-    .line 9245
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
 
     invoke-virtual {v0}, Lcom/android/server/wm/WindowManagerService;->executeAppTransition()V
 
-    .line 9246
     return-void
 .end method
 
@@ -96545,14 +95509,12 @@
     .param p8, "abiOverride"    # Ljava/lang/String;
 
     .prologue
-    .line 17929
     const-string v4, "startInstrumentation"
 
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v4}, Lcom/android/server/am/ActivityManagerService;->enforceNotIsolatedCaller(Ljava/lang/String;)V
 
-    .line 17930
     invoke-static {}, Landroid/os/Binder;->getCallingPid()I
 
     move-result v5
@@ -96577,7 +95539,6 @@
 
     move-result p7
 
-    .line 17933
     if-eqz p4, :cond_0
 
     invoke-virtual/range {p4 .. p4}, Landroid/os/Bundle;->hasFileDescriptors()Z
@@ -96586,7 +95547,6 @@
 
     if-eqz v4, :cond_0
 
-    .line 17934
     new-instance v4, Ljava/lang/IllegalArgumentException;
 
     const-string v5, "File descriptors passed in Bundle"
@@ -96595,18 +95555,14 @@
 
     throw v4
 
-    .line 17937
     :cond_0
     monitor-enter p0
 
-    .line 17938
     const/16 v18, 0x0
 
-    .line 17939
     .local v18, "ii":Landroid/content/pm/InstrumentationInfo;
     const/4 v14, 0x0
 
-    .line 17941
     .local v14, "ai":Landroid/content/pm/ApplicationInfo;
     :try_start_0
     move-object/from16 v0, p0
@@ -96625,7 +95581,6 @@
 
     move-result-object v18
 
-    .line 17943
     invoke-static {}, Landroid/app/AppGlobals;->getPackageManager()Landroid/content/pm/IPackageManager;
 
     move-result-object v4
@@ -96646,11 +95601,9 @@
 
     move-result-object v14
 
-    .line 17948
     :goto_0
     if-nez v18, :cond_1
 
-    .line 17949
     :try_start_1
     new-instance v4, Ljava/lang/StringBuilder;
 
@@ -96680,20 +95633,16 @@
 
     invoke-direct {v0, v1, v2, v4}, Lcom/android/server/am/ActivityManagerService;->reportStartInstrumentationFailure(Landroid/app/IInstrumentationWatcher;Landroid/content/ComponentName;Ljava/lang/String;)V
 
-    .line 17951
     const/4 v4, 0x0
 
     monitor-exit p0
 
-    .line 18011
     :goto_1
     return v4
 
-    .line 17953
     :cond_1
     if-nez v14, :cond_2
 
-    .line 17954
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
@@ -96724,14 +95673,12 @@
 
     invoke-direct {v0, v1, v2, v4}, Lcom/android/server/am/ActivityManagerService;->reportStartInstrumentationFailure(Landroid/app/IInstrumentationWatcher;Landroid/content/ComponentName;Ljava/lang/String;)V
 
-    .line 17956
     const/4 v4, 0x0
 
     monitor-exit p0
 
     goto :goto_1
 
-    .line 18009
     :catchall_0
     move-exception v4
 
@@ -96741,7 +95688,6 @@
 
     throw v4
 
-    .line 17959
     :cond_2
     :try_start_2
     move-object/from16 v0, p0
@@ -96764,7 +95710,6 @@
 
     move-result v19
 
-    .line 17961
     .local v19, "match":I
     if-gez v19, :cond_3
 
@@ -96774,7 +95719,6 @@
 
     if-eq v0, v4, :cond_3
 
-    .line 17962
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
@@ -96851,7 +95795,6 @@
 
     move-result-object v20
 
-    .line 17969
     .local v20, "msg":Ljava/lang/String;
     move-object/from16 v0, p0
 
@@ -96863,7 +95806,6 @@
 
     invoke-direct {v0, v1, v2, v3}, Lcom/android/server/am/ActivityManagerService;->reportStartInstrumentationFailure(Landroid/app/IInstrumentationWatcher;Landroid/content/ComponentName;Ljava/lang/String;)V
 
-    .line 17970
     new-instance v4, Ljava/lang/SecurityException;
 
     move-object/from16 v0, v20
@@ -96872,14 +95814,12 @@
 
     throw v4
 
-    .line 17975
     .end local v20    # "msg":Ljava/lang/String;
     :cond_3
     sget-boolean v4, Lcom/android/server/am/OnePlusAppBootManager;->DEBUG:Z
 
     if-eqz v4, :cond_4
 
-    .line 17976
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
@@ -96930,24 +95870,20 @@
 
     invoke-static {v4}, Lcom/android/server/am/OnePlusAppBootManager;->myLog(Ljava/lang/String;)V
 
-    .line 17984
     :cond_4
     sget-boolean v4, Lcom/android/server/am/OnePlusAppBootManager;->IN_USING:Z
 
     if-eqz v4, :cond_5
 
-    .line 17985
     invoke-static {}, Landroid/os/Binder;->getCallingPid()I
 
     move-result v16
 
-    .line 17986
     .local v16, "callingPid":I
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
     move-result v17
 
-    .line 17987
     .local v17, "callingUid":I
     const/4 v4, 0x0
 
@@ -96967,7 +95903,6 @@
 
     if-nez v4, :cond_5
 
-    .line 17989
     const-string v4, "AppBoot forbid it."
 
     move-object/from16 v0, p0
@@ -96978,14 +95913,12 @@
 
     invoke-direct {v0, v1, v2, v4}, Lcom/android/server/am/ActivityManagerService;->reportStartInstrumentationFailure(Landroid/app/IInstrumentationWatcher;Landroid/content/ComponentName;Ljava/lang/String;)V
 
-    .line 17991
     const/4 v4, 0x0
 
     monitor-exit p0
 
     goto/16 :goto_1
 
-    .line 17996
     .end local v16    # "callingPid":I
     .end local v17    # "callingUid":I
     :cond_5
@@ -96993,7 +95926,6 @@
 
     move-result-wide v22
 
-    .line 17998
     .local v22, "origId":J
     move-object/from16 v0, v18
 
@@ -97019,7 +95951,6 @@
 
     invoke-direct/range {v4 .. v13}, Lcom/android/server/am/ActivityManagerService;->forceStopPackageLocked(Ljava/lang/String;IZZZZZILjava/lang/String;)Z
 
-    .line 18000
     const/4 v4, 0x0
 
     move-object/from16 v0, p0
@@ -97030,54 +95961,43 @@
 
     move-result-object v15
 
-    .line 18001
     .local v15, "app":Lcom/android/server/am/ProcessRecord;
     move-object/from16 v0, p1
 
     iput-object v0, v15, Lcom/android/server/am/ProcessRecord;->instrumentationClass:Landroid/content/ComponentName;
 
-    .line 18002
     iput-object v14, v15, Lcom/android/server/am/ProcessRecord;->instrumentationInfo:Landroid/content/pm/ApplicationInfo;
 
-    .line 18003
     move-object/from16 v0, p2
 
     iput-object v0, v15, Lcom/android/server/am/ProcessRecord;->instrumentationProfileFile:Ljava/lang/String;
 
-    .line 18004
     move-object/from16 v0, p4
 
     iput-object v0, v15, Lcom/android/server/am/ProcessRecord;->instrumentationArguments:Landroid/os/Bundle;
 
-    .line 18005
     move-object/from16 v0, p5
 
     iput-object v0, v15, Lcom/android/server/am/ProcessRecord;->instrumentationWatcher:Landroid/app/IInstrumentationWatcher;
 
-    .line 18006
     move-object/from16 v0, p6
 
     iput-object v0, v15, Lcom/android/server/am/ProcessRecord;->instrumentationUiAutomationConnection:Landroid/app/IUiAutomationConnection;
 
-    .line 18007
     move-object/from16 v0, p1
 
     iput-object v0, v15, Lcom/android/server/am/ProcessRecord;->instrumentationResultClass:Landroid/content/ComponentName;
 
-    .line 18008
     invoke-static/range {v22 .. v23}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 18009
     monitor-exit p0
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 18011
     const/4 v4, 0x1
 
     goto/16 :goto_1
 
-    .line 17946
     .end local v15    # "app":Lcom/android/server/am/ProcessRecord;
     .end local v19    # "match":I
     .end local v22    # "origId":J
@@ -97086,7 +96006,6 @@
 
     goto/16 :goto_0
 
-    .line 17945
     :catch_1
     move-exception v4
 
@@ -97103,37 +96022,30 @@
     .param p6, "crashHandler"    # Ljava/lang/Runnable;
 
     .prologue
-    .line 3354
     monitor-enter p0
 
-    .line 3355
     :try_start_0
     new-instance v3, Landroid/content/pm/ApplicationInfo;
 
     invoke-direct {v3}, Landroid/content/pm/ApplicationInfo;-><init>()V
 
-    .line 3364
     .local v3, "info":Landroid/content/pm/ApplicationInfo;
     const/16 v1, 0x3e8
 
     iput v1, v3, Landroid/content/pm/ApplicationInfo;->uid:I
 
-    .line 3365
     move-object/from16 v0, p3
 
     iput-object v0, v3, Landroid/content/pm/ApplicationInfo;->processName:Ljava/lang/String;
 
-    .line 3366
     move-object/from16 v0, p1
 
     iput-object v0, v3, Landroid/content/pm/ApplicationInfo;->className:Ljava/lang/String;
 
-    .line 3367
     const-string v1, "android"
 
     iput-object v1, v3, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
 
-    .line 3368
     const/4 v4, 0x0
 
     const/4 v5, 0x0
@@ -97166,7 +96078,6 @@
 
     move-result-object v16
 
-    .line 3373
     .local v16, "proc":Lcom/android/server/am/ProcessRecord;
     if-eqz v16, :cond_0
 
@@ -97184,7 +96095,6 @@
 
     goto :goto_0
 
-    .line 3374
     .end local v3    # "info":Landroid/content/pm/ApplicationInfo;
     .end local v16    # "proc":Lcom/android/server/am/ProcessRecord;
     :catchall_0
@@ -97202,10 +96112,8 @@
     .param p1, "taskId"    # I
 
     .prologue
-    .line 9752
     monitor-enter p0
 
-    .line 9753
     :try_start_0
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
@@ -97213,21 +96121,16 @@
 
     move-result-object v0
 
-    .line 9754
     .local v0, "task":Lcom/android/server/am/TaskRecord;
     if-eqz v0, :cond_0
 
-    .line 9755
     invoke-virtual {p0, v0}, Lcom/android/server/am/ActivityManagerService;->startLockTaskModeLocked(Lcom/android/server/am/TaskRecord;)V
 
-    .line 9757
     :cond_0
     monitor-exit p0
 
-    .line 9758
     return-void
 
-    .line 9757
     .end local v0    # "task":Lcom/android/server/am/TaskRecord;
     :catchall_0
     move-exception v1
@@ -97244,38 +96147,29 @@
     .param p1, "token"    # Landroid/os/IBinder;
 
     .prologue
-    .line 9762
     monitor-enter p0
 
-    .line 9763
     :try_start_0
     invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->forTokenLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
 
     move-result-object v0
 
-    .line 9764
     .local v0, "r":Lcom/android/server/am/ActivityRecord;
     if-nez v0, :cond_0
 
-    .line 9765
     monitor-exit p0
 
-    .line 9772
     :goto_0
     return-void
 
-    .line 9767
     :cond_0
     iget-object v1, v0, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
 
-    .line 9768
     .local v1, "task":Lcom/android/server/am/TaskRecord;
     if-eqz v1, :cond_1
 
-    .line 9769
     invoke-virtual {p0, v1}, Lcom/android/server/am/ActivityManagerService;->startLockTaskModeLocked(Lcom/android/server/am/TaskRecord;)V
 
-    .line 9771
     :cond_1
     monitor-exit p0
 
@@ -97300,7 +96194,6 @@
     .prologue
     const/4 v6, 0x1
 
-    .line 9709
     sget-boolean v7, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_LOCKTASK:Z
 
     if-eqz v7, :cond_0
@@ -97327,23 +96220,19 @@
 
     invoke-static {v7, v8}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 9710
     :cond_0
     iget v7, p1, Lcom/android/server/am/TaskRecord;->mLockTaskAuth:I
 
     if-nez v7, :cond_1
 
-    .line 9748
     :goto_0
     return-void
 
-    .line 9717
     :cond_1
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
     move-result v0
 
-    .line 9718
     .local v0, "callingUid":I
     const/16 v7, 0x3e8
 
@@ -97351,14 +96240,12 @@
 
     move v1, v6
 
-    .line 9719
     .local v1, "isSystemInitiated":Z
     :goto_1
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v2
 
-    .line 9721
     .local v2, "ident":J
     :try_start_0
     iget-object v7, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
@@ -97367,19 +96254,15 @@
 
     move-result-object v4
 
-    .line 9722
     .local v4, "stack":Lcom/android/server/am/ActivityStack;
     if-nez v1, :cond_7
 
-    .line 9723
     iput v0, p1, Lcom/android/server/am/TaskRecord;->mLockTaskUid:I
 
-    .line 9724
     iget v7, p1, Lcom/android/server/am/TaskRecord;->mLockTaskAuth:I
 
     if-ne v7, v6, :cond_5
 
-    .line 9726
     sget-boolean v6, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_LOCKTASK:Z
 
     if-eqz v6, :cond_2
@@ -97390,7 +96273,6 @@
 
     invoke-static {v6, v7}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 9727
     :cond_2
     const-class v6, Lcom/android/server/statusbar/StatusBarManagerInternal;
 
@@ -97400,22 +96282,18 @@
 
     check-cast v5, Lcom/android/server/statusbar/StatusBarManagerInternal;
 
-    .line 9729
     .local v5, "statusBarManager":Lcom/android/server/statusbar/StatusBarManagerInternal;
     if-eqz v5, :cond_3
 
-    .line 9730
     invoke-interface {v5}, Lcom/android/server/statusbar/StatusBarManagerInternal;->showScreenPinningRequest()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 9746
     :cond_3
     invoke-static {v2, v3}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
     goto :goto_0
 
-    .line 9718
     .end local v1    # "isSystemInitiated":Z
     .end local v2    # "ident":J
     .end local v4    # "stack":Lcom/android/server/am/ActivityStack;
@@ -97425,7 +96303,6 @@
 
     goto :goto_1
 
-    .line 9735
     .restart local v1    # "isSystemInitiated":Z
     .restart local v2    # "ident":J
     .restart local v4    # "stack":Lcom/android/server/am/ActivityStack;
@@ -97439,7 +96316,6 @@
 
     if-eq p1, v7, :cond_7
 
-    .line 9736
     :cond_6
     new-instance v6, Ljava/lang/IllegalArgumentException;
 
@@ -97451,7 +96327,6 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 9746
     .end local v4    # "stack":Lcom/android/server/am/ActivityStack;
     :catchall_0
     move-exception v6
@@ -97460,7 +96335,6 @@
 
     throw v6
 
-    .line 9739
     .restart local v4    # "stack":Lcom/android/server/am/ActivityStack;
     :cond_7
     :try_start_2
@@ -97477,7 +96351,6 @@
     :goto_2
     invoke-static {v8, v7}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 9741
     :cond_8
     iget-object v7, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
@@ -97494,12 +96367,10 @@
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 9746
     invoke-static {v2, v3}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
     goto :goto_0
 
-    .line 9739
     :cond_a
     :try_start_3
     const-string v7, "Locking fully"
@@ -97518,26 +96389,22 @@
     .end annotation
 
     .prologue
-    .line 9776
     const-string v3, "android.permission.MANAGE_ACTIVITY_STACKS"
 
     const-string v4, "startLockTaskModeOnCurrent"
 
     invoke-virtual {p0, v3, v4}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 9778
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v0
 
-    .line 9780
     .local v0, "ident":J
     :try_start_0
     monitor-enter p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 9781
     :try_start_1
     iget-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
@@ -97545,28 +96412,22 @@
 
     move-result-object v2
 
-    .line 9782
     .local v2, "r":Lcom/android/server/am/ActivityRecord;
     if-eqz v2, :cond_0
 
-    .line 9783
     iget-object v3, v2, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
 
     invoke-virtual {p0, v3}, Lcom/android/server/am/ActivityManagerService;->startLockTaskModeLocked(Lcom/android/server/am/TaskRecord;)V
 
-    .line 9785
     :cond_0
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 9787
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 9789
     return-void
 
-    .line 9785
     .end local v2    # "r":Lcom/android/server/am/ActivityRecord;
     :catchall_0
     move-exception v3
@@ -97581,7 +96442,6 @@
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_1
 
-    .line 9787
     :catchall_1
     move-exception v3
 
@@ -97597,7 +96457,6 @@
     .param p3, "options"    # Landroid/os/Bundle;
 
     .prologue
-    .line 4456
     if-eqz p2, :cond_0
 
     invoke-virtual/range {p2 .. p2}, Landroid/content/Intent;->hasFileDescriptors()Z
@@ -97608,7 +96467,6 @@
 
     if-ne v2, v3, :cond_0
 
-    .line 4457
     new-instance v2, Ljava/lang/IllegalArgumentException;
 
     const-string v3, "File descriptors passed in Intent"
@@ -97617,33 +96475,26 @@
 
     throw v2
 
-    .line 4460
     :cond_0
     monitor-enter p0
 
-    .line 4461
     :try_start_0
     invoke-static/range {p1 .. p1}, Lcom/android/server/am/ActivityRecord;->isInStackLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
 
     move-result-object v27
 
-    .line 4462
     .local v27, "r":Lcom/android/server/am/ActivityRecord;
     if-nez v27, :cond_1
 
-    .line 4463
     invoke-static/range {p3 .. p3}, Landroid/app/ActivityOptions;->abort(Landroid/os/Bundle;)V
 
-    .line 4464
     const/4 v2, 0x0
 
     monitor-exit p0
 
-    .line 4559
     :goto_0
     return v2
 
-    .line 4466
     :cond_1
     move-object/from16 v0, v27
 
@@ -97659,18 +96510,15 @@
 
     if-nez v2, :cond_3
 
-    .line 4468
     :cond_2
     invoke-static/range {p3 .. p3}, Landroid/app/ActivityOptions;->abort(Landroid/os/Bundle;)V
 
-    .line 4469
     const/4 v2, 0x0
 
     monitor-exit p0
 
     goto :goto_0
 
-    .line 4560
     .end local v27    # "r":Lcom/android/server/am/ActivityRecord;
     :catchall_0
     move-exception v2
@@ -97682,7 +96530,6 @@
 
     throw v2
 
-    .line 4471
     .restart local v27    # "r":Lcom/android/server/am/ActivityRecord;
     :cond_3
     :try_start_1
@@ -97694,7 +96541,6 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 4473
     .end local p2    # "intent":Landroid/content/Intent;
     .local v4, "intent":Landroid/content/Intent;
     :try_start_2
@@ -97716,12 +96562,10 @@
 
     invoke-virtual {v4, v2, v3}, Landroid/content/Intent;->setDataAndType(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 4475
     const/4 v2, 0x0
 
     invoke-virtual {v4, v2}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
 
-    .line 4477
     invoke-virtual {v4}, Landroid/content/Intent;->getFlags()I
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
@@ -97734,12 +96578,10 @@
 
     const/16 v25, 0x1
 
-    .line 4479
     .local v25, "debug":Z
     :goto_2
     const/4 v6, 0x0
 
-    .line 4481
     .local v6, "aInfo":Landroid/content/pm/ActivityInfo;
     :try_start_3
     invoke-static {}, Landroid/app/AppGlobals;->getPackageManager()Landroid/content/pm/IPackageManager;
@@ -97760,7 +96602,6 @@
 
     move-result-object v32
 
-    .line 4488
     .local v32, "resolves":Ljava/util/List;, "Ljava/util/List<Landroid/content/pm/ResolveInfo;>;"
     if-eqz v32, :cond_8
 
@@ -97768,7 +96609,6 @@
 
     move-result v24
 
-    .line 4489
     .local v24, "N":I
     :goto_3
     const/16 v26, 0x0
@@ -97781,7 +96621,6 @@
 
     if-ge v0, v1, :cond_5
 
-    .line 4490
     move-object/from16 v0, v32
 
     move/from16 v1, v26
@@ -97792,7 +96631,6 @@
 
     check-cast v30, Landroid/content/pm/ResolveInfo;
 
-    .line 4491
     .local v30, "rInfo":Landroid/content/pm/ResolveInfo;
     move-object/from16 v0, v30
 
@@ -97828,17 +96666,14 @@
 
     if-eqz v2, :cond_9
 
-    .line 4495
     add-int/lit8 v26, v26, 0x1
 
-    .line 4496
     move/from16 v0, v26
 
     move/from16 v1, v24
 
     if-ge v0, v1, :cond_4
 
-    .line 4497
     move-object/from16 v0, v32
 
     move/from16 v1, v26
@@ -97851,11 +96686,9 @@
 
     iget-object v6, v2, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
 
-    .line 4499
     :cond_4
     if-eqz v25, :cond_5
 
-    .line 4500
     const-string v2, "ActivityManager"
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -97898,7 +96731,6 @@
 
     invoke-static {v2, v3}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 4502
     const-string v2, "ActivityManager"
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -97938,7 +96770,6 @@
     .catch Landroid/os/RemoteException; {:try_start_3 .. :try_end_3} :catch_0
     .catchall {:try_start_3 .. :try_end_3} :catchall_1
 
-    .line 4511
     .end local v24    # "N":I
     .end local v26    # "i":I
     .end local v30    # "rInfo":Landroid/content/pm/ResolveInfo;
@@ -97947,11 +96778,9 @@
     :goto_5
     if-nez v6, :cond_a
 
-    .line 4513
     :try_start_4
     invoke-static/range {p3 .. p3}, Landroid/app/ActivityOptions;->abort(Landroid/os/Bundle;)V
 
-    .line 4514
     if-eqz v25, :cond_6
 
     const-string v2, "ActivityManager"
@@ -97960,7 +96789,6 @@
 
     invoke-static {v2, v3}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 4515
     :cond_6
     const/4 v2, 0x0
 
@@ -97972,7 +96800,6 @@
     .restart local p2    # "intent":Landroid/content/Intent;
     goto/16 :goto_0
 
-    .line 4477
     .end local v6    # "aInfo":Landroid/content/pm/ActivityInfo;
     .end local v25    # "debug":Z
     .end local p2    # "intent":Landroid/content/Intent;
@@ -97982,7 +96809,6 @@
 
     goto/16 :goto_2
 
-    .line 4488
     .restart local v6    # "aInfo":Landroid/content/pm/ActivityInfo;
     .restart local v25    # "debug":Z
     .restart local v32    # "resolves":Ljava/util/List;, "Ljava/util/List<Landroid/content/pm/ResolveInfo;>;"
@@ -97991,7 +96817,6 @@
 
     goto/16 :goto_3
 
-    .line 4489
     .restart local v24    # "N":I
     .restart local v26    # "i":I
     .restart local v30    # "rInfo":Landroid/content/pm/ResolveInfo;
@@ -98000,7 +96825,6 @@
 
     goto/16 :goto_4
 
-    .line 4518
     .end local v24    # "N":I
     .end local v26    # "i":I
     .end local v30    # "rInfo":Landroid/content/pm/ResolveInfo;
@@ -98018,7 +96842,6 @@
 
     invoke-virtual {v4, v2}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
 
-    .line 4520
     invoke-virtual {v4}, Landroid/content/Intent;->getFlags()I
 
     move-result v2
@@ -98029,14 +96852,12 @@
 
     invoke-virtual {v4, v2}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
 
-    .line 4531
     move-object/from16 v0, v27
 
     iget-boolean v0, v0, Lcom/android/server/am/ActivityRecord;->finishing:Z
 
     move/from16 v34, v0
 
-    .line 4532
     .local v34, "wasFinishing":Z
     const/4 v2, 0x1
 
@@ -98044,26 +96865,22 @@
 
     iput-boolean v2, v0, Lcom/android/server/am/ActivityRecord;->finishing:Z
 
-    .line 4535
     move-object/from16 v0, v27
 
     iget-object v0, v0, Lcom/android/server/am/ActivityRecord;->resultTo:Lcom/android/server/am/ActivityRecord;
 
     move-object/from16 v33, v0
 
-    .line 4536
     .local v33, "resultTo":Lcom/android/server/am/ActivityRecord;
     move-object/from16 v0, v27
 
     iget-object v10, v0, Lcom/android/server/am/ActivityRecord;->resultWho:Ljava/lang/String;
 
-    .line 4537
     .local v10, "resultWho":Ljava/lang/String;
     move-object/from16 v0, v27
 
     iget v11, v0, Lcom/android/server/am/ActivityRecord;->requestCode:I
 
-    .line 4538
     .local v11, "requestCode":I
     const/4 v2, 0x0
 
@@ -98071,23 +96888,19 @@
 
     iput-object v2, v0, Lcom/android/server/am/ActivityRecord;->resultTo:Lcom/android/server/am/ActivityRecord;
 
-    .line 4539
     if-eqz v33, :cond_b
 
-    .line 4540
     move-object/from16 v0, v33
 
     move-object/from16 v1, v27
 
     invoke-virtual {v0, v1, v10, v11}, Lcom/android/server/am/ActivityRecord;->removeResultsLocked(Lcom/android/server/am/ActivityRecord;Ljava/lang/String;I)V
 
-    .line 4543
     :cond_b
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v28
 
-    .line 4545
     .local v28, "origId":J
     move-object/from16 v0, p0
 
@@ -98095,12 +96908,10 @@
 
     if-eqz v2, :cond_c
 
-    .line 4546
     move-object/from16 v0, p0
 
     invoke-direct {v0, v4}, Lcom/android/server/am/ActivityManagerService;->updateForbidAutostartListWithIntent(Landroid/content/Intent;)V
 
-    .line 4549
     :cond_c
     move-object/from16 v0, p0
 
@@ -98163,21 +96974,17 @@
 
     move-result v31
 
-    .line 4553
     .local v31, "res":I
     invoke-static/range {v28 .. v29}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 4555
     move/from16 v0, v34
 
     move-object/from16 v1, v27
 
     iput-boolean v0, v1, Lcom/android/server/am/ActivityRecord;->finishing:Z
 
-    .line 4556
     if-eqz v31, :cond_e
 
-    .line 4557
     const/4 v2, 0x0
 
     monitor-exit p0
@@ -98188,7 +96995,6 @@
     .restart local p2    # "intent":Landroid/content/Intent;
     goto/16 :goto_0
 
-    .line 4549
     .end local v31    # "res":I
     .end local p2    # "intent":Landroid/content/Intent;
     .restart local v4    # "intent":Landroid/content/Intent;
@@ -98197,7 +97003,6 @@
 
     goto :goto_6
 
-    .line 4559
     .restart local v31    # "res":I
     :cond_e
     const/4 v2, 0x1
@@ -98212,7 +97017,6 @@
     .restart local p2    # "intent":Landroid/content/Intent;
     goto/16 :goto_0
 
-    .line 4560
     .end local v6    # "aInfo":Landroid/content/pm/ActivityInfo;
     .end local v10    # "resultWho":Ljava/lang/String;
     .end local v11    # "requestCode":I
@@ -98232,7 +97036,6 @@
     .restart local p2    # "intent":Landroid/content/Intent;
     goto/16 :goto_1
 
-    .line 4508
     .end local p2    # "intent":Landroid/content/Intent;
     .restart local v4    # "intent":Landroid/content/Intent;
     .restart local v6    # "aInfo":Landroid/content/pm/ActivityInfo;
@@ -98247,16 +97050,13 @@
     .locals 1
 
     .prologue
-    .line 2435
     new-instance v0, Lcom/android/server/am/NativeCrashListener;
 
     invoke-direct {v0, p0}, Lcom/android/server/am/NativeCrashListener;-><init>(Lcom/android/server/am/ActivityManagerService;)V
 
-    .line 2436
     .local v0, "ncl":Lcom/android/server/am/NativeCrashListener;
     invoke-virtual {v0}, Lcom/android/server/am/NativeCrashListener;->start()V
 
-    .line 2437
     return-void
 .end method
 
@@ -98278,16 +97078,13 @@
     .param p14, "crashHandler"    # Ljava/lang/Runnable;
 
     .prologue
-    .line 3391
     invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
 
     move-result-wide v10
 
-    .line 3393
     .local v10, "startTime":J
     if-nez p8, :cond_7
 
-    .line 3394
     iget v2, p2, Landroid/content/pm/ApplicationInfo;->uid:I
 
     move/from16 v0, p10
@@ -98296,18 +97093,15 @@
 
     move-result-object v3
 
-    .line 3395
     .local v3, "app":Lcom/android/server/am/ProcessRecord;
     const-string v2, "startProcess: after getProcessRecord"
 
     invoke-direct {p0, v10, v11, v2}, Lcom/android/server/am/ActivityManagerService;->checkTime(JLjava/lang/String;)V
 
-    .line 3397
     and-int/lit8 v2, p4, 0x4
 
     if-eqz v2, :cond_1
 
-    .line 3400
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mBadProcesses:Lcom/android/internal/app/ProcessMap;
 
     iget-object v4, p2, Landroid/content/pm/ApplicationInfo;->processName:Ljava/lang/String;
@@ -98320,7 +97114,6 @@
 
     if-eqz v2, :cond_3
 
-    .line 3401
     sget-boolean v2, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_PROCESSES:Z
 
     if-eqz v2, :cond_0
@@ -98361,15 +97154,12 @@
 
     invoke-static {v2, v4}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3403
     :cond_0
     const/4 v2, 0x0
 
-    .line 3505
     :goto_0
     return-object v2
 
-    .line 3410
     :cond_1
     sget-boolean v2, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_PROCESSES:Z
 
@@ -98411,7 +97201,6 @@
 
     invoke-static {v2, v4}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3412
     :cond_2
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mProcessCrashTimes:Lcom/android/internal/app/ProcessMap;
 
@@ -98421,7 +97210,6 @@
 
     invoke-virtual {v2, v4, v6}, Lcom/android/internal/app/ProcessMap;->remove(Ljava/lang/String;I)Ljava/lang/Object;
 
-    .line 3413
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mBadProcesses:Lcom/android/internal/app/ProcessMap;
 
     iget-object v4, p2, Landroid/content/pm/ApplicationInfo;->processName:Ljava/lang/String;
@@ -98434,7 +97222,6 @@
 
     if-eqz v2, :cond_3
 
-    .line 3414
     const/16 v2, 0x7540
 
     const/4 v4, 0x3
@@ -98473,7 +97260,6 @@
 
     invoke-static {v2, v4}, Landroid/util/EventLog;->writeEvent(I[Ljava/lang/Object;)I
 
-    .line 3417
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mBadProcesses:Lcom/android/internal/app/ProcessMap;
 
     iget-object v4, p2, Landroid/content/pm/ApplicationInfo;->processName:Ljava/lang/String;
@@ -98482,36 +97268,29 @@
 
     invoke-virtual {v2, v4, v6}, Lcom/android/internal/app/ProcessMap;->remove(Ljava/lang/String;I)Ljava/lang/Object;
 
-    .line 3418
     if-eqz v3, :cond_3
 
-    .line 3419
     const/4 v2, 0x0
 
     iput-boolean v2, v3, Lcom/android/server/am/ProcessRecord;->bad:Z
 
-    .line 3430
     :cond_3
     :goto_1
     monitor-enter p0
 
-    .line 3431
     :try_start_0
     invoke-static {}, Lcom/android/server/am/ActivityManagerService;->nativeMigrateToBoost()I
 
-    .line 3432
     const/4 v2, 0x1
 
     iput-boolean v2, p0, Lcom/android/server/am/ActivityManagerService;->mIsBoosted:Z
 
-    .line 3433
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v6
 
     iput-wide v6, p0, Lcom/android/server/am/ActivityManagerService;->mBoostStartTime:J
 
-    .line 3434
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     const/16 v4, 0x3a
@@ -98520,7 +97299,6 @@
 
     move-result-object v9
 
-    .line 3435
     .local v9, "msg":Landroid/os/Message;
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
@@ -98528,12 +97306,10 @@
 
     invoke-virtual {v2, v9, v6, v7}, Lcom/android/server/am/ActivityManagerService$MainHandler;->sendMessageDelayed(Landroid/os/Message;J)Z
 
-    .line 3436
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 3444
     sget-boolean v2, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_PROCESSES:Z
 
     if-eqz v2, :cond_4
@@ -98610,7 +97386,6 @@
 
     invoke-static {v4, v2}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3448
     :cond_4
     if-eqz v3, :cond_d
 
@@ -98618,14 +97393,12 @@
 
     if-lez v2, :cond_d
 
-    .line 3449
     if-eqz p3, :cond_5
 
     iget-object v2, v3, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
 
     if-nez v2, :cond_a
 
-    .line 3452
     :cond_5
     sget-boolean v2, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_PROCESSES:Z
 
@@ -98653,7 +97426,6 @@
 
     invoke-static {v2, v4}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3454
     :cond_6
     iget-object v2, p2, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
 
@@ -98663,17 +97435,14 @@
 
     invoke-virtual {v3, v2, v4, v6}, Lcom/android/server/am/ProcessRecord;->addPackage(Ljava/lang/String;ILcom/android/server/am/ProcessStatsService;)Z
 
-    .line 3455
     const-string v2, "startProcess: done, added package to proc"
 
     invoke-direct {p0, v10, v11, v2}, Lcom/android/server/am/ActivityManagerService;->checkTime(JLjava/lang/String;)V
 
     move-object v2, v3
 
-    .line 3456
     goto/16 :goto_0
 
-    .line 3425
     .end local v3    # "app":Lcom/android/server/am/ProcessRecord;
     .end local v9    # "msg":Landroid/os/Message;
     :cond_7
@@ -98682,7 +97451,6 @@
     .restart local v3    # "app":Lcom/android/server/am/ProcessRecord;
     goto/16 :goto_1
 
-    .line 3436
     :catchall_0
     move-exception v2
 
@@ -98693,7 +97461,6 @@
 
     throw v2
 
-    .line 3444
     .restart local v9    # "msg":Landroid/os/Message;
     :cond_8
     const/4 v2, 0x0
@@ -98705,7 +97472,6 @@
 
     goto :goto_3
 
-    .line 3461
     :cond_a
     sget-boolean v2, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_PROCESSES:Z
 
@@ -98738,32 +97504,27 @@
 
     invoke-static {v2, v4}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3462
     :cond_c
     const-string v2, "startProcess: bad proc running, killing"
 
     invoke-direct {p0, v10, v11, v2}, Lcom/android/server/am/ActivityManagerService;->checkTime(JLjava/lang/String;)V
 
-    .line 3463
     iget v2, v3, Lcom/android/server/am/ProcessRecord;->uid:I
 
     iget v4, v3, Lcom/android/server/am/ProcessRecord;->pid:I
 
     invoke-static {v2, v4}, Lcom/android/server/am/ActivityManagerService;->killProcessGroup(II)V
 
-    .line 3464
     const/4 v2, 0x1
 
     const/4 v4, 0x1
 
     invoke-direct {p0, v3, v2, v4}, Lcom/android/server/am/ActivityManagerService;->handleAppDiedLocked(Lcom/android/server/am/ProcessRecord;ZZ)V
 
-    .line 3465
     const-string v2, "startProcess: done killing old proc"
 
     invoke-direct {p0, v10, v11, v2}, Lcom/android/server/am/ActivityManagerService;->checkTime(JLjava/lang/String;)V
 
-    .line 3468
     :cond_d
     if-eqz p6, :cond_e
 
@@ -98771,17 +97532,14 @@
 
     move-result-object v5
 
-    .line 3471
     .local v5, "hostingNameStr":Ljava/lang/String;
     :goto_4
     if-nez v3, :cond_12
 
-    .line 3472
     const-string v2, "startProcess: creating new process record"
 
     invoke-direct {p0, v10, v11, v2}, Lcom/android/server/am/ActivityManagerService;->checkTime(JLjava/lang/String;)V
 
-    .line 3473
     move/from16 v0, p8
 
     move/from16 v1, p9
@@ -98790,10 +97548,8 @@
 
     move-result-object v3
 
-    .line 3474
     if-nez v3, :cond_f
 
-    .line 3475
     const-string v2, "ActivityManager"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -98840,31 +97596,26 @@
 
     invoke-static {v2, v4}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3477
     const/4 v2, 0x0
 
     goto/16 :goto_0
 
-    .line 3468
     .end local v5    # "hostingNameStr":Ljava/lang/String;
     :cond_e
     const/4 v5, 0x0
 
     goto :goto_4
 
-    .line 3479
     .restart local v5    # "hostingNameStr":Ljava/lang/String;
     :cond_f
     move-object/from16 v0, p14
 
     iput-object v0, v3, Lcom/android/server/am/ProcessRecord;->crashHandler:Ljava/lang/Runnable;
 
-    .line 3480
     const-string v2, "startProcess: done creating new process record"
 
     invoke-direct {p0, v10, v11, v2}, Lcom/android/server/am/ActivityManagerService;->checkTime(JLjava/lang/String;)V
 
-    .line 3489
     :goto_5
     iget-boolean v2, p0, Lcom/android/server/am/ActivityManagerService;->mProcessesReady:Z
 
@@ -98878,7 +97629,6 @@
 
     if-nez p7, :cond_13
 
-    .line 3492
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mProcessesOnHold:Ljava/util/ArrayList;
 
     invoke-virtual {v2, v3}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
@@ -98887,12 +97637,10 @@
 
     if-nez v2, :cond_10
 
-    .line 3493
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mProcessesOnHold:Ljava/util/ArrayList;
 
     invoke-virtual {v2, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 3495
     :cond_10
     sget-boolean v2, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_PROCESSES:Z
 
@@ -98920,7 +97668,6 @@
 
     invoke-static {v2, v4}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3497
     :cond_11
     const-string v2, "startProcess: returning with proc on hold"
 
@@ -98928,10 +97675,8 @@
 
     move-object v2, v3
 
-    .line 3498
     goto/16 :goto_0
 
-    .line 3483
     :cond_12
     iget-object v2, p2, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
 
@@ -98941,14 +97686,12 @@
 
     invoke-virtual {v3, v2, v4, v6}, Lcom/android/server/am/ProcessRecord;->addPackage(Ljava/lang/String;ILcom/android/server/am/ProcessStatsService;)Z
 
-    .line 3484
     const-string v2, "startProcess: added package to existing proc"
 
     invoke-direct {p0, v10, v11, v2}, Lcom/android/server/am/ActivityManagerService;->checkTime(JLjava/lang/String;)V
 
     goto :goto_5
 
-    .line 3501
     :cond_13
     const-string v2, "startProcess: stepping in to startProcess"
 
@@ -98964,15 +97707,12 @@
 
     move-object/from16 v8, p13
 
-    .line 3502
     invoke-direct/range {v2 .. v8}, Lcom/android/server/am/ActivityManagerService;->startProcessLocked(Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
 
-    .line 3504
     const-string v2, "startProcess: done starting proc!"
 
     invoke-direct {p0, v10, v11, v2}, Lcom/android/server/am/ActivityManagerService;->checkTime(JLjava/lang/String;)V
 
-    .line 3505
     iget v2, v3, Lcom/android/server/am/ProcessRecord;->pid:I
 
     if-eqz v2, :cond_14
@@ -99000,7 +97740,6 @@
     .param p9, "keepIfLarge"    # Z
 
     .prologue
-    .line 3381
     const/4 v9, 0x0
 
     const/4 v11, 0x0
@@ -99042,7 +97781,6 @@
     .locals 9
 
     .prologue
-    .line 21272
     sget-boolean v6, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_MU:Z
 
     if-eqz v6, :cond_0
@@ -99053,7 +97791,6 @@
 
     invoke-static {v6, v7}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 21273
     :cond_0
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->getUserManagerLocked()Lcom/android/server/pm/UserManagerService;
 
@@ -99067,7 +97804,6 @@
 
     move-result-object v3
 
-    .line 21275
     .local v3, "profiles":Ljava/util/List;, "Ljava/util/List<Landroid/content/pm/UserInfo;>;"
     new-instance v4, Ljava/util/ArrayList;
 
@@ -99077,7 +97813,6 @@
 
     invoke-direct {v4, v6}, Ljava/util/ArrayList;-><init>(I)V
 
-    .line 21276
     .local v4, "toStart":Ljava/util/List;, "Ljava/util/List<Landroid/content/pm/UserInfo;>;"
     invoke-interface {v3}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
@@ -99098,7 +97833,6 @@
 
     check-cast v5, Landroid/content/pm/UserInfo;
 
-    .line 21277
     .local v5, "user":Landroid/content/pm/UserInfo;
     iget v6, v5, Landroid/content/pm/UserInfo;->flags:I
 
@@ -99114,23 +97848,19 @@
 
     if-eq v6, v7, :cond_1
 
-    .line 21279
     invoke-interface {v4, v5}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     goto :goto_0
 
-    .line 21282
     .end local v5    # "user":Landroid/content/pm/UserInfo;
     :cond_2
     invoke-interface {v4}, Ljava/util/List;->size()I
 
     move-result v2
 
-    .line 21283
     .local v2, "n":I
     const/4 v0, 0x0
 
-    .line 21284
     .local v0, "i":I
     :goto_1
     if-ge v0, v2, :cond_3
@@ -99139,7 +97869,6 @@
 
     if-ge v0, v6, :cond_3
 
-    .line 21285
     invoke-interface {v4, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v6
@@ -99150,23 +97879,19 @@
 
     invoke-virtual {p0, v6}, Lcom/android/server/am/ActivityManagerService;->startUserInBackground(I)Z
 
-    .line 21284
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_1
 
-    .line 21287
     :cond_3
     if-ge v0, v2, :cond_4
 
-    .line 21288
     const-string v6, "ActivityManager_MU"
 
     const-string v7, "More profiles than MAX_RUNNING_USERS"
 
     invoke-static {v6, v7}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 21290
     :cond_4
     return-void
 .end method
@@ -99177,7 +97902,6 @@
     .param p2, "targetUid"    # I
 
     .prologue
-    .line 11135
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mVoiceWakeLock:Landroid/os/PowerManager$WakeLock;
 
     new-instance v2, Landroid/os/WorkSource;
@@ -99186,7 +97910,6 @@
 
     invoke-virtual {v1, v2}, Landroid/os/PowerManager$WakeLock;->setWorkSource(Landroid/os/WorkSource;)V
 
-    .line 11136
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mRunningVoice:Landroid/service/voice/IVoiceInteractionSession;
 
     if-eqz v1, :cond_0
@@ -99203,7 +97926,6 @@
 
     if-eq v1, v2, :cond_1
 
-    .line 11137
     :cond_0
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mRunningVoice:Landroid/service/voice/IVoiceInteractionSession;
 
@@ -99211,28 +97933,22 @@
 
     const/4 v0, 0x1
 
-    .line 11138
     .local v0, "wasRunningVoice":Z
     :goto_0
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService;->mRunningVoice:Landroid/service/voice/IVoiceInteractionSession;
 
-    .line 11139
     if-nez v0, :cond_1
 
-    .line 11140
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mVoiceWakeLock:Landroid/os/PowerManager$WakeLock;
 
     invoke-virtual {v1}, Landroid/os/PowerManager$WakeLock;->acquire()V
 
-    .line 11141
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->updateSleepIfNeededLocked()V
 
-    .line 11144
     .end local v0    # "wasRunningVoice":Z
     :cond_1
     return-void
 
-    .line 11137
     :cond_2
     const/4 v0, 0x0
 
@@ -99253,12 +97969,10 @@
     .end annotation
 
     .prologue
-    .line 16448
     const-string v0, "startService"
 
     invoke-virtual {p0, v0}, Lcom/android/server/am/ActivityManagerService;->enforceNotIsolatedCaller(Ljava/lang/String;)V
 
-    .line 16450
     if-eqz p2, :cond_0
 
     invoke-virtual {p2}, Landroid/content/Intent;->hasFileDescriptors()Z
@@ -99269,7 +97983,6 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 16451
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "File descriptors passed in Intent"
@@ -99278,11 +97991,9 @@
 
     throw v0
 
-    .line 16454
     :cond_0
     if-nez p4, :cond_1
 
-    .line 16455
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "callingPackage cannot be null"
@@ -99291,7 +98002,6 @@
 
     throw v0
 
-    .line 16458
     :cond_1
     sget-boolean v0, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_SERVICE:Z
 
@@ -99329,29 +98039,24 @@
 
     invoke-static {v0, v1}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 16460
     :cond_2
     monitor-enter p0
 
-    .line 16461
     :try_start_0
     invoke-static {}, Landroid/os/Binder;->getCallingPid()I
 
     move-result v4
 
-    .line 16462
     .local v4, "callingPid":I
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
     move-result v5
 
-    .line 16463
     .local v5, "callingUid":I
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v8
 
-    .line 16464
     .local v8, "origId":J
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mServices:Lcom/android/server/am/ActiveServices;
 
@@ -99369,16 +98074,13 @@
 
     move-result-object v10
 
-    .line 16466
     .local v10, "res":Landroid/content/ComponentName;
     invoke-static {v8, v9}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 16467
     monitor-exit p0
 
     return-object v10
 
-    .line 16468
     .end local v4    # "callingPid":I
     .end local v5    # "callingUid":I
     .end local v8    # "origId":J
@@ -99407,10 +98109,8 @@
     .end annotation
 
     .prologue
-    .line 16474
     monitor-enter p0
 
-    .line 16475
     :try_start_0
     sget-boolean v0, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_SERVICE:Z
 
@@ -99448,13 +98148,11 @@
 
     invoke-static {v0, v1}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 16477
     :cond_0
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v8
 
-    .line 16478
     .local v8, "origId":J
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mServices:Lcom/android/server/am/ActiveServices;
 
@@ -99476,16 +98174,13 @@
 
     move-result-object v10
 
-    .line 16480
     .local v10, "res":Landroid/content/ComponentName;
     invoke-static {v8, v9}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 16481
     monitor-exit p0
 
     return-object v10
 
-    .line 16482
     .end local v8    # "origId":J
     .end local v10    # "res":Landroid/content/ComponentName;
     :catchall_0
@@ -99502,19 +98197,16 @@
     .locals 30
 
     .prologue
-    .line 3891
     move-object/from16 v0, p0
 
     iget-boolean v2, v0, Lcom/android/server/am/ActivityManagerService;->mCheckedForSetup:Z
 
     if-eqz v2, :cond_1
 
-    .line 3944
     :cond_0
     :goto_0
     return-void
 
-    .line 3898
     :cond_1
     move-object/from16 v0, p0
 
@@ -99524,7 +98216,6 @@
 
     move-result-object v26
 
-    .line 3899
     .local v26, "resolver":Landroid/content/ContentResolver;
     move-object/from16 v0, p0
 
@@ -99546,21 +98237,18 @@
 
     if-eqz v2, :cond_0
 
-    .line 3902
     const/4 v2, 0x1
 
     move-object/from16 v0, p0
 
     iput-boolean v2, v0, Lcom/android/server/am/ActivityManagerService;->mCheckedForSetup:Z
 
-    .line 3905
     new-instance v4, Landroid/content/Intent;
 
     const-string v2, "android.intent.action.UPGRADE_SETUP"
 
     invoke-direct {v4, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 3906
     .local v4, "intent":Landroid/content/Intent;
     move-object/from16 v0, p0
 
@@ -99576,11 +98264,9 @@
 
     move-result-object v28
 
-    .line 3910
     .local v28, "ris":Ljava/util/List;, "Ljava/util/List<Landroid/content/pm/ResolveInfo;>;"
     const/16 v27, 0x0
 
-    .line 3911
     .local v27, "ri":Landroid/content/pm/ResolveInfo;
     const/16 v24, 0x0
 
@@ -99596,7 +98282,6 @@
 
     if-ge v0, v2, :cond_2
 
-    .line 3912
     move-object/from16 v0, v28
 
     move/from16 v1, v24
@@ -99617,7 +98302,6 @@
 
     if-eqz v2, :cond_5
 
-    .line 3914
     move-object/from16 v0, v28
 
     move/from16 v1, v24
@@ -99629,12 +98313,10 @@
     .end local v27    # "ri":Landroid/content/pm/ResolveInfo;
     check-cast v27, Landroid/content/pm/ResolveInfo;
 
-    .line 3919
     .restart local v27    # "ri":Landroid/content/pm/ResolveInfo;
     :cond_2
     if-eqz v27, :cond_0
 
-    .line 3920
     move-object/from16 v0, v27
 
     iget-object v2, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
@@ -99655,7 +98337,6 @@
 
     move-result-object v29
 
-    .line 3923
     .local v29, "vers":Ljava/lang/String;
     :goto_2
     if-nez v29, :cond_3
@@ -99670,7 +98351,6 @@
 
     if-eqz v2, :cond_3
 
-    .line 3924
     move-object/from16 v0, v27
 
     iget-object v2, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
@@ -99685,7 +98365,6 @@
 
     move-result-object v29
 
-    .line 3927
     :cond_3
     const-string v2, "last_setup_shown"
 
@@ -99695,7 +98374,6 @@
 
     move-result-object v25
 
-    .line 3929
     .local v25, "lastVers":Ljava/lang/String;
     if-eqz v29, :cond_0
 
@@ -99709,12 +98387,10 @@
 
     if-nez v2, :cond_0
 
-    .line 3930
     const/high16 v2, 0x10000000
 
     invoke-virtual {v4, v2}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
 
-    .line 3931
     new-instance v2, Landroid/content/ComponentName;
 
     move-object/from16 v0, v27
@@ -99733,19 +98409,16 @@
 
     invoke-virtual {v4, v2}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
 
-    .line 3934
     move-object/from16 v0, p0
 
     iget-boolean v2, v0, Lcom/android/server/am/ActivityManagerService;->IS_AUTO_STARTUP_SUPPORTED:Z
 
     if-eqz v2, :cond_4
 
-    .line 3935
     move-object/from16 v0, p0
 
     invoke-direct {v0, v4}, Lcom/android/server/am/ActivityManagerService;->updateForbidAutostartListWithIntent(Landroid/content/Intent;)V
 
-    .line 3938
     :cond_4
     move-object/from16 v0, p0
 
@@ -99797,7 +98470,6 @@
 
     goto/16 :goto_0
 
-    .line 3911
     .end local v25    # "lastVers":Ljava/lang/String;
     .end local v29    # "vers":Ljava/lang/String;
     :cond_5
@@ -99805,7 +98477,6 @@
 
     goto/16 :goto_1
 
-    .line 3920
     :cond_6
     const/16 v29, 0x0
 
@@ -99816,7 +98487,6 @@
     .locals 2
 
     .prologue
-    .line 11003
     iget-boolean v0, p0, Lcom/android/server/am/ActivityManagerService;->mSleeping:Z
 
     if-nez v0, :cond_0
@@ -99829,7 +98499,6 @@
 
     if-eqz v0, :cond_0
 
-    .line 11004
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mCurAppTimeTracker:Lcom/android/server/am/AppTimeTracker;
 
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mFocusedActivity:Lcom/android/server/am/ActivityRecord;
@@ -99838,7 +98507,6 @@
 
     invoke-virtual {v0, v1}, Lcom/android/server/am/AppTimeTracker;->start(Ljava/lang/String;)V
 
-    .line 11006
     :cond_0
     return-void
 .end method
@@ -99848,7 +98516,6 @@
     .param p1, "userId"    # I
 
     .prologue
-    .line 20823
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Lcom/android/server/am/ActivityManagerService;->startUser(IZ)Z
@@ -99864,18 +98531,15 @@
     .param p2, "dlg"    # Landroid/app/Dialog;
 
     .prologue
-    .line 20830
     const/4 v1, 0x1
 
     invoke-direct {p0, p1, v1}, Lcom/android/server/am/ActivityManagerService;->startUser(IZ)Z
 
     move-result v0
 
-    .line 20831
     .local v0, "result":Z
     invoke-virtual {p2}, Landroid/app/Dialog;->dismiss()V
 
-    .line 20832
     return v0
 .end method
 
@@ -99894,7 +98558,6 @@
     .param p11, "userId"    # I
 
     .prologue
-    .line 4414
     const-string v2, "android.permission.BIND_VOICE_INTERACTION"
 
     move-object/from16 v0, p0
@@ -99905,7 +98568,6 @@
 
     if-eqz v2, :cond_0
 
-    .line 4416
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -99954,7 +98616,6 @@
 
     move-result-object v22
 
-    .line 4420
     .local v22, "msg":Ljava/lang/String;
     const-string v2, "ActivityManager"
 
@@ -99962,7 +98623,6 @@
 
     invoke-static {v2, v0}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 4421
     new-instance v2, Ljava/lang/SecurityException;
 
     move-object/from16 v0, v22
@@ -99971,14 +98631,12 @@
 
     throw v2
 
-    .line 4423
     .end local v22    # "msg":Ljava/lang/String;
     :cond_0
     if-eqz p6, :cond_1
 
     if-nez p7, :cond_2
 
-    .line 4424
     :cond_1
     new-instance v2, Ljava/lang/NullPointerException;
 
@@ -99988,7 +98646,6 @@
 
     throw v2
 
-    .line 4426
     :cond_2
     const/4 v6, 0x0
 
@@ -100010,21 +98667,18 @@
 
     move-result p11
 
-    .line 4430
     move-object/from16 v0, p0
 
     iget-boolean v2, v0, Lcom/android/server/am/ActivityManagerService;->IS_AUTO_STARTUP_SUPPORTED:Z
 
     if-eqz v2, :cond_3
 
-    .line 4431
     move-object/from16 v0, p0
 
     move-object/from16 v1, p4
 
     invoke-direct {v0, v1}, Lcom/android/server/am/ActivityManagerService;->updateForbidAutostartListWithIntent(Landroid/content/Intent;)V
 
-    .line 4434
     :cond_3
     move-object/from16 v0, p0
 
@@ -100081,7 +98735,6 @@
     .prologue
     const-wide/16 v4, 0x1388
 
-    .line 11171
     const-string v1, "android.permission.STOP_APP_SWITCHES"
 
     invoke-virtual {p0, v1}, Lcom/android/server/am/ActivityManagerService;->checkCallingPermission(Ljava/lang/String;)I
@@ -100090,7 +98743,6 @@
 
     if-eqz v1, :cond_0
 
-    .line 11173
     new-instance v1, Ljava/lang/SecurityException;
 
     const-string v2, "Requires permission android.permission.STOP_APP_SWITCHES"
@@ -100099,11 +98751,9 @@
 
     throw v1
 
-    .line 11177
     :cond_0
     monitor-enter p0
 
-    .line 11178
     :try_start_0
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
@@ -100113,19 +98763,16 @@
 
     iput-wide v2, p0, Lcom/android/server/am/ActivityManagerService;->mAppSwitchesAllowedTime:J
 
-    .line 11180
     const/4 v1, 0x0
 
     iput-boolean v1, p0, Lcom/android/server/am/ActivityManagerService;->mDidAppSwitch:Z
 
-    .line 11181
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     const/16 v2, 0x15
 
     invoke-virtual {v1, v2}, Lcom/android/server/am/ActivityManagerService$MainHandler;->removeMessages(I)V
 
-    .line 11182
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     const/16 v2, 0x15
@@ -100134,7 +98781,6 @@
 
     move-result-object v0
 
-    .line 11183
     .local v0, "msg":Landroid/os/Message;
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
@@ -100142,13 +98788,10 @@
 
     invoke-virtual {v1, v0, v2, v3}, Lcom/android/server/am/ActivityManagerService$MainHandler;->sendMessageDelayed(Landroid/os/Message;J)Z
 
-    .line 11184
     monitor-exit p0
 
-    .line 11185
     return-void
 
-    .line 11184
     .end local v0    # "msg":Landroid/os/Message;
     :catchall_0
     move-exception v1
@@ -100168,17 +98811,14 @@
     .param p4, "targetComponent"    # Landroid/content/ComponentName;
 
     .prologue
-    .line 18432
     iget-boolean v4, p0, Lcom/android/server/am/ActivityManagerService;->mTrackingAssociations:Z
 
     if-nez v4, :cond_1
 
-    .line 18456
     :cond_0
     :goto_0
     return-void
 
-    .line 18435
     :cond_1
     iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mAssociations:Landroid/util/SparseArray;
 
@@ -100188,40 +98828,33 @@
 
     check-cast v1, Landroid/util/ArrayMap;
 
-    .line 18437
     .local v1, "components":Landroid/util/ArrayMap;, "Landroid/util/ArrayMap<Landroid/content/ComponentName;Landroid/util/SparseArray<Landroid/util/ArrayMap<Ljava/lang/String;Lcom/android/server/am/ActivityManagerService$Association;>;>;>;"
     if-eqz v1, :cond_0
 
-    .line 18440
     invoke-virtual {v1, p4}, Landroid/util/ArrayMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v3
 
     check-cast v3, Landroid/util/SparseArray;
 
-    .line 18441
     .local v3, "sourceUids":Landroid/util/SparseArray;, "Landroid/util/SparseArray<Landroid/util/ArrayMap<Ljava/lang/String;Lcom/android/server/am/ActivityManagerService$Association;>;>;"
     if-eqz v3, :cond_0
 
-    .line 18444
     invoke-virtual {v3, p1}, Landroid/util/SparseArray;->get(I)Ljava/lang/Object;
 
     move-result-object v2
 
     check-cast v2, Landroid/util/ArrayMap;
 
-    .line 18445
     .local v2, "sourceProcesses":Landroid/util/ArrayMap;, "Landroid/util/ArrayMap<Ljava/lang/String;Lcom/android/server/am/ActivityManagerService$Association;>;"
     if-eqz v2, :cond_0
 
-    .line 18448
     invoke-virtual {v2, p2}, Landroid/util/ArrayMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Lcom/android/server/am/ActivityManagerService$Association;
 
-    .line 18449
     .local v0, "ass":Lcom/android/server/am/ActivityManagerService$Association;
     if-eqz v0, :cond_0
 
@@ -100229,19 +98862,16 @@
 
     if-lez v4, :cond_0
 
-    .line 18452
     iget v4, v0, Lcom/android/server/am/ActivityManagerService$Association;->mNesting:I
 
     add-int/lit8 v4, v4, -0x1
 
     iput v4, v0, Lcom/android/server/am/ActivityManagerService$Association;->mNesting:I
 
-    .line 18453
     iget v4, v0, Lcom/android/server/am/ActivityManagerService$Association;->mNesting:I
 
     if-nez v4, :cond_0
 
-    .line 18454
     iget-wide v4, v0, Lcom/android/server/am/ActivityManagerService$Association;->mTime:J
 
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
@@ -100265,32 +98895,26 @@
     .prologue
     const/4 v7, 0x1
 
-    .line 9793
     iget-object v6, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
     invoke-virtual {v6}, Lcom/android/server/am/ActivityStackSupervisor;->getLockedTaskLocked()Lcom/android/server/am/TaskRecord;
 
     move-result-object v1
 
-    .line 9794
     .local v1, "lockTask":Lcom/android/server/am/TaskRecord;
     if-nez v1, :cond_0
 
-    .line 9829
     :goto_0
     return-void
 
-    .line 9799
     :cond_0
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
     move-result v0
 
-    .line 9800
     .local v0, "callingUid":I
     iget v4, v1, Lcom/android/server/am/TaskRecord;->mLockTaskUid:I
 
-    .line 9806
     .local v4, "lockTaskUid":I
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->getLockTaskModeState()I
 
@@ -100308,7 +98932,6 @@
 
     if-eq v0, v6, :cond_2
 
-    .line 9810
     :cond_1
     new-instance v6, Ljava/lang/SecurityException;
 
@@ -100356,13 +98979,11 @@
 
     throw v6
 
-    .line 9814
     :cond_2
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v2
 
-    .line 9816
     .local v2, "ident":J
     :try_start_0
     const-string v6, "ActivityManager"
@@ -100371,12 +98992,10 @@
 
     invoke-static {v6, v7}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 9818
     monitor-enter p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 9819
     :try_start_1
     iget-object v6, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
@@ -100390,12 +99009,10 @@
 
     invoke-virtual {v6, v7, v8, v9, v10}, Lcom/android/server/am/ActivityStackSupervisor;->setLockTaskModeLocked(Lcom/android/server/am/TaskRecord;ILjava/lang/String;Z)V
 
-    .line 9821
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 9822
     :try_start_2
     iget-object v6, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
@@ -100407,24 +99024,20 @@
 
     check-cast v5, Landroid/telecom/TelecomManager;
 
-    .line 9823
     .local v5, "tm":Landroid/telecom/TelecomManager;
     if-eqz v5, :cond_3
 
-    .line 9824
     const/4 v6, 0x0
 
     invoke-virtual {v5, v6}, Landroid/telecom/TelecomManager;->showInCallScreen(Z)V
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 9827
     :cond_3
     invoke-static {v2, v3}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
     goto :goto_0
 
-    .line 9821
     .end local v5    # "tm":Landroid/telecom/TelecomManager;
     :catchall_0
     move-exception v6
@@ -100439,7 +99052,6 @@
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_1
 
-    .line 9827
     :catchall_1
     move-exception v6
 
@@ -100457,32 +99069,26 @@
     .end annotation
 
     .prologue
-    .line 9833
     const-string v2, "android.permission.MANAGE_ACTIVITY_STACKS"
 
     const-string v3, "stopLockTaskModeOnCurrent"
 
     invoke-virtual {p0, v2, v3}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 9835
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v0
 
-    .line 9837
     .local v0, "ident":J
     :try_start_0
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->stopLockTaskMode()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 9839
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 9841
     return-void
 
-    .line 9839
     :catchall_0
     move-exception v2
 
@@ -100499,12 +99105,10 @@
     .param p4, "userId"    # I
 
     .prologue
-    .line 16488
     const-string v0, "stopService"
 
     invoke-virtual {p0, v0}, Lcom/android/server/am/ActivityManagerService;->enforceNotIsolatedCaller(Ljava/lang/String;)V
 
-    .line 16490
     if-eqz p2, :cond_0
 
     invoke-virtual {p2}, Landroid/content/Intent;->hasFileDescriptors()Z
@@ -100515,7 +99119,6 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 16491
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "File descriptors passed in Intent"
@@ -100524,11 +99127,9 @@
 
     throw v0
 
-    .line 16494
     :cond_0
     monitor-enter p0
 
-    .line 16495
     :try_start_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mServices:Lcom/android/server/am/ActiveServices;
 
@@ -100540,7 +99141,6 @@
 
     return v0
 
-    .line 16496
     :catchall_0
     move-exception v0
 
@@ -100558,10 +99158,8 @@
     .param p3, "startId"    # I
 
     .prologue
-    .line 16519
     monitor-enter p0
 
-    .line 16520
     :try_start_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mServices:Lcom/android/server/am/ActiveServices;
 
@@ -100573,7 +99171,6 @@
 
     return v0
 
-    .line 16521
     :catchall_0
     move-exception v0
 
@@ -100590,7 +99187,6 @@
     .param p2, "callback"    # Landroid/app/IStopUserCallback;
 
     .prologue
-    .line 21349
     const-string v1, "android.permission.INTERACT_ACROSS_USERS_FULL"
 
     invoke-virtual {p0, v1}, Lcom/android/server/am/ActivityManagerService;->checkCallingPermission(Ljava/lang/String;)I
@@ -100599,7 +99195,6 @@
 
     if-eqz v1, :cond_0
 
-    .line 21351
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -100648,27 +99243,23 @@
 
     move-result-object v0
 
-    .line 21355
     .local v0, "msg":Ljava/lang/String;
     const-string v1, "ActivityManager"
 
     invoke-static {v1, v0}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 21356
     new-instance v1, Ljava/lang/SecurityException;
 
     invoke-direct {v1, v0}, Ljava/lang/SecurityException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
-    .line 21358
     .end local v0    # "msg":Ljava/lang/String;
     :cond_0
     if-ltz p1, :cond_1
 
     if-nez p1, :cond_2
 
-    .line 21359
     :cond_1
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
@@ -100694,16 +99285,13 @@
 
     throw v1
 
-    .line 21361
     :cond_2
     const-string v1, "no_debugging_features"
 
     invoke-virtual {p0, v1, p1}, Lcom/android/server/am/ActivityManagerService;->enforceShellRestriction(Ljava/lang/String;I)V
 
-    .line 21362
     monitor-enter p0
 
-    .line 21363
     :try_start_0
     invoke-direct {p0, p1, p2}, Lcom/android/server/am/ActivityManagerService;->stopUserLocked(ILandroid/app/IStopUserCallback;)I
 
@@ -100713,7 +99301,6 @@
 
     return v1
 
-    .line 21364
     :catchall_0
     move-exception v1
 
@@ -100733,15 +99320,12 @@
 
     const/4 v2, 0x0
 
-    .line 20873
     const-string v3, "no_debugging_features"
 
     invoke-virtual {p0, v3, p1}, Lcom/android/server/am/ActivityManagerService;->enforceShellRestriction(Ljava/lang/String;I)V
 
-    .line 20875
     monitor-enter p0
 
-    .line 20876
     :try_start_0
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->getUserManagerLocked()Lcom/android/server/pm/UserManagerService;
 
@@ -100751,11 +99335,9 @@
 
     move-result-object v0
 
-    .line 20877
     .local v0, "userInfo":Landroid/content/pm/UserInfo;
     if-nez v0, :cond_0
 
-    .line 20878
     const-string v3, "ActivityManager"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -100778,14 +99360,11 @@
 
     invoke-static {v3, v4}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 20879
     monitor-exit p0
 
-    .line 20890
     :goto_0
     return v2
 
-    .line 20881
     :cond_0
     invoke-virtual {v0}, Landroid/content/pm/UserInfo;->isManagedProfile()Z
 
@@ -100793,7 +99372,6 @@
 
     if-eqz v3, :cond_1
 
-    .line 20882
     const-string v3, "ActivityManager"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -100822,12 +99400,10 @@
 
     invoke-static {v3, v4}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 20883
     monitor-exit p0
 
     goto :goto_0
 
-    .line 20887
     .end local v0    # "userInfo":Landroid/content/pm/UserInfo;
     :catchall_0
     move-exception v2
@@ -100838,27 +99414,22 @@
 
     throw v2
 
-    .line 20885
     .restart local v0    # "userInfo":Landroid/content/pm/UserInfo;
     :cond_1
     :try_start_1
     iget-object v1, v0, Landroid/content/pm/UserInfo;->name:Ljava/lang/String;
 
-    .line 20886
     .local v1, "userName":Ljava/lang/String;
     iput p1, p0, Lcom/android/server/am/ActivityManagerService;->mTargetUserId:I
 
-    .line 20887
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 20888
     iget-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mUiHandler:Lcom/android/server/am/ActivityManagerService$UiHandler;
 
     invoke-virtual {v3, v5}, Lcom/android/server/am/ActivityManagerService$UiHandler;->removeMessages(I)V
 
-    .line 20889
     iget-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mUiHandler:Lcom/android/server/am/ActivityManagerService$UiHandler;
 
     iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mUiHandler:Lcom/android/server/am/ActivityManagerService$UiHandler;
@@ -100869,7 +99440,6 @@
 
     invoke-virtual {v3, v2}, Lcom/android/server/am/ActivityManagerService$UiHandler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 20890
     const/4 v2, 0x1
 
     goto :goto_0
@@ -100880,10 +99450,8 @@
     .param p1, "goingCallback"    # Ljava/lang/Runnable;
 
     .prologue
-    .line 12390
     monitor-enter p0
 
-    .line 12391
     :try_start_0
     move-object/from16 v0, p0
 
@@ -100891,21 +99459,16 @@
 
     if-eqz v4, :cond_1
 
-    .line 12394
     if-eqz p1, :cond_0
 
-    .line 12395
     invoke-interface/range {p1 .. p1}, Ljava/lang/Runnable;->run()V
 
-    .line 12397
     :cond_0
     monitor-exit p0
 
-    .line 12605
     :goto_0
     return-void
 
-    .line 12400
     :cond_1
     const-class v4, Lcom/android/server/DeviceIdleController$LocalService;
 
@@ -100919,17 +99482,14 @@
 
     iput-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mLocalDeviceIdleController:Lcom/android/server/DeviceIdleController$LocalService;
 
-    .line 12405
     invoke-direct/range {p0 .. p0}, Lcom/android/server/am/ActivityManagerService;->updateCurrentProfileIdsLocked()V
 
-    .line 12407
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mRecentTasks:Lcom/android/server/am/RecentTasks;
 
     invoke-virtual {v4}, Lcom/android/server/am/RecentTasks;->clear()V
 
-    .line 12408
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mRecentTasks:Lcom/android/server/am/RecentTasks;
@@ -100944,7 +99504,6 @@
 
     invoke-virtual {v4, v5}, Lcom/android/server/am/RecentTasks;->addAll(Ljava/util/Collection;)Z
 
-    .line 12409
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mRecentTasks:Lcom/android/server/am/RecentTasks;
@@ -100953,33 +99512,28 @@
 
     invoke-virtual {v4, v5}, Lcom/android/server/am/RecentTasks;->cleanupLocked(I)V
 
-    .line 12410
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mTaskPersister:Lcom/android/server/am/TaskPersister;
 
     invoke-virtual {v4}, Lcom/android/server/am/TaskPersister;->startPersisting()V
 
-    .line 12413
     move-object/from16 v0, p0
 
     iget-boolean v4, v0, Lcom/android/server/am/ActivityManagerService;->mDidUpdate:Z
 
     if-nez v4, :cond_4
 
-    .line 12414
     move-object/from16 v0, p0
 
     iget-boolean v4, v0, Lcom/android/server/am/ActivityManagerService;->mWaitingUpdate:Z
 
     if-eqz v4, :cond_2
 
-    .line 12415
     monitor-exit p0
 
     goto :goto_0
 
-    .line 12439
     :catchall_0
     move-exception v4
 
@@ -100989,14 +99543,12 @@
 
     throw v4
 
-    .line 12417
     :cond_2
     :try_start_1
     new-instance v25, Ljava/util/ArrayList;
 
     invoke-direct/range {v25 .. v25}, Ljava/util/ArrayList;-><init>()V
 
-    .line 12418
     .local v25, "doneReceivers":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/content/ComponentName;>;"
     new-instance v4, Lcom/android/server/am/ActivityManagerService$16;
 
@@ -101022,19 +99574,16 @@
 
     iput-boolean v4, v0, Lcom/android/server/am/ActivityManagerService;->mWaitingUpdate:Z
 
-    .line 12431
     move-object/from16 v0, p0
 
     iget-boolean v4, v0, Lcom/android/server/am/ActivityManagerService;->mWaitingUpdate:Z
 
     if-eqz v4, :cond_3
 
-    .line 12432
     monitor-exit p0
 
     goto :goto_0
 
-    .line 12434
     :cond_3
     const/4 v4, 0x1
 
@@ -101042,7 +99591,6 @@
 
     iput-boolean v4, v0, Lcom/android/server/am/ActivityManagerService;->mDidUpdate:Z
 
-    .line 12437
     .end local v25    # "doneReceivers":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/content/ComponentName;>;"
     :cond_4
     move-object/from16 v0, p0
@@ -101051,22 +99599,18 @@
 
     invoke-virtual {v4}, Lcom/android/server/AppOpsService;->systemReady()V
 
-    .line 12438
     const/4 v4, 0x1
 
     move-object/from16 v0, p0
 
     iput-boolean v4, v0, Lcom/android/server/am/ActivityManagerService;->mSystemReady:Z
 
-    .line 12439
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 12441
     const/16 v34, 0x0
 
-    .line 12442
     .local v34, "procsToKill":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ProcessRecord;>;"
     move-object/from16 v0, p0
 
@@ -101074,7 +99618,6 @@
 
     monitor-enter v5
 
-    .line 12443
     :try_start_2
     move-object/from16 v0, p0
 
@@ -101096,7 +99639,6 @@
     :goto_1
     if-ltz v27, :cond_5
 
-    .line 12444
     :try_start_3
     move-object/from16 v0, p0
 
@@ -101110,7 +99652,6 @@
 
     check-cast v33, Lcom/android/server/am/ProcessRecord;
 
-    .line 12445
     .local v33, "proc":Lcom/android/server/am/ProcessRecord;
     move-object/from16 v0, v33
 
@@ -101124,17 +99665,14 @@
 
     if-nez v4, :cond_12
 
-    .line 12446
     if-nez v35, :cond_11
 
-    .line 12447
     new-instance v34, Ljava/util/ArrayList;
 
     invoke-direct/range {v34 .. v34}, Ljava/util/ArrayList;-><init>()V
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_7
 
-    .line 12449
     .end local v35    # "procsToKill":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ProcessRecord;>;"
     .restart local v34    # "procsToKill":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ProcessRecord;>;"
     :goto_2
@@ -101147,7 +99685,6 @@
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_1
 
-    .line 12443
     :goto_3
     add-int/lit8 v27, v27, -0x1
 
@@ -101157,7 +99694,6 @@
     .restart local v35    # "procsToKill":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ProcessRecord;>;"
     goto :goto_1
 
-    .line 12452
     .end local v33    # "proc":Lcom/android/server/am/ProcessRecord;
     :cond_5
     :try_start_5
@@ -101165,13 +99701,10 @@
     :try_end_5
     .catchall {:try_start_5 .. :try_end_5} :catchall_7
 
-    .line 12454
     monitor-enter p0
 
-    .line 12455
     if-eqz v35, :cond_6
 
-    .line 12456
     :try_start_6
     invoke-virtual/range {v35 .. v35}, Ljava/util/ArrayList;->size()I
 
@@ -101182,7 +99715,6 @@
     :goto_4
     if-ltz v27, :cond_6
 
-    .line 12457
     move-object/from16 v0, v35
 
     move/from16 v1, v27
@@ -101193,7 +99725,6 @@
 
     check-cast v33, Lcom/android/server/am/ProcessRecord;
 
-    .line 12458
     .restart local v33    # "proc":Lcom/android/server/am/ProcessRecord;
     const-string v4, "ActivityManager"
 
@@ -101219,7 +99750,6 @@
 
     invoke-static {v4, v5}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 12459
     const/4 v4, 0x1
 
     const/4 v5, 0x0
@@ -101234,12 +99764,10 @@
     :try_end_6
     .catchall {:try_start_6 .. :try_end_6} :catchall_2
 
-    .line 12456
     add-int/lit8 v27, v27, -0x1
 
     goto :goto_4
 
-    .line 12452
     .end local v27    # "i":I
     .end local v33    # "proc":Lcom/android/server/am/ProcessRecord;
     .end local v35    # "procsToKill":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ProcessRecord;>;"
@@ -101255,7 +99783,6 @@
 
     throw v4
 
-    .line 12466
     .end local v34    # "procsToKill":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ProcessRecord;>;"
     .restart local v27    # "i":I
     .restart local v35    # "procsToKill":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ProcessRecord;>;"
@@ -101267,19 +99794,16 @@
 
     iput-boolean v4, v0, Lcom/android/server/am/ActivityManagerService;->mProcessesReady:Z
 
-    .line 12467
     monitor-exit p0
     :try_end_8
     .catchall {:try_start_8 .. :try_end_8} :catchall_2
 
-    .line 12469
     const-string v4, "ActivityManager"
 
     const-string v5, "System now ready"
 
     invoke-static {v4, v5}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 12470
     const/16 v4, 0xbe0
 
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
@@ -101288,12 +99812,10 @@
 
     invoke-static {v4, v8, v9}, Landroid/util/EventLog;->writeEvent(IJ)I
 
-    .line 12474
     sget-boolean v4, Lcom/android/server/am/OnePlusAppBootManager;->IN_USING:Z
 
     if-eqz v4, :cond_7
 
-    .line 12475
     const/4 v4, 0x0
 
     invoke-static {v4}, Lcom/android/server/am/OnePlusAppBootManager;->getInstance(Lcom/android/server/pm/PackageManagerService;)Lcom/android/server/am/OnePlusAppBootManager;
@@ -101308,11 +99830,9 @@
 
     invoke-virtual {v4, v0, v5}, Lcom/android/server/am/OnePlusAppBootManager;->initEnv(Lcom/android/server/am/ActivityManagerService;Landroid/content/Context;)V
 
-    .line 12478
     :cond_7
     monitor-enter p0
 
-    .line 12481
     :try_start_9
     move-object/from16 v0, p0
 
@@ -101322,7 +99842,6 @@
 
     if-ne v4, v5, :cond_8
 
-    .line 12482
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
@@ -101343,22 +99862,18 @@
 
     move-result-object v36
 
-    .line 12485
     .local v36, "ri":Landroid/content/pm/ResolveInfo;
     const/16 v26, 0x0
 
-    .line 12486
     .local v26, "errorMsg":Ljava/lang/CharSequence;
     if-eqz v36, :cond_c
 
-    .line 12487
     move-object/from16 v0, v36
 
     iget-object v0, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
 
     move-object/from16 v22, v0
 
-    .line 12488
     .local v22, "ai":Landroid/content/pm/ActivityInfo;
     move-object/from16 v0, v22
 
@@ -101366,7 +99881,6 @@
 
     move-object/from16 v23, v0
 
-    .line 12489
     .local v23, "app":Landroid/content/pm/ApplicationInfo;
     move-object/from16 v0, v23
 
@@ -101376,21 +99890,18 @@
 
     if-eqz v4, :cond_b
 
-    .line 12490
     const-string v4, "android.intent.action.FACTORY_TEST"
 
     move-object/from16 v0, p0
 
     iput-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mTopAction:Ljava/lang/String;
 
-    .line 12491
     const/4 v4, 0x0
 
     move-object/from16 v0, p0
 
     iput-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mTopData:Ljava/lang/String;
 
-    .line 12492
     new-instance v4, Landroid/content/ComponentName;
 
     move-object/from16 v0, v23
@@ -101407,39 +99918,33 @@
 
     iput-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mTopComponent:Landroid/content/ComponentName;
 
-    .line 12502
     .end local v22    # "ai":Landroid/content/pm/ActivityInfo;
     .end local v23    # "app":Landroid/content/pm/ApplicationInfo;
     :goto_6
     if-eqz v26, :cond_8
 
-    .line 12503
     const/4 v4, 0x0
 
     move-object/from16 v0, p0
 
     iput-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mTopAction:Ljava/lang/String;
 
-    .line 12504
     const/4 v4, 0x0
 
     move-object/from16 v0, p0
 
     iput-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mTopData:Ljava/lang/String;
 
-    .line 12505
     const/4 v4, 0x0
 
     move-object/from16 v0, p0
 
     iput-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mTopComponent:Landroid/content/ComponentName;
 
-    .line 12506
     invoke-static {}, Landroid/os/Message;->obtain()Landroid/os/Message;
 
     move-result-object v32
 
-    .line 12507
     .local v32, "msg":Landroid/os/Message;
     const/4 v4, 0x3
 
@@ -101447,7 +99952,6 @@
 
     iput v4, v0, Landroid/os/Message;->what:I
 
-    .line 12508
     invoke-virtual/range {v32 .. v32}, Landroid/os/Message;->getData()Landroid/os/Bundle;
 
     move-result-object v4
@@ -101458,7 +99962,6 @@
 
     invoke-virtual {v4, v5, v0}, Landroid/os/Bundle;->putCharSequence(Ljava/lang/String;Ljava/lang/CharSequence;)V
 
-    .line 12509
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mUiHandler:Lcom/android/server/am/ActivityManagerService$UiHandler;
@@ -101467,7 +99970,6 @@
 
     invoke-virtual {v4, v0}, Lcom/android/server/am/ActivityManagerService$UiHandler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 12512
     .end local v26    # "errorMsg":Ljava/lang/CharSequence;
     .end local v32    # "msg":Landroid/os/Message;
     .end local v36    # "ri":Landroid/content/pm/ResolveInfo;
@@ -101476,30 +99978,23 @@
     :try_end_9
     .catchall {:try_start_9 .. :try_end_9} :catchall_3
 
-    .line 12514
     invoke-direct/range {p0 .. p0}, Lcom/android/server/am/ActivityManagerService;->retrieveSettings()V
 
-    .line 12515
     invoke-direct/range {p0 .. p0}, Lcom/android/server/am/ActivityManagerService;->loadResourcesOnSystemReady()V
 
-    .line 12517
     monitor-enter p0
 
-    .line 12518
     :try_start_a
     invoke-direct/range {p0 .. p0}, Lcom/android/server/am/ActivityManagerService;->readGrantedUriPermissionsLocked()V
 
-    .line 12519
     monitor-exit p0
     :try_end_a
     .catchall {:try_start_a .. :try_end_a} :catchall_4
 
-    .line 12521
     if-eqz p1, :cond_9
 
     invoke-interface/range {p1 .. p1}, Ljava/lang/Runnable;->run()V
 
-    .line 12523
     :cond_9
     move-object/from16 v0, p0
 
@@ -101521,7 +100016,6 @@
 
     invoke-virtual {v4, v5, v6, v8}, Lcom/android/server/am/BatteryStatsService;->noteEvent(ILjava/lang/String;I)V
 
-    .line 12525
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mBatteryStatsService:Lcom/android/server/am/BatteryStatsService;
@@ -101542,7 +100036,6 @@
 
     invoke-virtual {v4, v5, v6, v8}, Lcom/android/server/am/BatteryStatsService;->noteEvent(ILjava/lang/String;I)V
 
-    .line 12527
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mSystemServiceManager:Lcom/android/server/SystemServiceManager;
@@ -101553,10 +100046,8 @@
 
     invoke-virtual {v4, v5}, Lcom/android/server/SystemServiceManager;->startUser(I)V
 
-    .line 12529
     monitor-enter p0
 
-    .line 12530
     :try_start_b
     move-object/from16 v0, p0
 
@@ -101568,7 +100059,6 @@
 
     if-eq v4, v5, :cond_d
 
-    .line 12532
     :try_start_c
     invoke-static {}, Landroid/app/AppGlobals;->getPackageManager()Landroid/content/pm/IPackageManager;
 
@@ -101580,16 +100070,13 @@
 
     move-result-object v24
 
-    .line 12534
     .local v24, "apps":Ljava/util/List;
     if-eqz v24, :cond_d
 
-    .line 12535
     invoke-interface/range {v24 .. v24}, Ljava/util/List;->size()I
 
     move-result v21
 
-    .line 12537
     .local v21, "N":I
     const/16 v27, 0x0
 
@@ -101600,7 +100087,6 @@
 
     if-ge v0, v1, :cond_d
 
-    .line 12538
     move-object/from16 v0, v24
 
     move/from16 v1, v27
@@ -101611,7 +100097,6 @@
 
     check-cast v30, Landroid/content/pm/ApplicationInfo;
 
-    .line 12540
     .local v30, "info":Landroid/content/pm/ApplicationInfo;
     if-eqz v30, :cond_a
 
@@ -101627,7 +100112,6 @@
 
     if-nez v4, :cond_a
 
-    .line 12542
     const/4 v4, 0x0
 
     const/4 v5, 0x0
@@ -101641,13 +100125,11 @@
     .catch Landroid/os/RemoteException; {:try_start_c .. :try_end_c} :catch_0
     .catchall {:try_start_c .. :try_end_c} :catchall_5
 
-    .line 12537
     :cond_a
     add-int/lit8 v27, v27, 0x1
 
     goto :goto_7
 
-    .line 12467
     .end local v21    # "N":I
     .end local v24    # "apps":Ljava/util/List;
     .end local v30    # "info":Landroid/content/pm/ApplicationInfo;
@@ -101661,7 +100143,6 @@
 
     throw v4
 
-    .line 12495
     .restart local v22    # "ai":Landroid/content/pm/ActivityInfo;
     .restart local v23    # "app":Landroid/content/pm/ApplicationInfo;
     .restart local v26    # "errorMsg":Ljava/lang/CharSequence;
@@ -101676,7 +100157,7 @@
 
     move-result-object v4
 
-    const v5, 0x10402f6
+    const v5, #android:string@factorytest_not_system#t
 
     invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
 
@@ -101684,7 +100165,6 @@
 
     goto/16 :goto_6
 
-    .line 12499
     .end local v22    # "ai":Landroid/content/pm/ActivityInfo;
     .end local v23    # "app":Landroid/content/pm/ApplicationInfo;
     :cond_c
@@ -101696,7 +100176,7 @@
 
     move-result-object v4
 
-    const v5, 0x10402f7
+    const v5, #android:string@factorytest_no_action#t
 
     invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
 
@@ -101704,7 +100184,6 @@
 
     goto/16 :goto_6
 
-    .line 12512
     .end local v26    # "errorMsg":Ljava/lang/CharSequence;
     .end local v36    # "ri":Landroid/content/pm/ResolveInfo;
     :catchall_3
@@ -101716,7 +100195,6 @@
 
     throw v4
 
-    .line 12519
     :catchall_4
     move-exception v4
 
@@ -101727,11 +100205,9 @@
 
     throw v4
 
-    .line 12546
     :catch_0
     move-exception v4
 
-    .line 12552
     :cond_d
     const/4 v4, 0x1
 
@@ -101740,7 +100216,6 @@
 
     iput-boolean v4, v0, Lcom/android/server/am/ActivityManagerService;->mBooting:Z
 
-    .line 12553
     move-object/from16 v0, p0
 
     iget v4, v0, Lcom/android/server/am/ActivityManagerService;->mCurrentUserId:I
@@ -101751,7 +100226,6 @@
 
     invoke-virtual {v0, v4, v5}, Lcom/android/server/am/ActivityManagerService;->startHomeActivityLocked(ILjava/lang/String;)Z
 
-    .line 12556
     const-string v4, "ro.alarm_boot"
 
     const/4 v5, 0x0
@@ -101760,16 +100234,13 @@
 
     move-result v31
 
-    .line 12557
     .local v31, "isAlarmBoot":Z
     if-eqz v31, :cond_e
 
-    .line 12558
     invoke-virtual/range {p0 .. p0}, Lcom/android/server/am/ActivityManagerService;->startAlarmActivityLocked()V
     :try_end_10
     .catchall {:try_start_10 .. :try_end_10} :catchall_5
 
-    .line 12562
     :cond_e
     :try_start_11
     invoke-static {}, Landroid/app/AppGlobals;->getPackageManager()Landroid/content/pm/IPackageManager;
@@ -101782,14 +100253,12 @@
 
     if-eqz v4, :cond_f
 
-    .line 12563
     const-string v4, "ActivityManager"
 
     const-string v5, "UIDs on the system are inconsistent, you need to wipe your data partition or your device will be unstable."
 
     invoke-static {v4, v5}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 12565
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mUiHandler:Lcom/android/server/am/ActivityManagerService$UiHandler;
@@ -101805,7 +100274,6 @@
     .catch Landroid/os/RemoteException; {:try_start_11 .. :try_end_11} :catch_2
     .catchall {:try_start_11 .. :try_end_11} :catchall_5
 
-    .line 12570
     :cond_f
     :goto_8
     :try_start_12
@@ -101815,14 +100283,12 @@
 
     if-nez v4, :cond_10
 
-    .line 12571
     const-string v4, "ActivityManager"
 
     const-string v5, "Build fingerprint is not consistent, warning user"
 
     invoke-static {v4, v5}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 12572
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/ActivityManagerService;->mUiHandler:Lcom/android/server/am/ActivityManagerService$UiHandler;
@@ -101835,7 +100301,6 @@
 
     invoke-virtual {v4}, Landroid/os/Message;->sendToTarget()V
 
-    .line 12575
     :cond_10
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
     :try_end_12
@@ -101843,7 +100308,6 @@
 
     move-result-wide v28
 
-    .line 12577
     .local v28, "ident":J
     :try_start_13
     new-instance v7, Landroid/content/Intent;
@@ -101852,13 +100316,11 @@
 
     invoke-direct {v7, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 12578
     .local v7, "intent":Landroid/content/Intent;
     const/high16 v4, 0x50000000
 
     invoke-virtual {v7, v4}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 12580
     const-string v4, "android.intent.extra.user_handle"
 
     move-object/from16 v0, p0
@@ -101867,7 +100329,6 @@
 
     invoke-virtual {v7, v4, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 12581
     const/4 v5, 0x0
 
     const/4 v6, 0x0
@@ -101906,7 +100367,6 @@
 
     invoke-direct/range {v4 .. v20}, Lcom/android/server/am/ActivityManagerService;->broadcastIntentLocked(Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Landroid/content/Intent;Ljava/lang/String;Landroid/content/IIntentReceiver;ILjava/lang/String;Landroid/os/Bundle;[Ljava/lang/String;ILandroid/os/Bundle;ZZIII)I
 
-    .line 12584
     new-instance v7, Landroid/content/Intent;
 
     .end local v7    # "intent":Landroid/content/Intent;
@@ -101914,13 +100374,11 @@
 
     invoke-direct {v7, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 12585
     .restart local v7    # "intent":Landroid/content/Intent;
     const/high16 v4, 0x40000000    # 2.0f
 
     invoke-virtual {v7, v4}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 12586
     const-string v4, "android.intent.extra.user_handle"
 
     move-object/from16 v0, p0
@@ -101929,7 +100387,6 @@
 
     invoke-virtual {v7, v4, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 12587
     const/4 v5, 0x0
 
     const/4 v6, 0x0
@@ -101979,11 +100436,9 @@
     .catch Ljava/lang/Throwable; {:try_start_13 .. :try_end_13} :catch_1
     .catchall {:try_start_13 .. :try_end_13} :catchall_6
 
-    .line 12600
     :try_start_14
     invoke-static/range {v28 .. v29}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 12602
     .end local v7    # "intent":Landroid/content/Intent;
     :goto_9
     move-object/from16 v0, p0
@@ -101992,7 +100447,6 @@
 
     invoke-virtual {v4}, Lcom/android/server/am/ActivityStackSupervisor;->resumeTopActivitiesLocked()Z
 
-    .line 12603
     const/4 v4, -0x1
 
     move-object/from16 v0, p0
@@ -102003,7 +100457,6 @@
 
     invoke-virtual {v0, v4, v5}, Lcom/android/server/am/ActivityManagerService;->sendUserSwitchBroadcastsLocked(II)V
 
-    .line 12604
     monitor-exit p0
 
     goto/16 :goto_0
@@ -102019,13 +100472,11 @@
 
     throw v4
 
-    .line 12597
     .restart local v28    # "ident":J
     .restart local v31    # "isAlarmBoot":Z
     :catch_1
     move-exception v37
 
-    .line 12598
     .local v37, "t":Ljava/lang/Throwable;
     :try_start_15
     const-string v4, "ActivityManager"
@@ -102038,7 +100489,6 @@
     :try_end_15
     .catchall {:try_start_15 .. :try_end_15} :catchall_6
 
-    .line 12600
     :try_start_16
     invoke-static/range {v28 .. v29}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
@@ -102054,14 +100504,12 @@
     :try_end_16
     .catchall {:try_start_16 .. :try_end_16} :catchall_5
 
-    .line 12567
     .end local v28    # "ident":J
     :catch_2
     move-exception v4
 
     goto/16 :goto_8
 
-    .line 12452
     .end local v31    # "isAlarmBoot":Z
     :catchall_7
     move-exception v4
@@ -102103,30 +100551,24 @@
 
     const/4 v7, 0x0
 
-    .line 8663
     const-string v8, "takePersistableUriPermission"
 
     invoke-virtual {p0, v8}, Lcom/android/server/am/ActivityManagerService;->enforceNotIsolatedCaller(Ljava/lang/String;)V
 
-    .line 8665
     const/4 v8, 0x3
 
     invoke-static {p2, v8}, Lcom/android/internal/util/Preconditions;->checkFlagsArgument(II)V
 
-    .line 8668
     monitor-enter p0
 
-    .line 8669
     :try_start_0
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
     move-result v0
 
-    .line 8670
     .local v0, "callingUid":I
     const/4 v4, 0x0
 
-    .line 8671
     .local v4, "persistChanged":Z
     new-instance v3, Lcom/android/server/am/ActivityManagerService$GrantUri;
 
@@ -102134,7 +100576,6 @@
 
     invoke-direct {v3, p3, p1, v8}, Lcom/android/server/am/ActivityManagerService$GrantUri;-><init>(ILandroid/net/Uri;Z)V
 
-    .line 8673
     .local v3, "grantUri":Lcom/android/server/am/ActivityManagerService$GrantUri;
     new-instance v8, Lcom/android/server/am/ActivityManagerService$GrantUri;
 
@@ -102146,7 +100587,6 @@
 
     move-result-object v1
 
-    .line 8675
     .local v1, "exactPerm":Lcom/android/server/am/UriPermission;
     new-instance v8, Lcom/android/server/am/ActivityManagerService$GrantUri;
 
@@ -102158,7 +100598,6 @@
 
     move-result-object v5
 
-    .line 8678
     .local v5, "prefixPerm":Lcom/android/server/am/UriPermission;
     if-eqz v1, :cond_0
 
@@ -102170,7 +100609,6 @@
 
     move v2, v6
 
-    .line 8680
     .local v2, "exactValid":Z
     :goto_0
     if-eqz v5, :cond_1
@@ -102181,14 +100619,12 @@
 
     if-ne v8, p2, :cond_1
 
-    .line 8683
     .local v6, "prefixValid":Z
     :goto_1
     if-nez v2, :cond_2
 
     if-nez v6, :cond_2
 
-    .line 8684
     new-instance v7, Ljava/lang/SecurityException;
 
     new-instance v8, Ljava/lang/StringBuilder;
@@ -102227,7 +100663,6 @@
 
     throw v7
 
-    .line 8700
     .end local v0    # "callingUid":I
     .end local v1    # "exactPerm":Lcom/android/server/am/UriPermission;
     .end local v2    # "exactValid":Z
@@ -102252,22 +100687,18 @@
     :cond_0
     move v2, v7
 
-    .line 8678
     goto :goto_0
 
     .restart local v2    # "exactValid":Z
     :cond_1
     move v6, v7
 
-    .line 8680
     goto :goto_1
 
-    .line 8688
     .restart local v6    # "prefixValid":Z
     :cond_2
     if-eqz v2, :cond_3
 
-    .line 8689
     :try_start_1
     invoke-virtual {v1, p2}, Lcom/android/server/am/UriPermission;->takePersistableModes(I)Z
 
@@ -102275,18 +100706,15 @@
 
     or-int/2addr v4, v7
 
-    .line 8691
     :cond_3
     if-eqz v6, :cond_4
 
-    .line 8692
     invoke-virtual {v5, p2}, Lcom/android/server/am/UriPermission;->takePersistableModes(I)Z
 
     move-result v7
 
     or-int/2addr v4, v7
 
-    .line 8695
     :cond_4
     invoke-direct {p0, v0}, Lcom/android/server/am/ActivityManagerService;->maybePrunePersistedUriGrantsLocked(I)Z
 
@@ -102294,19 +100722,15 @@
 
     or-int/2addr v4, v7
 
-    .line 8697
     if-eqz v4, :cond_5
 
-    .line 8698
     invoke-direct {p0}, Lcom/android/server/am/ActivityManagerService;->schedulePersistUriGrants()V
 
-    .line 8700
     :cond_5
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 8701
     return-void
 .end method
 
@@ -102314,7 +100738,6 @@
     .locals 1
 
     .prologue
-    .line 12194
     iget-boolean v0, p0, Lcom/android/server/am/ActivityManagerService;->mSystemReady:Z
 
     return v0
@@ -102327,10 +100750,8 @@
     .param p3, "newUserId"    # I
 
     .prologue
-    .line 21165
     monitor-enter p0
 
-    .line 21166
     :try_start_0
     const-string v0, "ActivityManager"
 
@@ -102364,16 +100785,12 @@
 
     invoke-static {v0, v1}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 21167
     invoke-virtual {p0, p1, p2, p3}, Lcom/android/server/am/ActivityManagerService;->sendContinueUserSwitchLocked(Lcom/android/server/am/UserState;II)V
 
-    .line 21168
     monitor-exit p0
 
-    .line 21169
     return-void
 
-    .line 21168
     :catchall_0
     move-exception v0
 
@@ -102390,10 +100807,8 @@
     .prologue
     const/4 v7, 0x0
 
-    .line 20509
     monitor-enter p0
 
-    .line 20514
     :try_start_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mRemovedProcesses:Ljava/util/ArrayList;
 
@@ -102407,7 +100822,6 @@
     :goto_0
     if-ltz v6, :cond_3
 
-    .line 20515
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mRemovedProcesses:Ljava/util/ArrayList;
 
     invoke-virtual {v0, v6}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -102416,7 +100830,6 @@
 
     check-cast v1, Lcom/android/server/am/ProcessRecord;
 
-    .line 20516
     .local v1, "app":Lcom/android/server/am/ProcessRecord;
     iget-object v0, v1, Lcom/android/server/am/ProcessRecord;->activities:Ljava/util/ArrayList;
 
@@ -102438,7 +100851,6 @@
 
     if-nez v0, :cond_0
 
-    .line 20518
     const-string v2, "ActivityManager"
 
     new-instance v0, Ljava/lang/StringBuilder;
@@ -102490,7 +100902,6 @@
 
     invoke-static {v2, v0}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 20523
     iget v0, v1, Lcom/android/server/am/ProcessRecord;->pid:I
 
     if-lez v0, :cond_2
@@ -102501,14 +100912,12 @@
 
     if-eq v0, v2, :cond_2
 
-    .line 20524
     const-string v0, "empty"
 
     const/4 v2, 0x0
 
     invoke-virtual {v1, v0, v2}, Lcom/android/server/am/ProcessRecord;->kill(Ljava/lang/String;Z)V
 
-    .line 20532
     :goto_2
     const/4 v2, 0x0
 
@@ -102522,17 +100931,14 @@
 
     invoke-direct/range {v0 .. v5}, Lcom/android/server/am/ActivityManagerService;->cleanUpApplicationRecordLocked(Lcom/android/server/am/ProcessRecord;ZZIZ)Z
 
-    .line 20533
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mRemovedProcesses:Ljava/util/ArrayList;
 
     invoke-virtual {v0, v6}, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
 
-    .line 20535
     iget-boolean v0, v1, Lcom/android/server/am/ProcessRecord;->persistent:Z
 
     if-eqz v0, :cond_0
 
-    .line 20536
     iget-object v0, v1, Lcom/android/server/am/ProcessRecord;->info:Landroid/content/pm/ApplicationInfo;
 
     const/4 v2, 0x0
@@ -102543,7 +100949,6 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 20514
     :cond_0
     add-int/lit8 v6, v6, -0x1
 
@@ -102552,10 +100957,8 @@
     :cond_1
     move-object v0, v7
 
-    .line 20518
     goto :goto_1
 
-    .line 20527
     :cond_2
     :try_start_1
     iget-object v0, v1, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
@@ -102567,25 +100970,20 @@
 
     goto :goto_2
 
-    .line 20528
     :catch_0
     move-exception v0
 
     goto :goto_2
 
-    .line 20542
     .end local v1    # "app":Lcom/android/server/am/ProcessRecord;
     :cond_3
     :try_start_2
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->updateOomAdjLocked()V
 
-    .line 20543
     monitor-exit p0
 
-    .line 20544
     return-void
 
-    .line 20543
     .end local v6    # "i":I
     :catchall_0
     move-exception v0
@@ -102602,7 +101000,6 @@
     .param p1, "appInfo"    # Landroid/content/pm/ApplicationInfo;
 
     .prologue
-    .line 16864
     sget-boolean v2, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_BACKUP:Z
 
     if-eqz v2, :cond_0
@@ -102629,32 +101026,26 @@
 
     invoke-static {v2, v3}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 16865
     :cond_0
     if-nez p1, :cond_1
 
-    .line 16866
     const-string v2, "ActivityManager"
 
     const-string v3, "unbind backup agent for null app"
 
     invoke-static {v2, v3}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 16901
     :goto_0
     return-void
 
-    .line 16870
     :cond_1
     monitor-enter p0
 
-    .line 16872
     :try_start_0
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mBackupAppName:Ljava/lang/String;
 
     if-nez v2, :cond_2
 
-    .line 16873
     const-string v2, "ActivityManager"
 
     const-string v3, "Unbinding backup agent with no active backup"
@@ -102663,13 +101054,11 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 16897
     const/4 v2, 0x0
 
     :try_start_1
     iput-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mBackupTarget:Lcom/android/server/am/BackupRecord;
 
-    .line 16898
     const/4 v2, 0x0
 
     iput-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mBackupAppName:Ljava/lang/String;
@@ -102678,7 +101067,6 @@
 
     goto :goto_0
 
-    .line 16900
     :catchall_0
     move-exception v2
 
@@ -102688,7 +101076,6 @@
 
     throw v2
 
-    .line 16877
     :cond_2
     :try_start_2
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mBackupAppName:Ljava/lang/String;
@@ -102701,7 +101088,6 @@
 
     if-nez v2, :cond_3
 
-    .line 16878
     const-string v2, "ActivityManager"
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -102732,13 +101118,11 @@
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 16897
     const/4 v2, 0x0
 
     :try_start_3
     iput-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mBackupTarget:Lcom/android/server/am/BackupRecord;
 
-    .line 16898
     const/4 v2, 0x0
 
     iput-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mBackupAppName:Ljava/lang/String;
@@ -102749,25 +101133,21 @@
 
     goto :goto_0
 
-    .line 16883
     :cond_3
     :try_start_4
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mBackupTarget:Lcom/android/server/am/BackupRecord;
 
     iget-object v1, v2, Lcom/android/server/am/BackupRecord;->app:Lcom/android/server/am/ProcessRecord;
 
-    .line 16884
     .local v1, "proc":Lcom/android/server/am/ProcessRecord;
     invoke-virtual {p0, v1}, Lcom/android/server/am/ActivityManagerService;->updateOomAdjLocked(Lcom/android/server/am/ProcessRecord;)Z
 
-    .line 16887
     iget-object v2, v1, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_1
 
     if-eqz v2, :cond_4
 
-    .line 16889
     :try_start_5
     iget-object v2, v1, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
 
@@ -102780,7 +101160,6 @@
     .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_5} :catch_0
     .catchall {:try_start_5 .. :try_end_5} :catchall_1
 
-    .line 16897
     :cond_4
     :goto_1
     const/4 v2, 0x0
@@ -102788,23 +101167,19 @@
     :try_start_6
     iput-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mBackupTarget:Lcom/android/server/am/BackupRecord;
 
-    .line 16898
     const/4 v2, 0x0
 
     iput-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mBackupAppName:Ljava/lang/String;
 
-    .line 16900
     monitor-exit p0
     :try_end_6
     .catchall {:try_start_6 .. :try_end_6} :catchall_0
 
     goto :goto_0
 
-    .line 16891
     :catch_0
     move-exception v0
 
-    .line 16892
     .local v0, "e":Ljava/lang/Exception;
     :try_start_7
     const-string v2, "ActivityManager"
@@ -102813,14 +101188,12 @@
 
     invoke-static {v2, v3}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 16893
     invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
     :try_end_7
     .catchall {:try_start_7 .. :try_end_7} :catchall_1
 
     goto :goto_1
 
-    .line 16897
     .end local v0    # "e":Ljava/lang/Exception;
     .end local v1    # "proc":Lcom/android/server/am/ProcessRecord;
     :catchall_1
@@ -102831,7 +101204,6 @@
     :try_start_8
     iput-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mBackupTarget:Lcom/android/server/am/BackupRecord;
 
-    .line 16898
     const/4 v3, 0x0
 
     iput-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mBackupAppName:Ljava/lang/String;
@@ -102848,7 +101220,6 @@
     .param p3, "doRebind"    # Z
 
     .prologue
-    .line 16723
     if-eqz p2, :cond_0
 
     invoke-virtual {p2}, Landroid/content/Intent;->hasFileDescriptors()Z
@@ -102859,7 +101230,6 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 16724
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "File descriptors passed in Intent"
@@ -102868,11 +101238,9 @@
 
     throw v0
 
-    .line 16727
     :cond_0
     monitor-enter p0
 
-    .line 16728
     :try_start_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mServices:Lcom/android/server/am/ActiveServices;
 
@@ -102881,13 +101249,10 @@
     .end local p1    # "token":Landroid/os/IBinder;
     invoke-virtual {v0, p1, p2, p3}, Lcom/android/server/am/ActiveServices;->unbindFinishedLocked(Lcom/android/server/am/ServiceRecord;Landroid/content/Intent;Z)V
 
-    .line 16729
     monitor-exit p0
 
-    .line 16730
     return-void
 
-    .line 16729
     :catchall_0
     move-exception v0
 
@@ -102903,10 +101268,8 @@
     .param p1, "connection"    # Landroid/app/IServiceConnection;
 
     .prologue
-    .line 16702
     monitor-enter p0
 
-    .line 16703
     :try_start_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mServices:Lcom/android/server/am/ActiveServices;
 
@@ -102918,7 +101281,6 @@
 
     return v0
 
-    .line 16704
     :catchall_0
     move-exception v0
 
@@ -102936,7 +101298,6 @@
     .param p3, "userId"    # I
 
     .prologue
-    .line 17789
     if-eqz p2, :cond_0
 
     invoke-virtual/range {p2 .. p2}, Landroid/content/Intent;->hasFileDescriptors()Z
@@ -102947,7 +101308,6 @@
 
     if-ne v1, v2, :cond_0
 
-    .line 17790
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     const-string v2, "File descriptors passed in Intent"
@@ -102956,7 +101316,6 @@
 
     throw v1
 
-    .line 17793
     :cond_0
     invoke-static {}, Landroid/os/Binder;->getCallingPid()I
 
@@ -102982,10 +101341,8 @@
 
     move-result p3
 
-    .line 17796
     monitor-enter p0
 
-    .line 17797
     :try_start_0
     const-string v1, "android.permission.BROADCAST_STICKY"
 
@@ -102995,7 +101352,6 @@
 
     if-eqz v1, :cond_1
 
-    .line 17799
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -103044,20 +101400,17 @@
 
     move-result-object v12
 
-    .line 17803
     .local v12, "msg":Ljava/lang/String;
     const-string v1, "ActivityManager"
 
     invoke-static {v1, v12}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 17804
     new-instance v1, Ljava/lang/SecurityException;
 
     invoke-direct {v1, v12}, Ljava/lang/SecurityException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
-    .line 17826
     .end local v12    # "msg":Ljava/lang/String;
     :catchall_0
     move-exception v1
@@ -103068,7 +101421,6 @@
 
     throw v1
 
-    .line 17806
     :cond_1
     :try_start_1
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mStickyBroadcasts:Landroid/util/SparseArray;
@@ -103081,11 +101433,9 @@
 
     check-cast v13, Landroid/util/ArrayMap;
 
-    .line 17807
     .local v13, "stickies":Landroid/util/ArrayMap;, "Landroid/util/ArrayMap<Ljava/lang/String;Ljava/util/ArrayList<Landroid/content/Intent;>;>;"
     if-eqz v13, :cond_4
 
-    .line 17808
     invoke-virtual/range {p2 .. p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v1
@@ -103096,16 +101446,13 @@
 
     check-cast v11, Ljava/util/ArrayList;
 
-    .line 17809
     .local v11, "list":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/content/Intent;>;"
     if-eqz v11, :cond_3
 
-    .line 17810
     invoke-virtual {v11}, Ljava/util/ArrayList;->size()I
 
     move-result v9
 
-    .line 17812
     .local v9, "N":I
     const/4 v10, 0x0
 
@@ -103113,7 +101460,6 @@
     :goto_0
     if-ge v10, v9, :cond_2
 
-    .line 17813
     invoke-virtual {v11, v10}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v1
@@ -103128,10 +101474,8 @@
 
     if-eqz v1, :cond_5
 
-    .line 17814
     invoke-virtual {v11, v10}, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
 
-    .line 17818
     :cond_2
     invoke-virtual {v11}, Ljava/util/ArrayList;->size()I
 
@@ -103139,14 +101483,12 @@
 
     if-gtz v1, :cond_3
 
-    .line 17819
     invoke-virtual/range {p2 .. p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v1
 
     invoke-virtual {v13, v1}, Landroid/util/ArrayMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 17822
     .end local v9    # "N":I
     .end local v10    # "i":I
     :cond_3
@@ -103156,24 +101498,20 @@
 
     if-gtz v1, :cond_4
 
-    .line 17823
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mStickyBroadcasts:Landroid/util/SparseArray;
 
     move/from16 v0, p3
 
     invoke-virtual {v1, v0}, Landroid/util/SparseArray;->remove(I)V
 
-    .line 17826
     .end local v11    # "list":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/content/Intent;>;"
     :cond_4
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 17827
     return-void
 
-    .line 17812
     .restart local v9    # "N":I
     .restart local v10    # "i":I
     .restart local v11    # "list":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/content/Intent;>;"
@@ -103187,17 +101525,14 @@
     .locals 4
 
     .prologue
-    .line 10931
     const-string v2, "android.permission.FORCE_BACK"
 
     const-string v3, "unhandledBack()"
 
     invoke-virtual {p0, v2, v3}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 10934
     monitor-enter p0
 
-    .line 10935
     :try_start_0
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
     :try_end_0
@@ -103205,7 +101540,6 @@
 
     move-result-wide v0
 
-    .line 10937
     .local v0, "origId":J
     :try_start_1
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->getFocusedStack()Lcom/android/server/am/ActivityStack;
@@ -103216,17 +101550,13 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 10939
     :try_start_2
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 10941
     monitor-exit p0
 
-    .line 10942
     return-void
 
-    .line 10939
     :catchall_0
     move-exception v2
 
@@ -103234,7 +101564,6 @@
 
     throw v2
 
-    .line 10941
     .end local v0    # "origId":J
     :catchall_1
     move-exception v2
@@ -103251,22 +101580,17 @@
     .param p1, "observer"    # Landroid/app/IProcessObserver;
 
     .prologue
-    .line 11668
     monitor-enter p0
 
-    .line 11669
     :try_start_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mProcessObservers:Landroid/os/RemoteCallbackList;
 
     invoke-virtual {v0, p1}, Landroid/os/RemoteCallbackList;->unregister(Landroid/os/IInterface;)Z
 
-    .line 11670
     monitor-exit p0
 
-    .line 11671
     return-void
 
-    .line 11670
     :catchall_0
     move-exception v0
 
@@ -103282,7 +101606,6 @@
     .param p1, "receiver"    # Landroid/content/IIntentReceiver;
 
     .prologue
-    .line 17077
     sget-boolean v0, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_BROADCAST:Z
 
     if-eqz v0, :cond_0
@@ -103309,24 +101632,20 @@
 
     invoke-static {v0, v2}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 17079
     :cond_0
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v10
 
-    .line 17081
     .local v10, "origId":J
     const/4 v8, 0x0
 
-    .line 17083
     .local v8, "doTrim":Z
     :try_start_0
     monitor-enter p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 17084
     :try_start_1
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mRegisteredReceivers:Ljava/util/HashMap;
 
@@ -103340,14 +101659,11 @@
 
     check-cast v9, Lcom/android/server/am/ReceiverList;
 
-    .line 17085
     .local v9, "rl":Lcom/android/server/am/ReceiverList;
     if-eqz v9, :cond_3
 
-    .line 17086
     iget-object v1, v9, Lcom/android/server/am/ReceiverList;->curBroadcast:Lcom/android/server/am/BroadcastRecord;
 
-    .line 17087
     .local v1, "r":Lcom/android/server/am/BroadcastRecord;
     if-eqz v1, :cond_1
 
@@ -103359,7 +101675,6 @@
 
     if-ne v1, v0, :cond_1
 
-    .line 17088
     iget-object v0, v1, Lcom/android/server/am/BroadcastRecord;->queue:Lcom/android/server/am/BroadcastQueue;
 
     iget v2, v1, Lcom/android/server/am/BroadcastRecord;->resultCode:I
@@ -103376,49 +101691,40 @@
 
     move-result v7
 
-    .line 17091
     .local v7, "doNext":Z
     if-eqz v7, :cond_1
 
-    .line 17092
     const/4 v8, 0x1
 
-    .line 17093
     iget-object v0, v1, Lcom/android/server/am/BroadcastRecord;->queue:Lcom/android/server/am/BroadcastQueue;
 
     const/4 v2, 0x0
 
     invoke-virtual {v0, v2}, Lcom/android/server/am/BroadcastQueue;->processNextBroadcast(Z)V
 
-    .line 17097
     .end local v7    # "doNext":Z
     :cond_1
     iget-object v0, v9, Lcom/android/server/am/ReceiverList;->app:Lcom/android/server/am/ProcessRecord;
 
     if-eqz v0, :cond_2
 
-    .line 17098
     iget-object v0, v9, Lcom/android/server/am/ReceiverList;->app:Lcom/android/server/am/ProcessRecord;
 
     iget-object v0, v0, Lcom/android/server/am/ProcessRecord;->receivers:Landroid/util/ArraySet;
 
     invoke-virtual {v0, v9}, Landroid/util/ArraySet;->remove(Ljava/lang/Object;)Z
 
-    .line 17100
     :cond_2
     invoke-virtual {p0, v9}, Lcom/android/server/am/ActivityManagerService;->removeReceiverLocked(Lcom/android/server/am/ReceiverList;)V
 
-    .line 17101
     iget-boolean v0, v9, Lcom/android/server/am/ReceiverList;->linkedToDeath:Z
 
     if-eqz v0, :cond_3
 
-    .line 17102
     const/4 v0, 0x0
 
     iput-boolean v0, v9, Lcom/android/server/am/ReceiverList;->linkedToDeath:Z
 
-    .line 17103
     iget-object v0, v9, Lcom/android/server/am/ReceiverList;->receiver:Landroid/content/IIntentReceiver;
 
     invoke-interface {v0}, Landroid/content/IIntentReceiver;->asBinder()Landroid/os/IBinder;
@@ -103429,30 +101735,24 @@
 
     invoke-interface {v0, v9, v2}, Landroid/os/IBinder;->unlinkToDeath(Landroid/os/IBinder$DeathRecipient;I)Z
 
-    .line 17106
     .end local v1    # "r":Lcom/android/server/am/BroadcastRecord;
     :cond_3
     monitor-exit p0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 17110
     if-eqz v8, :cond_4
 
-    .line 17111
     :try_start_2
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->trimApplications()V
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 17116
     invoke-static {v10, v11}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 17118
     :goto_0
     return-void
 
-    .line 17106
     .end local v9    # "rl":Lcom/android/server/am/ReceiverList;
     :catchall_0
     move-exception v0
@@ -103467,7 +101767,6 @@
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_1
 
-    .line 17116
     :catchall_1
     move-exception v0
 
@@ -103487,22 +101786,17 @@
     .param p1, "observer"    # Landroid/app/IUidObserver;
 
     .prologue
-    .line 11683
     monitor-enter p0
 
-    .line 11684
     :try_start_0
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mUidObservers:Landroid/os/RemoteCallbackList;
 
     invoke-virtual {v0, p1}, Landroid/os/RemoteCallbackList;->unregister(Landroid/os/IInterface;)Z
 
-    .line 11685
     monitor-exit p0
 
-    .line 11686
     return-void
 
-    .line 11685
     :catchall_0
     move-exception v0
 
@@ -103518,12 +101812,10 @@
     .param p1, "observer"    # Landroid/app/IUserSwitchObserver;
 
     .prologue
-    .line 21601
     iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mUserSwitchObservers:Landroid/os/RemoteCallbackList;
 
     invoke-virtual {v0, p1}, Landroid/os/RemoteCallbackList;->unregister(Landroid/os/IInterface;)Z
 
-    .line 21602
     return-void
 .end method
 
@@ -103532,7 +101824,6 @@
     .param p1, "userId"    # I
 
     .prologue
-    .line 16541
     const/4 v0, -0x2
 
     if-eq p1, v0, :cond_0
@@ -103554,7 +101845,6 @@
     .param p1, "connection"    # Landroid/os/IBinder;
 
     .prologue
-    .line 10670
     :try_start_0
     move-object v0, p1
 
@@ -103564,11 +101854,9 @@
     :try_end_0
     .catch Ljava/lang/ClassCastException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 10677
     .local v2, "conn":Lcom/android/server/am/ContentProviderConnection;
     if-nez v2, :cond_0
 
-    .line 10678
     new-instance v9, Ljava/lang/NullPointerException;
 
     const-string v10, "connection is null"
@@ -103577,12 +101865,10 @@
 
     throw v9
 
-    .line 10671
     .end local v2    # "conn":Lcom/android/server/am/ContentProviderConnection;
     :catch_0
     move-exception v3
 
-    .line 10672
     .local v3, "e":Ljava/lang/ClassCastException;
     new-instance v9, Ljava/lang/StringBuilder;
 
@@ -103608,44 +101894,36 @@
 
     move-result-object v6
 
-    .line 10674
     .local v6, "msg":Ljava/lang/String;
     const-string v9, "ActivityManager"
 
     invoke-static {v9, v6}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 10675
     new-instance v9, Ljava/lang/IllegalArgumentException;
 
     invoke-direct {v9, v6}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v9
 
-    .line 10683
     .end local v3    # "e":Ljava/lang/ClassCastException;
     .end local v6    # "msg":Ljava/lang/String;
     .restart local v2    # "conn":Lcom/android/server/am/ContentProviderConnection;
     :cond_0
     monitor-enter p0
 
-    .line 10684
     :try_start_1
     iget-object v9, v2, Lcom/android/server/am/ContentProviderConnection;->provider:Lcom/android/server/am/ContentProviderRecord;
 
     iget-object v8, v9, Lcom/android/server/am/ContentProviderRecord;->provider:Landroid/content/IContentProvider;
 
-    .line 10685
     .local v8, "provider":Landroid/content/IContentProvider;
     monitor-exit p0
 
-    .line 10687
     if-nez v8, :cond_1
 
-    .line 10726
     :goto_0
     return-void
 
-    .line 10685
     .end local v8    # "provider":Landroid/content/IContentProvider;
     :catchall_0
     move-exception v9
@@ -103656,7 +101934,6 @@
 
     throw v9
 
-    .line 10693
     .restart local v8    # "provider":Landroid/content/IContentProvider;
     :cond_1
     invoke-interface {v8}, Landroid/content/IContentProvider;->asBinder()Landroid/os/IBinder;
@@ -103669,10 +101946,8 @@
 
     if-eqz v9, :cond_2
 
-    .line 10695
     monitor-enter p0
 
-    .line 10696
     :try_start_2
     const-string v9, "ActivityManager"
 
@@ -103716,12 +101991,10 @@
 
     invoke-static {v9, v10}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 10698
     monitor-exit p0
 
     goto :goto_0
 
-    .line 10699
     :catchall_1
     move-exception v9
 
@@ -103731,11 +102004,9 @@
 
     throw v9
 
-    .line 10703
     :cond_2
     monitor-enter p0
 
-    .line 10704
     :try_start_3
     iget-object v9, v2, Lcom/android/server/am/ContentProviderConnection;->provider:Lcom/android/server/am/ContentProviderRecord;
 
@@ -103743,12 +102014,10 @@
 
     if-eq v9, v8, :cond_3
 
-    .line 10706
     monitor-exit p0
 
     goto :goto_0
 
-    .line 10725
     :catchall_2
     move-exception v9
 
@@ -103758,14 +102027,12 @@
 
     throw v9
 
-    .line 10709
     :cond_3
     :try_start_4
     iget-object v9, v2, Lcom/android/server/am/ContentProviderConnection;->provider:Lcom/android/server/am/ContentProviderRecord;
 
     iget-object v7, v9, Lcom/android/server/am/ContentProviderRecord;->proc:Lcom/android/server/am/ProcessRecord;
 
-    .line 10710
     .local v7, "proc":Lcom/android/server/am/ProcessRecord;
     if-eqz v7, :cond_4
 
@@ -103773,13 +102040,11 @@
 
     if-nez v9, :cond_5
 
-    .line 10712
     :cond_4
     monitor-exit p0
 
     goto :goto_0
 
-    .line 10717
     :cond_5
     const-string v9, "ActivityManager"
 
@@ -103823,30 +102088,25 @@
 
     invoke-static {v9, v10}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 10719
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_2
 
     move-result-wide v4
 
-    .line 10721
     .local v4, "ident":J
     :try_start_5
     invoke-virtual {p0, v7}, Lcom/android/server/am/ActivityManagerService;->appDiedLocked(Lcom/android/server/am/ProcessRecord;)V
     :try_end_5
     .catchall {:try_start_5 .. :try_end_5} :catchall_3
 
-    .line 10723
     :try_start_6
     invoke-static {v4, v5}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 10725
     monitor-exit p0
 
     goto/16 :goto_0
 
-    .line 10723
     :catchall_3
     move-exception v9
 
@@ -103863,10 +102123,8 @@
     .param p2, "flag"    # I
 
     .prologue
-    .line 21895
     monitor-enter p0
 
-    .line 21896
     const/4 v0, 0x0
 
     :try_start_0
@@ -103876,13 +102134,10 @@
 
     invoke-virtual {v0, p1, p2}, Lcom/android/server/am/OnePlusAppBootManager;->updateAccesibilityServiceFlag(Ljava/lang/String;I)V
 
-    .line 21897
     monitor-exit p0
 
-    .line 21898
     return-void
 
-    .line 21897
     :catchall_0
     move-exception v0
 
@@ -103898,17 +102153,14 @@
     .param p1, "values"    # Landroid/content/res/Configuration;
 
     .prologue
-    .line 18167
     const-string v2, "android.permission.CHANGE_CONFIGURATION"
 
     const-string v3, "updateConfiguration()"
 
     invoke-virtual {p0, v2, v3}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 18170
     monitor-enter p0
 
-    .line 18171
     if-nez p1, :cond_0
 
     :try_start_0
@@ -103916,40 +102168,33 @@
 
     if-eqz v2, :cond_0
 
-    .line 18173
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
 
     invoke-virtual {v2}, Lcom/android/server/wm/WindowManagerService;->computeNewConfiguration()Landroid/content/res/Configuration;
 
     move-result-object p1
 
-    .line 18176
     :cond_0
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
 
     if-eqz v2, :cond_1
 
-    .line 18177
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mProcessList:Lcom/android/server/am/ProcessList;
 
     iget-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
 
     invoke-virtual {v2, v3}, Lcom/android/server/am/ProcessList;->applyDisplaySize(Lcom/android/server/wm/WindowManagerService;)V
 
-    .line 18180
     :cond_1
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v0
 
-    .line 18181
     .local v0, "origId":J
     if-eqz p1, :cond_2
 
-    .line 18182
     invoke-static {p1}, Landroid/provider/Settings$System;->clearConfiguration(Landroid/content/res/Configuration;)V
 
-    .line 18184
     :cond_2
     const/4 v2, 0x0
 
@@ -103959,16 +102204,12 @@
 
     invoke-virtual {p0, p1, v2, v3, v4}, Lcom/android/server/am/ActivityManagerService;->updateConfigurationLocked(Landroid/content/res/Configuration;Lcom/android/server/am/ActivityRecord;ZZ)Z
 
-    .line 18185
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 18186
     monitor-exit p0
 
-    .line 18187
     return-void
 
-    .line 18186
     .end local v0    # "origId":J
     :catchall_0
     move-exception v2
@@ -103988,14 +102229,11 @@
     .param p4, "initLocale"    # Z
 
     .prologue
-    .line 18199
     const/16 v22, 0x0
 
-    .line 18201
     .local v22, "changes":I
     if-eqz p1, :cond_a
 
-    .line 18202
     new-instance v29, Landroid/content/res/Configuration;
 
     move-object/from16 v0, p0
@@ -104006,7 +102244,6 @@
 
     invoke-direct {v0, v3}, Landroid/content/res/Configuration;-><init>(Landroid/content/res/Configuration;)V
 
-    .line 18203
     .local v29, "newConfig":Landroid/content/res/Configuration;
     move-object/from16 v0, v29
 
@@ -104016,10 +102253,8 @@
 
     move-result v22
 
-    .line 18204
     if-eqz v22, :cond_a
 
-    .line 18205
     sget-boolean v3, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_SWITCH:Z
 
     if-nez v3, :cond_0
@@ -104053,7 +102288,6 @@
 
     invoke-static {v3, v4}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 18208
     :cond_1
     const/16 v3, 0xa9f
 
@@ -104061,7 +102295,6 @@
 
     invoke-static {v3, v0}, Landroid/util/EventLog;->writeEvent(II)I
 
-    .line 18210
     if-nez p4, :cond_2
 
     move-object/from16 v0, p1
@@ -104076,7 +102309,6 @@
 
     if-eqz v3, :cond_2
 
-    .line 18211
     move-object/from16 v0, p1
 
     iget-object v3, v0, Landroid/content/res/Configuration;->locale:Ljava/util/Locale;
@@ -104085,7 +102317,6 @@
 
     move-result-object v26
 
-    .line 18212
     .local v26, "languageTag":Ljava/lang/String;
     const-string v3, "persist.sys.locale"
 
@@ -104093,7 +102324,6 @@
 
     invoke-static {v3, v0}, Landroid/os/SystemProperties;->set(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 18213
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
@@ -104114,7 +102344,6 @@
 
     invoke-virtual {v3, v4}, Lcom/android/server/am/ActivityManagerService$MainHandler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 18217
     .end local v26    # "languageTag":Ljava/lang/String;
     :cond_2
     move-object/from16 v0, p0
@@ -104127,21 +102356,18 @@
 
     iput v3, v0, Lcom/android/server/am/ActivityManagerService;->mConfigurationSeq:I
 
-    .line 18218
     move-object/from16 v0, p0
 
     iget v3, v0, Lcom/android/server/am/ActivityManagerService;->mConfigurationSeq:I
 
     if-gtz v3, :cond_3
 
-    .line 18219
     const/4 v3, 0x1
 
     move-object/from16 v0, p0
 
     iput v3, v0, Lcom/android/server/am/ActivityManagerService;->mConfigurationSeq:I
 
-    .line 18221
     :cond_3
     move-object/from16 v0, p0
 
@@ -104151,14 +102377,12 @@
 
     iput v3, v0, Landroid/content/res/Configuration;->seq:I
 
-    .line 18222
     move-object/from16 v0, v29
 
     move-object/from16 v1, p0
 
     iput-object v0, v1, Lcom/android/server/am/ActivityManagerService;->mConfiguration:Landroid/content/res/Configuration;
 
-    .line 18223
     const-string v3, "ActivityManager"
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -104197,7 +102421,6 @@
 
     invoke-static {v3, v4}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 18224
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/ActivityManagerService;->mUsageStatsService:Landroid/app/usage/UsageStatsManagerInternal;
@@ -104210,7 +102433,6 @@
 
     invoke-virtual {v3, v0, v4}, Landroid/app/usage/UsageStatsManagerInternal;->reportConfigurationChange(Landroid/content/res/Configuration;I)V
 
-    .line 18227
     new-instance v23, Landroid/content/res/Configuration;
 
     move-object/from16 v0, p0
@@ -104221,7 +102443,6 @@
 
     invoke-direct {v0, v3}, Landroid/content/res/Configuration;-><init>(Landroid/content/res/Configuration;)V
 
-    .line 18231
     .local v23, "configCopy":Landroid/content/res/Configuration;
     invoke-static/range {v29 .. v29}, Lcom/android/server/am/ActivityManagerService;->shouldShowDialogs(Landroid/content/res/Configuration;)Z
 
@@ -104231,23 +102452,19 @@
 
     iput-boolean v3, v0, Lcom/android/server/am/ActivityManagerService;->mShowDialogs:Z
 
-    .line 18233
     invoke-static {}, Lcom/android/server/AttributeCache;->instance()Lcom/android/server/AttributeCache;
 
     move-result-object v20
 
-    .line 18234
     .local v20, "ac":Lcom/android/server/AttributeCache;
     if-eqz v20, :cond_4
 
-    .line 18235
     move-object/from16 v0, v20
 
     move-object/from16 v1, v23
 
     invoke-virtual {v0, v1}, Lcom/android/server/AttributeCache;->updateConfiguration(Landroid/content/res/Configuration;)V
 
-    .line 18245
     :cond_4
     move-object/from16 v0, p0
 
@@ -104257,7 +102474,6 @@
 
     invoke-virtual {v3, v0}, Landroid/app/ActivityThread;->applyConfigurationToResources(Landroid/content/res/Configuration;)V
 
-    .line 18247
     if-eqz p3, :cond_5
 
     invoke-static/range {v22 .. v22}, Landroid/provider/Settings$System;->hasInterestingConfigurationChanges(I)Z
@@ -104266,7 +102482,6 @@
 
     if-eqz v3, :cond_5
 
-    .line 18248
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
@@ -104277,7 +102492,6 @@
 
     move-result-object v28
 
-    .line 18249
     .local v28, "msg":Landroid/os/Message;
     new-instance v3, Landroid/content/res/Configuration;
 
@@ -104289,7 +102503,6 @@
 
     iput-object v3, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    .line 18250
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
@@ -104298,7 +102511,6 @@
 
     invoke-virtual {v3, v0}, Lcom/android/server/am/ActivityManagerService$MainHandler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 18253
     .end local v28    # "msg":Landroid/os/Message;
     :cond_5
     move-object/from16 v0, p0
@@ -104315,7 +102527,6 @@
     :goto_0
     if-ltz v24, :cond_8
 
-    .line 18254
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
@@ -104328,7 +102539,6 @@
 
     check-cast v21, Lcom/android/server/am/ProcessRecord;
 
-    .line 18256
     .local v21, "app":Lcom/android/server/am/ProcessRecord;
     :try_start_0
     move-object/from16 v0, v21
@@ -104337,7 +102547,6 @@
 
     if-eqz v3, :cond_7
 
-    .line 18257
     sget-boolean v3, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_CONFIGURATION:Z
 
     if-eqz v3, :cond_6
@@ -104382,7 +102591,6 @@
 
     invoke-static {v3, v4}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 18259
     :cond_6
     move-object/from16 v0, v21
 
@@ -104394,14 +102602,12 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 18253
     :cond_7
     :goto_1
     add-int/lit8 v24, v24, -0x1
 
     goto :goto_0
 
-    .line 18264
     .end local v21    # "app":Lcom/android/server/am/ProcessRecord;
     :cond_8
     new-instance v6, Landroid/content/Intent;
@@ -104410,13 +102616,11 @@
 
     invoke-direct {v6, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 18265
     .local v6, "intent":Landroid/content/Intent;
     const/high16 v3, 0x70000000
 
     invoke-virtual {v6, v3}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 18268
     const/4 v4, 0x0
 
     const/4 v5, 0x0
@@ -104451,12 +102655,10 @@
 
     invoke-direct/range {v3 .. v19}, Lcom/android/server/am/ActivityManagerService;->broadcastIntentLocked(Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Landroid/content/Intent;Ljava/lang/String;Landroid/content/IIntentReceiver;ILjava/lang/String;Landroid/os/Bundle;[Ljava/lang/String;ILandroid/os/Bundle;ZZIII)I
 
-    .line 18271
     and-int/lit8 v3, v22, 0x4
 
     if-eqz v3, :cond_a
 
-    .line 18272
     new-instance v6, Landroid/content/Intent;
 
     .end local v6    # "intent":Landroid/content/Intent;
@@ -104464,25 +102666,21 @@
 
     invoke-direct {v6, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 18273
     .restart local v6    # "intent":Landroid/content/Intent;
     const/high16 v3, 0x10000000
 
     invoke-virtual {v6, v3}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 18274
     move-object/from16 v0, p0
 
     iget-boolean v3, v0, Lcom/android/server/am/ActivityManagerService;->mProcessesReady:Z
 
     if-nez v3, :cond_9
 
-    .line 18275
     const/high16 v3, 0x40000000    # 2.0f
 
     invoke-virtual {v6, v3}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 18277
     :cond_9
     const/4 v4, 0x0
 
@@ -104518,7 +102716,6 @@
 
     invoke-direct/range {v3 .. v19}, Lcom/android/server/am/ActivityManagerService;->broadcastIntentLocked(Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Landroid/content/Intent;Ljava/lang/String;Landroid/content/IIntentReceiver;ILjava/lang/String;Landroid/os/Bundle;[Ljava/lang/String;ILandroid/os/Bundle;ZZIII)I
 
-    .line 18284
     .end local v6    # "intent":Landroid/content/Intent;
     .end local v20    # "ac":Lcom/android/server/AttributeCache;
     .end local v23    # "configCopy":Landroid/content/res/Configuration;
@@ -104527,7 +102724,6 @@
     :cond_a
     const/16 v25, 0x1
 
-    .line 18285
     .local v25, "kept":Z
     move-object/from16 v0, p0
 
@@ -104537,16 +102733,13 @@
 
     move-result-object v27
 
-    .line 18287
     .local v27, "mainStack":Lcom/android/server/am/ActivityStack;
     if-eqz v27, :cond_c
 
-    .line 18288
     if-eqz v22, :cond_b
 
     if-nez p2, :cond_b
 
-    .line 18292
     const/4 v3, 0x0
 
     move-object/from16 v0, v27
@@ -104555,11 +102748,9 @@
 
     move-result-object p2
 
-    .line 18295
     :cond_b
     if-eqz p2, :cond_c
 
-    .line 18296
     move-object/from16 v0, v27
 
     move-object/from16 v1, p2
@@ -104570,7 +102761,6 @@
 
     move-result v25
 
-    .line 18299
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
@@ -104581,7 +102771,6 @@
 
     invoke-virtual {v3, v0, v1}, Lcom/android/server/am/ActivityStackSupervisor;->ensureActivitiesVisibleLocked(Lcom/android/server/am/ActivityRecord;I)V
 
-    .line 18303
     :cond_c
     if-eqz p1, :cond_d
 
@@ -104591,7 +102780,6 @@
 
     if-eqz v3, :cond_d
 
-    .line 18304
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
@@ -104602,11 +102790,9 @@
 
     invoke-virtual {v3, v4}, Lcom/android/server/wm/WindowManagerService;->setNewConfiguration(Landroid/content/res/Configuration;)V
 
-    .line 18307
     :cond_d
     return v25
 
-    .line 18261
     .end local v25    # "kept":Z
     .end local v27    # "mainStack":Lcom/android/server/am/ActivityStack;
     .restart local v20    # "ac":Lcom/android/server/AttributeCache;
@@ -104624,12 +102810,10 @@
     .locals 6
 
     .prologue
-    .line 2743
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v0
 
-    .line 2744
     .local v0, "now":J
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mLastCpuTime:Ljava/util/concurrent/atomic/AtomicLong;
 
@@ -104645,12 +102829,10 @@
 
     if-ltz v2, :cond_1
 
-    .line 2752
     :cond_0
     :goto_0
     return-void
 
-    .line 2747
     :cond_1
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mProcessCpuMutexFree:Ljava/util/concurrent/atomic/AtomicBoolean;
 
@@ -104664,18 +102846,15 @@
 
     if-eqz v2, :cond_0
 
-    .line 2748
     iget-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mProcessCpuThread:Ljava/lang/Thread;
 
     monitor-enter v3
 
-    .line 2749
     :try_start_0
     iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mProcessCpuThread:Ljava/lang/Thread;
 
     invoke-virtual {v2}, Ljava/lang/Object;->notify()V
 
-    .line 2750
     monitor-exit v3
 
     goto :goto_0
@@ -104694,7 +102873,6 @@
     .locals 38
 
     .prologue
-    .line 2755
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/server/am/ActivityManagerService;->mProcessCpuTracker:Lcom/android/internal/os/ProcessCpuTracker;
@@ -104703,7 +102881,6 @@
 
     monitor-enter v31
 
-    .line 2756
     :try_start_0
     move-object/from16 v0, p0
 
@@ -104719,16 +102896,13 @@
 
     invoke-virtual {v0, v1}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
 
-    .line 2757
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v22
 
-    .line 2758
     .local v22, "now":J
     const/16 v16, 0x0
 
-    .line 2760
     .local v16, "haveNewCpuStats":Z
     move-object/from16 v0, p0
 
@@ -104748,7 +102922,6 @@
 
     if-gez v30, :cond_1
 
-    .line 2762
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/server/am/ActivityManagerService;->mLastCpuTime:Ljava/util/concurrent/atomic/AtomicLong;
@@ -104761,7 +102934,6 @@
 
     invoke-virtual {v0, v1, v2}, Ljava/util/concurrent/atomic/AtomicLong;->set(J)V
 
-    .line 2763
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/server/am/ActivityManagerService;->mProcessCpuTracker:Lcom/android/internal/os/ProcessCpuTracker;
@@ -104770,7 +102942,6 @@
 
     invoke-virtual/range {v30 .. v30}, Lcom/android/internal/os/ProcessCpuTracker;->update()V
 
-    .line 2764
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/server/am/ActivityManagerService;->mProcessCpuTracker:Lcom/android/internal/os/ProcessCpuTracker;
@@ -104783,10 +102954,8 @@
 
     if-eqz v30, :cond_1
 
-    .line 2765
     const/16 v16, 0x1
 
-    .line 2771
     const-string v30, "true"
 
     const-string v32, "events.cpu"
@@ -104805,7 +102974,6 @@
 
     if-eqz v30, :cond_1
 
-    .line 2772
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/server/am/ActivityManagerService;->mProcessCpuTracker:Lcom/android/internal/os/ProcessCpuTracker;
@@ -104816,7 +102984,6 @@
 
     move-result v29
 
-    .line 2773
     .local v29, "user":I
     move-object/from16 v0, p0
 
@@ -104828,7 +102995,6 @@
 
     move-result v27
 
-    .line 2774
     .local v27, "system":I
     move-object/from16 v0, p0
 
@@ -104840,7 +103006,6 @@
 
     move-result v19
 
-    .line 2775
     .local v19, "iowait":I
     move-object/from16 v0, p0
 
@@ -104852,7 +103017,6 @@
 
     move-result v20
 
-    .line 2776
     .local v20, "irq":I
     move-object/from16 v0, p0
 
@@ -104864,7 +103028,6 @@
 
     move-result v25
 
-    .line 2777
     .local v25, "softIrq":I
     move-object/from16 v0, p0
 
@@ -104876,7 +103039,6 @@
 
     move-result v18
 
-    .line 2779
     .local v18, "idle":I
     add-int v30, v29, v27
 
@@ -104888,13 +103050,11 @@
 
     add-int v28, v30, v18
 
-    .line 2780
     .local v28, "total":I
     if-nez v28, :cond_0
 
     const/16 v28, 0x1
 
-    .line 2782
     :cond_0
     const/16 v30, 0xaa1
 
@@ -104992,7 +103152,6 @@
 
     invoke-static {v0, v1}, Landroid/util/EventLog;->writeEvent(I[Ljava/lang/Object;)I
 
-    .line 2793
     .end local v18    # "idle":I
     .end local v19    # "iowait":I
     .end local v20    # "irq":I
@@ -105011,13 +103170,11 @@
 
     move-result-object v4
 
-    .line 2794
     .local v4, "bstats":Lcom/android/internal/os/BatteryStatsImpl;
     monitor-enter v4
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_2
 
-    .line 2795
     :try_start_1
     move-object/from16 v0, p0
 
@@ -105029,10 +103186,8 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
-    .line 2796
     if-eqz v16, :cond_b
 
-    .line 2797
     :try_start_2
     invoke-virtual {v4}, Lcom/android/internal/os/BatteryStatsImpl;->startAddingCpuLocked()Z
 
@@ -105040,14 +103195,11 @@
 
     if-eqz v30, :cond_d
 
-    .line 2798
     const/4 v5, 0x0
 
-    .line 2799
     .local v5, "totalUTime":I
     const/4 v6, 0x0
 
-    .line 2800
     .local v6, "totalSTime":I
     move-object/from16 v0, p0
 
@@ -105059,7 +103211,6 @@
 
     move-result v13
 
-    .line 2801
     .local v13, "N":I
     const/16 v17, 0x0
 
@@ -105069,7 +103220,6 @@
 
     if-ge v0, v13, :cond_a
 
-    .line 2802
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/server/am/ActivityManagerService;->mProcessCpuTracker:Lcom/android/internal/os/ProcessCpuTracker;
@@ -105084,7 +103234,6 @@
 
     move-result-object v26
 
-    .line 2803
     .local v26, "st":Lcom/android/internal/os/ProcessCpuTracker$Stats;
     move-object/from16 v0, v26
 
@@ -105094,17 +103243,14 @@
 
     if-nez v30, :cond_2
 
-    .line 2801
     :goto_1
     add-int/lit8 v17, v17, 0x1
 
     goto :goto_0
 
-    .line 2806
     :cond_2
     const-wide/16 v14, 0x0
 
-    .line 2807
     .local v14, "cpuPercent":J
     if-eqz v26, :cond_3
 
@@ -105120,7 +103266,6 @@
 
     if-lez v30, :cond_3
 
-    .line 2808
     move-object/from16 v0, v26
 
     iget v0, v0, Lcom/android/internal/os/ProcessCpuTracker$Stats;->rel_utime:I
@@ -105151,7 +103296,6 @@
 
     div-long v14, v34, v36
 
-    .line 2811
     :cond_3
     const-wide/16 v34, 0xa
 
@@ -105159,7 +103303,6 @@
 
     if-ltz v30, :cond_4
 
-    .line 2812
     const-string v30, "ActivityManager"
 
     new-instance v33, Ljava/lang/StringBuilder;
@@ -105220,7 +103363,6 @@
 
     invoke-static {v0, v1}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2815
     :cond_4
     move-object/from16 v0, p0
 
@@ -105244,7 +103386,6 @@
 
     check-cast v21, Lcom/android/server/am/ProcessRecord;
 
-    .line 2816
     .local v21, "pr":Lcom/android/server/am/ProcessRecord;
     move-object/from16 v0, v26
 
@@ -105254,7 +103395,6 @@
 
     add-int v5, v5, v30
 
-    .line 2817
     move-object/from16 v0, v26
 
     iget v0, v0, Lcom/android/internal/os/ProcessCpuTracker$Stats;->rel_stime:I
@@ -105263,17 +103403,14 @@
 
     add-int v6, v6, v30
 
-    .line 2818
     if-eqz v21, :cond_7
 
-    .line 2819
     move-object/from16 v0, v21
 
     iget-object v0, v0, Lcom/android/server/am/ProcessRecord;->curProcBatteryStats:Lcom/android/internal/os/BatteryStatsImpl$Uid$Proc;
 
     move-object/from16 v24, v0
 
-    .line 2820
     .local v24, "ps":Lcom/android/internal/os/BatteryStatsImpl$Uid$Proc;
     if-eqz v24, :cond_5
 
@@ -105283,7 +103420,6 @@
 
     if-nez v30, :cond_6
 
-    .line 2821
     :cond_5
     move-object/from16 v0, v21
 
@@ -105317,7 +103453,6 @@
 
     iput-object v0, v1, Lcom/android/server/am/ProcessRecord;->curProcBatteryStats:Lcom/android/internal/os/BatteryStatsImpl$Uid$Proc;
 
-    .line 2824
     :cond_6
     move-object/from16 v0, v26
 
@@ -105339,7 +103474,6 @@
 
     invoke-virtual {v0, v1, v2}, Lcom/android/internal/os/BatteryStatsImpl$Uid$Proc;->addCpuTimeLocked(II)V
 
-    .line 2825
     move-object/from16 v0, v21
 
     iget-wide v0, v0, Lcom/android/server/am/ProcessRecord;->curCpuTime:J
@@ -105374,7 +103508,6 @@
 
     iput-wide v0, v2, Lcom/android/server/am/ProcessRecord;->curCpuTime:J
 
-    .line 2826
     move-object/from16 v0, v21
 
     iget-wide v0, v0, Lcom/android/server/am/ProcessRecord;->curCpuTimeBgMonitor:J
@@ -105411,7 +103544,6 @@
 
     goto/16 :goto_1
 
-    .line 2859
     .end local v5    # "totalUTime":I
     .end local v6    # "totalSTime":I
     .end local v13    # "N":I
@@ -105430,7 +103562,6 @@
     :try_start_3
     throw v30
 
-    .line 2865
     :catchall_1
     move-exception v30
 
@@ -105441,7 +103572,6 @@
     :try_start_4
     throw v30
 
-    .line 2866
     .end local v4    # "bstats":Lcom/android/internal/os/BatteryStatsImpl;
     .end local v16    # "haveNewCpuStats":Z
     .end local v22    # "now":J
@@ -105454,7 +103584,6 @@
 
     throw v30
 
-    .line 2828
     .restart local v4    # "bstats":Lcom/android/internal/os/BatteryStatsImpl;
     .restart local v5    # "totalUTime":I
     .restart local v6    # "totalSTime":I
@@ -105473,7 +103602,6 @@
 
     move-object/from16 v24, v0
 
-    .line 2829
     .restart local v24    # "ps":Lcom/android/internal/os/BatteryStatsImpl$Uid$Proc;
     if-eqz v24, :cond_8
 
@@ -105483,7 +103611,6 @@
 
     if-nez v30, :cond_9
 
-    .line 2830
     :cond_8
     move-object/from16 v0, v26
 
@@ -105517,7 +103644,6 @@
 
     iput-object v0, v1, Lcom/android/internal/os/ProcessCpuTracker$Stats;->batteryStats:Lcom/android/internal/os/BatteryStatsImpl$Uid$Proc;
 
-    .line 2833
     :cond_9
     move-object/from16 v0, v26
 
@@ -105541,7 +103667,6 @@
 
     goto/16 :goto_1
 
-    .line 2836
     .end local v14    # "cpuPercent":J
     .end local v21    # "pr":Lcom/android/server/am/ProcessRecord;
     .end local v24    # "ps":Lcom/android/internal/os/BatteryStatsImpl$Uid$Proc;
@@ -105557,7 +103682,6 @@
 
     move-result v7
 
-    .line 2837
     .local v7, "userTime":I
     move-object/from16 v0, p0
 
@@ -105569,7 +103693,6 @@
 
     move-result v8
 
-    .line 2838
     .local v8, "systemTime":I
     move-object/from16 v0, p0
 
@@ -105581,7 +103704,6 @@
 
     move-result v9
 
-    .line 2839
     .local v9, "iowaitTime":I
     move-object/from16 v0, p0
 
@@ -105593,7 +103715,6 @@
 
     move-result v10
 
-    .line 2840
     .local v10, "irqTime":I
     move-object/from16 v0, p0
 
@@ -105605,7 +103726,6 @@
 
     move-result v11
 
-    .line 2841
     .local v11, "softIrqTime":I
     move-object/from16 v0, p0
 
@@ -105617,11 +103737,9 @@
 
     move-result v12
 
-    .line 2842
     .local v12, "idleTime":I
     invoke-virtual/range {v4 .. v12}, Lcom/android/internal/os/BatteryStatsImpl;->finishAddingCpuLocked(IIIIIIII)V
 
-    .line 2859
     .end local v5    # "totalUTime":I
     .end local v6    # "totalSTime":I
     .end local v7    # "userTime":I
@@ -105637,7 +103755,6 @@
     :try_end_5
     .catchall {:try_start_5 .. :try_end_5} :catchall_0
 
-    .line 2861
     :try_start_6
     move-object/from16 v0, p0
 
@@ -105653,14 +103770,12 @@
 
     if-gez v30, :cond_c
 
-    .line 2862
     move-wide/from16 v0, v22
 
     move-object/from16 v2, p0
 
     iput-wide v0, v2, Lcom/android/server/am/ActivityManagerService;->mLastWriteTime:J
 
-    .line 2863
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/server/am/ActivityManagerService;->mBatteryStatsService:Lcom/android/server/am/BatteryStatsService;
@@ -105669,22 +103784,18 @@
 
     invoke-virtual/range {v30 .. v30}, Lcom/android/server/am/BatteryStatsService;->scheduleWriteToDisk()V
 
-    .line 2865
     :cond_c
     monitor-exit v4
     :try_end_6
     .catchall {:try_start_6 .. :try_end_6} :catchall_1
 
-    .line 2866
     :try_start_7
     monitor-exit v31
     :try_end_7
     .catchall {:try_start_7 .. :try_end_7} :catchall_2
 
-    .line 2867
     return-void
 
-    .line 2846
     :cond_d
     :try_start_8
     move-object/from16 v0, p0
@@ -105697,7 +103808,6 @@
 
     move-result v13
 
-    .line 2847
     .restart local v13    # "N":I
     const/16 v17, 0x0
 
@@ -105707,7 +103817,6 @@
 
     if-ge v0, v13, :cond_b
 
-    .line 2848
     move-object/from16 v0, p0
 
     iget-object v0, v0, Lcom/android/server/am/ActivityManagerService;->mProcessCpuTracker:Lcom/android/internal/os/ProcessCpuTracker;
@@ -105722,7 +103831,6 @@
 
     move-result-object v26
 
-    .line 2849
     .restart local v26    # "st":Lcom/android/internal/os/ProcessCpuTracker$Stats;
     move-object/from16 v0, v26
 
@@ -105732,14 +103840,12 @@
 
     if-nez v30, :cond_f
 
-    .line 2847
     :cond_e
     :goto_3
     add-int/lit8 v17, v17, 0x1
 
     goto :goto_2
 
-    .line 2852
     :cond_f
     move-object/from16 v0, p0
 
@@ -105763,11 +103869,9 @@
 
     check-cast v21, Lcom/android/server/am/ProcessRecord;
 
-    .line 2853
     .restart local v21    # "pr":Lcom/android/server/am/ProcessRecord;
     if-eqz v21, :cond_e
 
-    .line 2854
     move-object/from16 v0, v21
 
     iget-wide v0, v0, Lcom/android/server/am/ProcessRecord;->curCpuTimeBgMonitor:J
@@ -105812,12 +103916,10 @@
     .param p1, "packageName"    # Ljava/lang/String;
 
     .prologue
-    .line 9684
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
     move-result v0
 
-    .line 9685
     .local v0, "callingUid":I
     if-eqz v0, :cond_0
 
@@ -105825,7 +103927,6 @@
 
     if-eq v0, v1, :cond_0
 
-    .line 9686
     new-instance v1, Ljava/lang/SecurityException;
 
     const-string v2, "updateDeviceOwner called from non-system process"
@@ -105834,21 +103935,16 @@
 
     throw v1
 
-    .line 9688
     :cond_0
     monitor-enter p0
 
-    .line 9689
     :try_start_0
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService;->mDeviceOwnerName:Ljava/lang/String;
 
-    .line 9690
     monitor-exit p0
 
-    .line 9691
     return-void
 
-    .line 9690
     :catchall_0
     move-exception v1
 
@@ -105865,12 +103961,10 @@
     .param p2, "packages"    # [Ljava/lang/String;
 
     .prologue
-    .line 9695
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
     move-result v0
 
-    .line 9696
     .local v0, "callingUid":I
     if-eqz v0, :cond_0
 
@@ -105878,7 +103972,6 @@
 
     if-eq v0, v1, :cond_0
 
-    .line 9697
     new-instance v1, Ljava/lang/SecurityException;
 
     const-string v2, "updateLockTaskPackage called from non-system process"
@@ -105887,11 +103980,9 @@
 
     throw v1
 
-    .line 9699
     :cond_0
     monitor-enter p0
 
-    .line 9700
     :try_start_0
     sget-boolean v1, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_LOCKTASK:Z
 
@@ -105933,24 +104024,19 @@
 
     invoke-static {v1, v2}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 9702
     :cond_1
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mLockTaskPackages:Landroid/util/SparseArray;
 
     invoke-virtual {v1, p1, p2}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 9703
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
     invoke-virtual {v1}, Lcom/android/server/am/ActivityStackSupervisor;->onLockTaskPackagesUpdatedLocked()V
 
-    .line 9704
     monitor-exit p0
 
-    .line 9705
     return-void
 
-    .line 9704
     :catchall_0
     move-exception v1
 
@@ -105968,7 +104054,6 @@
     .param p3, "client"    # Lcom/android/server/am/ProcessRecord;
 
     .prologue
-    .line 3102
     move-object/from16 v0, p1
 
     iget-object v2, v0, Lcom/android/server/am/ProcessRecord;->activities:Ljava/util/ArrayList;
@@ -105994,23 +104079,19 @@
     :cond_0
     const/16 v20, 0x1
 
-    .line 3104
     .local v20, "hasActivity":Z
     :goto_0
     const/16 v21, 0x0
 
-    .line 3105
     .local v21, "hasService":Z
     if-nez p2, :cond_3
 
     if-eqz v20, :cond_3
 
-    .line 3293
     :cond_1
     :goto_1
     return-void
 
-    .line 3102
     .end local v20    # "hasActivity":Z
     .end local v21    # "hasService":Z
     :cond_2
@@ -106018,7 +104099,6 @@
 
     goto :goto_0
 
-    .line 3113
     .restart local v20    # "hasActivity":Z
     .restart local v21    # "hasService":Z
     :cond_3
@@ -106032,21 +104112,17 @@
 
     iput v2, v0, Lcom/android/server/am/ActivityManagerService;->mLruSeq:I
 
-    .line 3114
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v4
 
-    .line 3115
     .local v4, "now":J
     move-object/from16 v0, p1
 
     iput-wide v4, v0, Lcom/android/server/am/ProcessRecord;->lastActivityTime:J
 
-    .line 3119
     if-eqz v20, :cond_4
 
-    .line 3120
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
@@ -106055,7 +104131,6 @@
 
     move-result v18
 
-    .line 3121
     .local v18, "N":I
     if-lez v18, :cond_5
 
@@ -106073,7 +104148,6 @@
 
     if-ne v2, v0, :cond_5
 
-    .line 3122
     sget-boolean v2, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_LRU:Z
 
     if-eqz v2, :cond_1
@@ -106104,7 +104178,6 @@
 
     goto :goto_1
 
-    .line 3126
     .end local v18    # "N":I
     :cond_4
     move-object/from16 v0, p0
@@ -106131,7 +104204,6 @@
 
     if-ne v2, v0, :cond_5
 
-    .line 3128
     sget-boolean v2, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_LRU:Z
 
     if-eqz v2, :cond_1
@@ -106162,7 +104234,6 @@
 
     goto/16 :goto_1
 
-    .line 3133
     :cond_5
     move-object/from16 v0, p0
 
@@ -106174,7 +104245,6 @@
 
     move-result v25
 
-    .line 3135
     .local v25, "lrui":I
     move-object/from16 v0, p1
 
@@ -106184,7 +104254,6 @@
 
     if-ltz v25, :cond_6
 
-    .line 3138
     sget-boolean v2, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_LRU:Z
 
     if-eqz v2, :cond_1
@@ -106215,11 +104284,9 @@
 
     goto/16 :goto_1
 
-    .line 3176
     :cond_6
     if-ltz v25, :cond_9
 
-    .line 3177
     move-object/from16 v0, p0
 
     iget v2, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcessActivityStart:I
@@ -106228,7 +104295,6 @@
 
     if-ge v0, v2, :cond_7
 
-    .line 3178
     move-object/from16 v0, p0
 
     iget v2, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcessActivityStart:I
@@ -106239,7 +104305,6 @@
 
     iput v2, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcessActivityStart:I
 
-    .line 3180
     :cond_7
     move-object/from16 v0, p0
 
@@ -106249,7 +104314,6 @@
 
     if-ge v0, v2, :cond_8
 
-    .line 3181
     move-object/from16 v0, p0
 
     iget v2, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcessServiceStart:I
@@ -106260,7 +104324,6 @@
 
     iput v2, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcessServiceStart:I
 
-    .line 3191
     :cond_8
     move-object/from16 v0, p0
 
@@ -106270,11 +104333,9 @@
 
     invoke-virtual {v2, v0}, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
 
-    .line 3205
     :cond_9
     if-eqz v20, :cond_11
 
-    .line 3206
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
@@ -106283,7 +104344,6 @@
 
     move-result v18
 
-    .line 3207
     .restart local v18    # "N":I
     move-object/from16 v0, p1
 
@@ -106303,7 +104363,6 @@
 
     if-ge v2, v3, :cond_d
 
-    .line 3211
     sget-boolean v2, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_LRU:Z
 
     if-eqz v2, :cond_a
@@ -106332,7 +104391,6 @@
 
     invoke-static {v2, v3}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3213
     :cond_a
     move-object/from16 v0, p0
 
@@ -106344,7 +104402,6 @@
 
     invoke-virtual {v2, v3, v0}, Ljava/util/ArrayList;->add(ILjava/lang/Object;)V
 
-    .line 3216
     move-object/from16 v0, p1
 
     iget-object v2, v0, Lcom/android/server/am/ProcessRecord;->info:Landroid/content/pm/ApplicationInfo;
@@ -106353,7 +104410,6 @@
 
     move/from16 v28, v0
 
-    .line 3217
     .local v28, "uid":I
     add-int/lit8 v22, v18, -0x2
 
@@ -106367,7 +104423,6 @@
 
     if-le v0, v2, :cond_f
 
-    .line 3218
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
@@ -106380,7 +104435,6 @@
 
     check-cast v26, Lcom/android/server/am/ProcessRecord;
 
-    .line 3219
     .local v26, "subProc":Lcom/android/server/am/ProcessRecord;
     move-object/from16 v0, v26
 
@@ -106392,7 +104446,6 @@
 
     if-ne v2, v0, :cond_f
 
-    .line 3223
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
@@ -106413,7 +104466,6 @@
 
     if-eq v2, v0, :cond_c
 
-    .line 3224
     sget-boolean v2, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_LRU:Z
 
     if-eqz v2, :cond_b
@@ -106494,7 +104546,6 @@
 
     invoke-static {v2, v3}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3227
     :cond_b
     move-object/from16 v0, p0
 
@@ -106508,7 +104559,6 @@
 
     check-cast v27, Lcom/android/server/am/ProcessRecord;
 
-    .line 3228
     .local v27, "tmp":Lcom/android/server/am/ProcessRecord;
     move-object/from16 v0, p0
 
@@ -106528,7 +104578,6 @@
 
     invoke-virtual {v2, v0, v3}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
 
-    .line 3229
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
@@ -106539,17 +104588,14 @@
 
     invoke-virtual {v2, v3, v0}, Ljava/util/ArrayList;->set(ILjava/lang/Object;)Ljava/lang/Object;
 
-    .line 3230
     add-int/lit8 v22, v22, -0x1
 
-    .line 3217
     .end local v27    # "tmp":Lcom/android/server/am/ProcessRecord;
     :cond_c
     add-int/lit8 v22, v22, -0x1
 
     goto/16 :goto_2
 
-    .line 3239
     .end local v22    # "i":I
     .end local v26    # "subProc":Lcom/android/server/am/ProcessRecord;
     .end local v28    # "uid":I
@@ -106582,7 +104628,6 @@
 
     invoke-static {v2, v3}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3240
     :cond_e
     move-object/from16 v0, p0
 
@@ -106592,13 +104637,11 @@
 
     invoke-virtual {v2, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 3242
     :cond_f
     move-object/from16 v0, p0
 
     iget v6, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcessServiceStart:I
 
-    .line 3276
     .end local v18    # "N":I
     .local v6, "nextIndex":I
     :goto_3
@@ -106616,7 +104659,6 @@
     :goto_4
     if-ltz v24, :cond_16
 
-    .line 3277
     move-object/from16 v0, p1
 
     iget-object v2, v0, Lcom/android/server/am/ProcessRecord;->connections:Landroid/util/ArraySet;
@@ -106629,7 +104671,6 @@
 
     check-cast v8, Lcom/android/server/am/ConnectionRecord;
 
-    .line 3278
     .local v8, "cr":Lcom/android/server/am/ConnectionRecord;
     iget-object v2, v8, Lcom/android/server/am/ConnectionRecord;->binding:Lcom/android/server/am/AppBindRecord;
 
@@ -106677,7 +104718,6 @@
 
     if-nez v2, :cond_10
 
-    .line 3282
     iget-object v2, v8, Lcom/android/server/am/ConnectionRecord;->binding:Lcom/android/server/am/AppBindRecord;
 
     iget-object v2, v2, Lcom/android/server/am/AppBindRecord;->service:Lcom/android/server/am/ServiceRecord;
@@ -106694,13 +104734,11 @@
 
     move-result v6
 
-    .line 3276
     :cond_10
     add-int/lit8 v24, v24, -0x1
 
     goto :goto_4
 
-    .line 3251
     .end local v6    # "nextIndex":I
     .end local v8    # "cr":Lcom/android/server/am/ConnectionRecord;
     .end local v24    # "j":I
@@ -106711,11 +104749,9 @@
 
     move/from16 v23, v0
 
-    .line 3252
     .local v23, "index":I
     if-eqz p3, :cond_14
 
-    .line 3255
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
@@ -106726,7 +104762,6 @@
 
     move-result v19
 
-    .line 3256
     .local v19, "clientIndex":I
     sget-boolean v2, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_LRU:Z
 
@@ -106770,7 +104805,6 @@
 
     invoke-static {v2, v3}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3258
     :cond_12
     move/from16 v0, v19
 
@@ -106778,10 +104812,8 @@
 
     if-gt v0, v1, :cond_13
 
-    .line 3261
     move/from16 v19, v25
 
-    .line 3263
     :cond_13
     if-ltz v19, :cond_14
 
@@ -106791,10 +104823,8 @@
 
     if-le v0, v1, :cond_14
 
-    .line 3264
     move/from16 v23, v19
 
-    .line 3267
     .end local v19    # "clientIndex":I
     :cond_14
     sget-boolean v2, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_LRU:Z
@@ -106837,7 +104867,6 @@
 
     invoke-static {v2, v3}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3268
     :cond_15
     move-object/from16 v0, p0
 
@@ -106849,10 +104878,8 @@
 
     invoke-virtual {v2, v0, v1}, Ljava/util/ArrayList;->add(ILjava/lang/Object;)V
 
-    .line 3269
     add-int/lit8 v6, v23, -0x1
 
-    .line 3270
     .restart local v6    # "nextIndex":I
     move-object/from16 v0, p0
 
@@ -106864,7 +104891,6 @@
 
     iput v2, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcessActivityStart:I
 
-    .line 3271
     move-object/from16 v0, p0
 
     iget v2, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcessServiceStart:I
@@ -106877,7 +104903,6 @@
 
     goto/16 :goto_3
 
-    .line 3286
     .end local v23    # "index":I
     .restart local v24    # "j":I
     :cond_16
@@ -106894,7 +104919,6 @@
     :goto_5
     if-ltz v24, :cond_1
 
-    .line 3287
     move-object/from16 v0, p1
 
     iget-object v2, v0, Lcom/android/server/am/ProcessRecord;->conProviders:Ljava/util/ArrayList;
@@ -106911,7 +104935,6 @@
 
     move-object/from16 v16, v0
 
-    .line 3288
     .local v16, "cpr":Lcom/android/server/am/ContentProviderRecord;
     move-object/from16 v0, v16
 
@@ -106939,7 +104962,6 @@
 
     if-nez v2, :cond_17
 
-    .line 3289
     move-object/from16 v0, v16
 
     iget-object v11, v0, Lcom/android/server/am/ContentProviderRecord;->proc:Lcom/android/server/am/ProcessRecord;
@@ -106958,7 +104980,6 @@
 
     move-result v6
 
-    .line 3286
     :cond_17
     add-int/lit8 v24, v24, -0x1
 
@@ -106969,37 +104990,31 @@
     .locals 55
 
     .prologue
-    .line 20005
     invoke-direct/range {p0 .. p0}, Lcom/android/server/am/ActivityManagerService;->resumedAppLocked()Lcom/android/server/am/ActivityRecord;
 
     move-result-object v10
 
-    .line 20006
     .local v10, "TOP_ACT":Lcom/android/server/am/ActivityRecord;
     if-eqz v10, :cond_0
 
     iget-object v6, v10, Lcom/android/server/am/ActivityRecord;->app:Lcom/android/server/am/ProcessRecord;
 
-    .line 20007
     .local v6, "TOP_APP":Lcom/android/server/am/ProcessRecord;
     :goto_0
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v8
 
-    .line 20008
     .local v8, "now":J
     invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
 
     move-result-wide v16
 
-    .line 20009
     .local v16, "nowElapsed":J
     const-wide/32 v12, 0x1b7740
 
     sub-long v44, v8, v12
 
-    .line 20010
     .local v44, "oldTime":J
     move-object/from16 v0, p0
 
@@ -107009,7 +105024,6 @@
 
     move-result v2
 
-    .line 20019
     .local v2, "N":I
     move-object/from16 v0, p0
 
@@ -107025,7 +105039,6 @@
     :goto_1
     if-ltz v30, :cond_1
 
-    .line 20020
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/ActivityManagerService;->mActiveUids:Landroid/util/SparseArray;
@@ -107038,16 +105051,13 @@
 
     check-cast v54, Lcom/android/server/am/UidRecord;
 
-    .line 20023
     .local v54, "uidRec":Lcom/android/server/am/UidRecord;
     invoke-virtual/range {v54 .. v54}, Lcom/android/server/am/UidRecord;->reset()V
 
-    .line 20019
     add-int/lit8 v30, v30, -0x1
 
     goto :goto_1
 
-    .line 20006
     .end local v2    # "N":I
     .end local v6    # "TOP_APP":Lcom/android/server/am/ProcessRecord;
     .end local v8    # "now":J
@@ -107060,7 +105070,6 @@
 
     goto :goto_0
 
-    .line 20026
     .restart local v2    # "N":I
     .restart local v6    # "TOP_APP":Lcom/android/server/am/ProcessRecord;
     .restart local v8    # "now":J
@@ -107078,39 +105087,33 @@
 
     iput v3, v0, Lcom/android/server/am/ActivityManagerService;->mAdjSeq:I
 
-    .line 20027
     const/4 v3, 0x0
 
     move-object/from16 v0, p0
 
     iput v3, v0, Lcom/android/server/am/ActivityManagerService;->mNewNumServiceProcs:I
 
-    .line 20028
     const/4 v3, 0x0
 
     move-object/from16 v0, p0
 
     iput v3, v0, Lcom/android/server/am/ActivityManagerService;->mNewNumAServiceProcs:I
 
-    .line 20032
     move-object/from16 v0, p0
 
     iget v3, v0, Lcom/android/server/am/ActivityManagerService;->mProcessLimit:I
 
     if-gtz v3, :cond_7
 
-    .line 20033
     const/16 v20, 0x0
 
     .local v20, "cachedProcessLimit":I
     move/from16 v27, v20
 
-    .line 20046
     .local v27, "emptyProcessLimit":I
     :goto_2
     const/16 v41, 0x3
 
-    .line 20048
     .local v41, "numSlots":I
     move-object/from16 v0, p0
 
@@ -107124,7 +105127,6 @@
 
     sub-int v40, v3, v5
 
-    .line 20049
     .local v40, "numEmptyProcs":I
     move/from16 v0, v40
 
@@ -107132,14 +105134,11 @@
 
     if-le v0, v1, :cond_2
 
-    .line 20056
     move/from16 v40, v20
 
-    .line 20058
     :cond_2
     div-int v26, v40, v41
 
-    .line 20059
     .local v26, "emptyFactor":I
     const/4 v3, 0x1
 
@@ -107149,7 +105148,6 @@
 
     const/16 v26, 0x1
 
-    .line 20060
     :cond_3
     move-object/from16 v0, p0
 
@@ -107164,7 +105162,6 @@
     :goto_3
     div-int v19, v3, v41
 
-    .line 20061
     .local v19, "cachedFactor":I
     const/4 v3, 0x1
 
@@ -107174,27 +105171,21 @@
 
     const/16 v19, 0x1
 
-    .line 20062
     :cond_4
     const/16 v51, 0x0
 
-    .line 20063
     .local v51, "stepCached":I
     const/16 v52, 0x0
 
-    .line 20064
     .local v52, "stepEmpty":I
     const/16 v37, 0x0
 
-    .line 20065
     .local v37, "numCached":I
     const/16 v39, 0x0
 
-    .line 20066
     .local v39, "numEmpty":I
     const/16 v42, 0x0
 
-    .line 20068
     .local v42, "numTrimming":I
     const/4 v3, 0x0
 
@@ -107202,48 +105193,38 @@
 
     iput v3, v0, Lcom/android/server/am/ActivityManagerService;->mNumNonCachedProcs:I
 
-    .line 20069
     const/4 v3, 0x0
 
     move-object/from16 v0, p0
 
     iput v3, v0, Lcom/android/server/am/ActivityManagerService;->mNumCachedHiddenProcs:I
 
-    .line 20073
     const/16 v21, 0x9
 
-    .line 20074
     .local v21, "curCachedAdj":I
     add-int/lit8 v34, v21, 0x1
 
-    .line 20075
     .local v34, "nextCachedAdj":I
     const/16 v22, 0x9
 
-    .line 20076
     .local v22, "curEmptyAdj":I
     add-int/lit8 v35, v22, 0x2
 
-    .line 20077
     .local v35, "nextEmptyAdj":I
     const/16 v46, 0x0
 
-    .line 20078
     .local v46, "selectedAppRecord":Lcom/android/server/am/ProcessRecord;
     const-wide/16 v48, 0x0
 
-    .line 20079
     .local v48, "serviceLastActivity":J
     const/16 v36, 0x0
 
-    .line 20080
     .local v36, "numBServices":I
     add-int/lit8 v30, v2, -0x1
 
     :goto_4
     if-ltz v30, :cond_16
 
-    .line 20081
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
@@ -107256,7 +105237,6 @@
 
     check-cast v4, Lcom/android/server/am/ProcessRecord;
 
-    .line 20082
     .local v4, "app":Lcom/android/server/am/ProcessRecord;
     move-object/from16 v0, p0
 
@@ -107274,10 +105254,8 @@
 
     if-ne v3, v5, :cond_c
 
-    .line 20084
     add-int/lit8 v36, v36, 0x1
 
-    .line 20085
     iget-object v3, v4, Lcom/android/server/am/ProcessRecord;->services:Landroid/util/ArraySet;
 
     invoke-virtual {v3}, Landroid/util/ArraySet;->size()I
@@ -107290,7 +105268,6 @@
     :goto_5
     if-ltz v43, :cond_c
 
-    .line 20086
     iget-object v3, v4, Lcom/android/server/am/ProcessRecord;->services:Landroid/util/ArraySet;
 
     move/from16 v0, v43
@@ -107301,7 +105278,6 @@
 
     check-cast v47, Lcom/android/server/am/ServiceRecord;
 
-    .line 20087
     .local v47, "sr":Lcom/android/server/am/ServiceRecord;
     sget-boolean v3, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_OOM_ADJ:Z
 
@@ -107397,7 +105373,6 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 20091
     :cond_5
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
@@ -107419,26 +105394,22 @@
 
     if-gez v3, :cond_a
 
-    .line 20093
     sget-boolean v3, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_OOM_ADJ:Z
 
     if-eqz v3, :cond_6
 
-    .line 20094
     const-string v3, "ActivityManager"
 
     const-string v5, "Not aged enough!!!"
 
     invoke-static {v3, v5}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 20085
     :cond_6
     :goto_6
     add-int/lit8 v43, v43, -0x1
 
     goto/16 :goto_5
 
-    .line 20034
     .end local v4    # "app":Lcom/android/server/am/ProcessRecord;
     .end local v19    # "cachedFactor":I
     .end local v20    # "cachedProcessLimit":I
@@ -107469,17 +105440,14 @@
 
     if-ne v3, v5, :cond_8
 
-    .line 20035
     const/16 v27, 0x1
 
-    .line 20036
     .restart local v27    # "emptyProcessLimit":I
     const/16 v20, 0x0
 
     .restart local v20    # "cachedProcessLimit":I
     goto/16 :goto_2
 
-    .line 20038
     .end local v20    # "cachedProcessLimit":I
     .end local v27    # "emptyProcessLimit":I
     :cond_8
@@ -107491,7 +105459,6 @@
 
     move-result v27
 
-    .line 20039
     .restart local v27    # "emptyProcessLimit":I
     move-object/from16 v0, p0
 
@@ -107502,7 +105469,6 @@
     .restart local v20    # "cachedProcessLimit":I
     goto/16 :goto_2
 
-    .line 20060
     .restart local v26    # "emptyFactor":I
     .restart local v40    # "numEmptyProcs":I
     .restart local v41    # "numSlots":I
@@ -107511,7 +105477,6 @@
 
     goto/16 :goto_3
 
-    .line 20098
     .restart local v4    # "app":Lcom/android/server/am/ProcessRecord;
     .restart local v19    # "cachedFactor":I
     .restart local v21    # "curCachedAdj":I
@@ -107535,19 +105500,16 @@
 
     if-nez v3, :cond_b
 
-    .line 20099
     move-object/from16 v0, v47
 
     iget-wide v0, v0, Lcom/android/server/am/ServiceRecord;->lastActivity:J
 
     move-wide/from16 v48, v0
 
-    .line 20100
     move-object/from16 v46, v4
 
     goto :goto_6
 
-    .line 20101
     :cond_b
     move-object/from16 v0, v47
 
@@ -107557,19 +105519,16 @@
 
     if-gez v3, :cond_6
 
-    .line 20102
     move-object/from16 v0, v47
 
     iget-wide v0, v0, Lcom/android/server/am/ServiceRecord;->lastActivity:J
 
     move-wide/from16 v48, v0
 
-    .line 20103
     move-object/from16 v46, v4
 
     goto :goto_6
 
-    .line 20107
     .end local v43    # "s":I
     .end local v47    # "sr":Lcom/android/server/am/ServiceRecord;
     :cond_c
@@ -107619,7 +105578,6 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 20110
     :cond_d
     iget-boolean v3, v4, Lcom/android/server/am/ProcessRecord;->killedByAm:Z
 
@@ -107629,12 +105587,10 @@
 
     if-eqz v3, :cond_12
 
-    .line 20111
     const/4 v3, 0x0
 
     iput-boolean v3, v4, Lcom/android/server/am/ProcessRecord;->procStateChanged:Z
 
-    .line 20112
     const/16 v5, 0x10
 
     const/4 v7, 0x1
@@ -107643,24 +105599,20 @@
 
     invoke-direct/range {v3 .. v9}, Lcom/android/server/am/ActivityManagerService;->computeOomAdjLocked(Lcom/android/server/am/ProcessRecord;ILcom/android/server/am/ProcessRecord;ZJ)I
 
-    .line 20116
     iget v3, v4, Lcom/android/server/am/ProcessRecord;->curAdj:I
 
     const/16 v5, 0x10
 
     if-lt v3, v5, :cond_f
 
-    .line 20117
     iget v3, v4, Lcom/android/server/am/ProcessRecord;->curProcState:I
 
     packed-switch v3, :pswitch_data_0
 
-    .line 20146
     move/from16 v0, v22
 
     iput v0, v4, Lcom/android/server/am/ProcessRecord;->curRawAdj:I
 
-    .line 20147
     move/from16 v0, v22
 
     invoke-virtual {v4, v0}, Lcom/android/server/am/ProcessRecord;->modifyRawOomAdj(I)I
@@ -107669,12 +105621,10 @@
 
     iput v3, v4, Lcom/android/server/am/ProcessRecord;->curAdj:I
 
-    .line 20148
     sget-boolean v3, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_LRU:Z
 
     if-eqz v3, :cond_e
 
-    .line 20151
     :cond_e
     move/from16 v0, v22
 
@@ -107682,36 +105632,28 @@
 
     if-eq v0, v1, :cond_f
 
-    .line 20152
     add-int/lit8 v52, v52, 0x1
 
-    .line 20153
     move/from16 v0, v52
 
     move/from16 v1, v26
 
     if-lt v0, v1, :cond_f
 
-    .line 20154
     const/16 v52, 0x0
 
-    .line 20155
     move/from16 v22, v35
 
-    .line 20156
     add-int/lit8 v35, v35, 0x2
 
-    .line 20157
     const/16 v3, 0xf
 
     move/from16 v0, v35
 
     if-le v0, v3, :cond_f
 
-    .line 20158
     const/16 v35, 0xf
 
-    .line 20166
     :cond_f
     :goto_7
     const/4 v13, 0x1
@@ -107724,12 +105666,10 @@
 
     invoke-direct/range {v11 .. v17}, Lcom/android/server/am/ActivityManagerService;->applyOomAdjLocked(Lcom/android/server/am/ProcessRecord;ZJJ)Z
 
-    .line 20169
     iget v3, v4, Lcom/android/server/am/ProcessRecord;->curProcState:I
 
     packed-switch v3, :pswitch_data_1
 
-    .line 20198
     move-object/from16 v0, p0
 
     iget v3, v0, Lcom/android/server/am/ActivityManagerService;->mNumNonCachedProcs:I
@@ -107740,7 +105680,6 @@
 
     iput v3, v0, Lcom/android/server/am/ActivityManagerService;->mNumNonCachedProcs:I
 
-    .line 20202
     :cond_10
     :goto_8
     iget-boolean v3, v4, Lcom/android/server/am/ProcessRecord;->isolated:Z
@@ -107755,14 +105694,12 @@
 
     if-gtz v3, :cond_15
 
-    .line 20209
     const-string v3, "isolated not needed"
 
     const/4 v5, 0x1
 
     invoke-virtual {v4, v3, v5}, Lcom/android/server/am/ProcessRecord;->kill(Ljava/lang/String;Z)V
 
-    .line 20218
     :cond_11
     :goto_9
     iget v3, v4, Lcom/android/server/am/ProcessRecord;->curProcState:I
@@ -107775,22 +105712,18 @@
 
     if-nez v3, :cond_12
 
-    .line 20220
     add-int/lit8 v42, v42, 0x1
 
-    .line 20080
     :cond_12
     add-int/lit8 v30, v30, -0x1
 
     goto/16 :goto_4
 
-    .line 20123
     :pswitch_0
     move/from16 v0, v21
 
     iput v0, v4, Lcom/android/server/am/ProcessRecord;->curRawAdj:I
 
-    .line 20124
     move/from16 v0, v21
 
     invoke-virtual {v4, v0}, Lcom/android/server/am/ProcessRecord;->modifyRawOomAdj(I)I
@@ -107799,12 +105732,10 @@
 
     iput v3, v4, Lcom/android/server/am/ProcessRecord;->curAdj:I
 
-    .line 20125
     sget-boolean v3, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_LRU:Z
 
     if-eqz v3, :cond_13
 
-    .line 20128
     :cond_13
     move/from16 v0, v21
 
@@ -107812,38 +105743,30 @@
 
     if-eq v0, v1, :cond_f
 
-    .line 20129
     add-int/lit8 v51, v51, 0x1
 
-    .line 20130
     move/from16 v0, v51
 
     move/from16 v1, v19
 
     if-lt v0, v1, :cond_f
 
-    .line 20131
     const/16 v51, 0x0
 
-    .line 20132
     move/from16 v21, v34
 
-    .line 20133
     add-int/lit8 v34, v34, 0x2
 
-    .line 20134
     const/16 v3, 0xf
 
     move/from16 v0, v34
 
     if-le v0, v3, :cond_f
 
-    .line 20135
     const/16 v34, 0xf
 
     goto :goto_7
 
-    .line 20172
     :pswitch_1
     move-object/from16 v0, p0
 
@@ -107857,7 +105780,6 @@
 
     if-nez v3, :cond_10
 
-    .line 20175
     move-object/from16 v0, p0
 
     iget v3, v0, Lcom/android/server/am/ActivityManagerService;->mNumCachedHiddenProcs:I
@@ -107868,17 +105790,14 @@
 
     iput v3, v0, Lcom/android/server/am/ActivityManagerService;->mNumCachedHiddenProcs:I
 
-    .line 20176
     add-int/lit8 v37, v37, 0x1
 
-    .line 20177
     move/from16 v0, v37
 
     move/from16 v1, v20
 
     if-le v0, v1, :cond_10
 
-    .line 20178
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
@@ -107905,7 +105824,6 @@
 
     goto/16 :goto_8
 
-    .line 20182
     :pswitch_2
     move-object/from16 v0, p0
 
@@ -107919,7 +105837,6 @@
 
     if-nez v3, :cond_10
 
-    .line 20185
     sget v3, Lcom/android/server/am/ProcessList;->TRIM_EMPTY_APPS:I
 
     move/from16 v0, v39
@@ -107932,7 +105849,6 @@
 
     if-gez v3, :cond_14
 
-    .line 20187
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
@@ -107975,18 +105891,15 @@
 
     goto/16 :goto_8
 
-    .line 20191
     :cond_14
     add-int/lit8 v39, v39, 0x1
 
-    .line 20192
     move/from16 v0, v39
 
     move/from16 v1, v27
 
     if-le v0, v1, :cond_10
 
-    .line 20193
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
@@ -108013,13 +105926,11 @@
 
     goto/16 :goto_8
 
-    .line 20212
     :cond_15
     iget-object v0, v4, Lcom/android/server/am/ProcessRecord;->uidRecord:Lcom/android/server/am/UidRecord;
 
     move-object/from16 v54, v0
 
-    .line 20213
     .restart local v54    # "uidRec":Lcom/android/server/am/UidRecord;
     if-eqz v54, :cond_11
 
@@ -108031,7 +105942,6 @@
 
     if-le v3, v5, :cond_11
 
-    .line 20214
     iget v3, v4, Lcom/android/server/am/ProcessRecord;->curProcState:I
 
     move-object/from16 v0, v54
@@ -108040,7 +105950,6 @@
 
     goto/16 :goto_9
 
-    .line 20224
     .end local v4    # "app":Lcom/android/server/am/ProcessRecord;
     .end local v54    # "uidRec":Lcom/android/server/am/UidRecord;
     :cond_16
@@ -108062,7 +105971,6 @@
 
     if-eqz v46, :cond_17
 
-    .line 20226
     move-object/from16 v0, v46
 
     iget v3, v0, Lcom/android/server/am/ProcessRecord;->pid:I
@@ -108075,7 +105983,6 @@
 
     if-eqz v3, :cond_46
 
-    .line 20227
     move-object/from16 v0, v46
 
     iget v3, v0, Lcom/android/server/am/ProcessRecord;->pid:I
@@ -108090,7 +105997,6 @@
 
     invoke-static {v3, v5, v7}, Lcom/android/server/am/ProcessList;->setOomAdj(III)V
 
-    .line 20229
     move-object/from16 v0, v46
 
     iget v3, v0, Lcom/android/server/am/ProcessRecord;->curAdj:I
@@ -108099,7 +106005,6 @@
 
     iput v3, v0, Lcom/android/server/am/ProcessRecord;->setAdj:I
 
-    .line 20230
     sget-boolean v3, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_OOM_ADJ:Z
 
     if-eqz v3, :cond_17
@@ -108150,7 +106055,6 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 20238
     :cond_17
     move-object/from16 v0, p0
 
@@ -108160,10 +106064,8 @@
 
     iput v3, v0, Lcom/android/server/am/ActivityManagerService;->mNumServiceProcs:I
 
-    .line 20246
     add-int v38, v37, v39
 
-    .line 20248
     .local v38, "numCachedAndEmpty":I
     sget v3, Lcom/android/server/am/ProcessList;->TRIM_CACHED_APPS:I
 
@@ -108177,17 +106079,14 @@
 
     if-gt v0, v3, :cond_27
 
-    .line 20250
     const/4 v3, 0x3
 
     move/from16 v0, v38
 
     if-gt v0, v3, :cond_25
 
-    .line 20251
     const/16 v32, 0x3
 
-    .line 20263
     .local v32, "memFactor":I
     :goto_a
     sget-boolean v3, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_OOM_ADJ:Z
@@ -108278,7 +106177,6 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 20266
     :cond_18
     move-object/from16 v0, p0
 
@@ -108288,7 +106186,6 @@
 
     if-le v0, v3, :cond_1a
 
-    .line 20267
     move-object/from16 v0, p0
 
     iget-boolean v3, v0, Lcom/android/server/am/ActivityManagerService;->mAllowLowerMemLevel:Z
@@ -108309,7 +106206,6 @@
 
     if-lt v3, v5, :cond_1a
 
-    .line 20268
     :cond_19
     move-object/from16 v0, p0
 
@@ -108317,7 +106213,6 @@
 
     move/from16 v32, v0
 
-    .line 20269
     sget-boolean v3, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_OOM_ADJ:Z
 
     if-eqz v3, :cond_1a
@@ -108328,7 +106223,6 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 20272
     :cond_1a
     move/from16 v0, v32
 
@@ -108336,7 +106230,6 @@
 
     iput v0, v1, Lcom/android/server/am/ActivityManagerService;->mLastMemoryLevel:I
 
-    .line 20273
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
@@ -108349,7 +106242,6 @@
 
     iput v3, v0, Lcom/android/server/am/ActivityManagerService;->mLastNumProcesses:I
 
-    .line 20274
     move-object/from16 v0, p0
 
     iget-object v5, v0, Lcom/android/server/am/ActivityManagerService;->mProcessStats:Lcom/android/server/am/ProcessStatsService;
@@ -108369,7 +106261,6 @@
 
     move-result v18
 
-    .line 20275
     .local v18, "allChanged":Z
     move-object/from16 v0, p0
 
@@ -108379,11 +106270,9 @@
 
     move-result v53
 
-    .line 20276
     .local v53, "trackerMemFactor":I
     if-eqz v32, :cond_36
 
-    .line 20277
     move-object/from16 v0, p0
 
     iget-wide v12, v0, Lcom/android/server/am/ActivityManagerService;->mLowRamStartTime:J
@@ -108394,32 +106283,25 @@
 
     if-nez v3, :cond_1b
 
-    .line 20278
     move-object/from16 v0, p0
 
     iput-wide v8, v0, Lcom/android/server/am/ActivityManagerService;->mLowRamStartTime:J
 
-    .line 20280
     :cond_1b
     const/16 v50, 0x0
 
-    .line 20282
     .local v50, "step":I
     packed-switch v32, :pswitch_data_2
 
-    .line 20290
     const/16 v29, 0x5
 
-    .line 20293
     .local v29, "fgTrimLevel":I
     :goto_c
     div-int/lit8 v28, v42, 0x3
 
-    .line 20294
     .local v28, "factor":I
     const/16 v33, 0x2
 
-    .line 20295
     .local v33, "minFactor":I
     move-object/from16 v0, p0
 
@@ -108429,7 +106311,6 @@
 
     add-int/lit8 v33, v33, 0x1
 
-    .line 20296
     :cond_1c
     move-object/from16 v0, p0
 
@@ -108439,7 +106320,6 @@
 
     add-int/lit8 v33, v33, 0x1
 
-    .line 20297
     :cond_1d
     move/from16 v0, v28
 
@@ -108449,18 +106329,15 @@
 
     move/from16 v28, v33
 
-    .line 20298
     :cond_1e
     const/16 v23, 0x50
 
-    .line 20299
     .local v23, "curLevel":I
     add-int/lit8 v30, v2, -0x1
 
     :goto_d
     if-ltz v30, :cond_3f
 
-    .line 20300
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
@@ -108473,7 +106350,6 @@
 
     check-cast v4, Lcom/android/server/am/ProcessRecord;
 
-    .line 20301
     .restart local v4    # "app":Lcom/android/server/am/ProcessRecord;
     if-nez v18, :cond_1f
 
@@ -108481,7 +106357,6 @@
 
     if-eqz v3, :cond_20
 
-    .line 20302
     :cond_1f
     move-object/from16 v0, p0
 
@@ -108489,12 +106364,10 @@
 
     invoke-direct {v0, v4, v1, v8, v9}, Lcom/android/server/am/ActivityManagerService;->setProcessTrackerStateLocked(Lcom/android/server/am/ProcessRecord;IJ)V
 
-    .line 20303
     const/4 v3, 0x0
 
     iput-boolean v3, v4, Lcom/android/server/am/ProcessRecord;->procStateChanged:Z
 
-    .line 20305
     :cond_20
     iget v3, v4, Lcom/android/server/am/ProcessRecord;->curProcState:I
 
@@ -108506,7 +106379,6 @@
 
     if-nez v3, :cond_29
 
-    .line 20307
     iget v3, v4, Lcom/android/server/am/ProcessRecord;->trimMemoryLevel:I
 
     move/from16 v0, v23
@@ -108517,7 +106389,6 @@
 
     if-eqz v3, :cond_23
 
-    .line 20309
     :try_start_0
     sget-boolean v3, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_SWITCH:Z
 
@@ -108564,7 +106435,6 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 20311
     :cond_22
     iget-object v3, v4, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
 
@@ -108574,37 +106444,30 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_4
 
-    .line 20328
     :cond_23
     :goto_e
     move/from16 v0, v23
 
     iput v0, v4, Lcom/android/server/am/ProcessRecord;->trimMemoryLevel:I
 
-    .line 20329
     add-int/lit8 v50, v50, 0x1
 
-    .line 20330
     move/from16 v0, v50
 
     move/from16 v1, v28
 
     if-lt v0, v1, :cond_24
 
-    .line 20331
     const/16 v50, 0x0
 
-    .line 20332
     sparse-switch v23, :sswitch_data_0
 
-    .line 20299
     :cond_24
     :goto_f
     add-int/lit8 v30, v30, -0x1
 
     goto :goto_d
 
-    .line 20252
     .end local v4    # "app":Lcom/android/server/am/ProcessRecord;
     .end local v18    # "allChanged":Z
     .end local v23    # "curLevel":I
@@ -108621,13 +106484,11 @@
 
     if-gt v0, v3, :cond_26
 
-    .line 20253
     const/16 v32, 0x2
 
     .restart local v32    # "memFactor":I
     goto/16 :goto_a
 
-    .line 20255
     .end local v32    # "memFactor":I
     :cond_26
     const/16 v32, 0x1
@@ -108635,7 +106496,6 @@
     .restart local v32    # "memFactor":I
     goto/16 :goto_a
 
-    .line 20258
     .end local v32    # "memFactor":I
     :cond_27
     const/16 v32, 0x0
@@ -108643,33 +106503,27 @@
     .restart local v32    # "memFactor":I
     goto/16 :goto_a
 
-    .line 20274
     :cond_28
     const/4 v3, 0x0
 
     goto/16 :goto_b
 
-    .line 20284
     .restart local v18    # "allChanged":Z
     .restart local v50    # "step":I
     .restart local v53    # "trackerMemFactor":I
     :pswitch_3
     const/16 v29, 0xf
 
-    .line 20285
     .restart local v29    # "fgTrimLevel":I
     goto/16 :goto_c
 
-    .line 20287
     .end local v29    # "fgTrimLevel":I
     :pswitch_4
     const/16 v29, 0xa
 
-    .line 20288
     .restart local v29    # "fgTrimLevel":I
     goto/16 :goto_c
 
-    .line 20334
     .restart local v4    # "app":Lcom/android/server/am/ProcessRecord;
     .restart local v23    # "curLevel":I
     .restart local v28    # "factor":I
@@ -108677,16 +106531,13 @@
     :sswitch_0
     const/16 v23, 0x3c
 
-    .line 20335
     goto :goto_f
 
-    .line 20337
     :sswitch_1
     const/16 v23, 0x28
 
     goto :goto_f
 
-    .line 20341
     :cond_29
     iget v3, v4, Lcom/android/server/am/ProcessRecord;->curProcState:I
 
@@ -108694,7 +106545,6 @@
 
     if-ne v3, v5, :cond_2d
 
-    .line 20342
     iget v3, v4, Lcom/android/server/am/ProcessRecord;->trimMemoryLevel:I
 
     const/16 v5, 0x28
@@ -108705,7 +106555,6 @@
 
     if-eqz v3, :cond_2c
 
-    .line 20345
     :try_start_1
     sget-boolean v3, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_SWITCH:Z
 
@@ -108752,7 +106601,6 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 20348
     :cond_2b
     iget-object v3, v4, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
 
@@ -108762,7 +106610,6 @@
     :try_end_1
     .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_3
 
-    .line 20353
     :cond_2c
     :goto_10
     const/16 v3, 0x28
@@ -108771,7 +106618,6 @@
 
     goto :goto_f
 
-    .line 20355
     :cond_2d
     iget v3, v4, Lcom/android/server/am/ProcessRecord;->curProcState:I
 
@@ -108788,10 +106634,8 @@
 
     if-eqz v3, :cond_32
 
-    .line 20360
     const/16 v31, 0x14
 
-    .line 20361
     .local v31, "level":I
     iget v3, v4, Lcom/android/server/am/ProcessRecord;->trimMemoryLevel:I
 
@@ -108803,7 +106647,6 @@
 
     if-eqz v3, :cond_31
 
-    .line 20363
     :try_start_2
     sget-boolean v3, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_SWITCH:Z
 
@@ -108850,7 +106693,6 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 20366
     :cond_30
     iget-object v3, v4, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
 
@@ -108860,14 +106702,12 @@
     :try_end_2
     .catch Landroid/os/RemoteException; {:try_start_2 .. :try_end_2} :catch_2
 
-    .line 20370
     :cond_31
     :goto_11
     const/4 v3, 0x0
 
     iput-boolean v3, v4, Lcom/android/server/am/ProcessRecord;->pendingUiClean:Z
 
-    .line 20372
     .end local v31    # "level":I
     :cond_32
     iget v3, v4, Lcom/android/server/am/ProcessRecord;->trimMemoryLevel:I
@@ -108880,7 +106720,6 @@
 
     if-eqz v3, :cond_35
 
-    .line 20374
     :try_start_3
     sget-boolean v3, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_SWITCH:Z
 
@@ -108927,7 +106766,6 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 20377
     :cond_34
     iget-object v3, v4, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
 
@@ -108937,7 +106775,6 @@
     :try_end_3
     .catch Landroid/os/RemoteException; {:try_start_3 .. :try_end_3} :catch_1
 
-    .line 20381
     :cond_35
     :goto_12
     move/from16 v0, v29
@@ -108946,7 +106783,6 @@
 
     goto/16 :goto_f
 
-    .line 20385
     .end local v4    # "app":Lcom/android/server/am/ProcessRecord;
     .end local v23    # "curLevel":I
     .end local v28    # "factor":I
@@ -108964,7 +106800,6 @@
 
     if-eqz v3, :cond_37
 
-    .line 20386
     move-object/from16 v0, p0
 
     iget-wide v12, v0, Lcom/android/server/am/ActivityManagerService;->mLowRamTimeSinceLastIdle:J
@@ -108981,21 +106816,18 @@
 
     iput-wide v12, v0, Lcom/android/server/am/ActivityManagerService;->mLowRamTimeSinceLastIdle:J
 
-    .line 20387
     const-wide/16 v12, 0x0
 
     move-object/from16 v0, p0
 
     iput-wide v12, v0, Lcom/android/server/am/ActivityManagerService;->mLowRamStartTime:J
 
-    .line 20389
     :cond_37
     add-int/lit8 v30, v2, -0x1
 
     :goto_13
     if-ltz v30, :cond_3f
 
-    .line 20390
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
@@ -109008,7 +106840,6 @@
 
     check-cast v4, Lcom/android/server/am/ProcessRecord;
 
-    .line 20391
     .restart local v4    # "app":Lcom/android/server/am/ProcessRecord;
     if-nez v18, :cond_38
 
@@ -109016,7 +106847,6 @@
 
     if-eqz v3, :cond_39
 
-    .line 20392
     :cond_38
     move-object/from16 v0, p0
 
@@ -109024,12 +106854,10 @@
 
     invoke-direct {v0, v4, v1, v8, v9}, Lcom/android/server/am/ActivityManagerService;->setProcessTrackerStateLocked(Lcom/android/server/am/ProcessRecord;IJ)V
 
-    .line 20393
     const/4 v3, 0x0
 
     iput-boolean v3, v4, Lcom/android/server/am/ProcessRecord;->procStateChanged:Z
 
-    .line 20395
     :cond_39
     iget v3, v4, Lcom/android/server/am/ProcessRecord;->curProcState:I
 
@@ -109046,7 +106874,6 @@
 
     if-eqz v3, :cond_3e
 
-    .line 20397
     iget v3, v4, Lcom/android/server/am/ProcessRecord;->trimMemoryLevel:I
 
     const/16 v5, 0x14
@@ -109057,7 +106884,6 @@
 
     if-eqz v3, :cond_3d
 
-    .line 20400
     :try_start_4
     sget-boolean v3, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_SWITCH:Z
 
@@ -109104,7 +106930,6 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 20403
     :cond_3c
     iget-object v3, v4, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
 
@@ -109114,25 +106939,21 @@
     :try_end_4
     .catch Landroid/os/RemoteException; {:try_start_4 .. :try_end_4} :catch_0
 
-    .line 20408
     :cond_3d
     :goto_14
     const/4 v3, 0x0
 
     iput-boolean v3, v4, Lcom/android/server/am/ProcessRecord;->pendingUiClean:Z
 
-    .line 20410
     :cond_3e
     const/4 v3, 0x0
 
     iput v3, v4, Lcom/android/server/am/ProcessRecord;->trimMemoryLevel:I
 
-    .line 20389
     add-int/lit8 v30, v30, -0x1
 
     goto :goto_13
 
-    .line 20414
     .end local v4    # "app":Lcom/android/server/am/ProcessRecord;
     :cond_3f
     move-object/from16 v0, p0
@@ -109141,7 +106962,6 @@
 
     if-eqz v3, :cond_40
 
-    .line 20417
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
@@ -109152,11 +106972,9 @@
 
     invoke-virtual {v3, v5, v7}, Lcom/android/server/am/ActivityStackSupervisor;->scheduleDestroyAllActivities(Lcom/android/server/am/ProcessRecord;Ljava/lang/String;)V
 
-    .line 20420
     :cond_40
     if-eqz v18, :cond_41
 
-    .line 20421
     const/4 v3, 0x0
 
     move-object/from16 v0, p0
@@ -109171,7 +106989,6 @@
 
     invoke-virtual {v0, v8, v9, v3, v5}, Lcom/android/server/am/ActivityManagerService;->requestPssAllProcsLocked(JZZ)V
 
-    .line 20425
     :cond_41
     move-object/from16 v0, p0
 
@@ -109186,7 +107003,6 @@
     :goto_15
     if-ltz v30, :cond_44
 
-    .line 20426
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/ActivityManagerService;->mActiveUids:Landroid/util/SparseArray;
@@ -109199,7 +107015,6 @@
 
     check-cast v54, Lcom/android/server/am/UidRecord;
 
-    .line 20427
     .restart local v54    # "uidRec":Lcom/android/server/am/UidRecord;
     move-object/from16 v0, v54
 
@@ -109211,7 +107026,6 @@
 
     if-eq v3, v5, :cond_43
 
-    .line 20428
     sget-boolean v3, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_UID_OBSERVERS:Z
 
     if-eqz v3, :cond_42
@@ -109268,7 +107082,6 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 20431
     :cond_42
     move-object/from16 v0, v54
 
@@ -109278,7 +107091,6 @@
 
     iput v3, v0, Lcom/android/server/am/UidRecord;->setProcState:I
 
-    .line 20432
     const/4 v3, 0x0
 
     move-object/from16 v0, p0
@@ -109287,13 +107099,11 @@
 
     invoke-direct {v0, v1, v3}, Lcom/android/server/am/ActivityManagerService;->enqueueUidChangeLocked(Lcom/android/server/am/UidRecord;Z)V
 
-    .line 20425
     :cond_43
     add-int/lit8 v30, v30, -0x1
 
     goto :goto_15
 
-    .line 20436
     .end local v54    # "uidRec":Lcom/android/server/am/UidRecord;
     :cond_44
     move-object/from16 v0, p0
@@ -109306,7 +107116,6 @@
 
     if-eqz v3, :cond_45
 
-    .line 20437
     move-object/from16 v0, p0
 
     iget-object v3, v0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
@@ -109319,20 +107128,17 @@
 
     invoke-virtual {v3, v5}, Lcom/android/server/am/ActivityManagerService$MainHandler;->post(Ljava/lang/Runnable;)Z
 
-    .line 20446
     :cond_45
     sget-boolean v3, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_OOM_ADJ:Z
 
     if-eqz v3, :cond_46
 
-    .line 20447
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v12
 
     sub-long v24, v12, v8
 
-    .line 20452
     .local v24, "duration":J
     const-string v3, "ActivityManager"
 
@@ -109364,7 +107170,6 @@
 
     invoke-static {v3, v5}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 20455
     .end local v18    # "allChanged":Z
     .end local v24    # "duration":J
     .end local v32    # "memFactor":I
@@ -109373,7 +107178,6 @@
     :cond_46
     return-void
 
-    .line 20405
     .restart local v4    # "app":Lcom/android/server/am/ProcessRecord;
     .restart local v18    # "allChanged":Z
     .restart local v32    # "memFactor":I
@@ -109384,7 +107188,6 @@
 
     goto/16 :goto_14
 
-    .line 20378
     .restart local v23    # "curLevel":I
     .restart local v28    # "factor":I
     .restart local v29    # "fgTrimLevel":I
@@ -109395,34 +107198,29 @@
 
     goto/16 :goto_12
 
-    .line 20367
     .restart local v31    # "level":I
     :catch_2
     move-exception v3
 
     goto/16 :goto_11
 
-    .line 20350
     .end local v31    # "level":I
     :catch_3
     move-exception v3
 
     goto/16 :goto_10
 
-    .line 20312
     :catch_4
     move-exception v3
 
     goto/16 :goto_e
 
-    .line 20117
     :pswitch_data_0
     .packed-switch 0xe
         :pswitch_0
         :pswitch_0
     .end packed-switch
 
-    .line 20169
     :pswitch_data_1
     .packed-switch 0xe
         :pswitch_1
@@ -109430,14 +107228,12 @@
         :pswitch_2
     .end packed-switch
 
-    .line 20282
     :pswitch_data_2
     .packed-switch 0x2
         :pswitch_4
         :pswitch_3
     .end packed-switch
 
-    .line 20332
     :sswitch_data_0
     .sparse-switch
         0x3c -> :sswitch_1
@@ -109452,23 +107248,19 @@
     .prologue
     const/16 v10, 0x10
 
-    .line 19982
     invoke-direct {p0}, Lcom/android/server/am/ActivityManagerService;->resumedAppLocked()Lcom/android/server/am/ActivityRecord;
 
     move-result-object v0
 
-    .line 19983
     .local v0, "TOP_ACT":Lcom/android/server/am/ActivityRecord;
     if-eqz v0, :cond_2
 
     iget-object v4, v0, Lcom/android/server/am/ActivityRecord;->app:Lcom/android/server/am/ProcessRecord;
 
-    .line 19984
     .local v4, "TOP_APP":Lcom/android/server/am/ProcessRecord;
     :goto_0
     iget-boolean v9, p1, Lcom/android/server/am/ProcessRecord;->cached:Z
 
-    .line 19986
     .local v9, "wasCached":Z
     iget v1, p0, Lcom/android/server/am/ActivityManagerService;->mAdjSeq:I
 
@@ -109476,7 +107268,6 @@
 
     iput v1, p0, Lcom/android/server/am/ActivityManagerService;->mAdjSeq:I
 
-    .line 19992
     iget v1, p1, Lcom/android/server/am/ProcessRecord;->curRawAdj:I
 
     const/16 v2, 0x9
@@ -109485,7 +107276,6 @@
 
     iget v3, p1, Lcom/android/server/am/ProcessRecord;->curRawAdj:I
 
-    .line 19994
     .local v3, "cachedAdj":I
     :goto_1
     const/4 v5, 0x0
@@ -109502,7 +107292,6 @@
 
     move-result v8
 
-    .line 19996
     .local v8, "success":Z
     iget-boolean v1, p1, Lcom/android/server/am/ProcessRecord;->cached:Z
 
@@ -109512,15 +107301,12 @@
 
     if-ne v1, v10, :cond_1
 
-    .line 19999
     :cond_0
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->updateOomAdjLocked()V
 
-    .line 20001
     :cond_1
     return v8
 
-    .line 19983
     .end local v3    # "cachedAdj":I
     .end local v4    # "TOP_APP":Lcom/android/server/am/ProcessRecord;
     .end local v8    # "success":Z
@@ -109535,7 +107321,6 @@
     :cond_3
     move v3, v10
 
-    .line 19992
     goto :goto_1
 .end method
 
@@ -109544,22 +107329,18 @@
     .param p1, "values"    # Landroid/content/res/Configuration;
 
     .prologue
-    .line 18133
     const-string v2, "android.permission.CHANGE_CONFIGURATION"
 
     const-string v3, "updateConfiguration()"
 
     invoke-virtual {p0, v2, v3}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 18135
     const-string v2, "updateConfiguration()"
 
     invoke-direct {p0, v2}, Lcom/android/server/am/ActivityManagerService;->enforceWriteSettingsPermission(Ljava/lang/String;)V
 
-    .line 18136
     if-nez p1, :cond_0
 
-    .line 18137
     new-instance v2, Ljava/lang/NullPointerException;
 
     const-string v3, "Configuration must not be null"
@@ -109568,17 +107349,14 @@
 
     throw v2
 
-    .line 18140
     :cond_0
     monitor-enter p0
 
-    .line 18141
     :try_start_0
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v0
 
-    .line 18142
     .local v0, "origId":J
     const/4 v2, 0x0
 
@@ -109588,16 +107366,12 @@
 
     invoke-virtual {p0, p1, v2, v3, v4}, Lcom/android/server/am/ActivityManagerService;->updateConfigurationLocked(Landroid/content/res/Configuration;Lcom/android/server/am/ActivityRecord;ZZ)Z
 
-    .line 18143
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 18144
     monitor-exit p0
 
-    .line 18145
     return-void
 
-    .line 18144
     .end local v0    # "origId":J
     :catchall_0
     move-exception v2
@@ -109616,15 +107390,12 @@
     .param p3, "oomAdj"    # Z
 
     .prologue
-    .line 19921
     iget-boolean v1, p1, Lcom/android/server/am/ProcessRecord;->foregroundServices:Z
 
     if-eq p2, v1, :cond_2
 
-    .line 19922
     iput-boolean p2, p1, Lcom/android/server/am/ProcessRecord;->foregroundServices:Z
 
-    .line 19923
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mForegroundPackages:Lcom/android/internal/app/ProcessMap;
 
     iget-object v2, p1, Lcom/android/server/am/ProcessRecord;->info:Landroid/content/pm/ApplicationInfo;
@@ -109641,20 +107412,16 @@
 
     check-cast v0, Ljava/util/ArrayList;
 
-    .line 19925
     .local v0, "curProcs":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ProcessRecord;>;"
     if-eqz p2, :cond_3
 
-    .line 19926
     if-nez v0, :cond_0
 
-    .line 19927
     new-instance v0, Ljava/util/ArrayList;
 
     .end local v0    # "curProcs":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ProcessRecord;>;"
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    .line 19928
     .restart local v0    # "curProcs":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ProcessRecord;>;"
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mForegroundPackages:Lcom/android/internal/app/ProcessMap;
 
@@ -109668,7 +107435,6 @@
 
     invoke-virtual {v1, v2, v3, v0}, Lcom/android/internal/app/ProcessMap;->put(Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/Object;
 
-    .line 19930
     :cond_0
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
 
@@ -109676,10 +107442,8 @@
 
     if-nez v1, :cond_1
 
-    .line 19931
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 19932
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mBatteryStatsService:Lcom/android/server/am/BatteryStatsService;
 
     const v2, 0x8002
@@ -109694,32 +107458,26 @@
 
     invoke-virtual {v1, v2, v3, v4}, Lcom/android/server/am/BatteryStatsService;->noteEvent(ILjava/lang/String;I)V
 
-    .line 19947
     :cond_1
     :goto_0
     if-eqz p3, :cond_2
 
-    .line 19948
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->updateOomAdjLocked()V
 
-    .line 19951
     .end local v0    # "curProcs":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ProcessRecord;>;"
     :cond_2
     return-void
 
-    .line 19936
     .restart local v0    # "curProcs":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ProcessRecord;>;"
     :cond_3
     if-eqz v0, :cond_1
 
-    .line 19937
     invoke-virtual {v0, p1}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
 
     move-result v1
 
     if-eqz v1, :cond_1
 
-    .line 19938
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mBatteryStatsService:Lcom/android/server/am/BatteryStatsService;
 
     const/16 v2, 0x4002
@@ -109734,14 +107492,12 @@
 
     invoke-virtual {v1, v2, v3, v4}, Lcom/android/server/am/BatteryStatsService;->noteEvent(ILjava/lang/String;I)V
 
-    .line 19941
     invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
 
     move-result v1
 
     if-gtz v1, :cond_1
 
-    .line 19942
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mForegroundPackages:Lcom/android/internal/app/ProcessMap;
 
     iget-object v2, p1, Lcom/android/server/am/ProcessRecord;->info:Landroid/content/pm/ApplicationInfo;
@@ -109765,7 +107521,6 @@
 
     const/4 v2, 0x0
 
-    .line 11009
     iget-boolean v1, p0, Lcom/android/server/am/ActivityManagerService;->mSleeping:Z
 
     if-eqz v1, :cond_1
@@ -109776,31 +107531,24 @@
 
     if-nez v1, :cond_1
 
-    .line 11010
     iput-boolean v2, p0, Lcom/android/server/am/ActivityManagerService;->mSleeping:Z
 
-    .line 11011
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->startTimeTrackingFocusedActivityLocked()V
 
-    .line 11012
     const/4 v1, 0x2
 
     iput v1, p0, Lcom/android/server/am/ActivityManagerService;->mTopProcessState:I
 
-    .line 11013
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
     invoke-virtual {v1}, Lcom/android/server/am/ActivityStackSupervisor;->comeOutOfSleepIfNeededLocked()V
 
-    .line 11014
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->updateOomAdjLocked()V
 
-    .line 11030
     :cond_0
     :goto_0
     return-void
 
-    .line 11015
     :cond_1
     iget-boolean v1, p0, Lcom/android/server/am/ActivityManagerService;->mSleeping:Z
 
@@ -109812,51 +107560,41 @@
 
     if-eqz v1, :cond_0
 
-    .line 11016
     const/4 v1, 0x1
 
     iput-boolean v1, p0, Lcom/android/server/am/ActivityManagerService;->mSleeping:Z
 
-    .line 11017
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mCurAppTimeTracker:Lcom/android/server/am/AppTimeTracker;
 
     if-eqz v1, :cond_2
 
-    .line 11018
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mCurAppTimeTracker:Lcom/android/server/am/AppTimeTracker;
 
     invoke-virtual {v1}, Lcom/android/server/am/AppTimeTracker;->stop()V
 
-    .line 11020
     :cond_2
     const/4 v1, 0x5
 
     iput v1, p0, Lcom/android/server/am/ActivityManagerService;->mTopProcessState:I
 
-    .line 11021
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
     invoke-virtual {v1}, Lcom/android/server/am/ActivityStackSupervisor;->goingToSleepLocked()V
 
-    .line 11022
     invoke-virtual {p0}, Lcom/android/server/am/ActivityManagerService;->updateOomAdjLocked()V
 
-    .line 11025
     invoke-virtual {p0, v2}, Lcom/android/server/am/ActivityManagerService;->checkExcessivePowerUsageLocked(Z)V
 
-    .line 11026
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     invoke-virtual {v1, v3}, Lcom/android/server/am/ActivityManagerService$MainHandler;->removeMessages(I)V
 
-    .line 11027
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
     invoke-virtual {v1, v3}, Lcom/android/server/am/ActivityManagerService$MainHandler;->obtainMessage(I)Landroid/os/Message;
 
     move-result-object v0
 
-    .line 11028
     .local v0, "nmsg":Landroid/os/Message;
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mHandler:Lcom/android/server/am/ActivityManagerService$MainHandler;
 
@@ -109875,7 +107613,6 @@
     .param p2, "resumed"    # Z
 
     .prologue
-    .line 3757
     sget-boolean v1, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_SWITCH:Z
 
     if-eqz v1, :cond_0
@@ -109912,7 +107649,6 @@
 
     invoke-static {v1, v2}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3759
     :cond_0
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mBatteryStatsService:Lcom/android/server/am/BatteryStatsService;
 
@@ -109920,16 +107656,13 @@
 
     move-result-object v0
 
-    .line 3760
     .local v0, "stats":Lcom/android/internal/os/BatteryStatsImpl;
     if-eqz p2, :cond_2
 
-    .line 3761
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mUsageStatsService:Landroid/app/usage/UsageStatsManagerInternal;
 
     if-eqz v1, :cond_1
 
-    .line 3762
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mUsageStatsService:Landroid/app/usage/UsageStatsManagerInternal;
 
     iget-object v2, p1, Lcom/android/server/am/ActivityRecord;->realActivity:Landroid/content/ComponentName;
@@ -109940,11 +107673,9 @@
 
     invoke-virtual {v1, v2, v3, v4}, Landroid/app/usage/UsageStatsManagerInternal;->reportEvent(Landroid/content/ComponentName;II)V
 
-    .line 3765
     :cond_1
     monitor-enter v0
 
-    .line 3766
     :try_start_0
     iget-object v1, p1, Lcom/android/server/am/ActivityRecord;->app:Lcom/android/server/am/ProcessRecord;
 
@@ -109952,14 +107683,11 @@
 
     invoke-virtual {v0, v1}, Lcom/android/internal/os/BatteryStatsImpl;->noteActivityResumedLocked(I)V
 
-    .line 3767
     monitor-exit v0
 
-    .line 3777
     :goto_0
     return-void
 
-    .line 3767
     :catchall_0
     move-exception v1
 
@@ -109969,13 +107697,11 @@
 
     throw v1
 
-    .line 3769
     :cond_2
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mUsageStatsService:Landroid/app/usage/UsageStatsManagerInternal;
 
     if-eqz v1, :cond_3
 
-    .line 3770
     iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mUsageStatsService:Landroid/app/usage/UsageStatsManagerInternal;
 
     iget-object v2, p1, Lcom/android/server/am/ActivityRecord;->realActivity:Landroid/content/ComponentName;
@@ -109986,11 +107712,9 @@
 
     invoke-virtual {v1, v2, v3, v4}, Landroid/app/usage/UsageStatsManagerInternal;->reportEvent(Landroid/content/ComponentName;II)V
 
-    .line 3773
     :cond_3
     monitor-enter v0
 
-    .line 3774
     :try_start_1
     iget-object v1, p1, Lcom/android/server/am/ActivityRecord;->app:Lcom/android/server/am/ProcessRecord;
 
@@ -109998,7 +107722,6 @@
 
     invoke-virtual {v0, v1}, Lcom/android/internal/os/BatteryStatsImpl;->noteActivityPausedLocked(I)V
 
-    .line 3775
     monitor-exit v0
 
     goto :goto_0
@@ -110018,7 +107741,6 @@
     .param p1, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 17717
     if-eqz p1, :cond_0
 
     invoke-virtual {p1}, Landroid/content/Intent;->hasFileDescriptors()Z
@@ -110029,7 +107751,6 @@
 
     if-ne v1, v2, :cond_0
 
-    .line 17718
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     const-string v2, "File descriptors passed in Intent"
@@ -110038,26 +107759,22 @@
 
     throw v1
 
-    .line 17721
     :cond_0
     invoke-virtual {p1}, Landroid/content/Intent;->getFlags()I
 
     move-result v0
 
-    .line 17723
     .local v0, "flags":I
     iget-boolean v1, p0, Lcom/android/server/am/ActivityManagerService;->mProcessesReady:Z
 
     if-nez v1, :cond_1
 
-    .line 17726
     const/high16 v1, 0x4000000
 
     and-int/2addr v1, v0
 
     if-eqz v1, :cond_2
 
-    .line 17735
     :cond_1
     const/high16 v1, 0x2000000
 
@@ -110065,7 +107782,6 @@
 
     if-eqz v1, :cond_3
 
-    .line 17736
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
     const-string v2, "Can\'t use FLAG_RECEIVER_BOOT_UPGRADE here"
@@ -110074,7 +107790,6 @@
 
     throw v1
 
-    .line 17728
     :cond_2
     const/high16 v1, 0x40000000    # 2.0f
 
@@ -110082,7 +107797,6 @@
 
     if-nez v1, :cond_1
 
-    .line 17729
     const-string v1, "ActivityManager"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -110111,7 +107825,6 @@
 
     invoke-static {v1, v2}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 17731
     new-instance v1, Ljava/lang/IllegalStateException;
 
     const-string v2, "Cannot broadcast before boot completed"
@@ -110120,7 +107833,6 @@
 
     throw v1
 
-    .line 17740
     :cond_3
     return-object p1
 .end method
@@ -110130,27 +107842,22 @@
     .param p1, "token"    # Landroid/os/IBinder;
 
     .prologue
-    .line 4958
     monitor-enter p0
 
-    .line 4959
     :try_start_0
     invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->getStackLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityStack;
 
     move-result-object v0
 
-    .line 4960
     .local v0, "stack":Lcom/android/server/am/ActivityStack;
     if-eqz v0, :cond_0
 
-    .line 4961
     invoke-virtual {v0, p1}, Lcom/android/server/am/ActivityStack;->willActivityBeVisibleLocked(Landroid/os/IBinder;)Z
 
     move-result v1
 
     monitor-exit p0
 
-    .line 4963
     :goto_0
     return v1
 
@@ -110161,7 +107868,6 @@
 
     goto :goto_0
 
-    .line 4964
     .end local v0    # "stack":Lcom/android/server/am/ActivityStack;
     :catchall_0
     move-exception v1
@@ -110171,4 +107877,589 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
+.end method
+
+.method static invokeMethodKillProcessGroup(II)V
+    .locals 0
+    .param p0, "uid"    # I
+    .param p1, "pid"    # I
+
+    .prologue
+    invoke-static {p0, p1}, Lcom/android/server/am/ActivityManagerService;->killProcessGroup(II)V
+
+    return-void
+.end method
+
+.method public static killFlymeProcessGroup(II)V
+    .locals 3
+    .param p0, "uid"    # I
+    .param p1, "pid"    # I
+
+    .prologue
+    sget-object v0, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->mKillProcessHandler:Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector$KillProcessBackground;
+
+    if-nez v0, :cond_0
+
+    invoke-static {p0, p1}, Lcom/android/server/am/ActivityManagerService;->killProcessGroup(II)V
+
+    return-void
+
+    :cond_0
+    sget-object v0, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->mKillProcessHandler:Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector$KillProcessBackground;
+
+    sget-object v1, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->mKillProcessHandler:Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector$KillProcessBackground;
+
+    const/16 v2, 0x3e8
+
+    invoke-virtual {v1, v2, p0, p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector$KillProcessBackground;->obtainMessage(III)Landroid/os/Message;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector$KillProcessBackground;->sendMessage(Landroid/os/Message;)Z
+
+    return-void
+.end method
+
+.method flymeInvokeMethodRemoveTaskByIdLocked(IZ)Z
+    .locals 1
+    .param p1, "taskId"    # I
+    .param p2, "killProcess"    # Z
+
+    .prologue
+    invoke-direct {p0, p1, p2}, Lcom/android/server/am/ActivityManagerService;->removeTaskByIdLocked(IZ)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method flymeInvokeMethodStartUser(IZ)Z
+    .locals 1
+    .param p1, "userId"    # I
+    .param p2, "foreground"    # Z
+
+    .prologue
+    invoke-direct {p0, p1, p2}, Lcom/android/server/am/ActivityManagerService;->startUser(IZ)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method forceStopFlymePackageLocked(Landroid/content/Intent;)V
+    .locals 13
+    .param p1, "intent"    # Landroid/content/Intent;
+
+    .prologue
+    const/4 v4, 0x0
+
+    const/4 v8, -0x1
+
+    const/4 v3, 0x1
+
+    invoke-virtual {p1}, Landroid/content/Intent;->getData()Landroid/net/Uri;
+
+    move-result-object v11
+
+    .local v11, "data":Landroid/net/Uri;
+    invoke-virtual {v11}, Landroid/net/Uri;->getSchemeSpecificPart()Ljava/lang/String;
+
+    move-result-object v1
+
+    .local v1, "ssp":Ljava/lang/String;
+    invoke-virtual {p1}, Landroid/content/Intent;->getAction()Ljava/lang/String;
+
+    move-result-object v10
+
+    .local v10, "action":Ljava/lang/String;
+    const-string v0, "android.intent.action.PACKAGE_REMOVED"
+
+    invoke-virtual {v0, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v12
+
+    .local v12, "removed":Z
+    const-string v0, "android.intent.extra.UID"
+
+    invoke-virtual {p1, v0, v8}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
+
+    move-result v0
+
+    invoke-static {v0}, Landroid/os/UserHandle;->getAppId(I)I
+
+    move-result v2
+
+    if-eqz v12, :cond_0
+
+    const-string v9, "pkg removed"
+
+    :goto_0
+    move-object v0, p0
+
+    move v5, v3
+
+    move v6, v3
+
+    move v7, v4
+
+    invoke-direct/range {v0 .. v9}, Lcom/android/server/am/ActivityManagerService;->forceStopPackageLocked(Ljava/lang/String;IZZZZZILjava/lang/String;)Z
+
+    return-void
+
+    :cond_0
+    const-string v9, "pkg changed"
+
+    goto :goto_0
+.end method
+
+.method forceStopFlymePackageLocked(Landroid/os/Message;)V
+    .locals 11
+    .param p1, "msg"    # Landroid/os/Message;
+
+    .prologue
+    const/4 v4, 0x0
+
+    const/4 v3, 0x1
+
+    iget v2, p1, Landroid/os/Message;->arg1:I
+
+    .local v2, "appid":I
+    iget-object v10, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    check-cast v10, Landroid/os/Bundle;
+
+    .local v10, "bundle":Landroid/os/Bundle;
+    const-string v0, "pkg"
+
+    invoke-virtual {v10, v0}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    .local v1, "pkg":Ljava/lang/String;
+    const-string v0, "reason"
+
+    invoke-virtual {v10, v0}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v9
+
+    .local v9, "reason":Ljava/lang/String;
+    const/4 v8, -0x1
+
+    move-object v0, p0
+
+    move v5, v3
+
+    move v6, v3
+
+    move v7, v4
+
+    invoke-direct/range {v0 .. v9}, Lcom/android/server/am/ActivityManagerService;->forceStopPackageLocked(Ljava/lang/String;IZZZZZILjava/lang/String;)Z
+
+    return-void
+.end method
+
+.method public killPid(ILjava/lang/String;)V
+    .locals 5
+    .param p1, "pid"    # I
+    .param p2, "reason"    # Ljava/lang/String;
+
+    .prologue
+    const-string v2, "android.permission.FORCE_STOP_PACKAGES"
+
+    invoke-virtual {p0, v2}, Lcom/android/server/am/ActivityManagerService;->checkCallingPermission(Ljava/lang/String;)I
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    new-instance v2, Ljava/lang/SecurityException;
+
+    const-string v3, "Permission Denial: killPid"
+
+    invoke-direct {v2, v3}, Ljava/lang/SecurityException;-><init>(Ljava/lang/String;)V
+
+    throw v2
+
+    :cond_0
+    new-instance v1, Ljava/lang/StringBuffer;
+
+    invoke-direct {v1}, Ljava/lang/StringBuffer;-><init>()V
+
+    .local v1, "reasonBuffer":Ljava/lang/StringBuffer;
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+
+    move-result-object v2
+
+    const-string v3, ", killPid by "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+
+    move-result-object v2
+
+    invoke-static {}, Landroid/os/Binder;->getCallingPid()I
+
+    move-result v3
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuffer;->append(I)Ljava/lang/StringBuffer;
+
+    iget-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mPidsSelfLocked:Landroid/util/SparseArray;
+
+    monitor-enter v3
+
+    :try_start_0
+    iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mPidsSelfLocked:Landroid/util/SparseArray;
+
+    invoke-virtual {v2, p1}, Landroid/util/SparseArray;->get(I)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/server/am/ProcessRecord;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .local v0, "proc":Lcom/android/server/am/ProcessRecord;
+    if-nez v0, :cond_1
+
+    monitor-exit v3
+
+    return-void
+
+    :cond_1
+    :try_start_1
+    iget-boolean v2, v0, Lcom/android/server/am/ProcessRecord;->killedByAm:Z
+
+    if-nez v2, :cond_2
+
+    invoke-virtual {v1}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    const/4 v4, 0x1
+
+    invoke-virtual {v0, v2, v4}, Lcom/android/server/am/ProcessRecord;->kill(Ljava/lang/String;Z)V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    :cond_2
+    monitor-exit v3
+
+    return-void
+
+    .end local v0    # "proc":Lcom/android/server/am/ProcessRecord;
+    :catchall_0
+    move-exception v2
+
+    monitor-exit v3
+
+    throw v2
+.end method
+
+.method public overridePendingTransition(Landroid/os/IBinder;Ljava/lang/String;Landroid/os/Bundle;)V
+    .locals 5
+    .param p1, "token"    # Landroid/os/IBinder;
+    .param p2, "packageName"    # Ljava/lang/String;
+    .param p3, "options"    # Landroid/os/Bundle;
+
+    .prologue
+    monitor-enter p0
+
+    :try_start_0
+    invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->isInStackLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    move-result-object v2
+
+    .local v2, "self":Lcom/android/server/am/ActivityRecord;
+    if-nez v2, :cond_0
+
+    monitor-exit p0
+
+    return-void
+
+    :cond_0
+    :try_start_1
+    invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
+
+    move-result-wide v0
+
+    .local v0, "origId":J
+    iget-object v3, v2, Lcom/android/server/am/ActivityRecord;->state:Lcom/android/server/am/ActivityStack$ActivityState;
+
+    sget-object v4, Lcom/android/server/am/ActivityStack$ActivityState;->RESUMED:Lcom/android/server/am/ActivityStack$ActivityState;
+
+    if-eq v3, v4, :cond_1
+
+    iget-object v3, v2, Lcom/android/server/am/ActivityRecord;->state:Lcom/android/server/am/ActivityStack$ActivityState;
+
+    sget-object v4, Lcom/android/server/am/ActivityStack$ActivityState;->PAUSING:Lcom/android/server/am/ActivityStack$ActivityState;
+
+    if-ne v3, v4, :cond_2
+
+    :cond_1
+    iget-object v3, p0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
+
+    invoke-virtual {v3, p2, p3}, Lcom/android/server/wm/WindowManagerService;->overridePendingAppTransition(Ljava/lang/String;Landroid/os/Bundle;)V
+
+    :cond_2
+    invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    monitor-exit p0
+
+    return-void
+
+    .end local v0    # "origId":J
+    .end local v2    # "self":Lcom/android/server/am/ActivityRecord;
+    :catchall_0
+    move-exception v3
+
+    monitor-exit p0
+
+    throw v3
+.end method
+
+.method public removeTaskNotKillProcess(I)Z
+    .locals 4
+    .param p1, "taskId"    # I
+
+    .prologue
+    monitor-enter p0
+
+    :try_start_0
+    const-string v2, "android.permission.REMOVE_TASKS"
+
+    const-string v3, "removeTaskNotKillProcess()"
+
+    invoke-virtual {p0, v2, v3}, Lcom/android/server/am/ActivityManagerService;->enforceCallingPermission(Ljava/lang/String;Ljava/lang/String;)V
+
+    invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_1
+
+    move-result-wide v0
+
+    .local v0, "ident":J
+    const/4 v2, 0x0
+
+    :try_start_1
+    invoke-direct {p0, p1, v2}, Lcom/android/server/am/ActivityManagerService;->removeTaskByIdLocked(IZ)Z
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    move-result v2
+
+    :try_start_2
+    invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
+
+    monitor-exit p0
+
+    return v2
+
+    :catchall_0
+    move-exception v2
+
+    :try_start_3
+    invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
+
+    throw v2
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_1
+
+    .line 9410
+    .end local v0    # "ident":J
+    :catchall_1
+    move-exception v2
+
+    monitor-exit p0
+
+    throw v2
+.end method
+
+.method public setPackageManager(Lcom/android/server/pm/PackageManagerService;)V
+    .locals 1
+    .param p1, "pm"    # Lcom/android/server/pm/PackageManagerService;
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
+
+    invoke-virtual {v0, p1}, Lcom/android/server/am/ActivityStackSupervisor;->setPackageManager(Lcom/android/server/pm/PackageManagerService;)V
+
+    return-void
+.end method
+
+.method public shrinkProcessMemory(II)V
+    .locals 6
+    .param p1, "pid"    # I
+    .param p2, "level"    # I
+
+    .prologue
+    new-instance v3, Ljava/util/ArrayList;
+
+    iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
+
+    invoke-direct {v3, v4}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
+
+    .local v3, "procs":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/server/am/ProcessRecord;>;"
+    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
+
+    move-result v4
+
+    add-int/lit8 v2, v4, -0x1
+
+    .local v2, "i":I
+    :goto_0
+    if-ltz v2, :cond_2
+
+    invoke-virtual {v3, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/server/am/ProcessRecord;
+
+    .local v0, "app":Lcom/android/server/am/ProcessRecord;
+    iget-boolean v4, v0, Lcom/android/server/am/ProcessRecord;->killedByAm:Z
+
+    if-nez v4, :cond_0
+
+    iget-object v4, v0, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
+
+    if-eqz v4, :cond_0
+
+    const/4 v4, -0x1
+
+    if-ne p1, v4, :cond_1
+
+    .line 15888
+    :try_start_0
+    new-instance v4, Landroid/app/FlymeExtIApplicationThreadProxy;
+
+    invoke-direct {v4}, Landroid/app/FlymeExtIApplicationThreadProxy;-><init>()V
+
+    iget-object v5, v0, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
+
+    invoke-interface {v5}, Landroid/app/IApplicationThread;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v5
+
+    invoke-virtual {v4, v5, p2}, Landroid/app/FlymeExtIApplicationThreadProxy;->scheduleShrinkMemory(Landroid/os/IBinder;I)V
+
+    .line 12058
+    :cond_0
+    :goto_1
+    add-int/lit8 v2, v2, -0x1
+
+    goto :goto_0
+
+    :cond_1
+    iget v4, v0, Lcom/android/server/am/ProcessRecord;->pid:I
+
+    if-ne p1, v4, :cond_0
+
+    new-instance v4, Landroid/app/FlymeExtIApplicationThreadProxy;
+
+    invoke-direct {v4}, Landroid/app/FlymeExtIApplicationThreadProxy;-><init>()V
+
+    iget-object v5, v0, Lcom/android/server/am/ProcessRecord;->thread:Landroid/app/IApplicationThread;
+
+    invoke-interface {v5}, Landroid/app/IApplicationThread;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v5
+
+    invoke-virtual {v4, v5, p2}, Landroid/app/FlymeExtIApplicationThreadProxy;->scheduleShrinkMemory(Landroid/os/IBinder;I)V
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .end local v0    # "app":Lcom/android/server/am/ProcessRecord;
+    :cond_2
+    return-void
+
+    .restart local v0    # "app":Lcom/android/server/am/ProcessRecord;
+    :catch_0
+    move-exception v1
+
+    .local v1, "e":Landroid/os/RemoteException;
+    goto :goto_1
+.end method
+
+.method public startAccessControlService()V
+    .locals 6
+
+    .prologue
+    :try_start_0
+    new-instance v0, Lcom/meizu/server/AccessControlService;
+
+    iget-object v4, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
+
+    iget-object v5, p0, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
+
+    invoke-virtual {v5}, Lcom/android/server/wm/WindowManagerService;->getWindowManagerPolicy()Landroid/view/WindowManagerPolicy;
+
+    move-result-object v5
+
+    invoke-direct {v0, v4, v5}, Lcom/meizu/server/AccessControlService;-><init>(Landroid/content/Context;Landroid/view/WindowManagerPolicy;)V
+
+    .local v0, "accessControlService":Lcom/meizu/server/AccessControlService;
+    const-string v4, "access_control"
+
+    invoke-static {v4, v0}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {v0}, Lcom/meizu/server/AccessControlService;->systemReady()V
+
+    const-string v4, "package"
+
+    invoke-static {v4}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
+
+    move-result-object v2
+
+    .local v2, "pkg":Landroid/os/IBinder;
+    invoke-static {v2}, Landroid/content/pm/IPackageManager$Stub;->asInterface(Landroid/os/IBinder;)Landroid/content/pm/IPackageManager;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/android/server/pm/PackageManagerService;
+
+    .local v3, "pkgService":Lcom/android/server/pm/PackageManagerService;
+    invoke-virtual {p0, v3}, Lcom/android/server/am/ActivityManagerService;->setPackageManager(Lcom/android/server/pm/PackageManagerService;)V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    .end local v0    # "accessControlService":Lcom/meizu/server/AccessControlService;
+    .end local v2    # "pkg":Landroid/os/IBinder;
+    .end local v3    # "pkgService":Lcom/android/server/pm/PackageManagerService;
+    :cond_0
+    :goto_0
+    return-void
+
+    :catch_0
+    move-exception v1
+
+    .local v1, "e":Ljava/lang/Exception;
+    const-string v4, "ActivityManager"
+
+    const-string v5, "Unable to start AccessControlService!!"
+
+    invoke-static {v4, v5}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_0
+.end method
+
+.method final startFlymeProcessLocked(Lcom/android/server/am/ProcessRecord;)V
+    .locals 2
+    .param p1, "app"    # Lcom/android/server/am/ProcessRecord;
+
+    .prologue
+    const-string v0, "restart"
+
+    const/4 v1, 0x0
+
+    invoke-direct {p0, p1, v0, v1}, Lcom/android/server/am/ActivityManagerService;->startProcessLocked(Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 21176
+    return-void
 .end method
