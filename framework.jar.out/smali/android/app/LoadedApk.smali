@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/app/LoadedApk$FlymeInjector;,
         Landroid/app/LoadedApk$1;,
         Landroid/app/LoadedApk$ServiceDispatcher;,
         Landroid/app/LoadedApk$ReceiverDispatcher;,
@@ -3126,6 +3127,8 @@
 
     iput-object v1, p0, Landroid/app/LoadedApk;->mApplication:Landroid/app/Application;
 
+    invoke-static {}, Landroid/app/LoadedApk$FlymeInjector;->cleanFlymeTypeface()V
+
     if-eqz p2, :cond_6
 
     :try_start_1
@@ -3316,7 +3319,7 @@
 
     check-cast v10, Ljava/lang/String;
 
-    invoke-direct {p0, v11, v10, v7}, Landroid/app/LoadedApk;->rewriteRValues(Ljava/lang/ClassLoader;Ljava/lang/String;I)V
+    invoke-static {p0, v11, v10, v7}, Landroid/app/LoadedApk$FlymeInjector;->rewriteRValues(Landroid/app/LoadedApk;Ljava/lang/ClassLoader;Ljava/lang/String;I)V
 
     goto :goto_1
 .end method

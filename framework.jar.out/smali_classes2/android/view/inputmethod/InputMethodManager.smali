@@ -6,6 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/view/inputmethod/InputMethodManager$InputShownChangeListener;,
+        Landroid/view/inputmethod/InputMethodManager$FlymeInjector;,
         Landroid/view/inputmethod/InputMethodManager$PendingEvent;,
         Landroid/view/inputmethod/InputMethodManager$ImeInputEventSender;,
         Landroid/view/inputmethod/InputMethodManager$FinishedInputEventCallback;,
@@ -3107,9 +3109,9 @@
     .line 1451
     :cond_0
 
-    invoke-static {p0, v10}, Landroid/view/inputmethod/InputMethodManager$FlymeInjector;->onWindowFocus(Landroid/view/inputmethod/InputMethodManager;Z)Z
+    invoke-static {p0, v11}, Landroid/view/inputmethod/InputMethodManager$FlymeInjector;->onWindowFocus(Landroid/view/inputmethod/InputMethodManager;Z)Z
 
-    move-result v10
+    move-result v11
 
     if-eqz p2, :cond_3
 
@@ -4818,6 +4820,8 @@
     const/4 v1, 0x0
 
     iput-boolean v1, p0, Landroid/view/inputmethod/InputMethodManager;->mServedConnecting:Z
+
+    invoke-static/range {p0 .. p0}, Landroid/view/inputmethod/InputMethodManager$FlymeInjector;->adjustEditorInfo(Landroid/view/inputmethod/InputMethodManager;)V
 
     .line 1217
     invoke-direct {p0}, Landroid/view/inputmethod/InputMethodManager;->notifyInputConnectionFinished()V

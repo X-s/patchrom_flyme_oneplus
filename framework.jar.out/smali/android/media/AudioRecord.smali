@@ -2579,7 +2579,7 @@
     const/4 v6, 0x0
 
     :try_start_1
-    invoke-direct {p0, v4, v6}, Landroid/media/AudioRecord;->native_start(II)I
+    invoke-direct {p0, v4, v6}, Landroid/media/AudioRecord;->hook_native_start(II)I
 
     move-result v4
 

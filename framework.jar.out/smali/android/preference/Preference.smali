@@ -422,6 +422,8 @@
     iput-boolean v5, p0, Landroid/preference/Preference;->mCanRecycleLayout:Z
 
     :cond_1
+    invoke-direct/range {p0 .. p0}, Landroid/preference/Preference;->flymeShouldRecycle()V
+
     return-void
 
     nop
@@ -2019,6 +2021,8 @@
 
     .line 603
     :cond_b
+    invoke-virtual/range {p0 .. p1}, Landroid/preference/Preference;->setPreferenceView(Landroid/view/View;)V
+
     return-void
 
     .line 553

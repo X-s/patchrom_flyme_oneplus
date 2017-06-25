@@ -10,6 +10,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/content/Intent$FlymeInjector;,
         Landroid/content/Intent$FilterComparison;,
         Landroid/content/Intent$ShortcutIconResource;
     }
@@ -4902,6 +4903,8 @@
     iput v4, p0, Landroid/content/Intent;->mContentUserHint:I
 
     :cond_12
+    invoke-static/range {p0 .. p1}, Landroid/content/Intent$FlymeInjector;->copyMeizuFlag(Landroid/content/Intent;Landroid/content/Intent;)V
+
     return v0
 
     :cond_13

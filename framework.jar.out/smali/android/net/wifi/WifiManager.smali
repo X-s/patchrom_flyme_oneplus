@@ -3834,64 +3834,33 @@
 .end method
 
 .method public setWifiEnabled(Z)Z
-    .locals 5
+    .locals 2
     .param p1, "enabled"    # Z
 
     .prologue
-    const/4 v3, 0x0
-
-    .line 1474
-    invoke-static {}, Landroid/util/OpFeatures;->isSupportedCTAPermissionControl()Z
-
-    move-result v4
-
-    if-eqz v4, :cond_0
-
-    .line 1475
-    new-instance v1, Landroid/util/Permission;
-
-    iget-object v4, p0, Landroid/net/wifi/WifiManager;->mContext:Landroid/content/Context;
-
-    invoke-direct {v1, v4}, Landroid/util/Permission;-><init>(Landroid/content/Context;)V
-
-    .line 1476
-    .local v1, "requester":Landroid/util/Permission;
-    const-string v4, "CUSTOM_PERMISSION_CONTROL_WIFI"
-
-    invoke-virtual {v1, v4}, Landroid/util/Permission;->requestPermissionAuto(Ljava/lang/String;)Z
-
-    move-result v2
-
-    .line 1477
-    .local v2, "result":Z
-    if-nez v2, :cond_0
-
-    .line 1486
-    .end local v1    # "requester":Landroid/util/Permission;
-    .end local v2    # "result":Z
-    :goto_0
-    return v3
-
-    .line 1484
-    :cond_0
+    .line 1444
     :try_start_0
-    iget-object v4, p0, Landroid/net/wifi/WifiManager;->mService:Landroid/net/wifi/IWifiManager;
+    invoke-direct/range {p0 .. p0}, Landroid/net/wifi/WifiManager;->enforceFlymeWifiPermission()V
 
-    invoke-interface {v4, p1}, Landroid/net/wifi/IWifiManager;->setWifiEnabled(Z)Z
+    iget-object v1, p0, Landroid/net/wifi/WifiManager;->mService:Landroid/net/wifi/IWifiManager;
+
+    invoke-interface {v1, p1}, Landroid/net/wifi/IWifiManager;->setWifiEnabled(Z)Z
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    move-result v3
+    move-result v1
 
-    goto :goto_0
+    return v1
 
-    .line 1485
+    .line 1445
     :catch_0
     move-exception v0
 
-    .line 1486
+    .line 1446
     .local v0, "e":Landroid/os/RemoteException;
-    goto :goto_0
+    const/4 v1, 0x0
+
+    return v1
 .end method
 
 .method public startCustomizedScan(Landroid/net/wifi/ScanSettings;)Z

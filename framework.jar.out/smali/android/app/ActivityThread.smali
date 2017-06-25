@@ -6,6 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/app/ActivityThread$FlymeApplicationThread;,
+        Landroid/app/ActivityThread$FlymeInjector;,
         Landroid/app/ActivityThread$DropBoxReporter;,
         Landroid/app/ActivityThread$EventLoggingReporter;,
         Landroid/app/ActivityThread$ProviderRefCount;,
@@ -406,7 +408,7 @@
 
     new-instance v0, Landroid/app/ActivityThread$FlymeApplicationThread;
 
-    invoke-direct {v0, p0, v1}, Landroid/app/ActivityThread$ApplicationThread;-><init>(Landroid/app/ActivityThread;Landroid/app/ActivityThread$1;)V
+    invoke-direct {v0, p0}, Landroid/app/ActivityThread$FlymeApplicationThread;-><init>(Landroid/app/ActivityThread;)V
 
     iput-object v0, p0, Landroid/app/ActivityThread;->mAppThread:Landroid/app/ActivityThread$ApplicationThread;
 
@@ -9397,6 +9399,8 @@
     .param p5, "dontReport"    # Z
 
     .prologue
+    invoke-static/range {p0 .. p0}, Landroid/app/ActivityThread$FlymeInjector;->handleFlymePauseActivity(Landroid/app/ActivityThread;)V
+
     iget-object v1, p0, Landroid/app/ActivityThread;->mActivities:Landroid/util/ArrayMap;
 
     invoke-virtual {v1, p1}, Landroid/util/ArrayMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -9651,6 +9655,13 @@
 
     invoke-virtual {v7, p1}, Landroid/content/BroadcastReceiver;->setPendingResult(Landroid/content/BroadcastReceiver$PendingResult;)V
 
+
+    invoke-static {p1, v6}, Landroid/app/ActivityThread$FlymeInjector;->isFlymePermissionGranted(Landroid/app/ActivityThread$ReceiverData;Landroid/app/LoadedApk;)Z
+
+    move-result v10
+
+    if-nez v10, :cond_flyme_0
+
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v8
@@ -9721,6 +9732,7 @@
     move-result-object v11
 
     invoke-static {v10, v11}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+    :cond_flyme_0
     :try_end_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
@@ -17253,6 +17265,8 @@
     move-result-object v8
 
     .local v8, "r":Landroid/content/res/Resources;
+    invoke-virtual {v8, p1}, Landroid/content/res/Resources;->setFlymeThemeResource(Ljava/lang/String;)V
+
     return-object v8
 .end method
 
@@ -17331,6 +17345,12 @@
     move-result-object v9
 
     .local v9, "r":Landroid/content/res/Resources;
+    move-object/from16 v0, p7
+
+    iget-object v0, v0, Landroid/content/res/CompatibilityInfo;->packageName:Ljava/lang/String;
+
+    invoke-virtual {v9, v0}, Landroid/content/res/Resources;->setFlymeThemeResource(Ljava/lang/String;)V
+
     return-object v9
 .end method
 

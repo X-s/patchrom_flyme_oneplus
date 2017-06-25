@@ -41,6 +41,13 @@
 
 
 # instance fields
+
+.field public mFlymeNotificationBuilder:Landroid/app/NotificationBuilderExt;
+
+.field private mFlymeReplyIntent:Landroid/app/PendingIntent;
+
+.field private mFlymeSnoozeIntent:Landroid/app/PendingIntent;
+
 .field private mActionIntentOnStatusBar:Landroid/content/Intent;
 
 .field private mActions:Ljava/util/ArrayList;
@@ -422,6 +429,8 @@
     if-eqz v3, :cond_0
 
     invoke-virtual {p0, v3}, Landroid/app/Notification$Builder;->setStyle(Landroid/app/Notification$Style;)Landroid/app/Notification$Builder;
+
+    invoke-direct/range {p0 .. p0}, Landroid/app/Notification$Builder;->initFlymeExtraFields()V
 
     goto :goto_0
 
@@ -4454,6 +4463,8 @@
 
     # setter for: Landroid/app/Notification;->mActionIntentOnStatusBar:Landroid/content/Intent;
     invoke-static {v0, v1}, Landroid/app/Notification;->access$1702(Landroid/app/Notification;Landroid/content/Intent;)Landroid/content/Intent;
+
+    invoke-direct {p0, v0}, Landroid/app/Notification$Builder;->buildUnstyledFlyme(Landroid/app/Notification;)V
 
     return-object v0
 .end method

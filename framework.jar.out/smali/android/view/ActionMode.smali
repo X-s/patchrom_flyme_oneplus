@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/view/ActionMode$BackPressedListener;,
         Landroid/view/ActionMode$Callback2;,
         Landroid/view/ActionMode$Callback;
     }

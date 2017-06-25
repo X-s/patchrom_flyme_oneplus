@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/app/SystemServiceRegistry$FlymeAccessControlServiceFetcher;,
         Landroid/app/SystemServiceRegistry$StaticOuterContextServiceFetcher;,
         Landroid/app/SystemServiceRegistry$StaticServiceFetcher;,
         Landroid/app/SystemServiceRegistry$CachedServiceFetcher;,

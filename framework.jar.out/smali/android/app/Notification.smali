@@ -9,6 +9,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/app/Notification$FlymeInjector;,
         Landroid/app/Notification$BuilderRemoteViews;,
         Landroid/app/Notification$CarExtender;,
         Landroid/app/Notification$WearableExtender;,
@@ -518,6 +519,8 @@
     .param p8, "contentIntent"    # Landroid/content/Intent;
 
     .prologue
+    invoke-static/range {p0 .. p0}, Landroid/app/Notification$FlymeInjector;->initFlymeExtFields(Landroid/app/Notification;)V
+
     const/4 v1, -0x1
 
     const/4 v2, 0x0
@@ -1166,6 +1169,8 @@
     iput-boolean v2, p0, Landroid/app/Notification;->isDefaultColor:Z
 
     :cond_e
+    invoke-static/range {p0 .. p1}, Landroid/app/Notification$FlymeInjector;->readFromParcelFlyme(Landroid/app/Notification;Landroid/os/Parcel;)V
+
     return-void
 
     :cond_f
@@ -2340,6 +2345,8 @@
     iput-boolean v5, p1, Landroid/app/Notification;->isDefaultColor:Z
 
     :cond_c
+    invoke-static/range {p0 .. p1}, Landroid/app/Notification$FlymeInjector;->cloneIntoFlyme(Landroid/app/Notification;Landroid/app/Notification;)V
+
     return-void
 .end method
 
@@ -3424,6 +3431,8 @@
 
     .line 1902
     :cond_1
+    invoke-static/range {p0 .. p2}, Landroid/app/Notification$FlymeInjector;->writeToParcelFlyme(Landroid/app/Notification;Landroid/os/Parcel;I)V
+
     return-void
 
     .line 1774

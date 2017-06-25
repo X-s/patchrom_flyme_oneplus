@@ -332,10 +332,18 @@
     .local v8, "startTime":J
     iget-object v7, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->this$0:Landroid/app/LoadedApk$ReceiverDispatcher;
 
+    invoke-static {v2, v7}, Landroid/app/LoadedApk$FlymeInjector;->isFlymeRejectReceive(Landroid/content/Intent;Landroid/app/LoadedApk$ReceiverDispatcher;)Z
+
+    move-result v7
+
+    if-nez v7, :cond_flyme_0
+    iget-object v7, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->this$0:Landroid/app/LoadedApk$ReceiverDispatcher;
+
     iget-object v7, v7, Landroid/app/LoadedApk$ReceiverDispatcher;->mContext:Landroid/content/Context;
 
     invoke-virtual {v5, v7, v2}, Landroid/content/BroadcastReceiver;->onReceive(Landroid/content/Context;Landroid/content/Intent;)V
 
+    :cond_flyme_0
     .line 906
     sget-boolean v7, Landroid/app/ActivityThread;->DEBUG_ONEPLUS:Z
 

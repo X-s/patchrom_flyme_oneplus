@@ -54,6 +54,21 @@
     .param p2, "event"    # Landroid/view/MotionEvent;
 
     .prologue
+
+    invoke-direct/range {p0 .. p2}, Landroid/widget/ListPopupWindow$PopupTouchInterceptor;->flymeHookOnTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_flyme_0
+
+    const/4 v0, 0x0
+
+    return v0
+
+    :cond_flyme_0
+
+    const/4 v5, 0x0
+
     invoke-virtual {p2}, Landroid/view/MotionEvent;->getAction()I
 
     move-result v0
