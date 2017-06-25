@@ -129,6 +129,10 @@ board_modify_apps := TeleService MediaProvider
 # You can add the property name in the value from the build.prop.
 #-----------------------------------------------------------------------------
 
+# my build.prop
+override_property += \
+    ro.product.model=ONE E1001
+
 # The property decide whether hide the soft mainkeys.
 # If 1, hide the soft mainkeys. If 0, display the soft mainkeys.
 # You should configure the property according to your device.
@@ -143,8 +147,8 @@ board_modify_apps := TeleService MediaProvider
 # The default value is Nexus-6P_Unofficial.
 # You should configure the property according to your device and your ID with replace the "Nexus-6P_Unofficial".
 override_property += \
-    ro.flyme.romer=Unofficial \
-    ro.product.model_romer=Nexus-6P_Unofficial
+    ro.flyme.romer=xs \
+    ro.product.model_romer=onyx_xs
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
