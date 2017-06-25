@@ -3073,11 +3073,7 @@
 
     invoke-virtual {v9, v0}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
 
-    move-object/from16 v0, p1
-
-    move/from16 v1, p3
-
-    invoke-direct {p0, v0, v1}, Lcom/android/server/notification/NotificationManagerService;->addFlymePackageRemoveByUserNumber(Lcom/android/server/notification/NotificationRecord;I)V
+    invoke-direct {p0, p1, p3}, Lcom/android/server/notification/NotificationManagerService;->addFlymePackageRemoveByUserNumber(Lcom/android/server/notification/NotificationRecord;I)V
 
     packed-switch p3, :pswitch_data_0
 
