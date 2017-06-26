@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/wifi_settings" settings:keywords="@string/keywords_wifi"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/wifi_settings_title" android:key="wifi_enable" />
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/wifi_list" android:key="wifi_list" />
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_divider_line1" />
+    <PreferenceScreen android:title="@string/wifi_add_network" android:key="wifi_add_network" />
+    <PreferenceScreen android:title="@string/wifi_menu_advanced" android:key="wifi_advanced_settings" android:fragment="com.android.settings_ex.wifi.AdvancedWifiSettings" />
+</PreferenceScreen>

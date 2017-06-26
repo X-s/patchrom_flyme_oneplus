@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="?android:selectableItemBackground" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/oneplus_divider_crude" android:layout_width="fill_parent" android:layout_height="11.0dip" />
+    <TextView android:textColor="@color/oneplus_font_list_setting_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip" android:layout_marginBottom="4.0dip" android:text="@string/oneplus_app_list" android:layout_centerVertical="true" />
+</LinearLayout>

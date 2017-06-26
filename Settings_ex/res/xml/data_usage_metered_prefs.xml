@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/display_settings"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.widget.preference.OPPreferenceCategory android:persistent="false" android:title="@string/data_usage_metered_mobile" android:key="mobile" />
+    <com.oneplus.widget.preference.OPPreferenceCategory android:persistent="false" android:title="@string/data_usage_metered_wifi" android:key="wifi">
+        <com.oneplus.widget.preference.OPPreference android:persistent="false" android:selectable="false" android:key="wifi_disabled" android:summary="@string/data_usage_metered_wifi_disabled" />
+    </com.oneplus.widget.preference.OPPreferenceCategory>
+    <com.oneplus.widget.preference.OPPreference android:persistent="false" android:selectable="false" android:summary="@string/data_usage_metered_body" />
+</PreferenceScreen>

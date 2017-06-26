@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/content_layout" android:background="?android:selectableItemBackground" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="@dimen/oneplus_dashboard_two_line_minimum_height" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textAppearance="@style/TextAppearance.Switch" android:textColor="@color/oneplus_font_list_subtitle" android:ellipsize="end" android:id="@id/switch_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:layout_centerVertical="true" android:textAlignment="viewStart" />
+    <com.android.settings_ex.widget.ToggleSwitch android:id="@id/switch_widget" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

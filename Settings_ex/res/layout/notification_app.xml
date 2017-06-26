@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="?android:selectableItemBackground" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@android:id/icon" android:layout_width="@dimen/notification_app_icon_size" android:layout_height="@dimen/notification_app_icon_size" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_toEndOf="@android:id/icon">
+        <TextView android:textSize="@dimen/oneplus_settings_title_text_size" android:textColor="@color/oneplus_font_list_subtitle" android:ellipsize="end" android:id="@android:id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textSize="@dimen/oneplus_settings_text_size" android:textColor="@color/oneplus_font_list_text" android:ellipsize="end" android:id="@android:id/text1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@android:id/title" />
+    </RelativeLayout>
+    <View android:id="@id/row_divider" android:background="@color/oneplus_divider_fine" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="56.0dip" />
+</RelativeLayout>

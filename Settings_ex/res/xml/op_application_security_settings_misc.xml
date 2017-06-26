@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/security_settings_title"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/application_permisstion_control_title" android:key="application_permisstion_control" />
+    <com.oneplus.widget.preference.OPPreferenceCategory android:persistent="false" android:title="@string/oneplus_secuty_manager_admin_title" android:key="oneplus_secuty_manager_category">
+        <com.oneplus.widget.preference.OPPreference android:title="@string/clean_background_title" android:key="clean_background" />
+        <com.oneplus.widget.preference.OPPreference android:title="@string/auto_application_title" android:key="auto_application" />
+        <com.oneplus.widget.preference.OPPreference android:title="@string/application_permisstion_manage_title" android:key="application_permisstion_manage" android:fragment="com.android.settings_ex.notification.NotificationAccessSettings" />
+    </com.oneplus.widget.preference.OPPreferenceCategory>
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <com.oneplus.widget.preference.OPPreferenceCategory android:persistent="false" android:title="@string/device_admin_title" android:key="device_admin_category">
+        <com.oneplus.widget.preference.OPPreference android:persistent="false" android:title="@string/manage_device_admin" android:key="manage_device_admin" android:summary="@string/manage_device_admin_summary" android:fragment="com.android.settings_ex.DeviceAdminSettings" />
+        <com.oneplus.widget.preference.OPSwitchPreference android:persistent="false" android:title="@string/install_applications" android:key="toggle_install_applications" android:summaryOn="@string/install_unknown_applications" android:summaryOff="@string/install_unknown_applications" />
+    </com.oneplus.widget.preference.OPPreferenceCategory>
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <com.oneplus.widget.preference.OPPreference android:title="@string/others_applications_permission_settings" android:key="others_application_permisstion_settings" android:fragment="com.android.settings_ex.applications.ManageApplications" />
+    <com.oneplus.widget.preference.OPPreference android:title="@string/usage_access_title" android:key="usage_access" android:fragment="com.android.settings_ex.applications.ManageApplications">
+        <extra android:name="classname" android:value="com.android.settings_ex.Settings$UsageAccessSettingsActivity" />
+    </com.oneplus.widget.preference.OPPreference>
+</PreferenceScreen>

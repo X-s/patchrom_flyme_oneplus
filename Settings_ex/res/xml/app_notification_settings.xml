@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/app_notifications_title" android:key="app_notification_settings"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.widget.preference.OPSwitchPreference android:persistent="false" android:title="@string/op_app_notification_block_title" android:key="block" android:disableDependentsState="true" />
+    <com.oneplus.widget.preference.OPSwitchPreference android:persistent="false" android:title="@string/op_app_notification_priority_title" android:key="priority" android:summary="@string/op_app_notification_priority_summary" android:dependency="block" />
+    <com.android.settings_ex.ui.OPNotificationExamplePreference android:key="opnotification_example" />
+    <com.oneplus.widget.preference.OPSwitchPreference android:persistent="false" android:title="@string/app_notification_sensitive_title" android:key="sensitive" android:summary="@string/app_notification_sensitive_summary" />
+</PreferenceScreen>

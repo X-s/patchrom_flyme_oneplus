@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/oneplus_cate_vibrate_settings" android:key="cate_vibrate_settings">
+        <com.oneplus.widget.preference.OPCheckBoxPreference android:title="@string/oneplus_random_vibrate_settings_title" android:key="random_vibrate_settings" />
+        <com.oneplus.widget.preference.OPCheckBoxPreference android:title="@string/oneplus_type_one_vibrate_settings_title" android:key="type_one_vibrate_settings" />
+        <com.oneplus.widget.preference.OPCheckBoxPreference android:title="@string/oneplus_type_two_vibrate_settings_title" android:key="type_two_vibrate_settings" />
+        <com.oneplus.widget.preference.OPCheckBoxPreference android:title="@string/oneplus_type_three_vibrate_settings_title" android:key="type_three_vibrate_settings" />
+        <com.oneplus.widget.preference.OPCheckBoxPreference android:title="@string/oneplus_type_four_vibrate_settings_title" android:key="type_four_vibrate_settings" />
+        <com.oneplus.widget.preference.OPCheckBoxPreference android:title="@string/oneplus_type_five_vibrate_settings_title" android:key="type_five_vibrate_settings" />
+        <com.oneplus.widget.preference.OPCheckBoxPreference android:title="@string/oneplus_type_six_vibrate_settings_title" android:key="type_six_vibrate_settings" />
+    </com.oneplus.widget.preference.OPPreferenceCategory>
+</PreferenceScreen>

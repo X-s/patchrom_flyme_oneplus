@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/oneplus_silent_mode" android:key="threekey_settings"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/vibrate_when_mute_title" android:key="silent_mode_enable" />
+</PreferenceScreen>

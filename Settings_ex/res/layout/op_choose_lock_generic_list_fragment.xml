@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/container_material" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/pinned_header" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ListView android:scrollbarAlwaysDrawVerticalTrack="true" android:scrollbarStyle="@android:integer/preference_fragment_scrollbarStyle" android:id="@android:id/list" android:paddingTop="@dimen/dashboard_padding_top" android:paddingBottom="@dimen/dashboard_padding_bottom" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:drawSelectorOnTop="false" android:divider="@color/oneplus_divider_fine" android:dividerHeight="@dimen/oneplus_settings_dashboard_devide_minline_size" android:paddingStart="@dimen/settings_side_margin" android:paddingEnd="@dimen/settings_side_margin" android:elevation="@dimen/dashboard_category_elevation" style="@style/PreferenceFragmentListSinglePane" />
+    </FrameLayout>
+    <TextView android:textSize="@dimen/oneplus_settings_title_text_size" android:textColor="@color/oneplus_font_list_text" android:layout_gravity="center_horizontal" android:id="@id/op_tips_for_first_add_fingerprint" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="16.0dip" android:text="@string/op_first_time_add_fingerprint_tips" />
+</LinearLayout>

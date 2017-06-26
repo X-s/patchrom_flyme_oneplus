@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/timepower_power_on" android:key="power_on_switch" />
+    <com.oneplus.settings.timer.timepower.TimepowerPreference android:title="@string/timepower_power_on" android:key="power_on_settings" />
+    <com.oneplus.widget.preference.OPPreference android:title="@string/oneplus_timepower_power_on_title" android:key="oneplus_power_on_settings" />
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/timepower_power_off" android:key="power_off_switch" />
+    <com.oneplus.settings.timer.timepower.TimepowerPreference android:title="@string/timepower_power_off" android:key="power_off_settings" />
+    <com.oneplus.widget.preference.OPPreference android:title="@string/oneplus_timepower_power_off_title" android:key="oneplus_power_off_settings" />
+</PreferenceScreen>

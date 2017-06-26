@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/oneplus_main_home_color_Accent_bg_interface" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.widget.listview.OPListView android:id="@android:id/list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="?android:selectableItemBackground" android:divider="#00000000" android:dividerHeight="0.0px" android:paddingStart="@dimen/settings_side_margin" android:paddingEnd="@dimen/settings_side_margin" />
+    <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/oneplus_font_list_subtitle" android:gravity="center" android:id="@android:id/empty" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/loading_notification_apps" />
+</LinearLayout>

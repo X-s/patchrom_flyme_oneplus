@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/oneplus_sound_direct_enable" android:key="sound_direct_effort" />
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/oneplus_sound_device_direct_title" android:key="direct_devices_settings">
+        <com.android.settings_ex.location.RadioButtonPreference android:title="@string/oneplus_sound_device_jbl_earphone_title" android:key="jbl_device" />
+        <com.android.settings_ex.location.RadioButtonPreference android:title="@string/oneplus_sound_device_oneplus_silver_earphone_title" android:key="silver_device" />
+        <com.android.settings_ex.location.RadioButtonPreference android:title="@string/oneplus_sound_device_oneplus_king_earphone_title" android:key="king_device" />
+    </com.oneplus.widget.preference.OPPreferenceCategory>
+</PreferenceScreen>

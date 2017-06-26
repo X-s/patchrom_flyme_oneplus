@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/notification_settings" android:key="notification_settings" settings:keywords="@string/keywords_sounds_and_notifications"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/sound_settings" android:key="sound">
+        <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_silent_mode" android:key="oneplus_silent_mode" />
+        <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_zen_mode_settings_title" android:key="oneplus_zen_mode_settings" />
+        <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_ring_pattern" android:key="oneplus_ring_pattern" />
+        <com.oneplus.settings.notification.OPVolumeSeekBarPreference android:icon="@drawable/uc_ring" android:title="@string/ring_volume_option_title" android:key="ring_volume" />
+        <com.oneplus.settings.notification.OPVolumeSeekBarPreference android:icon="@drawable/uc_media" android:title="@string/media_volume_option_title" android:key="media_volume" />
+        <com.oneplus.settings.notification.OPVolumeSeekBarPreference android:icon="@drawable/uc_alarm" android:title="@string/alarm_volume_option_title" android:key="alarm_volume" />
+        <com.oneplus.settings.notification.OPVolumeSeekBarPreference android:icon="@android:drawable/ic_audio_ring_notif" android:title="@string/notification_volume_option_title" android:key="notification_volume" />
+    </com.oneplus.widget.preference.OPPreferenceCategory>
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="vibrate_category_preference_divider_line" />
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/vibrate_category" android:key="vibrate_category">
+        <SwitchPreference android:title="@string/oneplus_vibrate_when_ringing_title" android:key="vibrate_when_ringing" />
+        <SwitchPreference android:title="@string/vibrate_when_mute_title" android:key="vibrate_when_mute" />
+    </com.oneplus.widget.preference.OPPreferenceCategory>
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/ringtone_category" android:key="ringtone_category">
+        <com.android.settings_ex.DefaultRingtonePreference android:persistent="false" android:title="@string/ringtone_title" android:key="ringtone" android:dialogTitle="@string/ringtone_title" android:ringtoneType="ringtone" />
+        <com.oneplus.settings.ringtone.OPSmsRingtonePreference android:persistent="false" android:title="@string/message_title" android:key="message_ringtone" android:dialogTitle="@string/message_title" android:ringtoneType="notification" />
+        <com.android.settings_ex.DefaultRingtonePreference android:persistent="false" android:title="@string/notification_ringtone_title" android:key="notification_ringtone" android:dialogTitle="@string/notification_ringtone_title" android:ringtoneType="notification" />
+    </com.oneplus.widget.preference.OPPreferenceCategory>
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/sound_system_category" android:key="system_category">
+        <com.oneplus.widget.preference.OPSwitchPreference android:persistent="false" android:title="@string/touch_sounds_title" android:key="oneplus_touch_sounds" android:switchTextOn="" android:switchTextOff="" />
+        <com.oneplus.widget.preference.OPSwitchPreference android:persistent="false" android:title="@string/dial_pad_tones_title" android:key="dial_pad_tones" android:switchTextOn="" android:switchTextOff="" />
+        <com.oneplus.widget.preference.OPSwitchPreference android:persistent="false" android:title="@string/screen_locking_sounds_title" android:key="screen_locking_sounds" android:switchTextOn="" android:switchTextOff="" />
+        <com.oneplus.widget.preference.OPSwitchPreference android:persistent="false" android:title="@string/vibrate_on_touch_title" android:key="vibrate_on_touch" android:switchTextOn="" android:switchTextOff="" />
+    </com.oneplus.widget.preference.OPPreferenceCategory>
+    <com.android.settings_ex.ui.OPPreferenceThinDivider android:key="preference_divider_line" />
+    <com.oneplus.widget.preference.OPPreference android:title="@string/oneplus_sound_direct_title" android:key="sound_direct" android:fragment="com.oneplus.settings.direct.OPDirectSettings" />
+</PreferenceScreen>

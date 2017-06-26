@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/oneplus_sim_settings_title"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/oneplus_default_sim_name1" android:key="sim_setting1" />
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/oneplus_default_sim_name2" android:key="sim_setting2" />
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/sim_pref_divider" android:key="sim_activities">
+        <com.oneplus.widget.preference.OPPreference android:persistent="false" android:title="@string/primary_sub_select_title" android:key="select_primary_sub">
+            <intent android:action="codeaurora.intent.action.ACTION_LTE_CONFIGURE" />
+        </com.oneplus.widget.preference.OPPreference>
+        <com.oneplus.widget.preference.OPListPreference android:entries="@array/preferred_call_sms_card_choices" android:title="@string/oneplus_voice_msg_card" android:key="sim_calls_and_sms" android:summary="@string/oneplus_voice_msg_card" android:dialogTitle="@string/oneplus_voice_msg_card" android:entryValues="@array/preferred_call_sms_card_values" />
+        <com.oneplus.widget.preference.OPListPreference android:entries="@array/preferred_data_card_choices" android:title="@string/oneplus_data_card" android:key="sim_cellular_data" android:summary="@string/oneplus_data_card" android:dialogTitle="@string/oneplus_data_card" android:entryValues="@array/preferred_data_card_values" />
+    </com.oneplus.widget.preference.OPPreferenceCategory>
+</PreferenceScreen>

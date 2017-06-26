@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/oneplus_storage_settings_title" android:key="advance_dev_settings">
+        <com.oneplus.widget.preference.OPPreference android:title="@string/storage_usb_settings" android:key="storage_settings" android:fragment="com.android.settings_ex.deviceinfo.StorageSettings" />
+        <com.oneplus.widget.preference.OPPreference android:title="@string/memory_settings_title" android:key="manage_memory" android:fragment="com.android.settings_ex.applications.ProcessStatsSummary" />
+        <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/otg_read_enable" android:key="otg_read_enable" android:summary="@string/otg_read_summary" />
+    </com.oneplus.widget.preference.OPPreferenceCategory>
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/oneplus_advance_dev_others_settings_title" android:key="advance_dev_others_settings">
+        <com.oneplus.widget.preference.OPPreference android:title="@string/trusted_credentials" android:key="truste_security_settings" android:fragment="com.android.settings_ex.OPCredentialsManagementSettings" />
+        <com.oneplus.widget.preference.OPPreference android:id="@id/print_settings" android:title="@string/print_settings" android:fragment="com.android.settings_ex.print.PrintSettingsFragment" />
+        <com.oneplus.widget.preference.OPPreference android:id="@id/accessibility_settings" android:title="@string/accessibility_settings" android:fragment="com.android.settings_ex.accessibility.AccessibilitySettings" />
+        <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/oneplus_user_enjoy_plan_title" android:key="user_enjoy_plan" />
+    </com.oneplus.widget.preference.OPPreferenceCategory>
+</PreferenceScreen>

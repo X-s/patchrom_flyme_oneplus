@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/android_beam_enable" android:background="?android:selectableItemBackground" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="54.0dip">
+        <TextView android:textSize="@dimen/oneplus_settings_title_text_size" android:textColor="@color/oneplus_font_list_subtitle" android:ellipsize="marquee" android:id="@android:id/title" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/android_beam_settings_title" android:singleLine="true" android:layout_weight="1.0" android:layout_marginStart="15.0dip" android:layout_marginEnd="6.0dip" />
+        <com.oneplus.widget.button.OPSwitch android:id="@id/android_beam_switch" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </LinearLayout>
+    <View android:background="@color/oneplus_divider_fine" android:layout_width="fill_parent" android:layout_height="0.30000007dip" />
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textSize="@dimen/oneplus_settings_title_text_size" android:textColor="@color/oneplus_font_list_text" android:gravity="top" android:id="@id/android_beam_explained" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="33.0dip" android:text="@string/op_android_beam_explained" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip" />
+            <ImageView android:id="@id/android_beam_image" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="@null" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

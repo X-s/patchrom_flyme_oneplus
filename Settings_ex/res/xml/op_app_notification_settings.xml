@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/app_notifications_title" android:key="app_notification_settings"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.settings_ex.ui.OPNotificationExamplePreference android:key="opnotification_example" />
+    <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/op_app_notification_block_title" android:key="block" />
+    <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_normal_notification_title" android:key="normal" android:summary="@string/oneplus_normal_notification_summary" />
+    <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/op_app_notification_priority_title" android:key="priority" android:summary="@string/op_app_notification_priority_summary" />
+</PreferenceScreen>

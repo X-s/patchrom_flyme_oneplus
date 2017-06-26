@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/language_keyboard_settings_title" android:key="language_keyboard_settings"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <com.android.settings_ex.ui.OPPerference android:title="@string/phone_language" android:key="phone_language_flag" android:fragment="com.android.settings_ex.LocalePicker" />
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceScreen android:title="@string/current_input_method" android:key="current_input_method" />
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_thin_divider_line" />
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/oneplus_keyboard_settings_category" android:key="keyboard_settings_category" settings:keywords="@string/keywords_keyboard_and_ime" />
+    <com.oneplus.widget.preference.OPPreferenceCategory android:persistent="false" android:title="@string/builtin_keyboard_settings_title" android:key="hard_keyboard" />
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/game_controller_settings_category" android:key="game_controller_settings_category">
+        <com.oneplus.widget.preference.OPSwitchPreference android:persistent="false" android:title="@string/vibrate_input_devices" android:key="vibrate_input_devices" android:summaryOn="@string/vibrate_input_devices_summary" android:summaryOff="@string/vibrate_input_devices_summary" />
+    </com.oneplus.widget.preference.OPPreferenceCategory>
+</PreferenceScreen>

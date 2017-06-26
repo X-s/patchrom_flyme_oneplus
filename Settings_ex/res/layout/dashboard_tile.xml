@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="?android:selectableItemBackground" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/oneplus_dashboard_tile_minimum_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/icon" android:layout_width="@dimen/dashboard_tile_image_size" android:layout_height="@dimen/dashboard_tile_image_size" android:scaleType="centerInside" android:layout_centerVertical="true" android:layout_marginStart="@dimen/dashboard_tile_image_margin_start" android:layout_marginEnd="@dimen/dashboard_tile_image_margin_end" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/icon" android:layout_centerVertical="true">
+        <TextView android:textAppearance="@style/TextAppearance.TileTitle" android:textSize="@dimen/oneplus_settings_dashboard_tite_title_text_size" android:textColor="@color/oneplus_font_list_subtitle" android:ellipsize="marquee" android:id="@id/title" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textAppearance="@style/TextAppearance.Small" android:textColor="?android:textColorSecondary" android:id="@id/status" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/title" android:layout_alignStart="@android:id/title" />
+    </RelativeLayout>
+    <View android:id="@id/tile_divider" android:background="@color/oneplus_divider_fine" android:layout_width="fill_parent" android:layout_height="@dimen/oneplus_settings_dashboard_devide_minline_size" android:layout_toRightOf="@id/icon" android:layout_alignParentBottom="true" />
+</RelativeLayout>

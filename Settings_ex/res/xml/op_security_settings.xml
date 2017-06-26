@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/oneplus_fingerprint_password_manage_title" android:key="mobile_password_container"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/mobile_password_settings_title" android:key="mobile_password_settings">
+        <com.oneplus.widget.preference.OPPreference android:title="@string/oneplus_lock_settings_title" android:key="set_mobile_password" android:fragment="com.android.settings_ex.ChooseLockGeneric$ChooseLockGenericFragment" />
+        <com.oneplus.widget.preference.OPPreference android:title="@string/oneplus_lock_settings_title" android:key="change_mobile_password" android:fragment="com.android.settings_ex.ChooseLockGeneric$ChooseLockGenericFragment" />
+        <com.oneplus.widget.preference.OPPreference android:title="@string/discard_mobile_password" android:key="discard_mobile_password" />
+    </com.oneplus.widget.preference.OPPreferenceCategory>
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/oneplus_fingerprint_settings_title" android:key="fingerprint_settings">
+        <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/oneplus_fingerprint_unlock_mobile" android:key="fingerprint_unlock_mobile" />
+        <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/oneplus_fingerprint_check_oneplus_account" android:key="fingerprint_check_oneplus_account" />
+    </com.oneplus.widget.preference.OPPreferenceCategory>
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/oneplus_fingerprint_settings_list_title" android:key="key_fingerprint_list" />
+    <com.oneplus.widget.preference.OPPreference android:icon="@drawable/ic_menu_add" android:title="@string/oneplus_add_fingerprint_list" android:key="key_fingerprint_add" />
+    <com.android.settings_ex.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/sim_lock_title" android:key="sim_lock" />
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/sim_lock_title" android:key="signle_sim_lock">
+        <com.oneplus.widget.preference.OPPreference android:persistent="false" android:title="@string/sim_lock_settings_category" android:key="sim_lock_settings">
+            <intent android:targetPackage="com.android.settings_ex" android:action="android.intent.action.MAIN" android:targetClass="com.android.settings_ex.IccLockSettings" />
+        </com.oneplus.widget.preference.OPPreference>
+    </com.oneplus.widget.preference.OPPreferenceCategory>
+</PreferenceScreen>

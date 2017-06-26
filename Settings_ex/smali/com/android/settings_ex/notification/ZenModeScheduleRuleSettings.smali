@@ -1,0 +1,617 @@
+.class public Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;
+.super Lcom/android/settings_ex/notification/ZenModeRuleSettingsBase;
+.source "ZenModeScheduleRuleSettings.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+    }
+.end annotation
+
+
+# static fields
+.field public static final ACTION:Ljava/lang/String; = "android.settings.ZEN_MODE_SCHEDULE_RULE_SETTINGS"
+
+.field private static final KEY_DAYS:Ljava/lang/String; = "days"
+
+.field private static final KEY_END_TIME:Ljava/lang/String; = "end_time"
+
+.field private static final KEY_START_TIME:Ljava/lang/String; = "start_time"
+
+
+# instance fields
+.field private final mDayFormat:Ljava/text/SimpleDateFormat;
+
+.field private mDays:Landroid/preference/Preference;
+
+.field private mEnd:Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+.field private mSchedule:Landroid/service/notification/ZenModeConfig$ScheduleInfo;
+
+.field private mStart:Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 2
+
+    .prologue
+    .line 49
+    invoke-direct {p0}, Lcom/android/settings_ex/notification/ZenModeRuleSettingsBase;-><init>()V
+
+    .line 57
+    new-instance v0, Ljava/text/SimpleDateFormat;
+
+    const-string v1, "EEE"
+
+    invoke-direct {v0, v1}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;)V
+
+    iput-object v0, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mDayFormat:Ljava/text/SimpleDateFormat;
+
+    .line 216
+    return-void
+.end method
+
+.method static synthetic access$000(Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;)V
+    .locals 0
+    .param p0, "x0"    # Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;
+
+    .prologue
+    .line 49
+    invoke-direct {p0}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->showDaysDialog()V
+
+    return-void
+.end method
+
+.method static synthetic access$100(Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;)Landroid/service/notification/ZenModeConfig$ScheduleInfo;
+    .locals 1
+    .param p0, "x0"    # Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;
+
+    .prologue
+    .line 49
+    iget-object v0, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mSchedule:Landroid/service/notification/ZenModeConfig$ScheduleInfo;
+
+    return-object v0
+.end method
+
+.method static synthetic access$200(Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;)V
+    .locals 0
+    .param p0, "x0"    # Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;
+
+    .prologue
+    .line 49
+    invoke-direct {p0}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->updateDays()V
+
+    return-void
+.end method
+
+.method private showDaysDialog()V
+    .locals 4
+
+    .prologue
+    .line 194
+    new-instance v0, Lcom/oneplus/app/OPAlertDialog$Builder;
+
+    iget-object v1, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mContext:Landroid/content/Context;
+
+    invoke-direct {v0, v1}, Lcom/oneplus/app/OPAlertDialog$Builder;-><init>(Landroid/content/Context;)V
+
+    const v1, 0x7f0c0cb0
+
+    invoke-virtual {v0, v1}, Lcom/oneplus/app/OPAlertDialog$Builder;->setTitle(I)Lcom/oneplus/app/OPAlertDialog$Builder;
+
+    move-result-object v0
+
+    new-instance v1, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$5;
+
+    iget-object v2, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mContext:Landroid/content/Context;
+
+    iget-object v3, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mSchedule:Landroid/service/notification/ZenModeConfig$ScheduleInfo;
+
+    iget-object v3, v3, Landroid/service/notification/ZenModeConfig$ScheduleInfo;->days:[I
+
+    invoke-direct {v1, p0, v2, v3}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$5;-><init>(Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;Landroid/content/Context;[I)V
+
+    invoke-virtual {v0, v1}, Lcom/oneplus/app/OPAlertDialog$Builder;->setView(Landroid/view/View;)Lcom/oneplus/app/OPAlertDialog$Builder;
+
+    move-result-object v0
+
+    new-instance v1, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$4;
+
+    invoke-direct {v1, p0}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$4;-><init>(Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;)V
+
+    invoke-virtual {v0, v1}, Lcom/oneplus/app/OPAlertDialog$Builder;->setOnDismissListener(Landroid/content/DialogInterface$OnDismissListener;)Lcom/oneplus/app/OPAlertDialog$Builder;
+
+    move-result-object v0
+
+    const v1, 0x7f0c0b5e
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Lcom/oneplus/app/OPAlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Lcom/oneplus/app/OPAlertDialog$Builder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/oneplus/app/OPAlertDialog$Builder;->show()Lcom/oneplus/app/OPAlertDialog;
+
+    .line 214
+    return-void
+.end method
+
+.method private updateDays()V
+    .locals 8
+
+    .prologue
+    .line 145
+    iget-object v6, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mSchedule:Landroid/service/notification/ZenModeConfig$ScheduleInfo;
+
+    iget-object v2, v6, Landroid/service/notification/ZenModeConfig$ScheduleInfo;->days:[I
+
+    .line 146
+    .local v2, "days":[I
+    if-eqz v2, :cond_4
+
+    array-length v6, v2
+
+    if-lez v6, :cond_4
+
+    .line 147
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 148
+    .local v5, "sb":Ljava/lang/StringBuilder;
+    invoke-static {}, Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
+
+    move-result-object v0
+
+    .line 149
+    .local v0, "c":Ljava/util/Calendar;
+    const/4 v3, 0x0
+
+    .local v3, "i":I
+    :goto_0
+    sget-object v6, Lcom/android/settings_ex/notification/ZenModeScheduleDaysSelection;->DAYS:[I
+
+    array-length v6, v6
+
+    if-ge v3, v6, :cond_3
+
+    .line 150
+    sget-object v6, Lcom/android/settings_ex/notification/ZenModeScheduleDaysSelection;->DAYS:[I
+
+    aget v1, v6, v3
+
+    .line 151
+    .local v1, "day":I
+    const/4 v4, 0x0
+
+    .local v4, "j":I
+    :goto_1
+    array-length v6, v2
+
+    if-ge v4, v6, :cond_1
+
+    .line 152
+    aget v6, v2, v4
+
+    if-ne v1, v6, :cond_2
+
+    .line 153
+    const/4 v6, 0x7
+
+    invoke-virtual {v0, v6, v1}, Ljava/util/Calendar;->set(II)V
+
+    .line 154
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->length()I
+
+    move-result v6
+
+    if-lez v6, :cond_0
+
+    .line 155
+    iget-object v6, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mContext:Landroid/content/Context;
+
+    const v7, 0x7f0c0cb3
+
+    invoke-virtual {v6, v7}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 157
+    :cond_0
+    iget-object v6, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mDayFormat:Ljava/text/SimpleDateFormat;
+
+    invoke-virtual {v0}, Ljava/util/Calendar;->getTime()Ljava/util/Date;
+
+    move-result-object v7
+
+    invoke-virtual {v6, v7}, Ljava/text/SimpleDateFormat;->format(Ljava/util/Date;)Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 149
+    :cond_1
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_0
+
+    .line 151
+    :cond_2
+    add-int/lit8 v4, v4, 0x1
+
+    goto :goto_1
+
+    .line 162
+    .end local v1    # "day":I
+    .end local v4    # "j":I
+    :cond_3
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->length()I
+
+    move-result v6
+
+    if-lez v6, :cond_4
+
+    .line 163
+    iget-object v6, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mDays:Landroid/preference/Preference;
+
+    invoke-virtual {v6, v5}, Landroid/preference/Preference;->setSummary(Ljava/lang/CharSequence;)V
+
+    .line 164
+    iget-object v6, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mDays:Landroid/preference/Preference;
+
+    const/4 v7, 0x0
+
+    invoke-virtual {v6, v7}, Landroid/preference/Preference;->notifyDependencyChange(Z)V
+
+    .line 170
+    .end local v0    # "c":Ljava/util/Calendar;
+    .end local v3    # "i":I
+    .end local v5    # "sb":Ljava/lang/StringBuilder;
+    :goto_2
+    return-void
+
+    .line 168
+    :cond_4
+    iget-object v6, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mDays:Landroid/preference/Preference;
+
+    const v7, 0x7f0c0cb1
+
+    invoke-virtual {v6, v7}, Landroid/preference/Preference;->setSummary(I)V
+
+    .line 169
+    iget-object v6, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mDays:Landroid/preference/Preference;
+
+    const/4 v7, 0x1
+
+    invoke-virtual {v6, v7}, Landroid/preference/Preference;->notifyDependencyChange(Z)V
+
+    goto :goto_2
+.end method
+
+.method private updateEndSummary()V
+    .locals 6
+
+    .prologue
+    const/4 v3, 0x0
+
+    .line 173
+    iget-object v4, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mSchedule:Landroid/service/notification/ZenModeConfig$ScheduleInfo;
+
+    iget v4, v4, Landroid/service/notification/ZenModeConfig$ScheduleInfo;->startHour:I
+
+    mul-int/lit8 v4, v4, 0x3c
+
+    iget-object v5, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mSchedule:Landroid/service/notification/ZenModeConfig$ScheduleInfo;
+
+    iget v5, v5, Landroid/service/notification/ZenModeConfig$ScheduleInfo;->startMinute:I
+
+    add-int v2, v4, v5
+
+    .line 174
+    .local v2, "startMin":I
+    iget-object v4, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mSchedule:Landroid/service/notification/ZenModeConfig$ScheduleInfo;
+
+    iget v4, v4, Landroid/service/notification/ZenModeConfig$ScheduleInfo;->endHour:I
+
+    mul-int/lit8 v4, v4, 0x3c
+
+    iget-object v5, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mSchedule:Landroid/service/notification/ZenModeConfig$ScheduleInfo;
+
+    iget v5, v5, Landroid/service/notification/ZenModeConfig$ScheduleInfo;->endMinute:I
+
+    add-int v0, v4, v5
+
+    .line 175
+    .local v0, "endMin":I
+    if-lt v2, v0, :cond_1
+
+    const/4 v1, 0x1
+
+    .line 176
+    .local v1, "nextDay":Z
+    :goto_0
+    if-eqz v1, :cond_0
+
+    const v3, 0x7f0c0cc9
+
+    .line 177
+    .local v3, "summaryFormat":I
+    :cond_0
+    iget-object v4, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mEnd:Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+    invoke-virtual {v4, v3}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;->setSummaryFormat(I)V
+
+    .line 178
+    return-void
+
+    .end local v1    # "nextDay":Z
+    .end local v3    # "summaryFormat":I
+    :cond_1
+    move v1, v3
+
+    .line 175
+    goto :goto_0
+.end method
+
+
+# virtual methods
+.method protected getEnabledToastText()I
+    .locals 1
+
+    .prologue
+    .line 79
+    const v0, 0x7f0c0ca2
+
+    return v0
+.end method
+
+.method protected getMetricsCategory()I
+    .locals 1
+
+    .prologue
+    .line 190
+    const/16 v0, 0x90
+
+    return v0
+.end method
+
+.method protected getZenModeDependency()Ljava/lang/String;
+    .locals 1
+
+    .prologue
+    .line 74
+    iget-object v0, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mDays:Landroid/preference/Preference;
+
+    invoke-virtual {v0}, Landroid/preference/Preference;->getKey()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method protected onCreateInternal()V
+    .locals 4
+
+    .prologue
+    .line 84
+    const v2, 0x7f08008d
+
+    invoke-virtual {p0, v2}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->addPreferencesFromResource(I)V
+
+    .line 85
+    invoke-virtual {p0}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->getPreferenceScreen()Landroid/preference/PreferenceScreen;
+
+    move-result-object v1
+
+    .line 87
+    .local v1, "root":Landroid/preference/PreferenceScreen;
+    const-string v2, "days"
+
+    invoke-virtual {v1, v2}, Landroid/preference/PreferenceScreen;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mDays:Landroid/preference/Preference;
+
+    .line 88
+    iget-object v2, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mDays:Landroid/preference/Preference;
+
+    new-instance v3, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$1;
+
+    invoke-direct {v3, p0}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$1;-><init>(Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;)V
+
+    invoke-virtual {v2, v3}, Landroid/preference/Preference;->setOnPreferenceClickListener(Landroid/preference/Preference$OnPreferenceClickListener;)V
+
+    .line 96
+    invoke-virtual {p0}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->getFragmentManager()Landroid/app/FragmentManager;
+
+    move-result-object v0
+
+    .line 98
+    .local v0, "mgr":Landroid/app/FragmentManager;
+    new-instance v2, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+    iget-object v3, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mContext:Landroid/content/Context;
+
+    invoke-direct {v2, v3, v0}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;-><init>(Landroid/content/Context;Landroid/app/FragmentManager;)V
+
+    iput-object v2, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mStart:Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+    .line 99
+    iget-object v2, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mStart:Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+    const-string v3, "start_time"
+
+    invoke-virtual {v2, v3}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;->setKey(Ljava/lang/String;)V
+
+    .line 100
+    iget-object v2, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mStart:Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+    const v3, 0x7f0c0cc7
+
+    invoke-virtual {v2, v3}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;->setTitle(I)V
+
+    .line 101
+    iget-object v2, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mStart:Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+    new-instance v3, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$2;
+
+    invoke-direct {v3, p0}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$2;-><init>(Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;)V
+
+    invoke-virtual {v2, v3}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;->setCallback(Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference$Callback;)V
+
+    .line 117
+    iget-object v2, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mStart:Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+    invoke-virtual {v1, v2}, Landroid/preference/PreferenceScreen;->addPreference(Landroid/preference/Preference;)Z
+
+    .line 118
+    iget-object v2, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mStart:Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+    iget-object v3, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mDays:Landroid/preference/Preference;
+
+    invoke-virtual {v3}, Landroid/preference/Preference;->getKey()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;->setDependency(Ljava/lang/String;)V
+
+    .line 120
+    new-instance v2, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+    iget-object v3, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mContext:Landroid/content/Context;
+
+    invoke-direct {v2, v3, v0}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;-><init>(Landroid/content/Context;Landroid/app/FragmentManager;)V
+
+    iput-object v2, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mEnd:Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+    .line 121
+    iget-object v2, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mEnd:Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+    const-string v3, "end_time"
+
+    invoke-virtual {v2, v3}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;->setKey(Ljava/lang/String;)V
+
+    .line 122
+    iget-object v2, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mEnd:Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+    const v3, 0x7f0c0cc8
+
+    invoke-virtual {v2, v3}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;->setTitle(I)V
+
+    .line 123
+    iget-object v2, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mEnd:Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+    new-instance v3, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$3;
+
+    invoke-direct {v3, p0}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$3;-><init>(Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;)V
+
+    invoke-virtual {v2, v3}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;->setCallback(Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference$Callback;)V
+
+    .line 139
+    iget-object v2, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mEnd:Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+    invoke-virtual {v1, v2}, Landroid/preference/PreferenceScreen;->addPreference(Landroid/preference/Preference;)Z
+
+    .line 140
+    iget-object v2, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mEnd:Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+    iget-object v3, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mDays:Landroid/preference/Preference;
+
+    invoke-virtual {v3}, Landroid/preference/Preference;->getKey()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;->setDependency(Ljava/lang/String;)V
+
+    .line 141
+    return-void
+.end method
+
+.method protected setRule(Landroid/service/notification/ZenModeConfig$ZenRule;)Z
+    .locals 1
+    .param p1, "rule"    # Landroid/service/notification/ZenModeConfig$ZenRule;
+
+    .prologue
+    .line 67
+    if-eqz p1, :cond_0
+
+    iget-object v0, p1, Landroid/service/notification/ZenModeConfig$ZenRule;->conditionId:Landroid/net/Uri;
+
+    invoke-static {v0}, Landroid/service/notification/ZenModeConfig;->tryParseScheduleConditionId(Landroid/net/Uri;)Landroid/service/notification/ZenModeConfig$ScheduleInfo;
+
+    move-result-object v0
+
+    :goto_0
+    iput-object v0, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mSchedule:Landroid/service/notification/ZenModeConfig$ScheduleInfo;
+
+    .line 69
+    iget-object v0, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mSchedule:Landroid/service/notification/ZenModeConfig$ScheduleInfo;
+
+    if-eqz v0, :cond_1
+
+    const/4 v0, 0x1
+
+    :goto_1
+    return v0
+
+    .line 67
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+
+    .line 69
+    :cond_1
+    const/4 v0, 0x0
+
+    goto :goto_1
+.end method
+
+.method protected updateControlsInternal()V
+    .locals 3
+
+    .prologue
+    .line 182
+    invoke-direct {p0}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->updateDays()V
+
+    .line 183
+    iget-object v0, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mStart:Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+    iget-object v1, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mSchedule:Landroid/service/notification/ZenModeConfig$ScheduleInfo;
+
+    iget v1, v1, Landroid/service/notification/ZenModeConfig$ScheduleInfo;->startHour:I
+
+    iget-object v2, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mSchedule:Landroid/service/notification/ZenModeConfig$ScheduleInfo;
+
+    iget v2, v2, Landroid/service/notification/ZenModeConfig$ScheduleInfo;->startMinute:I
+
+    invoke-virtual {v0, v1, v2}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;->setTime(II)V
+
+    .line 184
+    iget-object v0, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mEnd:Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;
+
+    iget-object v1, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mSchedule:Landroid/service/notification/ZenModeConfig$ScheduleInfo;
+
+    iget v1, v1, Landroid/service/notification/ZenModeConfig$ScheduleInfo;->endHour:I
+
+    iget-object v2, p0, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->mSchedule:Landroid/service/notification/ZenModeConfig$ScheduleInfo;
+
+    iget v2, v2, Landroid/service/notification/ZenModeConfig$ScheduleInfo;->endMinute:I
+
+    invoke-virtual {v0, v1, v2}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings$TimePickerPreference;->setTime(II)V
+
+    .line 185
+    invoke-direct {p0}, Lcom/android/settings_ex/notification/ZenModeScheduleRuleSettings;->updateEndSummary()V
+
+    .line 186
+    return-void
+.end method

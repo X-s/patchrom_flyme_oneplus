@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/oneplus_main_home_color_Accent_bg_interface" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/linear_eyecare_enable" android:background="?android:selectableItemBackground" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="69.0dip">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" android:layout_weight="1.0" android:layout_marginStart="15.0dip" android:layout_marginEnd="6.0dip">
+            <TextView android:textSize="@dimen/oneplus_settings_title_text_size" android:textColor="@color/oneplus_font_list_subtitle" android:ellipsize="marquee" android:id="@android:id/title" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/oneplus_eyecare_mode_title" android:singleLine="true" />
+            <TextView android:textSize="@dimen/oneplus_settings_text_size" android:textColor="@color/oneplus_font_list_text" android:id="@android:id/summary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/oneplus_eyecare_summary" android:maxLines="4" android:layout_below="@android:id/title" android:layout_alignStart="@android:id/title" />
+        </RelativeLayout>
+        <com.oneplus.widget.button.OPSwitch android:id="@id/eyecare_enable" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </LinearLayout>
+    <View android:background="@color/oneplus_divider_crude" android:layout_width="fill_parent" android:layout_height="@dimen/oneplus_settings_dashboard_devide_line_size" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:textSize="12.0sp" android:textColor="?android:textColorSecondary" android:ellipsize="marquee" android:id="@android:id/title" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/oneplus_eyecare_adjuting_settings_title" android:singleLine="true" android:layout_marginStart="16.0dip" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="63.0dip">
+        <LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ImageView android:id="@id/headerimage" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/ic_settings_brightness_header" android:scaleType="fitXY" android:layout_marginStart="16.0dip" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <com.oneplus.widget.OPSeekBar android:layout_gravity="center_vertical" android:id="@id/opseekbar" android:layout_width="266.0dip" android:layout_height="wrap_content" android:paddingStart="14.0dip" android:paddingEnd="14.0dip" android:layout_marginStart="0.0dip" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ImageView android:id="@id/endimage" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/ic_settings_brightness_end" android:scaleType="fitXY" android:layout_marginStart="7.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:background="@color/oneplus_divider_fine" android:layout_width="fill_parent" android:layout_height="0.30000007dip" />
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <TextView android:textSize="16.0sp" android:textColor="@color/oneplus_color_screen_reset_gray" android:gravity="center" android:layout_gravity="center" android:id="@id/reset" android:background="?android:selectableItemBackgroundBorderless" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="230.0dip" android:text="@string/oneplus_screen_better_reset" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/power_usage_summary_title" settings:keywords="@string/keywords_battery"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <com.oneplus.widget.preference.OPSwitchPreference android:title="@string/power_show_in_statusbar_title" android:key="enable_show_statusbar" />
+    <com.android.settings_ex.fuelgauge.BatteryHistoryPreference android:key="battery_history" />
+    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/power_usage_list_summary" android:key="app_list" />
+</PreferenceScreen>

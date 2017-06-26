@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:theme="?switchBarTheme" android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Spinner android:gravity="center_vertical" android:id="@id/filter_spinner" android:layout_width="wrap_content" android:layout_height="54.0dip" android:layout_centerVertical="true" android:layout_alignWithParentIfMissing="true" android:dropDownVerticalOffset="44.299988dip" android:spinnerMode="dropdown" android:textAlignment="viewStart" android:layout_marginStart="16.0dip" style="@style/OpSpinnerContentTheme" />
+    <View android:background="@color/oneplus_divider_crude" android:layout_width="fill_parent" android:layout_height="11.0dip" />
+</LinearLayout>

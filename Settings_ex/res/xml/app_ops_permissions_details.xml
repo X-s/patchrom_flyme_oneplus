@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <com.oneplus.widget.preference.OPSwitchPreference android:key="app_ops_settings_switch" />
+    <com.oneplus.widget.preference.OPPreference android:key="app_ops_settings_preference" />
+    <com.oneplus.widget.preference.OPPreference android:selectable="false" android:key="app_ops_settings_description" />
+</PreferenceScreen>
