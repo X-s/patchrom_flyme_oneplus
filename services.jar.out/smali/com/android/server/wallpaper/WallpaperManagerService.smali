@@ -513,7 +513,9 @@
 
     .prologue
     .line 1160
-    const/4 v3, 0x0
+    const/4 v3, 0x1
+
+    return v3
 
     .line 1161
     .local v3, "allow":Z
