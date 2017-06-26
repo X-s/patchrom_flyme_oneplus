@@ -325,3 +325,14 @@
 
     goto :goto_1
 .end method
+
+.method private setFlymeShowPressed()V
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/widget/AbsListView$CheckForTap;->this$0:Landroid/widget/AbsListView;
+
+    invoke-static {v0}, Landroid/widget/AbsListView$FlymeInjector;->setFlymeShowPressed(Landroid/widget/AbsListView;)V
+
+    return-void
+.end method
