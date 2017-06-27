@@ -338,13 +338,13 @@
 
     .line 72
     .local v0, "mDeviceSectionCategory":Landroid/preference/PreferenceCategory;
-    const-string v5, "no_disturb_mode"
+    #const-string v5, "no_disturb_mode"
 
-    invoke-virtual {p0, v5}, Lcom/oneplus/settings/OPDashboardSummary;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
+    #invoke-virtual {p0, v5}, Lcom/oneplus/settings/OPDashboardSummary;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
 
-    move-result-object v5
+    #move-result-object v5
 
-    invoke-virtual {v0, v5}, Landroid/preference/PreferenceCategory;->removePreference(Landroid/preference/Preference;)Z
+    #invoke-virtual {v0, v5}, Landroid/preference/PreferenceCategory;->removePreference(Landroid/preference/Preference;)Z
 
     .line 78
     :goto_0
@@ -475,11 +475,11 @@
     .line 112
     .local v3, "showSystemUpdateIcon":Z
     :goto_2
-    iget-object v5, p0, Lcom/oneplus/settings/OPDashboardSummary;->mSystemUpdateDashborad:Lcom/oneplus/settings/OPDashboardPreference;
+    #iget-object v5, p0, Lcom/oneplus/settings/OPDashboardSummary;->mSystemUpdateDashborad:Lcom/oneplus/settings/OPDashboardPreference;
 
-    const-string v6, "onepluse_system_upgrade_settings"
+    #const-string v6, "onepluse_system_upgrade_settings"
 
-    invoke-virtual {v5, v3, v6}, Lcom/oneplus/settings/OPDashboardPreference;->showRightIcon(ZLjava/lang/String;)V
+    #invoke-virtual {v5, v3, v6}, Lcom/oneplus/settings/OPDashboardPreference;->showRightIcon(ZLjava/lang/String;)V
 
     .line 113
     new-instance v5, Landroid/os/Handler;
@@ -533,13 +533,13 @@
     .line 96
     .restart local v2    # "root":Landroid/preference/PreferenceCategory;
     :cond_3
-    const-string v5, "fingerprint_settings"
+    #const-string v5, "fingerprint_settings"
 
-    invoke-virtual {p0, v5}, Lcom/oneplus/settings/OPDashboardSummary;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
+    #invoke-virtual {p0, v5}, Lcom/oneplus/settings/OPDashboardSummary;->findPreference(Ljava/lang/CharSequence;)Landroid/preference/Preference;
 
-    move-result-object v5
+    #move-result-object v5
 
-    invoke-virtual {v2, v5}, Landroid/preference/PreferenceCategory;->removePreference(Landroid/preference/Preference;)Z
+    #invoke-virtual {v2, v5}, Landroid/preference/PreferenceCategory;->removePreference(Landroid/preference/Preference;)Z
 
     goto :goto_1
 

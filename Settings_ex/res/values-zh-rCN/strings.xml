@@ -849,7 +849,7 @@
     <string name="save">保存</string>
     <string name="done">完成</string>
     <string name="settings_label">设置</string>
-    <string name="settings_label_launcher">设置</string>
+    <string name="settings_label_launcher">原厂设置</string>
     <string name="settings_shortcut">设置快捷方式</string>
     <string name="airplane_mode">飞行模式</string>
     <string name="radio_controls_title">更多</string>
