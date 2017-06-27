@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/id_icon" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/ic_eye_care" android:layout_centerVertical="true" />
     <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_toRightOf="@id/id_icon" android:layout_centerVertical="true">
-        <TextView android:textSize="16.0sp" android:textColor="@com.hydrogen:color/font_list_subtitle_light" android:id="@id/id_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/oneplus_eyecare_notify_title" />
-        <TextView android:textSize="13.0sp" android:textColor="@com.hydrogen:color/font_list_text_light" android:id="@id/id_content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/oneplus_eyecare_notify_content" />
+        <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:id="@id/id_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/oneplus_eyecare_notify_title" />
+        <TextView android:textSize="13.0sp" android:textColor="#ffffffff" android:id="@id/id_content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/oneplus_eyecare_notify_content" />
     </LinearLayout>
 </RelativeLayout>

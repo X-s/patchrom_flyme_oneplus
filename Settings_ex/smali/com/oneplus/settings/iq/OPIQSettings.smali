@@ -336,9 +336,9 @@
     iput-object v0, p0, Lcom/oneplus/settings/iq/OPIQSettings;->mCameraPerference:Landroid/preference/SwitchPreference;
 
     .line 175
-    iget-object v0, p0, Lcom/oneplus/settings/iq/OPIQSettings;->mCameraPerference:Landroid/preference/SwitchPreference;
+    #iget-object v0, p0, Lcom/oneplus/settings/iq/OPIQSettings;->mCameraPerference:Landroid/preference/SwitchPreference;
 
-    invoke-virtual {v0, p0}, Landroid/preference/SwitchPreference;->setOnPreferenceClickListener(Landroid/preference/Preference$OnPreferenceClickListener;)V
+    #invoke-virtual {v0, p0}, Landroid/preference/SwitchPreference;->setOnPreferenceClickListener(Landroid/preference/Preference$OnPreferenceClickListener;)V
 
     .line 177
     const-string v0, "double_click_light_screen_key"
@@ -432,9 +432,9 @@
     iput-object v0, p0, Lcom/oneplus/settings/iq/OPIQSettings;->mFlashLightPreference:Landroid/preference/SwitchPreference;
 
     .line 193
-    iget-object v0, p0, Lcom/oneplus/settings/iq/OPIQSettings;->mFlashLightPreference:Landroid/preference/SwitchPreference;
+    #iget-object v0, p0, Lcom/oneplus/settings/iq/OPIQSettings;->mFlashLightPreference:Landroid/preference/SwitchPreference;
 
-    invoke-virtual {v0, p0}, Landroid/preference/SwitchPreference;->setOnPreferenceClickListener(Landroid/preference/Preference$OnPreferenceClickListener;)V
+    #invoke-virtual {v0, p0}, Landroid/preference/SwitchPreference;->setOnPreferenceClickListener(Landroid/preference/Preference$OnPreferenceClickListener;)V
 
     .line 196
     iget-object v0, p0, Lcom/oneplus/settings/iq/OPIQSettings;->mMusicPrefererce:Landroid/preference/PreferenceCategory;
@@ -456,7 +456,7 @@
     move v0, v1
 
     :goto_1
-    invoke-virtual {v3, v0}, Landroid/preference/SwitchPreference;->setChecked(Z)V
+    #invoke-virtual {v3, v0}, Landroid/preference/SwitchPreference;->setChecked(Z)V
 
     .line 202
     iget-object v3, p0, Lcom/oneplus/settings/iq/OPIQSettings;->mDoubleLightScreenPreference:Landroid/preference/SwitchPreference;
@@ -526,16 +526,16 @@
     if-nez v3, :cond_7
 
     :goto_7
-    invoke-virtual {v0, v1}, Landroid/preference/SwitchPreference;->setChecked(Z)V
+    #invoke-virtual {v0, v1}, Landroid/preference/SwitchPreference;->setChecked(Z)V
 
     .line 217
     return-void
 
     .line 169
     :cond_0
-    iget-object v0, p0, Lcom/oneplus/settings/iq/OPIQSettings;->mTimerShutdownPreference:Lcom/oneplus/widget/preference/OPPreference;
+    #iget-object v0, p0, Lcom/oneplus/settings/iq/OPIQSettings;->mTimerShutdownPreference:Lcom/oneplus/widget/preference/OPPreference;
 
-    invoke-virtual {v0, v2}, Lcom/oneplus/widget/preference/OPPreference;->setEnabled(Z)V
+    #invoke-virtual {v0, v2}, Lcom/oneplus/widget/preference/OPPreference;->setEnabled(Z)V
 
     goto/16 :goto_0
 
@@ -807,9 +807,9 @@
     .line 154
     .end local v1    # "value":I
     :cond_1
-    iget-object v2, p0, Lcom/oneplus/settings/iq/OPIQSettings;->mCameraDoubleTapPowerGesturePreference:Landroid/preference/SwitchPreference;
+    #iget-object v2, p0, Lcom/oneplus/settings/iq/OPIQSettings;->mCameraDoubleTapPowerGesturePreference:Landroid/preference/SwitchPreference;
 
-    invoke-virtual {v2, p0}, Landroid/preference/SwitchPreference;->setOnPreferenceChangeListener(Landroid/preference/Preference$OnPreferenceChangeListener;)V
+    #invoke-virtual {v2, p0}, Landroid/preference/SwitchPreference;->setOnPreferenceChangeListener(Landroid/preference/Preference$OnPreferenceChangeListener;)V
 
     .line 155
     iget-boolean v2, p0, Lcom/oneplus/settings/iq/OPIQSettings;->isSupportThreeScrrenShot:Z

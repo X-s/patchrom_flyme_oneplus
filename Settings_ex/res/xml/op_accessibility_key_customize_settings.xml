@@ -3,11 +3,11 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.android.settings_ex.ui.OPKeyCustomizeViewCategory android:key="key_view_guild" />
     <com.android.settings_ex.ui.OPPreferenceThinDivider android:key="preference_key_divider_line" />
-    <com.oneplus.widget.preference.OPPreferenceCategory android:title="@string/oneplus_key_customize_title" android:key="key_customize">
+    <PreferenceCategory android:title="@string/oneplus_key_customize_title" android:key="key_customize">
         <com.oneplus.widget.preference.OPCheckBoxPreference android:title="@string/left_hand_phone_title" android:key="left_hand_phone" android:summary="@string/oneplus_left_hand_phone_summary" />
         <com.oneplus.widget.preference.OPCheckBoxPreference android:title="@string/right_hand_phone_title" android:key="right_hand_phone" android:summary="@string/oneplus_right_hand_phone_summary" />
         <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/left_hand_phone_title" android:key="left_hand_phone_radio" android:summary="@string/oneplus_left_hand_phone_summary" />
         <com.android.settings_ex.location.RadioButtonPreference android:persistent="false" android:title="@string/right_hand_phone_title" android:key="right_hand_phone_radio" android:summary="@string/oneplus_right_hand_phone_summary" />
-    </com.oneplus.widget.preference.OPPreferenceCategory>
+    </PreferenceCategory>
     <com.android.settings_ex.ui.OPRadioButtonPreference android:key="key_radio_category" />
 </PreferenceScreen>
