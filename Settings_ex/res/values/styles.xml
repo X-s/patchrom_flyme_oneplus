@@ -501,35 +501,10 @@
         <item name="wifi_signal_color">@color/setup_wizard_wifi_color_light</item>
         <item name="wifi_signal">@drawable/wifi_signal</item>
     </style>
-    <style name="Theme.SettingsBase" parent="@com.hydrogen:style/Oneplus.Theme.DeviceDefault.DarkActionBar">
-        <item name="android:colorPrimary">@color/oneplus_main_home_title_background_bg_ab</item>
-        <item name="android:colorPrimaryDark">@color/oneplus_main_home_title_background_bg_ab</item>
+    <style name="Theme.SettingsBase" parent="@android:style/Theme.Material.Settings">
         <item name="android:elevation">0.0dip</item>
     </style>
     <style name="Theme.Settings" parent="@style/Theme.SettingsBase">
-        <item name="android:windowBackground">@com.hydrogen:color/bg_interface</item>
-        <item name="android:preferenceStyle">@style/Preference</item>
-        <item name="android:actionBarStyle">@style/Theme.ActionBar</item>
-        <item name="android:actionBarSize">@dimen/actionbar_size</item>
-        <item name="android:preferenceFragmentStyle">@style/PreferenceFragmentStyle</item>
-        <item name="android:preferencePanelStyle">@style/PreferencePanelSinglePane</item>
-        <item name="android:preferenceHeaderPanelStyle">@style/PreferenceHeaderPanelSinglePane</item>
-        <item name="android:preferenceListStyle">@style/PreferenceHeaderListSinglePane</item>
-        <item name="android:preferenceFragmentListStyle">@style/PreferenceFragmentListSinglePane</item>
-        <item name="android:preferenceFragmentPaddingSide">@dimen/settings_side_margin</item>
-        <item name="android:regularColor">@color/oneplus_font_list_subtitle</item>
-        <item name="android:errorColor">@color/oneplus_system_warning</item>
-        <item name="android:successColor">@color/oneplus_system_focus</item>
-        <item name="apnPreferenceStyle">@style/ApnPreference</item>
-        <item name="switchBarTheme">@style/ThemeOverlay.SwitchBar.Settings</item>
-        <item name="preferenceBackgroundColor">@drawable/preference_background</item>
-        <item name="fingerprint_layout_theme">@style/FingerprintLayoutTheme</item>
-        <item name="fingerprint_progress_bar_size">@dimen/fingerprint_progress_bar_size</item>
-        <item name="fingerprint_ring_radius">@dimen/fingerprint_ring_radius</item>
-        <item name="ic_wps">@drawable/ic_wps_light</item>
-        <item name="side_margin">@dimen/settings_side_margin</item>
-        <item name="wifi_signal_color">@color/oneplus_selection_control_on</item>
-        <item name="wifi_signal">@drawable/wifi_signal</item>
     </style>
     <style name="Theme.SubSettings" parent="@style/Theme.Settings">
         <item name="android:actionBarStyle">@style/Theme.ActionBar.SubSettings</item>

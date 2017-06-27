@@ -414,7 +414,7 @@
     :goto_1
     iget-object v5, p0, Lcom/oneplus/settings/OPDashboardSummary;->mContext:Landroid/content/Context;
 
-    const-string v7, "com.oneplus.noviceteaching"
+    const-string v7, "com.android.settings"
 
     invoke-static {v5, v7}, Lcom/oneplus/settings/utils/OPUtils;->isAppExist(Landroid/content/Context;Ljava/lang/String;)Z
 
