@@ -1845,6 +1845,8 @@
     .locals 4
 
     .prologue
+    return-void
+
     .line 1774
     invoke-static {}, Landroid/util/OpFeatures;->isSupportedScreenshotGuider()Z
 
