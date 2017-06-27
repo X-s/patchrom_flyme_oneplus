@@ -183,9 +183,11 @@
     <string name="oneplus_timepower_power_off_title">设定关机时间</string>
     <string name="oneplus_default_application_settings_title">默认打开应用</string>
     <string name="oneplus_music_control_start_title">双指下滑播放/暂停音乐</string>
-    <string name="oneplus_music_control_start_summary">熄屏时在屏幕画双竖即可播放/暂停音乐</string>
+    <string name="oneplus_music_control_start_summary">熄屏时在屏幕画双竖即可播放/暂停音乐\n
+提示：点击文字打开，不要点击右边的按钮</string>
     <string name="oneplus_music_control_pause_title">暂停当前的音乐</string>
-    <string name="oneplus_music_control_pause_summary">控制当前的音乐暂停</string>
+    <string name="oneplus_music_control_pause_summary">控制当前的音乐暂停\n
+提示：点击文字打开，不要点击右边的按钮</string>
     <string name="oneplus_black_screen_setting_title">黑屏手势设置</string>
     <string name="oneplus_double_click_light_screen_title">双击亮屏</string>
     <string name="oneplus_draw_o_start_camera_title">画圈启动相机</string>
@@ -255,9 +257,12 @@
     <string name="oneplus_timer_shutdown_header">已经达到定时关机时间，</string>
     <string name="oneplus_timer_shutdown_end">s后确认关机?</string>
     <string name="oneplus_timer_shuttingdown">正在关机</string>
-    <string name="oneplus_rotation_silent_enable_summary">来电后,翻转手机,手机静音</string>
-    <string name="oneplus_three_screenshots_enable_summary">三指上下滑动,截取屏幕</string>
-    <string name="oneplus_anti_misoperation_of_the_screen_touch_enable_summary">锁屏页面，防止屏幕误操作</string>
+    <string name="oneplus_rotation_silent_enable_summary">来电后,翻转手机,手机静音\n
+提示：点击文字打开，不要点击右边的按钮</string>
+    <string name="oneplus_three_screenshots_enable_summary">三指上下滑动,截取屏幕\n
+提示：点击文字打开，不要点击右边的按钮</string>
+    <string name="oneplus_anti_misoperation_of_the_screen_touch_enable_summary">锁屏页面，防止屏幕误操作\n
+提示：点击文字打开，不要点击右边的按钮</string>
     <string name="pin_setting_phone_name">未检测到名称</string>
     <string name="oneplus_fingerprint_password_manage_title">指纹和密码</string>
     <string name="oneplus_auto_remove_unsupport_chars_tips">"自动移除非法字符 '%'."</string>
@@ -472,12 +477,15 @@
     <string name="rotation_silent_enable_summary">手机来电时,翻转手机静音</string>
     <string name="three_screenshots_enable_summary">三指滑动屏幕,截取屏幕</string>
     <string name="anti_misoperation_of_the_screen_touch_enable_summary">锁屏界面如有遮拦将防治误操作</string>
-    <string name="oneplus_double_click_light_screen_summary">熄屏时在屏幕双击即可唤醒屏幕</string>
+    <string name="oneplus_double_click_light_screen_summary">熄屏时在屏幕双击即可唤醒屏幕\n
+提示：点击文字打开，不要点击右边的按钮</string>
     <string name="oneplus_draw_o_start_camera_summary">熄屏时在屏幕画圈即可启动相机</string>
     <string name="oneplus_music_control_prev_title">画左箭头上一曲</string>
     <string name="oneplus_music_control_next_title">画右箭头下一曲</string>
-    <string name="oneplus_music_control_prev_summary">熄屏时在屏幕画 &lt; 即可切换上一曲</string>
-    <string name="oneplus_music_control_next_summary">熄屏时在屏幕画 > 即可切换下一曲</string>
+    <string name="oneplus_music_control_prev_summary">熄屏时在屏幕画 &lt; 即可切换上一曲\n
+提示：点击文字打开，不要点击右边的按钮</string>
+    <string name="oneplus_music_control_next_summary">熄屏时在屏幕画 > 即可切换下一曲\n
+提示：点击文字打开，不要点击右边的按钮</string>
     <string name="pin_setting_phone_number">未检测到号码</string>
     <string name="oneplus_setting_sim_ringtone_switch">独立设置各卡铃声</string>
     <string name="oneplus_setting_ringtone">设置铃声</string>
@@ -530,7 +538,8 @@
     <string name="oneplus_default_application_setting">默认程序设置</string>
     <string name="oneplus_reset_all_data">重置所有数据</string>
     <string name="oneplus_eyecare_mode_title">护眼模式</string>
-    <string name="oneplus_eyecare_summary">降低蓝光伤害，建议长时间使用手机时开启</string>
+    <string name="oneplus_eyecare_summary">降低蓝光伤害，建议长时间使用手机时开启\n
+提示：点击文字打开，不要点击右边的按钮</string>
     <string name="oneplus_eyecare_title">护眼模式</string>
     <string name="oneplus_eyecare_adjuting_settings_title">护眼程度</string>
     <string name="oneplus_screen_better_reset">重置</string>
