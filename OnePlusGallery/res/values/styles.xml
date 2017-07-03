@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppBaseTheme" parent="@android:style/Theme.Material">
+        <item name="android:windowActionBar">false</item>
+    </style>
+    <style name="AppTheme" parent="@style/AppBaseTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
+    <style name="BaseText">
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="BottomSheetItemText">
+        <item name="android:textSize">@dimen/bottom_sheet_list_item_text_size</item>
+    </style>
+    <style name="BottomSheetTitleText">
+        <item name="android:textSize">@dimen/bottom_sheet_title_text_size</item>
+    </style>
+    <style name="BottomSheetItemCountText">
+        <item name="android:textSize">@dimen/bottom_sheet_list_item_text_size</item>
+    </style>
+    <style name="BottomSheetDialog" parent="@android:style/Theme.Translucent.NoTitleBar">
+        <item name="android:windowAnimationStyle">@style/BottomSheetDialogAnimation</item>
+    </style>
+    <style name="BottomSheetDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+    <style name="CropPageButtonText" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/crop_page_button_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/crop_page_button</item>
+    </style>
+    <style name="CropPageButtonText.Selected" parent="@style/CropPageButtonText">
+        <item name="android:textColor">@color/crop_page_button_selected</item>
+    </style>
+    <style name="DialogLight" parent="@android:style/Theme.Material.Light.Dialog" />
+    <style name="DialogLight.Alert" parent="@android:style/Theme.Material.Light.Dialog.Alert" />
+    <style name="DialogDark" parent="@android:style/Theme.Material.Dialog" />
+    <style name="DialogDark.Alert" parent="@android:style/Theme.Material.Dialog.Alert" />
+    <style name="EntryPageTabText">
+        <item name="android:textSize">@dimen/entry_page_tab_text</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="FastScrollbarDateIndex">
+        <item name="android:textSize">@dimen/fastscrollbar_text_size</item>
+        <item name="android:fontFamily">roboto-regular</item>
+    </style>
+    <style name="FilterButtonLabel" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/photo_editor_secondary_filter_button_label_text_size</item>
+        <item name="android:textColor">@color/filter_button_label</item>
+    </style>
+    <style name="FilterControlsLabel" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/filter_controls_label_text_size</item>
+        <item name="android:textColor">@color/filter_controls_label</item>
+    </style>
+    <style name="GalleryWindow" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:actionBarStyle">@style/Widget.ActionBar</item>
+        <item name="android:actionBarSize">@dimen/action_bar_height</item>
+        <item name="android:colorControlNormal">@color/gallery_seek_bar_background</item>
+        <item name="android:colorControlActivated">@color/gallery_seek_bar_primary</item>
+    </style>
+    <style name="GalleryWindow.Entry" parent="@style/GalleryWindow">
+        <item name="android:statusBarColor">#00ffffff</item>
+    </style>
+    <style name="GalleryWindow.PhotoEditor" parent="@style/GalleryWindow">
+        <item name="android:windowBackground">@color/photo_editor_background</item>
+        <item name="android:statusBarColor">#00ffffff</item>
+    </style>
+    <style name="GalleryWindow.PhotoViewer" parent="@style/GalleryWindow">
+        <item name="android:windowBackground">@color/filmstrip_fragment_background</item>
+        <item name="android:statusBarColor">#00ffffff</item>
+    </style>
+    <style name="GalleryWindow.VideoPlayer" parent="@style/GalleryWindow">
+        <item name="android:windowBackground">@color/filmstrip_fragment_background</item>
+        <item name="android:statusBarColor">#00ffffff</item>
+    </style>
+    <style name="GridViewHeaderText">
+        <item name="android:textSize">@dimen/gridview_header_text_size</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="GridViewItemText">
+        <item name="android:textColor">@color/gridview_item_text</item>
+        <item name="android:shadowColor">@color/common_text_shadow</item>
+        <item name="android:shadowRadius">5.0</item>
+        <item name="android:fontFamily">roboto-medium</item>
+    </style>
+    <style name="GridViewItemText.VideoDuration" parent="@style/GridViewItemText">
+        <item name="android:textSize">@dimen/gridview_video_duration_text_size</item>
+        <item name="android:textColor">@color/gridview_video_duration_text</item>
+        <item name="android:fontFamily">roboto-regular</item>
+    </style>
+    <style name="InvalidPhotoVideoText">
+        <item name="android:textSize">@dimen/invalid_photo_video_text</item>
+        <item name="android:textColor">@color/invalid_photo_video_text</item>
+        <item name="android:fontFamily">roboto-regular</item>
+    </style>
+    <style name="MediaSetListItemTitleText" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/media_set_list_item_title_text_size</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="MediaSetListItemSizeText" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/media_set_list_item_size_text_size</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="MediaSetListItemNoPhoto" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/media_set_list_item_no_photo_text_size</item>
+        <item name="android:textColor">@color/media_set_list_item_no_photo_text_light</item>
+    </style>
+    <style name="MediaSetListItemNoPhotoDark" parent="@style/MediaSetListItemNoPhoto">
+        <item name="android:textColor">@color/media_set_list_item_no_photo_text_dark</item>
+    </style>
+    <style name="NoPhotoTitle" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/no_photo_title_size</item>
+    </style>
+    <style name="NoPhotoText" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/no_photo_text_size</item>
+    </style>
+    <style name="PhotoEditorTitleBar" parent="@style/Widget.ActionBar">
+        <item name="android:textSize">@dimen/photo_editor_title_bar_text</item>
+        <item name="android:textColor">@color/editor_title_bar_state_color</item>
+        <item name="android:background">@color/photo_editor_title_bar_background</item>
+    </style>
+    <style name="PhotoEditorWatermarkText">
+        <item name="android:textSize">@dimen/photo_editor_watermark_text_size</item>
+        <item name="android:textColor">@color/photo_editor_watermark_text</item>
+        <item name="android:fontFamily">noto-sans-cjk-sc-medium</item>
+    </style>
+    <style name="ToolBarText">
+        <item name="android:textSize">@dimen/tool_bar_text_size</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="TitleBarText">
+        <item name="android:textSize">@dimen/title_bar_text_size</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="Widget" parent="@android:style/Widget.Material" />
+    <style name="Widget.ActionBar" parent="@android:style/Widget.Material.ActionBar">
+        <item name="android:divider">@null</item>
+        <item name="android:elevation">@dimen/action_bar_elevation</item>
+    </style>
+    <style name="Widget.ProgressBar" parent="@android:style/Widget.Material.ProgressBar" />
+    <style name="Widget.ProgressBar.Horizontal" parent="@android:style/Widget.Material.ProgressBar.Horizontal" />
+    <style name="SnackbarTitleText" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/snackbar_text_size</item>
+        <item name="android:textColor">@color/snackbar_text</item>
+    </style>
+    <style name="SnackbarActionText" parent="@style/SnackbarTitleText">
+        <item name="android:textColor">@color/snackbar_action_text</item>
+    </style>
+    <style name="VideoPlayerDurationText" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/video_player_media_control_text_size</item>
+        <item name="android:textColor">@color/video_player_text_color</item>
+    </style>
+</resources>

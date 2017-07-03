@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/photo_editor_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.gallery.widget.PhotoEditorPreviewContainer android:id="@id/preview_image_container" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.oneplus.widget.ScaleImageView android:id="@id/preview_image" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.oneplus.gallery.widget.PhotoEditorPreviewContainer>
+    <RelativeLayout android:id="@id/control_ui_container" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/background_header" android:background="@drawable/editor_header_background" android:layout_width="fill_parent" android:layout_height="@dimen/photo_editor_header_background_height" android:layout_alignParentTop="true" />
+        <com.oneplus.gallery.widget.Toolbar android:theme="@style/PhotoEditorTitleBar" android:id="@id/title_bar" android:paddingRight="@dimen/photo_editor_title_bar_button_padding" android:layout_width="fill_parent" android:layout_height="?android:actionBarSize" android:layout_alignParentTop="true" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/primary_toolbar" android:background="@color/photo_editor_primary_toolbar_background" android:layout_width="fill_parent" android:layout_height="?android:actionBarSize" android:layout_alignParentBottom="true" android:paddingStart="@dimen/photo_editor_primary_toolbar_padding_start" android:paddingEnd="@dimen/photo_editor_primary_toolbar_padding_end">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <ImageButton android:id="@id/rotate_button" android:background="@drawable/ripple" android:layout_width="?android:actionBarSize" android:layout_height="fill_parent" android:src="@drawable/editor_rotate_icon" android:scaleType="center" android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <ImageButton android:id="@id/crop_button" android:background="@drawable/ripple" android:layout_width="?android:actionBarSize" android:layout_height="fill_parent" android:src="@drawable/editor_crop_icon" android:scaleType="center" android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <ImageButton android:id="@id/filter_button" android:background="@drawable/ripple" android:layout_width="?android:actionBarSize" android:layout_height="fill_parent" android:src="@drawable/editor_filter_icon" android:scaleType="center" android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <ImageButton android:id="@id/color_filter_button" android:background="@drawable/ripple" android:layout_width="?android:actionBarSize" android:layout_height="fill_parent" android:src="@drawable/editor_color_filter_icon" android:scaleType="center" android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <ImageButton android:id="@id/draw_button" android:background="@drawable/ripple" android:layout_width="?android:actionBarSize" android:layout_height="fill_parent" android:src="@drawable/editor_draw_icon" android:scaleType="center" android:layout_centerInParent="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <RelativeLayout android:id="@id/editor_mode_container" android:background="@color/photo_editor_secondary_toolbar_background" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/primary_toolbar" />
+        <ViewStub android:id="@id/filter_controls_container" android:layout="@layout/layout_filter_controls" android:layout_width="fill_parent" android:layout_height="@dimen/filter_controls_container_height" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</RelativeLayout>

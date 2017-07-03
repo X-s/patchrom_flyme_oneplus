@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/filmstrip_fragment_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <VideoView android:id="@id/video_player_video_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <View android:id="@id/video_player_touch_receiver" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageButton android:id="@id/video_player_play_button" android:background="@null" android:visibility="gone" android:layout_width="@dimen/video_player_play_button_width_height" android:layout_height="@dimen/video_player_play_button_width_height" android:src="@drawable/review_video_play" android:layout_centerInParent="true" />
+    <TextView android:id="@id/video_player_cannot_play_video" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/video_player_cannot_play_video" android:singleLine="true" android:layout_centerInParent="true" style="@style/InvalidPhotoVideoText" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/video_player_media_control_container" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/video_player_media_control_container_height" android:layout_marginBottom="@dimen/video_player_media_control_container_margin_bottom" android:layout_alignParentBottom="true">
+        <TextView android:id="@id/video_player_media_control_elapsed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/video_player_media_control_item_width_min" android:layout_marginStart="@dimen/video_player_media_control_item_margin" style="@style/VideoPlayerDurationText" />
+        <SeekBar android:id="@id/video_player_media_control_seekbar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <TextView android:id="@id/video_player_media_control_duration" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/video_player_media_control_item_width_min" android:layout_marginEnd="@dimen/video_player_media_control_item_margin" style="@style/VideoPlayerDurationText" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/action_bar_container" android:background="@drawable/filmstrip_header_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.oneplus.gallery.widget.Toolbar android:id="@id/action_bar" android:layout_width="fill_parent" android:layout_height="?android:actionBarSize" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/video_player_footer_container" android:background="@drawable/filmstrip_footer_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/video_player_footer_container_height" android:layout_alignParentBottom="true">
+        <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageButton android:id="@id/video_player_footer_button_share" android:background="@drawable/ripple" android:padding="@dimen/video_player_footer_item_padding" android:layout_width="@dimen/video_player_footer_container_height" android:layout_height="@dimen/video_player_footer_container_height" android:src="@drawable/button_share_normal" />
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center" android:id="@id/video_player_footer_button_collect_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageButton android:id="@id/video_player_footer_button_collect" android:background="@drawable/ripple" android:padding="@dimen/video_player_footer_item_padding" android:layout_width="@dimen/video_player_footer_container_height" android:layout_height="@dimen/video_player_footer_container_height" android:src="@drawable/state_button_collect" />
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center" android:id="@id/video_player_footer_button_delete_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageButton android:id="@id/video_player_footer_button_delete" android:background="@drawable/ripple" android:padding="@dimen/video_player_footer_item_padding" android:layout_width="@dimen/video_player_footer_container_height" android:layout_height="@dimen/video_player_footer_container_height" android:src="@drawable/button_delete_normal" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

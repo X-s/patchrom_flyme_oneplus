@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/editor_mode_drawing" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="@dimen/photo_editor_secondary_toolbar_height" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <ImageButton android:id="@id/undo_drawing_button" android:background="@drawable/ripple" android:layout_width="@dimen/photo_editor_drawing_toolbar_button_width" android:layout_height="fill_parent" android:src="@drawable/editor_undo" android:scaleType="center" />
+        <ImageButton android:id="@id/toggle_mode_button" android:background="@drawable/ripple" android:layout_width="@dimen/photo_editor_drawing_toolbar_button_width" android:layout_height="fill_parent" android:src="@drawable/editor_undo" android:scaleType="center" />
+        <HorizontalScrollView android:scrollbars="none" android:fadingEdgeLength="@dimen/photo_editor_scrollview_fading_edge_length" android:layout_width="wrap_content" android:layout_height="fill_parent" android:requiresFadingEdge="horizontal">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/secondary_toolbar_drawing_item_container" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        </HorizontalScrollView>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="black_list_app">
+        <item>com.android.calculator2</item>
+        <item>com.android.dialer</item>
+        <item>com.nearme.ocloud</item>
+    </string-array>
+    <string-array name="black_list_activity">
+        <item>cmb.pb/cmb.pb.ui.WhatsNewVerticalActivity</item>
+        <item>com.android.calendar/com.android.calendar.AllInOneActivity</item>
+        <item>com.android.calendar/com.android.calendar.LaunchActivity</item>
+        <item>com.android.calendar/com.android.calendar.event.EditEventActivity</item>
+        <item>com.android.contacts/com.android.contacts.activities.ContactEditorActivity</item>
+        <item>com.android.settings/com.android.settings.ChooseLockPassword</item>
+        <item>com.android.settings/com.android.settings.ChooseLockPattern</item>
+        <item>com.android.settings/com.android.settings.ChooseLockPatternTutorial</item>
+        <item>com.android.settings/com.android.settings.ConfirmLockPassword</item>
+        <item>com.android.settings/com.android.settings.ConfirmLockPattern</item>
+        <item>com.eg.android.AlipayGphone/com.alipay.mobile.security.gesture.ui.GestureActivity_</item>
+        <item>com.qzone/com.qzonex.module.guide.QzoneWelcomeActivity</item>
+        <item>com.tencent.mm/com.tencent.mm.plugin.whatsnew.ui.WhatsNewUI</item>
+        <item>com.tencent.mm/com.tencent.mm.ui.account.LoginHistoryUI</item>
+        <item>com.tencent.mobileqq/com.tencent.mobileqq.activity.phone.BindNumberActivity</item>
+        <item>com.tencent.mobileqq/com.tencent.mobileqq.activity.phone.BindVerifyActivity</item>
+        <item>com.tencent.mobileqq/com.tencent.mobileqq.activity.phone.PhoneFrameActivity</item>
+        <item>com.tencent.mobileqq/com.tencent.mobileqq.activity.phone.PhoneLaunchActivity</item>
+        <item>com.tencent.mobileqq/com.tencent.mobileqq.activity.phone.SettingActivity2</item>
+    </string-array>
+    <string-array name="level_2_list_activity">
+        <item>com.android.mms/com.android.mms.ui.ComposeMessageActivity</item>
+        <item>com.tencent.mm/com.tencent.mm.ui.LauncherUI</item>
+        <item>com.tencent.mm/com.tencent.mm.ui.chatting.ChattingUI</item>
+    </string-array>
+    <array name="level_3_list_activity" />
+    <string-array name="level_4_list_activity">
+        <item>com.tencent.mm/com.tencent.mm.plugin.sns.ui.SnsTimeLineUI</item>
+        <item>com.tencent.mobileqq/cooperation.qzone.QzoneGPUPluginProxyActivity</item>
+    </string-array>
+    <string-array name="strict_list_activity">
+        <item>com.tencent.mm/com.tencent.mm.plugin.sns.ui.SnsTimeLineUI</item>
+        <item>com.tencent.mobileqq/cooperation.qzone.QzoneGPUPluginProxyActivity</item>
+    </string-array>
+    <array name="small_list_activity" />
+    <array name="lower_list_activity" />
+    <string-array name="page_list_activity">
+        <item>com.android.contacts/com.android.contacts.activities.PeopleActivity</item>
+        <item>com.android.mms/com.android.mms.ui.ConversationList</item>
+    </string-array>
+    <array name="keep_list_activity" />
+    <string-array name="non_list_activity">
+        <item>com.tencent.mobileqq/cooperation.qzone.QzoneGPUPluginProxyActivity</item>
+    </string-array>
+    <string-array name="bg_list_activity">
+        <item>com.tencent.mobileqq/com.tencent.mobileqq.activity.ChatActivity</item>
+    </string-array>
+    <string-array name="error_2_activity">
+        <item>com.android.mms/com.android.mms.ui.ComposeMessageActivity</item>
+        <item>com.tencent.mm/com.tencent.mm.plugin.sns.ui.SnsTimeLineUI</item>
+        <item>com.tencent.mobileqq/cooperation.qzone.QzoneGPUPluginProxyActivity</item>
+    </string-array>
+    <string-array name="delay_2_activity">
+        <item>com.tencent.mm/com.tencent.mm.plugin.sns.ui.SnsTimeLineUI</item>
+        <item>com.tencent.mobileqq/cooperation.qzone.QzoneGPUPluginProxyActivity</item>
+    </string-array>
+    <array name="delay_3_activity" />
+    <string-array name="limit_left_activity">
+        <item>com.tencent.mm/com.tencent.mm.plugin.webview.ui.tools.WebViewUI</item>
+    </string-array>
+    <array name="limit_right_activity" />
+    <array name="level_5_list_activity" />
+    <string-array name="config_line_sample_list">
+        <item>70|80|1</item>
+        <item>112|117|1</item>
+        <item>162|167|1</item>
+        <item>179|184|1</item>
+        <item>270|280|1</item>
+    </string-array>
+    <string-array name="config_line_sample_bglist">
+        <item>66</item>
+        <item>90</item>
+        <item>230</item>
+        <item>260</item>
+    </string-array>
+</resources>

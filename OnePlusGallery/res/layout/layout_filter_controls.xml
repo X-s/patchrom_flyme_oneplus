@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/photo_editor_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/filter_controls_seekbar_container_height" android:paddingStart="@dimen/filter_controls_seekbar_container_padding_left_right" android:paddingEnd="@dimen/filter_controls_seekbar_container_padding_left_right">
+        <SeekBar android:id="@id/filter_controls_seek_bar" android:background="@drawable/ripple" android:paddingTop="@dimen/filter_controls_seekbar_thumb_padding" android:paddingBottom="@dimen/filter_controls_seekbar_thumb_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="center" android:thumb="@drawable/filter_seek_bar_thumb" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:background="@color/filter_controls_label_background" android:layout_width="fill_parent" android:layout_height="?android:actionBarSize">
+        <ImageButton android:id="@id/filter_controls_negative_button" android:background="@drawable/ripple" android:layout_width="?android:actionBarSize" android:layout_height="fill_parent" android:src="@drawable/filter_button_cancel" android:scaleType="center" android:layout_alignParentStart="true" />
+        <ImageButton android:id="@id/filter_controls_positive_button" android:background="@drawable/ripple" android:layout_width="?android:actionBarSize" android:layout_height="fill_parent" android:src="@drawable/filter_button_ok" android:scaleType="center" android:layout_alignParentEnd="true" />
+        <TextView android:id="@id/filter_controls_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/FilterControlsLabel" />
+    </RelativeLayout>
+</LinearLayout>

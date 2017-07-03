@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/bottom_sheet_touch_receiver" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/bottom_sheet_list_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:gravity="center_vertical" android:id="@id/bottom_sheet_list_title" android:background="@color/bottom_sheet_list_title_container_background" android:layout_width="fill_parent" android:layout_height="@dimen/bottom_sheet_title_height" android:text="@string/toolbar_selection_addto" android:paddingStart="@dimen/bottom_sheet_margin_start_and_end" style="@style/BottomSheetTitleText" />
+        <ListView android:id="@id/bottom_sheet_list" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@drawable/bottom_sheet_item_divider_drawable" android:dividerHeight="@dimen/bottom_sheet_item_divider_height" />
+    </LinearLayout>
+</RelativeLayout>

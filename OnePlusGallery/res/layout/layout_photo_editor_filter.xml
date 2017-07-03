@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/editor_mode_filter" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <HorizontalScrollView android:id="@id/editor_mode_filter_toolbar" android:scrollbars="none" android:fadingEdgeLength="@dimen/photo_editor_scrollview_fading_edge_length" android:layout_width="wrap_content" android:layout_height="@dimen/photo_editor_secondary_toolbar_height" android:layout_alignParentBottom="true" android:requiresFadingEdge="horizontal">
+        <LinearLayout android:orientation="horizontal" android:id="@id/editor_mode_filter_item_containter" android:paddingTop="@dimen/photo_editor_secondary_filter_button_padding_top" android:paddingBottom="@dimen/photo_editor_secondary_filter_button_padding_bottom" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="@dimen/photo_editor_secondary_filter_margin_top" />
+    </HorizontalScrollView>
+    <RelativeLayout android:id="@id/watermark_container" android:layout_width="fill_parent" android:layout_height="@dimen/photo_editor_watermark_container_height" android:layout_above="@id/editor_mode_filter_toolbar" android:translationY="@dimen/photo_editor_secondary_filter_margin_top">
+        <TextView android:id="@id/watermark_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/PhotoEditorWatermarkText" />
+    </RelativeLayout>
+</RelativeLayout>

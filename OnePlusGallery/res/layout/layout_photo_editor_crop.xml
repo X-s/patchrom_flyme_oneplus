@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/editor_mode_crop" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.gallery2.widget.CropRegionSelector android:id="@id/crop_region_selector" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/crop_button_container" android:layout_width="fill_parent" android:layout_height="@dimen/photo_editor_secondary_toolbar_height" android:layout_alignParentBottom="true" android:paddingStart="@dimen/photo_editor_secondary_crop_padding_start" android:paddingEnd="@dimen/photo_editor_secondary_crop_padding_end">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <ImageButton android:id="@id/crop_free_button" android:background="@drawable/ripple" android:layout_width="@dimen/photo_editor_secondary_toolbar_height" android:layout_height="fill_parent" android:src="@drawable/editor_rotate_counterclockwise" android:scaleType="center" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <ImageButton android:id="@id/crop_4x3_button" android:background="@drawable/ripple" android:layout_width="@dimen/photo_editor_secondary_toolbar_height" android:layout_height="fill_parent" android:src="@drawable/editor_rotate_counterclockwise" android:scaleType="center" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <ImageButton android:id="@id/crop_1x1_button" android:background="@drawable/ripple" android:layout_width="@dimen/photo_editor_secondary_toolbar_height" android:layout_height="fill_parent" android:src="@drawable/editor_rotate_counterclockwise" android:scaleType="center" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <ImageButton android:id="@id/crop_16x9_button" android:background="@drawable/ripple" android:layout_width="@dimen/photo_editor_secondary_toolbar_height" android:layout_height="fill_parent" android:src="@drawable/editor_rotate_counterclockwise" android:scaleType="center" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

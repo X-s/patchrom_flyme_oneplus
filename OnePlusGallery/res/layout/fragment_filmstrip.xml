@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.widget.FilmstripView android:id="@id/filmstrip_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/filmstrip_header_container" android:background="@drawable/filmstrip_header_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.oneplus.gallery.widget.Toolbar android:id="@id/filmstrip_header" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="?android:actionBarSize" style="@style/Widget.ActionBar" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/filmstrip_footer_container" android:background="@drawable/filmstrip_footer_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="?android:actionBarSize" android:layout_alignParentBottom="true">
+        <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageButton android:id="@id/filmstrip_footer_button_share" android:background="@drawable/ripple" android:padding="@dimen/filmstrip_footer_item_padding" android:layout_width="?android:actionBarSize" android:layout_height="?android:actionBarSize" android:src="@drawable/filmstrip_button_share_normal" />
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center" android:id="@id/filmstrip_footer_button_collect_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageButton android:id="@id/filmstrip_footer_button_collect" android:background="@drawable/ripple" android:padding="@dimen/filmstrip_footer_item_padding" android:layout_width="?android:actionBarSize" android:layout_height="?android:actionBarSize" android:src="@drawable/state_button_collect" />
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center" android:id="@id/filmstrip_footer_button_editor_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageButton android:id="@id/filmstrip_footer_button_editor" android:background="@drawable/ripple" android:padding="@dimen/filmstrip_footer_item_padding" android:layout_width="?android:actionBarSize" android:layout_height="?android:actionBarSize" android:src="@drawable/filmstrip_button_editor_normal" />
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center" android:id="@id/filmstrip_footer_button_delete_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageButton android:id="@id/filmstrip_footer_button_delete" android:background="@drawable/ripple" android:padding="@dimen/filmstrip_footer_item_padding" android:layout_width="?android:actionBarSize" android:layout_height="?android:actionBarSize" android:src="@drawable/filmstrip_button_delete_normal" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

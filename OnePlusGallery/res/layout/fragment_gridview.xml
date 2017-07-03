@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v7.widget.RecyclerView android:id="@id/recyclerview" android:paddingBottom="@dimen/gridview_item_spacing_vertical" android:visibility="gone" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/gridview_margin_left" />
+    <com.oneplus.gallery2.widget.FastScrollBar android:id="@id/fast_scroller" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/gridview_item_spacing_vertical" android:layout_alignParentEnd="true" />
+    <Toolbar android:id="@id/toolbar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="?android:actionBarSize" android:layout_alignParentTop="true" style="@style/Widget.ActionBar" />
+    <LinearLayout android:gravity="center_horizontal" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/no_photo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/no_photo_icon_margin_top">
+            <ImageView android:id="@id/take_picture_image" android:layout_width="@dimen/no_photo_icon_background_width" android:layout_height="@dimen/no_photo_icon_background_height" android:scaleType="center" />
+            <TextView android:gravity="center" android:id="@id/take_picture_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/no_photo_title_margin_top" android:text="@string/no_photo_title" android:singleLine="true" style="@style/NoPhotoTitle" />
+            <TextView android:gravity="center" android:id="@id/take_picture_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/no_photo_text_margin_top" android:text="@string/no_photo_text" android:singleLine="true" style="@style/NoPhotoText" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/burst_viewer_footer_filmstrip_item_image_view" android:layout_width="@dimen/burst_viewer_footer_filmstrip_item_width_and_height" android:layout_height="@dimen/burst_viewer_footer_filmstrip_item_width_and_height" android:layout_marginTop="@dimen/burst_viewer_footer_item_margin_top" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/burst_viewer_footer_filmstrip_item_selected" android:visibility="gone" android:layout_width="@dimen/burst_viewer_footer_filmstrip_item_width_and_height" android:layout_height="@dimen/burst_viewer_footer_filmstrip_item_width_and_height" android:src="@drawable/burst_viewer_thumb_selected" android:layout_alignTop="@id/burst_viewer_footer_filmstrip_item_image_view" />
+    <TextView android:textSize="@dimen/burst_viewer_footer_item_cover_text" android:textColor="@color/burst_viewer_footer_item_cover_text" android:gravity="center" android:id="@id/burst_viewer_footer_filmstrip_item_cover_text" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/burst_viewer_footer_item_cover_height" android:layout_below="@id/burst_viewer_footer_filmstrip_item_image_view" />
+</RelativeLayout>
