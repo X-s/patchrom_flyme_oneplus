@@ -838,7 +838,7 @@
 
     move/from16 v1, p4
 
-    invoke-virtual {v0, v1, v10}, Landroid/app/NotificationManager;->notify(ILandroid/app/Notification;)V
+    #invoke-virtual {v0, v1, v10}, Landroid/app/NotificationManager;->notify(ILandroid/app/Notification;)V
 
     .line 224
     move-object/from16 v0, p0
@@ -1791,7 +1791,7 @@
 
     iget v6, p0, Lcom/oneplus/screenshot/SaveImageInBackgroundTask;->mNotificationId:I
 
-    invoke-virtual {v5, v6, v1}, Landroid/app/NotificationManager;->notify(ILandroid/app/Notification;)V
+    #invoke-virtual {v5, v6, v1}, Landroid/app/NotificationManager;->notify(ILandroid/app/Notification;)V
 
     goto/16 :goto_1
 .end method
