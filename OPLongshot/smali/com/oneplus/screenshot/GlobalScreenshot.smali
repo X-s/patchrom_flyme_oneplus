@@ -1323,7 +1323,7 @@
     .local v1, "n":Landroid/app/Notification;
     const/high16 v3, 0x7f0b0000
 
-    invoke-virtual {p1, v3, v1}, Landroid/app/NotificationManager;->notify(ILandroid/app/Notification;)V
+    #invoke-virtual {p1, v3, v1}, Landroid/app/NotificationManager;->notify(ILandroid/app/Notification;)V
 
     .line 1059
     return-void
