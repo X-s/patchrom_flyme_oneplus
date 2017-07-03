@@ -464,9 +464,9 @@
     .line 576
     iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mFadeInSet:Landroid/animation/AnimatorSet;
 
-    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$12;
+    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$13;
 
-    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$12;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$13;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
 
     invoke-virtual {v0, v1}, Landroid/animation/AnimatorSet;->addListener(Landroid/animation/Animator$AnimatorListener;)V
 
@@ -501,9 +501,9 @@
     .line 606
     iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mFadeOutSet:Landroid/animation/AnimatorSet;
 
-    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$13;
+    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$14;
 
-    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$13;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$14;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
 
     invoke-virtual {v0, v1}, Landroid/animation/AnimatorSet;->addListener(Landroid/animation/Animator$AnimatorListener;)V
 
@@ -525,9 +525,9 @@
 
     iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmSet:Landroid/animation/AnimatorSet;
 
-    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$14;
+    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$15;
 
-    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$14;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$15;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
 
     invoke-virtual {v0, v1}, Landroid/animation/AnimatorSet;->addListener(Landroid/animation/Animator$AnimatorListener;)V
 
@@ -1583,9 +1583,9 @@
 
     invoke-direct {p0, v4}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->switchView(I)V
 
-    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$10;
+    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$11;
 
-    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$10;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$11;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
 
     invoke-direct {p0, v1}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->confirmPassword(Ljava/lang/Runnable;)V
 
@@ -1675,9 +1675,9 @@
 
     move-result-object v3
 
-    new-instance v4, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$11;
+    new-instance v4, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$12;
 
-    invoke-direct {v4, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$11;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+    invoke-direct {v4, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$12;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
 
     invoke-direct {v2, v3, v4}, Lcom/android/server/policy/EnableAccessibilityController;-><init>(Landroid/content/Context;Ljava/lang/Runnable;)V
 
@@ -1782,17 +1782,6 @@
     return-void
 .end method
 
-.method static synthetic -wrap3(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;IZ)V
-    .locals 0
-    .param p1, "witch"    # I
-    .param p2, "withAnim"    # Z
-
-    .prologue
-    invoke-direct {p0, p1, p2}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->switchView(IZ)V
-
-    return-void
-.end method
-
 .method private confirmPassword(Ljava/lang/Runnable;)V
     .locals 3
     .param p1, "endRunnable"    # Ljava/lang/Runnable;
@@ -1800,13 +1789,13 @@
     .prologue
     iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mConfirmView:Lcom/android/server/policy/FlymeConfirmPasswordView;
 
-    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$7;
+    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$8;
 
-    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$7;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$8;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
 
-    new-instance v2, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$8;
+    new-instance v2, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$9;
 
-    invoke-direct {v2, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$8;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+    invoke-direct {v2, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$9;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
 
     invoke-virtual {v0, p1, v1, v2}, Lcom/android/server/policy/FlymeConfirmPasswordView;->show(Ljava/lang/Runnable;Ljava/lang/Runnable;Ljava/lang/Runnable;)V
 
@@ -1970,9 +1959,9 @@
 
     move-result-object v0
 
-    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$9;
+    new-instance v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$10;
 
-    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$9;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+    invoke-direct {v1, p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$10;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
 
     invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->withEndAction(Ljava/lang/Runnable;)Landroid/view/ViewPropertyAnimator;
 
@@ -1981,4 +1970,39 @@
     invoke-virtual {v0}, Landroid/view/ViewPropertyAnimator;->start()V
 
     goto :goto_2
+.end method
+
+.method static synthetic -wrap3(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->startRebootAndWipeUserData()V
+
+    return-void
+.end method
+
+.method static synthetic -wrap4(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;IZ)V
+    .locals 0
+    .param p1, "witch"    # I
+    .param p2, "withAnim"    # Z
+
+    .prologue
+    invoke-direct {p0, p1, p2}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->switchView(IZ)V
+
+    return-void
+.end method
+
+.method private startRebootAndWipeUserData()V
+    .locals 2
+
+    .prologue
+    new-instance v0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$7;
+
+    const-string v1, "Reboot"
+
+    invoke-direct {v0, p0, v1}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$7;-><init>(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;Ljava/lang/String;)V
+
+    .local v0, "thr":Ljava/lang/Thread;
+    invoke-virtual {v0}, Ljava/lang/Thread;->start()V
+
+    return-void
 .end method

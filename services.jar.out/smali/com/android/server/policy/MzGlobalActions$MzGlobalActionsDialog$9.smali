@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->switchView(IZ)V
+    value = Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->confirmPassword(Ljava/lang/Runnable;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -43,23 +43,13 @@
     .prologue
     iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$9;->this$1:Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;
 
-    iget-object v0, v0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mButtons:Landroid/widget/LinearLayout;
+    invoke-static {v0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->-get6(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)Landroid/os/Handler;
 
-    const/16 v1, 0x8
+    move-result-object v0
 
-    invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setVisibility(I)V
+    const/4 v1, 0x0
 
-    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$9;->this$1:Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;
-
-    iget-object v0, v0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->mButtons:Landroid/widget/LinearLayout;
-
-    const/high16 v1, 0x3f800000    # 1.0f
-
-    invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setAlpha(F)V
-
-    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$9;->this$1:Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;
-
-    invoke-static {v0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->-wrap2(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)V
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
     .line 621
     return-void

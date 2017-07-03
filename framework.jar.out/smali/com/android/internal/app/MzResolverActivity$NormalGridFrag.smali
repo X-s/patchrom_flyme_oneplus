@@ -723,7 +723,7 @@
     :goto_2
     add-int/2addr v1, v2
 
-    if-ge v7, v1, :cond_7
+    if-ge v7, v1, :cond_8
 
     .line 2163
     new-instance v3, Ljava/util/ArrayList;
@@ -866,7 +866,7 @@
     .local v0, "adapter":Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mList:Ljava/util/List;
 
-    if-eqz v1, :cond_6
+    if-eqz v1, :cond_7
 
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mList:Ljava/util/List;
 
@@ -874,7 +874,7 @@
 
     move-result v1
 
-    if-ne v1, v10, :cond_6
+    if-ne v1, v10, :cond_7
 
     .line 2174
     invoke-virtual {v0, v4, v4}, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->intentForPosition(IZ)Landroid/content/Intent;
@@ -886,71 +886,66 @@
     .line 2175
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mActivity:Lcom/android/internal/app/MzResolverActivity;
 
+    invoke-static {v1}, Lcom/android/internal/app/MzResolverActivity;->-get8(Lcom/android/internal/app/MzResolverActivity;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_6
+
+    iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mActivity:Lcom/android/internal/app/MzResolverActivity;
+
     invoke-static {v1}, Lcom/android/internal/app/MzResolverActivity;->-get6(Lcom/android/internal/app/MzResolverActivity;)Lcom/android/internal/content/PackageMonitor;
 
     move-result-object v1
 
     invoke-virtual {v1}, Lcom/android/internal/content/PackageMonitor;->unregister()V
 
-    .line 2176
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mActivity:Lcom/android/internal/app/MzResolverActivity;
 
     invoke-static {v1, v4}, Lcom/android/internal/app/MzResolverActivity;->-set1(Lcom/android/internal/app/MzResolverActivity;Z)Z
 
-    .line 2177
+    :cond_6
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mActivity:Lcom/android/internal/app/MzResolverActivity;
 
     invoke-virtual {v1}, Lcom/android/internal/app/MzResolverActivity;->finish()V
 
-    .line 2178
     return-void
 
-    .line 2180
-    :cond_6
+    :cond_7
     invoke-virtual {v6, v0}, Landroid/widget/GridView;->setAdapter(Landroid/widget/ListAdapter;)V
 
-    .line 2181
     new-instance v1, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag$1;
 
     invoke-direct {v1, p0, v0}, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag$1;-><init>(Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;)V
 
     invoke-virtual {v6, v1}, Landroid/widget/GridView;->setOnItemClickListener(Landroid/widget/AdapterView$OnItemClickListener;)V
 
-    .line 2212
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mGridViewAdapters:Ljava/util/ArrayList;
 
     invoke-virtual {v1, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 2213
     const/4 v1, 0x5
 
     invoke-virtual {v6, v1}, Landroid/widget/GridView;->setNumColumns(I)V
 
-    .line 2214
     invoke-virtual {v6, v4}, Landroid/widget/GridView;->setBackgroundColor(I)V
 
-    .line 2215
     invoke-virtual {v6, v12, v4, v12, v4}, Landroid/widget/GridView;->setPadding(IIII)V
 
-    .line 2216
     const/16 v1, 0xf
 
     invoke-virtual {v6, v1}, Landroid/widget/GridView;->setVerticalSpacing(I)V
 
-    .line 2217
     invoke-virtual {v6, v10}, Landroid/widget/GridView;->setGravity(I)V
 
-    .line 2218
     invoke-virtual {v6, v11}, Landroid/widget/GridView;->setStretchMode(I)V
 
-    .line 2219
     new-instance v1, Landroid/graphics/drawable/ColorDrawable;
 
     invoke-direct {v1, v4}, Landroid/graphics/drawable/ColorDrawable;-><init>(I)V
 
     invoke-virtual {v6, v1}, Landroid/widget/GridView;->setSelector(Landroid/graphics/drawable/Drawable;)V
 
-    .line 2220
     new-instance v1, Landroid/view/ViewGroup$LayoutParams;
 
     const/4 v2, -0x1
@@ -976,18 +971,18 @@
     .end local v3    # "viewPageList":Ljava/util/List;, "Ljava/util/List<Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;>;"
     .end local v6    # "gridView":Landroid/widget/GridView;
     .end local v8    # "j":I
-    :cond_7
+    :cond_8
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mList:Ljava/util/List;
 
     invoke-interface {v1}, Ljava/util/List;->size()I
 
     move-result v1
 
-    if-nez v1, :cond_8
+    if-nez v1, :cond_9
 
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mActivity:Lcom/android/internal/app/MzResolverActivity;
 
-    if-eqz v1, :cond_8
+    if-eqz v1, :cond_9
 
     .line 2224
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mContext:Landroid/content/Context;
@@ -1012,16 +1007,13 @@
 
     invoke-virtual {v1}, Landroid/widget/Toast;->show()V
 
-    .line 2225
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mActivity:Lcom/android/internal/app/MzResolverActivity;
 
     invoke-virtual {v1}, Lcom/android/internal/app/MzResolverActivity;->finish()V
 
-    .line 2226
     return-void
 
-    .line 2130
-    :cond_8
+    :cond_9
     return-void
 .end method
 
@@ -1930,7 +1922,7 @@
     .line 1992
     iget-object v2, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mActivity:Lcom/android/internal/app/MzResolverActivity;
 
-    invoke-static {v2}, Lcom/android/internal/app/MzResolverActivity;->-get9(Lcom/android/internal/app/MzResolverActivity;)Ljava/lang/CharSequence;
+    invoke-static {v2}, Lcom/android/internal/app/MzResolverActivity;->-get10(Lcom/android/internal/app/MzResolverActivity;)Ljava/lang/CharSequence;
 
     move-result-object v2
 
