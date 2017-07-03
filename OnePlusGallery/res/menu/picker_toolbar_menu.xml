@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@id/picker_multiple_choice_menu">
+        <item android:id="@id/picker_confirm" android:title="@string/apply" android:showAsAction="always" />
+    </group>
+</menu>

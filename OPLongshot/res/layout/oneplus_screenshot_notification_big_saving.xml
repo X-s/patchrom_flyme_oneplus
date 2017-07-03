@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/status_bar_layout_big" android:background="@drawable/oneplus_screenshot_notif_back_big" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:internal="http://schemas.android.com/apk/prv/res/android">
+    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center" android:id="@id/icon_big" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginBottom="3.0dip" android:scaleType="centerInside" android:contentDescription="@null" />
+    </FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="100.0dip">
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="59.0dip" android:layout_marginLeft="16.0dip">
+            <TextView android:textSize="18.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/line_1_big" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="12.0sp" android:textColor="#ff8b8b8b" android:ellipsize="end" android:id="@id/line_2_big" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="40.0dip">
+            <LinearLayout android:gravity="center" android:id="@id/layout_shared_big" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <ImageView android:id="@id/icon_shared_big" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_menu_share" />
+                <TextView android:textSize="15.0sp" android:textColor="#ff8b8b8b" android:id="@id/shared_big" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:id="@id/layout_delete_big" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <ImageView android:id="@id/icon_delete_big" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_menu_delete" />
+                <TextView android:textSize="15.0sp" android:textColor="#ff8b8b8b" android:id="@id/delete_big" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

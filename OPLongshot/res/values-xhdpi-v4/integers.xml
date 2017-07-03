@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="integer" name="config_max_pages">@integer/max_pages</item>
+</resources>

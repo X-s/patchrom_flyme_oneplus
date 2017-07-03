@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set android:ordering="sequentially"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:screenshot="http://schemas.android.com/apk/res/com.oneplus.screenshot">
+    <targetAnimator android:duration="430" android:valueFrom="0.0" android:valueTo="1.0" class="com.oneplus.screenshot.anim.DropInAnimator">
+        <target screenshot:id="@id/global_screenshot_background" screenshot:start="visible" screenshot:alpha="@interpolator/background_alpha" />
+        <target screenshot:id="@id/global_screenshot" screenshot:start="visible" screenshot:alpha="@interpolator/linear_alpha" screenshot:scaleX="@interpolator/save_scale_in" screenshot:scaleY="@interpolator/save_scale_in" />
+        <target screenshot:id="@id/global_screenshot_flash" screenshot:start="visible" screenshot:end="gone" screenshot:alpha="@interpolator/flash_alpha" />
+    </targetAnimator>
+    <targetAnimator android:duration="320" android:startOffset="500" android:valueFrom="1.0" android:valueTo="0.0" class="com.oneplus.screenshot.anim.DropOutAnimator">
+        <target screenshot:id="@id/global_screenshot_background" screenshot:end="gone" screenshot:alpha="@interpolator/linear_alpha_half" />
+        <target screenshot:id="@id/global_screenshot" screenshot:end="gone" screenshot:alpha="@interpolator/linear_alpha" screenshot:scaleX="@interpolator/save_scale_out" screenshot:scaleY="@interpolator/save_scale_out" />
+    </targetAnimator>
+</set>

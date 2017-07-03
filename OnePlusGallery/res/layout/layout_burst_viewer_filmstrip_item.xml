@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.widget.ScaleImageView android:id="@id/burst_viewer_filmstrip_item_scale_image_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/burst_viewer_item_checkbox" android:paddingTop="@dimen/burst_viewer_check_box_padding_top_and_bottom" android:paddingBottom="@dimen/burst_viewer_check_box_padding_top_and_bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:paddingStart="@dimen/burst_viewer_check_box_padding_start_and_end" android:paddingEnd="@dimen/burst_viewer_check_box_padding_start_and_end" android:layout_alignParentEnd="true" />
+</RelativeLayout>
