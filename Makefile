@@ -133,6 +133,7 @@ board_modify_apps := TeleService
 
 # my build.prop
 override_property += \
+    persist.sys.density=480 \
     persist.dbg.volte_avail_ovr=1
 
 # The property decide whether hide the soft mainkeys.

@@ -14,3 +14,6 @@ cp -f overlay/firmware-update/sbl1.mbn $TARGET_DIR/BOOTABLE_IMAGES/
 cp -f overlay/firmware-update/static_nvbk.bin $TARGET_DIR/BOOTABLE_IMAGES/
 cp -f overlay/firmware-update/tz.mbn $TARGET_DIR/BOOTABLE_IMAGES/
 cp -f overlay/firmware-update/recovery.img $TARGET_DIR/BOOTABLE_IMAGES/
+
+sed -i 's#qemu.sf.lcd_density#persist.sys.density#g' $TARGET_DIR/SYSTEM/lib/libsurfaceflinger.so
+sed -i 's#qemu.sf.lcd_density#persist.sys.density#g' $TARGET_DIR/SYSTEM/lib64/libsurfaceflinger.so
