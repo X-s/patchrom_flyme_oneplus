@@ -131,6 +131,7 @@ board_modify_apps := TeleService MediaProvider
 
 # my build.prop
 override_property += \
+    persist.sys.density=480 \
     ro.product.model=ONE E1001
 
 # The property decide whether hide the soft mainkeys.
