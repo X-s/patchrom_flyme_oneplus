@@ -1207,7 +1207,7 @@
     .line 567
     iget-object v0, p0, Lcom/android/server/statusbar/StatusBarManagerService;->mBar:Lcom/android/internal/statusbar/IStatusBar;
 
-    if-eqz v0, :cond_0
+    goto :cond_0
 
     .line 569
     :try_start_0
