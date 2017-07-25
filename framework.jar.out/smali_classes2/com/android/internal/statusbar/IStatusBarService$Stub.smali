@@ -1579,9 +1579,35 @@
     .line 443
     .end local v3    # "_arg0":Landroid/os/Bundle;
     :sswitch_24
+    const-string v2, "com.android.internal.statusbar.IStatusBarService"
+
+    move-object/from16 v0, p2
+
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 444
+    invoke-virtual/range {p0 .. p0}, Lcom/android/internal/statusbar/IStatusBarService$Stub;->getLockedPackageList()Ljava/util/List;
+
+    move-result-object v16
+
+    .line 445
+    .local v16, "_result":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 446
+    move-object/from16 v0, p3
+
+    move-object/from16 v1, v16
+
+    invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeStringList(Ljava/util/List;)V
+
+    .line 447
     const/4 v2, 0x1
 
     goto/16 :goto_0
+
+    .line 39
+    nop
 
     :sswitch_data_0
     .sparse-switch
