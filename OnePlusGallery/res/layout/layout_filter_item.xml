@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageButton android:id="@id/filter_item_button" android:background="@drawable/ripple" android:layout_width="@dimen/photo_editor_secondary_filter_button_width" android:layout_height="@dimen/photo_editor_secondary_filter_button_height" android:scaleType="centerCrop" android:paddingStart="@dimen/photo_editor_secondary_filter_button_padding_start_end" android:paddingEnd="@dimen/photo_editor_secondary_filter_button_padding_start_end" />
-    <TextView android:ellipsize="end" android:gravity="center" android:id="@id/filter_item_label" android:background="@color/filter_button_label_background" android:layout_width="@dimen/photo_editor_secondary_filter_button_label_width" android:layout_height="@dimen/photo_editor_secondary_filter_button_label_height" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_marginStart="@dimen/photo_editor_secondary_filter_button_padding_start_end" android:layout_marginEnd="@dimen/photo_editor_secondary_filter_button_padding_start_end" style="@style/FilterButtonLabel" />
-</RelativeLayout>

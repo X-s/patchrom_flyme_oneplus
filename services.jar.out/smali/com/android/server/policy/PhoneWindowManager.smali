@@ -27519,9 +27519,9 @@
     :cond_1
     new-instance v0, Landroid/content/ComponentName;
 
-    const-string v4, "com.oneplus.screenshot"
+    const-string v4, "com.android.systemui"
 
-    const-string v6, "com.oneplus.screenshot.TakeScreenshotService"
+    const-string v6, "com.android.systemui.screenshot.TakeScreenshotService"
 
     invoke-direct {v0, v4, v6}, Landroid/content/ComponentName;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
@@ -27625,9 +27625,9 @@
     :try_start_1
     new-instance v0, Landroid/content/ComponentName;
 
-    const-string v4, "com.oneplus.screenshot"
+    const-string v4, "com.android.systemui"
 
-    const-string v6, "com.oneplus.screenshot.TakeScreenshotService"
+    const-string v6, "com.android.systemui.screenshot.TakeScreenshotService"
 
     invoke-direct {v0, v4, v6}, Landroid/content/ComponentName;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 

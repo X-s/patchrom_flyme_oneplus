@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <item type="drawable" name="dim_edit">#99000000</item>
-    <item type="drawable" name="dim_guide">#cc000000</item>
-</resources>

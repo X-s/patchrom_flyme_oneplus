@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/snackbar_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/snackbar_title_text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/snackbar_title_text_margin_start" android:layout_alignParentStart="true" style="@style/SnackbarTitleText" />
-    <TextView android:id="@id/snackbar_action_text_view" android:padding="@dimen/snackbar_action_text_padding" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerVertical="true" android:layout_alignParentEnd="true" style="@style/SnackbarActionText" />
-</RelativeLayout>

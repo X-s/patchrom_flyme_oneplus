@@ -70,7 +70,7 @@ vendor_saved_apps := Bluetooth BluetoothExt BluetoothMidiService HTMLViewer KeyC
 # You need ro decode FMRadio.apk to the project directory(use apktool d FMRadio.apk) first,
 # and then you can make it by:   make FMRadio
 #-----------------------------------------------------------------------------
-vendor_modify_apps := OPLongshot OnePlusGallery
+vendor_modify_apps := 
 
 ##############################################################################
 # The value decides which vendor jar you want to modify.

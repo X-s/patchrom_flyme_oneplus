@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:icon="@drawable/button_about" android:id="@id/filmstrip_video_toolbar_menu_item_details" android:title="@string/details" android:showAsAction="always" />
-</menu>

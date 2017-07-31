@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:id="@id/pickerActionGroup">
-        <item android:id="@id/picker_selection_done_icon" android:title="@string/picker_selection_done" android:showAsAction="always" />
-    </group>
-</menu>

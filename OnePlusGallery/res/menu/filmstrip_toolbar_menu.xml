@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@id/filmstrip_toolbar_menu_item_use_as_wallpaper" android:title="@string/set_as" android:showAsAction="never" />
-    <item android:id="@id/filmstrip_toolbar_menu_item_add_to_album" android:title="@string/toolbar_selection_addto" android:showAsAction="never" />
-    <item android:icon="@drawable/button_about" android:id="@id/filmstrip_toolbar_menu_item_details" android:title="@string/details" android:showAsAction="never" />
-</menu>
