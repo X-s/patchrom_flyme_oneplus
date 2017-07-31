@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingTop="@dimen/processing_dialog_content_margin_top" android:paddingBottom="@dimen/processing_dialog_content_margin_bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/processing_dialog_content_margin_start" android:paddingEnd="@dimen/processing_dialog_content_margin_end"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/processing_dialog_progress_bar_margin" />
-    <TextView android:ellipsize="end" android:id="@android:id/message" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/processing_dialog_default_message" android:singleLine="true" />
-</LinearLayout>

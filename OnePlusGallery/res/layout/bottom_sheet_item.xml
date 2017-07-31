@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center_vertical" android:id="@id/bottom_sheet_item_icon" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="@dimen/bottom_sheet_item_margin_top_and_bottom" android:layout_marginBottom="@dimen/bottom_sheet_item_margin_top_and_bottom" android:layout_marginStart="@dimen/bottom_sheet_margin_start_and_end" android:layout_marginEnd="@dimen/bottom_sheet_margin_start_and_end" android:layout_alignParentStart="true" />
-    <TextView android:ellipsize="end" android:gravity="center_vertical" android:id="@id/bottom_sheet_item_title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" android:layout_toLeftOf="@id/bottom_sheet_item_comment" android:layout_toEndOf="@id/bottom_sheet_item_icon" style="@style/BottomSheetItemText" />
-    <TextView android:gravity="center_vertical" android:id="@id/bottom_sheet_item_comment" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginEnd="@dimen/bottom_sheet_margin_start_and_end" android:layout_alignParentEnd="true" style="@style/BottomSheetItemCountText" />
-</RelativeLayout>

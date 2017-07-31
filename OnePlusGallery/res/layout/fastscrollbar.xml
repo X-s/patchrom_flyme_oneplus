@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/fastscrollbar_index" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/fastscrollbar_marginEnd" style="@style/FastScrollbarDateIndex" />
-    <ImageButton android:id="@id/fastscrollbar_handle" android:background="@null" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fastscroll_thumb" />
-</merge>

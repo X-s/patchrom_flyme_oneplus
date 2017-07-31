@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:id="@id/dialog_create_album_edit_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/create_album_dialog_editor_text_margin" android:layout_marginBottom="@dimen/create_album_dialog_editor_text_margin" android:hint="@string/dialog_create_album_edit_text_hint" android:maxLines="2" android:maxLength="128" android:layout_marginStart="@dimen/create_album_dialog_editor_text_margin" android:layout_marginEnd="@dimen/create_album_dialog_editor_text_margin" />
-</LinearLayout>

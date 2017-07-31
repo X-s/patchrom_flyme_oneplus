@@ -29525,9 +29525,9 @@
     :cond_1
     new-instance v1, Landroid/content/ComponentName;
 
-    const-string v5, "com.oneplus.screenshot"
+    const-string v5, "com.android.systemui"
 
-    const-string v7, "com.oneplus.screenshot.TakeScreenshotService"
+    const-string v7, "com.android.systemui.screenshot.TakeScreenshotService"
 
     invoke-direct {v1, v5, v7}, Landroid/content/ComponentName;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
