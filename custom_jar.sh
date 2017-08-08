@@ -24,3 +24,11 @@ if [ "$jarBaseName" = "framework" ];then
     nametoid framework-res/res/values/public.xml $tempSmaliDir/smali_classes2/android/widget/
     rm -rf overlay/temp
 fi
+
+if [ "$jarBaseName" = "services" ];then
+    echo ">>>> in custom_jar $jarBaseName to replace vibrate in silent mode with flyme key"
+    sed -i 's/oem_vibrate_under_silent/vibrate_when_ringing/g' $tempSmaliDir/smali/com/android/server/notification/NotificationManagerService\$SettingsObserver.smali
+    sed -i 's/oem_vibrate_under_silent/vibrate_when_ringing/g' $tempSmaliDir/smali/com/android/server/notification/ZenModeHelper.smali
+    sed -i 's/oem_vibrate_under_silent/vibrate_when_ringing/g' $tempSmaliDir/smali/com/oneplus/threekey/ThreeKeyAudioPolicy\$SettingsObserver.smali
+    sed -i 's/oem_vibrate_under_silent/vibrate_when_ringing/g' $tempSmaliDir/smali/com/oneplus/threekey/ThreeKeyAudioPolicy.smali
+fi

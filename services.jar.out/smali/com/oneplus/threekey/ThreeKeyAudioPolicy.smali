@@ -655,7 +655,8 @@
     .line 109
     iget-boolean v0, p0, Lcom/oneplus/threekey/ThreeKeyAudioPolicy;->mMuteMediaFlag:Z
 
-    if-eqz v0, :cond_0
+    #mute media in silent mode
+    #if-eqz v0, :cond_0
 
     .line 110
     invoke-direct {p0}, Lcom/oneplus/threekey/ThreeKeyAudioPolicy;->muteSpeakerMediaVolume()V
