@@ -375,6 +375,12 @@
 
     move-result v0
 
+    const-string v1, "Services"
+
+    invoke-static {v1, v0}, Lcom/xs/ThreeKeyModeUtils;->resolveOnePlusThreeKeyModeToAOSP(Ljava/lang/String;I)I
+
+    move-result v0
+
     iput v0, p0, Lcom/android/server/notification/MzDoNotDisturbHelper;->mZenMode:I
 
     .line 113
@@ -1411,7 +1417,7 @@
     .line 121
     iget v0, p0, Lcom/android/server/notification/MzDoNotDisturbHelper;->mZenMode:I
 
-    if-eqz v0, :cond_0
+    if-nez v0, :cond_0
 
     .line 122
     invoke-direct {p0}, Lcom/android/server/notification/MzDoNotDisturbHelper;->clearDoNotDisturbNotification()V

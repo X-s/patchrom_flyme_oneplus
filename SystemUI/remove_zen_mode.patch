@@ -1,0 +1,11 @@
+--- a/SystemUI/smali/com/flyme/systemui/statusbar/utils/QSTileUtils.smali
++++ b/SystemUI/smali/com/flyme/systemui/statusbar/utils/QSTileUtils.smali
+@@ -257,6 +257,8 @@
+ 
+     if-eqz v0, :cond_9
+ 
++    return v2
++
+     .line 66
+     if-eqz p2, :cond_9
+ 

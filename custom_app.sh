@@ -21,6 +21,16 @@ function applyPatch () {
 }
 
 if [ "$apkBaseName" = "TeleService" ];then
-        echo ">>>> in custom_app for $apkBaseName to fix phone fc"
-        applyPatch $apkBaseName $tempSmaliDir
+    echo ">>>> in custom_app for $apkBaseName to fix phone fc"
+    applyPatch $apkBaseName $tempSmaliDir
+fi
+
+if [ "$apkBaseName" = "SystemUI" ];then
+    echo ">>>> in custom_app for $apkBaseName to remove zen mode"
+    applyPatch $apkBaseName $tempSmaliDir
+fi
+
+if [ "$apkBaseName" = "Settings" ];then
+    echo ">>>> in custom_app for $apkBaseName to remove zen mode checkbox"
+    applyPatch $apkBaseName $tempSmaliDir
 fi
