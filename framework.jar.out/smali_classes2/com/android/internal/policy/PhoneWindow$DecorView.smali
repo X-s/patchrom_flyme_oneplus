@@ -3295,13 +3295,13 @@
     :goto_2
     invoke-static/range {p0 .. p1}, Lcom/android/internal/policy/PhoneWindow$FlymeInjector;->flymeDispatchKeyEvent(Lcom/android/internal/policy/PhoneWindow$DecorView;Landroid/view/KeyEvent;)Z
 
-    move-result v6
+    move-result v5
 
-    if-eqz v6, :cond_flyme_0
+    if-eqz v5, :cond_flyme_0
 
-    const/4 v6, 0x1
+    const/4 v5, 0x1
 
-    return v6
+    return v5
 
     :cond_flyme_0
     if-nez v2, :cond_0
