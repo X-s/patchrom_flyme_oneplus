@@ -1,11 +1,12 @@
 --- a/TeleService/smali/com/android/phone/PhoneGlobals.smali
 +++ b/TeleService/smali/com/android/phone/PhoneGlobals.smali
-@@ -1540,7 +1540,14 @@
+@@ -2256,7 +2256,15 @@
      if-nez v8, :cond_1
  
-     .line 417
+     .line 420
 -    invoke-static {p0}, Lcom/android/internal/telephony/PhoneFactory;->makeDefaultPhones(Landroid/content/Context;)V
 +    #invoke-static {p0}, Lcom/android/internal/telephony/PhoneFactory;->makeDefaultPhones(Landroid/content/Context;)V
++
 +    invoke-static {p0}, Lcom/android/internal/telephony/TelephonyPluginDelegate;->init(Landroid/content/Context;)V
 +
 +    invoke-static {}, Lcom/android/internal/telephony/TelephonyPluginDelegate;->getInstance()Lcom/android/internal/telephony/TelephonyPluginDelegate;
@@ -14,5 +15,5 @@
 +
 +    invoke-virtual {v8, p0}, Lcom/android/internal/telephony/TelephonyPluginDelegate;->makeDefaultPhones(Landroid/content/Context;)V
  
-     .line 425
+     .line 428
      iget-object v8, p0, Lcom/android/phone/PhoneGlobals;->mHandler:Landroid/os/Handler;
