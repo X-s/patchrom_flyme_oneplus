@@ -163,9 +163,9 @@
     const/4 v6, 0x1
 
     .line 37
-    const-string/jumbo v3, "zen_mode"
+    const-string/jumbo v3, "oem_three_key_define"
 
-    invoke-static {v3}, Landroid/provider/Settings$Global;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
+    invoke-static {v3}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v3
 
@@ -369,9 +369,15 @@
     .line 112
     iget-object v0, p0, Lcom/android/server/notification/MzDoNotDisturbHelper;->mResolver:Landroid/content/ContentResolver;
 
-    const-string/jumbo v1, "zen_mode"
+    const-string/jumbo v1, "oem_three_key_define"
 
-    invoke-static {v0, v1, v3}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+    invoke-static {v0, v1, v3}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+
+    move-result v0
+
+    const-string v1, "Services"
+
+    invoke-static {v1, v0}, Lcom/xs/ThreeKeyModeUtils;->resolveOnePlusThreeKeyModeToAOSP(Ljava/lang/String;I)I
 
     move-result v0
 
@@ -1411,7 +1417,7 @@
     .line 121
     iget v0, p0, Lcom/android/server/notification/MzDoNotDisturbHelper;->mZenMode:I
 
-    if-eqz v0, :cond_0
+    if-nez v0, :cond_0
 
     .line 122
     invoke-direct {p0}, Lcom/android/server/notification/MzDoNotDisturbHelper;->clearDoNotDisturbNotification()V

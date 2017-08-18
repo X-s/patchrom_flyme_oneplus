@@ -61,9 +61,15 @@
 
     move-result-object v1
 
-    const-string/jumbo v2, "zen_mode"
+    const-string/jumbo v2, "oem_three_key_define"
 
-    invoke-static {v1, v2, v3}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+    invoke-static {v1, v2, v3}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+
+    move-result v0
+
+    const-string v2, "Services"
+
+    invoke-static {v2, v0}, Lcom/xs/ThreeKeyModeUtils;->resolveOnePlusThreeKeyModeToAOSP(Ljava/lang/String;I)I
 
     move-result v0
 

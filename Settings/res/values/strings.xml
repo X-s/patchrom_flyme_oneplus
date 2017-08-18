@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="do_not_disturb_title">ThreeKey and Do not disturb mode</string>
+    <add-resource type="string" name="three_key_mode_tips" />
+    <string name="three_key_mode_tips">ThreeKey-UP: Silent mode\nThreeKey-IN: Do not disturb mode\nThreeKey-DOWN: Ring mode</string>
+    <add-resource type="string" name="silent_mode_options_title" />
+    <string name="silent_mode_options_title">Silent mode</string>
+    <add-resource type="string" name="silent_mode_options_tips" />
+    <string name="silent_mode_options_tips">Mute media volume\nVibration switch by system</string>
+    <string name="do_not_disturb_options">Do not disturb mode</string>
+    <string name="do_not_disturb_tips">DND mode will turn off sound for calls and messages\n\nVibration switch by system</string>
+</resources>

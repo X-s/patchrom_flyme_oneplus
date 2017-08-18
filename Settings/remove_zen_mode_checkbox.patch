@@ -1,0 +1,39 @@
+--- a/Settings/smali/com/meizu/settings/donotdisturb/MzDonotDisturbPreferenceFragment.smali
++++ b/Settings/smali/com/meizu/settings/donotdisturb/MzDonotDisturbPreferenceFragment.smali
+@@ -727,6 +727,18 @@
+ 
+     invoke-virtual {v0, p0}, Lcom/meizu/settings/widget/ScheduledPreference;->setOnItemSelectedChangedListener(Lcom/meizu/settings/widget/ScheduledPreference$OnItemSelectedChangedListener;)V
+ 
++    iget-object v0, p0, Lcom/meizu/settings/donotdisturb/MzDonotDisturbPreferenceFragment;->mRootScreen:Landroid/preference/PreferenceScreen;
++
++    iget-object v1, p0, Lcom/meizu/settings/donotdisturb/MzDonotDisturbPreferenceFragment;->mDoNotDisturb:Lcom/meizu/common/preference/SwitchPreference;
++
++    invoke-virtual {v0, v1}, Landroid/preference/PreferenceScreen;->removePreference(Landroid/preference/Preference;)Z
++
++    iget-object v0, p0, Lcom/meizu/settings/donotdisturb/MzDonotDisturbPreferenceFragment;->mRootScreen:Landroid/preference/PreferenceScreen;
++
++    iget-object v1, p0, Lcom/meizu/settings/donotdisturb/MzDonotDisturbPreferenceFragment;->mDoNotDisturbTimeSwitch:Lcom/meizu/common/preference/SwitchPreference;
++
++    invoke-virtual {v0, v1}, Landroid/preference/PreferenceScreen;->removePreference(Landroid/preference/Preference;)Z
++
+     .line 122
+     return-void
+ .end method
+@@ -1312,7 +1324,7 @@
+     const/4 v1, 0x1
+ 
+     :cond_0
+-    invoke-virtual {v2, v1}, Landroid/preference/CheckBoxPreference;->setChecked(Z)V
++    #invoke-virtual {v2, v1}, Landroid/preference/CheckBoxPreference;->setChecked(Z)V
+ 
+     .line 243
+     return-void
+@@ -1523,7 +1535,7 @@
+     .local v0, "allRepeatCall":Z
+     iget-object v7, p0, Lcom/meizu/settings/donotdisturb/MzDonotDisturbPreferenceFragment;->mRepeatComingCallNotify:Landroid/preference/CheckBoxPreference;
+ 
+-    invoke-virtual {v7, v0}, Landroid/preference/CheckBoxPreference;->setChecked(Z)V
++    #invoke-virtual {v7, v0}, Landroid/preference/CheckBoxPreference;->setChecked(Z)V
+ 
+     .line 182
+     return-void

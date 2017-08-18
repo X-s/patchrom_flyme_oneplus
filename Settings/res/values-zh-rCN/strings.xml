@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="do_not_disturb_title">三段式和免打扰</string>
+    <add-resource type="string" name="three_key_mode_tips" />
+    <string name="three_key_mode_tips">三段式-上：静音模式\n三段式-中：免打扰模式\n三段式-下：正常模式</string>
+    <add-resource type="string" name="silent_mode_options_title" />
+    <string name="silent_mode_options_title">静音模式</string>
+    <add-resource type="string" name="silent_mode_options_tips" />
+    <string name="silent_mode_options_tips">切换到静音模式时媒体音量会暂时设为0\n静音模式下来电振动由系统振动开关控制</string>
+    <string name="do_not_disturb_options">免打扰模式</string>
+    <string name="do_not_disturb_tips">启用免打扰后将关闭铃声，来电和消息将不再响铃\n免打扰模式下来电振动由系统振动开关控制</string>
+</resources>

@@ -1329,10 +1329,14 @@
         </receiver>
         <receiver android:name="com.oneplus.settings.receiver.SilentReceiver">
             <intent-filter>
+                <action android:name="com.oem.intent.action.THREE_KEY_MODE"/>
+                <action android:name="com.oem.intent.action.THREE_KEY_MODE_BOOT"/>
             </intent-filter>
         </receiver>
         <receiver android:name="com.oneplus.settings.receiver.SettingsReceiver">
             <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="com.oem.intent.action.BOOT_COMPLETED"/>
                 <action android:name="com.oem.intent.action.OP_EYS_CARE_MODE"/>
                 <action android:name="com.oem.intent.action.OP_EYS_CARE_MODE_OFF"/>
             </intent-filter>
