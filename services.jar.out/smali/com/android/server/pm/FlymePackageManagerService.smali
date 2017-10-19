@@ -871,6 +871,7 @@
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
+    .local v0, "finalresult":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     return-object v0
 .end method
 
