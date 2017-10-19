@@ -18,3 +18,6 @@
 
 .method public abstract getRankingScoreBase(Ljava/lang/String;II)F
 .end method
+
+.method public abstract offsetScore(Lmeizu/notification/RankingDaily;J)F
+.end method
