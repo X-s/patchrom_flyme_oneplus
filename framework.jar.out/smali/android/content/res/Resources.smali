@@ -4897,6 +4897,8 @@
 
     if-gt v4, v5, :cond_0
 
+    invoke-static/range {p0 .. p1}, Landroid/content/res/Resources$FlymeInjector;->overlayFlymeThemeColor(Landroid/content/res/Resources;Landroid/util/TypedValue;)V
+
     .line 2522
     const/4 v6, 0x1
 
