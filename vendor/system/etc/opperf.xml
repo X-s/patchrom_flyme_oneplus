@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<perf version="1" switch="1">
+<pkg name="com.miHoYo.bh3.nearme.gamecenter" perflock="7000"/>
+<pkg name="com.tencent.tmgp.sgame" perflock="10000"/>
+<pkg name="com.blizzard.wtcg.hearthstone" perflock="10000"/>
+<pkg name="com.gameloft.android.ANMP.GloftA8CN" perflock="15000"/>
+</perf>

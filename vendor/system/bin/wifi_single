@@ -1,0 +1,39 @@
+#!/system/bin/sh
+let max=20
+let retry=0
+wlan_aging="/wlan_aging.ko"
+if [ ! -f "$wlan_aging" ]; then
+insmod /system/lib/modules/wlan.ko
+else
+insmod /wlan_aging.ko
+fi
+
+sleep 1
+while true
+do
+if [ $retry -ge $max ]; then
+    break
+elif [ -f /sys/module/wlan/parameters/con_mode ]; then
+    let retry=0
+    while true
+    do
+        echo 5 > /sys/module/wlan/parameters/con_mode
+        keyValue=$(cat /sys/module/wlan/parameters/con_mode)
+        if [ $retry -ge $max ]; then
+            break
+        elif [ "$keyValue" -eq "5" ]; then
+            break
+        else
+            let retry=retry+1
+            sleep 1
+        fi
+    done
+    break
+else
+    let retry=retry+1
+    sleep 1
+fi
+done
+
+#ifconfig wlan0 up
+ftmdaemon -n

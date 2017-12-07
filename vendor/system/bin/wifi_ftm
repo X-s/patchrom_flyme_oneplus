@@ -1,0 +1,25 @@
+#!/system/bin/sh
+insmod /system/lib/modules/wlan.ko
+sleep 1
+while true
+do
+if [ -f /sys/module/wlan/parameters/con_mode ]; then
+    while true
+    do
+        echo 5 > /sys/module/wlan/parameters/con_mode
+        keyValue=$(cat /sys/module/wlan/parameters/con_mode)
+        if [ "$keyValue" -eq "5" ]; then
+            break
+        else
+            sleep 1
+        fi
+    done
+    break
+else
+     sleep 1
+fi
+done
+
+#ifconfig wlan0 up
+ftmdaemon -n
+

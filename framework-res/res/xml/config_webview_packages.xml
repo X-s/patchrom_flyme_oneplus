@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<webviewproviders>
+    <webviewprovider description="Google WebView" packageName="com.google.android.webview" availableByDefault="true" />
+</webviewproviders>
