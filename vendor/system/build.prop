@@ -1,4 +1,5 @@
-
+ro.product.device=OnePlus5
+ro.build.fingerprint=7.1.1/NMF26X/10171617:user/release-keys
 #
 #
 #
