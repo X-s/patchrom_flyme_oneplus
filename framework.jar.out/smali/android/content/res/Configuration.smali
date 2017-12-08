@@ -87,6 +87,8 @@
 
 .field public static final NATIVE_CONFIG_NAVIGATION:I = 0x40
 
+.field public static final NATIVE_CONFIG_ONEPLUSFONT:I = 0x8000
+
 .field public static final NATIVE_CONFIG_ORIENTATION:I = 0x80
 
 .field public static final NATIVE_CONFIG_SCREEN_LAYOUT:I = 0x800
@@ -116,6 +118,8 @@
 .field public static final NAVIGATION_UNDEFINED:I = 0x0
 
 .field public static final NAVIGATION_WHEEL:I = 0x4
+
+.field public static final ONEPLUSFONT_UNDEFINED:I = 0x0
 
 .field public static final ORIENTATION_LANDSCAPE:I = 0x2
 
@@ -275,6 +279,8 @@
 
 .field private mLocaleList:Landroid/os/LocaleList;
 
+.field public mOpExtraConfiguration:Landroid/content/res/OpExtraConfiguration;
+
 .field public mcc:I
 
 .field public mnc:I
@@ -282,6 +288,8 @@
 .field public navigation:I
 
 .field public navigationHidden:I
+
+.field public oneplusfont:I
 
 .field public orientation:I
 
