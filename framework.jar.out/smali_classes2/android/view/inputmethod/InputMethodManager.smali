@@ -4900,6 +4900,8 @@
 
     iput-boolean v2, v0, Landroid/view/inputmethod/InputMethodManager;->mServedConnecting:Z
 
+    invoke-static/range {p0 .. p0}, Landroid/view/inputmethod/InputMethodManager$FlymeInjector;->adjustEditorInfo(Landroid/view/inputmethod/InputMethodManager;)V
+
     .line 1242
     move-object/from16 v0, p0
 

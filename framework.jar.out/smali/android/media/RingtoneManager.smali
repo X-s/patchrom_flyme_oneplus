@@ -2068,6 +2068,8 @@
     .end local v0    # "cacheUri":Landroid/net/Uri;
     .end local v1    # "e":Ljava/io/IOException;
     :cond_9
+    invoke-static/range {p0 .. p2}, Landroid/media/RingtoneManager;->setFlymeActualDefaultRingtoneUri(Landroid/content/Context;ILandroid/net/Uri;)V
+
     return-void
 
     .restart local v3    # "isSystemDefaultApp":Z

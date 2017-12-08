@@ -204,6 +204,8 @@
 
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
+    invoke-direct/range {p0 .. p0}, Landroid/widget/ScrollView;->initFlymeStyles()V
+
     return-void
 .end method
 

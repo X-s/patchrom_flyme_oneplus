@@ -25,6 +25,9 @@
 
 
 # instance fields
+
+.field public mFlymeNotificationBuilder:Landroid/app/NotificationBuilderExt;
+
 .field private mActionIntentOnStatusBar:Landroid/content/Intent;
 
 .field private mActions:Ljava/util/ArrayList;

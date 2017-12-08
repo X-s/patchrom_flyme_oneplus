@@ -1466,6 +1466,12 @@
 
     invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
+    move-object/from16 v0, v23
+
+    move-object/from16 v1, v22
+
+    invoke-static {v13, v0, v1}, Landroid/graphics/Typeface;->putFlymeSystemFonts(Landroid/graphics/FontListParser$Family;Landroid/graphics/Typeface;Ljava/util/Map;)V
+
     .line 393
     .end local v23    # "typeface":Landroid/graphics/Typeface;
     :cond_6
@@ -1667,6 +1673,13 @@
     move-object/from16 v2, v20
 
     invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-object/from16 v0, v20
+
+    move-object/from16 v1, v22
+
+    invoke-static {v4, v0, v1}, Landroid/graphics/Typeface;->putFlymeSystemFonts(Landroid/graphics/FontListParser$Alias;Landroid/graphics/Typeface;Ljava/util/Map;)V
+
     :try_end_2
     .catch Ljava/lang/RuntimeException; {:try_start_2 .. :try_end_2} :catch_0
     .catch Ljava/io/FileNotFoundException; {:try_start_2 .. :try_end_2} :catch_1

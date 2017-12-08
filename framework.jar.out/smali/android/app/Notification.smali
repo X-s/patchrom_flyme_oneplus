@@ -721,6 +721,8 @@
 
     iput v2, p0, Landroid/app/Notification;->mPriorityOnStatusBar:I
 
+    invoke-static/range {p0 .. p0}, Landroid/app/Notification$FlymeInjector;->initFlymeExtFields(Landroid/app/Notification;)V
+
     new-instance v0, Landroid/app/Notification$Builder;
 
     invoke-direct {v0, p1}, Landroid/app/Notification$Builder;-><init>(Landroid/content/Context;)V
@@ -1533,6 +1535,8 @@
     iput-object v1, p0, Landroid/app/Notification;->mActionIntentOnStatusBar:Landroid/content/Intent;
 
     :cond_d
+    invoke-static/range {p0 .. p1}, Landroid/app/Notification$FlymeInjector;->readFromParcelFlyme(Landroid/app/Notification;Landroid/os/Parcel;)V
+
     return-void
 
     :cond_e
@@ -2223,6 +2227,8 @@
     invoke-virtual {v0, p1, v2}, Landroid/content/Intent;->writeToParcel(Landroid/os/Parcel;I)V
 
     :goto_f
+    invoke-static/range {p0 .. p2}, Landroid/app/Notification$FlymeInjector;->writeToParcelFlyme(Landroid/app/Notification;Landroid/os/Parcel;I)V
+
     return-void
 
     :cond_2
@@ -2829,6 +2835,8 @@
     iget-object v5, p0, Landroid/app/Notification;->mActionIntentOnStatusBar:Landroid/content/Intent;
 
     iput-object v5, p1, Landroid/app/Notification;->mActionIntentOnStatusBar:Landroid/content/Intent;
+
+    invoke-static/range {p0 .. p1}, Landroid/app/Notification$FlymeInjector;->cloneIntoFlyme(Landroid/app/Notification;Landroid/app/Notification;)V
 
     return-void
 .end method

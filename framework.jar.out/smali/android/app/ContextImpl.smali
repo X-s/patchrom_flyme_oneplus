@@ -384,8 +384,11 @@
     move-result-object v16
 
     :goto_flyme_0
+    move-object/from16 v0, p0
 
-    invoke-direct {p0, v14}, Landroid/app/ContextImpl;->setFlymeThemeResource(Landroid/content/res/Resources;)V
+    move-object/from16 v1, v16
+
+    invoke-direct {v0, v1}, Landroid/app/ContextImpl;->setFlymeThemeResource(Landroid/content/res/Resources;)V
 
     :cond_5
     :goto_4
@@ -564,7 +567,7 @@
 
     move-result-object v16
 
-    goto/16 :goto_4
+    goto/16 :goto_flyme_0
 
     :cond_c
     move-object/from16 v0, p0

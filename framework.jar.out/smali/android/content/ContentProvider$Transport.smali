@@ -690,7 +690,7 @@
     .local v7, "delResult":I
     const/4 v0, 0x0
 
-    invoke-direct {p0, p1, p2, v0}, Landroid/content/ContentProvider$Transport;->enforceWritePermission(Ljava/lang/String;Landroid/net/Uri;Landroid/os/IBinder;)I
+    invoke-direct {p0, p1, p2, v0}, Landroid/content/ContentProvider$Transport;->hook_enforceWritePermission(Ljava/lang/String;Landroid/net/Uri;Landroid/os/IBinder;)I
 
     move-result v0
 
@@ -879,7 +879,7 @@
     move-result-object p2
 
     .line 263
-    invoke-direct {p0, p1, p2, v1}, Landroid/content/ContentProvider$Transport;->enforceWritePermission(Ljava/lang/String;Landroid/net/Uri;Landroid/os/IBinder;)I
+    invoke-direct {p0, p1, p2, v1}, Landroid/content/ContentProvider$Transport;->hook_enforceWritePermission(Ljava/lang/String;Landroid/net/Uri;Landroid/os/IBinder;)I
 
     move-result v0
 

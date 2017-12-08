@@ -7126,11 +7126,17 @@
 
     iput-object v4, v0, Landroid/content/pm/PackageParser$Activity;->metaData:Landroid/os/Bundle;
 
-    if-nez v4, :cond_28
+    if-nez v4, :cond_flyme_0
 
     const/4 v4, 0x0
 
     return-object v4
+
+    :cond_flyme_0
+
+    invoke-static/range {v17 .. v17}, Landroid/content/pm/PackageParser$FlymeInjector;->parseAccessMetaFromResource(Landroid/content/pm/PackageParser$Activity;)V
+
+    goto/16 :goto_flyme_0
 
     :cond_32
     if-nez p6, :cond_33
