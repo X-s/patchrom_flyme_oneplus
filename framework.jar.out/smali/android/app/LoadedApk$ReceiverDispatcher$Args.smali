@@ -324,13 +324,11 @@
 
     invoke-virtual {v5, v8, v2}, Landroid/content/BroadcastReceiver;->onReceive(Landroid/content/Context;Landroid/content/Intent;)V
 
-    .line 1168
     sget-boolean v8, Landroid/app/ActivityThread;->DEBUG_ONEPLUS:Z
 
     if-eqz v8, :cond_5
 
-    .line 1169
-    const-string/jumbo v8, "LoadedApk"
+    const-string v8, "LoadedApk"
 
     new-instance v9, Ljava/lang/StringBuilder;
 

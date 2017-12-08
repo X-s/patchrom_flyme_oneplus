@@ -1273,7 +1273,7 @@
 
     iget-object v3, v3, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
-    const v4, 0x10403c2
+    const v4, #android:string@android_start_title#t
 
     invoke-virtual {v3, v4}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -6289,7 +6289,11 @@
     .end annotation
 
     .prologue
-    .line 1051
+
+    invoke-direct/range {p0 .. p1}, Lcom/android/server/am/UserController;->startFlymeUser(Landroid/util/Pair;)V
+
+    return-void
+
     .local p1, "fromToUserPair":Landroid/util/Pair;, "Landroid/util/Pair<Landroid/content/pm/UserInfo;Landroid/content/pm/UserInfo;>;"
     new-instance v0, Lcom/android/server/am/UserSwitchingDialog;
 
@@ -6303,53 +6307,44 @@
 
     check-cast v3, Landroid/content/pm/UserInfo;
 
-    .line 1052
     iget-object v4, p1, Landroid/util/Pair;->second:Ljava/lang/Object;
 
     check-cast v4, Landroid/content/pm/UserInfo;
 
     const/4 v5, 0x1
 
-    .line 1051
     invoke-direct/range {v0 .. v5}, Lcom/android/server/am/UserSwitchingDialog;-><init>(Lcom/android/server/am/ActivityManagerService;Landroid/content/Context;Landroid/content/pm/UserInfo;Landroid/content/pm/UserInfo;Z)V
 
-    .line 1053
     .local v0, "d":Landroid/app/Dialog;
     invoke-virtual {v0}, Landroid/app/Dialog;->show()V
 
-    .line 1057
     sget-boolean v1, Lcom/android/server/am/UserController;->IS_SCENE_MODES_FEATURED:Z
 
     if-eqz v1, :cond_1
 
-    .line 1058
     sget-object v1, Lcom/android/server/am/UserController;->TAG:Ljava/lang/String;
 
-    const-string/jumbo v2, "[scene] start switching user"
+    const-string v2, "[scene] start switching user"
 
     invoke-static {v1, v2}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1060
     :try_start_0
     iget-object v1, p0, Lcom/android/server/am/UserController;->mOemExSvc:Lcom/oem/os/IOemExService;
 
     if-nez v1, :cond_0
 
-    .line 1062
-    const-string/jumbo v1, "OEMExService"
+    const-string v1, "OEMExService"
 
     invoke-static {v1}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
 
     move-result-object v1
 
-    .line 1061
     invoke-static {v1}, Lcom/oem/os/IOemExService$Stub;->asInterface(Landroid/os/IBinder;)Lcom/oem/os/IOemExService;
 
     move-result-object v1
 
     iput-object v1, p0, Lcom/android/server/am/UserController;->mOemExSvc:Lcom/oem/os/IOemExService;
 
-    .line 1065
     :cond_0
     iget-object v1, p0, Lcom/android/server/am/UserController;->mOemExSvc:Lcom/oem/os/IOemExService;
 
@@ -6359,16 +6354,13 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1049
     :cond_1
     :goto_0
     return-void
 
-    .line 1066
     :catch_0
     move-exception v6
 
-    .line 1067
     .local v6, "e":Landroid/os/RemoteException;
     sget-object v1, Lcom/android/server/am/UserController;->TAG:Ljava/lang/String;
 
@@ -6376,7 +6368,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v3, "[scene] error while operating the scene mode controller: "
+    const-string v3, "[scene] error while operating the scene mode controller: "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -6401,32 +6393,27 @@
     .prologue
     const/4 v8, 0x0
 
-    .line 733
     sget-boolean v6, Lcom/android/server/am/ActivityManagerDebugConfig;->DEBUG_MU:Z
 
     if-eqz v6, :cond_0
 
     sget-object v6, Lcom/android/server/am/UserController;->TAG:Ljava/lang/String;
 
-    const-string/jumbo v7, "startProfilesLocked"
+    const-string v7, "startProfilesLocked"
 
     invoke-static {v6, v7}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 734
     :cond_0
     invoke-direct {p0}, Lcom/android/server/am/UserController;->getUserManager()Lcom/android/server/pm/UserManagerService;
 
     move-result-object v6
 
-    .line 735
     iget v7, p0, Lcom/android/server/am/UserController;->mCurrentUserId:I
 
-    .line 734
     invoke-virtual {v6, v7, v8}, Lcom/android/server/pm/UserManagerService;->getProfiles(IZ)Ljava/util/List;
 
     move-result-object v1
 
-    .line 736
     .local v1, "profiles":Ljava/util/List;, "Ljava/util/List<Landroid/content/pm/UserInfo;>;"
     new-instance v2, Ljava/util/ArrayList;
 
@@ -6436,7 +6423,6 @@
 
     invoke-direct {v2, v6}, Ljava/util/ArrayList;-><init>(I)V
 
-    .line 737
     .local v2, "profilesToStart":Ljava/util/List;, "Ljava/util/List<Landroid/content/pm/UserInfo;>;"
     invoke-interface {v1}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
 
@@ -6457,7 +6443,6 @@
 
     check-cast v4, Landroid/content/pm/UserInfo;
 
-    .line 738
     .local v4, "user":Landroid/content/pm/UserInfo;
     iget v6, v4, Landroid/content/pm/UserInfo;->flags:I
 
@@ -6467,7 +6452,6 @@
 
     if-ne v6, v7, :cond_1
 
-    .line 739
     iget v6, v4, Landroid/content/pm/UserInfo;->id:I
 
     iget v7, p0, Lcom/android/server/am/UserController;->mCurrentUserId:I
@@ -6480,23 +6464,19 @@
 
     if-nez v6, :cond_1
 
-    .line 740
     invoke-interface {v2, v4}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     goto :goto_0
 
-    .line 743
     .end local v4    # "user":Landroid/content/pm/UserInfo;
     :cond_2
     invoke-interface {v2}, Ljava/util/List;->size()I
 
     move-result v3
 
-    .line 744
     .local v3, "profilesToStartSize":I
     const/4 v0, 0x0
 
-    .line 745
     .local v0, "i":I
     :goto_1
     if-ge v0, v3, :cond_3
@@ -6505,7 +6485,6 @@
 
     if-ge v0, v6, :cond_3
 
-    .line 746
     invoke-interface {v2, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v6
@@ -6516,23 +6495,19 @@
 
     invoke-virtual {p0, v6, v8}, Lcom/android/server/am/UserController;->startUser(IZ)Z
 
-    .line 745
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_1
 
-    .line 748
     :cond_3
     if-ge v0, v3, :cond_4
 
-    .line 749
     sget-object v6, Lcom/android/server/am/UserController;->TAG:Ljava/lang/String;
 
-    const-string/jumbo v7, "More profiles than MAX_RUNNING_USERS"
+    const-string v7, "More profiles than MAX_RUNNING_USERS"
 
     invoke-static {v6, v7}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 732
     :cond_4
     return-void
 .end method
@@ -6543,12 +6518,11 @@
     .param p2, "foreground"    # Z
 
     .prologue
-    .line 796
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/UserController;->mService:Lcom/android/server/am/ActivityManagerService;
 
-    const-string/jumbo v5, "android.permission.INTERACT_ACROSS_USERS_FULL"
+    const-string v5, "android.permission.INTERACT_ACROSS_USERS_FULL"
 
     invoke-virtual {v4, v5}, Lcom/android/server/am/ActivityManagerService;->checkCallingPermission(Ljava/lang/String;)I
 
@@ -6556,57 +6530,46 @@
 
     if-eqz v4, :cond_0
 
-    .line 798
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v5, "Permission Denial: switchUser() from pid="
+    const-string v5, "Permission Denial: switchUser() from pid="
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    .line 799
     invoke-static {}, Landroid/os/Binder;->getCallingPid()I
 
     move-result v5
 
-    .line 798
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    .line 800
-    const-string/jumbo v5, ", uid="
+    const-string v5, ", uid="
 
-    .line 798
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    .line 800
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
     move-result v5
 
-    .line 798
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    .line 801
-    const-string/jumbo v5, " requires "
+    const-string v5, " requires "
 
-    .line 798
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    .line 801
-    const-string/jumbo v5, "android.permission.INTERACT_ACROSS_USERS_FULL"
+    const-string v5, "android.permission.INTERACT_ACROSS_USERS_FULL"
 
-    .line 798
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
@@ -6615,7 +6578,6 @@
 
     move-result-object v24
 
-    .line 802
     .local v24, "msg":Ljava/lang/String;
     sget-object v4, Lcom/android/server/am/UserController;->TAG:Ljava/lang/String;
 
@@ -6623,7 +6585,6 @@
 
     invoke-static {v4, v0}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 803
     new-instance v4, Ljava/lang/SecurityException;
 
     move-object/from16 v0, v24
@@ -6632,7 +6593,6 @@
 
     throw v4
 
-    .line 806
     .end local v24    # "msg":Ljava/lang/String;
     :cond_0
     sget-object v4, Lcom/android/server/am/UserController;->TAG:Ljava/lang/String;
@@ -6641,7 +6601,7 @@
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v6, "Starting userid:"
+    const-string v6, "Starting userid:"
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -6653,7 +6613,7 @@
 
     move-result-object v5
 
-    const-string/jumbo v6, " fg:"
+    const-string v6, " fg:"
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -6671,12 +6631,10 @@
 
     invoke-static {v4, v5}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 808
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v22
 
-    .line 810
     .local v22, "ident":J
     :try_start_0
     move-object/from16 v0, p0
@@ -6692,7 +6650,6 @@
     :try_start_1
     invoke-static {}, Lcom/android/server/am/ActivityManagerService;->boostPriorityForLockedSection()V
 
-    .line 811
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/server/am/UserController;->mCurrentUserId:I
@@ -6701,7 +6658,6 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 812
     .local v26, "oldUserId":I
     move/from16 v0, v26
 
@@ -6712,21 +6668,16 @@
     :try_start_2
     monitor-exit v31
 
-    .line 810
     invoke-static {}, Lcom/android/server/am/ActivityManagerService;->resetPriorityAfterLockedSection()V
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 813
     const/4 v4, 0x1
 
-    .line 943
     invoke-static/range {v22 .. v23}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 813
     return v4
 
-    .line 816
     :cond_1
     :try_start_3
     move-object/from16 v0, p0
@@ -6735,37 +6686,30 @@
 
     iget-object v4, v4, Lcom/android/server/am/ActivityManagerService;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
-    .line 817
-    const-string/jumbo v5, "startUser"
+    const-string v5, "startUser"
 
-    .line 816
     const/4 v6, 0x0
 
-    .line 817
     const/4 v8, 0x0
 
     const/4 v9, 0x0
 
-    .line 816
     invoke-virtual {v4, v6, v8, v5, v9}, Lcom/android/server/am/ActivityStackSupervisor;->setLockTaskModeLocked(Lcom/android/server/am/TaskRecord;ILjava/lang/String;Z)V
 
-    .line 819
     invoke-virtual/range {p0 .. p1}, Lcom/android/server/am/UserController;->getUserInfo(I)Landroid/content/pm/UserInfo;
 
     move-result-object v28
 
-    .line 820
     .local v28, "userInfo":Landroid/content/pm/UserInfo;
     if-nez v28, :cond_2
 
-    .line 821
     sget-object v4, Lcom/android/server/am/UserController;->TAG:Ljava/lang/String;
 
     new-instance v5, Ljava/lang/StringBuilder;
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v6, "No user info for user #"
+    const-string v6, "No user info for user #"
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -6788,21 +6732,16 @@
     :try_start_4
     monitor-exit v31
 
-    .line 810
     invoke-static {}, Lcom/android/server/am/ActivityManagerService;->resetPriorityAfterLockedSection()V
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_1
 
-    .line 822
     const/4 v4, 0x0
 
-    .line 943
     invoke-static/range {v22 .. v23}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 822
     return v4
 
-    .line 824
     :cond_2
     if-eqz p2, :cond_3
 
@@ -6813,14 +6752,13 @@
 
     if-eqz v4, :cond_3
 
-    .line 825
     sget-object v4, Lcom/android/server/am/UserController;->TAG:Ljava/lang/String;
 
     new-instance v5, Ljava/lang/StringBuilder;
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v6, "Cannot switch to User #"
+    const-string v6, "Cannot switch to User #"
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -6832,7 +6770,7 @@
 
     move-result-object v5
 
-    const-string/jumbo v6, ": not a full user"
+    const-string v6, ": not a full user"
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -6849,25 +6787,19 @@
     :try_start_6
     monitor-exit v31
 
-    .line 810
     invoke-static {}, Lcom/android/server/am/ActivityManagerService;->resetPriorityAfterLockedSection()V
     :try_end_6
     .catchall {:try_start_6 .. :try_end_6} :catchall_1
 
-    .line 826
     const/4 v4, 0x0
 
-    .line 943
     invoke-static/range {v22 .. v23}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 826
     return v4
 
-    .line 829
     :cond_3
     if-eqz p2, :cond_4
 
-    .line 830
     :try_start_7
     move-object/from16 v0, p0
 
@@ -6875,19 +6807,15 @@
 
     iget-object v4, v4, Lcom/android/server/am/ActivityManagerService;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
 
-    .line 831
-    const v5, 0x10a0082
+    const v5, #android:anim@screen_user_exit#t
 
-    const v6, 0x10a0081
+    const v6, #android:anim@screen_user_enter#t
 
-    .line 830
     invoke-virtual {v4, v5, v6}, Lcom/android/server/wm/WindowManagerService;->startFreezingScreen(II)V
 
-    .line 834
     :cond_4
     const/16 v25, 0x0
 
-    .line 838
     .local v25, "needStart":Z
     move-object/from16 v0, p0
 
@@ -6901,7 +6829,6 @@
 
     if-nez v4, :cond_5
 
-    .line 839
     new-instance v29, Lcom/android/server/am/UserState;
 
     invoke-static/range {p1 .. p1}, Landroid/os/UserHandle;->of(I)Landroid/os/UserHandle;
@@ -6912,7 +6839,6 @@
 
     invoke-direct {v0, v4}, Lcom/android/server/am/UserState;-><init>(Landroid/os/UserHandle;)V
 
-    .line 840
     .local v29, "userState":Lcom/android/server/am/UserState;
     move-object/from16 v0, p0
 
@@ -6924,7 +6850,6 @@
 
     invoke-virtual {v4, v0, v1}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 841
     invoke-direct/range {p0 .. p0}, Lcom/android/server/am/UserController;->getUserManagerInternal()Landroid/os/UserManagerInternal;
 
     move-result-object v4
@@ -6937,13 +6862,10 @@
 
     invoke-virtual {v4, v0, v5}, Landroid/os/UserManagerInternal;->setUserState(II)V
 
-    .line 842
     invoke-direct/range {p0 .. p0}, Lcom/android/server/am/UserController;->updateStartedUserArrayLocked()V
 
-    .line 843
     const/16 v25, 0x1
 
-    .line 846
     .end local v29    # "userState":Lcom/android/server/am/UserState;
     :cond_5
     move-object/from16 v0, p0
@@ -6958,13 +6880,11 @@
 
     check-cast v30, Lcom/android/server/am/UserState;
 
-    .line 847
     .local v30, "uss":Lcom/android/server/am/UserState;
     invoke-static/range {p1 .. p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v27
 
-    .line 848
     .local v27, "userIdInt":Ljava/lang/Integer;
     move-object/from16 v0, p0
 
@@ -6974,7 +6894,6 @@
 
     invoke-virtual {v4, v0}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
 
-    .line 849
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/UserController;->mUserLru:Ljava/util/ArrayList;
@@ -6983,34 +6902,28 @@
 
     invoke-virtual {v4, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 851
     if-eqz p2, :cond_b
 
-    .line 852
     move/from16 v0, p1
 
     move-object/from16 v1, p0
 
     iput v0, v1, Lcom/android/server/am/UserController;->mCurrentUserId:I
 
-    .line 853
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/UserController;->mService:Lcom/android/server/am/ActivityManagerService;
 
     invoke-virtual {v4}, Lcom/android/server/am/ActivityManagerService;->updateUserConfigurationLocked()V
 
-    .line 854
     const/16 v4, -0x2710
 
     move-object/from16 v0, p0
 
     iput v4, v0, Lcom/android/server/am/UserController;->mTargetUserId:I
 
-    .line 855
     invoke-direct/range {p0 .. p0}, Lcom/android/server/am/UserController;->updateCurrentProfileIdsLocked()V
 
-    .line 856
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/UserController;->mService:Lcom/android/server/am/ActivityManagerService;
@@ -7025,7 +6938,8 @@
 
     invoke-virtual {v4, v0, v5}, Lcom/android/server/wm/WindowManagerService;->setCurrentUser(I[I)V
 
-    .line 859
+    goto :goto_flyme_0
+
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/UserController;->mService:Lcom/android/server/am/ActivityManagerService;
@@ -7036,8 +6950,8 @@
 
     invoke-virtual {v4, v5}, Lcom/android/server/wm/WindowManagerService;->lockNow(Landroid/os/Bundle;)V
 
-    .line 870
     :goto_0
+    :goto_flyme_0
     move-object/from16 v0, v30
 
     iget v4, v0, Lcom/android/server/am/UserState;->state:I
@@ -7046,7 +6960,6 @@
 
     if-ne v4, v5, :cond_c
 
-    .line 874
     move-object/from16 v0, v30
 
     iget v4, v0, Lcom/android/server/am/UserState;->lastState:I
@@ -7055,7 +6968,6 @@
 
     invoke-virtual {v0, v4}, Lcom/android/server/am/UserState;->setState(I)V
 
-    .line 875
     invoke-direct/range {p0 .. p0}, Lcom/android/server/am/UserController;->getUserManagerInternal()Landroid/os/UserManagerInternal;
 
     move-result-object v4
@@ -7068,13 +6980,10 @@
 
     invoke-virtual {v4, v0, v5}, Landroid/os/UserManagerInternal;->setUserState(II)V
 
-    .line 876
     invoke-direct/range {p0 .. p0}, Lcom/android/server/am/UserController;->updateStartedUserArrayLocked()V
 
-    .line 877
     const/16 v25, 0x1
 
-    .line 887
     :cond_6
     :goto_1
     move-object/from16 v0, v30
@@ -7083,7 +6992,6 @@
 
     if-nez v4, :cond_7
 
-    .line 890
     invoke-direct/range {p0 .. p0}, Lcom/android/server/am/UserController;->getUserManager()Lcom/android/server/pm/UserManagerService;
 
     move-result-object v4
@@ -7092,7 +7000,6 @@
 
     invoke-virtual {v4, v0}, Lcom/android/server/pm/UserManagerService;->onBeforeStartUser(I)V
 
-    .line 895
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/UserController;->mHandler:Landroid/os/Handler;
@@ -7113,11 +7020,9 @@
 
     invoke-virtual {v4, v5}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 898
     :cond_7
     if-eqz p2, :cond_8
 
-    .line 899
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/UserController;->mHandler:Landroid/os/Handler;
@@ -7138,7 +7043,6 @@
 
     invoke-virtual {v4, v5}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 901
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/UserController;->mHandler:Landroid/os/Handler;
@@ -7147,7 +7051,6 @@
 
     invoke-virtual {v4, v5}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 902
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/UserController;->mHandler:Landroid/os/Handler;
@@ -7156,7 +7059,6 @@
 
     invoke-virtual {v4, v5}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 903
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/UserController;->mHandler:Landroid/os/Handler;
@@ -7179,7 +7081,6 @@
 
     invoke-virtual {v4, v5}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 905
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/UserController;->mHandler:Landroid/os/Handler;
@@ -7200,50 +7101,40 @@
 
     move-result-object v5
 
-    .line 906
     const-wide/16 v8, 0x7d0
 
-    .line 905
     invoke-virtual {v4, v5, v8, v9}, Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message;J)Z
 
-    .line 909
     :cond_8
     if-eqz v25, :cond_9
 
-    .line 911
     new-instance v7, Landroid/content/Intent;
 
-    const-string/jumbo v4, "android.intent.action.USER_STARTED"
+    const-string v4, "android.intent.action.USER_STARTED"
 
     invoke-direct {v7, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 912
     .local v7, "intent":Landroid/content/Intent;
     const/high16 v4, 0x50000000
 
     invoke-virtual {v7, v4}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 914
-    const-string/jumbo v4, "android.intent.extra.user_handle"
+    const-string v4, "android.intent.extra.user_handle"
 
     move/from16 v0, p1
 
     invoke-virtual {v7, v4, v0}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 915
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/UserController;->mService:Lcom/android/server/am/ActivityManagerService;
 
-    .line 917
     sget v18, Lcom/android/server/am/ActivityManagerService;->MY_PID:I
 
-    .line 915
     const/4 v5, 0x0
 
     const/4 v6, 0x0
 
-    .line 916
     const/4 v8, 0x0
 
     const/4 v9, 0x0
@@ -7258,7 +7149,6 @@
 
     const/4 v14, -0x1
 
-    .line 917
     const/4 v15, 0x0
 
     const/16 v16, 0x0
@@ -7269,15 +7159,12 @@
 
     move/from16 v20, p1
 
-    .line 915
     invoke-virtual/range {v4 .. v20}, Lcom/android/server/am/ActivityManagerService;->broadcastIntentLocked(Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Landroid/content/Intent;Ljava/lang/String;Landroid/content/IIntentReceiver;ILjava/lang/String;Landroid/os/Bundle;[Ljava/lang/String;ILandroid/os/Bundle;ZZIII)I
 
-    .line 920
     .end local v7    # "intent":Landroid/content/Intent;
     :cond_9
     if-eqz p2, :cond_d
 
-    .line 921
     move-object/from16 v0, p0
 
     move-object/from16 v1, v30
@@ -7288,75 +7175,62 @@
 
     invoke-virtual {v0, v1, v2, v3}, Lcom/android/server/am/UserController;->moveUserToForegroundLocked(Lcom/android/server/am/UserState;II)V
 
-    .line 926
     :goto_2
     if-eqz v25, :cond_a
 
-    .line 927
     new-instance v7, Landroid/content/Intent;
 
-    const-string/jumbo v4, "android.intent.action.USER_STARTING"
+    const-string v4, "android.intent.action.USER_STARTING"
 
     invoke-direct {v7, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 928
     .restart local v7    # "intent":Landroid/content/Intent;
     const/high16 v4, 0x40000000    # 2.0f
 
     invoke-virtual {v7, v4}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 929
-    const-string/jumbo v4, "android.intent.extra.user_handle"
+    const-string v4, "android.intent.extra.user_handle"
 
     move/from16 v0, p1
 
     invoke-virtual {v7, v4, v0}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 930
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/UserController;->mService:Lcom/android/server/am/ActivityManagerService;
 
-    .line 931
     new-instance v9, Lcom/android/server/am/UserController$6;
 
     move-object/from16 v0, p0
 
     invoke-direct {v9, v0}, Lcom/android/server/am/UserController$6;-><init>(Lcom/android/server/am/UserController;)V
 
-    .line 938
     const/4 v5, 0x1
 
     new-array v13, v5, [Ljava/lang/String;
 
-    const-string/jumbo v5, "android.permission.INTERACT_ACROSS_USERS"
+    const-string v5, "android.permission.INTERACT_ACROSS_USERS"
 
     const/4 v6, 0x0
 
     aput-object v5, v13, v6
 
-    .line 939
     sget v18, Lcom/android/server/am/ActivityManagerService;->MY_PID:I
 
-    .line 930
     const/4 v5, 0x0
 
     const/4 v6, 0x0
 
-    .line 931
     const/4 v8, 0x0
 
-    .line 937
     const/4 v10, 0x0
 
     const/4 v11, 0x0
 
     const/4 v12, 0x0
 
-    .line 938
     const/4 v14, -0x1
 
-    .line 939
     const/4 v15, 0x0
 
     const/16 v16, 0x1
@@ -7367,7 +7241,6 @@
 
     const/16 v20, -0x1
 
-    .line 930
     invoke-virtual/range {v4 .. v20}, Lcom/android/server/am/ActivityManagerService;->broadcastIntentLocked(Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Landroid/content/Intent;Ljava/lang/String;Landroid/content/IIntentReceiver;ILjava/lang/String;Landroid/os/Bundle;[Ljava/lang/String;ILandroid/os/Bundle;ZZIII)I
     :try_end_7
     .catchall {:try_start_7 .. :try_end_7} :catchall_0
@@ -7377,20 +7250,16 @@
     :try_start_8
     monitor-exit v31
 
-    .line 810
     invoke-static {}, Lcom/android/server/am/ActivityManagerService;->resetPriorityAfterLockedSection()V
     :try_end_8
     .catchall {:try_start_8 .. :try_end_8} :catchall_1
 
-    .line 943
     invoke-static/range {v22 .. v23}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 946
     const/4 v4, 0x1
 
     return v4
 
-    .line 861
     :cond_b
     :try_start_9
     move-object/from16 v0, p0
@@ -7401,11 +7270,9 @@
 
     move-result-object v21
 
-    .line 862
     .local v21, "currentUserIdInt":Ljava/lang/Integer;
     invoke-direct/range {p0 .. p0}, Lcom/android/server/am/UserController;->updateCurrentProfileIdsLocked()V
 
-    .line 863
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/UserController;->mService:Lcom/android/server/am/ActivityManagerService;
@@ -7418,7 +7285,6 @@
 
     invoke-virtual {v4, v5}, Lcom/android/server/wm/WindowManagerService;->setCurrentProfileIds([I)V
 
-    .line 864
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/UserController;->mUserLru:Ljava/util/ArrayList;
@@ -7427,7 +7293,6 @@
 
     invoke-virtual {v4, v0}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
 
-    .line 865
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/UserController;->mUserLru:Ljava/util/ArrayList;
@@ -7440,7 +7305,6 @@
 
     goto/16 :goto_0
 
-    .line 810
     .end local v21    # "currentUserIdInt":Ljava/lang/Integer;
     .end local v25    # "needStart":Z
     .end local v26    # "oldUserId":I
@@ -7459,17 +7323,13 @@
     :try_end_a
     .catchall {:try_start_a .. :try_end_a} :catchall_1
 
-    .line 942
     :catchall_1
     move-exception v4
 
-    .line 943
     invoke-static/range {v22 .. v23}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 942
     throw v4
 
-    .line 878
     .restart local v25    # "needStart":Z
     .restart local v26    # "oldUserId":I
     .restart local v27    # "userIdInt":Ljava/lang/Integer;
@@ -7485,14 +7345,12 @@
 
     if-ne v4, v5, :cond_6
 
-    .line 881
     const/4 v4, 0x0
 
     move-object/from16 v0, v30
 
     invoke-virtual {v0, v4}, Lcom/android/server/am/UserState;->setState(I)V
 
-    .line 882
     invoke-direct/range {p0 .. p0}, Lcom/android/server/am/UserController;->getUserManagerInternal()Landroid/os/UserManagerInternal;
 
     move-result-object v4
@@ -7505,15 +7363,12 @@
 
     invoke-virtual {v4, v0, v5}, Landroid/os/UserManagerInternal;->setUserState(II)V
 
-    .line 883
     invoke-direct/range {p0 .. p0}, Lcom/android/server/am/UserController;->updateStartedUserArrayLocked()V
 
-    .line 884
     const/16 v25, 0x1
 
     goto/16 :goto_1
 
-    .line 923
     :cond_d
     move-object/from16 v0, p0
 
@@ -7536,18 +7391,15 @@
     .param p2, "dlg"    # Landroid/app/Dialog;
 
     .prologue
-    .line 953
     const/4 v1, 0x1
 
     invoke-virtual {p0, p1, v1}, Lcom/android/server/am/UserController;->startUser(IZ)Z
 
     move-result v0
 
-    .line 954
     .local v0, "result":Z
     invoke-virtual {p2}, Landroid/app/Dialog;->dismiss()V
 
-    .line 955
     return v0
 .end method
 
@@ -7560,18 +7412,15 @@
 
     const/4 v6, 0x0
 
-    .line 206
     iget-object v4, p0, Lcom/android/server/am/UserController;->mUserLru:Ljava/util/ArrayList;
 
     invoke-virtual {v4}, Ljava/util/ArrayList;->size()I
 
     move-result v1
 
-    .line 207
     .local v1, "num":I
     const/4 v0, 0x0
 
-    .line 208
     .local v0, "i":I
     :goto_0
     if-le v1, p1, :cond_7
@@ -7584,7 +7433,6 @@
 
     if-ge v0, v4, :cond_7
 
-    .line 209
     iget-object v4, p0, Lcom/android/server/am/UserController;->mUserLru:Ljava/util/ArrayList;
 
     invoke-virtual {v4, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -7593,7 +7441,6 @@
 
     check-cast v2, Ljava/lang/Integer;
 
-    .line 210
     .local v2, "oldUserId":Ljava/lang/Integer;
     iget-object v4, p0, Lcom/android/server/am/UserController;->mStartedUsers:Landroid/util/SparseArray;
 
@@ -7607,22 +7454,17 @@
 
     check-cast v3, Lcom/android/server/am/UserState;
 
-    .line 211
     .local v3, "oldUss":Lcom/android/server/am/UserState;
     if-nez v3, :cond_0
 
-    .line 213
     iget-object v4, p0, Lcom/android/server/am/UserController;->mUserLru:Ljava/util/ArrayList;
 
     invoke-virtual {v4, v0}, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
 
-    .line 214
     add-int/lit8 v1, v1, -0x1
 
-    .line 215
     goto :goto_0
 
-    .line 217
     :cond_0
     iget v4, v3, Lcom/android/server/am/UserState;->state:I
 
@@ -7630,24 +7472,19 @@
 
     if-eq v4, v5, :cond_1
 
-    .line 218
     iget v4, v3, Lcom/android/server/am/UserState;->state:I
 
     const/4 v5, 0x5
 
     if-ne v4, v5, :cond_2
 
-    .line 220
     :cond_1
     add-int/lit8 v1, v1, -0x1
 
-    .line 221
     add-int/lit8 v0, v0, 0x1
 
-    .line 222
     goto :goto_0
 
-    .line 224
     :cond_2
     invoke-virtual {v2}, Ljava/lang/Integer;->intValue()I
 
@@ -7663,7 +7500,6 @@
 
     if-ne v4, v5, :cond_5
 
-    .line 227
     :cond_3
     invoke-virtual {v2}, Ljava/lang/Integer;->intValue()I
 
@@ -7675,17 +7511,13 @@
 
     if-eqz v4, :cond_4
 
-    .line 228
     add-int/lit8 v1, v1, -0x1
 
-    .line 230
     :cond_4
     add-int/lit8 v0, v0, 0x1
 
-    .line 231
     goto :goto_0
 
-    .line 234
     :cond_5
     invoke-virtual {v2}, Ljava/lang/Integer;->intValue()I
 
@@ -7697,19 +7529,15 @@
 
     if-eqz v4, :cond_6
 
-    .line 235
     add-int/lit8 v1, v1, -0x1
 
-    .line 237
     :cond_6
     add-int/lit8 v1, v1, -0x1
 
-    .line 238
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 205
     .end local v2    # "oldUserId":Ljava/lang/Integer;
     .end local v3    # "oldUss":Lcom/android/server/am/UserState;
     :cond_7
@@ -7723,10 +7551,9 @@
     .param p3, "callback"    # Landroid/app/IStopUserCallback;
 
     .prologue
-    .line 459
     iget-object v1, p0, Lcom/android/server/am/UserController;->mService:Lcom/android/server/am/ActivityManagerService;
 
-    const-string/jumbo v2, "android.permission.INTERACT_ACROSS_USERS_FULL"
+    const-string v2, "android.permission.INTERACT_ACROSS_USERS_FULL"
 
     invoke-virtual {v1, v2}, Lcom/android/server/am/ActivityManagerService;->checkCallingPermission(Ljava/lang/String;)I
 
@@ -7734,57 +7561,46 @@
 
     if-eqz v1, :cond_0
 
-    .line 461
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v2, "Permission Denial: switchUser() from pid="
+    const-string v2, "Permission Denial: switchUser() from pid="
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    .line 462
     invoke-static {}, Landroid/os/Binder;->getCallingPid()I
 
     move-result v2
 
-    .line 461
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    .line 463
-    const-string/jumbo v2, ", uid="
+    const-string v2, ", uid="
 
-    .line 461
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    .line 463
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
     move-result v2
 
-    .line 461
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    .line 464
-    const-string/jumbo v2, " requires "
+    const-string v2, " requires "
 
-    .line 461
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    .line 464
-    const-string/jumbo v2, "android.permission.INTERACT_ACROSS_USERS_FULL"
+    const-string v2, "android.permission.INTERACT_ACROSS_USERS_FULL"
 
-    .line 461
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
@@ -7793,27 +7609,23 @@
 
     move-result-object v0
 
-    .line 465
     .local v0, "msg":Ljava/lang/String;
     sget-object v1, Lcom/android/server/am/UserController;->TAG:Ljava/lang/String;
 
     invoke-static {v1, v0}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 466
     new-instance v1, Ljava/lang/SecurityException;
 
     invoke-direct {v1, v0}, Ljava/lang/SecurityException;-><init>(Ljava/lang/String;)V
 
     throw v1
 
-    .line 468
     .end local v0    # "msg":Ljava/lang/String;
     :cond_0
     if-ltz p1, :cond_1
 
     if-nez p1, :cond_2
 
-    .line 469
     :cond_1
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
@@ -7821,7 +7633,7 @@
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v3, "Can\'t stop system user "
+    const-string v3, "Can\'t stop system user "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -7839,15 +7651,13 @@
 
     throw v1
 
-    .line 471
     :cond_2
     iget-object v1, p0, Lcom/android/server/am/UserController;->mService:Lcom/android/server/am/ActivityManagerService;
 
-    const-string/jumbo v2, "no_debugging_features"
+    const-string v2, "no_debugging_features"
 
     invoke-virtual {v1, v2, p1}, Lcom/android/server/am/ActivityManagerService;->enforceShellRestriction(Ljava/lang/String;I)V
 
-    .line 473
     iget-object v2, p0, Lcom/android/server/am/UserController;->mService:Lcom/android/server/am/ActivityManagerService;
 
     monitor-enter v2
@@ -7855,7 +7665,6 @@
     :try_start_0
     invoke-static {}, Lcom/android/server/am/ActivityManagerService;->boostPriorityForLockedSection()V
 
-    .line 474
     invoke-direct {p0, p1, p2, p3}, Lcom/android/server/am/UserController;->stopUsersLocked(IZLandroid/app/IStopUserCallback;)I
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
@@ -7864,13 +7673,10 @@
 
     monitor-exit v2
 
-    .line 473
     invoke-static {}, Lcom/android/server/am/ActivityManagerService;->resetPriorityAfterLockedSection()V
 
-    .line 474
     return v1
 
-    .line 473
     :catchall_0
     move-exception v1
 
@@ -7888,7 +7694,6 @@
     .param p3, "newUserId"    # I
 
     .prologue
-    .line 1116
     iget-object v1, p0, Lcom/android/server/am/UserController;->mService:Lcom/android/server/am/ActivityManagerService;
 
     monitor-enter v1
@@ -7896,14 +7701,13 @@
     :try_start_0
     invoke-static {}, Lcom/android/server/am/ActivityManagerService;->boostPriorityForLockedSection()V
 
-    .line 1117
     sget-object v0, Lcom/android/server/am/UserController;->TAG:Ljava/lang/String;
 
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v3, "User switch timeout: from "
+    const-string v3, "User switch timeout: from "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -7913,7 +7717,7 @@
 
     move-result-object v2
 
-    const-string/jumbo v3, " to "
+    const-string v3, " to "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -7923,18 +7727,14 @@
 
     move-result-object v2
 
-    .line 1118
-    const-string/jumbo v3, ". Observers that didn\'t send results: "
+    const-string v3, ". Observers that didn\'t send results: "
 
-    .line 1117
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    .line 1118
     iget-object v3, p0, Lcom/android/server/am/UserController;->mCurWaitingUserSwitchCallbacks:Landroid/util/ArraySet;
 
-    .line 1117
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -7945,20 +7745,16 @@
 
     invoke-static {v0, v2}, Landroid/util/Slog;->wtf(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1119
     invoke-virtual {p0, p1, p2, p3}, Lcom/android/server/am/UserController;->sendContinueUserSwitchLocked(Lcom/android/server/am/UserState;II)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     monitor-exit v1
 
-    .line 1116
     invoke-static {}, Lcom/android/server/am/ActivityManagerService;->resetPriorityAfterLockedSection()V
 
-    .line 1115
     return-void
 
-    .line 1116
     :catchall_0
     move-exception v0
 
@@ -7977,10 +7773,9 @@
     .param p4, "listener"    # Landroid/os/IProgressListener;
 
     .prologue
-    .line 959
     iget-object v3, p0, Lcom/android/server/am/UserController;->mService:Lcom/android/server/am/ActivityManagerService;
 
-    const-string/jumbo v4, "android.permission.INTERACT_ACROSS_USERS_FULL"
+    const-string v4, "android.permission.INTERACT_ACROSS_USERS_FULL"
 
     invoke-virtual {v3, v4}, Lcom/android/server/am/ActivityManagerService;->checkCallingPermission(Ljava/lang/String;)I
 
@@ -7988,57 +7783,46 @@
 
     if-eqz v3, :cond_0
 
-    .line 961
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v4, "Permission Denial: unlockUser() from pid="
+    const-string v4, "Permission Denial: unlockUser() from pid="
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
-    .line 962
     invoke-static {}, Landroid/os/Binder;->getCallingPid()I
 
     move-result v4
 
-    .line 961
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
-    .line 963
-    const-string/jumbo v4, ", uid="
+    const-string v4, ", uid="
 
-    .line 961
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
-    .line 963
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
 
     move-result v4
 
-    .line 961
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
-    .line 964
-    const-string/jumbo v4, " requires "
+    const-string v4, " requires "
 
-    .line 961
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
-    .line 964
-    const-string/jumbo v4, "android.permission.INTERACT_ACROSS_USERS_FULL"
+    const-string v4, "android.permission.INTERACT_ACROSS_USERS_FULL"
 
-    .line 961
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
@@ -8047,27 +7831,23 @@
 
     move-result-object v2
 
-    .line 965
     .local v2, "msg":Ljava/lang/String;
     sget-object v3, Lcom/android/server/am/UserController;->TAG:Ljava/lang/String;
 
     invoke-static {v3, v2}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 966
     new-instance v3, Ljava/lang/SecurityException;
 
     invoke-direct {v3, v2}, Ljava/lang/SecurityException;-><init>(Ljava/lang/String;)V
 
     throw v3
 
-    .line 969
     .end local v2    # "msg":Ljava/lang/String;
     :cond_0
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v0
 
-    .line 971
     .local v0, "binderToken":J
     :try_start_0
     invoke-virtual {p0, p1, p2, p3, p4}, Lcom/android/server/am/UserController;->unlockUserCleared(I[B[BLandroid/os/IProgressListener;)Z
@@ -8076,20 +7856,15 @@
 
     move-result v3
 
-    .line 973
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 971
     return v3
 
-    .line 972
     :catchall_0
     move-exception v3
 
-    .line 973
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 972
     throw v3
 .end method
 
@@ -8101,7 +7876,6 @@
     .param p4, "listener"    # Landroid/os/IProgressListener;
 
     .prologue
-    .line 999
     move-object/from16 v0, p0
 
     iget-object v13, v0, Lcom/android/server/am/UserController;->mService:Lcom/android/server/am/ActivityManagerService;
@@ -8111,19 +7885,16 @@
     :try_start_0
     invoke-static {}, Lcom/android/server/am/ActivityManagerService;->boostPriorityForLockedSection()V
 
-    .line 1001
     invoke-static/range {p1 .. p1}, Landroid/os/storage/StorageManager;->isUserKeyUnlocked(I)Z
 
     move-result v12
 
     if-nez v12, :cond_0
 
-    .line 1002
     invoke-virtual/range {p0 .. p1}, Lcom/android/server/am/UserController;->getUserInfo(I)Landroid/content/pm/UserInfo;
 
     move-result-object v10
 
-    .line 1003
     .local v10, "userInfo":Landroid/content/pm/UserInfo;
     invoke-direct/range {p0 .. p0}, Lcom/android/server/am/UserController;->getMountService()Landroid/os/storage/IMountService;
     :try_end_0
@@ -8131,7 +7902,6 @@
 
     move-result-object v6
 
-    .line 1006
     .local v6, "mountService":Landroid/os/storage/IMountService;
     :try_start_1
     iget v12, v10, Landroid/content/pm/UserInfo;->serialNumber:I
@@ -8148,7 +7918,6 @@
     .catch Ljava/lang/RuntimeException; {:try_start_1 .. :try_end_1} :catch_0
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 1013
     .end local v6    # "mountService":Landroid/os/storage/IMountService;
     .end local v10    # "userInfo":Landroid/content/pm/UserInfo;
     :cond_0
@@ -8166,11 +7935,9 @@
 
     check-cast v11, Lcom/android/server/am/UserState;
 
-    .line 1014
     .local v11, "uss":Lcom/android/server/am/UserState;
     if-nez v11, :cond_1
 
-    .line 1015
     move/from16 v0, p1
 
     move-object/from16 v1, p4
@@ -8179,25 +7946,20 @@
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 1016
     const/4 v12, 0x0
 
     monitor-exit v13
 
-    .line 999
     invoke-static {}, Lcom/android/server/am/ActivityManagerService;->resetPriorityAfterLockedSection()V
 
-    .line 1016
     return v12
 
-    .line 1007
     .end local v11    # "uss":Lcom/android/server/am/UserState;
     .restart local v6    # "mountService":Landroid/os/storage/IMountService;
     .restart local v10    # "userInfo":Landroid/content/pm/UserInfo;
     :catch_0
     move-exception v4
 
-    .line 1008
     .local v4, "e":Ljava/lang/Exception;
     :try_start_3
     sget-object v12, Lcom/android/server/am/UserController;->TAG:Ljava/lang/String;
@@ -8206,7 +7968,7 @@
 
     invoke-direct {v14}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v15, "Failed to unlock: "
+    const-string v15, "Failed to unlock: "
 
     invoke-virtual {v14, v15}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -8230,7 +7992,6 @@
 
     goto :goto_0
 
-    .line 999
     .end local v4    # "e":Ljava/lang/Exception;
     .end local v6    # "mountService":Landroid/os/storage/IMountService;
     .end local v10    # "userInfo":Landroid/content/pm/UserInfo;
@@ -8243,7 +8004,6 @@
 
     throw v12
 
-    .line 1018
     .restart local v11    # "uss":Lcom/android/server/am/UserState;
     :cond_1
     :try_start_4
@@ -8253,7 +8013,6 @@
 
     invoke-virtual {v12, v0}, Lcom/android/internal/util/ProgressReporter;->addListener(Landroid/os/IProgressListener;)V
 
-    .line 1019
     if-eqz p2, :cond_3
 
     const/4 v12, 0x1
@@ -8265,20 +8024,16 @@
 
     monitor-exit v13
 
-    .line 999
     invoke-static {}, Lcom/android/server/am/ActivityManagerService;->resetPriorityAfterLockedSection()V
 
-    .line 1023
     move-object/from16 v0, p0
 
     invoke-direct {v0, v11}, Lcom/android/server/am/UserController;->finishUserUnlocking(Lcom/android/server/am/UserState;)V
 
-    .line 1025
     new-instance v3, Landroid/util/ArraySet;
 
     invoke-direct {v3}, Landroid/util/ArraySet;-><init>()V
 
-    .line 1026
     .local v3, "childProfilesToUnlock":Landroid/util/ArraySet;, "Landroid/util/ArraySet<Ljava/lang/Integer;>;"
     move-object/from16 v0, p0
 
@@ -8289,7 +8044,6 @@
     :try_start_5
     invoke-static {}, Lcom/android/server/am/ActivityManagerService;->boostPriorityForLockedSection()V
 
-    .line 1030
     const/4 v5, 0x0
 
     .local v5, "i":I
@@ -8304,7 +8058,6 @@
 
     if-ge v5, v12, :cond_4
 
-    .line 1031
     move-object/from16 v0, p0
 
     iget-object v12, v0, Lcom/android/server/am/UserController;->mStartedUsers:Landroid/util/SparseArray;
@@ -8313,7 +8066,6 @@
 
     move-result v9
 
-    .line 1032
     .local v9, "testUserId":I
     invoke-direct/range {p0 .. p0}, Lcom/android/server/am/UserController;->getUserManager()Lcom/android/server/pm/UserManagerService;
 
@@ -8323,7 +8075,6 @@
 
     move-result-object v7
 
-    .line 1033
     .local v7, "parent":Landroid/content/pm/UserInfo;
     if-eqz v7, :cond_2
 
@@ -8337,14 +8088,13 @@
 
     if-eq v9, v0, :cond_2
 
-    .line 1034
     sget-object v12, Lcom/android/server/am/UserController;->TAG:Ljava/lang/String;
 
     new-instance v14, Ljava/lang/StringBuilder;
 
     invoke-direct {v14}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v15, "User "
+    const-string v15, "User "
 
     invoke-virtual {v14, v15}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -8354,7 +8104,7 @@
 
     move-result-object v14
 
-    const-string/jumbo v15, " (parent "
+    const-string v15, " (parent "
 
     invoke-virtual {v14, v15}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -8366,10 +8116,8 @@
 
     move-result-object v14
 
-    .line 1035
-    const-string/jumbo v15, "): attempting unlock because parent was just unlocked"
+    const-string v15, "): attempting unlock because parent was just unlocked"
 
-    .line 1034
     invoke-virtual {v14, v15}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v14
@@ -8380,7 +8128,6 @@
 
     invoke-static {v12, v14}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1036
     invoke-static {v9}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v12
@@ -8389,13 +8136,11 @@
     :try_end_5
     .catchall {:try_start_5 .. :try_end_5} :catchall_1
 
-    .line 1030
     :cond_2
     add-int/lit8 v5, v5, 0x1
 
     goto :goto_2
 
-    .line 1019
     .end local v3    # "childProfilesToUnlock":Landroid/util/ArraySet;, "Landroid/util/ArraySet<Ljava/lang/Integer;>;"
     .end local v5    # "i":I
     .end local v7    # "parent":Landroid/content/pm/UserInfo;
@@ -8410,22 +8155,18 @@
     :cond_4
     monitor-exit v13
 
-    .line 1026
     invoke-static {}, Lcom/android/server/am/ActivityManagerService;->resetPriorityAfterLockedSection()V
 
-    .line 1041
     invoke-virtual {v3}, Landroid/util/ArraySet;->size()I
 
     move-result v8
 
-    .line 1042
     .local v8, "size":I
     const/4 v5, 0x0
 
     :goto_3
     if-ge v5, v8, :cond_5
 
-    .line 1043
     invoke-virtual {v3, v5}, Landroid/util/ArraySet;->valueAt(I)Ljava/lang/Object;
 
     move-result-object v12
@@ -8440,12 +8181,10 @@
 
     invoke-virtual {v0, v12}, Lcom/android/server/am/UserController;->maybeUnlockUser(I)Z
 
-    .line 1042
     add-int/lit8 v5, v5, 0x1
 
     goto :goto_3
 
-    .line 1026
     .end local v5    # "i":I
     .end local v8    # "size":I
     :catchall_1
@@ -8457,7 +8196,6 @@
 
     throw v12
 
-    .line 1046
     .restart local v5    # "i":I
     .restart local v8    # "size":I
     :cond_5
@@ -8471,12 +8209,10 @@
     .param p1, "observer"    # Landroid/app/IUserSwitchObserver;
 
     .prologue
-    .line 1370
     iget-object v0, p0, Lcom/android/server/am/UserController;->mUserSwitchObservers:Landroid/os/RemoteCallbackList;
 
     invoke-virtual {v0, p1}, Landroid/os/RemoteCallbackList;->unregister(Landroid/os/IInterface;)Z
 
-    .line 1369
     return-void
 .end method
 
@@ -8485,7 +8221,6 @@
     .param p1, "userId"    # I
 
     .prologue
-    .line 1351
     const/4 v0, -0x2
 
     if-eq p1, v0, :cond_0
@@ -8494,14 +8229,41 @@
 
     if-ne p1, v0, :cond_1
 
-    .line 1352
     :cond_0
     invoke-virtual {p0}, Lcom/android/server/am/UserController;->getCurrentUserIdLocked()I
 
     move-result p1
 
-    .line 1351
     .end local p1    # "userId":I
     :cond_1
     return p1
+.end method
+
+.method private startFlymeUser(Landroid/util/Pair;)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/util/Pair",
+            "<",
+            "Landroid/content/pm/UserInfo;",
+            "Landroid/content/pm/UserInfo;",
+            ">;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 1051
+    .local p1, "fromToUserPair":Landroid/util/Pair;, "Landroid/util/Pair<Landroid/content/pm/UserInfo;Landroid/content/pm/UserInfo;>;"
+    iget-object v0, p1, Landroid/util/Pair;->second:Ljava/lang/Object;
+
+    check-cast v0, Landroid/content/pm/UserInfo;
+
+    iget v0, v0, Landroid/content/pm/UserInfo;->id:I
+
+    const/4 v1, 0x1
+
+    invoke-virtual {p0, v0, v1}, Lcom/android/server/am/UserController;->startUser(IZ)Z
+
+    return-void
 .end method

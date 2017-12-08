@@ -762,7 +762,7 @@
 
     .line 3495
     .local v1, "res":Landroid/content/res/Resources;
-    const/high16 v4, 0x1050000
+    const/high16 v4, #android:dimen@app_icon_size#i
 
     invoke-virtual {v1, v4}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 
@@ -1060,7 +1060,7 @@
 
     move-result-object v1
 
-    const v2, 0x1120013
+    const v2, #android:bool@config_avoidGfxAccel#t
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -1334,27 +1334,22 @@
     .locals 2
 
     .prologue
-    .line 970
     invoke-static {}, Landroid/app/ActivityManager;->isLowRamDeviceStatic()Z
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    .line 971
     invoke-static {}, Landroid/content/res/Resources;->getSystem()Landroid/content/res/Resources;
 
     move-result-object v0
 
-    .line 972
-    const v1, 0x11200b3
+    const v1, #android:bool@config_supportsMultiWindow#t
 
-    .line 971
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
     move-result v0
 
-    .line 970
     :goto_0
     return v0
 
@@ -4011,4 +4006,44 @@
 
     .local v0, "e":Landroid/os/RemoteException;
     goto :goto_0
+.end method
+
+.method public removeTaskNotKillProcess(I)Z
+    .locals 3
+    .param p1, "taskId"    # I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/lang/SecurityException;
+        }
+    .end annotation
+
+    .prologue
+    :try_start_0
+    new-instance v1, Landroid/app/FlymeExtIActivityManagerProxy;
+
+    invoke-direct {v1}, Landroid/app/FlymeExtIActivityManagerProxy;-><init>()V
+
+    invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
+
+    move-result-object v2
+
+    invoke-interface {v2}, Landroid/app/IActivityManager;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2, p1}, Landroid/app/FlymeExtIActivityManagerProxy;->removeTaskNotKillProcess(Landroid/os/IBinder;I)Z
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result v1
+
+    return v1
+
+    :catch_0
+    move-exception v0
+
+    .local v0, "e":Landroid/os/RemoteException;
+    const/4 v1, 0x0
+
+    return v1
 .end method
