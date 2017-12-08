@@ -2299,6 +2299,8 @@
 
     iput v8, v3, Lcom/android/server/notification/RankingHelper$Record;->opLevel:I
 
+    invoke-direct {p0, p1, v3}, Lcom/android/server/notification/RankingHelper;->readFlymeExtraFields(Lorg/xmlpull/v1/XmlPullParser;Lcom/android/server/notification/RankingHelper$Record;)V
+
     .line 201
     const/4 v8, 0x2
 

@@ -2312,7 +2312,7 @@
 
     .line 830
     :try_start_b
-    new-instance v89, Lcom/android/server/statusbar/StatusBarManagerService;
+    new-instance v89, Lcom/android/server/statusbar/FlymeExtStatusBarManagerService;
 
     move-object/from16 v0, v89
 
@@ -3644,6 +3644,7 @@
     invoke-virtual {v4, v5}, Lcom/android/server/SystemServiceManager;->startService(Ljava/lang/Class;)Lcom/android/server/SystemService;
 
     :cond_27
+    goto/16 :goto_flyme_0
     if-nez v43, :cond_28
 
     const-string v4, "StartAssetAtlasService"
@@ -3680,6 +3681,7 @@
     invoke-static {v4, v5}, Landroid/os/Trace;->traceEnd(J)V
 
     :cond_28
+    :goto_flyme_0
     if-nez v43, :cond_29
 
     const-string v4, "graphicsstats"
@@ -4032,7 +4034,7 @@
     .local v20, "mmsService":Lcom/android/server/MmsServiceBroker;
     move-object/from16 v4, p0
 
-    move-object/from16 v5, v88
+    move-object/from16 v5, v102
 
     invoke-static {v4, v5}, Lcom/android/server/SystemServer$FlymeInjector;->addFlymeServices(Lcom/android/server/SystemServer;Lcom/android/server/wm/WindowManagerService;)V
 
@@ -5261,6 +5263,12 @@
     const-string/jumbo v5, "com.android.server.wallpaper.WallpaperManagerService$Lifecycle"
 
     invoke-virtual {v4, v5}, Lcom/android/server/SystemServiceManager;->startService(Ljava/lang/String;)Lcom/android/server/SystemService;
+
+    move-result-object v4
+
+    move-object/from16 v0, p0
+
+    iput-object v4, v0, Lcom/android/server/SystemServer;->mFlymeWallpaperLifeService:Lcom/android/server/SystemService;
 
     .line 1032
     const-wide/32 v4, 0x80000

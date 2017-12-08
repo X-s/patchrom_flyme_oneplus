@@ -11488,6 +11488,31 @@
 
     iput v5, v0, Landroid/app/Notification;->priority:I
 
+    move-object/from16 v5, p0
+
+    move-object/from16 v6, p1
+
+    move-object/from16 v7, p2
+
+    move/from16 v8, p3
+
+    move/from16 v9, p4
+
+    move-object/from16 v10, p5
+
+    move/from16 v11, p6
+
+    move-object/from16 v12, p7
+
+    invoke-virtual/range {v5 .. v13}, Lcom/android/server/notification/NotificationManagerService;->setFlymeNotification(Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;ILandroid/app/Notification;Landroid/os/UserHandle;)Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+
+    move-result-object v5
+
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v4, v5}, Lcom/android/server/notification/NotificationManagerService;->setFlymeNotificationFilter(Landroid/service/notification/StatusBarNotification;Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;)V
+
+
     new-instance v31, Lcom/android/server/notification/NotificationRecord;
 
     invoke-virtual/range {p0 .. p0}, Lcom/android/server/notification/NotificationManagerService;->getContext()Landroid/content/Context;
@@ -12809,6 +12834,8 @@
     move-object/from16 v0, p0
 
     iput-object v1, v0, Lcom/android/server/notification/NotificationManagerService;->mConfigManager:Landroid/telephony/CarrierConfigManager;
+
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/notification/NotificationManagerService;->initFlymeExtraFields()V
 
     return-void
 

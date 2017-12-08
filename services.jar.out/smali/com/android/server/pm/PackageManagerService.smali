@@ -6351,6 +6351,8 @@
 
     :cond_3b
     :goto_21
+    invoke-static/range {p0 .. p0}, Lcom/android/server/pm/PackageManagerService$FlymePackageManagerServiceInjector;->initFlymeDefaultOpService(Lcom/android/server/pm/PackageManagerService;)V
+
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v26
@@ -26771,6 +26773,14 @@
     .line 10720
     :cond_17
     :goto_9
+    move-object/from16 v0, p1
+
+    move-object/from16 v1, v19
+
+    move/from16 v2, v23
+
+    invoke-static {v0, v1, v7, v2}, Lcom/android/server/pm/PackageManagerService$FlymePackageManagerServiceInjector;->grantFlymeRuntimePermission(Landroid/content/pm/PackageParser$Package;Lcom/android/server/pm/PermissionsState;Lcom/android/server/pm/BasePermission;I)V
+
     move-object/from16 v0, v19
 
     move/from16 v1, v23
@@ -88644,18 +88654,23 @@
     .prologue
     const/4 v1, 0x0
 
+    .line 21521
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService;->mDefaultPermissionPolicy:Lcom/android/server/pm/DefaultPermissionGrantPolicy;
 
     invoke-virtual {v0, p1}, Lcom/android/server/pm/DefaultPermissionGrantPolicy;->grantDefaultPermissions(I)V
 
+    .line 21527
     sget-boolean v0, Landroid/os/Build;->PERMISSIONS_REVIEW_REQUIRED:Z
 
     if-eqz v0, :cond_0
 
+    .line 21528
+    :cond_flyme_0
     const/4 v0, 0x5
 
     invoke-direct {p0, v1, v1, v0}, Lcom/android/server/pm/PackageManagerService;->updatePermissionsLPw(Ljava/lang/String;Landroid/content/pm/PackageParser$Package;I)V
 
+    .line 21533
     :cond_0
     const/4 v0, 0x1
 
@@ -88673,15 +88688,16 @@
 
     if-eqz v0, :cond_1
 
+    .line 21534
     invoke-virtual {p0, p1}, Lcom/android/server/pm/PackageManagerService;->grantSystemAppPermissions(I)V
 
+    .line 21520
     :cond_1
     invoke-static {}, Lcom/android/server/pm/PackageManagerService$FlymePackageManagerServiceInjector;->isResetFlymeRuntimePermissions()Z
 
     move-result v0
 
     if-nez v0, :cond_flyme_0
-
     return-void
 .end method
 
@@ -91192,6 +91208,12 @@
     aput v4, v2, v5
 
     invoke-static {v2}, Landroid/util/OpFeatures;->isSupport([I)Z
+
+    move-result v2
+
+    if-nez v2, :cond_0
+
+    invoke-static {}, Lcom/android/server/pm/PackageManagerService$FlymePackageManagerServiceInjector;->isResetFlymeRuntimePermissions()Z
 
     move-result v2
 
