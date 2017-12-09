@@ -1,0 +1,2 @@
+vendor/system/app/GoogleWebView/GoogleWebView.apk filter=lfs diff=lfs merge=lfs -text
+vendor/system/app/webview/webview.apk filter=lfs diff=lfs merge=lfs -text
