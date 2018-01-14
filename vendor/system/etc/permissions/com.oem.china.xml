@@ -1,0 +1,5 @@
+<permissions>
+    <feature name="oem.appstartup.control" />
+    <feature name="oem.dozeNetworkChange.control" />
+    <feature name="oem.oem.service.control" />
+</permissions>

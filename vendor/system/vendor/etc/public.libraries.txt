@@ -1,0 +1,11 @@
+libOpenCL.so
+libqti_performance.so
+libqti-perfd-client.so
+lib-ims-rcscmjni.so
+lib-imsrcscm.so
+lib-imsrcscmclient.so
+lib-imsrcscmservice.so
+libadsprpc.so
+libsdsprpc.so
+libsdm-disp-apis.so
+libsd_sdk_display.so
