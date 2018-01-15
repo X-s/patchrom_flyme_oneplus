@@ -3780,7 +3780,7 @@
 
     move-object/from16 v0, p0
 
-    invoke-direct {v0, v13, v12, v9}, Landroid/app/LoadedApk;->rewriteRValues(Ljava/lang/ClassLoader;Ljava/lang/String;I)V
+    invoke-static {v0, v13, v12, v9}, Landroid/app/LoadedApk$FlymeInjector;->rewriteRValues(Landroid/app/LoadedApk;Ljava/lang/ClassLoader;Ljava/lang/String;I)V
 
     goto/16 :goto_1
 

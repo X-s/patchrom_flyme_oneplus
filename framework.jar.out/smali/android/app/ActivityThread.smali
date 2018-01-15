@@ -10831,6 +10831,12 @@
     invoke-static {v10, v11}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     :cond_0
+    invoke-static {p1, v6}, Landroid/app/ActivityThread$FlymeInjector;->isFlymePermissionGranted(Landroid/app/ActivityThread$ReceiverData;Landroid/app/LoadedApk;)Z
+
+    move-result v10
+
+    if-nez v10, :cond_flyme_0
+
     invoke-virtual {v3}, Landroid/app/ContextImpl;->getReceiverRestrictedContext()Landroid/content/Context;
 
     move-result-object v10
@@ -10905,6 +10911,7 @@
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     :cond_1
+    :cond_flyme_0
     sget-object v10, Landroid/app/ActivityThread;->sCurrentBroadcastIntent:Ljava/lang/ThreadLocal;
 
     const/4 v11, 0x0
@@ -18530,6 +18537,10 @@
     invoke-virtual/range {v0 .. v10}, Landroid/app/ResourcesManager;->getResources(Ljava/lang/String;Landroid/os/IBinder;Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;ILandroid/content/res/Configuration;Landroid/content/res/CompatibilityInfo;Ljava/lang/ClassLoader;)Landroid/content/res/Resources;
 
     move-result-object v0
+
+    move-object/from16 v1, p7
+
+    invoke-static {v1, v0}, Landroid/app/ActivityThread$FlymeInjector;->setFlymeThemeResource(Landroid/app/LoadedApk;Landroid/content/res/Resources;)V
 
     return-object v0
 .end method

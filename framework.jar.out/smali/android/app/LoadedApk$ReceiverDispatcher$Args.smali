@@ -40,17 +40,17 @@
     .param p8, "sendingUser"    # I
 
     .prologue
-    .line 1108
+    .line 1109
     iput-object p1, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->this$1:Landroid/app/LoadedApk$ReceiverDispatcher;
 
-    .line 1111
+    .line 1112
     iget-boolean v1, p1, Landroid/app/LoadedApk$ReceiverDispatcher;->mRegistered:Z
 
     if-eqz v1, :cond_0
 
     const/4 v5, 0x1
 
-    .line 1112
+    .line 1113
     :goto_0
     iget-object v1, p1, Landroid/app/LoadedApk$ReceiverDispatcher;->mIIntentReceiver:Landroid/content/IIntentReceiver$Stub;
 
@@ -76,21 +76,21 @@
 
     move/from16 v9, p8
 
-    .line 1110
+    .line 1111
     invoke-direct/range {v1 .. v10}, Landroid/content/BroadcastReceiver$PendingResult;-><init>(ILjava/lang/String;Landroid/os/Bundle;IZZLandroid/os/IBinder;II)V
 
-    .line 1113
+    .line 1114
     iput-object p2, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->mCurIntent:Landroid/content/Intent;
 
-    .line 1114
+    .line 1115
     move/from16 v0, p6
 
     iput-boolean v0, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->mOrdered:Z
 
-    .line 1109
+    .line 1110
     return-void
 
-    .line 1111
+    .line 1112
     :cond_0
     const/4 v5, 0x2
 
@@ -107,30 +107,30 @@
 
     const/4 v11, 0x0
 
-    .line 1118
+    .line 1119
     iget-object v8, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->this$1:Landroid/app/LoadedApk$ReceiverDispatcher;
 
     iget-object v5, v8, Landroid/app/LoadedApk$ReceiverDispatcher;->mReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 1119
+    .line 1120
     .local v5, "receiver":Landroid/content/BroadcastReceiver;
     iget-boolean v4, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->mOrdered:Z
 
-    .line 1129
+    .line 1130
     .local v4, "ordered":Z
     invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
 
     move-result-object v3
 
-    .line 1130
+    .line 1131
     .local v3, "mgr":Landroid/app/IActivityManager;
     iget-object v2, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->mCurIntent:Landroid/content/Intent;
 
-    .line 1131
+    .line 1132
     .local v2, "intent":Landroid/content/Intent;
     if-nez v2, :cond_0
 
-    .line 1132
+    .line 1133
     const-string/jumbo v8, "LoadedApk"
 
     new-instance v9, Ljava/lang/StringBuilder;
@@ -155,21 +155,21 @@
 
     invoke-static {v8, v9}, Landroid/util/Log;->wtf(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1135
+    .line 1136
     :cond_0
     iput-object v11, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->mCurIntent:Landroid/content/Intent;
 
-    .line 1136
+    .line 1137
     const/4 v8, 0x1
 
     iput-boolean v8, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->mDispatched:Z
 
-    .line 1137
+    .line 1138
     if-eqz v5, :cond_1
 
     if-nez v2, :cond_3
 
-    .line 1138
+    .line 1139
     :cond_1
     iget-object v8, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->this$1:Landroid/app/LoadedApk$ReceiverDispatcher;
 
@@ -179,14 +179,14 @@
 
     if-eqz v4, :cond_2
 
-    .line 1141
+    .line 1142
     invoke-virtual {p0, v3}, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->sendFinished(Landroid/app/IActivityManager;)V
 
-    .line 1143
+    .line 1144
     :cond_2
     return-void
 
-    .line 1137
+    .line 1138
     :cond_3
     iget-object v8, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->this$1:Landroid/app/LoadedApk$ReceiverDispatcher;
 
@@ -194,14 +194,14 @@
 
     if-nez v8, :cond_1
 
-    .line 1145
+    .line 1146
     invoke-virtual {v2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v8
 
-    if-eqz v8, :cond_6
+    if-eqz v8, :cond_7
 
-    .line 1146
+    .line 1147
     new-instance v8, Ljava/lang/StringBuilder;
 
     invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
@@ -212,13 +212,25 @@
 
     move-result-object v8
 
-    .line 1147
+    .line 1148
     invoke-virtual {v2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
 
     move-result-object v9
 
-    .line 1146
+    .line 1147
     invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v8
+
+    .line 1148
+    const-string/jumbo v9, " receiver ="
+
+    .line 1147
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v8
+
+    invoke-virtual {v8, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     move-result-object v8
 
@@ -228,7 +240,7 @@
 
     invoke-static {v12, v13, v8}, Landroid/os/Trace;->traceBegin(JLjava/lang/String;)V
 
-    .line 1153
+    .line 1154
     :goto_0
     :try_start_0
     iget-object v8, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->this$1:Landroid/app/LoadedApk$ReceiverDispatcher;
@@ -243,33 +255,26 @@
 
     move-result-object v0
 
-    .line 1154
+    .line 1155
     .local v0, "cl":Ljava/lang/ClassLoader;
     invoke-virtual {v2, v0}, Landroid/content/Intent;->setExtrasClassLoader(Ljava/lang/ClassLoader;)V
 
-    .line 1155
+    .line 1156
     invoke-virtual {v2}, Landroid/content/Intent;->prepareToEnterProcess()V
 
-    .line 1156
+    .line 1157
     invoke-virtual {p0, v0}, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->setExtrasClassLoader(Ljava/lang/ClassLoader;)V
 
-    .line 1157
+    .line 1158
     invoke-virtual {v5, p0}, Landroid/content/BroadcastReceiver;->setPendingResult(Landroid/content/BroadcastReceiver$PendingResult;)V
 
-    .line 1162
+    .line 1163
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v6
 
-    .line 1163
-    .local v6, "startTime":J
-    iget-object v8, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->this$1:Landroid/app/LoadedApk$ReceiverDispatcher;
-
-    iget-object v8, v8, Landroid/app/LoadedApk$ReceiverDispatcher;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v5, v8, v2}, Landroid/content/BroadcastReceiver;->onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-
     .line 1164
+    .local v6, "startTime":J
     sget-boolean v8, Landroid/app/ActivityThread;->DEBUG_ONEPLUS:Z
 
     if-eqz v8, :cond_4
@@ -299,28 +304,84 @@
 
     move-result-object v9
 
+    const-string/jumbo v10, " start"
+
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v9
+
+    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v9
+
+    invoke-static {v8, v9}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 1167
+    :cond_4
+    iget-object v8, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->this$1:Landroid/app/LoadedApk$ReceiverDispatcher;
+
+    invoke-static {v2, v8}, Landroid/app/LoadedApk$FlymeInjector;->isFlymeRejectReceive(Landroid/content/Intent;Landroid/app/LoadedApk$ReceiverDispatcher;)Z
+
+    move-result v8
+
+    if-nez v8, :cond_flyme_0
+
+    iget-object v8, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->this$1:Landroid/app/LoadedApk$ReceiverDispatcher;
+
+    iget-object v8, v8, Landroid/app/LoadedApk$ReceiverDispatcher;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v5, v8, v2}, Landroid/content/BroadcastReceiver;->onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+
+    sget-boolean v8, Landroid/app/ActivityThread;->DEBUG_ONEPLUS:Z
+
+    if-eqz v8, :cond_5
+
+    const-string v8, "LoadedApk"
+
+    new-instance v9, Ljava/lang/StringBuilder;
+
+    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v9, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v9
+
+    const-string/jumbo v10, " onReceive "
+
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v9
+
+    invoke-virtual {v2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
+
+    move-result-object v10
+
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v9
+
     const-string/jumbo v10, " in "
 
     invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v9
 
-    .line 1166
+    .line 1170
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v10
 
     sub-long/2addr v10, v6
 
-    .line 1165
+    .line 1169
     invoke-virtual {v9, v10, v11}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
     move-result-object v9
 
-    .line 1166
+    .line 1170
     const-string/jumbo v10, "ms"
 
-    .line 1165
+    .line 1169
     invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v9
@@ -333,61 +394,77 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1184
+    .line 1188
     .end local v0    # "cl":Ljava/lang/ClassLoader;
     .end local v6    # "startTime":J
-    :cond_4
+    :cond_5
     :cond_flyme_0
     invoke-virtual {v5}, Landroid/content/BroadcastReceiver;->getPendingResult()Landroid/content/BroadcastReceiver$PendingResult;
 
     move-result-object v8
 
-    if-eqz v8, :cond_5
+    if-eqz v8, :cond_6
 
-    .line 1185
+    .line 1189
     invoke-virtual {p0}, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->finish()V
 
-    .line 1187
-    :cond_5
+    .line 1191
+    :cond_6
     invoke-static {v12, v13}, Landroid/os/Trace;->traceEnd(J)V
 
-    .line 1117
+    .line 1118
     return-void
 
-    .line 1149
-    :cond_6
-    const-string/jumbo v8, "broadcastReceiveRegnull"
+    .line 1150
+    :cond_7
+    new-instance v8, Ljava/lang/StringBuilder;
+
+    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string/jumbo v9, "broadcastReceiveRegnull  receiver = "
+
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v8
+
+    invoke-virtual {v8, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v8
+
+    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v8
 
     invoke-static {v12, v13, v8}, Landroid/os/Trace;->traceBegin(JLjava/lang/String;)V
 
-    goto :goto_0
+    goto/16 :goto_0
 
-    .line 1169
+    .line 1173
     :catch_0
     move-exception v1
 
-    .line 1170
+    .line 1174
     .local v1, "e":Ljava/lang/Exception;
     iget-object v8, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->this$1:Landroid/app/LoadedApk$ReceiverDispatcher;
 
     iget-boolean v8, v8, Landroid/app/LoadedApk$ReceiverDispatcher;->mRegistered:Z
 
-    if-eqz v8, :cond_7
+    if-eqz v8, :cond_8
 
-    if-eqz v4, :cond_7
+    if-eqz v4, :cond_8
 
-    .line 1173
+    .line 1177
     invoke-virtual {p0, v3}, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->sendFinished(Landroid/app/IActivityManager;)V
 
-    .line 1175
-    :cond_7
+    .line 1179
+    :cond_8
     iget-object v8, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->this$1:Landroid/app/LoadedApk$ReceiverDispatcher;
 
     iget-object v8, v8, Landroid/app/LoadedApk$ReceiverDispatcher;->mInstrumentation:Landroid/app/Instrumentation;
 
-    if-eqz v8, :cond_8
+    if-eqz v8, :cond_9
 
-    .line 1176
+    .line 1180
     iget-object v8, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->this$1:Landroid/app/LoadedApk$ReceiverDispatcher;
 
     iget-object v8, v8, Landroid/app/LoadedApk$ReceiverDispatcher;->mInstrumentation:Landroid/app/Instrumentation;
@@ -400,16 +477,16 @@
 
     move-result v8
 
-    if-nez v8, :cond_4
+    if-nez v8, :cond_5
 
-    .line 1177
-    :cond_8
+    .line 1181
+    :cond_9
     invoke-static {v12, v13}, Landroid/os/Trace;->traceEnd(J)V
 
-    .line 1178
+    .line 1182
     new-instance v8, Ljava/lang/RuntimeException;
 
-    .line 1179
+    .line 1183
     new-instance v9, Ljava/lang/StringBuilder;
 
     invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
@@ -424,20 +501,20 @@
 
     move-result-object v9
 
-    .line 1180
+    .line 1184
     const-string/jumbo v10, " in "
 
-    .line 1179
+    .line 1183
     invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v9
 
-    .line 1180
+    .line 1184
     iget-object v10, p0, Landroid/app/LoadedApk$ReceiverDispatcher$Args;->this$1:Landroid/app/LoadedApk$ReceiverDispatcher;
 
     iget-object v10, v10, Landroid/app/LoadedApk$ReceiverDispatcher;->mReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 1179
+    .line 1183
     invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     move-result-object v9
@@ -446,7 +523,7 @@
 
     move-result-object v9
 
-    .line 1178
+    .line 1182
     invoke-direct {v8, v9, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
     throw v8

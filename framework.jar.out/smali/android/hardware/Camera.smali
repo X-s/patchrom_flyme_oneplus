@@ -1272,6 +1272,17 @@
     .locals 7
 
     .prologue
+    invoke-static {}, Landroid/hardware/Camera;->isFlymePermissionGranted()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_flyme_0
+
+    const/4 v0, 0x0
+
+    return-object v0
+
+    :cond_flyme_0
     const/4 v6, 0x0
 
     const/4 v5, 0x0
@@ -1355,6 +1366,17 @@
     .param p0, "cameraId"    # I
 
     .prologue
+    invoke-static {}, Landroid/hardware/Camera;->isFlymePermissionGranted()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_flyme_0
+
+    const/4 v0, 0x0
+
+    return-object v0
+
+    :cond_flyme_0
     const/4 v0, 0x1
 
     new-array v0, v0, [I

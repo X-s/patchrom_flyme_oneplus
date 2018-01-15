@@ -11819,6 +11819,8 @@
     iput-boolean v5, p0, Landroid/widget/AbsListView;->mInLayout:Z
 
     :cond_2
+    invoke-static/range {p0 .. p0}, Landroid/widget/AbsListView$FlymeInjector;->mzOnLayout2(Landroid/widget/AbsListView;)V
+
     return-void
 .end method
 
