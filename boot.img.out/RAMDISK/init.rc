@@ -683,6 +683,10 @@ service flash_recovery /system/bin/install-recovery.sh
     class main
     oneshot
 
+service flymed /system/bin/flymed
+    class main
+    socket flymed stream 0660 root system
+
 ## neiltsai add for kmemleak debug only
 service leak_service /system/bin/sh /kmemleak.sh
     class main
