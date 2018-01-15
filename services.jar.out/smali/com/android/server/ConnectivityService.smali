@@ -142,6 +142,8 @@
 
 
 # instance fields
+.field private mFlymeWifiInterface:Ljava/lang/String;
+
 .field final mAvoidBadWifiTracker:Landroid/net/util/AvoidBadWifiTracker;
 
 .field private final mBlockedAppUids:Ljava/util/HashSet;
@@ -1843,10 +1845,8 @@
 
     move-result-object v2
 
-    .line 766
-    const v3, 0x10e000f
+    const v3, #android:integer@config_networkTransitionTimeout#t
 
-    .line 765
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getInteger(I)I
 
     move-result v2
@@ -1875,11 +1875,11 @@
 
     new-array v2, v2, [Landroid/net/NetworkConfig;
 
+    .line 772
     move-object/from16 v0, p0
 
     iput-object v2, v0, Lcom/android/server/ConnectivityService;->mNetConfigs:[Landroid/net/NetworkConfig;
 
-    .line 772
     move-object/from16 v0, p0
 
     iget-object v2, v0, Lcom/android/server/ConnectivityService;->mContext:Landroid/content/Context;
@@ -1911,8 +1911,7 @@
 
     iput-boolean v2, v0, Lcom/android/server/ConnectivityService;->mIsCaptivePortalCheckEnabled:Z
 
-    .line 777
-    const-string/jumbo v2, "ro.radio.noril"
+    const-string v2, "ro.radio.noril"
 
     const/4 v3, 0x0
 
@@ -1944,20 +1943,16 @@
 
     invoke-static {v2}, Lcom/android/server/ConnectivityService;->log(Ljava/lang/String;)V
 
-    .line 779
     invoke-virtual/range {p1 .. p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v2
 
-    .line 780
-    const v3, 0x1070011
+    const v3, #android:array@networkAttributes#t
 
-    .line 779
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
 
     move-result-object v18
 
-    .line 781
     .local v18, "naStrings":[Ljava/lang/String;
     const/4 v2, 0x0
 
@@ -2246,20 +2241,16 @@
 
     iput-object v2, v0, Lcom/android/server/ConnectivityService;->mProtectedNetworks:Ljava/util/List;
 
-    .line 820
     invoke-virtual/range {p1 .. p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v2
 
-    .line 821
-    const v3, 0x1070012
+    const v3, #android:array@config_protectedNetworks#t
 
-    .line 820
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getIntArray(I)[I
 
     move-result-object v22
 
-    .line 822
     .local v22, "protectedNetworks":[I
     const/4 v2, 0x0
 
@@ -8800,6 +8791,18 @@
 
     .local v3, "uidRules":I
     monitor-exit v7
+
+    invoke-direct/range {p0 .. p2}, Lcom/android/server/ConnectivityService;->isFlymeNetworkWithLinkPropertiesBlocked(Landroid/net/LinkProperties;I)Z
+
+    move-result v8
+
+    if-eqz v8, :cond_flyme_0
+
+    const/4 v8, 0x1
+
+    return v8
+
+    :cond_flyme_0
 
     .line 1048
     const/4 v0, 0x1
@@ -18824,7 +18827,7 @@
 
     move-result-object v2
 
-    const v3, 0x104004b
+    const v3, #android:string@mobile_provisioning_url#t
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -22991,4 +22994,122 @@
 
     .line 902
     return-void
+.end method
+
+.method private initFlymeExtraFields()V
+    .locals 2
+
+    .prologue
+    const-string v0, "wifi.interface"
+
+    const-string v1, "wlan0"
+
+    invoke-static {v0, v1}, Landroid/os/SystemProperties;->get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/server/ConnectivityService;->mFlymeWifiInterface:Ljava/lang/String;
+
+    return-void
+.end method
+
+.method private isFlymeNetworkWithLinkPropertiesBlocked(Landroid/net/LinkProperties;I)Z
+    .locals 10
+    .param p1, "lp"    # Landroid/net/LinkProperties;
+    .param p2, "uid"    # I
+
+    .prologue
+    const/4 v9, 0x1
+
+    const/4 v8, 0x0
+
+    if-nez p1, :cond_0
+
+    const-string v1, ""
+
+    .local v1, "iface":Ljava/lang/String;
+    :goto_0
+    iget-object v6, p0, Lcom/android/server/ConnectivityService;->mUidRules:Landroid/util/SparseIntArray;
+
+    const/16 v7, 0x20
+
+    invoke-virtual {v6, p2, v7}, Landroid/util/SparseIntArray;->get(II)I
+
+    move-result v5
+
+    .local v5, "uidRules":I
+    iget-object v6, p0, Lcom/android/server/ConnectivityService;->mFlymeWifiInterface:Ljava/lang/String;
+
+    invoke-virtual {v6, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    .local v3, "isWifiNetwork":Z
+    new-array v4, v8, [Ljava/lang/String;
+
+    .local v4, "mobileInterfaces":[Ljava/lang/String;
+    :try_start_0
+    iget-object v6, p0, Lcom/android/server/ConnectivityService;->mStatsService:Landroid/net/INetworkStatsService;
+
+    invoke-interface {v6}, Landroid/net/INetworkStatsService;->getMobileIfaces()[Ljava/lang/String;
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result-object v4
+
+    :goto_1
+    if-eqz v4, :cond_1
+
+    invoke-static {v4, v1}, Lcom/android/internal/util/ArrayUtils;->contains([Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v2
+
+    :goto_2
+    if-eqz v3, :cond_2
+
+    and-int/lit16 v6, v5, 0x400
+
+    if-eqz v6, :cond_3
+
+    return v9
+
+    .end local v1    # "iface":Ljava/lang/String;
+    .end local v3    # "isWifiNetwork":Z
+    .end local v4    # "mobileInterfaces":[Ljava/lang/String;
+    .end local v5    # "uidRules":I
+    :cond_0
+    invoke-virtual {p1}, Landroid/net/LinkProperties;->getInterfaceName()Ljava/lang/String;
+
+    move-result-object v1
+
+    .restart local v1    # "iface":Ljava/lang/String;
+    goto :goto_0
+
+    .restart local v3    # "isWifiNetwork":Z
+    .restart local v4    # "mobileInterfaces":[Ljava/lang/String;
+    .restart local v5    # "uidRules":I
+    :cond_1
+    const/4 v2, 0x0
+
+    .local v2, "isMobileNetwork":Z
+    goto :goto_2
+
+    .end local v2    # "isMobileNetwork":Z
+    :cond_2
+    if-eqz v2, :cond_3
+
+    and-int/lit16 v6, v5, 0x800
+
+    if-eqz v6, :cond_3
+
+    return v9
+
+    :cond_3
+    return v8
+
+    :catch_0
+    move-exception v0
+
+    .local v0, "e":Landroid/os/RemoteException;
+    goto :goto_1
 .end method

@@ -1291,26 +1291,22 @@
 
     if-eqz v3, :cond_0
 
-    .line 518
     invoke-static {}, Landroid/hardware/Camera;->requestCameraPermission()Z
 
     move-result v3
 
     if-eqz v3, :cond_1
 
-    .line 524
     :cond_0
     invoke-static {}, Landroid/hardware/Camera;->getNumberOfCameras()I
 
     move-result v2
 
-    .line 525
     .local v2, "numberOfCameras":I
     new-instance v0, Landroid/hardware/Camera$CameraInfo;
 
     invoke-direct {v0}, Landroid/hardware/Camera$CameraInfo;-><init>()V
 
-    .line 526
     .local v0, "cameraInfo":Landroid/hardware/Camera$CameraInfo;
     const/4 v1, 0x0
 
@@ -1359,7 +1355,6 @@
     .param p0, "cameraId"    # I
 
     .prologue
-    .line 482
     const/4 v0, 0x1
 
     new-array v0, v0, [I
@@ -1376,14 +1371,12 @@
 
     if-eqz v0, :cond_0
 
-    .line 483
     invoke-static {}, Landroid/hardware/Camera;->requestCameraPermission()Z
 
     move-result v0
 
     if-eqz v0, :cond_1
 
-    .line 488
     :cond_0
     new-instance v0, Landroid/hardware/Camera;
 
@@ -1391,7 +1384,6 @@
 
     return-object v0
 
-    .line 484
     :cond_1
     const/4 v0, 0x0
 
@@ -1404,19 +1396,17 @@
     .param p1, "halVersion"    # I
 
     .prologue
-    .line 574
     const/16 v0, 0x100
 
     if-ge p1, v0, :cond_0
 
-    .line 575
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v2, "Invalid HAL version "
+    const-string v2, "Invalid HAL version "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1434,7 +1424,6 @@
 
     throw v0
 
-    .line 578
     :cond_0
     new-instance v0, Landroid/hardware/Camera;
 
@@ -1447,7 +1436,6 @@
     .locals 3
 
     .prologue
-    .line 261
     new-instance v0, Landroid/hardware/Camera;
 
     const/4 v1, -0x1
@@ -1463,7 +1451,6 @@
     .locals 1
 
     .prologue
-    .line 713
     new-instance v0, Landroid/hardware/Camera;
 
     invoke-direct {v0}, Landroid/hardware/Camera;-><init>()V
@@ -1480,7 +1467,6 @@
     .param p4, "obj"    # Ljava/lang/Object;
 
     .prologue
-    .line 1433
     check-cast p0, Ljava/lang/ref/WeakReference;
 
     .end local p0    # "camera_ref":Ljava/lang/Object;
@@ -1490,33 +1476,27 @@
 
     check-cast v0, Landroid/hardware/Camera;
 
-    .line 1434
     .local v0, "c":Landroid/hardware/Camera;
     if-nez v0, :cond_0
 
-    .line 1435
     return-void
 
-    .line 1437
     :cond_0
     iget-object v2, v0, Landroid/hardware/Camera;->mEventHandler:Landroid/hardware/Camera$EventHandler;
 
     if-eqz v2, :cond_1
 
-    .line 1438
     iget-object v2, v0, Landroid/hardware/Camera;->mEventHandler:Landroid/hardware/Camera$EventHandler;
 
     invoke-virtual {v2, p1, p2, p3, p4}, Landroid/hardware/Camera$EventHandler;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
 
     move-result-object v1
 
-    .line 1439
     .local v1, "m":Landroid/os/Message;
     iget-object v2, v0, Landroid/hardware/Camera;->mEventHandler:Landroid/hardware/Camera$EventHandler;
 
     invoke-virtual {v2, v1}, Landroid/hardware/Camera$EventHandler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 1431
     .end local v1    # "m":Landroid/os/Message;
     :cond_1
     return-void
@@ -1526,7 +1506,6 @@
     .locals 5
 
     .prologue
-    .line 495
     :try_start_0
     invoke-static {}, Landroid/app/ActivityThread;->currentApplication()Landroid/app/Application;
 
@@ -1536,15 +1515,13 @@
 
     move-result-object v0
 
-    .line 496
     .local v0, "context":Landroid/content/Context;
     new-instance v2, Landroid/util/Permission;
 
     invoke-direct {v2, v0}, Landroid/util/Permission;-><init>(Landroid/content/Context;)V
 
-    .line 497
     .local v2, "requester":Landroid/util/Permission;
-    const-string/jumbo v3, "android.permission.CAMERA"
+    const-string v3, "android.permission.CAMERA"
 
     invoke-virtual {v2, v3}, Landroid/util/Permission;->requestPermissionAuto(Ljava/lang/String;)Z
     :try_end_0
@@ -1554,23 +1531,19 @@
 
     return v3
 
-    .line 498
     .end local v2    # "requester":Landroid/util/Permission;
     :catch_0
     move-exception v1
 
-    .line 499
     .local v1, "e":Ljava/lang/Exception;
-    const-string/jumbo v3, "Camera"
+    const-string v3, "Camera"
 
-    const-string/jumbo v4, "request CAMERA permission fail"
+    const-string v4, "request CAMERA permission fail"
 
     invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 500
     invoke-virtual {v1}, Ljava/lang/Exception;->printStackTrace()V
 
-    .line 501
     const/4 v3, 0x0
 
     return v3
@@ -1589,12 +1562,10 @@
     .param p1, "callbackBuffer"    # [B
 
     .prologue
-    .line 1079
     const/16 v0, 0x10
 
     invoke-direct {p0, p1, v0}, Landroid/hardware/Camera;->_addCallbackBuffer([BI)V
 
-    .line 1077
     return-void
 .end method
 
@@ -1603,12 +1574,10 @@
     .param p1, "callbackBuffer"    # [B
 
     .prologue
-    .line 212
     const v0, 0x8000
 
     invoke-direct {p0, p1, v0}, Landroid/hardware/Camera;->_addCallbackBuffer([BI)V
 
-    .line 210
     return-void
 .end method
 
@@ -1617,12 +1586,10 @@
     .param p1, "callbackBuffer"    # [B
 
     .prologue
-    .line 1122
     const/16 v0, 0x80
 
     invoke-direct {p0, p1, v0}, Landroid/hardware/Camera;->addCallbackBuffer([BI)V
 
-    .line 1120
     return-void
 .end method
 
@@ -1631,12 +1598,10 @@
     .param p1, "cb"    # Landroid/hardware/Camera$AutoFocusCallback;
 
     .prologue
-    .line 1522
     iget-object v0, p0, Landroid/hardware/Camera;->mAutoFocusCallbackLock:Ljava/lang/Object;
 
     monitor-enter v0
 
-    .line 1523
     :try_start_0
     iput-object p1, p0, Landroid/hardware/Camera;->mAutoFocusCallback:Landroid/hardware/Camera$AutoFocusCallback;
     :try_end_0
@@ -1644,13 +1609,10 @@
 
     monitor-exit v0
 
-    .line 1525
     invoke-direct {p0}, Landroid/hardware/Camera;->native_autoFocus()V
 
-    .line 1520
     return-void
 
-    .line 1522
     :catchall_0
     move-exception v1
 
@@ -1664,7 +1626,6 @@
     .param p1, "cameraId"    # I
 
     .prologue
-    .line 681
     const/4 v0, -0x1
 
     invoke-direct {p0, p1, v0}, Landroid/hardware/Camera;->cameraInitVersion(II)I
@@ -1678,12 +1639,10 @@
     .locals 2
 
     .prologue
-    .line 1539
     iget-object v0, p0, Landroid/hardware/Camera;->mAutoFocusCallbackLock:Ljava/lang/Object;
 
     monitor-enter v0
 
-    .line 1540
     const/4 v1, 0x0
 
     :try_start_0
@@ -1693,20 +1652,16 @@
 
     monitor-exit v0
 
-    .line 1542
     invoke-direct {p0}, Landroid/hardware/Camera;->native_cancelAutoFocus()V
 
-    .line 1558
     iget-object v0, p0, Landroid/hardware/Camera;->mEventHandler:Landroid/hardware/Camera$EventHandler;
 
     const/4 v1, 0x4
 
     invoke-virtual {v0, v1}, Landroid/hardware/Camera$EventHandler;->removeMessages(I)V
 
-    .line 1537
     return-void
 
-    .line 1539
     :catchall_0
     move-exception v1
 
@@ -1726,65 +1681,51 @@
     .end annotation
 
     .prologue
-    .line 1167
     invoke-virtual {p0}, Landroid/hardware/Camera;->getParameters()Landroid/hardware/Camera$Parameters;
 
     move-result-object v1
 
-    .line 1168
     .local v1, "p":Landroid/hardware/Camera$Parameters;
     invoke-virtual {v1}, Landroid/hardware/Camera$Parameters;->getPreviewSize()Landroid/hardware/Camera$Size;
 
     move-result-object v2
 
-    .line 1169
     .local v2, "previewSize":Landroid/hardware/Camera$Size;
     new-instance v3, Landroid/renderscript/Type$Builder;
 
-    .line 1171
     sget-object v4, Landroid/renderscript/Element$DataType;->UNSIGNED_8:Landroid/renderscript/Element$DataType;
 
-    .line 1172
     sget-object v5, Landroid/renderscript/Element$DataKind;->PIXEL_YUV:Landroid/renderscript/Element$DataKind;
 
-    .line 1170
     invoke-static {p1, v4, v5}, Landroid/renderscript/Element;->createPixel(Landroid/renderscript/RenderScript;Landroid/renderscript/Element$DataType;Landroid/renderscript/Element$DataKind;)Landroid/renderscript/Element;
 
     move-result-object v4
 
-    .line 1169
     invoke-direct {v3, p1, v4}, Landroid/renderscript/Type$Builder;-><init>(Landroid/renderscript/RenderScript;Landroid/renderscript/Element;)V
 
-    .line 1175
     .local v3, "yuvBuilder":Landroid/renderscript/Type$Builder;
     const v4, 0x32315659
 
     invoke-virtual {v3, v4}, Landroid/renderscript/Type$Builder;->setYuvFormat(I)Landroid/renderscript/Type$Builder;
 
-    .line 1176
     iget v4, v2, Landroid/hardware/Camera$Size;->width:I
 
     invoke-virtual {v3, v4}, Landroid/renderscript/Type$Builder;->setX(I)Landroid/renderscript/Type$Builder;
 
-    .line 1177
     iget v4, v2, Landroid/hardware/Camera$Size;->height:I
 
     invoke-virtual {v3, v4}, Landroid/renderscript/Type$Builder;->setY(I)Landroid/renderscript/Type$Builder;
 
-    .line 1179
     invoke-virtual {v3}, Landroid/renderscript/Type$Builder;->create()Landroid/renderscript/Type;
 
     move-result-object v4
 
-    .line 1180
     or-int/lit8 v5, p2, 0x20
 
-    .line 1179
     invoke-static {p1, v4, v5}, Landroid/renderscript/Allocation;->createTyped(Landroid/renderscript/RenderScript;Landroid/renderscript/Type;I)Landroid/renderscript/Allocation;
 
     move-result-object v0
 
-    .line 1182
     .local v0, "a":Landroid/renderscript/Allocation;
     return-object v0
 .end method
@@ -1793,7 +1734,6 @@
     .locals 1
 
     .prologue
-    .line 1894
     const/4 v0, 0x0
 
     invoke-direct {p0, v0}, Landroid/hardware/Camera;->_enableShutterSound(Z)Z
@@ -1808,23 +1748,19 @@
     .param p1, "enabled"    # Z
 
     .prologue
-    .line 1865
     if-nez p1, :cond_0
 
-    .line 1866
-    const-string/jumbo v3, "audio"
+    const-string v3, "audio"
 
     invoke-static {v3}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
 
     move-result-object v1
 
-    .line 1867
     .local v1, "b":Landroid/os/IBinder;
     invoke-static {v1}, Landroid/media/IAudioService$Stub;->asInterface(Landroid/os/IBinder;)Landroid/media/IAudioService;
 
     move-result-object v0
 
-    .line 1869
     .local v0, "audioService":Landroid/media/IAudioService;
     :try_start_0
     invoke-interface {v0}, Landroid/media/IAudioService;->isCameraSoundForced()Z
@@ -1839,19 +1775,16 @@
 
     return v3
 
-    .line 1870
     :catch_0
     move-exception v2
 
-    .line 1871
     .local v2, "e":Landroid/os/RemoteException;
-    const-string/jumbo v3, "Camera"
+    const-string v3, "Camera"
 
-    const-string/jumbo v4, "Audio service is unavailable for queries"
+    const-string v4, "Audio service is unavailable for queries"
 
     invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1874
     .end local v0    # "audioService":Landroid/media/IAudioService;
     .end local v1    # "b":Landroid/os/IBinder;
     .end local v2    # "e":Landroid/os/RemoteException;
@@ -1867,10 +1800,8 @@
     .locals 0
 
     .prologue
-    .line 724
     invoke-virtual {p0}, Landroid/hardware/Camera;->release()V
 
-    .line 723
     return-void
 .end method
 
@@ -1880,25 +1811,20 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 2446
     new-instance v1, Landroid/hardware/Camera$Parameters;
 
     invoke-direct {v1, p0, v3}, Landroid/hardware/Camera$Parameters;-><init>(Landroid/hardware/Camera;Landroid/hardware/Camera$Parameters;)V
 
-    .line 2447
     .local v1, "p":Landroid/hardware/Camera$Parameters;
     invoke-direct {p0}, Landroid/hardware/Camera;->native_getParameters()Ljava/lang/String;
 
     move-result-object v2
 
-    .line 2448
     .local v2, "s":Ljava/lang/String;
     invoke-virtual {v1, v2}, Landroid/hardware/Camera$Parameters;->unflatten(Ljava/lang/String;)V
 
-    .line 2450
     const/4 v0, -0x1
 
-    .line 2451
     .local v0, "focus_pos":I
     invoke-virtual {v1}, Landroid/hardware/Camera$Parameters;->getCurrentFocusPosition()Ljava/lang/String;
 
@@ -1906,7 +1832,6 @@
 
     if-eqz v3, :cond_0
 
-    .line 2452
     invoke-virtual {v1}, Landroid/hardware/Camera$Parameters;->getCurrentFocusPosition()Ljava/lang/String;
 
     move-result-object v3
@@ -1915,7 +1840,6 @@
 
     move-result v0
 
-    .line 2454
     :cond_0
     return v0
 .end method
@@ -1924,24 +1848,20 @@
     .locals 3
 
     .prologue
-    .line 2268
     new-instance v0, Landroid/hardware/Camera$Parameters;
 
     const/4 v2, 0x0
 
     invoke-direct {v0, p0, v2}, Landroid/hardware/Camera$Parameters;-><init>(Landroid/hardware/Camera;Landroid/hardware/Camera$Parameters;)V
 
-    .line 2269
     .local v0, "p":Landroid/hardware/Camera$Parameters;
     invoke-direct {p0}, Landroid/hardware/Camera;->native_getParameters()Ljava/lang/String;
 
     move-result-object v1
 
-    .line 2270
     .local v1, "s":Ljava/lang/String;
     invoke-virtual {v0, v1}, Landroid/hardware/Camera$Parameters;->unflatten(Ljava/lang/String;)V
 
-    .line 2271
     return-object v0
 .end method
 
@@ -1951,25 +1871,20 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 2283
     new-instance v1, Landroid/hardware/Camera$Parameters;
 
     invoke-direct {v1, p0, v3}, Landroid/hardware/Camera$Parameters;-><init>(Landroid/hardware/Camera;Landroid/hardware/Camera$Parameters;)V
 
-    .line 2284
     .local v1, "p":Landroid/hardware/Camera$Parameters;
     invoke-direct {p0}, Landroid/hardware/Camera;->native_getParameters()Ljava/lang/String;
 
     move-result-object v2
 
-    .line 2285
     .local v2, "s":Ljava/lang/String;
     invoke-virtual {v1, v2}, Landroid/hardware/Camera$Parameters;->unflatten(Ljava/lang/String;)V
 
-    .line 2287
     const/4 v0, 0x0
 
-    .line 2288
     .local v0, "cct":I
     invoke-virtual {v1}, Landroid/hardware/Camera$Parameters;->getWBCurrentCCT()Ljava/lang/String;
 
@@ -1977,7 +1892,6 @@
 
     if-eqz v3, :cond_0
 
-    .line 2289
     invoke-virtual {v1}, Landroid/hardware/Camera$Parameters;->getWBCurrentCCT()Ljava/lang/String;
 
     move-result-object v3
@@ -1986,7 +1900,6 @@
 
     move-result v0
 
-    .line 2292
     :cond_0
     return v0
 .end method
@@ -2009,15 +1922,12 @@
     .locals 1
 
     .prologue
-    .line 739
     invoke-direct {p0}, Landroid/hardware/Camera;->native_release()V
 
-    .line 740
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/hardware/Camera;->mFaceDetectionRunning:Z
 
-    .line 738
     return-void
 .end method
 
@@ -2025,10 +1935,8 @@
     .locals 0
 
     .prologue
-    .line 2349
     invoke-direct {p0}, Landroid/hardware/Camera;->native_sendHistogramData()V
 
-    .line 2347
     return-void
 .end method
 
@@ -2036,10 +1944,8 @@
     .locals 0
 
     .prologue
-    .line 2385
     invoke-direct {p0}, Landroid/hardware/Camera;->native_sendMetaData()V
 
-    .line 2383
     return-void
 .end method
 
@@ -2048,10 +1954,8 @@
     .param p1, "cb"    # Landroid/hardware/Camera$AECallback;
 
     .prologue
-    .line 2231
     iput-object p1, p0, Landroid/hardware/Camera;->mAECallback:Landroid/hardware/Camera$AECallback;
 
-    .line 2230
     return-void
 .end method
 
@@ -2060,10 +1964,8 @@
     .param p1, "cb"    # Landroid/hardware/Camera$AutoFocusMoveCallback;
 
     .prologue
-    .line 1591
     iput-object p1, p0, Landroid/hardware/Camera;->mAutoFocusMoveCallback:Landroid/hardware/Camera$AutoFocusMoveCallback;
 
-    .line 1592
     iget-object v0, p0, Landroid/hardware/Camera;->mAutoFocusMoveCallback:Landroid/hardware/Camera$AutoFocusMoveCallback;
 
     if-eqz v0, :cond_0
@@ -2073,10 +1975,8 @@
     :goto_0
     invoke-direct {p0, v0}, Landroid/hardware/Camera;->enableFocusMoveCallback(I)V
 
-    .line 1590
     return-void
 
-    .line 1592
     :cond_0
     const/4 v0, 0x0
 
@@ -2091,10 +1991,8 @@
     .param p1, "cb"    # Landroid/hardware/Camera$ErrorCallback;
 
     .prologue
-    .line 2200
     iput-object p1, p0, Landroid/hardware/Camera;->mErrorCallback:Landroid/hardware/Camera$ErrorCallback;
 
-    .line 2198
     return-void
 .end method
 
@@ -2103,10 +2001,8 @@
     .param p1, "listener"    # Landroid/hardware/Camera$FaceDetectionListener;
 
     .prologue
-    .line 1962
     iput-object p1, p0, Landroid/hardware/Camera;->mFaceListener:Landroid/hardware/Camera$FaceDetectionListener;
 
-    .line 1960
     return-void
 .end method
 
@@ -2115,10 +2011,8 @@
     .param p1, "cb"    # Landroid/hardware/Camera$CameraDataCallback;
 
     .prologue
-    .line 2338
     iput-object p1, p0, Landroid/hardware/Camera;->mCameraDataCallback:Landroid/hardware/Camera$CameraDataCallback;
 
-    .line 2339
     if-eqz p1, :cond_0
 
     const/4 v0, 0x1
@@ -2126,10 +2020,8 @@
     :goto_0
     invoke-direct {p0, v0}, Landroid/hardware/Camera;->native_setHistogramMode(Z)V
 
-    .line 2336
     return-void
 
-    .line 2339
     :cond_0
     const/4 v0, 0x0
 
@@ -2141,10 +2033,8 @@
     .param p1, "enable"    # Z
 
     .prologue
-    .line 2396
     invoke-direct {p0, p1}, Landroid/hardware/Camera;->native_setLongshot(Z)V
 
-    .line 2394
     return-void
 .end method
 
@@ -2153,10 +2043,8 @@
     .param p1, "cb"    # Landroid/hardware/Camera$CameraMetaDataCallback;
 
     .prologue
-    .line 2375
     iput-object p1, p0, Landroid/hardware/Camera;->mCameraMetaDataCallback:Landroid/hardware/Camera$CameraMetaDataCallback;
 
-    .line 2376
     if-eqz p1, :cond_0
 
     const/4 v0, 0x1
@@ -2164,10 +2052,8 @@
     :goto_0
     invoke-direct {p0, v0}, Landroid/hardware/Camera;->native_setMetadataCb(Z)V
 
-    .line 2373
     return-void
 
-    .line 2376
     :cond_0
     const/4 v0, 0x0
 
@@ -2179,10 +2065,8 @@
     .param p1, "cb"    # Landroid/hardware/Camera$PictureCallback;
 
     .prologue
-    .line 269
     iput-object p1, p0, Landroid/hardware/Camera;->mOPServiceJpegCallback:Landroid/hardware/Camera$PictureCallback;
 
-    .line 268
     return-void
 .end method
 
@@ -2191,44 +2075,36 @@
     .param p1, "cb"    # Landroid/hardware/Camera$PreviewCallback;
 
     .prologue
+    .line 482
     const/4 v0, 0x1
 
     const/4 v1, 0x0
 
-    .line 995
     const/16 v2, 0x44
 
     invoke-static {v2}, Landroid/util/SeempLog;->record(I)I
 
-    .line 996
     iput-object p1, p0, Landroid/hardware/Camera;->mPreviewCallback:Landroid/hardware/Camera$PreviewCallback;
 
-    .line 997
     iput-boolean v0, p0, Landroid/hardware/Camera;->mOneShot:Z
 
-    .line 998
     iput-boolean v1, p0, Landroid/hardware/Camera;->mWithBuffer:Z
 
-    .line 999
     if-eqz p1, :cond_0
 
-    .line 1000
     iput-boolean v1, p0, Landroid/hardware/Camera;->mUsingPreviewAllocation:Z
 
-    .line 1002
     :cond_0
     if-eqz p1, :cond_1
 
     :goto_0
     invoke-direct {p0, v0, v1}, Landroid/hardware/Camera;->setHasPreviewCallback(ZZ)V
 
-    .line 994
     return-void
 
     :cond_1
     move v0, v1
 
-    .line 1002
     goto :goto_0
 .end method
 
@@ -2237,10 +2113,8 @@
     .param p1, "cb"    # Landroid/hardware/Camera$OneplusCallback;
 
     .prologue
-    .line 203
     iput-object p1, p0, Landroid/hardware/Camera;->mOneplusCallback:Landroid/hardware/Camera$OneplusCallback;
 
-    .line 202
     return-void
 .end method
 
@@ -2249,17 +2123,14 @@
     .param p1, "params"    # Landroid/hardware/Camera$Parameters;
 
     .prologue
-    .line 2247
     iget-boolean v2, p0, Landroid/hardware/Camera;->mUsingPreviewAllocation:Z
 
     if-eqz v2, :cond_1
 
-    .line 2248
     invoke-virtual {p1}, Landroid/hardware/Camera$Parameters;->getPreviewSize()Landroid/hardware/Camera$Size;
 
     move-result-object v1
 
-    .line 2249
     .local v1, "newPreviewSize":Landroid/hardware/Camera$Size;
     invoke-virtual {p0}, Landroid/hardware/Camera;->getParameters()Landroid/hardware/Camera$Parameters;
 
@@ -2269,7 +2140,6 @@
 
     move-result-object v0
 
-    .line 2250
     .local v0, "currentPreviewSize":Landroid/hardware/Camera$Size;
     iget v2, v1, Landroid/hardware/Camera$Size;->width:I
 
@@ -2277,24 +2147,21 @@
 
     if-ne v2, v3, :cond_0
 
-    .line 2251
     iget v2, v1, Landroid/hardware/Camera$Size;->height:I
 
     iget v3, v0, Landroid/hardware/Camera$Size;->height:I
 
     if-eq v2, v3, :cond_1
 
-    .line 2252
     :cond_0
     new-instance v2, Ljava/lang/IllegalStateException;
 
-    const-string/jumbo v3, "Cannot change preview size while a preview allocation is configured."
+    const-string v3, "Cannot change preview size while a preview allocation is configured."
 
     invoke-direct {v2, v3}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
     throw v2
 
-    .line 2257
     .end local v0    # "currentPreviewSize":Landroid/hardware/Camera$Size;
     .end local v1    # "newPreviewSize":Landroid/hardware/Camera$Size;
     :cond_1
@@ -2304,7 +2171,6 @@
 
     invoke-direct {p0, v2}, Landroid/hardware/Camera;->native_setParameters(Ljava/lang/String;)V
 
-    .line 2245
     return-void
 .end method
 
@@ -2315,27 +2181,20 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 968
     const/16 v0, 0x42
 
     invoke-static {v0}, Landroid/util/SeempLog;->record(I)I
 
-    .line 969
     iput-object p1, p0, Landroid/hardware/Camera;->mPreviewCallback:Landroid/hardware/Camera$PreviewCallback;
 
-    .line 970
     iput-boolean v1, p0, Landroid/hardware/Camera;->mOneShot:Z
 
-    .line 971
     iput-boolean v1, p0, Landroid/hardware/Camera;->mWithBuffer:Z
 
-    .line 972
     if-eqz p1, :cond_0
 
-    .line 973
     iput-boolean v1, p0, Landroid/hardware/Camera;->mUsingPreviewAllocation:Z
 
-    .line 977
     :cond_0
     if-eqz p1, :cond_1
 
@@ -2344,13 +2203,11 @@
     :goto_0
     invoke-direct {p0, v0, v1}, Landroid/hardware/Camera;->setHasPreviewCallback(ZZ)V
 
-    .line 967
     return-void
 
     :cond_1
     move v0, v1
 
-    .line 977
     goto :goto_0
 .end method
 
@@ -2366,25 +2223,20 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 1233
     const/4 v2, 0x0
 
-    .line 1234
     .local v2, "previewSurface":Landroid/view/Surface;
     if-eqz p1, :cond_4
 
-    .line 1235
     invoke-virtual {p0}, Landroid/hardware/Camera;->getParameters()Landroid/hardware/Camera$Parameters;
 
     move-result-object v0
 
-    .line 1236
     .local v0, "p":Landroid/hardware/Camera$Parameters;
     invoke-virtual {v0}, Landroid/hardware/Camera$Parameters;->getPreviewSize()Landroid/hardware/Camera$Size;
 
     move-result-object v1
 
-    .line 1237
     .local v1, "previewSize":Landroid/hardware/Camera$Size;
     iget v3, v1, Landroid/hardware/Camera$Size;->width:I
 
@@ -2398,7 +2250,6 @@
 
     if-ne v3, v4, :cond_0
 
-    .line 1238
     iget v3, v1, Landroid/hardware/Camera$Size;->height:I
 
     invoke-virtual {p1}, Landroid/renderscript/Allocation;->getType()Landroid/renderscript/Type;
@@ -2411,22 +2262,19 @@
 
     if-eq v3, v4, :cond_1
 
-    .line 1239
     :cond_0
     new-instance v3, Ljava/lang/IllegalArgumentException;
 
-    .line 1240
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string/jumbo v5, "Allocation dimensions don\'t match preview dimensions: Allocation is "
+    const-string v5, "Allocation dimensions don\'t match preview dimensions: Allocation is "
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    .line 1242
     invoke-virtual {p1}, Landroid/renderscript/Allocation;->getType()Landroid/renderscript/Type;
 
     move-result-object v5
@@ -2435,20 +2283,16 @@
 
     move-result v5
 
-    .line 1240
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    .line 1243
-    const-string/jumbo v5, ", "
+    const-string v5, ", "
 
-    .line 1240
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    .line 1244
     invoke-virtual {p1}, Landroid/renderscript/Allocation;->getType()Landroid/renderscript/Type;
 
     move-result-object v5
@@ -2457,39 +2301,30 @@
 
     move-result v5
 
-    .line 1240
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    .line 1245
-    const-string/jumbo v5, ". Preview is "
+    const-string v5, ". Preview is "
 
-    .line 1240
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    .line 1245
     iget v5, v1, Landroid/hardware/Camera$Size;->width:I
 
-    .line 1240
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    .line 1245
-    const-string/jumbo v5, ", "
+    const-string v5, ", "
 
-    .line 1240
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v4
 
-    .line 1246
     iget v5, v1, Landroid/hardware/Camera$Size;->height:I
 
-    .line 1240
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v4
@@ -2498,12 +2333,10 @@
 
     move-result-object v4
 
-    .line 1239
     invoke-direct {v3, v4}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v3
 
-    .line 1248
     :cond_1
     invoke-virtual {p1}, Landroid/renderscript/Allocation;->getUsage()I
 
@@ -2513,18 +2346,14 @@
 
     if-nez v3, :cond_2
 
-    .line 1250
     new-instance v3, Ljava/lang/IllegalArgumentException;
 
-    .line 1251
-    const-string/jumbo v4, "Allocation usage does not include USAGE_IO_INPUT"
+    const-string v4, "Allocation usage does not include USAGE_IO_INPUT"
 
-    .line 1250
     invoke-direct {v3, v4}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v3
 
-    .line 1253
     :cond_2
     invoke-virtual {p1}, Landroid/renderscript/Allocation;->getType()Landroid/renderscript/Type;
 
@@ -2538,46 +2367,36 @@
 
     move-result-object v3
 
-    .line 1254
     sget-object v4, Landroid/renderscript/Element$DataKind;->PIXEL_YUV:Landroid/renderscript/Element$DataKind;
 
-    .line 1253
     if-eq v3, v4, :cond_3
 
-    .line 1255
     new-instance v3, Ljava/lang/IllegalArgumentException;
 
-    .line 1256
-    const-string/jumbo v4, "Allocation is not of a YUV type"
+    const-string v4, "Allocation is not of a YUV type"
 
-    .line 1255
     invoke-direct {v3, v4}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     throw v3
 
-    .line 1258
     :cond_3
     invoke-virtual {p1}, Landroid/renderscript/Allocation;->getSurface()Landroid/view/Surface;
 
     move-result-object v2
 
-    .line 1259
     .local v2, "previewSurface":Landroid/view/Surface;
     const/4 v3, 0x1
 
     iput-boolean v3, p0, Landroid/hardware/Camera;->mUsingPreviewAllocation:Z
 
-    .line 1263
     .end local v0    # "p":Landroid/hardware/Camera$Parameters;
     .end local v1    # "previewSize":Landroid/hardware/Camera$Size;
     .end local v2    # "previewSurface":Landroid/view/Surface;
     :goto_0
     invoke-direct {p0, v2}, Landroid/hardware/Camera;->setPreviewCallbackSurface(Landroid/view/Surface;)V
 
-    .line 1232
     return-void
 
-    .line 1261
     .local v2, "previewSurface":Landroid/view/Surface;
     :cond_4
     iput-boolean v3, p0, Landroid/hardware/Camera;->mUsingPreviewAllocation:Z
@@ -2594,27 +2413,20 @@
 
     const/4 v0, 0x0
 
-    .line 1034
     const/16 v2, 0x43
 
     invoke-static {v2}, Landroid/util/SeempLog;->record(I)I
 
-    .line 1035
     iput-object p1, p0, Landroid/hardware/Camera;->mPreviewCallback:Landroid/hardware/Camera$PreviewCallback;
 
-    .line 1036
     iput-boolean v0, p0, Landroid/hardware/Camera;->mOneShot:Z
 
-    .line 1037
     iput-boolean v1, p0, Landroid/hardware/Camera;->mWithBuffer:Z
 
-    .line 1038
     if-eqz p1, :cond_0
 
-    .line 1039
     iput-boolean v0, p0, Landroid/hardware/Camera;->mUsingPreviewAllocation:Z
 
-    .line 1041
     :cond_0
     if-eqz p1, :cond_1
 
@@ -2623,7 +2435,6 @@
     :cond_1
     invoke-direct {p0, v0, v1}, Landroid/hardware/Camera;->setHasPreviewCallback(ZZ)V
 
-    .line 1033
     return-void
 .end method
 
@@ -2639,21 +2450,17 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 824
     if-eqz p1, :cond_0
 
-    .line 825
     invoke-interface {p1}, Landroid/view/SurfaceHolder;->getSurface()Landroid/view/Surface;
 
     move-result-object v0
 
     invoke-virtual {p0, v0}, Landroid/hardware/Camera;->setPreviewSurface(Landroid/view/Surface;)V
 
-    .line 823
     :goto_0
     return-void
 
-    .line 827
     :cond_0
     check-cast v0, Landroid/view/Surface;
 
@@ -2683,10 +2490,8 @@
     .param p1, "cb"    # Landroid/hardware/Camera$ProcessCallback;
 
     .prologue
-    .line 1632
     iput-object p1, p0, Landroid/hardware/Camera;->mProcessCallback:Landroid/hardware/Camera$ProcessCallback;
 
-    .line 1631
     return-void
 .end method
 
@@ -2695,10 +2500,8 @@
     .param p1, "listener"    # Landroid/hardware/Camera$OnZoomChangeListener;
 
     .prologue
-    .line 1932
     iput-object p1, p0, Landroid/hardware/Camera;->mZoomListener:Landroid/hardware/Camera$OnZoomChangeListener;
 
-    .line 1930
     return-void
 .end method
 
@@ -2706,32 +2509,27 @@
     .locals 2
 
     .prologue
-    .line 1998
     iget-boolean v0, p0, Landroid/hardware/Camera;->mFaceDetectionRunning:Z
 
     if-eqz v0, :cond_0
 
-    .line 1999
     new-instance v0, Ljava/lang/RuntimeException;
 
-    const-string/jumbo v1, "Face detection is already running"
+    const-string v1, "Face detection is already running"
 
     invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
     throw v0
 
-    .line 2001
     :cond_0
     const/4 v0, 0x0
 
     invoke-direct {p0, v0}, Landroid/hardware/Camera;->_startFaceDetection(I)V
 
-    .line 2002
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/hardware/Camera;->mFaceDetectionRunning:Z
 
-    .line 1997
     return-void
 .end method
 
@@ -2745,15 +2543,12 @@
     .locals 1
 
     .prologue
-    .line 2011
     invoke-direct {p0}, Landroid/hardware/Camera;->_stopFaceDetection()V
 
-    .line 2012
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/hardware/Camera;->mFaceDetectionRunning:Z
 
-    .line 2010
     return-void
 .end method
 
@@ -2763,35 +2558,26 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 926
     invoke-direct {p0}, Landroid/hardware/Camera;->_stopPreview()V
 
-    .line 927
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/hardware/Camera;->mFaceDetectionRunning:Z
 
-    .line 929
     iput-object v2, p0, Landroid/hardware/Camera;->mShutterCallback:Landroid/hardware/Camera$ShutterCallback;
 
-    .line 931
     iput-object v2, p0, Landroid/hardware/Camera;->mProcessCallback:Landroid/hardware/Camera$ProcessCallback;
 
-    .line 933
     iput-object v2, p0, Landroid/hardware/Camera;->mRawImageCallback:Landroid/hardware/Camera$PictureCallback;
 
-    .line 934
     iput-object v2, p0, Landroid/hardware/Camera;->mPostviewCallback:Landroid/hardware/Camera$PictureCallback;
 
-    .line 935
     iput-object v2, p0, Landroid/hardware/Camera;->mJpegCallback:Landroid/hardware/Camera$PictureCallback;
 
-    .line 936
     iget-object v0, p0, Landroid/hardware/Camera;->mAutoFocusCallbackLock:Ljava/lang/Object;
 
     monitor-enter v0
 
-    .line 937
     const/4 v1, 0x0
 
     :try_start_0
@@ -2801,13 +2587,10 @@
 
     monitor-exit v0
 
-    .line 939
     iput-object v2, p0, Landroid/hardware/Camera;->mAutoFocusMoveCallback:Landroid/hardware/Camera$AutoFocusMoveCallback;
 
-    .line 925
     return-void
 
-    .line 936
     :catchall_0
     move-exception v1
 
@@ -2826,12 +2609,10 @@
     .param p3, "jpeg"    # Landroid/hardware/Camera$PictureCallback;
 
     .prologue
-    .line 1664
     const/16 v0, 0x41
 
     invoke-static {v0}, Landroid/util/SeempLog;->record(I)I
 
-    .line 1667
     const/4 v0, 0x1
 
     new-array v0, v0, [I
@@ -2848,23 +2629,22 @@
 
     if-eqz v0, :cond_0
 
-    .line 1668
+    .line 483
     invoke-static {}, Landroid/hardware/Camera;->requestCameraPermission()Z
 
     move-result v0
 
     if-eqz v0, :cond_1
 
-    .line 1673
+    .line 488
     :cond_0
     const/4 v0, 0x0
 
     invoke-virtual {p0, p1, p2, v0, p3}, Landroid/hardware/Camera;->takePicture(Landroid/hardware/Camera$ShutterCallback;Landroid/hardware/Camera$PictureCallback;Landroid/hardware/Camera$PictureCallback;Landroid/hardware/Camera$PictureCallback;)V
 
-    .line 1663
     return-void
 
-    .line 1669
+    .line 484
     :cond_1
     return-void
 .end method
@@ -2877,86 +2657,68 @@
     .param p4, "jpeg"    # Landroid/hardware/Camera$PictureCallback;
 
     .prologue
-    .line 1708
     const/16 v1, 0x41
 
     invoke-static {v1}, Landroid/util/SeempLog;->record(I)I
 
-    .line 1709
     iput-object p1, p0, Landroid/hardware/Camera;->mShutterCallback:Landroid/hardware/Camera$ShutterCallback;
 
-    .line 1710
     iput-object p2, p0, Landroid/hardware/Camera;->mRawImageCallback:Landroid/hardware/Camera$PictureCallback;
 
-    .line 1711
     iput-object p3, p0, Landroid/hardware/Camera;->mPostviewCallback:Landroid/hardware/Camera$PictureCallback;
 
-    .line 1712
     iput-object p4, p0, Landroid/hardware/Camera;->mJpegCallback:Landroid/hardware/Camera$PictureCallback;
 
-    .line 1715
     const/4 v0, 0x0
 
-    .line 1716
     .local v0, "msgType":I
     iget-object v1, p0, Landroid/hardware/Camera;->mShutterCallback:Landroid/hardware/Camera$ShutterCallback;
 
     if-eqz v1, :cond_0
 
-    .line 1717
     const/4 v0, 0x2
 
-    .line 1719
+    .line 578
     :cond_0
     iget-object v1, p0, Landroid/hardware/Camera;->mRawImageCallback:Landroid/hardware/Camera$PictureCallback;
 
     if-eqz v1, :cond_1
 
-    .line 1720
     or-int/lit16 v0, v0, 0x80
 
-    .line 1722
     :cond_1
     iget-object v1, p0, Landroid/hardware/Camera;->mPostviewCallback:Landroid/hardware/Camera$PictureCallback;
 
     if-eqz v1, :cond_2
 
-    .line 1723
     or-int/lit8 v0, v0, 0x40
 
-    .line 1725
     :cond_2
     iget-object v1, p0, Landroid/hardware/Camera;->mJpegCallback:Landroid/hardware/Camera$PictureCallback;
 
     if-eqz v1, :cond_3
 
-    .line 1726
     or-int/lit16 v0, v0, 0x100
 
-    .line 1729
     :cond_3
     iget-object v1, p0, Landroid/hardware/Camera;->mOneplusCallback:Landroid/hardware/Camera$OneplusCallback;
 
     if-eqz v1, :cond_4
 
-    .line 1731
     const/high16 v1, 0x10000
 
     or-int/2addr v0, v1
 
-    .line 1732
     new-instance v1, Landroid/hardware/camera2/impl/CameraMetadataNative;
 
     invoke-direct {v1}, Landroid/hardware/camera2/impl/CameraMetadataNative;-><init>()V
 
     iput-object v1, p0, Landroid/hardware/Camera;->mMetadata:Landroid/hardware/camera2/impl/CameraMetadataNative;
 
-    .line 1733
     iget-object v1, p0, Landroid/hardware/Camera;->mMetadata:Landroid/hardware/camera2/impl/CameraMetadataNative;
 
     if-eqz v1, :cond_6
 
-    .line 1734
     iget-object v1, p0, Landroid/hardware/Camera;->mMetadata:Landroid/hardware/camera2/impl/CameraMetadataNative;
 
     invoke-virtual {v1}, Landroid/hardware/camera2/impl/CameraMetadataNative;->getNativeCameraMetadata()J
@@ -2965,43 +2727,35 @@
 
     iput-wide v2, p0, Landroid/hardware/Camera;->mMetadataPtr:J
 
-    .line 1738
     :goto_0
     const v1, 0x8000
 
     or-int/2addr v0, v1
 
-    .line 1739
-    const-string/jumbo v1, "Camera"
+    const-string v1, "Camera"
 
-    const-string/jumbo v2, "enable dng capture"
+    const-string v2, "enable dng capture"
 
     invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 1741
     :cond_4
     iget-object v1, p0, Landroid/hardware/Camera;->mProcessCallback:Landroid/hardware/Camera$ProcessCallback;
 
     if-eqz v1, :cond_5
 
-    .line 1742
     const/high16 v1, 0x20000
 
     or-int/2addr v0, v1
 
-    .line 1746
     :cond_5
     invoke-direct {p0, v0}, Landroid/hardware/Camera;->native_takePicture(I)V
 
-    .line 1747
     const/4 v1, 0x0
 
     iput-boolean v1, p0, Landroid/hardware/Camera;->mFaceDetectionRunning:Z
 
-    .line 1707
     return-void
 
-    .line 1736
     :cond_6
     const-wide/16 v2, 0x0
 
@@ -3011,4 +2765,28 @@
 .end method
 
 .method public final native unlock()V
+.end method
+
+.method private static isFlymePermissionGranted()Z
+    .locals 1
+
+    .prologue
+    const/16 v0, 0x4c
+
+    invoke-static {v0}, Lmeizu/security/FlymePermissionManager;->isFlymePermissionGranted(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x0
+
+    :goto_0
+    return v0
+
+    .line 2454
+    :cond_0
+    const/4 v0, 0x1
+
+    goto :goto_0
 .end method

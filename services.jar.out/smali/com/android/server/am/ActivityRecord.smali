@@ -791,51 +791,41 @@
 
     iput v8, p0, Lcom/android/server/am/ActivityRecord;->icon:I
 
-    .line 704
     invoke-virtual/range {p7 .. p7}, Landroid/content/pm/ActivityInfo;->getLogoResource()I
 
     move-result v8
 
     iput v8, p0, Lcom/android/server/am/ActivityRecord;->logo:I
 
-    .line 705
     invoke-virtual/range {p7 .. p7}, Landroid/content/pm/ActivityInfo;->getThemeResource()I
 
     move-result v8
 
     iput v8, p0, Lcom/android/server/am/ActivityRecord;->theme:I
 
-    .line 706
     iget v8, p0, Lcom/android/server/am/ActivityRecord;->theme:I
 
     iput v8, p0, Lcom/android/server/am/ActivityRecord;->realTheme:I
 
-    .line 707
     iget v8, p0, Lcom/android/server/am/ActivityRecord;->realTheme:I
 
     if-nez v8, :cond_3
 
-    .line 708
     move-object/from16 v0, p7
 
     iget-object v8, v0, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
     iget v8, v8, Landroid/content/pm/ApplicationInfo;->targetSdkVersion:I
 
-    .line 709
     const/16 v9, 0xb
 
-    .line 708
     if-ge v8, v9, :cond_a
 
-    .line 710
-    const v8, 0x1030005
+    const v8, #android:style@Theme#t
 
-    .line 708
     :goto_2
     iput v8, p0, Lcom/android/server/am/ActivityRecord;->realTheme:I
 
-    .line 713
     :cond_3
     move-object/from16 v0, p7
 
@@ -1103,19 +1093,16 @@
 
     goto/16 :goto_0
 
-    .line 693
     :cond_9
     const/4 v8, 0x0
 
     goto/16 :goto_1
 
-    .line 711
     :cond_a
-    const v8, 0x103006b
+    const v8, #android:style@Theme.Holo#t
 
     goto/16 :goto_2
 
-    .line 722
     :cond_b
     move-object/from16 v0, p7
 
@@ -6364,6 +6351,18 @@
 
     move-result v0
 
+    if-nez v0, :cond_flyme_0
+
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/am/ActivityRecord;->isFlymeResolverActivity()Z
+
+    move-result v0
+
+    return v0
+
+    :cond_flyme_0
+
+    const/4 v0, 0x1
+
     return v0
 .end method
 
@@ -8283,4 +8282,23 @@
     invoke-virtual {v3}, Lcom/android/server/am/ActivityStackSupervisor;->scheduleIdleLocked()V
 
     goto :goto_0
+.end method
+
+.method private isFlymeResolverActivity()Z
+    .locals 2
+
+    .prologue
+    const-string v0, "com.android.internal.app.MzResolverActivity"
+
+    iget-object v1, p0, Lcom/android/server/am/ActivityRecord;->realActivity:Landroid/content/ComponentName;
+
+    invoke-virtual {v1}, Landroid/content/ComponentName;->getClassName()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    return v0
 .end method

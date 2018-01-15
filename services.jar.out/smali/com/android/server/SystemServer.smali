@@ -3,6 +3,14 @@
 .source "SystemServer.java"
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/android/server/SystemServer$FlymeInjector;
+    }
+.end annotation
+
+
 # static fields
 .field private static final ACCOUNT_SERVICE_CLASS:Ljava/lang/String; = "com.android.server.accounts.AccountManagerService$Lifecycle"
 
@@ -14,7 +22,7 @@
 
 .field private static final CONTENT_SERVICE_CLASS:Ljava/lang/String; = "com.android.server.content.ContentService$Lifecycle"
 
-.field private static final DEFAULT_SYSTEM_THEME:I = 0x1030498
+.field private static final DEFAULT_SYSTEM_THEME:I = #android:style@Theme.DeviceDefault.System#t
 
 .field private static final EARLIEST_SUPPORTED_TIME:J = 0x5265c00L
 
@@ -68,6 +76,8 @@
 
 
 # instance fields
+.field mFlymeWallpaperLifeService:Lcom/android/server/SystemService;
+
 .field private mActivityManagerService:Lcom/android/server/am/ActivityManagerService;
 
 .field private mContentResolver:Landroid/content/ContentResolver;
@@ -178,14 +188,12 @@
 
     iput-object v1, p0, Lcom/android/server/SystemServer;->mSystemContext:Landroid/content/Context;
 
-    .line 420
     iget-object v1, p0, Lcom/android/server/SystemServer;->mSystemContext:Landroid/content/Context;
 
-    const v2, 0x1030498
+    const v2, #android:style@Theme.DeviceDefault.System#t
 
     invoke-virtual {v1, v2}, Landroid/content/Context;->setTheme(I)V
 
-    .line 417
     return-void
 .end method
 
@@ -2266,16 +2274,13 @@
 
     invoke-virtual {v4, v5}, Lcom/android/server/SystemServiceManager;->startService(Ljava/lang/Class;)Lcom/android/server/SystemService;
 
-    .line 822
     :cond_6
     if-nez v48, :cond_7
 
-    .line 823
-    const-string/jumbo v4, "StartStatusBarManagerService"
+    const-string v4, "StartStatusBarManagerService"
 
     invoke-static {v4}, Lcom/android/server/SystemServer;->traceBeginAndSlog(Ljava/lang/String;)V
 
-    .line 825
     :try_start_a
     new-instance v86, Lcom/android/server/statusbar/StatusBarManagerService;
 
@@ -3033,38 +3038,32 @@
 
     invoke-virtual {v4, v5}, Lcom/android/server/SystemServiceManager;->startService(Ljava/lang/Class;)Lcom/android/server/SystemService;
 
-    .line 1023
     if-nez v42, :cond_15
 
     invoke-virtual {v6}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v4
 
-    .line 1024
-    const v5, 0x1120051
+    const v5, #android:bool@config_enableWallpaperService#t
 
-    .line 1023
     invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getBoolean(I)Z
 
     move-result v4
 
     if-eqz v4, :cond_15
 
-    .line 1024
     move-object/from16 v0, p0
 
     iget-boolean v4, v0, Lcom/android/server/SystemServer;->mIsAlarmBoot:Z
 
     if-eqz v4, :cond_48
 
-    .line 1030
     :cond_15
     :goto_1b
-    const-string/jumbo v4, "StartAudioService"
+    const-string v4, "StartAudioService"
 
     invoke-static {v4}, Lcom/android/server/SystemServer;->traceBeginAndSlog(Ljava/lang/String;)V
 
-    .line 1031
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/SystemServer;->mSystemServiceManager:Lcom/android/server/SystemServiceManager;
@@ -3380,7 +3379,7 @@
 
     move-result-object v4
 
-    const v5, 0x11200b4
+    const v5, #android:bool@config_enableAppWidgetService#t
 
     invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -3610,16 +3609,13 @@
 
     invoke-virtual {v4, v5}, Lcom/android/server/SystemServiceManager;->startService(Ljava/lang/Class;)Lcom/android/server/SystemService;
 
-    .line 1191
     :cond_27
     if-nez v42, :cond_28
 
-    .line 1192
-    const-string/jumbo v4, "StartAssetAtlasService"
+    const-string v4, "StartAssetAtlasService"
 
     invoke-static {v4}, Lcom/android/server/SystemServer;->traceBeginAndSlog(Ljava/lang/String;)V
 
-    .line 1194
     :try_start_26
     new-instance v24, Lcom/android/server/AssetAtlasService;
 
@@ -3643,29 +3639,23 @@
 
     move-object/from16 v23, v24
 
-    .line 1199
     .end local v24    # "atlas":Lcom/android/server/AssetAtlasService;
     :goto_25
     const-wide/32 v4, 0x80000
 
     invoke-static {v4, v5}, Landroid/os/Trace;->traceEnd(J)V
 
-    .line 1202
     :cond_28
     if-nez v42, :cond_29
 
-    .line 1203
-    const-string/jumbo v4, "graphicsstats"
+    const-string v4, "graphicsstats"
 
-    .line 1204
     new-instance v5, Lcom/android/server/GraphicsStatsService;
 
     invoke-direct {v5, v6}, Lcom/android/server/GraphicsStatsService;-><init>(Landroid/content/Context;)V
 
-    .line 1203
     invoke-static {v4, v5}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
 
-    .line 1209
     :cond_29
     new-instance v65, Lcom/android/server/OemExService;
 
@@ -4053,13 +4043,18 @@
     .end local v20    # "mmsService":Lcom/android/server/MmsServiceBroker;
     check-cast v20, Lcom/android/server/MmsServiceBroker;
 
-    .line 1304
     .local v20, "mmsService":Lcom/android/server/MmsServiceBroker;
+    move-object/from16 v4, p0
+
+    move-object/from16 v5, v88
+
+    invoke-static {v4, v5}, Lcom/android/server/SystemServer$FlymeInjector;->addFlymeServices(Lcom/android/server/SystemServer;Lcom/android/server/wm/WindowManagerService;)V
+
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/SystemServer;->mContentResolver:Landroid/content/ContentResolver;
 
-    const-string/jumbo v5, "device_provisioned"
+    const-string v5, "device_provisioned"
 
     const/16 v100, 0x0
 
@@ -5990,4 +5985,22 @@
 
     .line 1602
     return-void
+.end method
+
+.method flymeGetFieldPackageManagerService()Lcom/android/server/pm/PackageManagerService;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/SystemServer;->mPackageManagerService:Lcom/android/server/pm/PackageManagerService;
+
+    return-object v0
+.end method
+
+.method flymeGetFieldSystemContext()Landroid/content/Context;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/SystemServer;->mSystemContext:Landroid/content/Context;
+
+    return-object v0
 .end method

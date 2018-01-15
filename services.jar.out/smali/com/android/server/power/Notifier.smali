@@ -35,6 +35,8 @@
 
 
 # instance fields
+.field mFlymeAccessControlManager:Lmeizu/security/AccessControlManager;
+
 .field private final mActivityManagerInternal:Landroid/app/ActivityManagerInternal;
 
 .field private final mAppOps:Lcom/android/internal/app/IAppOpsService;
@@ -279,72 +281,60 @@
 
     iput-object v1, p0, Lcom/android/server/power/Notifier;->mRetailDemoModeServiceInternal:Landroid/app/RetailDemoModeServiceInternal;
 
-    .line 153
     new-instance v1, Lcom/android/server/power/Notifier$NotifierHandler;
 
     invoke-direct {v1, p0, p1}, Lcom/android/server/power/Notifier$NotifierHandler;-><init>(Lcom/android/server/power/Notifier;Landroid/os/Looper;)V
 
     iput-object v1, p0, Lcom/android/server/power/Notifier;->mHandler:Lcom/android/server/power/Notifier$NotifierHandler;
 
-    .line 154
     new-instance v1, Landroid/content/Intent;
 
-    const-string/jumbo v2, "android.intent.action.SCREEN_ON"
+    const-string v2, "android.intent.action.SCREEN_ON"
 
     invoke-direct {v1, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
     iput-object v1, p0, Lcom/android/server/power/Notifier;->mScreenOnIntent:Landroid/content/Intent;
 
-    .line 155
     iget-object v1, p0, Lcom/android/server/power/Notifier;->mScreenOnIntent:Landroid/content/Intent;
 
     invoke-virtual {v1, v3}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 157
     new-instance v1, Landroid/content/Intent;
 
-    const-string/jumbo v2, "android.intent.action.SCREEN_OFF"
+    const-string v2, "android.intent.action.SCREEN_OFF"
 
     invoke-direct {v1, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
     iput-object v1, p0, Lcom/android/server/power/Notifier;->mScreenOffIntent:Landroid/content/Intent;
 
-    .line 158
     iget-object v1, p0, Lcom/android/server/power/Notifier;->mScreenOffIntent:Landroid/content/Intent;
 
     invoke-virtual {v1, v3}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 161
     new-instance v1, Landroid/content/Intent;
 
-    const-string/jumbo v2, "android.os.action.SCREEN_BRIGHTNESS_BOOST_CHANGED"
+    const-string v2, "android.os.action.SCREEN_BRIGHTNESS_BOOST_CHANGED"
 
     invoke-direct {v1, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 160
     iput-object v1, p0, Lcom/android/server/power/Notifier;->mScreenBrightnessBoostIntent:Landroid/content/Intent;
 
-    .line 162
     iget-object v1, p0, Lcom/android/server/power/Notifier;->mScreenBrightnessBoostIntent:Landroid/content/Intent;
 
     invoke-virtual {v1, v3}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 165
     invoke-virtual {p2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v1
 
-    .line 166
-    const v2, 0x1120042
+    const v2, #android:bool@config_suspendWhenScreenOffDueToProximity#t
 
-    .line 165
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getBoolean(I)Z
 
     move-result v1
 
     iput-boolean v1, p0, Lcom/android/server/power/Notifier;->mSuspendWhenScreenOffDueToProximityConfig:Z
 
-    .line 170
     :try_start_0
     iget-object v1, p0, Lcom/android/server/power/Notifier;->mBatteryStats:Lcom/android/internal/app/IBatteryStats;
 
@@ -2797,4 +2787,48 @@
 
     .line 574
     return-void
+.end method
+
+.method notifyAccessControlGotoSleep(I)V
+    .locals 3
+    .param p1, "why"    # I
+
+    .prologue
+    :try_start_0
+    iget-object v1, p0, Lcom/android/server/power/Notifier;->mFlymeAccessControlManager:Lmeizu/security/AccessControlManager;
+
+    if-nez v1, :cond_0
+
+    iget-object v1, p0, Lcom/android/server/power/Notifier;->mContext:Landroid/content/Context;
+
+    const-string v2, "access_control"
+
+    invoke-virtual {v1, v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lmeizu/security/AccessControlManager;
+
+    iput-object v1, p0, Lcom/android/server/power/Notifier;->mFlymeAccessControlManager:Lmeizu/security/AccessControlManager;
+
+    :cond_0
+    iget-object v1, p0, Lcom/android/server/power/Notifier;->mFlymeAccessControlManager:Lmeizu/security/AccessControlManager;
+
+    if-eqz v1, :cond_1
+
+    iget-object v1, p0, Lcom/android/server/power/Notifier;->mFlymeAccessControlManager:Lmeizu/security/AccessControlManager;
+
+    invoke-virtual {v1, p1}, Lmeizu/security/AccessControlManager;->screenTurnedOff(I)V
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    :cond_1
+    :goto_0
+    return-void
+
+    :catch_0
+    move-exception v0
+
+    .local v0, "e":Landroid/os/RemoteException;
+    goto :goto_0
 .end method

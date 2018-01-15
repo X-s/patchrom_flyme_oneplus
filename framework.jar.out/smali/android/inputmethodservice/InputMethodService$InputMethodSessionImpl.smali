@@ -40,23 +40,19 @@
     .param p2, "data"    # Landroid/os/Bundle;
 
     .prologue
-    .line 547
     invoke-virtual {p0}, Landroid/inputmethodservice/InputMethodService$InputMethodSessionImpl;->isEnabled()Z
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    .line 548
     return-void
 
-    .line 550
     :cond_0
     iget-object v0, p0, Landroid/inputmethodservice/InputMethodService$InputMethodSessionImpl;->this$0:Landroid/inputmethodservice/InputMethodService;
 
-    invoke-virtual {v0, p1, p2}, Landroid/inputmethodservice/InputMethodService;->onAppPrivateCommand(Ljava/lang/String;Landroid/os/Bundle;)V
+    invoke-static {v0, p1, p2}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->handleSmsVoiceInput(Landroid/inputmethodservice/InputMethodService;Ljava/lang/String;Landroid/os/Bundle;)V
 
-    .line 546
     return-void
 .end method
 

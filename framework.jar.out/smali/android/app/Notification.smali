@@ -9,6 +9,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/app/Notification$FlymeInjector;,
         Landroid/app/Notification$-void_writeToParcel_android_os_Parcel_parcel_int_flags_LambdaImpl0;,
         Landroid/app/Notification$1;,
         Landroid/app/Notification$Action;,
@@ -30,6 +31,29 @@
 
 
 # static fields
+
+.field public static final EXTRA_AS_HEADS_UP:Ljava/lang/String; = "headsup"
+
+.field public static final EXTRA_FLYME_NOTIFICATION_SETTING:Ljava/lang/String; = "android.flymeNotificationSetting"
+
+.field public static final EXTRA_ORIGINAL_PACKAGE_NAME:Ljava/lang/String; = "android.originalPackageName"
+
+.field public static final EXTRA_SIM_SLOTS:Ljava/lang/String; = "android.simSlots"
+
+.field public static final FLAG_ALWAYS_SHOW_TICKER:I = 0x1000000
+
+.field public static final FLAG_HIDE_NOTIFICATION:I = 0x10000000
+
+.field public static final FLAG_ONLY_UPDATE_TICKER:I = 0x2000000
+
+.field public static final FLAG_SHOW_IN_KEYGUARD:I = 0x4000000
+
+.field public static final HEADS_UP_ALLOWED:I = 0x1
+
+.field public static final HEADS_UP_NEVER:I = 0x0
+
+.field public static final HEADS_UP_REQUESTED:I = 0x2
+
 .field public static final AUDIO_ATTRIBUTES_DEFAULT:Landroid/media/AudioAttributes;
 
 .field public static final CATEGORY_ALARM:Ljava/lang/String; = "alarm"
@@ -206,6 +230,13 @@
 
 
 # instance fields
+
+.field public mFlymeNotification:Landroid/app/NotificationExt;
+
+.field public replyIntent:Landroid/app/PendingIntent;
+
+.field public snoozeIntent:Landroid/app/PendingIntent;
+
 .field public actions:[Landroid/app/Notification$Action;
 
 .field public allPendingIntents:Landroid/util/ArraySet;
@@ -536,65 +567,52 @@
 
     const/4 v2, 0x0
 
-    .line 1569
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 359
     iput v1, p0, Landroid/app/Notification;->audioStreamType:I
 
-    .line 372
     sget-object v0, Landroid/app/Notification;->AUDIO_ATTRIBUTES_DEFAULT:Landroid/media/AudioAttributes;
 
     iput-object v0, p0, Landroid/app/Notification;->audioAttributes:Landroid/media/AudioAttributes;
 
-    .line 587
     iput v2, p0, Landroid/app/Notification;->color:I
 
-    .line 763
     new-instance v0, Landroid/os/Bundle;
 
     invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
 
     iput-object v0, p0, Landroid/app/Notification;->extras:Landroid/os/Bundle;
 
-    .line 1006
     iput v1, p0, Landroid/app/Notification;->mStatusBarIcon:I
 
-    .line 1007
     iput-boolean v2, p0, Landroid/app/Notification;->mShowOnStatusBar:Z
 
-    .line 1008
     iput-boolean v2, p0, Landroid/app/Notification;->mShowChronometerOnStatusBar:Z
 
-    .line 1009
     const-wide/16 v0, 0x0
 
     iput-wide v0, p0, Landroid/app/Notification;->mChronometerBase:J
 
-    .line 1010
     iput v2, p0, Landroid/app/Notification;->mChronometerState:I
 
-    .line 1011
     iput v2, p0, Landroid/app/Notification;->mPriorityOnStatusBar:I
 
-    .line 1571
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Landroid/app/Notification;->when:J
 
-    .line 1572
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Landroid/app/Notification;->creationTime:J
 
-    .line 1573
     iput v2, p0, Landroid/app/Notification;->priority:I
 
-    .line 1569
+    invoke-static/range {p0 .. p0}, Landroid/app/Notification$FlymeInjector;->initFlymeExtFields(Landroid/app/Notification;)V
+
     return-void
 .end method
 
@@ -611,64 +629,50 @@
 
     const/4 v2, 0x0
 
-    .line 1605
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 359
     iput v1, p0, Landroid/app/Notification;->audioStreamType:I
 
-    .line 372
     sget-object v0, Landroid/app/Notification;->AUDIO_ATTRIBUTES_DEFAULT:Landroid/media/AudioAttributes;
 
     iput-object v0, p0, Landroid/app/Notification;->audioAttributes:Landroid/media/AudioAttributes;
 
-    .line 587
     iput v2, p0, Landroid/app/Notification;->color:I
 
-    .line 763
     new-instance v0, Landroid/os/Bundle;
 
     invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
 
     iput-object v0, p0, Landroid/app/Notification;->extras:Landroid/os/Bundle;
 
-    .line 1006
     iput v1, p0, Landroid/app/Notification;->mStatusBarIcon:I
 
-    .line 1007
     iput-boolean v2, p0, Landroid/app/Notification;->mShowOnStatusBar:Z
 
-    .line 1008
     iput-boolean v2, p0, Landroid/app/Notification;->mShowChronometerOnStatusBar:Z
 
-    .line 1009
     const-wide/16 v0, 0x0
 
     iput-wide v0, p0, Landroid/app/Notification;->mChronometerBase:J
 
-    .line 1010
     iput v2, p0, Landroid/app/Notification;->mChronometerState:I
 
-    .line 1011
     iput v2, p0, Landroid/app/Notification;->mPriorityOnStatusBar:I
 
-    .line 1607
     iput p1, p0, Landroid/app/Notification;->icon:I
 
-    .line 1608
     iput-object p2, p0, Landroid/app/Notification;->tickerText:Ljava/lang/CharSequence;
 
-    .line 1609
     iput-wide p3, p0, Landroid/app/Notification;->when:J
 
-    .line 1610
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v0
 
     iput-wide v0, p0, Landroid/app/Notification;->creationTime:J
 
-    .line 1605
+    invoke-static/range {p0 .. p0}, Landroid/app/Notification$FlymeInjector;->initFlymeExtFields(Landroid/app/Notification;)V
+
     return-void
 .end method
 
@@ -687,48 +691,36 @@
 
     const/4 v2, 0x0
 
-    .line 1579
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 359
     iput v1, p0, Landroid/app/Notification;->audioStreamType:I
 
-    .line 372
     sget-object v0, Landroid/app/Notification;->AUDIO_ATTRIBUTES_DEFAULT:Landroid/media/AudioAttributes;
 
     iput-object v0, p0, Landroid/app/Notification;->audioAttributes:Landroid/media/AudioAttributes;
 
-    .line 587
     iput v2, p0, Landroid/app/Notification;->color:I
 
-    .line 763
     new-instance v0, Landroid/os/Bundle;
 
     invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
 
     iput-object v0, p0, Landroid/app/Notification;->extras:Landroid/os/Bundle;
 
-    .line 1006
     iput v1, p0, Landroid/app/Notification;->mStatusBarIcon:I
 
-    .line 1007
     iput-boolean v2, p0, Landroid/app/Notification;->mShowOnStatusBar:Z
 
-    .line 1008
     iput-boolean v2, p0, Landroid/app/Notification;->mShowChronometerOnStatusBar:Z
 
-    .line 1009
     const-wide/16 v0, 0x0
 
     iput-wide v0, p0, Landroid/app/Notification;->mChronometerBase:J
 
-    .line 1010
     iput v2, p0, Landroid/app/Notification;->mChronometerState:I
 
-    .line 1011
     iput v2, p0, Landroid/app/Notification;->mPriorityOnStatusBar:I
 
-    .line 1582
     new-instance v0, Landroid/app/Notification$Builder;
 
     invoke-direct {v0, p1}, Landroid/app/Notification$Builder;-><init>(Landroid/content/Context;)V
@@ -1460,14 +1452,12 @@
 
     iput v1, p0, Landroid/app/Notification;->color:I
 
-    .line 1704
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
     iput v1, p0, Landroid/app/Notification;->mStatusBarIcon:I
 
-    .line 1705
     invoke-virtual {p1}, Landroid/os/Parcel;->readByte()B
 
     move-result v1
@@ -1542,20 +1532,17 @@
 
     iput-object v1, p0, Landroid/app/Notification;->mActionIntentOnStatusBar:Landroid/content/Intent;
 
-    .line 1625
     :cond_d
     return-void
 
     :cond_e
     move v1, v3
 
-    .line 1705
     goto :goto_0
 
     :cond_f
     move v2, v3
 
-    .line 1706
     goto :goto_1
 .end method
 
@@ -2036,191 +2023,152 @@
 
     iput-object v0, p0, Landroid/app/Notification;->mLargeIcon:Landroid/graphics/drawable/Icon;
 
-    .line 2010
     :cond_1
     iget-object v0, p0, Landroid/app/Notification;->mLargeIcon:Landroid/graphics/drawable/Icon;
 
     if-eqz v0, :cond_8
 
-    .line 2011
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2012
     iget-object v0, p0, Landroid/app/Notification;->mLargeIcon:Landroid/graphics/drawable/Icon;
 
     invoke-virtual {v0, p1, v2}, Landroid/graphics/drawable/Icon;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 2017
     :goto_6
     iget v0, p0, Landroid/app/Notification;->defaults:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2018
     iget v0, p0, Landroid/app/Notification;->flags:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2020
     iget-object v0, p0, Landroid/app/Notification;->sound:Landroid/net/Uri;
 
     if-eqz v0, :cond_9
 
-    .line 2021
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2022
     iget-object v0, p0, Landroid/app/Notification;->sound:Landroid/net/Uri;
 
     invoke-virtual {v0, p1, v2}, Landroid/net/Uri;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 2026
     :goto_7
     iget v0, p0, Landroid/app/Notification;->audioStreamType:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2028
     iget-object v0, p0, Landroid/app/Notification;->audioAttributes:Landroid/media/AudioAttributes;
 
     if-eqz v0, :cond_a
 
-    .line 2029
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2030
     iget-object v0, p0, Landroid/app/Notification;->audioAttributes:Landroid/media/AudioAttributes;
 
     invoke-virtual {v0, p1, v2}, Landroid/media/AudioAttributes;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 2035
     :goto_8
     iget-object v0, p0, Landroid/app/Notification;->vibrate:[J
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeLongArray([J)V
 
-    .line 2036
     iget v0, p0, Landroid/app/Notification;->ledARGB:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2037
     iget v0, p0, Landroid/app/Notification;->ledOnMS:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2038
     iget v0, p0, Landroid/app/Notification;->ledOffMS:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2039
     iget v0, p0, Landroid/app/Notification;->iconLevel:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2041
     iget-object v0, p0, Landroid/app/Notification;->fullScreenIntent:Landroid/app/PendingIntent;
 
     if-eqz v0, :cond_b
 
-    .line 2042
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2043
     iget-object v0, p0, Landroid/app/Notification;->fullScreenIntent:Landroid/app/PendingIntent;
 
     invoke-virtual {v0, p1, v2}, Landroid/app/PendingIntent;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 2048
     :goto_9
     iget v0, p0, Landroid/app/Notification;->priority:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2050
     iget-object v0, p0, Landroid/app/Notification;->category:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 2052
     iget-object v0, p0, Landroid/app/Notification;->mGroupKey:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 2054
     iget-object v0, p0, Landroid/app/Notification;->mSortKey:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 2056
     iget-object v0, p0, Landroid/app/Notification;->extras:Landroid/os/Bundle;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeBundle(Landroid/os/Bundle;)V
 
-    .line 2058
     iget-object v0, p0, Landroid/app/Notification;->actions:[Landroid/app/Notification$Action;
 
     invoke-virtual {p1, v0, v2}, Landroid/os/Parcel;->writeTypedArray([Landroid/os/Parcelable;I)V
 
-    .line 2060
     iget-object v0, p0, Landroid/app/Notification;->bigContentView:Landroid/widget/RemoteViews;
 
     if-eqz v0, :cond_c
 
-    .line 2061
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2062
     iget-object v0, p0, Landroid/app/Notification;->bigContentView:Landroid/widget/RemoteViews;
 
     invoke-virtual {v0, p1, v2}, Landroid/widget/RemoteViews;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 2067
     :goto_a
     iget-object v0, p0, Landroid/app/Notification;->headsUpContentView:Landroid/widget/RemoteViews;
 
     if-eqz v0, :cond_d
 
-    .line 2068
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2069
     iget-object v0, p0, Landroid/app/Notification;->headsUpContentView:Landroid/widget/RemoteViews;
 
     invoke-virtual {v0, p1, v2}, Landroid/widget/RemoteViews;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 2074
     :goto_b
     iget v0, p0, Landroid/app/Notification;->visibility:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2076
     iget-object v0, p0, Landroid/app/Notification;->publicVersion:Landroid/app/Notification;
 
     if-eqz v0, :cond_e
 
-    .line 2077
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2078
     iget-object v0, p0, Landroid/app/Notification;->publicVersion:Landroid/app/Notification;
 
     invoke-virtual {v0, p1, v2}, Landroid/app/Notification;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 2083
     :goto_c
     iget v0, p0, Landroid/app/Notification;->color:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2085
     iget v0, p0, Landroid/app/Notification;->mStatusBarIcon:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2086
     iget-boolean v0, p0, Landroid/app/Notification;->mShowOnStatusBar:Z
 
     if-eqz v0, :cond_f
@@ -2244,121 +2192,99 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeByte(B)V
 
-    .line 2088
     iget-wide v4, p0, Landroid/app/Notification;->mChronometerBase:J
 
     invoke-virtual {p1, v4, v5}, Landroid/os/Parcel;->writeLong(J)V
 
-    .line 2089
     iget v0, p0, Landroid/app/Notification;->mChronometerState:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2090
     iget v0, p0, Landroid/app/Notification;->mTextOnStatusBar:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2091
     iget v0, p0, Landroid/app/Notification;->mBackgroundColorOnStatusBar:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2092
     iget v0, p0, Landroid/app/Notification;->mPriorityOnStatusBar:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2093
     iget-object v0, p0, Landroid/app/Notification;->mActionIntentOnStatusBar:Landroid/content/Intent;
 
     if-eqz v0, :cond_11
 
-    .line 2094
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 2095
     iget-object v0, p0, Landroid/app/Notification;->mActionIntentOnStatusBar:Landroid/content/Intent;
 
     invoke-virtual {v0, p1, v2}, Landroid/content/Intent;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 1960
     :goto_f
     return-void
 
-    .line 1973
     :cond_2
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_0
 
-    .line 1980
     :cond_3
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_1
 
-    .line 1986
     :cond_4
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_2
 
-    .line 1992
     :cond_5
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_3
 
-    .line 1998
     :cond_6
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_4
 
-    .line 2004
     :cond_7
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_5
 
-    .line 2014
     :cond_8
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_6
 
-    .line 2024
     :cond_9
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_7
 
-    .line 2032
     :cond_a
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_8
 
-    .line 2045
     :cond_b
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_9
 
-    .line 2064
     :cond_c
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_a
 
-    .line 2071
     :cond_d
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_b
 
-    .line 2080
     :cond_e
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
@@ -2829,90 +2755,73 @@
 
     iput-object v5, p1, Landroid/app/Notification;->headsUpContentView:Landroid/widget/RemoteViews;
 
-    .line 1812
     :cond_a
     iget v5, p0, Landroid/app/Notification;->visibility:I
 
     iput v5, p1, Landroid/app/Notification;->visibility:I
 
-    .line 1814
     iget-object v5, p0, Landroid/app/Notification;->publicVersion:Landroid/app/Notification;
 
     if-eqz v5, :cond_b
 
-    .line 1815
     new-instance v5, Landroid/app/Notification;
 
     invoke-direct {v5}, Landroid/app/Notification;-><init>()V
 
     iput-object v5, p1, Landroid/app/Notification;->publicVersion:Landroid/app/Notification;
 
-    .line 1816
     iget-object v5, p0, Landroid/app/Notification;->publicVersion:Landroid/app/Notification;
 
     iget-object v6, p1, Landroid/app/Notification;->publicVersion:Landroid/app/Notification;
 
     invoke-virtual {v5, v6, p2}, Landroid/app/Notification;->cloneInto(Landroid/app/Notification;Z)V
 
-    .line 1819
     :cond_b
     iget v5, p0, Landroid/app/Notification;->color:I
 
     iput v5, p1, Landroid/app/Notification;->color:I
 
-    .line 1821
     if-nez p2, :cond_c
 
-    .line 1822
     invoke-virtual {p1}, Landroid/app/Notification;->lightenPayload()V
 
-    .line 1825
     :cond_c
     iget v5, p0, Landroid/app/Notification;->mStatusBarIcon:I
 
     iput v5, p1, Landroid/app/Notification;->mStatusBarIcon:I
 
-    .line 1826
     iget-boolean v5, p0, Landroid/app/Notification;->mShowOnStatusBar:Z
 
     iput-boolean v5, p1, Landroid/app/Notification;->mShowOnStatusBar:Z
 
-    .line 1827
     iget-boolean v5, p0, Landroid/app/Notification;->mShowChronometerOnStatusBar:Z
 
     iput-boolean v5, p1, Landroid/app/Notification;->mShowChronometerOnStatusBar:Z
 
-    .line 1828
     iget-wide v6, p0, Landroid/app/Notification;->mChronometerBase:J
 
     iput-wide v6, p1, Landroid/app/Notification;->mChronometerBase:J
 
-    .line 1829
     iget v5, p0, Landroid/app/Notification;->mChronometerState:I
 
     iput v5, p1, Landroid/app/Notification;->mChronometerState:I
 
-    .line 1830
     iget v5, p0, Landroid/app/Notification;->mTextOnStatusBar:I
 
     iput v5, p1, Landroid/app/Notification;->mTextOnStatusBar:I
 
-    .line 1831
     iget v5, p0, Landroid/app/Notification;->mBackgroundColorOnStatusBar:I
 
     iput v5, p1, Landroid/app/Notification;->mBackgroundColorOnStatusBar:I
 
-    .line 1832
     iget v5, p0, Landroid/app/Notification;->mPriorityOnStatusBar:I
 
     iput v5, p1, Landroid/app/Notification;->mPriorityOnStatusBar:I
 
-    .line 1833
     iget-object v5, p0, Landroid/app/Notification;->mActionIntentOnStatusBar:Landroid/content/Intent;
 
     iput-object v5, p1, Landroid/app/Notification;->mActionIntentOnStatusBar:Landroid/content/Intent;
 
-    .line 1730
     return-void
 .end method
 
@@ -3287,43 +3196,36 @@
 
     if-ge v1, v2, :cond_1
 
-    .line 2147
     iget-object v1, p0, Landroid/app/Notification;->extras:Landroid/os/Bundle;
 
-    const-string/jumbo v2, "android.showWhen"
+    const-string v2, "android.showWhen"
 
     const/4 v3, 0x1
 
     invoke-virtual {v1, v2, v3}, Landroid/os/Bundle;->putBoolean(Ljava/lang/String;Z)V
 
-    .line 2151
     :cond_1
     new-instance v0, Landroid/app/Notification$Builder;
 
     invoke-direct {v0, p1, p0}, Landroid/app/Notification$Builder;-><init>(Landroid/content/Context;Landroid/app/Notification;)V
 
-    .line 2154
+    invoke-static {p0, v0}, Landroid/app/Notification$FlymeInjector;->setLatestEventInfoFlyme(Landroid/app/Notification;Landroid/app/Notification$Builder;)V
+
     .local v0, "builder":Landroid/app/Notification$Builder;
     if-eqz p2, :cond_2
 
-    .line 2155
     invoke-virtual {v0, p2}, Landroid/app/Notification$Builder;->setContentTitle(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
 
-    .line 2157
     :cond_2
     if-eqz p3, :cond_3
 
-    .line 2158
     invoke-virtual {v0, p3}, Landroid/app/Notification$Builder;->setContentText(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
 
-    .line 2160
     :cond_3
     invoke-virtual {v0, p4}, Landroid/app/Notification$Builder;->setContentIntent(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
 
-    .line 2162
     invoke-virtual {v0}, Landroid/app/Notification$Builder;->build()Landroid/app/Notification;
 
-    .line 2140
     return-void
 .end method
 

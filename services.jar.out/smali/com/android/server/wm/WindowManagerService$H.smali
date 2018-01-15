@@ -191,22 +191,18 @@
 
     if-eqz v2, :cond_2
 
-    .line 9162
-    const-string/jumbo v2, "WindowManager"
+    const-string v2, "WindowManager"
 
-    const-string/jumbo v3, "handleMessage: exit"
+    const-string v3, "handleMessage: exit"
 
     invoke-static {v2, v3}, Landroid/util/Slog;->v(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 8483
     :cond_2
     return-void
 
-    .line 8492
     :pswitch_1
     const/4 v15, 0x0
 
-    .line 8494
     .local v15, "accessibilityController":Lcom/android/server/wm/AccessibilityController;
     move-object/from16 v0, p0
 
@@ -4297,4 +4293,16 @@
         :pswitch_e
         :pswitch_f
     .end packed-switch
+.end method
+
+.method private handleFlymeMessage(Landroid/os/Message;)V
+    .locals 1
+    .param p1, "msg"    # Landroid/os/Message;
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService$H;->this$0:Lcom/android/server/wm/WindowManagerService;
+
+    invoke-static {v0, p1}, Lcom/android/server/wm/WindowManagerService$FlymeInjector;->handleFlymeMessage(Lcom/android/server/wm/WindowManagerService;Landroid/os/Message;)V
+
+    return-void
 .end method
