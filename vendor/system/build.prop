@@ -1,4 +1,5 @@
-
+ro.product.device=OnePlus3T
+ro.build.fingerprint=7.1.1/NMF26F/09151130:user/release-keys
 #
 #
 #

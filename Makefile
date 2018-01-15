@@ -40,7 +40,7 @@ vendor_modify_images := boot
 # The default value is app or pri-app which not need to configure.
 # You can configure the directory name which relative to the vendor/system directory.
 #-----------------------------------------------------------------------------
-#vendor_remove_dirs := vendor/operator/app
+vendor_remove_dirs := media/themes reserve
 
 ##############################################################################
 # The value decides the file which you want to remove in the vendor directory for the ota package.
@@ -155,7 +155,7 @@ override_property += \
 # Set it to be false when you want to escape the verification.
 # Default: true
 #-----------------------------------------------------------------------------
-#USE_ASSERTIONS_IN_UPDATER_SCRIPT := false
+USE_ASSERTIONS_IN_UPDATER_SCRIPT := false
 
 ##############################################################################
 # Defines whether reduces useless resources, only keep the resources of preferred configuration, like current density or locale.
