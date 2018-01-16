@@ -7,7 +7,7 @@
 # The default value is base.
 # Support values: base, base_cm, base_mt6592 and other devices in the future.
 #-----------------------------------------------------------------------------
-#BASE := base_cm
+BASE := base
 
 ##############################################################################
 # The value is used for resource adapter with the aapt tool.
@@ -54,7 +54,18 @@ vendor_remove_dirs := media/themes reserve
 # The default value is Bluetooth.
 # You can configure the apk name in the vendor/system/app or vendor/system/priv-app directory.
 #-----------------------------------------------------------------------------
-vendor_saved_apps := Bluetooth BluetoothExt BluetoothMidiService EasterEgg ExtShared HTMLViewer KeyChain NfcNci PacProcessor PrintRecommendationService PrintSpooler Stk UserDictionaryProvider WAPPushManager WallpaperBackup BackupRestoreConfirmation BlockedNumberProvider CarrierConfig DefaultContainerService EmergencyInfo ExternalStorageProvider FusedLocation InputDevices ManagedProvisioning MtpDocumentsProvider OPCellBroadcastReceiver ProxyHandler SharedStorageBackup Shell StatementService StorageManager Tag WallpaperCropper
+vendor_saved_apps := AntHalService BasicDreams Bluetooth BluetoothExt BluetoothMidiService btmultisim BTtestmode CdmaCallOptions \
+        datastatusnotification DiracAudioControlService DiracManager EasterEgg embms EngineeringMode EngSpecialTest Exchange2 \
+        ExtShared FidoCryptoService GoogleWebView HTMLViewer KeyChain LogKitSdService MdtpService NfcNci NFCTestMode \
+        NVBackupUI OemAutoTestServer OEMLogKit OPLongshot OPOnlineConfig OPSocialNetworkHub PacProcessor PermissionUtil PicoTts \
+        PrintRecommendationService PrintSpooler QtiTelephonyService SdCardService SecureExtAuthService \
+        SecureSampleAuthService SeempService SensorTestTool shutdownlistener SimSettings SmscPlugger Stk telresources \
+        TimeService UserDictionaryProvider VoicePrintService WAPPushManager webview WfdService WifiRfTestApk \
+        AutoNaviFLP BackupRestoreConfirmation BlockedNumberProvider CarrierConfig CNEService com.qualcomm.location DefaultContainerService \
+        dpmserviceapp EmergencyInfo ExternalStorageProvider FusedLocation IFAAService InputDevices ltsmclient ManagedProvisioning \
+        MtpDocumentsProvider OnePlusCamera OnePlusCameraService OnePlusGallery OneTimeInitializer OPCellBroadcastReceiver OPDeviceManager \
+        OPDeviceManagerProvider ProxyHandler qcrilmsgtunnel QtiTetherService SharedStorageBackup Shell SmartcardService \
+        StatementService StorageManager Tag WallpaperCropper FingerprintServiceExtension TelephonyExtVodafonePack
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.
@@ -138,8 +149,8 @@ vendor_modify_jars := framework services telephony-common wifi-service
 # The default value is Nexus-6P_Unofficial.
 # You should configure the property according to your device and your ID with replace the "Nexus-6P_Unofficial".
 override_property += \
-    ro.flyme.romer=Unofficial \
-    ro.product.model_romer=Pixel_Unofficial
+    ro.flyme.romer=xs \
+    ro.product.model_romer=A3010_xs
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
