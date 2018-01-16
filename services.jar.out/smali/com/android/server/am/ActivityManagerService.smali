@@ -5393,6 +5393,8 @@
     .param p5, "nowElapsed"    # J
 
     .prologue
+    invoke-static/range {p1 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->applyFlymeOomAdjLocked(Lcom/android/server/am/ProcessRecord;)V
+
     const/16 v25, 0x1
 
     .local v25, "success":Z
@@ -45136,6 +45138,11 @@
     move-object/from16 v0, v58
 
     invoke-interface {v4, v0}, Lcom/android/server/am/IEmbryoManager;->packageInstalled(Landroid/content/pm/ApplicationInfo;)V
+
+    move-object/from16 v0, p0
+
+    invoke-static {v0, v5}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->addFlymeAppLocked(Lcom/android/server/am/ActivityManagerService;Landroid/content/Intent;)V
+
     :try_end_1
     .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_2
 
@@ -45849,6 +45856,20 @@
 
     if-eqz v71, :cond_25
 
+    invoke-static {v5}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->isFlymePackageShouldRestart(Landroid/content/Intent;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_flyme_0
+
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v5}, Lcom/android/server/am/ActivityManagerService;->forceStopFlymePackageLocked(Landroid/content/Intent;)V
+
+    goto :goto_flyme_0
+
+    :cond_flyme_0
+
     const-string v4, "android.intent.extra.UID"
 
     const/4 v6, -0x1
@@ -45884,6 +45905,7 @@
     invoke-virtual/range {v6 .. v15}, Lcom/android/server/am/ActivityManagerService;->forceStopPackageLocked(Ljava/lang/String;IZZZZZILjava/lang/String;)Z
 
     :cond_25
+    :goto_flyme_0
     if-eqz v71, :cond_2f
 
     const/16 v59, 0x0
@@ -98989,6 +99011,19 @@
     .param p1, "taskId"    # I
 
     .prologue
+    invoke-static/range {p0 .. p1}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->shouldKeepAppProcess(Lcom/android/server/am/ActivityManagerService;I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_flyme_0
+
+    invoke-virtual/range {p0 .. p1}, Lcom/android/server/am/ActivityManagerService;->removeTaskNotKillProcess(I)Z
+
+    move-result v0
+
+    return v0
+
+    :cond_flyme_0
     const/4 v6, 0x0
 
     .line 11079
@@ -127224,6 +127259,8 @@
 
     .end local v26    # "duration":J
     :cond_4e
+    invoke-static/range {p0 .. p0}, Lcom/android/server/am/ActivityManagerService$FlymeActivityManagerServiceInjector;->updateFlymeOomAdjLocked(Lcom/android/server/am/ActivityManagerService;)V
+
     return-void
 
     .restart local v6    # "app":Lcom/android/server/am/ProcessRecord;

@@ -4806,6 +4806,16 @@
     .restart local v4    # "a":Landroid/view/animation/Animation;
     if-eqz v4, :cond_32
 
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, v26
+
+    invoke-direct {v0, v1}, Lcom/android/server/wm/WindowAnimator;->isFlymeLauncher(Lcom/android/server/wm/WindowStateAnimator;)Z
+
+    move-result v29
+
+    if-nez v29, :cond_flyme_0
+
     .line 541
     sget-boolean v29, Lcom/android/server/wm/WindowManagerDebugConfig;->DEBUG_KEYGUARD:Z
 

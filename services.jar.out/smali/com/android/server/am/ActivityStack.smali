@@ -164,6 +164,17 @@
 
 .field mDisplayId:I
 
+.field private mFlymeArrayList:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
+
 .field mFullscreen:Z
 
 .field mFullyDrawnStartTime:J

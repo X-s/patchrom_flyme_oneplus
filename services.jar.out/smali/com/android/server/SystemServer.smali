@@ -2282,13 +2282,13 @@
     invoke-static {v4}, Lcom/android/server/SystemServer;->traceBeginAndSlog(Ljava/lang/String;)V
 
     :try_start_a
-    new-instance v86, Lcom/android/server/statusbar/StatusBarManagerService;
+    new-instance v86, Lcom/android/server/statusbar/FlymeExtStatusBarManagerService;
 
     move-object/from16 v0, v86
 
     move-object/from16 v1, v99
 
-    invoke-direct {v0, v6, v1}, Lcom/android/server/statusbar/StatusBarManagerService;-><init>(Landroid/content/Context;Lcom/android/server/wm/WindowManagerService;)V
+    invoke-direct {v0, v6, v1}, Lcom/android/server/statusbar/FlymeExtStatusBarManagerService;-><init>(Landroid/content/Context;Lcom/android/server/wm/WindowManagerService;)V
     :try_end_a
     .catch Ljava/lang/Throwable; {:try_start_a .. :try_end_a} :catch_7
 
@@ -2301,6 +2301,8 @@
     move-object/from16 v0, v86
 
     invoke-static {v4, v0}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
+
+    invoke-static {}, Lcom/android/server/SystemServer$FlymeInjector;->addFlymeStatusBarManagerService()V
     :try_end_b
     .catch Ljava/lang/Throwable; {:try_start_b .. :try_end_b} :catch_32
 
@@ -2364,6 +2366,8 @@
     move-object/from16 v0, v72
 
     invoke-static {v4, v0}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
+
+    invoke-static/range {p0 .. p0}, Lcom/android/server/SystemServer$FlymeInjector;->addNetworkManagementServiceFlyme(Lcom/android/server/SystemServer;)V
     :try_end_d
     .catch Ljava/lang/Throwable; {:try_start_d .. :try_end_d} :catch_9
 
@@ -3610,6 +3614,7 @@
     invoke-virtual {v4, v5}, Lcom/android/server/SystemServiceManager;->startService(Ljava/lang/Class;)Lcom/android/server/SystemService;
 
     :cond_27
+    goto/16 :goto_flyme_0
     if-nez v42, :cond_28
 
     const-string v4, "StartAssetAtlasService"
@@ -3646,6 +3651,7 @@
     invoke-static {v4, v5}, Landroid/os/Trace;->traceEnd(J)V
 
     :cond_28
+    :goto_flyme_0
     if-nez v42, :cond_29
 
     const-string v4, "graphicsstats"
@@ -5254,6 +5260,12 @@
     const-string/jumbo v5, "com.android.server.wallpaper.WallpaperManagerService$Lifecycle"
 
     invoke-virtual {v4, v5}, Lcom/android/server/SystemServiceManager;->startService(Ljava/lang/String;)Lcom/android/server/SystemService;
+
+    move-result-object v4
+
+    move-object/from16 v0, p0
+
+    iput-object v4, v0, Lcom/android/server/SystemServer;->mFlymeWallpaperLifeService:Lcom/android/server/SystemService;
 
     .line 1027
     const-wide/32 v4, 0x80000

@@ -1911,6 +1911,8 @@
 
     iput-boolean v2, v0, Lcom/android/server/ConnectivityService;->mIsCaptivePortalCheckEnabled:Z
 
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/ConnectivityService;->initFlymeExtraFields()V
+
     const-string v2, "ro.radio.noril"
 
     const/4 v3, 0x0

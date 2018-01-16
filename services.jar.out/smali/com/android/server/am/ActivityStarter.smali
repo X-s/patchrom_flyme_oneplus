@@ -9331,6 +9331,27 @@
     .line 525
     .end local p4    # "resolvedType":Ljava/lang/String;
     :cond_24
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p2
+
+    move-object/from16 v2, p5
+
+    move/from16 v3, p13
+
+    invoke-static {v0, v1, v2, v3}, Lcom/android/server/am/ActivityStarter$FlymeInjector;->interceptForAccessControl(Lcom/android/server/am/ActivityStarter;Landroid/content/Intent;Landroid/content/pm/ActivityInfo;I)Landroid/content/pm/ActivityInfo;
+
+    move-result-object p5
+
+    invoke-static/range {p0 .. p0}, Lcom/android/server/am/ActivityStarter$FlymeInjector;->isIntercepted(Lcom/android/server/am/ActivityStarter;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_flyme_0
+
+    const/16 p23, 0x0
+
+    :cond_flyme_0
     new-instance v20, Lcom/android/server/am/ActivityRecord;
 
     move-object/from16 v0, p0

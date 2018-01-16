@@ -593,6 +593,12 @@
     return-void
 
     :cond_4
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/android/server/am/ServiceRecord$1;->this$0:Lcom/android/server/am/ServiceRecord;
+
+    invoke-virtual {v2, v8}, Lcom/android/server/am/ServiceRecord;->setFlymeNotification(Landroid/app/Notification;)V
+
     const/4 v2, 0x1
 
     :try_start_3

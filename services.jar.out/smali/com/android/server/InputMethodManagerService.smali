@@ -2461,7 +2461,7 @@
     goto :goto_1
 .end method
 
-.method private resetDefaultImeLocked(Landroid/content/Context;)V
+.method protected resetDefaultImeLocked(Landroid/content/Context;)V
     .locals 7
     .param p1, "context"    # Landroid/content/Context;
 

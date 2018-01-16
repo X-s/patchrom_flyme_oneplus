@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/server/BatteryService$FlymeInjector;,
         Lcom/android/server/BatteryService$1;,
         Lcom/android/server/BatteryService$BatteryListener;,
         Lcom/android/server/BatteryService$BinderService;,
@@ -584,6 +585,8 @@
     .line 196
     .end local v0    # "invalidChargerObserver":Landroid/os/UEventObserver;
     :cond_1
+    invoke-static/range {p0 .. p0}, Lcom/android/server/BatteryService$FlymeInjector;->registerBootCompleted(Lcom/android/server/BatteryService;)V
+
     return-void
 .end method
 
@@ -3668,6 +3671,8 @@
     invoke-virtual {v4, v5, v7, v3, v8}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;I)V
 
     invoke-direct {p0}, Lcom/android/server/BatteryService;->updateBatteryWarningLevelLocked()V
+
+    invoke-static {}, Lcom/android/server/BatteryService$FlymeInjector;->onBootPhase()V
 
     const/4 v5, 0x2
 

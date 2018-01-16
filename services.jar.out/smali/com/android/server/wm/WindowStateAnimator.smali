@@ -2287,6 +2287,8 @@
 
     .line 1277
     :cond_1
+    invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowStateAnimator$FlymeInjector;->updateSurfaceWindowCrop(Lcom/android/server/wm/WindowStateAnimator;)V
+
     invoke-virtual {v5}, Lcom/android/server/wm/WindowState;->isDefaultDisplay()Z
 
     move-result v6
@@ -5059,6 +5061,8 @@
     invoke-virtual/range {v21 .. v23}, Landroid/graphics/Point;->offset(II)V
 
     :cond_23
+    invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowStateAnimator$FlymeInjector;->moveShownFrameIfNeed(Lcom/android/server/wm/WindowStateAnimator;)V
+
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/server/wm/WindowStateAnimator;->mAlpha:F
@@ -6784,6 +6788,8 @@
     iget-object v4, p0, Lcom/android/server/wm/WindowStateAnimator;->mSurfaceController:Lcom/android/server/wm/WindowSurfaceController;
 
     invoke-virtual {v4, v8}, Lcom/android/server/wm/WindowSurfaceController;->setShown(Z)V
+
+    invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowStateAnimator$FlymeInjector;->destoryWindow(Lcom/android/server/wm/WindowStateAnimator;)V
 
     :cond_9
     iput-object v7, p0, Lcom/android/server/wm/WindowStateAnimator;->mSurfaceController:Lcom/android/server/wm/WindowSurfaceController;
