@@ -88710,7 +88710,7 @@
 .end method
 
 .method onNewUserCreated(I)V
-    .locals 3
+    .locals 4
     .param p1, "userId"    # I
 
     .prologue
@@ -88734,11 +88734,11 @@
 
     new-array v0, v0, [I
 
-    const/16 v1, 0xc
+    const/16 v3, 0xc
 
     const/4 v2, 0x0
 
-    aput v1, v0, v2
+    aput v3, v0, v2
 
     invoke-static {v0}, Landroid/util/OpFeatures;->isSupport([I)Z
 
