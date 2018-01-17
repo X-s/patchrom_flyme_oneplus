@@ -1541,6 +1541,8 @@
     .prologue
     const/4 v2, 0x0
 
+    return-object v2
+
     .line 863
     iget-object v1, p0, Lcom/android/server/statusbar/StatusBarManagerService;->mBar:Lcom/android/internal/statusbar/IStatusBar;
 
