@@ -57,13 +57,13 @@ vendor_remove_dirs := media/themes reserve
 vendor_saved_apps := AntHalService BasicDreams Bluetooth BluetoothExt BluetoothMidiService btmultisim BTtestmode CdmaCallOptions \
         datastatusnotification DiracAudioControlService DiracManager EasterEgg embms EngineeringMode EngSpecialTest Exchange2 \
         ExtShared FidoCryptoService GoogleWebView HTMLViewer KeyChain LatinIME LogKitSdService MdtpService NfcNci NFCTestMode \
-        NVBackupUI OemAutoTestServer OEMLogKit OPLongshot OPOnlineConfig OPSocialNetworkHub PacProcessor PermissionUtil PicoTts \
+        NVBackupUI OemAutoTestServer OEMLogKit OPOnlineConfig OPSocialNetworkHub PacProcessor PermissionUtil PicoTts \
         PrintRecommendationService PrintSpooler qtiImsInCallUi QtiTelephonyService RFTuner SdCardService SecureExtAuthService \
         SecureSampleAuthService SeempService SensorTestTool shutdownlistener SimSettings smcinvokepkgmgr SmscPlugger Stk telresources \
         TimeService UserDictionaryProvider VoicePrintService WAPPushManager webview WfdService WifiRfTestApk xdivert \
         AutoNaviFLP BackupRestoreConfirmation BlockedNumberProvider CarrierConfig CNEService com.qualcomm.location DefaultContainerService \
         dpmserviceapp EmergencyInfo ExternalStorageProvider FusedLocation IFAAService InputDevices ltsmclient ManagedProvisioning \
-        MtpDocumentsProvider OnePlusCamera OnePlusCameraService OnePlusGallery OneTimeInitializer OPCellBroadcastReceiver OPDeviceManager \
+        MtpDocumentsProvider OnePlusCamera OnePlusCameraService OneTimeInitializer OPCellBroadcastReceiver OPDeviceManager \
         OPDeviceManagerProvider ProxyHandler qcrilmsgtunnel QtiTetherService seccamservice SharedStorageBackup Shell SmartcardService \
         StatementService StorageManager Tag WallpaperCropper
 

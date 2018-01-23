@@ -32943,9 +32943,9 @@
     .local v6, "serviceComponent":Landroid/content/ComponentName;
     new-instance v4, Landroid/content/ComponentName;
 
-    const-string v8, "com.oneplus.screenshot"
+    const-string v8, "com.android.systemui"
 
-    const-string v10, "com.oneplus.screenshot.TakeScreenshotService"
+    const-string v10, "com.android.systemui.screenshot.TakeScreenshotService"
 
     invoke-direct {v4, v8, v10}, Landroid/content/ComponentName;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
