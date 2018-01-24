@@ -57,7 +57,7 @@ vendor_remove_dirs := media/themes reserve
 vendor_saved_apps := AntHalService BasicDreams Bluetooth BluetoothExt BluetoothMidiService btmultisim BTtestmode CdmaCallOptions \
         datastatusnotification DiracAudioControlService DiracManager EasterEgg embms EngineeringMode EngSpecialTest Exchange2 \
         ExtShared FidoCryptoService GoogleWebView HTMLViewer KeyChain LogKitSdService MdtpService NfcNci NFCTestMode \
-        NVBackupUI OemAutoTestServer OEMLogKit OPOnlineConfig OPSocialNetworkHub PacProcessor PermissionUtil PicoTts \
+        NVBackupUI PacProcessor PermissionUtil PicoTts \
         PrintRecommendationService PrintSpooler QtiTelephonyService SdCardService SecureExtAuthService \
         SecureSampleAuthService SeempService SensorTestTool shutdownlistener SimSettings SmscPlugger Stk telresources \
         TimeService UserDictionaryProvider VoicePrintService WAPPushManager webview WfdService WifiRfTestApk \
@@ -104,7 +104,7 @@ vendor_modify_jars := framework services telephony-common wifi-service
 # The default value is nothing.
 # You can configure the board system apk name in the value.
 #-----------------------------------------------------------------------------
-#board_remove_apps := LogReport
+board_remove_apps := LogReport
 
 ##############################################################################
 # The value decides which apk you want to modify, when the apk is based on the board system apk.
