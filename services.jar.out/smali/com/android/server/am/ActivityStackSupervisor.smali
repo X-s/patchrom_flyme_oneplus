@@ -9452,6 +9452,9 @@
 
     .line 566
     .local v4, "tmp":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
+
+    return-object v4
+
     :try_start_0
     invoke-direct {p0}, Lcom/android/server/am/ActivityStackSupervisor;->getStatusBarService()Lcom/android/internal/statusbar/IStatusBarService;
 
