@@ -1395,6 +1395,8 @@
     .param p1, "velocity"    # I
 
     .prologue
+    return-void
+
     .line 353
     invoke-direct {p0}, Lcom/android/server/statusbar/StatusBarManagerService;->enforceExpandStatusBar()V
 
