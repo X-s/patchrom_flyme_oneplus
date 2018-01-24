@@ -8268,10 +8268,10 @@
     .local v6, "serviceComponent":Landroid/content/ComponentName;
     new-instance v4, Landroid/content/ComponentName;
 
-    const-string/jumbo v8, "com.oneplus.screenshot"
+    const-string/jumbo v8, "com.android.systemui"
 
     .line 5915
-    const-string/jumbo v10, "com.oneplus.screenshot.TakeScreenshotService"
+    const-string/jumbo v10, "com.android.systemui.screenshot.TakeScreenshotService"
 
     .line 5914
     invoke-direct {v4, v8, v10}, Landroid/content/ComponentName;-><init>(Ljava/lang/String;Ljava/lang/String;)V
