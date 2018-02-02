@@ -234,6 +234,8 @@
 
     iput v0, p0, Landroid/view/Window;->mFeatures:I
 
+    invoke-direct/range {p0 .. p0}, Landroid/view/Window;->initFlymeExtraFields()V
+
     .line 646
     return-void
 .end method
@@ -2823,4 +2825,15 @@
 
     :cond_0
     return v1
+.end method
+
+.method private initFlymeExtraFields()V
+    .locals 1
+
+    .prologue
+    const/4 v0, 0x1
+
+    invoke-virtual {p0, v0}, Landroid/view/Window;->setAutoStatusBarIcon(Z)V
+
+    return-void
 .end method
