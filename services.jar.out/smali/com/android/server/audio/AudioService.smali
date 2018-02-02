@@ -3844,9 +3844,8 @@
 
     and-int/lit8 p3, p3, -0x5
 
-    goto :goto_flyme_0
-
     :cond_1
+    goto :goto_flyme_0
     iget-object v0, p0, Lcom/android/server/audio/AudioService;->mVolumeController:Lcom/android/server/audio/AudioService$VolumeController;
 
     invoke-virtual {v0, v8, p3, v7}, Lcom/android/server/audio/AudioService$VolumeController;->suppressAdjustment(IIZ)Z
