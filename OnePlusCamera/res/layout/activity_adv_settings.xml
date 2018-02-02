@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/settings" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/status_bar_background" android:layout_width="fill_parent" android:layout_height="0.0dip" android:elevation="@dimen/adv_settings_action_bar_shadow" />
+    <Toolbar android:id="@id/adv_settings_action_bar" android:layout_width="fill_parent" android:layout_height="?android:actionBarSize" android:elevation="@dimen/adv_settings_action_bar_shadow" android:contentInsetStart="0.0dip" android:contentInsetEnd="0.0dip" style="?android:attr/actionBarStyle">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/adv_settings_header" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageButton android:id="@id/adv_settings_back" android:background="@drawable/ripple" android:padding="@dimen/adv_settings_adv_settings_back_padding" android:layout_width="wrap_content" android:layout_height="fill_parent" android:contentDescription="@string/adv_settings" />
+            <TextView android:textSize="@dimen/adv_settings_action_bar_title_size" android:gravity="center" android:id="@id/adv_settings_title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/adv_settings" android:layout_marginStart="@dimen/adv_settings_adv_settings_title_margin_left" />
+        </LinearLayout>
+    </Toolbar>
+    <View android:id="@id/adv_settings_action_bar_divider" android:background="?actionBarDividerBackground" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/adv_settings_action_bar_divider" android:layout_below="@id/adv_settings_action_bar" />
+    <FrameLayout android:id="@id/adv_settings_content" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/adv_settings_action_bar_divider">
+        <com.oneplus.camera.ui.menu.MenuListView android:id="@id/adv_settings_menu_list_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@drawable/adv_settings_list_divider" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/adv_settings_watermark_fragment_container" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/adv_settings_action_bar_divider" />
+</RelativeLayout>

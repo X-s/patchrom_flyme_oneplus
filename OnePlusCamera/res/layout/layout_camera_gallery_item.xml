@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/gallery_item_container" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.widget.ScaleImageView android:id="@id/gallery_item_scale_image" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:id="@id/gallery_item_processing_bar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/camera_gallery_processing_bar_height" android:indeterminate="true" android:indeterminateDrawable="@drawable/camera_gallery_processing_bar" android:layout_alignParentTop="true" style="@android:style/Widget.Material.ProgressBar.Horizontal" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gallery_item_burst_indicator_container" android:background="@drawable/indicator_container_background" android:layout_width="wrap_content" android:layout_height="@dimen/camera_gallery_item_indicator_container_height" android:layout_marginBottom="@dimen/camera_gallery_item_indicator_container_margin_bottom" android:layout_alignParentBottom="true" android:layout_alignParentStart="true">
+        <ImageView android:id="@id/gallery_item_burst_indicator" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gallery_icon_burst" android:layout_marginStart="@dimen/camera_gallery_item_indicator_margin_start_end" android:layout_marginEnd="@dimen/camera_gallery_item_indicator_margin_start_end" />
+        <TextView android:gravity="center_vertical" android:id="@id/gallery_item_burst_text" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginEnd="@dimen/camera_gallery_item_indicator_margin_start_end" style="@style/CameraGalleryIndicatorTextAppearance" />
+    </LinearLayout>
+    <com.oneplus.gallery.widget.GalleryItemIndicatorContainer android:id="@id/gallery_item_controls_container" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gallery_item_indicator_container" android:layout_width="wrap_content" android:layout_height="@dimen/camera_gallery_item_indicator_container_height" android:layout_marginBottom="@dimen/camera_gallery_item_indicator_container_margin_bottom" android:layout_alignParentBottom="true" android:layout_alignParentStart="true">
+                <ImageView android:id="@id/gallery_item_indicator" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gallery_icon_video" android:layout_marginStart="@dimen/camera_gallery_item_indicator_margin_start_end" android:layout_marginEnd="@dimen/camera_gallery_item_indicator_margin_start_end" />
+                <TextView android:gravity="center_vertical" android:id="@id/gallery_item_text" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginEnd="@dimen/camera_gallery_item_indicator_margin_start_end" style="@style/CameraGalleryIndicatorTextAppearance" />
+            </LinearLayout>
+            <ImageView android:id="@id/gallery_item_play_button" android:layout_width="@dimen/camera_gallery_item_play_button_width_height" android:layout_height="@dimen/camera_gallery_item_play_button_width_height" android:src="@drawable/gallery_button_video_play" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </com.oneplus.gallery.widget.GalleryItemIndicatorContainer>
+</RelativeLayout>

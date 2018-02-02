@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/layout_video_rotation_hint" />
+    <include layout="@layout/layout_exposure_indicator" />
+    <include layout="@layout/layout_focus_exposure_indicator" />
+    <View android:id="@id/shutter_effect_frame" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/panorama" android:layout="@layout/layout_panorama" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/count_down_timer_container" android:layout="@layout/layout_count_down_timer" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <include layout="@layout/layout_zoom_bar" />
+    <include layout="@layout/layout_camera_switch_animation" />
+    <include layout="@layout/layout_saved_media_cue" />
+    <ViewStub android:id="@id/preview_cover_container" android:layout="@layout/layout_preview_cover" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/layout_options_panel" />
+    <include layout="@layout/layout_face_beauty_ui" />
+</RelativeLayout>

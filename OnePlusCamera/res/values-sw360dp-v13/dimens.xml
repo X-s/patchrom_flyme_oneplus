@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="panorama_thumb_curr_frame_height">58.0dip</dimen>
+    <dimen name="panorama_thumb_curr_frame_thickness">2.0dip</dimen>
+    <dimen name="panorama_thumb_curr_frame_width">31.0dip</dimen>
+    <dimen name="panorama_thumb_height">54.0dip</dimen>
+    <dimen name="panorama_thumb_container_margin_top">280.0dip</dimen>
+    <dimen name="panorama_thumb_width">29.0dip</dimen>
+    <dimen name="panorama_dot_size">4.0dip</dimen>
+    <dimen name="panorama_dot_margin">22.0dip</dimen>
+</resources>

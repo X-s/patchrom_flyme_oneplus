@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="oriental">
+        <enum name="horizontal" value="0" />
+        <enum name="vertical" value="1" />
+    </attr>
+    <attr name="actionBarDividerBackground" format="color" />
+    <attr name="dividerLineColor" format="color" />
+    <attr name="advItemSummary" format="reference" />
+    <attr name="advItemTitle" format="reference" />
+    <attr name="advItemSubTitle" format="reference" />
+    <attr name="versionText" format="reference" />
+    <attr name="copyrightText" format="reference" />
+    <attr name="agreementText" format="reference" />
+</resources>

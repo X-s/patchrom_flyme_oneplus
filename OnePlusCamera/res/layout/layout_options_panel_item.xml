@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="@dimen/options_panel_item_width" android:layout_height="@dimen/options_panel_item_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/options_panel_item_image" android:background="@drawable/ripple" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <TextView android:ellipsize="end" android:gravity="center" android:id="@id/options_panel_item_text" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="0.0dip" android:singleLine="true" android:layout_alignParentBottom="true" style="@style/OptionsPanelItemText" />
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/capture_modes_panel_back" android:state_activated="true" />
+    <item android:state_selected="true" android:drawable="@drawable/capture_modes_panel_expand" />
+    <item android:drawable="@drawable/capture_modes_panel_collapse" />
+</selector>

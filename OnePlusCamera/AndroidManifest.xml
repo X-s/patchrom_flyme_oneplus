@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.oneplus.camera" platformBuildVersionCode="25" platformBuildVersionName="7.1.1">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE"/>
+    <uses-permission android:name="com.oneplus.camera.PICTURE_PROCESS_SERVICE"/>
+    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.oneplus.camera.CAMERA_SERVICE"/>
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS"/>
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"/>
+    <permission android:name="com.oneplus.camera.AUTO_TEST" android:protectionLevel="signature"/>
+    <application android:allowBackup="false" android:hardwareAccelerated="true" android:icon="@drawable/app_icon" android:label="@string/app_name" android:largeHeap="true" android:name="com.oneplus.camera.OPCameraApplication" android:resizeableActivity="false" android:supportsRtl="true">
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="1665753b7f3f1db862b5691e3cb01ac0"/>
+        <meta-data android:name="upgrade_product_code" android:value="40005"/>
+        <meta-data android:name="oneplus_upgrage" android:value="true"/>
+        <activity android:clearTaskOnLaunch="true" android:configChanges="keyboard|keyboardHidden|mcc|mnc|orientation|screenSize" android:label="@string/app_name" android:launchMode="singleTask" android:name=".OPCameraActivity" android:screenOrientation="portrait" android:taskAffinity=".OPCameraActivity" android:theme="@style/CameraWindow" android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.STILL_IMAGE_CAMERA"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.VIDEO_CAMERA"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <meta-data android:name="launch_animation" android:value="false"/>
+        </activity>
+        <activity-alias android:name=".MainActivity" android:targetActivity=".OPCameraActivity">
+            <intent-filter>
+                <action android:name="android.media.action.STILL_IMAGE_CAMERA_SECURE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.media.action.IMAGE_CAPTURE_SECURE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <meta-data android:name="launch_animation" android:value="false"/>
+        </activity-alias>
+        <activity android:configChanges="keyboard|keyboardHidden|mcc|mnc|orientation|screenSize" android:label="@string/app_name" android:name=".OPCameraServiceActivity" android:screenOrientation="portrait" android:theme="@style/CameraWindow" android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="android.media.action.IMAGE_CAPTURE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity-alias android:label="@string/app_video_name" android:name=".VideoServiceActivity" android:targetActivity=".OPCameraServiceActivity">
+            <intent-filter>
+                <action android:name="android.media.action.VIDEO_CAPTURE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity-alias>
+        <activity android:configChanges="keyboard|keyboardHidden|screenSize" android:exported="false" android:label="@string/adv_settings" android:name=".AdvancedSettingsActivity" android:screenOrientation="fullSensor" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboard|keyboardHidden|mcc|mnc|orientation|screenSize" android:exported="false" android:name=".AgentActivity" android:screenOrientation="portrait" android:theme="@style/AgentWindow"/>
+        <activity android:configChanges="keyboard|keyboardHidden|mcc|mnc|orientation|screenSize" android:exported="false" android:name=".LandscapeAgentActivity" android:screenOrientation="landscape" android:theme="@style/AgentWindow"/>
+        <activity android:configChanges="keyboard|keyboardHidden|mcc|mnc|orientation|screenSize" android:exported="false" android:name=".InverseLandscapeAgentActivity" android:screenOrientation="reverseLandscape" android:theme="@style/AgentWindow"/>
+        <activity android:configChanges="keyboard|keyboardHidden|mcc|mnc|orientation|screenSize" android:exported="false" android:name=".InversePortraitAgentActivity" android:screenOrientation="reversePortrait" android:theme="@style/AgentWindow"/>
+        <activity android:configChanges="locale|fontScale|keyboard|keyboardHidden|layoutDirection|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:multiprocess="true" android:name="com.oneplus.base.PermissionActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <receiver android:name=".receiver.ClearImageCacheReceiver">
+            <intent-filter>
+                <action android:name="com.oneplus.camera.service.CLEAR_IMAGE_CACHE"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="true" android:name=".OPPictureProcessService" android:permission="com.oneplus.camera.PICTURE_PROCESS_SERVICE" android:process=":picture"/>
+        <service android:exported="true" android:name=".AutoTestService" android:permission="com.oneplus.camera.AUTO_TEST"/>
+        <receiver android:name="com.oneplus.camera.ui.ActionChooserIntentSender"/>
+    </application>
+</manifest>

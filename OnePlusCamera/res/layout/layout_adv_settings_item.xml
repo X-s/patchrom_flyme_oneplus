@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/adv_settings_item_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <TextView android:ellipsize="end" android:id="@id/menu_item_title" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?advItemTitle" />
+        <TextView android:ellipsize="end" android:id="@id/menu_item_subtitle" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?advItemSubTitle" />
+    </LinearLayout>
+    <TextView android:ellipsize="end" android:id="@id/menu_item_summary" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.0" style="?advItemSummary" />
+    <Switch android:id="@id/menu_item_switch" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.0" android:switchMinWidth="@dimen/adv_settings_switch_min_width" />
+</LinearLayout>

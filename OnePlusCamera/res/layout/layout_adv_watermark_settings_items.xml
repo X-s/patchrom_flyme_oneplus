@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:focusableInTouchMode="true" android:descendantFocusability="beforeDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.widget.TouchableLinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/watermark_item_container" android:background="?android:selectableItemBackground" android:layout_width="fill_parent" android:layout_height="@dimen/adv_settings_item_height" android:paddingStart="@dimen/adv_settings_item_padding" android:paddingEnd="@dimen/adv_settings_item_padding">
+        <TextView android:ellipsize="end" android:id="@id/watermark_item_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/adv_settings_watermark" android:layout_weight="1.0" style="?advItemTitle" />
+        <Switch android:id="@id/watermark_item_switch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.0" android:switchMinWidth="@dimen/adv_settings_switch_min_width" />
+    </com.oneplus.widget.TouchableLinearLayout>
+    <View android:background="?dividerLineColor" android:layout_width="fill_parent" android:layout_height="@dimen/adv_settings_item_bottom_line_height" />
+    <com.oneplus.widget.TouchableLinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/name_item_container" android:background="?android:selectableItemBackground" android:layout_width="fill_parent" android:layout_height="@dimen/adv_settings_item_height" android:paddingStart="@dimen/adv_settings_item_padding" android:paddingEnd="@dimen/adv_settings_item_padding">
+        <TextView android:ellipsize="end" android:id="@id/name_item_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/adv_settings_watermark_slogan_name" android:layout_weight="1.0" style="?advItemTitle" />
+        <Switch android:id="@id/name_item_switch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.0" android:switchMinWidth="@dimen/adv_settings_switch_min_width" />
+    </com.oneplus.widget.TouchableLinearLayout>
+    <TextView android:ellipsize="end" android:id="@id/name_item_hint" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/adv_settings_watermark_slogan_name_edit" android:paddingStart="@dimen/adv_settings_item_padding" android:paddingEnd="@dimen/adv_settings_item_padding" style="?advItemSubTitle" />
+    <EditText android:id="@id/name_item_edit" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/adv_settings_watermark_slogan_name_edit" android:singleLine="true" android:maxLength="30" android:layout_marginStart="@dimen/adv_settings_item_padding" android:layout_marginEnd="@dimen/adv_settings_item_padding" />
+    <View android:id="@id/bottom_divider" android:background="?actionBarDividerBackground" android:layout_width="fill_parent" android:layout_height="@dimen/adv_settings_item_bottom_line_height" />
+</LinearLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_30" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_31" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_32" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_33" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_34" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_35" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_36" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_37" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_38" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_39" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_40" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_41" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_42" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_43" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_44" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_45" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_46" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_47" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_48" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_49" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_50" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_51" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_52" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_53" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_54" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_55" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_56" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_57" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_58" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_59" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_back_60" />
+</animation-list>

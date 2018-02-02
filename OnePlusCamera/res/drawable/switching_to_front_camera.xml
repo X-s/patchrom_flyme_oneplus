@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_60" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_61" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_62" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_63" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_64" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_65" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_66" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_67" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_68" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_69" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_70" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_71" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_72" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_73" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_74" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_75" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_76" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_77" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_78" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_79" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_80" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_81" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_82" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_83" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_84" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_85" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_86" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_87" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_88" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_89" />
+    <item android:duration="33" android:drawable="@drawable/switch_to_front_90" />
+</animation-list>

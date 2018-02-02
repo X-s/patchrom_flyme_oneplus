@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="capture_modes_switch_mode_image_margin_top">230.0dip</dimen>
+    <dimen name="face_beauty_ui_container_margin_bottom">160.0dip</dimen>
+    <dimen name="panorama_thumb_curr_frame_height">56.0dip</dimen>
+    <dimen name="panorama_thumb_curr_frame_thickness">2.0dip</dimen>
+    <dimen name="panorama_thumb_curr_frame_width">30.0dip</dimen>
+    <dimen name="panorama_thumb_height">53.0dip</dimen>
+    <dimen name="panorama_thumb_container_margin_top">271.0dip</dimen>
+    <dimen name="panorama_thumb_width">28.0dip</dimen>
+    <dimen name="panorama_dot_size">4.0dip</dimen>
+    <dimen name="panorama_dot_margin">21.0dip</dimen>
+    <dimen name="camera_wizard_simple_switch_indicator_margin">138.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_hollow_center_x">317.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_hollow_center_y">24.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_hollow_center_rtl_x">28.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_radius">4.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_circle_portrait_center_x">317.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_circle_portrait_center_y">308.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_circle_portrait_center_rtl_x">30.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_portrait_left">316.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_portrait_top">63.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_portrait_right">318.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_portrait_bottom">303.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_portrait_rtl_left">29.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_portrait_rtl_right">31.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_circle_landscape_center_x">174.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_circle_landscape_center_y">24.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_circle_landscape_center_rtl_x">173.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_landscape_left">178.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_landscape_top">23.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_landscape_right">279.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_landscape_bottom">25.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_landscape_rtl_left">66.0dip</dimen>
+    <dimen name="camera_wizard_smile_capture_stick_landscape_rtl_right">168.0dip</dimen>
+</resources>

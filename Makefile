@@ -74,7 +74,7 @@ vendor_saved_apps := AntHalService BasicDreams Bluetooth BluetoothExt BluetoothM
 # You need ro decode FMRadio.apk to the project directory(use apktool d FMRadio.apk) first,
 # and then you can make it by:   make FMRadio
 #-----------------------------------------------------------------------------
-#vendor_modify_apps := FMRadio
+vendor_modify_apps := OnePlusCamera
 
 ##############################################################################
 # The value decides which vendor jar you want to modify.
@@ -104,7 +104,7 @@ vendor_modify_jars := framework services telephony-common wifi-service
 # The default value is nothing.
 # You can configure the board system apk name in the value.
 #-----------------------------------------------------------------------------
-board_remove_apps := LogReport
+board_remove_apps := LogReport Camera
 
 ##############################################################################
 # The value decides which apk you want to modify, when the apk is based on the board system apk.

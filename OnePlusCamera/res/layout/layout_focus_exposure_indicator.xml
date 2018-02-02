@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/focus_exposure_indicator_base" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/focus_exposure_indicator_container" android:visibility="gone" android:layout_width="@dimen/focus_indicator_container_width" android:layout_height="@dimen/focus_indicator_container_height" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <ImageView android:id="@id/focus_indicator" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <TextView android:id="@id/focus_indicator_text" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/focus_indicator_text_margin_top" android:text="@string/focus_indicator_point" android:layout_below="@id/focus_indicator" android:layout_centerHorizontal="true" style="@style/FocusExposureIndicatorText" />
+        <RelativeLayout android:id="@id/exposure_comp_drag_icon_container" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/exposure_comp_drag_icon" android:paddingLeft="@dimen/exposure_comp_icon_padding" android:paddingTop="@dimen/exposure_comp_icon_padding_top_bottom" android:paddingRight="@dimen/exposure_comp_icon_padding" android:paddingBottom="@dimen/exposure_comp_icon_padding_top_bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/exposure_comp_icon" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@string/focus_exposure_drag_icon" />
+        </RelativeLayout>
+        <ImageView android:id="@id/exposure_comp_direction_icon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/exposure_comp_direction_icon_margin_top" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

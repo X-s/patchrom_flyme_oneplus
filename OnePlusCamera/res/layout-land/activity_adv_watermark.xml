@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="?android:windowBackground" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/adv_settings_watermark_preview_contaner" android:background="@drawable/grid_preview_background" android:layout_width="@dimen/adv_settings_watermark_preview_width_landscape" android:layout_height="fill_parent">
+        <View android:id="@id/adv_settings_watermark_preview_slogan" android:layout_width="fill_parent" android:layout_height="@dimen/watermark_height" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <ViewStub android:id="@id/adv_settings_watermark_menu" android:layout="@layout/layout_adv_watermark_settings_items" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+</LinearLayout>

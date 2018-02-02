@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/camera_gallery_background" android:background="@color/camera_gallery_background" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.oneplus.camera.widget.RotateRelativeLayout android:id="@id/camera_gallery_rotate_container" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/camera_gallery_filmstrip_container" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.oneplus.widget.FilmstripView android:id="@id/camera_gallery_filmstrip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <RelativeLayout android:id="@id/camera_gallery_empty_page_container" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <View android:id="@id/camera_gallery_empty_page_touch_receiver" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <TextView android:id="@id/camera_gallery_empty_page_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/camera_gallery_empty_page_text" android:layout_centerInParent="true" style="@style/CameraGalleryEmptyPageText" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/camera_gallery_navigation_bar_container" android:background="@android:color/transparent" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/camera_gallery_header_container_height" android:layout_marginTop="@dimen/camera_gallery_header_container_margin_top_port">
+            <ImageButton android:id="@id/camera_gallery_navigation_bar_button_back" android:background="@drawable/ripple" android:padding="@dimen/camera_gallery_header_item_padding" android:layout_width="wrap_content" android:layout_height="@dimen/camera_gallery_header_container_height" android:src="@drawable/burst_viewer_close" android:scaleType="center" android:layout_alignParentStart="true" />
+            <ImageButton android:id="@id/camera_gallery_navigation_bar_button_launch_gallery" android:background="@drawable/ripple" android:padding="@dimen/camera_gallery_header_item_padding" android:layout_width="wrap_content" android:layout_height="@dimen/camera_gallery_header_container_height" android:src="@drawable/gallery_button_launch_gallery" android:scaleType="center" android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/camera_gallery_footer_container" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="@dimen/camera_gallery_footer_container_height" android:layout_marginBottom="@dimen/camera_gallery_footer_container_margin_bottom_port" android:layout_alignParentBottom="true">
+            <RelativeLayout android:gravity="center" android:id="@id/camera_gallery_footer_share_container" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageButton android:id="@id/camera_gallery_footer_button_share" android:background="@drawable/ripple" android:padding="@dimen/camera_gallery_footer_item_padding" android:layout_width="@dimen/camera_gallery_footer_container_height" android:layout_height="@dimen/camera_gallery_footer_container_height" android:src="@drawable/gallery_button_share" android:scaleType="center" />
+            </RelativeLayout>
+            <RelativeLayout android:gravity="center" android:id="@id/camera_gallery_footer_edit_container" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageButton android:id="@id/camera_gallery_footer_button_edit" android:background="@drawable/ripple" android:padding="@dimen/camera_gallery_footer_item_padding" android:layout_width="@dimen/camera_gallery_footer_container_height" android:layout_height="@dimen/camera_gallery_footer_container_height" android:src="@drawable/gallery_button_edit" android:scaleType="center" />
+            </RelativeLayout>
+            <RelativeLayout android:gravity="center" android:id="@id/camera_gallery_footer_details_container" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageButton android:id="@id/camera_gallery_footer_button_details" android:background="@drawable/ripple" android:padding="@dimen/camera_gallery_footer_item_padding" android:layout_width="@dimen/camera_gallery_footer_container_height" android:layout_height="@dimen/camera_gallery_footer_container_height" android:src="@drawable/gallery_button_details" android:scaleType="center" />
+            </RelativeLayout>
+            <RelativeLayout android:gravity="center" android:id="@id/camera_gallery_footer_delete_container" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageButton android:id="@id/camera_gallery_footer_button_delete" android:background="@drawable/ripple" android:padding="@dimen/camera_gallery_footer_item_padding" android:layout_width="@dimen/camera_gallery_footer_container_height" android:layout_height="@dimen/camera_gallery_footer_container_height" android:src="@drawable/gallery_button_delete" android:scaleType="center" />
+            </RelativeLayout>
+        </LinearLayout>
+        <RelativeLayout android:id="@id/camera_gallery_undo_bar_container" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/camera_gallery_undo_bar_height" android:layout_alignParentBottom="true" style="@style/UndoBar">
+            <View android:id="@id/camera_gallery_undo_bar_container_touch_receiver" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <TextView android:id="@id/camera_gallery_undo_bar_delete_photo_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/camera_gallery_undo_bar_message_margin_start" android:layout_alignParentStart="true" style="@style/UndoBarTextAppearance" />
+            <TextView android:id="@id/camera_gallery_undo_bar_restore" android:padding="@dimen/camera_gallery_undo_bar_button_padding" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/delete_photo_undo" android:layout_centerVertical="true" android:layout_alignParentEnd="true" style="@style/UndoBarLightTextAppearance" />
+        </RelativeLayout>
+    </com.oneplus.camera.widget.RotateRelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/camera_wizard__touch_receiver" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/camera_wizard_simple_modes_switch" android:layout="@layout/layout_camera_wizard_simple_modes_switch" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/camera_wizard_smile_capture" android:layout="@layout/layout_camera_wizard_smile_capture" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

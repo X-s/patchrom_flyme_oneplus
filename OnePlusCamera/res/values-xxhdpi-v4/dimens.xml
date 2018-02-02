@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="watermark_height">129.0px</dimen>
+    <dimen name="watermark_slogan_logo_width">109.0px</dimen>
+    <dimen name="watermark_slogan_logo_height">57.0px</dimen>
+    <dimen name="watermark_slogan_logo_margin_left">36.0px</dimen>
+    <dimen name="watermark_slogan_logo_margin_right">21.0px</dimen>
+    <dimen name="watermark_slogan_title_margin_top">30.0px</dimen>
+    <dimen name="watermark_slogan_title_no_subtext_margin_top">43.0px</dimen>
+    <dimen name="watermark_slogan_title_text_height">45.0px</dimen>
+    <dimen name="watermark_slogan_title_text_size">39.0px</dimen>
+    <dimen name="watermark_slogan_subtitle_text_height">20.0px</dimen>
+    <dimen name="watermark_slogan_subtitle_text_size">20.0px</dimen>
+    <dimen name="watermark_processing_circle_container_height">159.0px</dimen>
+    <dimen name="watermark_processing_circle_size">63.0px</dimen>
+    <dimen name="watermark_processing_circle_margin_start_end">42.0px</dimen>
+    <dimen name="watermark_processing_circle_margin_bottom">48.0px</dimen>
+</resources>
