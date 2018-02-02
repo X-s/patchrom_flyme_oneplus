@@ -28,7 +28,13 @@ def InstallEtc2OP3(info):
 
 def CheckDeviceAndFlash(info):
     flash = """ifelse(getprop("ro.display.series")=="OnePlus 3T", (
-ui_print("Writing OnePlus 3T image...");
+ui_print("===========================================");
+ui_print("|             !!! Warning !!!             |");
+ui_print("|                                         |");
+ui_print("|        Target Device: OnePlus 3T        |");
+ui_print("|                                         |");
+ui_print("|        Writing OnePlus 3T image...      |");
+ui_print("|                                         |");
 package_extract_file("3t-firmware/cmnlib64.mbn", "/dev/block/bootdevice/by-name/cmnlib64");
 package_extract_file("3t-firmware/cmnlib.mbn", "/dev/block/bootdevice/by-name/cmnlib");
 package_extract_file("3t-firmware/hyp.mbn", "/dev/block/bootdevice/by-name/hyp");
@@ -43,13 +49,21 @@ package_extract_file("3t-firmware/NON-HLOS.bin", "/dev/block/bootdevice/by-name/
 package_extract_file("3t-firmware/BTFM.bin", "/dev/block/bootdevice/by-name/bluetooth");
 ), "");
 ifelse(getprop("ro.display.series")=="OnePlus 3", (
-ui_print("Writing OnePlus 3 image...");
+ui_print("===========================================");
+ui_print("|             !!! Warning !!!             |");
+ui_print("|                                         |");
+ui_print("|        Target Device: OnePlus 3         |");
+ui_print("|                                         |");
+ui_print("|        Writing OnePlus 3 image...       |");
+ui_print("|                                         |");
+mount("ext4", "EMMC", "/dev/block/bootdevice/by-name/system", "/system", "");
 package_extract_dir("3-firmware/etc", "/system/etc/firmware");
 set_metadata("/system/etc/firmware/a530_zap.b00", "uid", 0, "gid", 0000, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata("/system/etc/firmware/a530_zap.b01", "uid", 0, "gid", 0000, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata("/system/etc/firmware/a530_zap.b02", "uid", 0, "gid", 0000, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata("/system/etc/firmware/a530_zap.elf", "uid", 0, "gid", 0000, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
 set_metadata("/system/etc/firmware/a530_zap.mdt", "uid", 0, "gid", 0000, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+unmount("/system");
 package_extract_file("3-firmware/cmnlib64.mbn", "/dev/block/bootdevice/by-name/cmnlib64");
 package_extract_file("3-firmware/cmnlib.mbn", "/dev/block/bootdevice/by-name/cmnlib");
 package_extract_file("3-firmware/hyp.mbn", "/dev/block/bootdevice/by-name/hyp");
@@ -63,7 +77,10 @@ package_extract_file("3-firmware/keymaster.mbn", "/dev/block/bootdevice/by-name/
 package_extract_file("3-firmware/NON-HLOS.bin", "/dev/block/bootdevice/by-name/modem");
 package_extract_file("3-firmware/BTFM.bin", "/dev/block/bootdevice/by-name/bluetooth");
 ), "");
-ui_print("Writing Common image...");
+ui_print("|        Writing Common image...          |");
+ui_print("|                                         |");
+ui_print("|             !!! Warning !!!             |");
+ui_print("===========================================");
 package_extract_file("common-firmware/static_nvbk.bin", "/dev/block/bootdevice/by-name/oem_stanvbk");
 package_extract_file("common-firmware/adspso.bin", "/dev/block/bootdevice/by-name/dsp");"""
     info.script.AppendExtra(flash);
