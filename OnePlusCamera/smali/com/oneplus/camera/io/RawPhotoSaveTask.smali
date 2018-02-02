@@ -155,7 +155,7 @@
 
     aput-object v5, v4, v9
 
-    const-string/jumbo v5, "Camera"
+    const-string/jumbo v5, ""
 
     aput-object v5, v4, v10
 

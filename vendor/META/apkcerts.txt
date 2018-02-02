@@ -92,7 +92,7 @@ name="NVBackupUI.apk" certificate="build/security/platform.x509.pem" private_key
 name="OemAutoTestServer.apk" certificate="build/security/platform.x509.pem" private_key="build/security/platform.pk8"
 name="OEMLogKit.apk" certificate="build/security/platform.x509.pem" private_key="build/security/platform.pk8"
 name="oneplusbbs.apk" certificate="PRESIGNED" private_key=""
-name="OnePlusCamera.apk" certificate="PRESIGNED" private_key=""
+name="OnePlusCamera.apk" certificate="build/security/platform.x509.pem" private_key="build/security/platform.pk8"
 name="OnePlusCameraService.apk" certificate="build/security/platform.x509.pem" private_key="build/security/platform.pk8"
 name="oneplus-framework-res.apk" certificate="build/security/platform.x509.pem" private_key="build/security/platform.pk8"
 name="OnePlusGallery.apk" certificate="PRESIGNED" private_key=""
