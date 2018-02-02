@@ -2254,7 +2254,7 @@
 
     aput-object v9, v8, v12
 
-    const-string/jumbo v9, "Camera"
+    const-string/jumbo v9, ""
 
     aput-object v9, v8, v13
 
