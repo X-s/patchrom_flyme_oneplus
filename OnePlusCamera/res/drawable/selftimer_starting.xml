@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_20" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_19" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_18" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_17" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_16" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_15" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_14" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_13" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_12" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_11" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_10" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_09" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_08" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_07" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_06" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_05" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_04" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_03" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_02" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_01" />
+    <item android:duration="16" android:drawable="@drawable/selftimer_animiation_00" />
+</animation-list>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_00" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_01" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_02" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_03" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_04" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_05" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_06" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_07" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_08" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_09" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_10" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_11" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_12" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_13" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_14" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_15" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_16" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_17" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_18" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_19" />
+    <item android:duration="16" android:drawable="@drawable/switching_pro_mode_20" />
+</animation-list>

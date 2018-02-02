@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:background="@color/options_panel_background" android:layout_width="fill_parent" android:layout_height="@dimen/manual_controls_container_height" android:layout_marginBottom="@dimen/options_panel_margin_bottom" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <LinearLayout android:orientation="horizontal" android:id="@id/manual_controls_container" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/manual_floating_container" android:visibility="gone" android:layout_width="@dimen/manual_floating_container_width_height" android:layout_height="@dimen/manual_floating_container_width_height" android:layout_marginBottom="@dimen/manual_controls_container_height" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/manual_floating_indicator_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/manual_icon_float_indicator" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <TextView android:textAppearance="@style/ManualModeIndicatorText" android:ellipsize="end" android:gravity="center" android:id="@id/manual_floating_indicator_text_view" android:background="@drawable/manual_float_indicator_background" android:padding="@dimen/manual_text_view_text_padding" android:visibility="gone" android:layout_width="@dimen/manual_floating_indicator_text_view_width_height" android:layout_height="@dimen/manual_floating_indicator_text_view_width_height" android:layout_marginBottom="@dimen/manual_floating_indicator_text_view_margin_bottom" android:singleLine="true" android:layout_above="@id/manual_floating_indicator_icon" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

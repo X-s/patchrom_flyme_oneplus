@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-selector android:constantSize="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false" android:id="@id/off">
+        <nine-patch android:gravity="center" android:src="@drawable/uc_switch_001" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+    </item>
+    <item android:state_checked="true" android:id="@id/on">
+        <nine-patch android:gravity="center" android:src="@drawable/uc_switch_023" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+    </item>
+    <item android:id="@id/off">
+        <nine-patch android:gravity="center" android:src="@drawable/uc_switch_001" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+    </item>
+    <transition android:toId="@id/on" android:fromId="@id/off">
+        <animation-list>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_001" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_002" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_003" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_004" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_005" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_006" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_007" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_008" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_009" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_010" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_011" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_012" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_013" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_014" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_015" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_016" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_017" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_018" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_019" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_020" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_021" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_022" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_023" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+        </animation-list>
+    </transition>
+    <transition android:toId="@id/off" android:fromId="@id/on">
+        <animation-list>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_001" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_002" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_003" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_004" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_005" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_006" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_007" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_008" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_009" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_010" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_011" android:tint="?android:colorControlActivated" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_012" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_013" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_014" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_015" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_016" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_017" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_018" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_019" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_020" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_021" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_022" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+            <item android:duration="10">
+                <nine-patch android:gravity="center" android:src="@drawable/uc_switch_023" android:tint="@drawable/uc_switch_thumb_material_light" android:tintMode="multiply" />
+            </item>
+        </animation-list>
+    </transition>
+</animated-selector>

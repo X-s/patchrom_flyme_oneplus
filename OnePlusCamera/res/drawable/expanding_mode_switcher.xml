@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="8" android:drawable="@drawable/expanding_00" />
+    <item android:duration="8" android:drawable="@drawable/expanding_01" />
+    <item android:duration="8" android:drawable="@drawable/expanding_02" />
+    <item android:duration="8" android:drawable="@drawable/expanding_03" />
+    <item android:duration="8" android:drawable="@drawable/expanding_04" />
+    <item android:duration="8" android:drawable="@drawable/expanding_05" />
+    <item android:duration="8" android:drawable="@drawable/expanding_06" />
+    <item android:duration="8" android:drawable="@drawable/expanding_07" />
+    <item android:duration="8" android:drawable="@drawable/expanding_08" />
+    <item android:duration="8" android:drawable="@drawable/expanding_09" />
+    <item android:duration="8" android:drawable="@drawable/expanding_10" />
+    <item android:duration="8" android:drawable="@drawable/expanding_11" />
+    <item android:duration="8" android:drawable="@drawable/expanding_12" />
+    <item android:duration="8" android:drawable="@drawable/expanding_13" />
+    <item android:duration="8" android:drawable="@drawable/expanding_14" />
+    <item android:duration="8" android:drawable="@drawable/expanding_15" />
+    <item android:duration="8" android:drawable="@drawable/expanding_16" />
+    <item android:duration="8" android:drawable="@drawable/expanding_17" />
+    <item android:duration="8" android:drawable="@drawable/expanding_18" />
+    <item android:duration="8" android:drawable="@drawable/expanding_19" />
+    <item android:duration="8" android:drawable="@drawable/expanding_20" />
+    <item android:duration="8" android:drawable="@drawable/expanding_21" />
+    <item android:duration="8" android:drawable="@drawable/expanding_22" />
+    <item android:duration="8" android:drawable="@drawable/expanding_23" />
+</animation-list>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_camera_00010" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_camera_00009" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_camera_00008" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_camera_00007" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_camera_00006" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_camera_00005" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_camera_00004" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_camera_00003" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_camera_00002" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_camera_00001" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_camera_00000" />
+</animation-list>

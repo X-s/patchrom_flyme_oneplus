@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/tutorial_touch_receiver" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/tutorial_custom_mode_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/tutorial_enter_custom_mode_arrow_margin_top" android:src="@drawable/tutorial_background_triangle_up" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="vertical" android:background="@drawable/tutorial_background_no_triangle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/tutorial_enter_custom_mode_margin_top" android:layout_alignParentTop="true" android:layout_marginStart="@dimen/common_control_margin_left2" android:layout_marginEnd="@dimen/common_control_margin_right2">
+        <TextView android:gravity="start" android:id="@id/tutorial_custom_mode_text" android:paddingTop="@dimen/common_control_margin_top2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/tutorial_custom_mode" android:paddingStart="@dimen/common_control_margin_left2" android:paddingEnd="@dimen/common_control_margin_right2" style="@style/TutorialText" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:id="@id/tutorial_inner_touch_receiver" android:layout_width="@dimen/tutorial_enter_custom_mode_inner_empty_view_width" android:layout_height="@dimen/tutorial_confirm_text_height" />
+            <TextView android:gravity="center" android:layout_gravity="end" android:id="@id/tutorial_confirm_text" android:background="?android:selectableItemBackground" android:layout_width="@dimen/tutorial_confirm_text_width" android:layout_height="@dimen/tutorial_confirm_text_height" android:text="@string/camera_wizard_simple_modes_switch_ok" android:layout_marginEnd="@dimen/tutorial_confirm_text_margin_end_bottom" style="@style/TutorialTextConfirm" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

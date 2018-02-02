@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/tutorial_touch_receiver" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:gravity="center" android:id="@id/tutorial_enter_immersive_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/tutorial_enter_immersive_margin_top" android:text="@string/tutorial_enter_immersive_mode" android:layout_marginStart="@dimen/common_control_margin_left2" android:layout_marginEnd="@dimen/common_control_margin_right2" style="@style/TutorialText" />
+    <ImageView android:id="@id/tutorial_immersive_image" android:background="@drawable/tutorial_focus_icon" android:layout_width="@dimen/tutorial_circle_swipe_up_down_width_height" android:layout_height="@dimen/tutorial_circle_swipe_up_down_width_height" android:layout_marginTop="@dimen/common_control_margin_bottom3" android:layout_below="@id/tutorial_enter_immersive_text" android:layout_centerHorizontal="true" />
+</RelativeLayout>

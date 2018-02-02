@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageButton android:id="@id/business_card_back_button" android:background="@drawable/ripple" android:padding="@dimen/business_card_back_button_padding" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/business_card_back_button_margin_top" android:src="@drawable/actionbar_button_back_dark" android:scaleType="center" android:contentDescription="@string/app_business_card_name" android:layout_marginStart="@dimen/business_card_back_button_margin_start" />
+    <View android:id="@id/business_card_scanning_area" android:layout_width="fill_parent" android:layout_height="@dimen/business_card_visible_area_height" android:layout_alignParentBottom="true" />
+    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="@dimen/business_card_supporter_text_height" android:layout_marginBottom="@dimen/business_card_supporter_text_margin_bottom" android:layout_alignParentBottom="true">
+        <TextView android:gravity="center" android:id="@id/business_card_supporter" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/business_card_supporter" android:drawablePadding="@dimen/business_card_supporter_drawable_padding" android:drawableStart="@drawable/business_card_mode_camcard" android:paddingStart="@dimen/business_card_supporter_text_padding" android:paddingEnd="@dimen/business_card_supporter_text_padding" style="@style/BusinessCardText" />
+    </LinearLayout>
+</RelativeLayout>

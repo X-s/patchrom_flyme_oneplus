@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="20" android:drawable="@drawable/front_00000" />
+    <item android:duration="20" android:drawable="@drawable/front_00001" />
+    <item android:duration="20" android:drawable="@drawable/front_00002" />
+    <item android:duration="20" android:drawable="@drawable/front_00003" />
+    <item android:duration="20" android:drawable="@drawable/front_00004" />
+    <item android:duration="20" android:drawable="@drawable/front_00005" />
+    <item android:duration="20" android:drawable="@drawable/front_00006" />
+    <item android:duration="20" android:drawable="@drawable/front_00007" />
+    <item android:duration="20" android:drawable="@drawable/front_00008" />
+    <item android:duration="20" android:drawable="@drawable/front_00009" />
+    <item android:duration="20" android:drawable="@drawable/front_00010" />
+    <item android:duration="20" android:drawable="@drawable/front_00011" />
+    <item android:duration="20" android:drawable="@drawable/front_00012" />
+    <item android:duration="20" android:drawable="@drawable/front_00013" />
+    <item android:duration="20" android:drawable="@drawable/front_00014" />
+    <item android:duration="20" android:drawable="@drawable/front_00015" />
+    <item android:duration="20" android:drawable="@drawable/front_00016" />
+    <item android:duration="20" android:drawable="@drawable/front_00017" />
+    <item android:duration="20" android:drawable="@drawable/front_00018" />
+    <item android:duration="20" android:drawable="@drawable/front_00019" />
+</animation-list>

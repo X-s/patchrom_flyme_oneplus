@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector android:height="@dimen/capture_bar_icon_width" android:width="@dimen/capture_bar_icon_width" android:viewportWidth="144.0" android:viewportHeight="144.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:pathData="M 0 0 H 144 V 144 H 0 V 0 Z" android:strokeWidth="1.0" android:fillType="evenOdd" />
+    <group android:translateX="41.0" android:translateY="41.0">
+        <path android:pathData="M 0 0 L 63 0 L 63 63 L 0 63 Z" android:strokeWidth="1.0" android:fillType="evenOdd" />
+        <path android:fillColor="@color/icon_highlighted" android:pathData="M7.875,5.25 L7.875,36.75 L15.75,36.75 L15.75,60.375 L34.125,28.875 L23.625,28.875 L34.125,5.25 L7.875,5.25 Z M49.875,5.25 L44.625,5.25 L36.225,28.875 L41.2125,28.875 L43.05,23.625 L51.45,23.625 L53.2875,28.875 L58.275,28.875 L49.875,5.25 Z M44.23125,20.08125 L47.25,10.5 L50.26875,20.08125 L44.23125,20.08125 L44.23125,20.08125 Z" android:strokeWidth="1.0" />
+    </group>
+</vector>

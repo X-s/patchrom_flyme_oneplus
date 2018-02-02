@@ -1,0 +1,62 @@
+.class Lcom/oneplus/camera/CameraThread$32;
+.super Ljava/lang/Object;
+.source "CameraThread.java"
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/oneplus/camera/CameraThread;->resumeVideoCapture(Lcom/oneplus/camera/CaptureHandle;)Z
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+
+# instance fields
+.field final synthetic this$0:Lcom/oneplus/camera/CameraThread;
+
+.field final synthetic val$handle:Lcom/oneplus/camera/CaptureHandle;
+
+
+# direct methods
+.method constructor <init>(Lcom/oneplus/camera/CameraThread;Lcom/oneplus/camera/CaptureHandle;)V
+    .locals 0
+    .param p1, "this$0"    # Lcom/oneplus/camera/CameraThread;
+    .param p2, "val$handle"    # Lcom/oneplus/camera/CaptureHandle;
+
+    .prologue
+    .line 3349
+    iput-object p1, p0, Lcom/oneplus/camera/CameraThread$32;->this$0:Lcom/oneplus/camera/CameraThread;
+
+    iput-object p2, p0, Lcom/oneplus/camera/CameraThread$32;->val$handle:Lcom/oneplus/camera/CaptureHandle;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public run()V
+    .locals 3
+
+    .prologue
+    .line 3355
+    iget-object v1, p0, Lcom/oneplus/camera/CameraThread$32;->this$0:Lcom/oneplus/camera/CameraThread;
+
+    iget-object v0, p0, Lcom/oneplus/camera/CameraThread$32;->val$handle:Lcom/oneplus/camera/CaptureHandle;
+
+    check-cast v0, Lcom/oneplus/camera/CameraThread$VideoCaptureHandle;
+
+    const/4 v2, 0x0
+
+    invoke-static {v1, v0, v2}, Lcom/oneplus/camera/CameraThread;->-wrap4(Lcom/oneplus/camera/CameraThread;Lcom/oneplus/camera/CameraThread$VideoCaptureHandle;I)Z
+
+    .line 3353
+    return-void
+.end method

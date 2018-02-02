@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="3.0dip" />
+    <gradient android:startColor="@color/on_screen_hint_text_background_port" android:endColor="@color/on_screen_hint_text_background_port" android:angle="180.0" android:centerColor="@color/on_screen_hint_text_background_port" />
+    <padding android:left="10.0dip" android:top="5.0dip" android:right="10.0dip" android:bottom="5.0dip" />
+</shape>

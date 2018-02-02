@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector android:height="@dimen/common_control_icon_size_button" android:width="@dimen/common_control_icon_size_button" android:viewportWidth="63.0" android:viewportHeight="63.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:translateX="-41.0" android:translateY="-41.0">
+        <group android:translateX="41.0" android:translateY="41.0">
+            <group android:translateX="7.875" android:translateY="10.5">
+                <path android:fillColor="#ffffffff" android:pathData="M29.53125 12.46875c0 5.446875 -4.396875 9.84375 -9.84375 9.84375 -5.446875 0 -9.84375 -4.396875 -9.84375 -9.84375 0 -5.446875 4.396875 -9.84375 9.84375 -9.84375 5.446875 0 9.84375 4.396875 9.84375 9.84375l0 0zM19.6875 28.546875c6.5625 0 19.6875 3.609375 19.6875 10.171875l0 0.586622C39.375 40.793574 38.175085 42 36.668597 42L2.7064032 42C1.211698 42 0 40.796815 0 39.305372L0 38.71875C0 32.15625 13.125 28.546875 19.6875 28.546875ZM40.113281 4.5117187L44.625 6.5625 40.113281 8.6132813 38.0625 13.125 36.011719 8.6132813 31.5 6.5625 36.011719 4.5117187 38.0625 0 40.113281 4.5117187ZM43.3125 23.625L42.07875 20.92125 39.375 19.6875 42.07875 18.45375 43.3125 15.75 44.54625 18.45375 47.25 19.6875 44.54625 20.92125 43.3125 23.625Z" />
+            </group>
+        </group>
+    </group>
+</vector>

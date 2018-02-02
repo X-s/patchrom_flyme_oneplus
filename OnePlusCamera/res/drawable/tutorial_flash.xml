@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector android:height="@dimen/common_control_icon_size_button" android:width="@dimen/common_control_icon_size_button" android:viewportWidth="63.0" android:viewportHeight="63.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:translateX="-42.0" android:translateY="-747.0">
+        <group android:translateY="705.0">
+            <group android:translateX="42.0" android:translateY="42.0">
+                <group android:translateX="18.375" android:translateY="5.25">
+                    <path android:fillColor="#ffffffff" android:pathData="M0 0l0 28.875 7.875 0 0 23.625L26.25 21 15.75 21 26.25 0Z" />
+                </group>
+            </group>
+        </group>
+    </group>
+</vector>

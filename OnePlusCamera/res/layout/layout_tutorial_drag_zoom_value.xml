@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/tutorial_touch_receiver" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/tutorial_zoom_drag_text_bottom_margin" android:text="@string/tutorial_drag_icon_to_adjust_zoom" android:layout_alignParentBottom="true" android:layout_marginStart="@dimen/common_control_margin_left2" android:layout_marginEnd="@dimen/common_control_margin_right2" style="@style/TutorialText" />
+    <ImageView android:id="@id/tutorial_drag_zoom_value" android:background="@drawable/tutorial_focus_icon" android:layout_width="@dimen/tutorial_circle_drag_zoom_width_height" android:layout_height="@dimen/tutorial_circle_drag_zoom_width_height" android:layout_marginBottom="@dimen/tutorial_zoom_value_bottom_margin" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/tutorial_drag_zoom_animate_fade_out_image" android:background="@drawable/tutorial_animation_circle" android:layout_width="@dimen/tutorial_circle_drag_zoom_width_height" android:layout_height="@dimen/tutorial_circle_drag_zoom_width_height" android:layout_marginBottom="@dimen/tutorial_zoom_value_bottom_margin" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

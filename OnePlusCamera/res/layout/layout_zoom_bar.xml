@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/zoom_wheel_touch_receiver" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/zoom_bar_wheel_container_height" android:layout_marginBottom="@dimen/zoom_bar_wheel_container_margin_bottom" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/zoom_value_container" android:layout_width="@dimen/on_screen_hint_zoom_value_container_larger_size" android:layout_height="@dimen/on_screen_hint_zoom_value_container_larger_size" android:layout_marginBottom="@dimen/zoom_bar_value_container_margin_bottom" android:layout_above="@id/zoom_wheel_container" android:layout_centerHorizontal="true" android:translationY="@dimen/zoom_bar_wheel_container_height" android:layoutDirection="ltr">
+        <ImageView android:id="@id/zoom_value_container_animation_background" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <TextView android:id="@id/zoom_value_text" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/ZoomValueTextSmall" />
+            <TextView android:layout_gravity="bottom" android:id="@id/zoom_value_x_text" android:paddingTop="@dimen/zoom_value_x_text_padding_top_small" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/zoom_value_x_text" android:paddingStart="@dimen/zoom_value_x_text_padding_start_end_small" android:paddingEnd="@dimen/zoom_value_x_text_padding_start_end_small" style="@style/ZoomValueTextSmall" />
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/zoom_wheel_container" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/zoom_bar_wheel_container_height" android:layout_marginBottom="@dimen/zoom_bar_wheel_container_margin_bottom" android:layout_alignParentBottom="true">
+        <com.oneplus.widget.Wheel android:id="@id/zoom_wheel" android:layout_width="fill_parent" android:layout_height="@dimen/zoom_bar_wheel_height" android:layout_centerVertical="true" />
+        <View android:id="@id/zoom_wheel_currnet_tick" android:background="#ffffffff" android:layout_width="@dimen/zoom_bar_wheel_current_tick_width" android:layout_height="@dimen/zoom_bar_wheel_current_tick_height" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</RelativeLayout>

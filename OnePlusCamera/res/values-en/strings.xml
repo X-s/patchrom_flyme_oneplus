@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bokeh_hint_place_object_in_distance">Place the subject between 0.3 and 2 meters</string>
+</resources>

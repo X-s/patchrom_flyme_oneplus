@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/second_layer_bar" android:layout_width="fill_parent" android:layout_height="@dimen/second_layer_bar_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/item_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" />
+    <RelativeLayout android:id="@id/progress_bar_container" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="horizontal" android:id="@id/progress_bar_icon" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerVertical="true" android:layout_marginStart="@dimen/second_layer_bar_progress_bar_icon_margin_start" />
+        <RelativeLayout android:id="@id/progress_bar" android:layout_width="@dimen/second_layer_bar_progress_bar_width" android:layout_height="@dimen/face_beauty_bar_height" android:layout_centerVertical="true" android:layout_marginStart="@dimen/second_layer_bar_progress_bar_margin_start" android:layout_toEndOf="@id/progress_bar_icon" />
+    </RelativeLayout>
+</RelativeLayout>

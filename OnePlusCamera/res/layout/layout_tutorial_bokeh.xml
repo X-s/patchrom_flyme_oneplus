@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/tutorial_touch_receiver" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/tutorial_bokeh_image" android:layout_width="@dimen/tutorial_bokeh_image_width" android:layout_height="@dimen/tutorial_bokeh_image_height" android:layout_alignParentTop="true" />
+    <TextView android:gravity="start" android:id="@id/tutorial_bokeh_description" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/tutorial_bokeh_description_margin_top" android:text="@string/tutorial_bokeh" android:layout_alignParentTop="true" android:layout_marginStart="@dimen/tutorial_bokeh_description_margin_start_end" android:layout_marginEnd="@dimen/tutorial_bokeh_description_margin_start_end" style="@style/TutorialText" />
+    <TextView android:gravity="center" android:id="@id/tutorial_confirm_text" android:background="?android:selectableItemBackground" android:layout_width="@dimen/tutorial_confirm_text_width" android:layout_height="@dimen/tutorial_confirm_text_height" android:layout_marginBottom="@dimen/tutorial_confirm_text_margin_end_bottom" android:text="@string/camera_wizard_simple_modes_switch_ok" android:layout_alignBottom="@id/tutorial_bokeh_image" android:layout_marginEnd="@dimen/tutorial_confirm_text_margin_end_bottom" android:layout_alignParentEnd="true" style="@style/TutorialTextConfirm" />
+</RelativeLayout>

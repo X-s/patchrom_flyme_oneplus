@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="oneplus_contorl_text_style_display4">
+        <item name="android:textSize">@dimen/oneplus_contorl_text_size_display4</item>
+        <item name="android:fontFamily">@string/oneplus_contorl_font_family_display4</item>
+    </style>
+    <style name="oneplus_contorl_text_style_display3">
+        <item name="android:textSize">@dimen/oneplus_contorl_text_size_display3</item>
+        <item name="android:fontFamily">@string/oneplus_contorl_font_family_display3</item>
+    </style>
+    <style name="oneplus_contorl_text_style_display2">
+        <item name="android:textSize">@dimen/oneplus_contorl_text_size_display2</item>
+        <item name="android:fontFamily">@string/oneplus_contorl_font_family_display2</item>
+    </style>
+    <style name="oneplus_contorl_text_style_display1">
+        <item name="android:textSize">@dimen/oneplus_contorl_text_size_display1</item>
+        <item name="android:fontFamily">@string/oneplus_contorl_font_family_display1</item>
+    </style>
+    <style name="oneplus_contorl_text_style_headline">
+        <item name="android:textSize">@dimen/oneplus_contorl_text_size_headline</item>
+        <item name="android:fontFamily">@string/oneplus_contorl_font_family_headline</item>
+    </style>
+    <style name="oneplus_contorl_text_style_title">
+        <item name="android:textSize">@dimen/oneplus_contorl_text_size_title</item>
+        <item name="android:fontFamily">@string/oneplus_contorl_font_family_title</item>
+    </style>
+    <style name="oneplus_contorl_text_style_subheading">
+        <item name="android:textSize">@dimen/oneplus_contorl_text_size_subheading</item>
+        <item name="android:fontFamily">@string/oneplus_contorl_font_family_subheading</item>
+    </style>
+    <style name="oneplus_contorl_text_style_subtitle">
+        <item name="android:textSize">@dimen/oneplus_contorl_text_size_subtitle</item>
+        <item name="android:fontFamily">@string/oneplus_contorl_font_family_subtitle</item>
+    </style>
+    <style name="oneplus_contorl_text_style_body2">
+        <item name="android:textSize">@dimen/oneplus_contorl_text_size_body2</item>
+        <item name="android:fontFamily">@string/oneplus_contorl_font_family_body2</item>
+    </style>
+    <style name="oneplus_contorl_text_style_menu" parent="@style/oneplus_contorl_text_style_body2" />
+    <style name="oneplus_contorl_text_style_body1">
+        <item name="android:textSize">@dimen/oneplus_contorl_text_size_body1</item>
+        <item name="android:fontFamily">@string/oneplus_contorl_font_family_body1</item>
+    </style>
+    <style name="oneplus_contorl_text_style_button">
+        <item name="android:textSize">@dimen/oneplus_contorl_text_size_button</item>
+        <item name="android:fontFamily">@string/oneplus_contorl_font_family_button</item>
+    </style>
+    <style name="oneplus_contorl_text_style_descriptions">
+        <item name="android:textSize">@dimen/oneplus_contorl_text_size_descriptions</item>
+        <item name="android:fontFamily">@string/oneplus_contorl_font_family_descriptions</item>
+    </style>
+    <style name="AdvSettingsItemSummaryLight" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/adv_settings_item_summary_text_size</item>
+        <item name="android:textColor">@color/adv_settings_item_summary</item>
+    </style>
+    <style name="AdvSettingsItemDividerTitle" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/adv_settings_item_divider_title_text_size</item>
+        <item name="android:textColor">@color/adv_settings_item_divider_title</item>
+        <item name="android:fontFamily">Slate-medium</item>
+    </style>
+    <style name="AdvSettingsItemTitleLight" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/adv_settings_item_title_text_size</item>
+        <item name="android:textColor">@color/adv_settings_item_title</item>
+    </style>
+    <style name="advItemSubTitleLight" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/adv_settings_item_summary_text_size</item>
+        <item name="android:textColor">@color/adv_settings_item_subtitle</item>
+    </style>
+    <style name="ActionBar">
+        <item name="android:actionBarSize">@dimen/adv_settings_action_bar_height</item>
+    </style>
+    <style name="Version" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/about_text_size</item>
+        <item name="android:textColor">@color/version_text</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="Copyright" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/about_text_size</item>
+        <item name="android:textColor">@color/copyright_text</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="Agreement" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/about_text_size</item>
+        <item name="android:textColor">@color/agreement_text</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="AdvSettings" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/adv_settings_window_background</item>
+        <item name="android:actionBarStyle">@style/ActionBar</item>
+        <item name="android:colorControlActivated">@color/adv_settings_switch_active_light</item>
+        <item name="android:colorAccent">@color/switch_accent_color</item>
+        <item name="actionBarDividerBackground">@color/adv_settings_action_bar_divider</item>
+        <item name="dividerLineColor">@color/adv_settings_divider_line</item>
+        <item name="advItemSummary">@style/AdvSettingsItemSummaryLight</item>
+        <item name="advItemTitle">@style/AdvSettingsItemTitleLight</item>
+        <item name="advItemSubTitle">@style/advItemSubTitleLight</item>
+        <item name="versionText">@style/Version</item>
+        <item name="copyrightText">@style/Copyright</item>
+        <item name="agreementText">@style/Agreement</item>
+    </style>
+    <style name="AdvSettingsAndroid" parent="@style/AdvSettings">
+        <item name="actionBarDividerBackground">@color/adv_settings_action_bar_divider_android</item>
+        <item name="dividerLineColor">@color/adv_settings_divider_line_android</item>
+    </style>
+    <style name="AdvSettingsItemSummaryDark" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/adv_settings_item_summary_text_size</item>
+        <item name="android:textColor">@color/adv_settings_item_summary_dark</item>
+    </style>
+    <style name="AdvSettingsItemTitleDark" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/adv_settings_item_title_text_size</item>
+        <item name="android:textColor">@color/adv_settings_item_title_dark</item>
+    </style>
+    <style name="advItemSubTitleDark" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/adv_settings_item_summary_text_size</item>
+        <item name="android:textColor">@color/adv_settings_item_subtitle_dark</item>
+    </style>
+    <style name="ActionBarDark">
+        <item name="android:actionBarSize">@dimen/adv_settings_action_bar_height</item>
+    </style>
+    <style name="VersionDark" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/about_text_size</item>
+        <item name="android:textColor">@color/version_text_dark</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="CopyrightDark" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/about_text_size</item>
+        <item name="android:textColor">@color/copyright_text_dark</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="AgreementDark" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/about_text_size</item>
+        <item name="android:textColor">@color/agreement_text_dark</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="AdvSettingsDark" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/adv_settings_window_background_dark</item>
+        <item name="android:actionBarStyle">@style/ActionBarDark</item>
+        <item name="android:colorControlActivated">@color/adv_settings_switch_active_dark</item>
+        <item name="android:colorAccent">@color/switch_accent_color_dark</item>
+        <item name="actionBarDividerBackground">@color/adv_settings_action_bar_divider_dark</item>
+        <item name="dividerLineColor">@color/adv_settings_divider_line_dark</item>
+        <item name="advItemSummary">@style/AdvSettingsItemSummaryDark</item>
+        <item name="advItemTitle">@style/AdvSettingsItemTitleDark</item>
+        <item name="advItemSubTitle">@style/advItemSubTitleDark</item>
+        <item name="versionText">@style/VersionDark</item>
+        <item name="copyrightText">@style/CopyrightDark</item>
+        <item name="agreementText">@style/AgreementDark</item>
+    </style>
+    <style name="AgentWindow" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+    <style name="BaseText" />
+    <style name="BurstViewerThumbBestShotText" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/burst_viewer_thumb_best_shot_text_size</item>
+        <item name="android:textColor">@color/burst_viewer_thumb_best_shot_text</item>
+    </style>
+    <style name="CameraGalleryIndicatorTextAppearance" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/camera_gallery_indicator_text</item>
+        <item name="android:textColor">@color/camera_gallery_indicator_text</item>
+        <item name="android:shadowColor">@color/camera_gallery_indicator_text_shadow</item>
+        <item name="android:shadowRadius">10.0</item>
+    </style>
+    <style name="CameraGalleryEmptyPageText">
+        <item name="android:textSize">@dimen/camera_gallery_empty_page_text</item>
+        <item name="android:textColor">@color/camera_gallery_empty_page_text</item>
+    </style>
+    <style name="CameraPreviewGridHorizontalShadow">
+        <item name="android:shadowColor">@color/camera_preview_grid_stroke_shadow_color</item>
+        <item name="android:shadowDx">0.0</item>
+        <item name="android:shadowDy">@integer/camera_preview_grid_horizontal_shadow_dy</item>
+        <item name="android:shadowRadius">@integer/camera_preview_grid_shadow_radius</item>
+    </style>
+    <style name="CameraPreviewGridVerticalShadow">
+        <item name="android:shadowColor">@color/camera_preview_grid_stroke_shadow_color</item>
+        <item name="android:shadowDx">@integer/camera_preview_grid_vertical_shadow_dx</item>
+        <item name="android:shadowDy">0.0</item>
+        <item name="android:shadowRadius">@integer/camera_preview_grid_shadow_radius</item>
+    </style>
+    <style name="CaptureModesPanelItemText" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/capture_modes_panel_item_text</item>
+        <item name="android:textColor">@color/capture_modes_panel_title_text</item>
+    </style>
+    <style name="CountDownTimerText" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/count_down_timer_text_size</item>
+        <item name="android:textColor">@color/count_down_timer_text</item>
+        <item name="android:shadowColor">@color/count_down_timer_text_shadow</item>
+        <item name="android:shadowRadius">10.0</item>
+    </style>
+    <style name="DefaultIconShadow">
+        <item name="android:shadowColor">#3d000000</item>
+        <item name="android:shadowDx">0.0</item>
+        <item name="android:shadowDy">3.0</item>
+        <item name="android:shadowRadius">5.0</item>
+    </style>
+    <style name="DialogLight" parent="@android:style/Theme.Material.Light.Dialog" />
+    <style name="DialogLight.Alert" parent="@android:style/Theme.Material.Light.Dialog.Alert" />
+    <style name="DialogDark" parent="@android:style/Theme.Material.Dialog" />
+    <style name="DialogDark.Alert" parent="@android:style/Theme.Material.Dialog.Alert" />
+    <style name="FocusExposureIndicatorText">
+        <item name="android:textSize">@dimen/focus_indicator_text_size</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="CameraWindow" parent="@android:style/Theme.Material.Light.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:dialogTheme">@android:style/Theme.Material.Light.Dialog</item>
+        <item name="android:alertDialogTheme">@android:style/Theme.Material.Light.Dialog.Alert</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+    <style name="TransparentWindow" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@color/capture_bar_background</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+    <style name="OnScreenHintText" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/on_screen_hint_text_size</item>
+        <item name="android:textColor">@color/on_screen_hint_text_port</item>
+        <item name="android:shadowColor">#18000000</item>
+        <item name="android:shadowDy">3.0</item>
+        <item name="android:shadowRadius">3.0</item>
+    </style>
+    <style name="OnScreenHintText.Inactive" parent="@style/OnScreenHintText">
+        <item name="android:textColor">@color/on_screen_hint_text_inactive</item>
+    </style>
+    <style name="OptionsPanelItemText" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/options_panel_item_text_size</item>
+        <item name="android:textColor">@color/options_panel_item_text</item>
+    </style>
+    <style name="OptionsPanelItemText.Selected" parent="@style/OptionsPanelItemText">
+        <item name="android:textColor">@color/options_panel_item_text_selected</item>
+    </style>
+    <style name="ProcessingDialogText" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/processing_dialog_text_size</item>
+        <item name="android:textColor">@color/processing_dialog_text</item>
+    </style>
+    <style name="RecordingTimerText" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/recording_timer_text_size</item>
+        <item name="android:textColor">@color/recording_timer_text</item>
+        <item name="android:shadowColor">@color/recording_timer_text_shadow</item>
+        <item name="android:shadowRadius">5.0</item>
+    </style>
+    <style name="ManualActivePictureInfoText" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/manual_active_picture_info_text_size</item>
+        <item name="android:textColor">@color/manual_active_picture_info_text</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:shadowColor">#ff000000</item>
+        <item name="android:shadowDx">2.0</item>
+        <item name="android:shadowDy">2.0</item>
+    </style>
+    <style name="ManualModeKnobText">
+        <item name="android:textSize">@dimen/manual_knob_text_size</item>
+        <item name="android:textColor">@color/manual_icon_text</item>
+    </style>
+    <style name="ManualModeKnobTextSelected" parent="@style/ManualModeKnobText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/manual_icon_text_selected</item>
+    </style>
+    <style name="ManualModeControlTextSelected" parent="@style/ManualModeKnobText">
+        <item name="android:textColor">@color/manual_icon_control_text_selected</item>
+    </style>
+    <style name="ManualModeIndicatorText" parent="@style/ManualModeKnobText">
+        <item name="android:textSize">@dimen/manual_floating_indicator_text_size</item>
+        <item name="android:textColor">@color/manual_indicator_text</item>
+    </style>
+    <style name="ManualModeSaveSettingText">
+        <item name="android:textSize">@dimen/manual_save_setting_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/manual_save_setting_text</item>
+    </style>
+    <style name="TitleBarButtonText" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/title_bar_button_text_size</item>
+        <item name="android:textColor">@color/title_bar_button_text</item>
+    </style>
+    <style name="OnScreenHintToastShadowStyle">
+        <item name="android:shadowColor">#40000000</item>
+        <item name="android:shadowDx">0.0</item>
+        <item name="android:shadowDy">@integer/on_screen_hint_shadow_dy</item>
+        <item name="android:shadowRadius">@integer/on_screen_hint_shadow_raidus</item>
+    </style>
+    <style name="UndoBar">
+        <item name="android:background">@color/undo_bar_background</item>
+    </style>
+    <style name="UndoBarTextAppearance" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/undo_bar_text</item>
+        <item name="android:textColor">@color/undo_bar_text</item>
+    </style>
+    <style name="UndoBarLightTextAppearance" parent="@style/UndoBarTextAppearance">
+        <item name="android:textColor">@color/undo_bar_undo_text</item>
+    </style>
+    <style name="UndoButton" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/undo_bar_text</item>
+        <item name="android:textColor">@color/undo_bar_undo_text</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+    <style name="Widget" parent="@android:style/Widget.Material" />
+    <style name="Widget.ProgressBar" parent="@android:style/Widget.Material.ProgressBar" />
+    <style name="Widget.ProgressBar.Horizontal" parent="@android:style/Widget.Material.ProgressBar.Horizontal" />
+    <style name="Widget.CompoundButton.Switch" parent="@android:style/Widget.Material.CompoundButton.Switch">
+        <item name="android:radius">18.0dip</item>
+        <item name="android:track">@drawable/op_switch_track_material</item>
+        <item name="android:elevation">0.0dip</item>
+    </style>
+    <style name="ZoomValueTextLarge" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/zoom_value_text_size_large</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/zoom_value_text_large</item>
+    </style>
+    <style name="ZoomValueTextSmall" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/zoom_value_text_size_small</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/zoom_value_text_small</item>
+    </style>
+    <style name="BusinessCardText" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/business_card_supporter_text_size</item>
+        <item name="android:textColor">@color/business_card_supporter_text</item>
+    </style>
+    <style name="TutorialText" parent="@style/BaseText">
+        <item name="android:textSize">@dimen/common_control_text_style_subheading</item>
+        <item name="android:textColor">@color/common_control_text_color_primary_dark</item>
+        <item name="android:shadowColor">#3d000000</item>
+        <item name="android:shadowDx">0.0</item>
+        <item name="android:shadowDy">3.0</item>
+        <item name="android:shadowRadius">5.0</item>
+    </style>
+    <style name="TutorialTextConfirm" parent="@style/TutorialText">
+        <item name="android:textSize">@dimen/common_control_text_style_button</item>
+    </style>
+    <style name="TutorialIconShadow">
+        <item name="android:shadowColor">#3d000000</item>
+        <item name="android:shadowDx">0.0</item>
+        <item name="android:shadowDy">3.0</item>
+        <item name="android:shadowRadius">5.0</item>
+    </style>
+    <style name="WatermarkLogoShadow">
+        <item name="android:shadowColor">@color/watermark_shadow_text</item>
+        <item name="android:shadowDx">0.0</item>
+        <item name="android:shadowDy">3.0</item>
+        <item name="android:shadowRadius">5.0</item>
+    </style>
+    <style name="WatermarkProcessingDialogText" parent="@style/WatermarkLogoShadow">
+        <item name="android:textSize">@dimen/watermark_slogan_title_text_size</item>
+        <item name="android:textColor">@color/watermark_text</item>
+    </style>
+    <style name="WatermarkTextWithShadow" parent="@style/WatermarkLogoShadow">
+        <item name="android:textColor">@color/watermark_text</item>
+    </style>
+</resources>

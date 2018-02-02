@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/tutorial_touch_receiver" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/tutorial_swipe_linear_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/tutorial_swipe_text_margin_top">
+        <ImageView android:id="@id/tutorial_swipe_left_icon" android:layout_width="@dimen/tutorial_swipe_icon_width_height" android:layout_height="@dimen/tutorial_swipe_icon_width_height" android:scaleType="fitXY" />
+        <TextView android:gravity="start|center" android:layout_width="@dimen/tutorial_swipe_text_width_height" android:layout_height="wrap_content" android:text="@string/tutorial_swipe_for_video" style="@style/TutorialText" />
+        <TextView android:gravity="end|center" android:layout_width="@dimen/tutorial_swipe_text_width_height" android:layout_height="wrap_content" android:text="@string/tutorial_swipe_for_portrait" style="@style/TutorialText" />
+        <ImageView android:id="@id/tutorial_swipe_right_icon" android:layout_width="@dimen/tutorial_swipe_icon_width_height" android:layout_height="@dimen/tutorial_swipe_icon_width_height" android:scaleType="fitXY" />
+    </LinearLayout>
+</RelativeLayout>

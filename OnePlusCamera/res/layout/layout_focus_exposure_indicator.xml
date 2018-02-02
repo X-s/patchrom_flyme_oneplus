@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/focus_exposure_indicator_base" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/focus_exposure_indicator_container" android:visibility="gone" android:layout_width="@dimen/focus_indicator_container_width" android:layout_height="@dimen/focus_indicator_container_height" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <ImageView android:id="@id/focus_indicator" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/focus_center_indicator" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/focus_center" android:layout_centerInParent="true" />
+        <TextView android:id="@id/focus_indicator_text" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/focus_indicator_text_margin_top" android:text="@string/focus_indicator_point" android:layout_below="@id/focus_indicator" android:layout_centerHorizontal="true" style="@style/FocusExposureIndicatorText" />
+        <TextView android:id="@id/focus_indicator_ae_af_lock_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/focus_indicator_ae_af_lock_text_margin_top" android:text="@string/focus_exposure_locked" android:layout_below="@id/focus_indicator" android:layout_centerHorizontal="true" style="@style/OnScreenHintText" />
+        <RelativeLayout android:id="@id/exposure_bar_container" android:layout_width="@dimen/focus_indicator_exposure_bar_container_width" android:layout_height="@dimen/focus_indicator_exposure_bar_container_height" android:layout_centerVertical="true" android:layout_marginStart="@dimen/focus_indicator_exposure_bar_container_margin_left" android:layout_toEndOf="@id/focus_indicator">
+            <include android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerInParent="true" layout="@layout/layout_focus_exposure_seekbar_background" />
+            <com.oneplus.widget.VerticalSeekBar android:id="@id/exposure_bar" android:paddingTop="@dimen/focus_indicator_exposure_bar_padding_top_bottom" android:paddingBottom="@dimen/focus_indicator_exposure_bar_padding_top_bottom" android:layout_width="fill_parent" android:layout_height="fill_parent" android:progressDrawable="@null" android:thumb="@drawable/exposure_bar_thumb" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

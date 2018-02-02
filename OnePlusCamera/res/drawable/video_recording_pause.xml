@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="33" android:drawable="@drawable/ic_pause_00060" />
+    <item android:duration="33" android:drawable="@drawable/ic_pause_00061" />
+    <item android:duration="33" android:drawable="@drawable/ic_pause_00062" />
+    <item android:duration="33" android:drawable="@drawable/ic_pause_00063" />
+    <item android:duration="33" android:drawable="@drawable/ic_pause_00064" />
+    <item android:duration="33" android:drawable="@drawable/ic_pause_00065" />
+    <item android:duration="33" android:drawable="@drawable/ic_pause_00066" />
+    <item android:duration="33" android:drawable="@drawable/ic_pause_00067" />
+    <item android:duration="33" android:drawable="@drawable/ic_pause_00068" />
+</animation-list>

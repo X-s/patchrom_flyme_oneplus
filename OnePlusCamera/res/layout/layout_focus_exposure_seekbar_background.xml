@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/exposure_bar_background_container" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/exposure_bar_background_dot_0" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/exposure_bar_dot" android:layout_weight="1.0" />
+    <ImageView android:id="@id/exposure_bar_background_dot_1" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/exposure_bar_dot" android:layout_weight="1.0" />
+    <ImageView android:id="@id/exposure_bar_background_dot_2" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/exposure_bar_dot" android:layout_weight="1.0" />
+    <ImageView android:id="@id/exposure_bar_background_dot_3" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/exposure_bar_dot" android:layout_weight="1.0" />
+    <ImageView android:id="@id/exposure_bar_background_dot_4" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/exposure_bar_dot" android:layout_weight="1.0" />
+    <ImageView android:id="@id/exposure_bar_background_dot_5" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/exposure_bar_dot" android:layout_weight="1.0" />
+    <ImageView android:id="@id/exposure_bar_background_dot_6" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/exposure_bar_dot" android:layout_weight="1.0" />
+</LinearLayout>

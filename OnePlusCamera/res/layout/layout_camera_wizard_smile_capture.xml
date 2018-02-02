@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.oneplus.camera.widget.RotateRelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/camera_wizard_text_size" android:textColor="@color/camera_wizard_text" android:gravity="center" android:id="@id/camera_wizard_smile_capture_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/camera_wizard_smile_capture_description" android:layout_centerInParent="true" />
+    <TextView android:textSize="@dimen/camera_wizard_text_size" android:textColor="@color/camera_wizard_text" android:gravity="center" android:id="@id/camera_wizard_smile_capture_ok" android:background="@drawable/camera_wizard_simple_modes_switch_ok_bg" android:layout_width="@dimen/camera_wizard_simple_switch_ok_width" android:layout_height="@dimen/camera_wizard_simple_switch_ok_height" android:text="@string/camera_wizard_simple_modes_switch_ok" />
+</com.oneplus.camera.widget.RotateRelativeLayout>

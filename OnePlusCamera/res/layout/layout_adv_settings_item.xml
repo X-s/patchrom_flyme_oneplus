@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/menu_item_container" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/adv_settings_item_height" android:layout_marginStart="@dimen/common_control_margin_left2" android:layout_marginEnd="@dimen/common_control_margin_right2">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:ellipsize="end" android:id="@id/menu_item_title" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?advItemTitle" />
+            <TextView android:ellipsize="end" android:id="@id/menu_item_subtitle" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?advItemSubTitle" />
+        </LinearLayout>
+        <TextView android:ellipsize="end" android:id="@id/menu_item_summary" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.0" style="?advItemSummary" />
+        <Switch android:id="@id/menu_item_switch" android:background="@null" android:focusable="false" android:visibility="visible" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.0" android:switchMinWidth="@dimen/adv_settings_switch_min_width" style="@style/Widget.CompoundButton.Switch" />
+        <RadioButton android:id="@id/menu_item_radio_button" android:background="@null" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.0" />
+    </LinearLayout>
+    <View android:id="@id/menu_item_bottom_line" android:background="?dividerLineColor" android:layout_width="fill_parent" android:layout_height="@dimen/adv_settings_item_bottom_line_height" android:layout_alignParentBottom="true" />
+</RelativeLayout>

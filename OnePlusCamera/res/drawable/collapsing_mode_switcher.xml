@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="8" android:drawable="@drawable/collapsing_00" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_01" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_02" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_03" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_04" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_05" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_06" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_07" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_08" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_09" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_10" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_11" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_12" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_13" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_14" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_15" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_16" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_17" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_18" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_19" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_20" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_21" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_22" />
+    <item android:duration="8" android:drawable="@drawable/collapsing_23" />
+</animation-list>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_video_00000" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_video_00001" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_video_00002" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_video_00003" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_video_00004" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_video_00005" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_video_00006" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_video_00007" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_video_00008" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_video_00009" />
+    <item android:duration="33" android:drawable="@drawable/mode_indicator_video_00010" />
+</animation-list>

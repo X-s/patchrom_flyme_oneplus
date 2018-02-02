@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/tutorial_touch_receiver" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:gravity="center" android:id="@id/tutorial_panorama_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/tutorial_panorama_text_bottom_margin" android:text="@string/panorama_message_how_to_start" android:layout_alignParentBottom="true" android:layout_marginStart="@dimen/common_control_margin_left2" android:layout_marginEnd="@dimen/common_control_margin_right2" style="@style/TutorialText" />
+    <ImageView android:id="@id/tutorial_image" android:background="@drawable/tutorial_focus_icon" android:layout_width="@dimen/tutorial_panorama_focus_icon_width_height" android:layout_height="@dimen/tutorial_panorama_focus_icon_width_height" android:layout_marginBottom="@dimen/tutorial_panorama_focus_icon_bottom_margin" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>
