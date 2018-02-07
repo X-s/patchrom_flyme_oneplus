@@ -1354,7 +1354,7 @@
 
     move-object/from16 v16, v0
 
-    invoke-virtual/range {v15 .. v16}, Landroid/support/v7/preference/PreferenceScreen;->addPreference(Landroid/support/v7/preference/Preference;)Z
+    #invoke-virtual/range {v15 .. v16}, Landroid/support/v7/preference/PreferenceScreen;->addPreference(Landroid/support/v7/preference/Preference;)Z
 
     goto :goto_a
 
@@ -1473,6 +1473,8 @@
 
     if-eqz v0, :cond_0
 
+    goto :cond_0
+
     .line 155
     const-string/jumbo v0, "camera_double_tap_power_gesture"
 
@@ -1492,6 +1494,14 @@
 
     .line 130
     :goto_0
+    const-string/jumbo v0, "buttons_enable_on_screen_navkeys"
+
+    invoke-virtual {p0, v0}, Lcom/oneplus/settings/OPButtonsSettings;->removePreference(Ljava/lang/String;)V
+
+    const-string/jumbo v0, "buttons_force_home"
+
+    invoke-virtual {p0, v0}, Lcom/oneplus/settings/OPButtonsSettings;->removePreference(Ljava/lang/String;)V
+
     return-void
 
     .line 158
