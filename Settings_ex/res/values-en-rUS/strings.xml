@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="oneplus_screen_zoom_summary_minimum">Minimum</string>
+    <string name="oneplus_screen_zoom_summary_small">Small</string>
+    <string name="oneplus_screen_zoom_summary_default">Default</string>
+    <string name="oneplus_screen_zoom_summary_large">Large</string>
+    <string name="oneplus_screen_zoom_summary_very_large">Larger</string>
+    <string name="wifi_auth_password_wrong">Password may be incorrect</string>
+</resources>

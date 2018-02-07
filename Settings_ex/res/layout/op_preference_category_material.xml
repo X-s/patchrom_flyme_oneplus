@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:textAppearance="@android:style/TextAppearance.Material.Body2" android:textColor="?onePlusPrimaryColor" android:gravity="start|center" android:id="@android:id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/oneplus_contorl_list_item_height_one_line1" android:textDirection="locale" android:layoutDirection="locale" android:paddingStart="@dimen/oneplus_contorl_layout_margin_left2" android:paddingEnd="@dimen/oneplus_contorl_layout_margin_right2" style="@style/oneplus_contorl_text_style_subtitle"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

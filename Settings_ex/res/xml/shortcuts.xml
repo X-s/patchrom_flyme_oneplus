@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut android:icon="@drawable/ic_shortcut_wireless">
+        <intent android:action="android.settings.WIFI_SETTINGS" />
+    </shortcut>
+    <shortcut android:icon="@drawable/ic_shortcut_data_usage">
+        <intent android:targetPackage="com.android.settings_ex" android:action="android.intent.action.MAIN" android:targetClass="com.android.settings_ex.Settings$OPDataUsageSummaryActivity" />
+    </shortcut>
+    <shortcut android:icon="@drawable/ic_shortcut_battery">
+        <intent android:action="android.intent.action.POWER_USAGE_SUMMARY" />
+    </shortcut>
+</shortcuts>

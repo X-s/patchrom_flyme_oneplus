@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.setupwizardlib.GlifLayout android:icon="@drawable/ic_opfinger_logo_bg" android:id="@id/setup_wizard_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/SuwContentFrame">
+        <com.android.setupwizardlib.view.RichTextView android:id="@id/description_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/security_settings_fingerprint_enroll_introduction_message" style="@style/SuwDescription.Glif" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/fingerprint_cancel_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/security_settings_fingerprint_enroll_introduction_cancel" style="@style/SetupWizardButton.Negative" />
+            <Space android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <Button android:id="@id/fingerprint_next_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/suw_next_button_label" style="@style/SetupWizardButton.Positive" />
+        </LinearLayout>
+    </LinearLayout>
+</com.android.setupwizardlib.GlifLayout>

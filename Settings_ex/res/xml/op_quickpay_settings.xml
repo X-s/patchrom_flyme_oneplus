@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <com.oneplus.settings.ui.OPPreferenceHeaderMargin android:key="preference_divider_line" />
+    <SwitchPreference android:title="@string/oneplus_quickpay_lock_swtch_title" android:key="key_switch_lockscreen" android:summary="@string/oneplus_quickpay_lock_swtch_summary" />
+    <SwitchPreference android:title="@string/oneplus_quickpay_unlock_swtch_title" android:key="key_switch_unlockscreen" android:summary="@string/oneplus_quickpay_unlock_swtch_summary" />
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line1" />
+    <PreferenceCategory android:title="@string/oneplus_quickpay_select_default_way" android:key="key_quickpay_select_default_way_category" />
+    <PreferenceCategory android:title="@string/oneplus_quickpay_select_default_way" android:key="key_quickpay_uninstall_app_category">
+        <Preference android:enabled="false" android:title="@string/oneplus_app_wechat" android:key="key_quickpay_uninstall_app_wechat" />
+        <Preference android:enabled="false" android:title="@string/oneplus_app_alipay" android:key="key_quickpay_uninstall_app_alipay" />
+        <Preference android:enabled="false" android:title="@string/oneplus_quickpay_way_paytm" android:key="key_quickpay_uninstall_app_paytm" />
+        <com.android.settings_ex.fuelgauge.WallOfTextPreference android:selectable="false" android:key="key_quickpay_uninstall_app_remark" android:summary="@string/oneplus_app_uninstall_remark" settings:allowDividerAbove="true" />
+    </PreferenceCategory>
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line2" />
+    <PreferenceCategory android:title="@string/oneplus_quickpay_instructions">
+        <com.oneplus.settings.quickpay.QuickPayAnimPreference android:key="key_quickpay_instructions" />
+    </PreferenceCategory>
+</PreferenceScreen>

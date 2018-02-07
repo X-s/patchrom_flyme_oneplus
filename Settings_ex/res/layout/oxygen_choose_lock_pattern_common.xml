@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.setupwizardlib.GlifLayout android:icon="@drawable/ic_lock" android:layout_width="fill_parent" android:layout_height="fill_parent" settings:suwHeaderText="@string/wifi_setup_wizard_title"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:settings="http://schemas.android.com/apk/res-auto">
+    <com.android.internal.widget.LinearLayoutWithDefaultTouchRecepient android:orientation="vertical" android:id="@id/topLayout" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/SuwContentFrame">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textColor="@color/oneplus_contorl_text_color_label_light" android:gravity="center" android:id="@id/headerText" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="72.0dip" android:minLines="2" style="@style/oneplus_contorl_text_style_body2" />
+            <com.android.internal.widget.LockPatternView android:id="@id/lockPattern" android:layout_width="318.0dip" android:layout_height="276.0dip" android:layout_marginLeft="21.0dip" android:layout_marginTop="50.0dip" android:layout_marginRight="21.0dip" />
+            <Space android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/oneplus_contorl_layout_margin_top1" android:layout_marginBottom="@dimen/oneplus_contorl_layout_margin_bottom1">
+                <Button android:id="@id/footerLeftButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lockpattern_tutorial_cancel_label" style="@style/SetupWizardButton.Negative" />
+                <Space android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                <Button android:id="@id/footerRightButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lockpattern_tutorial_continue_label" style="@style/SetupWizardButton.Positive" />
+            </LinearLayout>
+        </LinearLayout>
+        <TextView android:textSize="14.0sp" android:layout_gravity="center_horizontal" android:id="@id/footerText" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="50.0dip" />
+    </com.android.internal.widget.LinearLayoutWithDefaultTouchRecepient>
+</com.android.setupwizardlib.GlifLayout>

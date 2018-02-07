@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/oneplus_sound_and_vibrate" android:key="sound_settings" settings:keywords="@string/oneplus_sound_and_vibrate"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <com.oneplus.settings.ui.OPPreferenceHeaderMargin android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/op_volume" android:key="sound">
+        <com.android.settings_ex.notification.VolumeSeekBarPreference android:icon="@android:drawable/ic_audio_ring_notif" android:title="@string/ring_volume_option_title" android:key="ring_volume" />
+        <com.android.settings_ex.notification.VolumeSeekBarPreference android:icon="@android:drawable/ic_audio_media" android:title="@string/media_volume_option_title" android:key="media_volume" />
+        <com.android.settings_ex.notification.VolumeSeekBarPreference android:icon="@android:drawable/ic_audio_alarm" android:title="@string/alarm_volume_option_title" android:key="alarm_volume" />
+        <com.android.settings_ex.notification.VolumeSeekBarPreference android:icon="@android:drawable/ic_audio_ring_notif" android:title="@string/notification_volume_option_title" android:key="notification_volume" />
+    </PreferenceCategory>
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/op_ringtone" android:key="ringtone_category">
+        <com.android.settings_ex.DefaultRingtonePreference android:persistent="false" android:title="@string/ringtone_title" android:key="ringtone" android:dialogTitle="@string/ringtone_title" android:ringtoneType="ringtone" />
+        <com.oneplus.settings.ringtone.OPSmsRingtonePreference android:persistent="false" android:title="@string/op_sms_ringtone" android:key="message_ringtone" android:dialogTitle="@string/op_sms_ringtone" android:ringtoneType="notification" />
+        <com.android.settings_ex.DefaultRingtonePreference android:persistent="false" android:title="@string/notification_ringtone_title" android:key="notification_ringtone" android:dialogTitle="@string/notification_ringtone_title" android:ringtoneType="notification" />
+    </PreferenceCategory>
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/oneplus_vibrate" android:key="vibrate">
+        <SwitchPreference android:persistent="false" android:title="@string/vibrate_when_ringing_title" android:key="vibrate_when_ringing_for_vibrate" />
+        <Preference android:title="@string/oneplus_incoming_call_vibrate_mode" android:key="incoming_call_vibrate_mode" android:summary="@string/oneplus_rhythm_1" />
+        <SwitchPreference android:persistent="false" android:title="@string/vibrate_on_touch_title" android:key="vibrate_on_touch_for_vibrate" />
+        <Preference android:title="@string/oneplus_vibrate_intensity" android:key="vibrate_intensity" android:fragment="com.oneplus.settings.OPVibrateIntensity" />
+    </PreferenceCategory>
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line_vibrate" />
+    <PreferenceCategory android:title="@string/op_system" android:key="system">
+        <SwitchPreference android:persistent="false" android:title="@string/vibrate_when_ringing_title" android:key="vibrate_when_ringing" />
+        <SwitchPreference android:persistent="false" android:title="@string/touch_sounds_title" android:key="touch_sounds" />
+        <SwitchPreference android:persistent="false" android:title="@string/dial_pad_tones_title" android:key="dial_pad_tones" />
+        <SwitchPreference android:persistent="false" android:title="@string/screen_locking_sounds_title" android:key="screen_locking_sounds" />
+        <SwitchPreference android:persistent="false" android:title="@string/vibrate_on_touch_title" android:key="vibrate_on_touch" />
+        <SwitchPreference android:persistent="false" android:title="@string/op_screenshot" android:key="screenshot_sounds" />
+        <Preference android:title="@string/op_audio_settings" android:key="sound_direct" />
+    </PreferenceCategory>
+</PreferenceScreen>

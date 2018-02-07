@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/display_settings" settings:keywords="@string/keywords_display"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <com.oneplus.settings.ui.OPPreferenceHeaderMargin android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/display_label" android:key="screen_brightness">
+        <SwitchPreference android:persistent="false" android:title="@string/auto_brightness_title" android:key="auto_brightness" android:summary="@string/auto_brightness_summary" />
+        <SwitchPreference android:persistent="false" android:title="@string/network_operator_display_title" android:key="network_operator_display" android:summary="@string/network_name_displayed_summary" settings:keywords="@string/keywords_network_name_display" />
+        <com.oneplus.settings.ui.OPBrightnessSeekbarPreferenceCategory android:key="manual_brightness_displays" />
+        <com.android.settings_exlib.RestrictedPreference android:title="@string/wallpaper_settings_title" android:key="wallpaper" android:fragment="com.android.settings_ex.WallpaperTypeSettings" settings:useAdminDisabledSummary="true" settings:keywords="@string/keywords_display_wallpaper" />
+        <com.android.settings_ex.TimeoutListPreference android:entries="@array/screen_timeout_entries" android:title="@string/screen_timeout" android:key="screen_timeout" android:summary="@string/screen_timeout_summary" android:entryValues="@array/screen_timeout_values" />
+        <SwitchPreference android:persistent="false" android:title="@string/oneplus_night_mode_enabled_op" android:key="night_mode_enabled_op" />
+        <com.oneplus.settings.ui.OPNightModeLevelPreference android:key="night_mode_level_op" />
+        <PreferenceScreen android:title="@string/oneplus_night_mode_enabled_op" android:key="oneplus_night_mode" android:fragment="com.oneplus.settings.better.OPNightMode" />
+        <PreferenceScreen android:title="@string/oneplus_reading_mode" android:key="oneplus_reading_mode" android:fragment="com.oneplus.settings.better.OPReadingMode" />
+        <PreferenceScreen android:title="@string/oneplus_screen_color_mode_title" android:key="screen_color_mode" android:fragment="com.oneplus.settings.better.OPScreenColorMode" />
+        <PreferenceScreen android:title="@string/oneplus_screen_better_title" android:key="msm_screen_better_settings" settings:keywords="@string/keywords_display_brightness_level" />
+    </PreferenceCategory>
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/header_category_system" android:key="display_system">
+        <PreferenceScreen android:title="@string/oneplus_wallpaper_settings_title_lockscreen" android:key="lockguard_wallpaper_settings" settings:keywords="@string/keywords_display_wallpaper" />
+        <SwitchPreference android:title="@string/oneplus_dark_mode" android:key="dark_mode" android:summary="@string/oneplus_dark_mode_summary" />
+        <ListPreference android:persistent="true" android:entries="@array/oneplus_theme_mode_entries" android:title="@string/op_theme_mode_title" android:key="op_theme_mode" android:summary="@string/op_light_mode_title" android:entryValues="@array/oneplus_theme_mode_values" />
+        <com.oneplus.settings.ui.ColorPickerPreference android:title="@string/theme_accent_color_title" android:key="theme_accent_color" />
+        <PreferenceScreen android:title="@string/title_font_size" android:key="font_size" android:fragment="com.android.settings_ex.accessibility.ToggleFontSizePreferenceFragment" settings:keywords="@string/keywords_display_font_size" />
+        <com.android.settings_ex.display.ScreenZoomPreference android:title="@string/screen_zoom_title" android:key="screen_zoom" settings:keywords="@string/screen_zoom_keywords" />
+        <SwitchPreference android:persistent="false" android:title="@string/accelerometer_title" android:key="toggle_lock_screen_rotation_preference" />
+        <SwitchPreference android:persistent="false" android:title="@string/oneplus_doze_title" android:key="doze" android:summary="@string/oneplus_doze_summary" />
+        <SwitchPreference android:persistent="false" android:title="@string/oneplus_proximity_title" android:key="oneplus_proximity_wake" android:summary="@string/oneplus_proximity_summary" />
+        <SwitchPreference android:persistent="false" android:title="@string/oneplus_hand_up_proximity_title" android:key="oneplus_hand_up_proximity" android:summary="@string/oneplus_hand_up_proximity_summary" />
+        <SwitchPreference android:title="@string/oneplus_back_topic_theme_title" android:key="back_topic_theme" android:summary="@string/oneplus_back_topic_theme_summary" />
+        <PreferenceScreen android:title="@string/screensaver_settings_title" android:key="screensaver" android:fragment="com.android.settings_ex.DreamSettings" />
+        <SwitchPreference android:title="@string/notify_light_enable_title" android:key="notify_light_enable" />
+        <PreferenceScreen android:title="@string/led_settings_title" android:key="led_settings" android:summary="@string/led_settings_summary" android:fragment="com.oneplus.settings.notification.OPLEDSettings" />
+        <PreferenceScreen android:title="@string/oneplus_wifi_display_settings_title" android:key="wifi_display" android:fragment="com.android.settings_ex.wfd.WifiDisplaySettings" settings:keywords="@string/keywords_display_cast_screen" />
+        <SwitchPreference android:persistent="false" android:title="@string/camera_gesture_title" android:key="camera_gesture" android:summary="@string/camera_gesture_desc" />
+        <SwitchPreference android:persistent="false" android:title="@string/lift_to_wake_title" android:key="lift_to_wake" />
+        <SwitchPreference android:persistent="false" android:title="@string/tap_to_wake" android:key="tap_to_wake" android:summary="@string/tap_to_wake_summary" />
+        <DropDownPreference android:title="@string/accelerometer_title" android:key="auto_rotate" android:summary="%s" />
+        <DropDownPreference android:title="@string/display_vr_pref_title" android:key="vr_display_pref" android:summary="%s" />
+    </PreferenceCategory>
+</PreferenceScreen>

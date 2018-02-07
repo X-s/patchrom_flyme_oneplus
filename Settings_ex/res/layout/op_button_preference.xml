@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/oneplus_settings_list_item_height_two_line1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/left_ico" android:layout_width="@dimen/oneplus_settings_icon_size_display1" android:layout_height="@dimen/oneplus_settings_icon_size_display1" android:src="@mipmap/ic_launcher_settings" android:layout_centerVertical="true" android:layout_marginStart="@dimen/oneplus_settings_layout_margin_left2" android:layout_alignParentStart="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/layout_center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" android:layout_centerVertical="true" android:layout_marginStart="@dimen/oneplus_settings_layout_margin_left5" android:layout_toEndOf="@id/left_ico" android:layout_alignStart="@id/left_ico">
+        <TextView android:textColor="@color/oneplus_contorl_text_color_primary_default" android:id="@id/lefttitle" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/oneplus_contorl_text_style_subheading" />
+        <TextView android:textColor="@color/oneplus_contorl_text_color_secondary_default" android:id="@id/leftsummary" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/oneplus_contorl_text_style_body1" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/layout_right" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginEnd="@dimen/oneplus_settings_layout_margin_right2" android:layout_alignParentEnd="true">
+        <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/right_button" android:layout_width="wrap_content" android:layout_height="fill_parent" style="@style/oneplus_contorl_text_style_subheading" />
+    </LinearLayout>
+</RelativeLayout>

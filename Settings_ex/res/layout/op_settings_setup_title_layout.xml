@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/setup_title_view_bg" android:background="@drawable/oneplus_fingerprint_enrolling_title_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ImageButton android:background="?android:selectableItemBackgroundBorderless" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="34.0dip" android:src="@drawable/ic_menu_delete" android:tint="@color/grey_100" android:layout_alignParentTop="true" android:layout_marginStart="16.0dip" android:layout_alignParentStart="true" />
+    <TextView android:textSize="24.0sp" android:textColor="@color/grey_100" android:background="#ff0076bc" android:paddingLeft="40.0dip" android:paddingTop="8.0dip" android:paddingBottom="24.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/security_settings_fingerprint_enroll_start_title" android:layout_below="@id/setup_title_view_bg" />
+</RelativeLayout>

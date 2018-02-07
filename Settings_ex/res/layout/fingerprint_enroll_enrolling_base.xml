@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.setupwizardlib.GlifLayout android:icon="@drawable/ic_opfinger_logo_bg" android:id="@id/setup_wizard_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/oneplus_contorl_layout_margin_left2" android:paddingEnd="@dimen/oneplus_contorl_layout_margin_right2">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/suw_description_glif_margin_top">
+            <TextView android:textColor="@color/oneplus_contorl_text_color_label_light" android:id="@id/start_message" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/oneplus_contorl_list_item_height_one_line1" android:text="@string/oneplus_opfinger_input_setting_tips_sub" style="@style/oneplus_contorl_text_style_body2" />
+            <TextView android:textColor="@color/oneplus_contorl_text_color_label_light" android:id="@id/repeat_message" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/security_settings_fingerprint_enroll_repeat_message" style="@style/oneplus_contorl_text_style_body2" />
+        </FrameLayout>
+        <include android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/fingerprint_enrolling_content_margin_top" layout="@layout/fingerprint_enroll_enrolling_content" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/error_text" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:accessibilityLiveRegion="polite" style="@style/TextAppearance.FingerprintErrorText" />
+        <Button android:id="@id/skip_button" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/oneplus_contorl_layout_margin_top3" android:layout_marginBottom="@dimen/oneplus_contorl_layout_margin_bottom1" android:text="@string/skip_label" style="@style/SetupWizardButton.Negative" />
+    </LinearLayout>
+</com.android.setupwizardlib.GlifLayout>

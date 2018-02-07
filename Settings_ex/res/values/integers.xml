@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="default_data_warning_level_mb">2048</integer>
+    <integer name="suwTransitionDuration">300</integer>
+    <integer name="config_activityDefaultDur">220</integer>
+    <integer name="config_activityShortDur">150</integer>
+    <integer name="config_toastDefaultGravity">0x00000051</integer>
+    <integer name="preferences_left_pane_weight">4</integer>
+    <integer name="preferences_right_pane_weight">6</integer>
+    <integer name="preference_fragment_scrollbarStyle">0x02000000</integer>
+    <integer name="preference_screen_header_scrollbarStyle">0x02000000</integer>
+    <integer name="button_pressed_animation_duration">100</integer>
+    <integer name="button_pressed_animation_delay">100</integer>
+    <integer name="bottom_sheet_slide_duration">150</integer>
+    <integer name="app_bar_elevation_anim_duration">150</integer>
+    <integer name="abc_config_activityShortDur">150</integer>
+    <integer name="abc_config_activityDefaultDur">220</integer>
+    <integer name="status_bar_notification_info_maxnum">999</integer>
+    <integer name="cancel_button_image_alpha">127</integer>
+    <integer name="maximum_user_dictionary_word_length">48</integer>
+    <integer name="dashboard_num_columns">1</integer>
+    <integer name="sim_name_length">32</integer>
+    <integer name="bluetooth_name_length">32</integer>
+    <integer name="time_picker_mode">1</integer>
+    <integer name="config_buttonBrightnessSettingDefault">1</integer>
+    <integer name="preference_scrollbar_style">33554432</integer>
+</resources>

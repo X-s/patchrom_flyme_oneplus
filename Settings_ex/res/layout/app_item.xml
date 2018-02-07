@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/oneplus_contorl_list_item_height_two_line1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="start|center" android:orientation="horizontal" android:id="@android:id/icon_frame" android:paddingTop="4.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/oneplus_contorl_layout_margin_left5" android:paddingEnd="12.0dip">
+        <ImageView android:id="@android:id/icon" android:layout_width="@dimen/oneplus_contorl_icon_size_display1" android:layout_height="@dimen/oneplus_contorl_icon_size_display1" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="4.0">
+        <TextView android:textAppearance="?android:textAppearanceListItem" android:textColor="@color/oneplus_contorl_text_color_primary" android:ellipsize="end" android:id="@android:id/title" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:textAlignment="viewStart" style="@style/oneplus_contorl_text_style_subheading" />
+        <FrameLayout android:layout_gravity="fill_horizontal|center|top" android:id="@android:id/widget_frame" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <TextView android:textAppearance="?android:textAppearanceListItemSecondary" android:textColor="@color/oneplus_contorl_text_color_secondary" android:ellipsize="end" android:gravity="end" android:id="@android:id/summary" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLines="10" android:layout_weight="1.0" style="@style/oneplus_contorl_text_style_body1" />
+</LinearLayout>

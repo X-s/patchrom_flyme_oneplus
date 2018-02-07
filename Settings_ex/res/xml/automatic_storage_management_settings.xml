@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/automatic_storage_manager_settings"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:settings="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/deletion_helper_automatic_title" android:key="automatic">
+        <SwitchPreference android:title="@string/automatic_storage_manager_preference_title" android:key="storage_manager_active" android:summary="@string/automatic_storage_manager_text" />
+        <com.android.settings_ex.fuelgauge.WallOfTextPreference android:persistent="false" android:selectable="false" android:key="freed_bytes" settings:allowDividerAbove="false" settings:allowDividerBelow="true" />
+        <DropDownPreference android:entries="@array/automatic_storage_management_days" android:title="@string/automatic_storage_manager_days_title" android:key="days" android:summary="%s" android:entryValues="@array/automatic_storage_management_days_values" settings:allowDividerAbove="true" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/deletion_helper_manual_title" android:key="manual">
+        <Preference android:title="@string/deletion_helper_preference_title" android:key="deletion_helper" />
+    </PreferenceCategory>
+</PreferenceScreen>

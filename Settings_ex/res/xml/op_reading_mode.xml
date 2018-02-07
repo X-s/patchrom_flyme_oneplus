@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <com.android.settings_ex.fuelgauge.WallOfTextPreference android:selectable="false" android:key="reading_mode_summary" android:summary="@string/oneplus_reading_mode_summary" settings:allowDividerAbove="true" />
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/oneplus_auto_turn_on_apps" android:key="auto_turn_on_apps" />
+    <PreferenceScreen android:icon="@drawable/ic_menu_add" android:title="@string/oneplus_reading_mode_add_apps" android:key="reading_mode_add_apps" />
+    <com.android.settings_ex.fuelgauge.WallOfTextPreference android:selectable="false" android:key="oneplus_reading_mode_auto" android:summary="@string/oneplus_reading_mode_auto_summary" settings:allowDividerAbove="true" />
+    <PreferenceCategory android:title="@string/oneplus_reading_mode_activate_manual" android:key="activate_manual">
+        <SwitchPreference android:title="@string/oneplus_reading_mode_turn_on" android:key="reading_mode_turn_on" />
+    </PreferenceCategory>
+</PreferenceScreen>

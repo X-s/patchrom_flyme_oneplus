@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.setupwizardlib.SetupWizardRecyclerLayout android:entries="@xml/fingerprint_enroll_introduction_items" android:id="@id/setup_wizard_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" settings:suwHeaderText="@string/oneplus_use_fingerprint_to_unlock" settings:suwBackgroundTile="@drawable/op_ic_settings_setup_title_bg" settings:suwIllustrationHorizontalTile="@drawable/setup_illustration_horizontal_tile" settings:suwIllustrationImage="@drawable/oneplus_fingerprint_enrolling_title_bg" xmlns:settings="http://schemas.android.com/apk/res-auto"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

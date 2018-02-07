@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/about_settings"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.oneplus.settings.ui.OPPreferenceHeaderMargin android:key="preference_divider_line" />
+    <PreferenceScreen android:title="@string/oneplus_mobile_device_name_title" android:key="mobile_device_name" android:fragment="com.oneplus.settings.OPDeviceName" />
+    <PreferenceScreen android:title="@string/system_update_settings_list_item_title" android:key="system_update_settings" android:summary="@string/system_update_settings_list_item_summary">
+        <intent android:action="android.settings.SYSTEM_UPDATE_SETTINGS" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/additional_system_update_settings_list_item_title" android:key="additional_system_update_settings">
+        <intent android:targetPackage="@string/additional_system_update" android:action="android.intent.action.MAIN" android:targetClass="@string/additional_system_update_menu" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/device_status" android:key="status_info" android:summary="@string/device_status_summary">
+        <intent android:targetPackage="com.android.settings_ex" android:action="android.intent.action.MAIN" android:targetClass="com.android.settings_ex.Settings$StatusActivity" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/manual" android:key="manual">
+        <intent android:action="android.settings.SHOW_MANUAL" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/legal_information" android:key="container" android:fragment="com.android.settings_ex.LegalSettings" />
+    <PreferenceScreen android:title="@string/oneplus_authentication_information" android:key="oneplus_authentication_information" />
+    <PreferenceScreen android:title="@string/oneplus_product_info" android:key="oneplus_product_info">
+        <intent android:action="com.oneplus.action.PRODUCT_INFO" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/regulatory_labels" android:key="regulatory_info">
+        <intent android:action="android.settings.SHOW_REGULATORY_INFO" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/device_feedback" android:key="device_feedback" />
+    <Preference android:enabled="false" android:title="@string/model_info" android:key="device_model" android:summary="@string/device_info_default" android:shouldDisableView="false" />
+    <Preference android:key="oneplus_oos_version" style="?android:preferenceInformationStyle" />
+    <PreferenceScreen android:title="@string/memory_capacity_title" android:key="memory_capacity" />
+    <PreferenceScreen android:title="@string/ddr_memory_capacity_title" android:key="ddr_memory_capacity" />
+    <Preference android:enabled="false" android:title="@string/firmware_version" android:key="firmware_version" android:summary="@string/device_info_default" android:shouldDisableView="false" />
+    <Preference android:enabled="false" android:title="@string/security_patch" android:key="security_patch" android:summary="@string/device_info_default" android:shouldDisableView="false" />
+    <Preference android:enabled="false" android:title="@string/fcc_equipment_id" android:key="fcc_equipment_id" android:summary="@string/device_info_default" android:shouldDisableView="false" />
+    <Preference android:title="@string/mbn_version" android:key="mbn_version" android:summary="@string/device_info_default" style="?android:preferenceInformationStyle" />
+    <Preference android:enabled="false" android:title="@string/baseband_version" android:key="baseband_version" android:summary="@string/device_info_default" android:shouldDisableView="false" />
+    <Preference android:enabled="false" android:title="@string/kernel_version" android:key="kernel_version" android:summary="@string/device_info_default" android:shouldDisableView="false" />
+    <Preference android:enabled="false" android:title="@string/build_number" android:key="build_number" android:summary="@string/device_info_default" android:shouldDisableView="false" />
+    <Preference android:enabled="false" android:title="@string/selinux_status" android:key="selinux_status" android:summary="@string/selinux_status_enforcing" android:shouldDisableView="false" />
+</PreferenceScreen>

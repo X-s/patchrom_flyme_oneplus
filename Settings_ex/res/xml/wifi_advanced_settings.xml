@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/wifi_advanced_titlebar"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceScreen android:title="@string/wifi_set_priority_settings_title" android:key="wifi_priority_settings" android:summary="@string/wifi_set_priority_settings_summary">
+        <intent android:targetPackage="com.qti.extwifi" android:action="com.qti.wifi.priority" />
+    </PreferenceScreen>
+    <ListPreference android:persistent="false" android:entries="@array/cellcular2wifi_entries" android:title="@string/cellular_to_wlan_title" android:key="cellular_to_wlan" android:entryValues="@array/cellcular2wifi_values" />
+    <CheckBoxPreference android:persistent="false" android:title="@string/wifi_auto_connect_type_title" android:key="auto_connect_type" android:summary="@string/wifi_auto_connect_type_summary" android:disableDependentsState="true" />
+    <CheckBoxPreference android:persistent="false" android:title="@string/cellular_to_wlan_hint_title" android:key="cellular_to_wlan_hint" android:summary="@string/cellular_to_wlan_hint_summary" android:dependency="auto_connect_type" />
+    <CheckBoxPreference android:persistent="false" android:title="@string/wlan_to_cellular_hint_title" android:key="wlan_to_cellular_hint" />
+    <CheckBoxPreference android:persistent="false" android:title="@string/notify_connect" android:key="notify_ap_connected" android:summary="@string/notify_connect_summary" />
+    <ListPreference android:persistent="false" android:entries="@array/wifi_frequency_band_entries" android:title="@string/wifi_setting_frequency_band_title" android:key="frequency_band" android:summary="@string/wifi_setting_frequency_band_summary" android:entryValues="@array/wifi_frequency_band_values" />
+    <Preference android:persistent="false" android:title="@string/wifi_install_credentials" android:key="install_credentials" />
+    <SwitchPreference android:persistent="false" android:title="@string/wifi_enable_hs2_title" android:key="enable_hs2" />
+    <Preference android:persistent="false" android:title="@string/wifi_menu_p2p" android:key="wifi_direct" />
+    <Preference android:persistent="false" android:title="@string/wifi_menu_wps_pbc" android:key="wps_push_button" />
+    <Preference android:persistent="false" android:title="@string/wifi_menu_wps_pin" android:key="wps_pin_entry" />
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/wifi_wapi_cert_mgmt_titlebar" />
+    <Preference android:persistent="false" android:title="@string/wifi_wapi_cert_install" android:key="wapi_cert_install" />
+    <Preference android:persistent="false" android:title="@string/wifi_wapi_cert_uninstall" android:key="wapi_cert_uninstall" />
+</PreferenceScreen>

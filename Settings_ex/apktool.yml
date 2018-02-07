@@ -1,0 +1,27 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: Settings_ex.apk
+compressionType: false
+doNotCompress:
+- arsc
+- res/drawable-nodpi-v4/gesture_ambient_lift
+- res/drawable-nodpi-v4/gesture_ambient_tap
+- res/drawable-nodpi-v4/gesture_double_tap
+- res/drawable-nodpi-v4/gesture_fingerprint_swipe
+- res/drawable-nodpi-v4/gesture_twist
+isFrameworkApk: false
+packageInfo:
+  forcedPackageId: '127'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '21'
+  targetSdkVersion: '24'
+sharedLibrary: false
+unknownFiles: {}
+usesFramework:
+  ids:
+  - 1
+  tag: null
+version: 2.3.0
+versionInfo:
+  versionCode: '25'
+  versionName: 0.0.1.171103143556.077f0d8

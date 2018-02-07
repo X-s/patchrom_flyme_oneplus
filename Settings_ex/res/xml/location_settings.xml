@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/location_settings_title" android:key="location_settings" settings:keywords="@string/keywords_location"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <com.oneplus.settings.ui.OPPreferenceHeaderMargin android:key="preference_divider_line_margin" />
+    <Preference android:title="@string/location_mode_title" android:key="location_mode" android:summary="@string/location_mode_location_off_title" settings:keywords="@string/keywords_location_mode" />
+    <com.oneplus.settings.ui.OPRestrictedSwitchPreference android:enabled="false" android:title="@string/managed_profile_location_switch_title" android:selectable="true" android:key="managed_profile_location_switch" settings:useAdminDisabledSummary="true" />
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <com.android.settings_ex.DividedCategory android:title="@string/location_category_location_services" android:key="location_services" />
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line1" />
+    <com.android.settings_ex.DividedCategory android:title="@string/location_category_recent_location_requests" android:key="recent_location_requests" />
+</PreferenceScreen>
