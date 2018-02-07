@@ -353,6 +353,38 @@
     invoke-virtual {v1, p0}, Landroid/support/v7/preference/ListPreference;->setOnPreferenceChangeListener(Landroid/support/v7/preference/Preference$OnPreferenceChangeListener;)V
 
     .line 114
+    invoke-virtual {p0}, Lcom/oneplus/settings/others/OPOthersSettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v1
+
+    iget-object v4, p0, Lcom/oneplus/settings/others/OPOthersSettings;->mAntiMisOperationTouch:Landroid/support/v14/preference/SwitchPreference;
+
+    invoke-virtual {v1, v4}, Landroid/support/v7/preference/PreferenceScreen;->removePreference(Landroid/support/v7/preference/Preference;)Z
+
+    invoke-virtual {p0}, Lcom/oneplus/settings/others/OPOthersSettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v1
+
+    iget-object v4, p0, Lcom/oneplus/settings/others/OPOthersSettings;->mUserPlanPreference:Landroid/support/v14/preference/SwitchPreference;
+
+    invoke-virtual {v1, v4}, Landroid/support/v7/preference/PreferenceScreen;->removePreference(Landroid/support/v7/preference/Preference;)Z
+
+    invoke-virtual {p0}, Lcom/oneplus/settings/others/OPOthersSettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v1
+
+    iget-object v4, p0, Lcom/oneplus/settings/others/OPOthersSettings;->mOPMultitaskingCleanWayPreference:Landroid/support/v7/preference/Preference;
+
+    invoke-virtual {v1, v4}, Landroid/support/v7/preference/PreferenceScreen;->removePreference(Landroid/support/v7/preference/Preference;)Z
+
+    invoke-virtual {p0}, Lcom/oneplus/settings/others/OPOthersSettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v1
+
+    iget-object v4, p0, Lcom/oneplus/settings/others/OPOthersSettings;->mOTGReadEnableSwitchPreference:Landroid/support/v14/preference/SwitchPreference;
+
+    invoke-virtual {v1, v4}, Landroid/support/v7/preference/PreferenceScreen;->removePreference(Landroid/support/v7/preference/Preference;)Z
+
     return-void
 
     .end local v0    # "isOTGEnable":Ljava/lang/String;
