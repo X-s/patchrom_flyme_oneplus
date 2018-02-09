@@ -155,6 +155,8 @@
 
 .field private mSoundDirectPreference:Landroid/support/v7/preference/Preference;
 
+.field private mVibrateIntensity:Landroid/support/v7/preference/Preference;
+
 .field private mSuppressor:Landroid/content/ComponentName;
 
 .field private mTelephonyManager:Landroid/telephony/TelephonyManager;
@@ -2717,6 +2719,36 @@
     invoke-virtual {v9, v10}, Lcom/android/settings_ex/notification/SoundSettings$SettingsObserver;->register(Z)V
 
     .line 269
+    const-string/jumbo v9, "vibrate_intensity"
+
+    invoke-virtual {p0, v9}, Lcom/android/settings_ex/notification/SoundSettings;->findPreference(Ljava/lang/CharSequence;)Landroid/support/v7/preference/Preference;
+
+    move-result-object v9
+
+    iput-object v9, p0, Lcom/android/settings_ex/notification/SoundSettings;->mVibrateIntensity:Landroid/support/v7/preference/Preference;
+
+    invoke-virtual {p0}, Lcom/android/settings_ex/DisplaySettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v9
+
+    invoke-virtual {v9}, Landroid/support/v7/preference/PreferenceScreen;->removeAll()V
+
+    invoke-virtual {p0}, Lcom/android/settings_ex/notification/SoundSettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v9
+
+    iget-object v10, p0, Lcom/android/settings_ex/notification/SoundSettings;->mSoundDirectPreference:Landroid/support/v7/preference/Preference;
+
+    invoke-virtual {v9, v10}, Landroid/support/v7/preference/PreferenceScreen;->addPreference(Landroid/support/v7/preference/Preference;)Z
+
+    invoke-virtual {p0}, Lcom/android/settings_ex/notification/SoundSettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v9
+
+    iget-object v10, p0, Lcom/android/settings_ex/notification/SoundSettings;->mVibrateIntensity:Landroid/support/v7/preference/Preference;
+
+    invoke-virtual {v9, v10}, Landroid/support/v7/preference/PreferenceScreen;->addPreference(Landroid/support/v7/preference/Preference;)Z
+
     return-void
 
     .line 400
