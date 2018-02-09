@@ -247,6 +247,8 @@
 
 .field private mNightModePreference:Landroid/support/v7/preference/ListPreference;
 
+.field private mOnePlusNightModePreference:Landroid/support/v7/preference/Preference;
+
 .field private mNotifyLightEnable:I
 
 .field private mNotifyLightPreference:Landroid/support/v14/preference/SwitchPreference;
@@ -4797,6 +4799,60 @@
 
     .line 277
     :cond_c
+    const-string/jumbo v11, "oneplus_night_mode"
+
+    invoke-virtual {p0, v11}, Lcom/android/settings_ex/DisplaySettings;->findPreference(Ljava/lang/CharSequence;)Landroid/support/v7/preference/Preference;
+
+    move-result-object v11
+
+    iput-object v11, p0, Lcom/android/settings_ex/DisplaySettings;->mOnePlusNightModePreference:Landroid/support/v7/preference/Preference;
+
+    invoke-virtual {p0}, Lcom/android/settings_ex/DisplaySettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v11
+
+    invoke-virtual {v11}, Landroid/support/v7/preference/PreferenceScreen;->removeAll()V
+
+    invoke-virtual {p0}, Lcom/android/settings_ex/DisplaySettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v11
+
+    iget-object v12, p0, Lcom/android/settings_ex/DisplaySettings;->mOnePlusNightModePreference:Landroid/support/v7/preference/Preference;
+
+    invoke-virtual {v11, v12}, Landroid/support/v7/preference/PreferenceScreen;->addPreference(Landroid/support/v7/preference/Preference;)Z
+
+    invoke-virtual {p0}, Lcom/android/settings_ex/DisplaySettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v11
+
+    iget-object v12, p0, Lcom/android/settings_ex/DisplaySettings;->mReadingModePreference:Landroid/support/v7/preference/Preference;
+
+    invoke-virtual {v11, v12}, Landroid/support/v7/preference/PreferenceScreen;->addPreference(Landroid/support/v7/preference/Preference;)Z
+
+    invoke-virtual {p0}, Lcom/android/settings_ex/DisplaySettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v11
+
+    iget-object v12, p0, Lcom/android/settings_ex/DisplaySettings;->mScreenColorModePreference:Landroid/support/v7/preference/Preference;
+
+    invoke-virtual {v11, v12}, Landroid/support/v7/preference/PreferenceScreen;->addPreference(Landroid/support/v7/preference/Preference;)Z
+
+    invoke-virtual {p0}, Lcom/android/settings_ex/DisplaySettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v11
+
+    iget-object v12, p0, Lcom/android/settings_ex/DisplaySettings;->mNotifyLightPreference:Landroid/support/v14/preference/SwitchPreference;
+
+    invoke-virtual {v11, v12}, Landroid/support/v7/preference/PreferenceScreen;->addPreference(Landroid/support/v7/preference/Preference;)Z
+
+    invoke-virtual {p0}, Lcom/android/settings_ex/DisplaySettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v11
+
+    iget-object v12, p0, Lcom/android/settings_ex/DisplaySettings;->mLedSettingsPreference:Landroid/support/v7/preference/Preference;
+
+    invoke-virtual {v11, v12}, Landroid/support/v7/preference/PreferenceScreen;->addPreference(Landroid/support/v7/preference/Preference;)Z
+
     return-void
 
     .line 306
