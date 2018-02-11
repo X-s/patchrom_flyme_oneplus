@@ -1099,12 +1099,16 @@
         <item>@string/hardware_keys_action_recents</item>
         <item>@string/hardware_keys_action_assist</item>
         <item>@string/hardware_keys_action_turn_off_screen</item>
+<!--
         <item>@string/hardware_keys_action_camera</item>
+-->
         <item>@string/hardware_keys_action_voice_search</item>
         <item>@string/hardware_keys_action_last_app</item>
+<!--
         <item>@string/hardware_keys_action_shelf</item>
         <item>@string/hardware_keys_action_notification_center</item>
         <item>@string/oneplus_hardware_keys_action_split_screen</item>
+-->
     </string-array>
     <string-array name="hardware_keys_action_values">
         <item>0</item>
@@ -1112,34 +1116,46 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+<!--
         <item>5</item>
+-->
         <item>6</item>
         <item>7</item>
+<!--
         <item>8</item>
         <item>9</item>
         <item>10</item>
+-->
     </string-array>
     <string-array name="hardware_keys_action_entries_nogms">
         <item>@string/hardware_keys_action_nothing</item>
         <item>@string/hardware_keys_action_menu</item>
         <item>@string/hardware_keys_action_recents</item>
         <item>@string/hardware_keys_action_turn_off_screen</item>
+<!--
         <item>@string/hardware_keys_action_camera</item>
+-->
         <item>@string/hardware_keys_action_last_app</item>
+<!--
         <item>@string/hardware_keys_action_shelf</item>
         <item>@string/hardware_keys_action_notification_center</item>
         <item>@string/oneplus_hardware_keys_action_split_screen</item>
+-->
     </string-array>
     <string-array name="hardware_keys_action_values_nogms">
         <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>4</item>
+<!--
         <item>5</item>
+-->
         <item>7</item>
+<!--
         <item>8</item>
         <item>9</item>
         <item>10</item>
+-->
     </string-array>
     <string-array name="navigation_bar_keys_action_entries">
         <item>@string/hardware_keys_action_nothing</item>
@@ -1317,12 +1333,16 @@
         <item>@string/hardware_keys_action_recents</item>
         <item>@string/hardware_keys_action_assist</item>
         <item>@string/hardware_keys_action_turn_off_screen</item>
+<!--
         <item>@string/hardware_keys_action_camera</item>
+-->
         <item>@string/hardware_keys_action_voice_search</item>
         <item>@string/hardware_keys_action_last_app</item>
+<!--
         <item>@string/hardware_keys_action_shelf</item>
         <item>@string/hardware_keys_action_notification_center</item>
         <item>@string/oneplus_hardware_keys_action_split_screen</item>
+-->
         <item>@string/oneplus_quickpay</item>
     </string-array>
     <string-array name="hardware_keys_action_values_quickpay">
@@ -1331,12 +1351,16 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+<!--
         <item>5</item>
+-->
         <item>6</item>
         <item>7</item>
+<!--
         <item>8</item>
         <item>9</item>
         <item>10</item>
+-->
         <item>11</item>
     </string-array>
     <string-array name="hardware_keys_action_entries_nogms_quickpay">
@@ -1344,11 +1368,15 @@
         <item>@string/hardware_keys_action_menu</item>
         <item>@string/hardware_keys_action_recents</item>
         <item>@string/hardware_keys_action_turn_off_screen</item>
+<!--
         <item>@string/hardware_keys_action_camera</item>
+-->
         <item>@string/hardware_keys_action_last_app</item>
+<!--
         <item>@string/hardware_keys_action_shelf</item>
         <item>@string/hardware_keys_action_notification_center</item>
         <item>@string/oneplus_hardware_keys_action_split_screen</item>
+-->
         <item>@string/oneplus_quickpay</item>
     </string-array>
     <string-array name="hardware_keys_action_values_nogms_quickpay">
@@ -1356,11 +1384,15 @@
         <item>1</item>
         <item>2</item>
         <item>4</item>
+<!--
         <item>5</item>
+-->
         <item>7</item>
+<!--
         <item>8</item>
         <item>9</item>
         <item>10</item>
+-->
         <item>11</item>
     </string-array>
     <string-array name="oneplus_quickpay_ways_name">
