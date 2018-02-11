@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="@color/bg_interface_light" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/oneplus_settings_title_text_size" android:textColor="@color/font_list_subtitle_light" android:gravity="center_horizontal" android:id="@id/authentication_information_china" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="155.0dip" android:text="@string/oneplus_authentication_information_china" />
+            <TextView android:textSize="@dimen/oneplus_settings_title_text_size" android:textColor="@color/font_list_subtitle_light" android:id="@id/authentication_information_cmiit_id" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="@string/oneplus_authentication_information_cmiit_id" />
+            <ImageView android:id="@id/authentication_information_image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:src="@drawable/op_authentication_information_image" />
+            <TextView android:textSize="@dimen/oneplus_settings_text_size" android:textColor="@color/font_list_text_light" android:id="@id/authentication_information_made_in_china" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="195.0dip" android:text="@string/oneplus_authentication_information_made_in_china" />
+            <TextView android:textSize="@dimen/oneplus_settings_text_size" android:textColor="@color/font_list_text_light" android:id="@id/authentication_information_company" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/oneplus_authentication_information_company" />
+            <TextView android:textSize="@dimen/oneplus_settings_text_size" android:textColor="@color/font_list_text_light" android:id="@id/authentication_information_model" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:text="@string/oneplus_authentication_information_model" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:id="@id/dashboard_tile_switch" android:background="@drawable/selectable_card" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/dashboard_tile_minimum_height" android:elevation="@dimen/dashboard_category_elevation"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@android:id/icon" android:layout_width="@dimen/dashboard_tile_image_size" android:layout_height="@dimen/dashboard_tile_image_size" android:scaleType="centerInside" android:layout_marginStart="@dimen/dashboard_tile_image_margin_start" android:layout_marginEnd="@dimen/dashboard_tile_image_margin_end" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="@style/TextAppearance.TileTitle" android:ellipsize="marquee" android:id="@android:id/title" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textAppearance="@style/TextAppearance.Small" android:textColor="?android:textColorSecondary" android:id="@android:id/summary" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <Switch android:id="@id/switchWidget" android:padding="8.0dip" android:focusable="false" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+</LinearLayout>

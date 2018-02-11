@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:textAppearance="?android:textAppearanceListItem" android:id="@id/add_language" android:layout_width="fill_parent" android:layout_height="?android:listPreferredItemHeight" android:text="@string/add_a_language" android:drawablePadding="24.0dip" android:drawableStart="@drawable/ic_add_24dp" android:textAlignment="textStart" android:paddingStart="?android:listPreferredItemPaddingStart" android:paddingEnd="?android:listPreferredItemPaddingEnd" style="@style/Base.Widget.AppCompat.Button.Borderless" />
+    <View android:background="@color/oneplus_settings_divider_color" android:layout_width="fill_parent" android:layout_height="@dimen/oneplus_contorl_divider_height_standard" />
+</LinearLayout>

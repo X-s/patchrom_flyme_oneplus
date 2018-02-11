@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:key="default_apps_title"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <PreferenceScreen android:title="@string/domain_urls_title" android:key="domain_urls" android:fragment="com.android.settings_ex.applications.ManageApplications">
+        <extra android:name="classname" android:value="com.android.settings_ex.Settings$DomainsURLsAppListActivity" />
+    </PreferenceScreen>
+    <Preference android:title="@string/assist_and_voice_input_title" android:key="assist_and_voice_input" android:fragment="com.android.settings_ex.applications.ManageAssist" />
+    <com.android.settings_ex.applications.DefaultHomePreference android:title="@string/home_app" android:key="default_home" android:summary="@string/no_default_home" settings:keywords="@string/keywords_home" />
+    <com.android.settings_ex.applications.DefaultBrowserPreference android:title="@string/default_browser_title" android:key="default_browser" android:summary="@string/default_browser_title_none" />
+    <com.android.settings_ex.applications.DefaultPhonePreference android:title="@string/default_phone_title" android:key="default_phone_app" settings:keywords="@string/keywords_default_phone_app" />
+    <com.android.settings_ex.applications.DefaultEmergencyPreference android:title="@string/default_emergency_app" android:key="default_emergency_app" settings:keywords="@string/keywords_emergency_app" />
+    <com.android.settings_ex.applications.DefaultSmsPreference android:title="@string/sms_application_title" android:key="default_sms_app" settings:keywords="@string/keywords_more_default_sms_app" />
+    <com.oneplus.settings.defaultapp.view.DefaultCameraPreference android:title="@string/camera_application_title" android:key="default_camera_app" />
+    <com.oneplus.settings.defaultapp.view.DefaultGalleryPreference android:title="@string/gallery_application_title" android:key="default_gallery_app" />
+    <com.oneplus.settings.defaultapp.view.DefaultMusicPreference android:title="@string/music_application_title" android:key="default_music_app" />
+    <com.oneplus.settings.defaultapp.view.DefaultMailPreference android:title="@string/mail_application_title" android:key="default_mail_app" />
+</PreferenceScreen>

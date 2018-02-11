@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.setupwizardlib.GlifLayout android:icon="@drawable/ic_opfinger_logo_bg" android:id="@id/setup_wizard_layout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/oneplus_contorl_layout_margin_left2" android:paddingEnd="@dimen/oneplus_contorl_layout_margin_right2">
+        <TextView android:textColor="@color/oneplus_contorl_text_color_label_default" android:id="@id/message" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/suw_description_glif_margin_top" android:text="@string/security_settings_fingerprint_enroll_finish_message" style="@style/oneplus_contorl_text_style_body2" />
+        <TextView android:textColor="@color/oneplus_contorl_text_color_label_default" android:id="@id/message_secondary" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/suw_description_glif_margin_top" android:text="@string/setup_fingerprint_enroll_finish_message_secondary" style="@style/oneplus_contorl_text_style_body2" />
+        <View android:layout_width="fill_parent" android:layout_height="24.0dip" android:layout_weight="1.0" />
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/fingerprint_in_app_indicator" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_opfinger_logo_bg" android:maxWidth="@dimen/fingerprint_in_app_indicator_max_size" android:maxHeight="@dimen/fingerprint_in_app_indicator_max_size" android:minWidth="80.0dip" android:minHeight="80.0dip" android:layout_weight="5.0" android:contentDescription="@android:string/fingerprint_icon_content_description" />
+        <View android:layout_width="fill_parent" android:layout_height="24.0dip" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/oneplus_contorl_layout_margin_bottom1">
+            <Button android:id="@id/add_another_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fingerprint_enroll_button_add" style="@style/SetupWizardButton.Negative" />
+            <Space android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <Button android:id="@id/next_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/security_settings_fingerprint_enroll_done" style="@style/SetupWizardButton.Positive" />
+        </LinearLayout>
+    </LinearLayout>
+</com.android.setupwizardlib.GlifLayout>

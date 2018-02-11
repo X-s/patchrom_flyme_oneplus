@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.internal.widget.AlertDialogLayout android:gravity="start|center|top" android:orientation="vertical" android:id="@android:id/parentPanel" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/op_alert_dialog_title_material" />
+    <FrameLayout android:id="@android:id/contentPanel" android:paddingTop="@dimen/oneplus_contorl_layout_margin_top3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip">
+        <ScrollView android:id="@android:id/scrollView" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Space android:id="@android:id/textSpacerNoTitle" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+                <TextView android:textColor="@color/oneplus_contorl_text_color_secondary_default" android:id="@android:id/message" android:paddingBottom="@dimen/oneplus_contorl_layout_margin_bottom3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/oneplus_contorl_layout_margin_left3" android:paddingEnd="@dimen/oneplus_contorl_layout_margin_right3" style="@style/oneplus_contorl_text_style_subheading" />
+                <Space android:id="@android:id/textSpacerNoButtons" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/oneplus_contorl_layout_margin_top3" />
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+    <FrameLayout android:id="@android:id/customPanel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip">
+        <FrameLayout android:id="@android:id/custom" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </FrameLayout>
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/op_alert_dialog_button_bar_material" />
+</com.android.internal.widget.AlertDialogLayout>

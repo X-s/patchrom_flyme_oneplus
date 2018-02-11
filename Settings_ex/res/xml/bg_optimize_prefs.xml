@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference android:title="@string/bg_optimize_advance_settings" android:key="bg_optimize_switch" android:summary="@string/bg_optimize_advance_settings_summery" />
+</PreferenceScreen>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/power_usage_summary_title" settings:keywords="@string/keywords_battery"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <com.oneplus.settings.ui.OPPreferenceHeaderMargin android:key="preference_divider_line" />
+    <com.android.settings_ex.fuelgauge.BatterySaverPreference android:title="@string/battery_saver" android:fragment="com.android.settings_ex.fuelgauge.BatterySaverSettings" />
+    <PreferenceScreen android:persistent="false" android:title="@string/high_power_apps" android:key="op_backgroyund_optimize" />
+    <com.android.settings_ex.fuelgauge.BatteryHistoryPreference android:key="battery_history" />
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/power_usage_list_summary" android:key="app_list" />
+</PreferenceScreen>

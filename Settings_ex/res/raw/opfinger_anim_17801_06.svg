@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="170px" height="273px" viewBox="0 0 170 273" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>06</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="06" transform="translate(-80.000000, -125.000000)" stroke="#000000" stroke-width="0.3">
+            <g id="opfinger_anim_10" transform="translate(90.000000, 144.000000)">
+                <path d="M100.4,125.3 C100.4,125.3 102.6,134.8 109.3,145.3" id="Shape"></path>
+                <path d="M36.1,57.6 C36.1,57.6 28,70.9 24.9,88.7" id="Shape"></path>
+                <path d="M58.4,0.2 C58.4,0.2 38.4,11.7 25.1,29.6" id="Shape"></path>
+                <path d="M25.1,29.7 C25.1,29.7 3.6,56.5 0,88" id="Shape"></path>
+            </g>
+            <g id="opfinger_anim_11" transform="translate(80.000000, 126.000000)">
+                <path d="M0.8,55.2 C0.8,55.2 15.5,23.6 50.6,0.1" id="Shape"></path>
+                <path d="M87.7,238.2 C87.7,238.2 121.7,268.1 169.3,271.4" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

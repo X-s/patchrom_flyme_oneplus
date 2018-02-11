@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <PreferenceCategory android:title="@string/oneplus_do_not_disturb_settings" android:key="do_not_disturb_settings">
+        <SwitchPreference android:title="@string/oneplus_block_notifications" android:key="block_notifications" android:summary="@string/oneplus_block_notifications_summary" />
+        <SwitchPreference android:title="@string/oneplus_lock_buttons" android:key="lock_buttons" android:summary="@string/oneplus_lock_buttons_summary" />
+    </PreferenceCategory>
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/oneplus_auto_turn_on_apps" android:key="auto_turn_on_apps" />
+    <PreferenceScreen android:icon="@drawable/ic_menu_add" android:title="@string/oneplus_gaming_mode_add_apps" android:key="gaming_mode_add_apps" />
+    <com.android.settings_ex.fuelgauge.WallOfTextPreference android:selectable="false" android:key="oneplus_gaming_mode_summary" android:summary="@string/oneplus_gaming_mode_summary" settings:allowDividerAbove="true" />
+</PreferenceScreen>

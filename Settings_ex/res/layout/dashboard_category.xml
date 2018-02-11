@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/category" android:layout_width="fill_parent" android:layout_height="wrap_content" android:importantForAccessibility="noHideDescendants" style="@style/Theme.Settings.MainDashbordBg"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/divider" android:background="@color/oneplus_settings_divider_color" android:layout_width="fill_parent" android:layout_height="@dimen/oneplus_settings_divider_height_standard" />
+    <View android:layout_width="fill_parent" android:layout_height="@dimen/oneplus_settings_layout_margin_top1" />
+    <TextView android:textAppearance="@style/TextAppearance.CategoryTitle" android:ellipsize="marquee" android:gravity="center_vertical" android:id="@android:id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/oneplus_settings_list_item_height_one_line1" android:singleLine="true" android:textAlignment="viewStart" android:paddingStart="@dimen/oneplus_settings_layout_margin_left2" style="@style/oneplus_contorl_text_style_subtitle" />
+</LinearLayout>

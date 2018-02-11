@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:background="?android:selectableItemBackground" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/oneplus_contorl_list_item_height_one_line1" android:paddingEnd="@dimen/oneplus_contorl_layout_margin_right2"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:id="@android:id/icon" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:layout_weight="1.0" android:layout_marginStart="15.0dip" android:layout_marginEnd="6.0dip">
+        <TextView android:textAppearance="@android:style/TextAppearance.Material.Subhead" android:textColor="@color/oneplus_contorl_text_color_primary" android:ellipsize="marquee" android:id="@android:id/title" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/oneplus_contorl_text_style_subheading" />
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:textColor="@color/oneplus_contorl_text_color_secondary" android:id="@android:id/summary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="4" android:layout_below="@android:id/title" android:layout_alignStart="@android:id/title" style="@style/oneplus_contorl_text_style_body1" />
+    </RelativeLayout>
+    <ImageView android:id="@id/secondary_icon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_color_picker_icon_notification" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@android:id/widget_frame" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+</LinearLayout>

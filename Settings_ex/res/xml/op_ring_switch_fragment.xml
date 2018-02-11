@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference android:title="@string/oneplus_setting_sim_ringtone_switch" android:key="setting_key" />
+    <com.oneplus.settings.ui.OPPreferenceDivider2 android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/oneplus_setting_ringtone" android:key="setting_title">
+        <Preference android:title="@string/oneplus_sim1_ringtone_switch" android:key="sim1_select" android:summary="@string/oneplus_no_ringtone" />
+        <Preference android:title="@string/oneplus_sim2_ringtone_switch" android:key="sim2_select" android:summary="@string/oneplus_no_ringtone" />
+        <com.oneplus.settings.ringtone.OPRadioButtonPreference android:title="@string/oneplus_local_ringtone" android:key="local_select" android:summary="@string/oneplus_no_choice" />
+        <com.oneplus.settings.ringtone.OPRadioButtonPreference android:title="@string/oneplus_no_ringtone" android:key="no_select" />
+    </PreferenceCategory>
+</PreferenceScreen>

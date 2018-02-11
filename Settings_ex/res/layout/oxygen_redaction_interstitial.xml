@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.setupwizardlib.GlifLayout android:icon="@drawable/ic_lock" android:id="@id/setup_wizard_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" settings:suwHeaderText="@string/lock_screen_notifications_interstitial_title"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:settings="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/SuwContentFrame">
+        <TextView android:id="@id/message" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/lock_screen_notifications_interstitial_message" style="@style/SuwDescription.Glif" />
+        <RadioGroup android:id="@id/radio_group" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/redaction_vertical_margins" android:checkedButton="@id/redact_sensitive">
+            <com.android.settings_ex.RestrictedRadioButton android:id="@id/show_all" android:layout_width="wrap_content" android:layout_height="@dimen/oneplus_settings_list_item_height_one_line1" android:text="@string/lock_screen_notifications_summary_show" android:paddingStart="@dimen/oneplus_settings_layout_margin_left2" style="@style/Oneplus.SuwRadioButton" />
+            <com.android.settings_ex.RestrictedRadioButton android:id="@id/redact_sensitive" android:layout_width="wrap_content" android:layout_height="@dimen/oneplus_settings_list_item_height_one_line1" android:text="@string/lock_screen_notifications_summary_hide" android:paddingStart="@dimen/oneplus_settings_layout_margin_left2" style="@style/Oneplus.SuwRadioButton" />
+            <RadioButton android:id="@id/hide_all" android:layout_width="wrap_content" android:layout_height="@dimen/oneplus_settings_list_item_height_one_line1" android:text="@string/lock_screen_notifications_summary_disable" android:paddingStart="@dimen/oneplus_settings_layout_margin_left2" style="@style/Oneplus.SuwRadioButton" />
+        </RadioGroup>
+        <Button android:layout_gravity="end" android:id="@id/redaction_done_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/app_notifications_dialog_done" style="@style/SetupWizardButton.Positive" />
+    </LinearLayout>
+</com.android.setupwizardlib.GlifLayout>

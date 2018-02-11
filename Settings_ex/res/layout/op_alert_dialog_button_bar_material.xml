@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:scrollbarAlwaysDrawVerticalTrack="true" android:id="@android:id/buttonPanel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true" style="?attr/buttonBarStyle"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.internal.widget.ButtonBarLayout android:gravity="bottom" android:orientation="horizontal" android:paddingTop="@dimen/oneplus_contorl_layout_margin_top1" android:paddingBottom="@dimen/oneplus_contorl_layout_margin_bottom1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layoutDirection="locale" android:paddingStart="@dimen/oneplus_contorl_layout_margin_left1" android:paddingEnd="@dimen/oneplus_contorl_layout_margin_right1">
+        <Button android:id="@android:id/button3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="64.0dip" android:minHeight="36.0dip" android:paddingStart="@dimen/oneplus_contorl_layout_margin_left2" android:paddingEnd="@dimen/oneplus_contorl_layout_margin_right1" style="?android:attr/buttonBarButtonStyle" />
+        <Space android:id="@android:id/spacer" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <Button android:id="@android:id/button2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="64.0dip" android:minHeight="36.0dip" android:paddingStart="@dimen/oneplus_contorl_layout_margin_left1" android:paddingEnd="@dimen/oneplus_contorl_layout_margin_right1" style="?android:attr/buttonBarButtonStyle" />
+        <Button android:id="@android:id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="64.0dip" android:minHeight="36.0dip" android:paddingStart="@dimen/oneplus_contorl_layout_margin_left1" android:paddingEnd="@dimen/oneplus_contorl_layout_margin_right1" style="?android:attr/buttonBarButtonStyle" />
+    </com.android.internal.widget.ButtonBarLayout>
+</ScrollView>

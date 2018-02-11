@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/gestures_settings"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <com.oneplus.settings.ui.OPPreferenceHeaderMargin android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/oneplus_fingerprint_gesture_settings_title" android:key="fingerprint_gesture_control">
+        <SwitchPreference android:title="@string/fingerprint_swipe_for_notifications_title" android:key="op_fingerprint_gesture_swipe_down_up" android:summary="@string/fingerprint_swipe_for_notifications_summary" />
+        <SwitchPreference android:title="@string/oneplus_fingerprint_gesture_camera_title" android:key="op_fingerprint_long_press_camera_shot" />
+    </PreferenceCategory>
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line_1" />
+    <PreferenceCategory android:title="@string/oneplus_motion_sensor_settings_title" android:key="motion_sensor__control">
+        <SwitchPreference android:title="@string/oneplus_rotation_silent_enable_title" android:key="rotation_silent_enable" android:summary="@string/oneplus_rotation_silent_enable_summary" />
+        <SwitchPreference android:title="@string/oneplus_three_screenshots_enable_title" android:key="three_screenshots_enable" android:summary="@string/oneplus_three_screenshots_enable_summary" />
+    </PreferenceCategory>
+    <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line" />
+    <PreferenceCategory android:title="@string/oneplus_black_screen_gestures_settings_title" android:key="black_screen_gestures">
+        <SwitchPreference android:title="@string/oneplus_double_click_light_screen_title" android:key="double_click_light_screen_key" android:summary="@string/oneplus_double_click_light_screen_summary" />
+        <SwitchPreference android:title="@string/oneplus_music_control_title" android:key="music_control_key" android:summary="@string/oneplus_music_control_des" />
+        <SwitchPreference android:title="@string/oneplus_draw_o_start_camera_title" android:key="draw_o_start_camera_key" android:summary="@string/oneplus_draw_o_start_camera_summary" />
+        <SwitchPreference android:title="@string/oneplus_open_light_device_title" android:key="open_light_device_key" android:summary="@string/oneplus_open_light_device_summary" />
+        <com.oneplus.settings.ui.OPGesturePreference android:title="@string/oneplus_draw_o_start_app" android:key="oneplus_draw_o_start_app" android:summary="@string/oneplus_draw_gesture_start_none" />
+        <com.oneplus.settings.ui.OPGesturePreference android:title="@string/oneplus_draw_v_start_app" android:key="oneplus_draw_v_start_app" android:summary="@string/oneplus_draw_gesture_start_none" />
+        <com.oneplus.settings.ui.OPGesturePreference android:title="@string/oneplus_draw_s_start_app" android:key="oneplus_draw_s_start_app" android:summary="@string/oneplus_draw_gesture_start_none" />
+        <com.oneplus.settings.ui.OPGesturePreference android:title="@string/oneplus_draw_m_start_app" android:key="oneplus_draw_m_start_app" android:summary="@string/oneplus_draw_gesture_start_none" />
+        <com.oneplus.settings.ui.OPGesturePreference android:title="@string/oneplus_draw_w_start_app" android:key="oneplus_draw_w_start_app" android:summary="@string/oneplus_draw_gesture_start_none" />
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="oneplus_contorl_text_style_base">
+        <item name="android:breakStrategy">simple</item>
+    </style>
+    <style name="oneplus_contorl_text_style_title_extended" parent="@style/Oneplus.TextAppearance.Material.Widget.ActionBar.Title">
+        <item name="android:textSize">@dimen/oneplus_contorl_text_size_extended</item>
+        <item name="android:fontFamily">@string/oneplus_contorl_font_family_title_extended</item>
+        <item name="android:breakStrategy">simple</item>
+    </style>
+    <style name="Oneplus.Widget.Material.TimePicker" parent="@android:style/Widget.Material.TimePicker">
+        <item name="android:headerBackground">?onePlusPrimaryColor</item>
+        <item name="android:numbersTextColor">@color/op_timepicker_text_inverse_when_activated_material_dark</item>
+        <item name="android:numbersBackgroundColor">@color/timepicker_numbers_background_color_dark</item>
+        <item name="android:numbersSelectorColor">?onePlusPrimaryColor</item>
+        <item name="android:amPmTextColor">@color/timepicker_ampmlabel_text_color_dark</item>
+        <item name="android:numbersInnerTextColor">@color/op_timepicker_text_inverse_when_activated_material_dark</item>
+    </style>
+    <style name="Oneplus.Widget.Material.Light.TimePicker" parent="@android:style/Widget.Material.Light.TimePicker">
+        <item name="android:headerBackground">?onePlusPrimaryColor</item>
+        <item name="android:numbersTextColor">@color/op_timepicker_text_inverse_when_activated_material_light</item>
+        <item name="android:numbersBackgroundColor">@color/timepicker_numbers_background_color_light</item>
+        <item name="android:numbersSelectorColor">?onePlusPrimaryColor</item>
+        <item name="android:amPmTextColor">@color/timepicker_ampmlabel_text_color_light</item>
+        <item name="android:numbersInnerTextColor">@color/op_timepicker_text_inverse_when_activated_material_light</item>
+    </style>
+    <style name="Oneplus.Widget.Material.SearchView.ActionBar" parent="@android:style/Widget.Material.SearchView">
+        <item name="android:closeIcon">@drawable/op_ic_clear_material</item>
+        <item name="android:searchIcon">@drawable/op_ic_search_api_material</item>
+        <item name="android:queryBackground">@empty</item>
+        <item name="android:submitBackground">@empty</item>
+        <item name="android:searchHintIcon">@empty</item>
+    </style>
+    <style name="Oneplus.Widget.Material.Toolbar" parent="@android:style/Widget.Material.Toolbar">
+        <item name="android:titleTextAppearance">@style/Oneplus.TextAppearance.Material.Widget.ActionBar.Title</item>
+        <item name="android:subtitleTextAppearance">@style/Oneplus.TextAppearance.Material.Widget.ActionBar.Subtitle</item>
+        <item name="android:contentInsetStart">@dimen/oneplus_contorl_layout_margin_left2</item>
+        <item name="android:contentInsetStartWithNavigation">@dimen/oneplus_contorl_layout_margin_left4</item>
+    </style>
+    <style name="Oneplus.Widget.Material.ActionBar.Solid" parent="@android:style/Widget.Material.ActionBar.Solid">
+        <item name="android:background">?onePlusActionbarBackground</item>
+        <item name="android:titleTextStyle">@style/Oneplus.TextAppearance.Material.Widget.ActionBar.Title</item>
+        <item name="android:subtitleTextStyle">@style/Oneplus.TextAppearance.Material.Widget.ActionBar.Subtitle</item>
+        <item name="android:backgroundStacked">@drawable/op_actionbar_background</item>
+        <item name="android:backgroundSplit">?onePlusActionbarBackgroundColor</item>
+        <item name="android:elevation">@dimen/actionbar_elevation</item>
+        <item name="android:contentInsetStart">@dimen/oneplus_contorl_layout_margin_left2</item>
+        <item name="android:contentInsetStartWithNavigation">@dimen/oneplus_contorl_layout_margin_left4</item>
+    </style>
+    <style name="Oneplus.Widget.Material.Light.ActionBar.Solid" parent="@android:style/Widget.Material.Light.ActionBar.Solid">
+        <item name="android:background">?onePlusActionbarBackground</item>
+        <item name="android:titleTextStyle">@style/Oneplus.TextAppearance.Material.Widget.ActionBar.Title</item>
+        <item name="android:subtitleTextStyle">@style/Oneplus.TextAppearance.Material.Widget.ActionBar.Subtitle</item>
+        <item name="android:backgroundStacked">@drawable/op_actionbar_background</item>
+        <item name="android:backgroundSplit">?onePlusActionbarBackgroundColor</item>
+        <item name="android:elevation">@dimen/actionbar_elevation</item>
+        <item name="android:contentInsetStart">@dimen/oneplus_contorl_layout_margin_left2</item>
+        <item name="android:contentInsetStartWithNavigation">@dimen/oneplus_contorl_layout_margin_left4</item>
+    </style>
+    <style name="Base.Theme.AppCompat" parent="@style/Base.V22.Theme.AppCompat" />
+    <style name="Base.Theme.AppCompat.Light" parent="@style/Base.V22.Theme.AppCompat.Light" />
+    <style name="SetupWizardAccessibilityPreferenceTheme" parent="@style/PreferenceThemeOverlay.v14.Material">
+        <item name="android:preferenceStyle">@style/Preference</item>
+        <item name="android:editTextPreferenceStyle">@style/EditTextPreference</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:preferenceFragmentStyle">@style/PreferenceFragmentStyle</item>
+        <item name="dropdownPreferenceStyle">@style/Preference.DropDown.Material</item>
+        <item name="apnPreferenceStyle">@style/ApnPreference</item>
+    </style>
+    <style name="PreferenceTheme" parent="@style/Oneplus.Theme.DeviceDefault">
+        <item name="android:preferenceScreenStyle">@style/OPPreference.Material</item>
+        <item name="android:preferenceCategoryStyle">@style/PreferenceCategoryStyle</item>
+        <item name="android:preferenceInformationStyle">@style/OPPreference.Material</item>
+        <item name="android:preferenceStyle">@style/OPPreference.Material</item>
+        <item name="android:checkBoxPreferenceStyle">@style/OPPreference.Material.CheckBoxPreference</item>
+        <item name="android:dialogPreferenceStyle">@style/OPPreference.Material</item>
+        <item name="android:editTextPreferenceStyle">@style/EditTextPreference</item>
+        <item name="android:dividerHeight">1.0dip</item>
+        <item name="android:listDivider">@color/oneplus_contorl_divider_color_default</item>
+        <item name="android:switchPreferenceStyle">@style/OPPreference.Material.SwitchPreference</item>
+        <item name="android:colorAccent">@color/settings_accent_color</item>
+        <item name="android:preferenceFragmentStyle">@style/PreferenceFragmentStyle</item>
+        <item name="onePlusPrimaryColor">@color/settings_accent_color</item>
+        <item name="dropdownPreferenceStyle">@style/OPPreference.Material.DropDownPreference</item>
+        <item name="apnPreferenceStyle">@style/ApnPreference</item>
+    </style>
+    <style name="Base.V22.Theme.AppCompat" parent="@style/Base.V21.Theme.AppCompat">
+        <item name="actionModeShareDrawable">?android:actionModeShareDrawable</item>
+        <item name="editTextBackground">?android:editTextBackground</item>
+    </style>
+    <style name="Base.V22.Theme.AppCompat.Light" parent="@style/Base.V21.Theme.AppCompat.Light">
+        <item name="actionModeShareDrawable">?android:actionModeShareDrawable</item>
+        <item name="editTextBackground">?android:editTextBackground</item>
+    </style>
+</resources>

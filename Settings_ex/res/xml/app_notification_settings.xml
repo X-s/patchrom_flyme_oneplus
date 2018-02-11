@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:title="@string/app_notifications_title" android:key="app_notification_settings"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <com.android.settings_ex.notification.ImportanceSeekBarPreference android:title="@string/notification_importance_title" android:key="importance" />
+    <PreferenceCategory android:title="@string/oneplus_levels" android:key="levels">
+        <com.android.settings_ex.ui.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_donot_silence_or_block" android:key="donot_silence_or_block" android:summary="@string/oneplus_donot_silence_or_block_summary" />
+        <com.android.settings_ex.ui.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_denoise_notification" android:key="denoise_notification" android:summary="@string/oneplus_denoise_notification_summary" />
+        <com.android.settings_ex.ui.RadioButtonPreference android:persistent="false" android:title="@string/oneplus_block_all_notifications" android:key="block_all_notifications" android:summary="@string/oneplus_block_all_notifications_summary" />
+    </PreferenceCategory>
+    <com.oneplus.settings.ui.OPRestrictedSwitchPreference android:persistent="false" android:title="@string/oneplus_app_notification_led_enabled_title" android:key="led_enabled" android:summary="@string/oneplus_app_notification_led_enabled_summary" />
+    <com.oneplus.settings.ui.OPRestrictedSwitchPreference android:title="@string/app_notification_block_title" android:key="block" android:summary="@string/app_notification_block_summary" android:order="2" settings:useAdditionalSummary="true" settings:restrictedSwitchSummary="@string/enabled_by_admin" />
+    <com.oneplus.settings.ui.OPRestrictedSwitchPreference android:title="@string/show_silently" android:key="silent" android:summary="@string/show_silently_summary" android:order="3" settings:useAdditionalSummary="true" />
+    <PreferenceCategory android:title="@string/oneplus_more" android:key="more">
+        <com.android.settings_ex.notification.RestrictedDropDownPreference android:title="@string/app_notification_visibility_override_title" android:key="visibility_override" android:order="5" />
+        <com.oneplus.settings.ui.OPRestrictedSwitchPreference android:title="@string/app_notification_override_dnd_title" android:key="bypass_dnd" android:summary="@string/app_notification_override_dnd_summary" android:order="6" settings:useAdditionalSummary="true" />
+    </PreferenceCategory>
+</PreferenceScreen>
