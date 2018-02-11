@@ -1082,7 +1082,9 @@
     invoke-direct {v4, v5}, Landroid/app/Notification$Builder;-><init>(Landroid/content/Context;)V
 
     .line 524
-    const v5, 0x5020001
+    #game mode notification icon
+    #const v5, 0x5020001
+    sget v5, Lcom/flyme/internal/R$drawable;->mz_stat_sys_keyboard:I
 
     .line 523
     invoke-virtual {v4, v5}, Landroid/app/Notification$Builder;->setSmallIcon(I)Landroid/app/Notification$Builder;

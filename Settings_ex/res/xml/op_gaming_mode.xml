@@ -3,7 +3,9 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
     <PreferenceCategory android:title="@string/oneplus_do_not_disturb_settings" android:key="do_not_disturb_settings">
+<!--
         <SwitchPreference android:title="@string/oneplus_block_notifications" android:key="block_notifications" android:summary="@string/oneplus_block_notifications_summary" />
+-->
         <SwitchPreference android:title="@string/oneplus_lock_buttons" android:key="lock_buttons" android:summary="@string/oneplus_lock_buttons_summary" />
     </PreferenceCategory>
     <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line" />
