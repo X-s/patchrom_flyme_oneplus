@@ -6252,6 +6252,7 @@
     iget-boolean v4, p0, Lcom/android/settings_ex/SettingsActivity;->mDisplaySearch:Z
 
     if-eqz v4, :cond_0
+    goto :cond_0
 
     invoke-static {}, Lcom/oneplus/settings/utils/OPUtils;->isGuestMode()Z
 
