@@ -1468,14 +1468,12 @@
         <item>V2.0</item>
     </string-array>
     <string-array name="oneplus_bluetooth_audio_codec">
-        <item>@string/oneplus_bluetooth_aptx_hd</item>
-        <item>@string/oneplus_bluetooth_aptX</item>
         <item>@string/oneplus_bluetooth_sbc</item>
+        <item>aptX / aptX HD</item>
     </string-array>
     <string-array name="oneplus_bluetooth_audio_codec_values">
         <item>0</item>
         <item>1</item>
-        <item>2</item>
     </string-array>
     <string-array name="oneplus_font_style_support_language">
         <item>af</item>
