@@ -325,6 +325,7 @@
     sget-boolean v2, Lcom/oneplus/settings/others/OPOthersSettings;->isSupportAptxHdSupport:Z
 
     if-eqz v2, :cond_2
+    goto :cond_2
 
     .line 127
     invoke-virtual {p0}, Lcom/oneplus/settings/others/OPOthersSettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
@@ -337,6 +338,31 @@
 
     .line 88
     :cond_2
+    invoke-virtual {p0}, Lcom/oneplus/settings/others/OPOthersSettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v2
+
+    iget-object v5, p0, Lcom/oneplus/settings/others/OPOthersSettings;->mAntiMisOperationTouch:Landroid/support/v14/preference/SwitchPreference;
+
+    invoke-virtual {v2, v5}, Landroid/support/v7/preference/PreferenceScreen;->removePreference(Landroid/support/v7/preference/Preference;)Z
+
+    invoke-virtual {p0}, Lcom/oneplus/settings/others/OPOthersSettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v2
+
+    iget-object v5, p0, Lcom/oneplus/settings/others/OPOthersSettings;->mUserPlanPreference:Landroid/support/v14/preference/SwitchPreference;
+
+    invoke-virtual {v2, v5}, Landroid/support/v7/preference/PreferenceScreen;->removePreference(Landroid/support/v7/preference/Preference;)Z
+
+    .line 108
+    invoke-virtual {p0}, Lcom/oneplus/settings/others/OPOthersSettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v2
+
+    iget-object v5, p0, Lcom/oneplus/settings/others/OPOthersSettings;->mOPMultitaskingCleanWayPreference:Landroid/support/v7/preference/Preference;
+
+    invoke-virtual {v2, v5}, Landroid/support/v7/preference/PreferenceScreen;->removePreference(Landroid/support/v7/preference/Preference;)Z
+
     return-void
 
     .end local v0    # "isOTGEnable":Ljava/lang/String;
