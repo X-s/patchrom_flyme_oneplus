@@ -2717,6 +2717,20 @@
     invoke-virtual {v9, v10}, Lcom/android/settings_ex/notification/SoundSettings$SettingsObserver;->register(Z)V
 
     .line 269
+    invoke-virtual {p0}, Lcom/android/settings_ex/DisplaySettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v9
+
+    invoke-virtual {v9}, Landroid/support/v7/preference/PreferenceScreen;->removeAll()V
+
+    invoke-virtual {p0}, Lcom/android/settings_ex/notification/SoundSettings;->getPreferenceScreen()Landroid/support/v7/preference/PreferenceScreen;
+
+    move-result-object v9
+
+    iget-object v10, p0, Lcom/android/settings_ex/notification/SoundSettings;->mSoundDirectPreference:Landroid/support/v7/preference/Preference;
+
+    invoke-virtual {v9, v10}, Landroid/support/v7/preference/PreferenceScreen;->addPreference(Landroid/support/v7/preference/Preference;)Z
+
     return-void
 
     .line 400
