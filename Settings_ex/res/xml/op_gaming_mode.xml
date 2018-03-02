@@ -7,6 +7,7 @@
         <SwitchPreference android:title="@string/oneplus_block_notifications" android:key="block_notifications" android:summary="@string/oneplus_block_notifications_summary" />
 -->
         <SwitchPreference android:title="@string/oneplus_lock_buttons" android:key="lock_buttons" android:summary="@string/oneplus_lock_buttons_summary" />
+    <com.android.settings_ex.fuelgauge.WallOfTextPreference android:selectable="false" android:summary="@string/mz_game_mode_dnd_summary" settings:allowDividerAbove="true" />
     </PreferenceCategory>
     <com.oneplus.settings.ui.OPPreferenceDivider android:key="preference_divider_line" />
     <PreferenceCategory android:title="@string/oneplus_auto_turn_on_apps" android:key="auto_turn_on_apps" />

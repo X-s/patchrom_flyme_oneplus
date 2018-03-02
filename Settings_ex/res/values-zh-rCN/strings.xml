@@ -4060,4 +4060,5 @@ PIN码可能不正确。"</string>
     <string name="oneplus_nfc_security_module_description">你可以切换到对应的NFC-SIM卡，来使用该SIM卡的NFC功能。</string>
     <string name="oneplus_nfc_security_module_inner_nfc">手机内置安全模块（eSE）</string>
     <string name="finger_sensor_settings_title">手抓传感器</string>
+    <string name="mz_game_mode_dnd_summary">打开屏蔽按键时，会智能识别运行的游戏应用并禁用浮动通知，来电、闹钟除外</string>
 </resources>

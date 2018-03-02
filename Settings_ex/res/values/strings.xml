@@ -4510,4 +4510,5 @@ Last ran on %2$s"</string>
     <string name="web_action_section_title">Apps not installed</string>
     <string name="domain_url_section_title">Installed apps</string>
     <string name="automatic_storage_manager_activation_warning">Your storage is now being managed by the storage manager</string>
+    <string name="mz_game_mode_dnd_summary">Disable all heads-ups except for calls and alarms while playing games</string>
 </resources>
