@@ -4107,4 +4107,5 @@ PIN码可能不正确。"</string>
     <string name="uninstall_failed_msg">无法卸载“%1$s”。</string>
     <string name="oneplus_fingerprint_quickpay_lock_swtch_summary">熄屏或锁屏时，使用指纹解锁后继续长按指纹识别按钮，可以直接打开支付界面</string>
     <string name="finger_sensor_settings_title">手抓传感器</string>
+    <string name="mz_game_mode_dnd_summary">打开屏蔽按键时，会智能识别运行的游戏应用并禁用浮动通知，来电、闹钟除外</string>
 </resources>

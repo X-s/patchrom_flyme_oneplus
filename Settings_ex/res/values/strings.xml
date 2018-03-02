@@ -4555,6 +4555,7 @@ Last ran on %2$s"</string>
     <string name="web_action_enable_summary">Open links in supported apps, even if the apps aren’t installed on your device</string>
     <string name="web_action_section_title">Apps not installed</string>
     <string name="domain_url_section_title">Installed apps</string>
+    <string name="mz_game_mode_dnd_summary">Disable all heads-ups except for calls and alarms while playing games</string>
     <string name="automatic_storage_manager_activation_warning">Your storage is now being managed by the storage manager</string>
     <item type="string" name="APKTOOL_DUMMY_10f4">false</item>
     <item type="string" name="APKTOOL_DUMMY_10f5">false</item>
