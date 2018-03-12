@@ -79,7 +79,7 @@
     .end annotation
 .end method
 
-.method public abstract expandNotificationsPanel(I)V
+.method public abstract expandNotificationsPanel()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

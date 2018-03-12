@@ -100,7 +100,7 @@
 .end method
 
 .method private runExpandNotifications()I
-    .locals 2
+    .locals 1
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -108,15 +108,15 @@
     .end annotation
 
     .prologue
-    const/4 v1, 0x0
-
     .line 87
     iget-object v0, p0, Lcom/android/server/statusbar/StatusBarShellCommand;->mInterface:Lcom/android/internal/statusbar/IStatusBarService;
 
-    invoke-interface {v0, v1}, Lcom/android/internal/statusbar/IStatusBarService;->expandNotificationsPanel(I)V
+    invoke-interface {v0}, Lcom/android/internal/statusbar/IStatusBarService;->expandNotificationsPanel()V
 
     .line 88
-    return v1
+    const/4 v0, 0x0
+
+    return v0
 .end method
 
 .method private runExpandSettings()I
