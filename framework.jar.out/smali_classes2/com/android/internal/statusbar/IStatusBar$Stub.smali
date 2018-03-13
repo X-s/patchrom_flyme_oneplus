@@ -328,16 +328,7 @@
 
     invoke-virtual {v0, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 84
-    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
-
-    move-result v5
-
-    .line 85
-    .restart local v5    # "_arg0":I
-    move-object/from16 v0, p0
-
-    invoke-virtual {v0, v5}, Lcom/android/internal/statusbar/IStatusBar$Stub;->animateExpandNotificationsPanel(I)V
+    invoke-virtual/range {p0 .. p0}, Lcom/android/internal/statusbar/IStatusBar$Stub;->animateExpandNotificationsPanel()V
 
     .line 86
     const/4 v4, 0x1
@@ -345,7 +336,6 @@
     return v4
 
     .line 90
-    .end local v5    # "_arg0":I
     :sswitch_5
     const-string/jumbo v4, "com.android.internal.statusbar.IStatusBar"
 

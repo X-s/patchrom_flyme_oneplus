@@ -1476,7 +1476,7 @@
 
     const/4 v2, 0x0
 
-    invoke-interface {v1, v2}, Lcom/android/internal/statusbar/IStatusBarService;->expandNotificationsPanel(I)V
+    invoke-interface {v1}, Lcom/android/internal/statusbar/IStatusBarService;->expandNotificationsPanel()V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 

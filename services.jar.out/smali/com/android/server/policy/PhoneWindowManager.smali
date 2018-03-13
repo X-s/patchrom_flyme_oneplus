@@ -21974,7 +21974,7 @@
     :try_start_0
     move-object/from16 v0, v40
 
-    invoke-interface {v0, v4}, Lcom/android/internal/statusbar/IStatusBarService;->expandNotificationsPanel(I)V
+    invoke-interface {v0}, Lcom/android/internal/statusbar/IStatusBarService;->expandNotificationsPanel()V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 

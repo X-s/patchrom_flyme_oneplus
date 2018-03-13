@@ -1390,13 +1390,10 @@
     return-void
 .end method
 
-.method public expandNotificationsPanel(I)V
+.method public expandNotificationsPanel()V
     .locals 2
-    .param p1, "velocity"    # I
 
     .prologue
-    return-void
-
     .line 353
     invoke-direct {p0}, Lcom/android/server/statusbar/StatusBarManagerService;->enforceExpandStatusBar()V
 
@@ -1409,7 +1406,7 @@
     :try_start_0
     iget-object v1, p0, Lcom/android/server/statusbar/StatusBarManagerService;->mBar:Lcom/android/internal/statusbar/IStatusBar;
 
-    invoke-interface {v1, p1}, Lcom/android/internal/statusbar/IStatusBar;->animateExpandNotificationsPanel(I)V
+    invoke-interface {v1}, Lcom/android/internal/statusbar/IStatusBar;->animateExpandNotificationsPanel()V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 

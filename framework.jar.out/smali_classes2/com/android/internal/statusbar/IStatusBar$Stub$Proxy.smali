@@ -167,9 +167,8 @@
     throw v1
 .end method
 
-.method public animateExpandNotificationsPanel(I)V
+.method public animateExpandNotificationsPanel()V
     .locals 5
-    .param p1, "velocity"    # I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -188,9 +187,6 @@
     const-string/jumbo v1, "com.android.internal.statusbar.IStatusBar"
 
     invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
-
-    .line 436
-    invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 437
     iget-object v1, p0, Lcom/android/internal/statusbar/IStatusBar$Stub$Proxy;->mRemote:Landroid/os/IBinder;
