@@ -32751,9 +32751,11 @@
     invoke-virtual {v2, v3, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
 
     :goto_0
-    sget-object v3, Landroid/os/UserHandle;->CURRENT:Landroid/os/UserHandle;
+    invoke-direct {p0}, Lcom/android/server/policy/PhoneWindowManager;->isFlymeRecentPanel()Z
 
-    invoke-virtual {p0, v2, v3}, Lcom/android/server/policy/PhoneWindowManager;->startActivityAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
+    move-result v3
+
+    if-eqz v3, :cond_xs
 
     return-void
 
@@ -32763,6 +32765,96 @@
 
     .restart local v2    # "intent":Landroid/content/Intent;
     goto :goto_0
+
+    :cond_xs
+    sget-object v3, Landroid/os/UserHandle;->CURRENT:Landroid/os/UserHandle;
+
+    invoke-virtual {p0, v2, v3}, Lcom/android/server/policy/PhoneWindowManager;->startActivityAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
+
+    return-void
+.end method
+
+.method private isFlymeRecentPanel()Z
+    .locals 2
+
+    .prologue
+    invoke-direct {p0}, Lcom/android/server/policy/PhoneWindowManager;->getRunningActivityName()Ljava/lang/String;
+
+    move-result-object v0
+
+    .local v0, "activityName":Ljava/lang/String;
+    const-string/jumbo v1, "com.flyme.systemui.recents.RecentsEmptyActivity"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    iget-object v1, p0, Lcom/android/server/policy/PhoneWindowManager;->mContext:Landroid/content/Context;
+
+    invoke-direct {p0, v1}, Lcom/android/server/policy/PhoneWindowManager;->doBackWhenRecent(Landroid/content/Context;)V
+
+    const/4 v1, 0x1
+
+    return v1
+
+    :cond_0
+    const/4 v1, 0x0
+
+    return v1
+.end method
+
+.method private doBackWhenRecent(Landroid/content/Context;)V
+    .locals 1
+    .param p1, "context"    # Landroid/content/Context;
+
+    .prologue
+    new-instance v0, Lcom/android/server/policy/PhoneWindowManager$DoBackWhenRecent;
+
+    invoke-direct {v0, p0}, Lcom/android/server/policy/PhoneWindowManager$DoBackWhenRecent;-><init>(Lcom/android/server/policy/PhoneWindowManager;)V
+
+    invoke-virtual {v0}, Lcom/android/server/policy/PhoneWindowManager$DoBackWhenRecent;->start()V
+
+    return-void
+.end method
+
+.method private getRunningActivityName()Ljava/lang/String;
+    .locals 4
+    .prologue
+    iget-object v2, p0, Lcom/android/server/policy/PhoneWindowManager;->mContext:Landroid/content/Context;
+
+    const-string v3, "activity"
+
+    invoke-virtual {v2, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/app/ActivityManager;
+
+    .local v0, "activityManager":Landroid/app/ActivityManager;
+    const/4 v2, 0x1
+
+    invoke-virtual {v0, v2}, Landroid/app/ActivityManager;->getRunningTasks(I)Ljava/util/List;
+
+    move-result-object v2
+
+    const/4 v3, 0x0
+
+    invoke-interface {v2, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Landroid/app/ActivityManager$RunningTaskInfo;
+
+    iget-object v2, v2, Landroid/app/ActivityManager$RunningTaskInfo;->topActivity:Landroid/content/ComponentName;
+
+    invoke-virtual {v2}, Landroid/content/ComponentName;->getClassName()Ljava/lang/String;
+
+    move-result-object v1
+
+    .local v1, "runningActivity":Ljava/lang/String;
+    return-object v1
 .end method
 
 .method public startKeyguardExitAnimation(JJ)V
