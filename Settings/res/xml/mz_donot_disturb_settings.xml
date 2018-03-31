@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.preference.PreferenceScreen android:title="@string/do_not_disturb_title"
+  xmlns:android="http://schemas.android.com/apk/prv/res/android"
+  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+    <Preference android:summary="@string/three_key_mode_tips" />
+<!--
+    <com.meizu.common.preference.SwitchPreference android:persistent="false" android:title="@string/do_not_disturb_enable_mannully" android:key="do_not_disturb_switch" />
+    <com.meizu.common.preference.SwitchPreference android:persistent="false" android:title="@string/do_not_disturb_time_switch_title" android:key="do_not_disturb_time_switch" />
+    <android.preference.Preference android:title="@string/do_not_disturb_start_time" android:key="do_not_disturb_start_time" />
+    <android.preference.Preference android:title="@string/do_not_disturb_end_time" android:key="do_not_disturb_end_time" />
+    <com.meizu.settings.widget.ScheduledPreference android:title="@string/repeat_weekday" android:selectable="false" android:key="do_not_disturb_repeat_days" />
+-->
+    <PreferenceCategory android:title="@string/silent_mode_options_title">
+        <Preference android:summary="@string/silent_mode_options_tips" />
+    </PreferenceCategory>
+    <android.preference.PreferenceCategory android:title="@string/do_not_disturb_options">
+        <android.preference.Preference android:key="do_not_disturb_hint" android:summary="@string/do_not_disturb_tips" />
+<!--
+        <ListPreference android:persistent="false" android:entries="@array/do_not_disturb_mode_entries" android:title="@string/do_not_disturb_mode_title" android:key="dnd_mode" android:entryValues="@array/do_not_disturb_mode_values" />
+        <android.preference.Preference android:persistent="false" android:title="@string/do_not_disturb_priority_title" android:key="dnd_priority_settings" android:widgetLayout="@flyme:layout/mz_right_arrow" android:fragment="com.meizu.settings.donotdisturb.MzDonotDisturbPriorityFragment" />
+        <com.meizu.common.preference.SwitchPreference android:persistent="false" android:title="@string/wakeup_breathing_light" android:key="wakeup_breathing_light" />
+-->
+    </android.preference.PreferenceCategory>
+</android.preference.PreferenceScreen>

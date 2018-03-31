@@ -389,6 +389,10 @@
 
     move-result v0
 
+    invoke-static {v0}, Lcom/xs/ThreeKeyModeUtils;->resolveOnePlusThreeKeyModeToAOSP(I)I
+
+    move-result v0
+
     iput v0, p0, Lcom/android/server/notification/MzDoNotDisturbHelper;->mZenMode:I
 
     .line 114

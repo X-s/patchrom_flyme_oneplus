@@ -67,6 +67,10 @@
 
     move-result v0
 
+    invoke-static {v0}, Lcom/xs/ThreeKeyModeUtils;->resolveOnePlusThreeKeyModeToAOSP(I)I
+
+    move-result v0
+
     .line 93
     .local v0, "zenMode":I
     iget-object v1, p0, Lcom/android/server/notification/MzDoNotDisturbHelper$2;->this$0:Lcom/android/server/notification/MzDoNotDisturbHelper;
