@@ -20,6 +20,11 @@ function applyPatch () {
     done
 }
 
+if [ "$apkBaseName" = "TeleService" ];then
+    echo ">>>> in custom_app for $apkBaseName to fix cdma phone times"
+    sed -i "s#    invoke-direct {p0, v5}, Lcom/android/services/telephony/TelephonyConnection;->getCallState(Lcom/android/internal/telephony/Connection;)Lcom/android/internal/telephony/Call\$State;#    invoke-virtual {v5}, Lcom/android/internal/telephony/Connection;->getState()Lcom/android/internal/telephony/Call\$State;#" $2/smali/com/android/services/telephony/TelephonyConnection.smali
+fi
+
 if [ "$apkBaseName" = "Settings" ];then
     echo ">>>> in custom_app for $apkBaseName to fix storage info"
     find $2/ -name "*.smali" | xargs sed -i 's#sys/block/sdc/size#sys/block/sda/size#g'
