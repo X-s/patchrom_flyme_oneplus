@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="quick_settings_tiles_default">wifi,mobiledata,bt,mute,vibrate,airplane,rotation,location,autobrightness,flashlight,smarttouch,vpn,screenshot,hotspot,drivemode,eyeprotective,accelerator,screenrecord,developeroptions</string>
+</resources>

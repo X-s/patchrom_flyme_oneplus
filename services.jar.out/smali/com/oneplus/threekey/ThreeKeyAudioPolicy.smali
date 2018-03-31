@@ -175,7 +175,8 @@
 
     move-result v0
 
-    if-ne v0, v1, :cond_0
+    #mute media
+    #if-ne v0, v1, :cond_0
 
     move v0, v1
 
